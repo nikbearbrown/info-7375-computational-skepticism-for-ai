@@ -29,7 +29,7 @@ Before you report a task in this folder as done, update `FRICTIONAL.md` in the s
 
 ## Rule 2 — Gru's words are never edited
 
-Files in `boondoggle-report/gru-session/` hold Gru's replies verbatim. They are copied from the conversation transcript by script, never retyped or cleaned up. The brief says Gru's errors and pushback are part of the submission.
+Files in `boondoggle-report/gru-session/` and `boondoggle-report/gru-session-downloadable-gru/` hold Gru's replies verbatim. So do the blocks under "Gru's section outputs" in `FRICTIONAL.md`, which are sliced from those files by script. They are copied from the conversation transcript by script, never retyped or cleaned up. The brief says Gru's errors and pushback are part of the submission.
 
 ## Rule 3 — one line per GitHub push
 

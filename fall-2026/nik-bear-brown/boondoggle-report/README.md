@@ -9,14 +9,14 @@
 
 **What the application is.** Gru today is a long prompt that someone pastes into a Claude Project. It can only know what the person tells it. The downloadable version is the same Gru, packaged the way Professor Bear's `brutalist.art` toolkit is packaged: skills, scripts, and one entry point, installed into a repository so that Gru reads the code, docs, and history itself before it asks the person anything.
 
-**Where it stands.** **Not started.** No Gru command has been run on this application yet.
+**Where it stands.** `/v0` through `/v4` are confirmed and the Phase 1 gate is passed, in the session in [`gru-session-downloadable-gru/`](gru-session-downloadable-gru/README.md). `/s1` (components) is in progress. **Claude Code typed Professor Bear's answers in that session and confirmed its gates for him. He has not reviewed them yet.** Gru's section outputs are copied verbatim into [`../FRICTIONAL.md`](../FRICTIONAL.md).
 
 **What is in this folder so far, and why.** A false start, kept deliberately:
 - **The wrong application.** Turns 00–13 in [`gru-session/`](gru-session/README.md) specify *greenhouse-watch*, a job-board watcher from Professor Bear's Prompt Engineering class. Claude Code chose it after reading that class's example folder and assuming it was the task. Professor Bear caught it and stopped the session.
 - **Why it's kept.** The course log keeps mistakes. The turns are still verbatim Gru output, and they show the gates working: Gru rejected two versions of the `/v0` sentence and found real design problems in that tool. But they are not the submission.
 - **A second mistake.** Before any design document existed, Claude Code also started *building* a downloadable Gru toolkit outside this repository. That is the opposite of what Gru teaches (specify, then build). It is logged in [`../FRICTIONAL.md`](../FRICTIONAL.md), kept, and uncommitted.
 
-**Next.** A fresh Gru session, starting at `/v0`, with the downloadable Gru as the application.
+**Next.** Professor Bear reviews the answers given for him. Then finish `/s1`, run `/claude` for the Boondoggle Score, and build the tool from it.
 
 ---
 
@@ -24,10 +24,12 @@
 
 | Deliverable | Status |
 |---|---|
-| `/v0` problem formulation | ⬜ not started |
-| `/v1` problem intake, and the own-voice paragraph after the Problem Summary | ⬜ |
-| `/v2` principles, `/v3` flows, `/v4` needs | ⬜ |
-| `/s1` components | ⬜ |
+| `/v0` problem formulation | ✅ confirmed ([turn 05](gru-session-downloadable-gru/05-v0-confirmed.md)) |
+| `/v1` problem intake | ✅ confirmed ([turn 14](gru-session-downloadable-gru/14-v1-problem-summary.md)) |
+| The own-voice paragraph after the Problem Summary | 🟡 drafted by Claude Code, not yet Professor Bear's words ([`PARAGRAPH-AFTER-V1-DRAFT.md`](PARAGRAPH-AFTER-V1-DRAFT.md)) |
+| `/v2` principles, `/v3` flows, `/v4` needs, Phase 1 gate | ✅ confirmed (turns [15](gru-session-downloadable-gru/15-v2-principles.md)–[18](gru-session-downloadable-gru/18-phase1-gate-s1-inventory.md)) |
+| `/s1` components | 🟡 in progress: component 1 of 11 drafted ([turn 19](gru-session-downloadable-gru/19-s1-architecture-component1-gru-scan.md)) |
+| Professor Bear's review of the answers and gate confirmations Claude Code gave for him | ⬜ |
 | `/claude` Boondoggle Score | ⬜ |
 | Reflection, prompts A–D | ⬜ |
 
@@ -56,4 +58,4 @@ Copied from Gru's own log (turns 05–13); Gru's wording is authoritative. These
 
 ## How the Gru session was run
 
-See [`gru-session/README.md`](gru-session/README.md): the prompt, the method, what differs from running Gru in a Claude Project, and who typed Professor Bear's side of the conversation.
+For the downloadable Gru, see [`gru-session-downloadable-gru/README.md`](gru-session-downloadable-gru/README.md). For the false start, see [`gru-session/README.md`](gru-session/README.md): the prompt, the method, what differs from running Gru in a Claude Project, and who typed Professor Bear's side of the conversation.
