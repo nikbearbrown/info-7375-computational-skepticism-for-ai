@@ -2,11 +2,13 @@
 
 ## Executive summary
 
-**What this is.** Every turn of the Gru conversation behind the Boondoggle Report, one file per turn: what was typed to Gru, then Gru's reply, **verbatim and unedited**.
+**What this is.** Every turn of the **first** Gru session, one file per turn: what was typed to Gru, then Gru's reply, **verbatim and unedited**.
 
-**Why read it.** The assignment says Gru's pushback is evidence that the tool was working, so the conversation is kept whole: second attempts, corrections, and the questions Gru refused to let slide.
+**⚠️ This session specifies the wrong application.** Assignment 2's application is **a downloadable version of Gru**. This session specifies *greenhouse-watch*, a job-board watcher from Professor Bear's other class (Prompt Engineering). Claude Code chose it by mistake after reading that class's folder. Professor Bear stopped it at turn 13. It is **kept, not deleted**, because the course log keeps mistakes. It is not the submission.
 
-**Who typed what.** Gru's replies are exactly as generated. **Professor Bear's side of the conversation was drafted by Claude Code**, working for him, from real records: the greenhouse-watch skill and its scheme file, the Reallocation Engine's components, the fictional persona files, and runs of the skill on real job boards. Professor Bear has **not yet reviewed** those answers. Where an answer made a decision (for example, how to treat the persona's calendar, or keeping the skill's name inside the document), it is listed in [`../../FRICTIONAL.md`](../../FRICTIONAL.md) as his to confirm.
+**Why it's still worth reading.** Gru's gates did their job on it: two rejected `/v0` sentences, and questions that surfaced real defects in a shipped tool (boilerplate matches, a soft location default, a privacy rule the code doesn't enforce).
+
+**Who typed what.** Gru's replies are exactly as generated. **Professor Bear's side was drafted by Claude Code**, from records of the greenhouse-watch tool, and Professor Bear did not review those answers before the session was stopped.
 
 ---
 
@@ -32,3 +34,7 @@
 | [07](07-v1-user-and-failures.md) | The user, Priya | Caught a calendar inconsistency in the persona; split the two real failures into two fixes |
 | [08](08-v1-corrective-sdd.md) | Corrective SDD; location fact | Rewrote its own open questions; reframed soft-vs-hard location as a data question |
 | [09](09-v1-what-it-gives-priya.md) | What it gives Priya | Accepted both claims with limits: "new" is about ids, and boards may not separate job text |
+| [10](10-v1-deployment-why.md) | Why local, why Claude Code | Found two contradictions with the privacy rule: a GitHub Action scheduler, and résumé values copied into logs |
+| [11](11-v1-privacy-decisions.md) | Privacy decisions | Logged both as decided; found the output folder can be anywhere, so the boundary is only a convention |
+| [12](12-v1-build-scale.md) | Output rule; build scale | Sharpened the rule to "gitignored"; moved the boilerplate fix into the script; caught an arithmetic error in the answer |
+| [13](13-v1-systems-and-arithmetic.md) | Three systems Priya uses | Flagged overlapping runs as Must-Fix; asked the last intake question. **The session was stopped here: wrong application.** |
