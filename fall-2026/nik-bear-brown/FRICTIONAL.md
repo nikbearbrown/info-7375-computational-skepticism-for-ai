@@ -649,6 +649,24 @@ Where to check each claim in this log. Commits are listed in the push table belo
 | Gru's section outputs, `/v0` through `/s1` so far | This file, under "Gru's section outputs" |
 | The own-voice paragraph after `/v1`, drafted by Claude Code and not yet Professor Bear's words | `boondoggle-report/PARAGRAPH-AFTER-V1-DRAFT.md` |
 
+### 2026-09-26 — Adding the Assignment 3 folder, and a summary that was about the wrong thing
+
+- **Date and what I was working on:** Making this class match the other two. I asked for *"a log similar to my other classes… which has the [nik-bear-brown] subfolder under fall [2026]. And a subfolder under that called assignment three. And all of the standard readmes and frictional logs, the other ones have in that as well."*
+
+- **I tried / expected:** I expected to need the folder created from scratch here as well.
+
+- **What happened:** This folder already existed and already had the three top-level files; what was missing was `assignment-3/`. The course brief itself names the records a submission must carry — `README.md`, `PREDICTIONS.md`, `CONTRIBUTIONS.md`, `FRICTIONAL.md`, `VERIFICATION.md` — and `templates/` holds blanks for them, so the set was not a matter of taste.
+
+  **The friction was in the writing, and it is the same failure this assignment measures.** The first executive summaries drafted for this folder and its Branding twin described *the assignment* — what it is, where it came from, what its status is — instead of what the tool does. Fluent, organised, and about the wrong thing. I said so: *"executive summary should be what the tool does … this in more notes and details than a real summary."*
+
+- **What I did:** Created `assignment-3/` with all five records. Had both summaries rewritten to open with the mechanism — what `probes.py` and `scoring_rule.py` do, what they refuse, what they do not claim — with status moved to the end. Wrote the prediction before designing any probe, and the acceptance criteria before there is anything to check, including the one that matters most: at least one probe must be *able* to fail against a deliberately fragile baseline, or the suite is reported as weak rather than the baseline as robust.
+
+- **What Claude or another person contributed:** Claude Code (Opus 5) created the folder, drafted the five records from the brief, and rewrote the summaries after I rejected the first version. I have not reviewed the drafted prediction. It also checked the other two repos rather than assuming their layout.
+
+- **What I understand now / still do not understand:** Worth keeping in *this* folder specifically: an explanation that reads well while being about the wrong subject is exactly what Assignment 3 measures, and the first draft of its own README was an instance of it. Still open: whether my baseline strips whitespace before scoring, and how many features the discrete space holds before exhaustive enumeration stops being literal.
+
+- **Evidence and next step:** `assignment-3/` and its five files. Next: the fragile baseline and the first three frozen probes.
+
 ---
 
 ## GitHub pushes
@@ -660,3 +678,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-24 | feat(fall-2026): start Professor Bear's Boondoggle Report with ten Gru turns and a Frictional log |
 | 2026-09-24 | docs(fall-2026): state that Assignment 2 specifies a downloadable Gru, and keep the wrong-application start on the record |
 | 2026-09-24 | docs(fall-2026): log Gru's /v0–/v4 outputs for the downloadable Gru, with all 20 turns verbatim |
+| 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |

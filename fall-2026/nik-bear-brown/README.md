@@ -14,6 +14,7 @@ A place for the public work of Nik Bear Brown's examples — INFO 7375, Fall 202
 
 | Folder or file | What it is |
 |---|---|
+| [`assignment-3/`](assignment-3/) | Assignment 3, robustness and explanation: a probe runner that tries to break a result on purpose, and a check of whether a fluent explanation names the feature that actually moves the output |
 | [`boondoggle-report/`](boondoggle-report/) | The Week 2 assignment: the brief, the report so far, and every Gru turn verbatim |
 | [`FRICTIONAL.md`](FRICTIONAL.md) | The process log: what was tried, what went wrong, who did what, and every push |
 | [`CLAUDE.md`](CLAUDE.md) | Rules Claude Code follows in this folder |
