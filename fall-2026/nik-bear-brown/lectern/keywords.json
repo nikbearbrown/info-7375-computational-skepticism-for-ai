@@ -1,0 +1,76 @@
+{
+  "_comment": "Lectern's filter. A posting is KEPT if any role_title word appears in its title, or if three or more topic_text words appear in its body. flex_text never causes a keep — it only annotates a kept record, because 'part-time' on its own has nothing to do with teaching. Every kept record records which words matched and where, so a reader can apply this file by hand to one posting and get the same answer. v0.2.0 (2026-09-26): added the alternative titles these roles are posted under — Developer/Designer/Creator Advocate, Design or Product Evangelist, Community Engineer, Community Architect, Product Education Manager, Technical Content Engineer, Developer Experience, DevRel, Technical Writer. Several are broad on purpose and the run report measures what noise they added. v0.2.1 (2026-09-26, same day): REMOVED 'developer experience' and 'advocacy' after measuring them. 'developer experience' fired on 11 postings and 10 were backend or platform software-engineering jobs (Anthropic, Figma, Stripe x2, GitLab, OpenAI x2, Notion, Replit, Canva) — the phrase names an engineering discipline, not an advocacy role. 'advocacy' fired once, on a customer-marketing programme. Kept: 'devrel', which found Vercel's DevRel Engineer. This is what P3 is for — the filter is a file, so a word that turns out to be noise gets cut and the cut is recorded.",
+  "version": "0.2.1",
+  "keep_rule": {
+    "role_title_min": 1,
+    "topic_text_min_if_no_title_match": 3
+  },
+  "role_title": [
+    "academy",
+    "advocate",
+    "community",
+    "community architect",
+    "community engineer",
+    "creator advocate",
+    "curriculum",
+    "design evangelist",
+    "designer advocate",
+    "developer advocate",
+    "developer education",
+    "developer relations",
+    "devrel",
+    "education",
+    "education manager",
+    "educator",
+    "enablement",
+    "evangelist",
+    "instructor",
+    "learning designer",
+    "product education",
+    "product evangelist",
+    "teaching",
+    "technical content",
+    "technical writer",
+    "trainer"
+  ],
+  "topic_text": [
+    "university",
+    "universities",
+    "campus",
+    "student",
+    "workshop",
+    "curriculum",
+    "educate",
+    "education",
+    "teach",
+    "classroom",
+    "k-12",
+    "higher ed"
+  ],
+  "flex_text": [
+    "part-time",
+    "part time",
+    "contract role",
+    "contract position",
+    "contractor role",
+    "temporary",
+    "seasonal",
+    "fixed-term",
+    "fixed term",
+    "freelance",
+    "summer",
+    "hourly"
+  ],
+  "ignore_words_by_company": {
+    "_comment": "Words that appear in (nearly) every posting on that board — company boilerplate, not a signal. Measured, not guessed. Writer, 2026-09-19: these three appeared in 51 of 51 postings and alone pushed every job over the line.",
+    "Writer": [
+      "generative ai",
+      "ai agents",
+      "learning"
+    ]
+  },
+  "removed_after_measurement": {
+    "developer experience": "11 hits, 10 were software-engineering roles (2026-09-26)",
+    "advocacy": "1 hit, a customer-marketing programme (2026-09-26)"
+  }
+}

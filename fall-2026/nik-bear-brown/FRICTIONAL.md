@@ -667,6 +667,26 @@ Where to check each claim in this log. Commits are listed in the push table belo
 
 - **Evidence and next step:** `assignment-3/` and its five files. Next: the fragile baseline and the first three frozen probes.
 
+### 2026-09-26 — One project, three classes: naming a canonical master
+
+- **Date and what I was working on:** I am live-coding the same job-search project in all three of my INFO 7375 classes with a different emphasis in each, and the copies had started to drift. I asked for the `nik-bear-brown` folder in all three to be checked and kept in sync, with **Computational Skepticism as the canonical master** and a note that changes there propagate to the other two.
+
+- **I tried / expected:** I expected the three folders to be roughly the same with local additions.
+
+- **What happened:** They were not. Branding had the whole spine — the collector, the watch list, the filter, the ATS notes, the CV facts, the earlier Figma and greenhouse-watch iterations. Prompt Engineering had the CV facts and the earlier iterations but none of the collector. **Computational Skepticism, the folder I had just named master, had none of it at all** — only its own Boondoggle Report and Assignment 3. The master started out the furthest behind, which is the inverse of what "master" means. It is recorded rather than tidied away.
+
+  One thing that went right: Branding and Prompt Engineering were **byte-identical** on every file they shared, so nothing had to be reconciled. Had they diverged, the copy would have had to pick a winner.
+
+- **What I did:** Copied the shared spine into the master and put the tool in its own `lectern/` folder there. Wrote `SYNC.md` — which files are shared, which are deliberately different, and why this class is master: the hard part of the project is not fetching postings, it is knowing what the output is worth, and that is this course's subject. Wrote `lectern/sync.sh`, which copies the shared files out and has a `--check` mode that reports drift and changes nothing. Added a **Rule 0** to all three `CLAUDE.md` files — the master's says "edit here and propagate," the other two say "this is not the master." Put a `SYNC.md` pointer in each downstream folder.
+
+  Explicitly **not** synced: `FRICTIONAL.md`, `README.md`, `CLAUDE.md`, every `assignment-*/` folder, and the dated run outputs. A log overwritten by another class's log is a destroyed record, so `sync.sh` refuses to touch them. The run data stays in Branding, where it is the graded submission; the tool that regenerates it is what is shared.
+
+- **What Claude or another person contributed:** Claude Code (Opus 5) inventoried all three folders, diffed the shared files, copied the spine into the master, and wrote `SYNC.md`, `sync.sh`, and the Rule 0 blocks. Two bugs of its own surfaced in the process: `sync.sh` used a bash 4 associative array and macOS ships bash 3.2, and its first drift report flagged `figma/` as different because of a `__pycache__` folder. I decided that this class is master and that the three must stay in sync.
+
+- **What I understand now / still do not understand:** The drift was invisible until something diffed it, and that is the point of `--check`. Also worth saying plainly: the master being empty at the moment it was declared master is the normal way this goes wrong — the canonical copy is usually whichever one someone happened to work in last. Still open: `sync.sh` has been run once for real and the first propagation was only downstream; the recovery path, where a shared file was edited in the wrong repo, has not been exercised yet.
+
+- **Evidence and next step:** `SYNC.md` and `lectern/` here; `SYNC.md` and Rule 0 in the other two; `./lectern/sync.sh --check` now reports all three in sync. Next: exercise the recovery path deliberately, and decide whether the dated run outputs should also live in the master.
+
 ---
 
 ## GitHub pushes
@@ -679,3 +699,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-24 | docs(fall-2026): state that Assignment 2 specifies a downloadable Gru, and keep the wrong-application start on the record |
 | 2026-09-24 | docs(fall-2026): log Gru's /v0–/v4 outputs for the downloadable Gru, with all 20 turns verbatim |
 | 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
+| 2026-09-26 | docs(fall-2026): make this folder the canonical master for the three-class project |

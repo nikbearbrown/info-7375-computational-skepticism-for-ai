@@ -1,0 +1,141 @@
+# Chosen Figma postings — from `figma/figma-jobs-2026-09-23.json`
+
+## Designer Advocate
+
+- **Where:** San Francisco, CA • New York, NY • United States · **Department:** Marketing
+- **Terms:** full-time (stated) · **Travel:** traveling up to 25%
+- **Pay:** $153,000–$317,000 (annual base)
+- **Matched words (from the scan):** role words in title: advocate; topic words in text: none; flexible terms in text: none
+- **Posted:** 2026-09-01T16:31:05-04:00 · **Updated:** 2026-09-09T15:20:55-04:00
+- **Link:** https://boards.greenhouse.io/figma/jobs/6176134004?gh_jid=6176134004
+
+<details><summary>Full posting text</summary>
+
+Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration, join us!
+
+At Figma, we're building a vibrant community where designers and product builders come together to learn, grow, and connect around their shared passion. Our Advocacy team is central to this mission - empowering our users through engaging content, meaningful interactions, and genuine advocacy.
+
+We're looking for a Designer Advocate to partner closely with our Marketing, Sales, and Product teams. You'll bring deep design expertise, strong product intuition, and a genuine love for the design community into our go-to-market strategies. You'll also champion our users' voices internally, ensuring their perspectives shape our product evolution.
+
+This is a full time role that can be held from one of our US hubs.
+
+What you’ll do at Figma:
+
+- Collaborate closely with Sales and Customer Experience teams to help customers unlock the full potential of Figma across real product workflows
+
+- Develop written, visual, and video resources that reflect how modern teams actually design and build, from early exploration to production-ready systems
+
+- Foster meaningful relationships within the Figma community, identify collaboration opportunities, and nurture user-driven initiatives
+
+- Regularly present at industry meetups, conferences, and community events, sharing practical insights from real-world design work
+
+- Stay attuned to community feedback, sentiment, and emerging design trends, advocating internally to inform product decisions and improvements
+
+We'd love to hear from you if you have:
+
+- Bring deep, hands-on expertise in Figma, modern product and visual design workflows, and design systems, with a strong understanding of how design translates into development
+
+- Have experience working within cross-functional product teams, collaborating closely with engineers and other partners to bring ideas from exploration through to polished outcomes
+
+- Are comfortable navigating evolving workflows and technologies, including design systems, tokens, AI-assisted design, and prototyping
+
+- Are passionate about the design community and are a clear, compelling communicator who can explain complex concepts and confidently engage audiences through public speaking
+
+- Have an entrepreneurial mindset, thrive in dynamic environments, and are comfortable traveling up to 25% of the time to connect with our community in person
+
+At Figma, one of our values is Grow as you go. We believe in hiring smart, curious people who are excited to learn and develop their skills. If you’re excited about this role but your past experience doesn’t align perfectly with the points outlined in the job description, we encourage you to apply anyways. You may be just the right candidate for this or other roles.
+
+Pay Transparency Disclosure
+
+Job level and actual compensation will be decided based on factors including, but not limited to, individual qualifications objectively assessed during the interview process (including skills and prior relevant experience, potential impact, and scope of role), market demands, and specific work location.
+
+Figma offers equity to employees, as well as a competitive package of additional benefits, including health, dental, and vision coverage; retirement benefits with company contributions; parental leave and reproductive or family planning support; mental health and wellness benefits; and paid time off. Figma provides paid sick leave, holidays, and other leave benefits in compliance with applicable federal, state, and local laws, including the requirements of the Washington Minimum Wage Act and related regulations. Exempt employees are eligible for employer‑provided paid flexible PTO in addition to flexible paid sick leave. PTO is subject to manager approval. Additional benefits may include company recharge days, cell phone and home internet reimbursements, and a number of lifestyle spending accounts. Figma also offers sales incentive compensation for most sales roles and an annual bonus plan for eligible non-sales roles. All compensation and benefits are subject to applicable plan terms and may be modified by Figma at any time, consistent with applicable law.
+
+Annual Base Salary Range:$153,000—$317,000 USDAt Figma we celebrate and support our differences. We know employing a team rich in diverse thoughts, experiences, and opinions allows our employees, our product and our community to flourish. Figma is an equal opportunity workplace - we are dedicated to equal employment opportunities regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity/expression, veteran status, or any other characteristic protected by law. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements.
+
+We will work to ensure individuals with disabilities are provided reasonable accommodation to apply for a role, participate in the interview process, perform essential job functions, and receive other benefits and privileges of employment. If you require accommodation, please reach out to accommodations-ext@figma.com. These modifications enable an individual with a disability to have an equal opportunity not only to get a job, but successfully perform their job tasks to the same extent as people without disabilities.
+
+Examples of accommodations include but are not limited to:
+
+- Holding interviews in an accessible location
+
+- Enabling closed captioning on video conferencing
+
+- Ensuring all written communication be compatible with screen readers
+
+- Changing the mode or format of interviews
+
+To ensure the integrity of our hiring process and facilitate a more personal connection, we require all candidates keep their cameras on during video interviews. Additionally, if hired you will be required to attend in person onboarding.
+
+By applying for this job, the candidate acknowledges and agrees that any personal data contained in their application or supporting materials will be processed in accordance with Figma's Candidate Privacy Notice.
+
+</details>
+
+## Designer Advocate, Partnerships
+
+- **Where:** San Francisco, CA · **Department:** Marketing
+- **Terms:** not stated in the posting
+- **Pay:** $153,000–$317,000 (annual base)
+- **Matched words (from the scan):** role words in title: advocate; topic words in text: workshop, educate; flexible terms in text: none
+- **Posted:** 2026-07-13T16:44:56-04:00 · **Updated:** 2026-07-22T05:37:08-04:00
+- **Link:** https://boards.greenhouse.io/figma/jobs/6114301004?gh_jid=6114301004
+
+<details><summary>Full posting text</summary>
+
+Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration, join us!
+
+We're looking for a Designer Advocate to partner closely with our Marketing, Sales, and Product teams. You'll bring deep design expertise, strong product intuition, and a genuine love for the design community into our go-to-market strategies. You'll also champion our users' voices internally, ensuring their perspectives shape our product evolution.
+
+This role is based out of our San Francisco hub.
+
+What you'll do at Figma:
+
+- Build, evolve, and deliver certification programs, and scalable enablement programs for Figma's service distribution partners to help them successfully adopt, position, and leverage Figma best practices
+
+- Cultivate trusted relationships with strategic service, distribution, and tech partners, collaborating closely to identify opportunities, share best practices, and drive mutual success
+
+- Develop written, visual, and video content that showcases modern product development workflows, demonstrates Figma's integrations and ecosystem, and equips partners to educate and inspire their customers
+
+- Represent Figma at partner events, workshops, conferences, and customer engagements, highlighting real-world workflows, integrations, and success stories that accelerate adoption
+
+- Gather insights from users and partners including feedback on workflows, integrations, and emerging trends
+
+We'd love to hear from you if you:
+
+- Demonstrate deep, hands-on expertise in Figma, with experience embedding the platform within product teams and taking ideas from early exploration through to polished, high-impact outcomes
+
+- Apply a strong understanding of modern product design workflows and development environments, including building, managing, and leveraging design systems, design tokens, and AI-assisted design or prototyping while partnering closely with engineers and cross-functional teams
+
+- Communicate complex design workflows and systems with clarity and confidence, delivering compelling presentations and effectively engaging audiences of all sizes
+
+- Translate technical design decisions into practical development outcomes, ensuring seamless collaboration between design and engineering teams
+
+- Champion the design community by actively building relationships, contributing to industry conversations, and representing the organization through travel of up to 25% as needed
+
+At Figma, one of our values is Grow as you go. We believe in hiring smart, curious people who are excited to learn and develop their skills. If you’re excited about this role but your past experience doesn’t align perfectly with the points outlined in the job description, we encourage you to apply anyways. You may be just the right candidate for this or other roles.
+
+Pay Transparency Disclosure
+
+Job level and actual compensation will be decided based on factors including, but not limited to, individual qualifications objectively assessed during the interview process (including skills and prior relevant experience, potential impact, and scope of role), market demands, and specific work location.
+
+Figma offers equity to employees, as well as a competitive package of additional benefits, including health, dental, and vision coverage; retirement benefits with company contributions; parental leave and reproductive or family planning support; mental health and wellness benefits; and paid time off. Figma provides paid sick leave, holidays, and other leave benefits in compliance with applicable federal, state, and local laws, including the requirements of the Washington Minimum Wage Act and related regulations. Exempt employees are eligible for employer‑provided paid flexible PTO in addition to flexible paid sick leave. PTO is subject to manager approval. Additional benefits may include company recharge days, cell phone and home internet reimbursements, and a number of lifestyle spending accounts. Figma also offers sales incentive compensation for most sales roles and an annual bonus plan for eligible non-sales roles. All compensation and benefits are subject to applicable plan terms and may be modified by Figma at any time, consistent with applicable law.
+
+Annual Base Salary Range:$153,000—$317,000 USDAt Figma we celebrate and support our differences. We know employing a team rich in diverse thoughts, experiences, and opinions allows our employees, our product and our community to flourish. Figma is an equal opportunity workplace - we are dedicated to equal employment opportunities regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity/expression, veteran status, or any other characteristic protected by law. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements.
+
+We will work to ensure individuals with disabilities are provided reasonable accommodation to apply for a role, participate in the interview process, perform essential job functions, and receive other benefits and privileges of employment. If you require accommodation, please reach out to accommodations-ext@figma.com. These modifications enable an individual with a disability to have an equal opportunity not only to get a job, but successfully perform their job tasks to the same extent as people without disabilities.
+
+Examples of accommodations include but are not limited to:
+
+- Holding interviews in an accessible location
+
+- Enabling closed captioning on video conferencing
+
+- Ensuring all written communication be compatible with screen readers
+
+- Changing the mode or format of interviews
+
+To ensure the integrity of our hiring process and facilitate a more personal connection, we require all candidates keep their cameras on during video interviews. Additionally, if hired you will be required to attend in person onboarding.
+
+By applying for this job, the candidate acknowledges and agrees that any personal data contained in their application or supporting materials will be processed in accordance with Figma's Candidate Privacy Notice.
+
+</details>

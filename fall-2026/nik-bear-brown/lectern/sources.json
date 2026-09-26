@@ -1,0 +1,216 @@
+{
+  "_comment": "Lectern's watch list. Every company here is checked on every run REGARDLESS of whether it has an education, education-advocate, or AI-advocate role today. Professor Bear's rule, 2026-09-26: 'AI grows so fast that the agent should check the company regardless if they have explicit educational roles or educational advocate roles or AI advocate roles. Because it's likely these companies are going to create those roles if they don't have them now. So the agent should check.' A company with zero matches is a company being watched, not a company to drop. Counts below are from the 2026-09-26 probe and are a snapshot, not a contract. Companies under 'unreachable' have no ATS recorded: the probe found no board on the three APIs Lectern reads, and the ATS they actually use has not been verified. Nothing is guessed — see ATS.md. 2026-09-26 (second pass): added Stripe, GitLab, Twilio, Netlify (Greenhouse) and Supabase (Ashby) from Professor Bear's list of companies that hire designer/developer/creator advocates.",
+  "schema_version": "0.1.0",
+  "probed": "2026-09-26",
+  "sources": [
+    {
+      "provider": "greenhouse",
+      "api": "https://boards-api.greenhouse.io/v1/boards/{slug}/jobs?content=true",
+      "calls_per_board": 1,
+      "boards": [
+        {
+          "company": "Anthropic",
+          "slug": "anthropic",
+          "tier": 1,
+          "postings_2026_09_26": 618,
+          "matched_2026_09_26": 23,
+          "why_watched": "Beneficial Deployments is hiring education roles now: Developer Education Lead (Claude Platform), Lead Technical Instructor, Head of Technical Training, Full Stack Engineer (Education Labs). Claude for Education launched with Northeastern."
+        },
+        {
+          "company": "Figma",
+          "slug": "figma",
+          "tier": 1,
+          "postings_2026_09_26": 163,
+          "matched_2026_09_26": 9,
+          "why_watched": "Figma Education is an acquisition funnel; Designer Advocate is the Assignment 2 dream job."
+        },
+        {
+          "company": "HubSpot",
+          "slug": "hubspotjobs",
+          "tier": 1,
+          "postings_2026_09_26": 133,
+          "matched_2026_09_26": 1,
+          "why_watched": "HubSpot Academy is a revenue driver and hires 'Academy Professor' roles outright. NOTE: the board slug is hubspotjobs, not hubspot — plain 'hubspot' returns an empty board."
+        },
+        {
+          "company": "Vercel",
+          "slug": "vercel",
+          "tier": 2,
+          "postings_2026_09_26": 88,
+          "matched_2026_09_26": 0,
+          "why_watched": "Next.js Learn is already an education product and docs-as-education is their existing muscle. Zero matches today; watched because an AI-coding-tutor role is a short hop."
+        },
+        {
+          "company": "Webflow",
+          "slug": "webflow",
+          "tier": 2,
+          "postings_2026_09_26": 27,
+          "matched_2026_09_26": 1,
+          "why_watched": "Senior Developer Educator — the only US-remote education role found anywhere in the sweep. Webflow University is a real education product."
+        },
+        {
+          "company": "Miro",
+          "slug": "realtimeboardglobal",
+          "tier": 2,
+          "postings_2026_09_26": 28,
+          "matched_2026_09_26": 0,
+          "why_watched": "Adjacent audience, no education push yet. Zero matches today. NOTE: the slug is their old company name, RealtimeBoard."
+        },
+        {
+          "company": "Airtable",
+          "slug": "airtable",
+          "tier": 2,
+          "postings_2026_09_26": 3,
+          "matched_2026_09_26": 0,
+          "why_watched": "Plausible for school and district ops tooling, nothing classroom-facing yet. A three-posting board — cheap to watch."
+        },
+        {
+          "company": "Stripe",
+          "slug": "stripe",
+          "tier": 1,
+          "postings_2026_09_26": 702,
+          "why_watched": "A pioneer of the DevRel model — technical advocates who write documentation, build sample apps, and speak at conferences. Second-largest board on the list."
+        },
+        {
+          "company": "GitLab",
+          "slug": "gitlab",
+          "tier": 1,
+          "postings_2026_09_26": 199,
+          "why_watched": "Developer advocates for open-source contributors and enterprise engineering teams; a large, long-running advocacy function."
+        },
+        {
+          "company": "Twilio",
+          "slug": "twilio",
+          "tier": 1,
+          "postings_2026_09_26": 138,
+          "why_watched": "With Stripe, the company that defined developer relations as a discipline."
+        },
+        {
+          "company": "Netlify",
+          "slug": "netlify",
+          "tier": 2,
+          "postings_2026_09_26": 4,
+          "why_watched": "Known for developer experience and advocacy around modern frontend. A four-posting board today — cheap to watch, and small boards move fast."
+        }
+      ]
+    },
+    {
+      "provider": "ashby",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/{slug}?includeCompensation=true",
+      "calls_per_board": 1,
+      "note": "Board names may contain spaces and capitals and must be URL-encoded.",
+      "boards": [
+        {
+          "company": "OpenAI",
+          "slug": "openai",
+          "tier": 1,
+          "postings_2026_09_26": 830,
+          "matched_2026_09_26": 17,
+          "why_watched": "A dedicated ChatGPT Education & Learning product team; Tech Lead Manager (Education), Account Director (Higher Education), Academic Research Partnerships. ChatGPT Edu is the university-license wedge. Largest board in the set."
+        },
+        {
+          "company": "Notion",
+          "slug": "notion",
+          "tier": 2,
+          "postings_2026_09_26": 128,
+          "matched_2026_09_26": 5,
+          "why_watched": "Notion for Education is a student-magnet freemium play and Notion AI already ships. Technical Education Specialist and Developer Advocate both open."
+        },
+        {
+          "company": "Replit",
+          "slug": "replit",
+          "tier": 1,
+          "postings_2026_09_26": 75,
+          "matched_2026_09_26": 2,
+          "why_watched": "Positioned hard at classroom coding (teacher dashboards, Replit for Education); their agent work makes an AI coding tutor near-obvious."
+        },
+        {
+          "company": "Writer",
+          "slug": "writer",
+          "tier": 2,
+          "postings_2026_09_26": 51,
+          "matched_2026_09_26": 1,
+          "why_watched": "Senior AI learning designer, rapid content — the closest thing found to the deep-explainer practice as a job."
+        },
+        {
+          "company": "Jasper AI",
+          "slug": "Jasper AI",
+          "tier": 2,
+          "postings_2026_09_26": 6,
+          "matched_2026_09_26": 0,
+          "why_watched": "A small and contracting board. Watched cheaply; may not survive."
+        },
+        {
+          "company": "Supabase",
+          "slug": "supabase",
+          "tier": 2,
+          "postings_2026_09_26": 56,
+          "why_watched": "Backend-as-a-service that runs on advocacy — tutorials, sample templates, an active Discord and GitHub community."
+        }
+      ]
+    },
+    {
+      "provider": "smartrecruiters",
+      "api": "https://api.smartrecruiters.com/v1/companies/{slug}/postings?limit=100&offset={n}",
+      "calls_per_board": "1 listing page per 100 postings, PLUS one detail call per posting (the listing carries no ad text)",
+      "boards": [
+        {
+          "company": "Canva",
+          "slug": "Canva",
+          "tier": 1,
+          "postings_2026_09_19": 248,
+          "matched_2026_09_19": 0,
+          "why_watched": "Canva for Education has huge classroom penetration. Every education role on the board is APAC, several on 12-month contracts — the engagement shape wanted, wrong geography so far. The most expensive board to fetch (248 detail calls, about 3.5 minutes)."
+        }
+      ]
+    }
+  ],
+  "unreachable": [
+    {
+      "company": "Adobe",
+      "ats": "unknown — not found on the three APIs Lectern can read",
+      "tier": 1,
+      "why_watched": "The longest-running education playbook there is — Adobe Education Exchange, Creative Cloud for Education, deepest K-12 and higher-ed relationships.",
+      "blocker": "Tried Greenhouse and Ashby slugs 'adobe' and 'Adobe' and SmartRecruiters 'adobe' on 2026-09-26: no board. Which ATS Adobe actually uses has not been established, so it is not recorded here. See ATS.md.",
+      "status": "TODO: DATA SOURCE"
+    },
+    {
+      "company": "Salesforce",
+      "ats": "unknown — not found on the three APIs Lectern can read",
+      "tier": 1,
+      "why_watched": "Trailhead is arguably the largest corporate education platform in existence and is already Einstein-infused.",
+      "blocker": "Tried Greenhouse/Ashby/SmartRecruiters slugs 'salesforce', 'Salesforce', 'salesforceinc', 'slack' on 2026-09-26: no board. Which ATS Salesforce uses has not been established. See ATS.md.",
+      "status": "TODO: DATA SOURCE"
+    },
+    {
+      "company": "GitHub",
+      "ats": "unknown — not found on the three APIs Lectern can read",
+      "tier": 1,
+      "why_watched": "GitHub Education and the Student Developer Pack are decades deep; Copilot in classrooms is the obvious AI-era extension.",
+      "blocker": "Tried 'github', 'GitHub', 'githubinc', 'github-inc' on all three on 2026-09-26: no board. See ATS.md.",
+      "status": "TODO: DATA SOURCE"
+    },
+    {
+      "company": "Google",
+      "ats": "unknown — not found on the three APIs Lectern can read",
+      "tier": 1,
+      "why_watched": "Google for Education and Classroom are the incumbent K-12 infrastructure; Gemini for Education is the AI-era extension. The largest school footprint of anyone on this list.",
+      "blocker": "Tried 'google', 'Google', 'googledeepmind', 'deepmind' on all three on 2026-09-26: no board. See ATS.md.",
+      "status": "TODO: DATA SOURCE"
+    },
+    {
+      "company": "Shopify",
+      "ats": "unknown — not found on the three APIs Lectern can read",
+      "tier": 2,
+      "why_watched": "Shopify Academy exists; entrepreneurship education is marketing-adjacent rather than core.",
+      "blocker": "Tried 'shopify', 'Shopify', 'shopifyinc' on all three on 2026-09-26: no board. See ATS.md.",
+      "status": "TODO: DATA SOURCE"
+    }
+  ],
+  "totals_2026_09_26": {
+    "boards_reachable": 13,
+    "postings_scanned": 2150,
+    "postings_matched": 59,
+    "note": "Canva's 248 are excluded from the scan total — its detail calls were not re-run on 2026-09-26. Five Tier 1 companies are unreachable, so the watch list is incomplete by design and says so."
+  }
+}

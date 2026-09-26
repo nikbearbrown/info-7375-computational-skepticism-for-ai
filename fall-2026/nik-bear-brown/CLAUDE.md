@@ -2,6 +2,15 @@
 
 This folder is the instructor's public example work for INFO 7375 Computational Skepticism for AI, Fall 2026. It keeps the same process record students keep. **Every substantive change here is logged in `FRICTIONAL.md`, and every push adds a line to it.** The repo-root `AGENTS.md` still governs everything else.
 
+## Rule 0 — this folder is the canonical master for three classes
+
+The same job-search tool is live-coded in Computational Skepticism, Branding and AI, and Prompt Engineering. **The shared files live here and are copied out.** Read [`SYNC.md`](SYNC.md) before editing anything in `lectern/`, `facts/`, `figma/`, or `greenhouse-watch-demo/`.
+
+- **Edit a shared file here, never downstream.** After editing, run `./lectern/sync.sh --check`, then `./lectern/sync.sh`.
+- **Never copy** `FRICTIONAL.md`, `README.md`, `CLAUDE.md`, an `assignment-*/` folder, or a dated run output between classes. A log overwritten by another class's log is a destroyed record.
+- **`sync.sh` does not commit.** Each repo is committed by hand with its own message and its own `FRICTIONAL.md` entry.
+- If a shared file was edited in the wrong repo during a class, follow the recovery steps in `SYNC.md` — and log the drift, because it is a finding about the workflow.
+
 ## Rule 1 — log every substantive change in FRICTIONAL.md
 
 Before you report a task in this folder as done, update `FRICTIONAL.md` in the same change set.
