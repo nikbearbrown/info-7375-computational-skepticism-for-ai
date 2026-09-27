@@ -1,51 +1,120 @@
 {
   "_comment": "Function families for auditing Lectern's filter by TITLE rather than by posting. Professor Bear's design, 2026-09-26: there are far fewer job FUNCTIONS than job postings, so classifying titles into families turns a 3,446-row read into a 15-row judgment. Order matters — first match wins — so the most specific families come first. Every family is a hypothesis about what a word means in this industry, and the report shows where the hypothesis was wrong.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "families": [
-    { "name": "ML_TRAINING",
+    {
+      "name": "ML_TRAINING",
       "pattern": "\\b(pre.?training|post.?training|\\btraining (runtime|performance|architecture|optimi[sz]ation|framework|infrastructure|data)|(safety|robustness|model|agent) (and )?(training|post.?training)|researcher, ?training|training: )\\b",
       "expect": "reject",
-      "note": "FALSE FRIEND, and the reason this family is first. At an AI company 'training' overwhelmingly means training a MODEL, not teaching a person. 25 of the 27 postings whose titles contain a teaching word were actually these. Any audit that treats 'training' as education will report the filter as broken when it is right." },
-    { "name": "TEACHING",
+      "note": "FALSE FRIEND, and the reason this family is first. At an AI company 'training' overwhelmingly means training a MODEL, not teaching a person. 25 of the 27 postings whose titles contain a teaching word were actually these. Any audit that treats 'training' as education will report the filter as broken when it is right."
+    },
+    {
+      "name": "TEACHING",
       "pattern": "\\b(educator|instructor|professor|lecturer|tutor|curriculum|courseware|pedagog\\w*|academy|learning (designer|experience)|technical (education|training) (lead|specialist|manager)|language training|developer educat\\w*|teach(es|ing)?)\\b",
       "expect": "keep",
-      "note": "People being taught. This is the target." },
-    { "name": "ADVOCACY",
+      "note": "People being taught. This is the target."
+    },
+    {
+      "name": "ADVOCACY",
       "pattern": "\\b(advocate|evangelist|developer relations|devrel|technical (writer|documentation)|documentation (engineer|lead|manager)|developer experience advocate)\\b",
       "expect": "keep",
-      "note": "Teaching a public rather than a classroom. Also the target." },
-    { "name": "SALES_ENABLEMENT",
+      "note": "Teaching a public rather than a classroom. Also the target."
+    },
+    {
+      "name": "MATERIALS",
+      "expect": "keep",
+      "pattern": "\\b(documentation|docs|technical writ\\w*|content (engineer|developer|writer)|courseware|knowledge base|instructional design\\w*|learning experienc\\w*|(training|learning|education|onboarding|enablement) content|creator)\\b",
+      "note": "ADDED 2026-09-26. Jobs whose product is the MATERIALS — docs, guides, tutorials, courseware, reference builds. Anthropic's 'Technical Documentation and Content Engineer, Claude Docs' is the model. Note how thin this is by title: 'documentation' appears in 2 of 3,446 titles and 'technical writer', 'curriculum', and 'instructional design' in ZERO. This family is nearly invisible to a title search, which is itself the finding."
+    },
+    {
+      "name": "SALES_ENABLEMENT",
       "pattern": "\\b((sales|gtm|go.to.market|field|partner|revenue|bdr|sdr|cloud partner|channel) enablement|enablement (lead|manager|partner|trainer)?,? ?(gtm|sales|revenue|onboarding)|sales leader enablement)\\b",
-      "expect": "reject",
-      "note": "FALSE FRIEND. 'Enablement' is the most-matched word in the run and at most of these companies it is a sales-support function — training the sales team on the product, not teaching customers or the public." },
-    { "name": "TECH_ENABLEMENT",
+      "expect": "keep",
+      "note": "REVERSED 2026-09-26 by Professor Bear: \"developing materials… to train their own people would be a great fit.\" Sales enablement builds curriculum, runs live training, and produces onboarding content for the company's own staff — that is the work, and the audience being internal does not change it. These 13 postings were classed as false positives by the previous version of this file; they are not."
+    },
+    {
+      "name": "TECH_ENABLEMENT",
       "pattern": "\\b(workload|agent|platform|growth|saas|process|ai) enablement\\b",
       "expect": "reject",
-      "note": "FALSE FRIEND. Here 'enablement' means making a system capable of something. These are engineering jobs." },
-    { "name": "CUSTOMER_ENABLEMENT",
+      "note": "FALSE FRIEND. Here 'enablement' means making a system capable of something. These are engineering jobs. Still a reject: here 'enablement' describes a system gaining a capability, with no materials and no audience."
+    },
+    {
+      "name": "CUSTOMER_ENABLEMENT",
       "pattern": "\\b(customer|user|client|readiness) enablement|enablement programs?\\b",
       "expect": "judge",
-      "note": "GENUINELY AMBIGUOUS. Customer enablement does teach — live training, workshops, adoption plans — but for paying accounts, with renewal risk attached. Whether it counts is a judgment about what the searcher wants, not a fact about the posting." },
-    { "name": "EDU_SALES",
+      "note": "GENUINELY AMBIGUOUS. Customer enablement does teach — live training, workshops, adoption plans — but for paying accounts, with renewal risk attached. Whether it counts is a judgment about what the searcher wants, not a fact about the posting."
+    },
+    {
+      "name": "EDU_SALES",
       "pattern": "\\b(higher education|k.?12|education|academic|university|campus|student) (account (executive|manager)|sales|business development|partnerships? (manager|lead)|growth|recruiter)\\b|\\b(account executive|business development representative|account manager),? \\(?(higher education|k.?12|education)",
-      "expect": "reject",
-      "note": "FALSE FRIEND. Selling INTO schools is not teaching in them. Canva's Higher Education Account Executives are the clearest case." },
-    { "name": "RECRUITING",
+      "expect": "judge",
+      "note": "MOVED to judge 2026-09-26: Professor Bear's target includes developing materials \"to sell into universities.\" A Higher Education Account Executive who only carries a quota is still a reject; one who builds the curriculum and enablement materials the sale runs on is a fit. The title alone cannot tell them apart, so each is a judgment."
+    },
+    {
+      "name": "RECRUITING",
       "pattern": "\\b(recruit\\w*|sourcer|talent (acquisition|community|partner)|early career|university relations)\\b",
       "expect": "reject",
-      "note": "FALSE FRIEND, and the one that caught the topic-word rule out. 'University', 'campus', and 'student' are campus-recruiting vocabulary as much as teaching vocabulary." },
-    { "name": "COMMUNITY",
+      "note": "FALSE FRIEND, and the one that caught the topic-word rule out. 'University', 'campus', and 'student' are campus-recruiting vocabulary as much as teaching vocabulary."
+    },
+    {
+      "name": "COMMUNITY",
       "pattern": "\\b(community|ecosystem)\\b",
       "expect": "judge",
-      "note": "AMBIGUOUS. A developer-community manager teaches; a data-centre community-engagement manager does local-government relations; a security-community lead runs vulnerability disclosure. Same word, three jobs." },
-    { "name": "SALES",       "pattern": "\\b(account executive|account manager|sales|business development|bdr|sdr|revenue|partner manager|channel|gtm|go.to.market|country manager|commercial|quota)\\b", "expect": "reject", "note": "" },
-    { "name": "CUSTOMER",    "pattern": "\\b(customer success|support engineer|technical support|solutions? (architect|engineer|consultant)|technical account|implementation|onboarding|professional services|forward deployed)\\b", "expect": "reject", "note": "" },
-    { "name": "MARKETING",   "pattern": "\\b(marketing|brand|content strateg\\w*|seo|social|campaign|communications|events?|webinar|creative strateg\\w*|influencer|growth lead)\\b", "expect": "reject", "note": "" },
-    { "name": "DESIGN",      "pattern": "\\b(designer|design (lead|manager|systems)|ux|user research)\\b", "expect": "reject", "note": "" },
-    { "name": "RESEARCH_DATA","pattern": "\\b(research (scientist|engineer|manager)|researcher|data scien\\w*|machine learning|ml engineer|mle\\b|applied ai|analytics|analyst|economist)\\b", "expect": "reject", "note": "" },
-    { "name": "PRODUCT",     "pattern": "\\b(product (manager|lead|owner|designer)|tpm\\b|program manager|project manager|technical program)\\b", "expect": "reject", "note": "" },
-    { "name": "ENGINEERING", "pattern": "\\b(engineer|developer|programmer|architect|sre|devops|infrastructure|platform|security|qa\\b|technician|scientist)\\b", "expect": "reject", "note": "" },
-    { "name": "G_AND_A",     "pattern": "\\b(legal|counsel|finance|financial|accountant|accounting|payroll|tax|hr\\b|people|workplace|facilities|office|executive assistant|compliance|audit|procurement|real estate|policy|government|trust & safety|safety)\\b", "expect": "reject", "note": "" },
-    { "name": "OPERATIONS",  "pattern": "\\b(operations|ops\\b|supply chain|logistics|capacity|data cent(er|re)|strategy|deployment)\\b", "expect": "reject", "note": "" }
+      "note": "AMBIGUOUS. A developer-community manager teaches; a data-centre community-engagement manager does local-government relations; a security-community lead runs vulnerability disclosure. Same word, three jobs."
+    },
+    {
+      "name": "SALES",
+      "pattern": "\\b(account executive|account manager|sales|business development|bdr|sdr|revenue|partner manager|channel|gtm|go.to.market|country manager|commercial|quota)\\b",
+      "expect": "reject",
+      "note": ""
+    },
+    {
+      "name": "CUSTOMER",
+      "pattern": "\\b(customer success|support engineer|technical support|solutions? (architect|engineer|consultant)|technical account|implementation|onboarding|professional services|forward deployed)\\b",
+      "expect": "reject",
+      "note": ""
+    },
+    {
+      "name": "MARKETING",
+      "pattern": "\\b(marketing|brand|content strateg\\w*|seo|social|campaign|communications|events?|webinar|creative strateg\\w*|influencer|growth lead)\\b",
+      "expect": "reject",
+      "note": ""
+    },
+    {
+      "name": "DESIGN",
+      "pattern": "\\b(designer|design (lead|manager|systems)|ux|user research)\\b",
+      "expect": "reject",
+      "note": ""
+    },
+    {
+      "name": "RESEARCH_DATA",
+      "pattern": "\\b(research (scientist|engineer|manager)|researcher|data scien\\w*|machine learning|ml engineer|mle\\b|applied ai|analytics|analyst|economist)\\b",
+      "expect": "reject",
+      "note": ""
+    },
+    {
+      "name": "PRODUCT",
+      "pattern": "\\b(product (manager|lead|owner|designer)|tpm\\b|program manager|project manager|technical program)\\b",
+      "expect": "reject",
+      "note": ""
+    },
+    {
+      "name": "ENGINEERING",
+      "pattern": "\\b(engineer|developer|programmer|architect|sre|devops|infrastructure|platform|security|qa\\b|technician|scientist)\\b",
+      "expect": "reject",
+      "note": ""
+    },
+    {
+      "name": "G_AND_A",
+      "pattern": "\\b(legal|counsel|finance|financial|accountant|accounting|payroll|tax|hr\\b|people|workplace|facilities|office|executive assistant|compliance|audit|procurement|real estate|policy|government|trust & safety|safety)\\b",
+      "expect": "reject",
+      "note": ""
+    },
+    {
+      "name": "OPERATIONS",
+      "pattern": "\\b(operations|ops\\b|supply chain|logistics|capacity|data cent(er|re)|strategy|deployment)\\b",
+      "expect": "reject",
+      "note": ""
+    }
   ]
 }

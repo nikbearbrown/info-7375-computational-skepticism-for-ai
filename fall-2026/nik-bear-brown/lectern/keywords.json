@@ -1,6 +1,6 @@
 {
-  "_comment": "Lectern's filter. A posting is KEPT if any role_title word appears in its title, or if three or more topic_text words appear in its body. flex_text never causes a keep — it only annotates a kept record, because 'part-time' on its own has nothing to do with teaching. Every kept record records which words matched and where, so a reader can apply this file by hand to one posting and get the same answer. v0.2.0 (2026-09-26): added the alternative titles these roles are posted under — Developer/Designer/Creator Advocate, Design or Product Evangelist, Community Engineer, Community Architect, Product Education Manager, Technical Content Engineer, Developer Experience, DevRel, Technical Writer. Several are broad on purpose and the run report measures what noise they added. v0.2.1 (2026-09-26, same day): REMOVED 'developer experience' and 'advocacy' after measuring them. 'developer experience' fired on 11 postings and 10 were backend or platform software-engineering jobs (Anthropic, Figma, Stripe x2, GitLab, OpenAI x2, Notion, Replit, Canva) — the phrase names an engineering discipline, not an advocacy role. 'advocacy' fired once, on a customer-marketing programme. Kept: 'devrel', which found Vercel's DevRel Engineer. This is what P3 is for — the filter is a file, so a word that turns out to be noise gets cut and the cut is recorded.",
-  "version": "0.2.1",
+  "_comment": "Lectern's filter. A posting is KEPT if any role_title word appears in its title, or if three or more topic_text words appear in its body. flex_text never causes a keep — it only annotates a kept record, because 'part-time' on its own has nothing to do with teaching. Every kept record records which words matched and where, so a reader can apply this file by hand to one posting and get the same answer. v0.2.0 (2026-09-26): added the alternative titles these roles are posted under — Developer/Designer/Creator Advocate, Design or Product Evangelist, Community Engineer, Community Architect, Product Education Manager, Technical Content Engineer, Developer Experience, DevRel, Technical Writer. Several are broad on purpose and the run report measures what noise they added. v0.2.1 (2026-09-26, same day): REMOVED 'developer experience' and 'advocacy' after measuring them. 'developer experience' fired on 11 postings and 10 were backend or platform software-engineering jobs (Anthropic, Figma, Stripe x2, GitLab, OpenAI x2, Notion, Replit, Canva) — the phrase names an engineering discipline, not an advocacy role. 'advocacy' fired once, on a customer-marketing programme. Kept: 'devrel', which found Vercel's DevRel Engineer. This is what P3 is for — the filter is a file, so a word that turns out to be noise gets cut and the cut is recorded. v0.3.0 (2026-09-26): Professor Bear refined the target — any job that DEVELOPS MATERIALS, whether to sell into universities, to teach the public, or to train the company's own people. Anthropic's 'Technical Documentation and Content Engineer, Claude Docs' is the model. Measured every candidate word against all 3,446 titles before adding: 11 of them appear in ZERO titles today and so cannot add noise; 'creator', 'documentation', and 'content engineer' each appear in exactly one title and it is the right one. 'learning experiences' found Replit's LEARNING EXPERIENCES CREATOR, a bullseye that v0.2.1 missed because it only had 'learning designer'. REJECTED as measured noise: bare 'learning' (42 titles, almost all Machine/Reinforcement Learning) and 'content strategy' (3 titles, all regional SEO marketing).",
+  "version": "0.4.0",
   "keep_rule": {
     "role_title_min": 1,
     "topic_text_min_if_no_title_match": 3
@@ -8,9 +8,14 @@
   "role_title": [
     "academy",
     "advocate",
+    "certification",
     "community",
     "community architect",
     "community engineer",
+    "content developer",
+    "content engineer",
+    "courseware",
+    "creator",
     "creator advocate",
     "curriculum",
     "design evangelist",
@@ -19,19 +24,33 @@
     "developer education",
     "developer relations",
     "devrel",
+    "docs",
+    "documentation",
     "education",
+    "education content",
     "education manager",
     "educator",
     "enablement",
     "evangelist",
+    "instructional design",
+    "instructional designer",
     "instructor",
+    "knowledge base",
+    "learning content",
     "learning designer",
+    "learning experience",
+    "learning experiences",
+    "onboarding content",
     "product education",
     "product evangelist",
     "teaching",
     "technical content",
     "technical writer",
-    "trainer"
+    "technical writing",
+    "trainer",
+    "training content",
+    "upskilling",
+    "workshop"
   ],
   "topic_text": [
     "university",
@@ -72,5 +91,108 @@
   "removed_after_measurement": {
     "developer experience": "11 hits, 10 were software-engineering roles (2026-09-26)",
     "advocacy": "1 hit, a customer-marketing programme (2026-09-26)"
+  },
+  "measured_before_adding": {
+    "zero titles today, no noise possible": [
+      "technical writer",
+      "technical writing",
+      "instructional design",
+      "instructional designer",
+      "courseware",
+      "knowledge base",
+      "content developer",
+      "onboarding content",
+      "training content",
+      "upskilling",
+      "certification",
+      "workshop"
+    ],
+    "one title today and it is correct": {
+      "creator": "Learning Experiences Creator",
+      "documentation": "Technical Documentation and Content Engineer",
+      "content engineer": "Technical Documentation and Content Engineer"
+    },
+    "accepted with one known false positive": {
+      "learning experience(s)": "finds Learning Experiences Creator; also matches 'Software Engineer, Native Learning Experiences'",
+      "docs": "finds the Claude Docs role; also matches 'Senior Software Engineer, Docs Product'"
+    },
+    "rejected as measured noise": {
+      "learning": "42 titles, nearly all Machine/Reinforcement Learning",
+      "content strategy": "3 titles, all regional SEO/content marketing"
+    }
+  },
+  "materials_rule": {
+    "_comment": "Professor Bear, 2026-09-26: 'everything's probably named differently, but that kind of job would be something to look out for.' Titles cannot carry this family — 'documentation' is in 2 of 3,446 titles and 'technical writer' in zero — so a posting is also KEPT when its BODY says the job is to produce teaching materials FOR a named audience. Both halves are required: a make-materials phrase AND an audience. 'Maintain documentation' in a tax director's ad matches the first and not the second, which is the whole point. TIGHTENED same day after measurement: the first version kept 101 extra postings at roughly one-in-ten precision, because phrases like 'technical documentation' and 'technical content' appear in almost every engineering, support, and legal ad — every product has docs. Nine phrase groups were removed and the threshold raised to TWO verb-object phrases. The removed list is kept here because a rule that failed is evidence about the corpus, not an embarrassment. Final pass: threshold back to ONE phrase (two matched nothing in the whole corpus), and three more phrases cut. The surviving list is 23 phrases that only a teaching-materials job uses. Measured precision of the body rule after all cuts is in the run report; it is the only rule here whose precision was measured rather than assumed, because it was the only one that failed loudly enough to force it.",
+    "min_verb_object": 1,
+    "min_audience": 1,
+    "verb_object": [
+      "instructional design",
+      "curriculum design",
+      "curriculum development",
+      "develop curriculum",
+      "build curriculum",
+      "courseware",
+      "write tutorials",
+      "create tutorials",
+      "build tutorials",
+      "produce tutorials",
+      "author courses",
+      "build courses",
+      "create courses",
+      "develop courses",
+      "design courses",
+      "learning content",
+      "educational content",
+      "education content",
+      "record video",
+      "record walkthroughs",
+      "present on camera",
+      "on-camera",
+      "screencast"
+    ],
+    "audience": [
+      "for developers",
+      "for users",
+      "for customers",
+      "for partners",
+      "for students",
+      "for teachers",
+      "for educators",
+      "for engineers",
+      "for designers",
+      "for our customers",
+      "for the community",
+      "developer community",
+      "design community",
+      "our users",
+      "our customers",
+      "end users",
+      "learners",
+      "practitioners",
+      "universities",
+      "classroom",
+      "k-12",
+      "higher education",
+      "internal teams",
+      "our own team",
+      "sales team",
+      "field team",
+      "new hires",
+      "go-to-market team",
+      "account teams"
+    ],
+    "removed_after_measurement": {
+      "technical documentation": "matched ~40 engineering, support, tax and legal postings — every product has docs",
+      "technical content": "matched all 15 Anthropic Applied AI Architects plus marketing and partnerships",
+      "product documentation": "matched customer-support roles",
+      "knowledge base articles": "matched IT Support Engineers and Technical Support Engineers",
+      "training materials / training material": "matched incident managers, project managers, deal-desk analysts",
+      "deliver training / live training / virtual training": "matched compliance counsel and account managers",
+      "run workshops / lead workshops / deliver workshops": "matched solutions architects running customer workshops",
+      "sample code": "matched applied-AI and partner engineering roles",
+      "enablement content": "matched product marketing and partnerships",
+      "how-to guides": "matched 3 Anthropic IT Support Engineers and an IT Operations Engineer — internal IT writes how-to guides",
+      "reference material / implementation guides": "too generic once 'how-to guides' proved the pattern; cut unmeasured rather than left in on a guess"
+    }
   }
 }

@@ -738,6 +738,28 @@ Where to check each claim in this log. Commits are listed in the push table belo
 
 - **Evidence and next step:** `title-audit-2026-09-26.md` — the family matrix and the three disagreement tables, Verdict columns blank. `lectern/title_families.json` and `lectern/audit_titles.py`. The random sample `reject-audit-2026-09-26.md` still stands; sorting by function is cheaper but only finds errors in families someone thought to name. Next: rule on `enablement`.
 
+### 2026-09-26 — The target becomes "makes the materials", and a bullseye that one word had been hiding
+
+- **Date and what I was working on:** Sharpening what the collector is actually looking for, after the title audit surfaced Anthropic's *Technical Documentation and Content Engineer, Claude Docs*.
+
+- **I tried / expected:** I said the Anthropic role *"looks perfect"* and named the real target: *"anything like that have an eye looking for jobs like that. in any kind of company, they'll probably be called something different. But developing materials, either to sell into universities or to sell to the public, or to train their own people would be a great fit."* Then, seeing Replit's role: *"learning experiences creator seems like a great fit as well… everything's probably named differently, but that kind of job would be something to look out for."*
+
+- **What happened:**
+  - **I reversed one of my own findings.** "To train their own people" means the 13 sales-enablement postings the last pass called false positives are not errors — building curriculum and running training for internal staff is the work, and the audience being internal does not change it. `SALES_ENABLEMENT` now expects *keep*; the 9 education-sales roles moved to *judge*, because an account executive with only a quota is still a reject and one who builds the materials the sale runs on is not.
+  - **This family is nearly invisible by title.** `documentation` appears in **2 of 3,446 titles**. `technical writer`, `curriculum`, `instructional design`, `courseware`, `knowledge base` appear in **zero**. The Anthropic role is almost unique. So the title vocabulary had to grow and a body rule had to exist.
+  - **Replit's *Learning Experiences Creator* had been rejected over one word** — the list held `learning designer`, not `learning experiences`. It is as close to a bullseye as this board has. Every candidate word was measured against all 3,446 titles before being added: eleven appear in zero titles and so cannot add noise; `creator`, `documentation`, and `content engineer` each appear in exactly one title and it is the right one. Rejected as measured noise: bare `learning` (42 titles, nearly all Machine or Reinforcement Learning) and `content strategy` (3, all regional SEO marketing).
+  - **The body rule failed, twice, before it worked.** First version: **101 extra postings at roughly one-in-ten precision** — all 15 Anthropic *Applied AI Architects* on *technical content* + *our users*, four IT Support Engineers on *how-to guides*, plus tax counsel and incident managers. Tightened to two high-specificity phrases: **zero** hits in the entire corpus. One phrase: 9 hits, 4 right. Cut `how-to guides` and two others: **5 hits, 4 right.**
+
+- **What I did:** `keywords.json` is now v0.4.0 with the measured title words and a two-part `materials_rule` — a make-materials phrase **and** a named audience, both required, because *maintain documentation* in a tax director's ad has the first and not the second. Added a `MATERIALS` family to `title_families.json`. Every phrase that was cut is recorded in the file with the count that condemned it.
+
+  The pass added five roles worth reading: Anthropic's Claude Docs engineer, Replit's Learning Experiences Creator, Stripe's Training Program Manager (Mexico City, *instructional design*), and OpenAI's two AI Deployment Manager (Builder) posts plus its Developer Experience Engineer, Cyber (*create tutorials*). 3,446 postings, **97 kept**.
+
+- **What Claude or another person contributed:** Claude Code (Opus 5) measured every candidate word before adding it, built and then dismantled its own body rule across three attempts, and reported each failure with the postings that caused it rather than quietly adjusting until the number looked reasonable. It also flagged that my "train their own people" remark contradicted its earlier false-positive call, instead of leaving the contradiction in the files. I set the target.
+
+- **What I understand now / still do not understand:** Five words are false friends in this industry and between them they caused every error so far: `training` (model training), `enablement` (sales support, or a system gaining a capability), `education` (a degree requirement in a footer, a sales vertical at Canva), `learning` (machine learning), `content` (SEO marketing). Also worth saying: only the rule that failed obviously ever got measured. "Role word in title" and "three topic words" still have no precision figure, and they carry 92 of the 97 keeps. Still open: 535 postings in *judge* families, and whether the two unmeasured rules deserve the same treatment the body rule got.
+
+- **Evidence and next step:** `keywords.json` v0.4.0 with its `removed_after_measurement` record, `title_families.json` v0.2.0 with the MATERIALS family, the regenerated `title-audit-2026-09-26.md` (27 false positives, 1 candidate miss, 535 to judge), and `quality-report-2026-09-26.md`. Next: measure the title rule the way the body rule was measured.
+
 ---
 
 ## GitHub pushes
@@ -754,3 +776,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
 | | ↑ **the row above is the subject this commit actually carries.** The subject intended for it was *"feat(fall-2026): add the reject sampler; reading rejects exposed a false-positive class"*; a scripting error reused an earlier commit's subject line. The content is correct; history was not rewritten to fix a label. |
 | 2026-09-26 | feat(fall-2026): audit the filter by job function; ML 'training' was a false friend |
+| 2026-09-26 | feat(fall-2026): target becomes 'makes the materials'; body rule measured, cut twice |

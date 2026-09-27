@@ -120,22 +120,38 @@ def word_in(word, text):
     return re.search(r"(?<![a-z0-9])" + re.escape(word.lower()) + r"(?![a-z0-9])", text) is not None
 
 
+def materials_evidence(body_lc, kw):
+    """The body says the job is to MAKE teaching materials FOR a named audience. Both halves required:
+    'maintain documentation' in a tax ad has the first and not the second (SDD P3 — the rule is the file)."""
+    rule = kw.get("materials_rule") or {}
+    if not rule:
+        return None
+    vo = [p for p in rule.get("verb_object", []) if p.lower() in body_lc]
+    au = [p for p in rule.get("audience", []) if p.lower() in body_lc]
+    if len(vo) >= rule.get("min_verb_object", 1) and len(au) >= rule.get("min_audience", 1):
+        return {"verb_object": vo[:6], "audience": au[:6]}
+    return None
+
+
 def judge(v, kw):
-    """Keep on a role word in the title, or >=N topic words in the body. flex_text only annotates."""
+    """Keep on a role word in the title, >=N topic words in the body, or materials evidence in the body."""
     ignore = {w.lower() for w in (kw.get("ignore_words_by_company") or {}).get(v["company"], [])}
     tl, bl = v["title"].lower(), v["text"].lower()
     role = [w for w in kw["role_title"] if w.lower() not in ignore and word_in(w, tl)]
     topic = [w for w in kw["topic_text"] if w.lower() not in ignore and word_in(w, bl)]
     flex = [w for w in kw["flex_text"] if word_in(w, bl)]
     need = kw["keep_rule"]["topic_text_min_if_no_title_match"]
+    mats = materials_evidence(bl, kw)
     if role:
         why = "role word in title"
     elif len(topic) >= need:
         why = f"{len(topic)} topic words in body (>= {need})"
+    elif mats:
+        why = "body says it produces teaching materials for a named audience"
     else:
         return None, ("no-keyword-match" if not (role or topic) else
                       f"only {len(topic)} topic words, no role word in title")
-    return {"role_title": role, "topic_text": topic, "flex_text": flex,
+    return {"role_title": role, "topic_text": topic, "flex_text": flex, "materials": mats,
             "kept_because": why, "title_only": bool(role and not topic)}, None
 
 
