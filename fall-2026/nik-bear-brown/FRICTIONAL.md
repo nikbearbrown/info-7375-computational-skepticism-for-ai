@@ -723,4 +723,5 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-24 | docs(fall-2026): log Gru's /v0–/v4 outputs for the downloadable Gru, with all 20 turns verbatim |
 | 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
 | 2026-09-26 | docs(fall-2026): make this folder the canonical master for the three-class project |
-| 2026-09-26 | feat(fall-2026): add the reject sampler; reading rejects exposed a false-positive class |
+| 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
+| | ↑ **the row above is the subject this commit actually carries.** The subject intended for it was *"feat(fall-2026): add the reject sampler; reading rejects exposed a false-positive class"*; a scripting error reused an earlier commit's subject line. The content is correct; history was not rewritten to fix a label. |

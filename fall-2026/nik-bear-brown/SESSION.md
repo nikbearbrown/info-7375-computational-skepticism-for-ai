@@ -10,7 +10,7 @@
 
 ❯ Use the Figma MCP server's whoami tool. Tell me which account and which plan  
   I'm connected as, and nothing else.                                           
-  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: /Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
+  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: ~/…/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
   ⎿  Please run /login · API Error: 401 OAuth access token has been revoked.
 
 ✻ Churned for 2s
@@ -23,7 +23,7 @@
 
 ❯ Use the Figma MCP server's whoami tool. Tell me which account and which plan  
   I'm connected as, and nothing else.                                           
-  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: /Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
+  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: ~/…/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
 
 ⏺ The Figma MCP server still requires authentication before its real tools
   (including whoami) are available. Let me initiate the OAuth flow.
@@ -43,7 +43,7 @@
 
 ❯ Use the Figma MCP server's whoami tool. Tell me which account and which plan  
   I'm connected as, and nothing else.                                           
-  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: /Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
+  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: ~/…/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
 
   Called figma (ctrl+o to expand)
 
@@ -61,7 +61,7 @@
   reads, the three classes it syncs to, and every point where a person has to   
   approve something. Put a short executive summary above the Mermaid. Don't     
   draw anything in Figma yet.                                                   
-  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: /Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
+  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: ~/…/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
 
 ⏺ Reading the files now.
 
@@ -109,7 +109,7 @@
 ❯ Now use the Figma MCP server to turn the Mermaid in DIAGRAM.md into a FigJam  
   diagram in a new FigJam file named "Lectern — agentic diagram (fall 2026)".   
   Give me the link, and add it to DIAGRAM.md under the Mermaid.                 
-  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: /Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
+  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: ~/…/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
 
 ⏺ Invoking the FigJam skill first as required, then loading the diagram tool
   schema in parallel.
@@ -155,7 +155,7 @@
 ❯ Compare the FigJam board with lectern/collect.py and SYNC.md. List anything   
   on the board that isn't in the code, and anything in the code that isn't on   
   the board. Don't fix anything.                                                
-  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: /Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
+  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: ~/…/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
 
 ⏺ I already have collect.py and SYNC.md in context. Let me pull the FigJam board
    content now.
@@ -263,7 +263,7 @@
 ❯ Compare the FigJam board with lectern/collect.py and SYNC.md. List anything   
   on the board that isn't in the code, and anything in the code that isn't on   
   the board. Don't fix anything.                                                
-  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: /Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
+  ⎿  UserPromptSubmit hook error  ⎿  Failed with non-blocking status code: /bin/sh: ~/…/books/info-7375-computational-skepticism-for-ai/fall-2026/nik-bear-brown/.claude/hooks/postcompact-check.sh: …
 
 ⏺ This is the same question I just answered in the turn immediately above — the
   full comparison is already there. Did you mean to send a follow-up, or was
