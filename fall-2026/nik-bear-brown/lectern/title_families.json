@@ -1,6 +1,6 @@
 {
   "_comment": "Function families for auditing Lectern's filter by TITLE rather than by posting. Professor Bear's design, 2026-09-26: there are far fewer job FUNCTIONS than job postings, so classifying titles into families turns a 3,446-row read into a 15-row judgment. Order matters — first match wins — so the most specific families come first. Every family is a hypothesis about what a word means in this industry, and the report shows where the hypothesis was wrong.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "families": [
     {
       "name": "ML_TRAINING",
@@ -10,9 +10,15 @@
     },
     {
       "name": "TEACHING",
-      "pattern": "\\b(educator|instructor|professor|lecturer|tutor|curriculum|courseware|pedagog\\w*|academy|learning (designer|experience)|technical (education|training) (lead|specialist|manager)|language training|developer educat\\w*|teach(es|ing)?)\\b",
+      "pattern": "\\b(educator|instructor|professor|lecturer|tutor|curriculum|courseware|pedagog\\w*|academy|learning (designer|experience\\w*)|technical (education|training)|training (lead|specialist|manager|program manager)|language training|developer educat\\w*|teach(es|ing)?)\\b",
       "expect": "keep",
-      "note": "People being taught. This is the target."
+      "note": "People being taught. This is the target. Pattern widened 2026-09-26: 'Head of Technical Training' was landing in UNCLASSIFIED because the old pattern required a trailing lead/specialist/manager."
+    },
+    {
+      "name": "EDU_PRODUCT",
+      "expect": "judge",
+      "pattern": "\\b(education|learning|edu)\\b(?=[^|]*\\b(engineer|architect|product|platform|labs?|team|tech lead|manager)\\b)|\\b(education labs?|chatgpt education|education team|for education)\\b",
+      "note": "ADDED 2026-09-26. Engineering, product, and PM roles ON an education product — OpenAI's 'Full-Stack Engineer, ChatGPT Education & Learning' and 'Tech Lead Manager, Education', Anthropic's 'Full Stack Engineer, Education Labs', Canva's Education Team. Professor Bear would not take most of these, and that is not the point: a staffed education product team is an ORG-CHART FACT, and it is far better evidence that a company wants this work than any single advocate posting. 'judge' because the individual role may be pure backend engineering."
     },
     {
       "name": "ADVOCACY",

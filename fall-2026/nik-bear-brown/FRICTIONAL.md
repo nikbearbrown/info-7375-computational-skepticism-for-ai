@@ -760,6 +760,27 @@ Where to check each claim in this log. Commits are listed in the push table belo
 
 - **Evidence and next step:** `keywords.json` v0.4.0 with its `removed_after_measurement` record, `title_families.json` v0.2.0 with the MATERIALS family, the regenerated `title-audit-2026-09-26.md` (27 false positives, 1 candidate miss, 535 to judge), and `quality-report-2026-09-26.md`. Next: measure the title rule the way the body rule was measured.
 
+### 2026-09-26 — Ranking companies instead of postings, and Google's absence was an artefact
+
+- **Date and what I was working on:** Deciding what the good candidates actually are.
+
+- **I tried / expected:** I had been handed a shortlist filtered on remote and full-time, and that is the wrong filter. I said so: *"don't use full-time or purely remote as a flag… I'm going to make the argument that if they want me enough, they'll figure out a position. I'm just looking for the indication that this is something that the company wants… I think if I'm good enough, they'll make a role for it."*
+
+- **What happened:**
+  - **The unit of analysis was wrong, not just the filter.** A posting is not a slot to squeeze into; it is evidence that a company has decided this work is worth paying for. So the report should rank **companies**, with location and employment type as context that never excludes anything.
+  - **Five kinds of evidence, and the strongest is an org-chart fact.** SELLS (an education revenue line, so a budget) · ENABLES (it trains its own staff) · ADVOCATES (it pays people to teach a public) · TEACHES (it hires teachers and materials-makers) · **BUILDS (it staffs an education *product* team)**. A company showing four or five has an education business, not a vacancy. **Anthropic is 5 of 5** with 15 signal roles. Stripe, Canva, OpenAI, and Notion are 3 of 5. Figma is 2 of 5 but 9 roles.
+  - **The first version of that table missed BUILDS entirely**, and undercounted OpenAI at 2 signal roles out of 830 — while OpenAI has a *ChatGPT Education & Learning* engineering team, a *Tech Lead Manager, Education*, and an *Applied AI Architect, Education*. Those were classified as ENGINEERING and dropped. A company staffing an education product team is the best evidence there is, and the report had been blind to it.
+  - **Then I pointed out the hole: Google.** *"Google has to be pushing this hard. Integrating Google products like NotebookLM with education."* Google was absent from the table — and absence read as no demand when it actually meant unreadable.
+  - **Google has no public JSON feed.** Three endpoint shapes tried, all 404, and I stopped rather than guess more. **But its careers site is readable by a person**, and one search settles it: **20 education roles on the first page** — Google for Education product managers and engineers, *Head of Industry, Education*, *Product Marketing Manager, Google Classroom*, two *Brand Marketing Manager, AI Education* posts, *Brand Marketing Manager, Educator Social*. A search for *NotebookLM* returns six more including **Senior UX Researcher, Learning Frontiers, LearnX** — a Google learning organisation not visible from outside at all. On the demand measure Google belongs at the top of the table and is missing only because of an API.
+
+- **What I did:** Had `lectern/demand_report.py` written to rank companies on the five kinds, with a section stating plainly that absence from the table is a measurement gap and using Google as the worked example. Added an `EDU_PRODUCT` family so BUILDS is counted. Widened the TEACHING pattern, which had been dropping *Head of Technical Training* into UNCLASSIFIED. Google's manual check, its search URL, and its date are recorded in `sources.json` so the claim is re-checkable by hand.
+
+- **What Claude or another person contributed:** Claude Code (Opus 5) built the company ranking, found that its own first version had missed the BUILDS category, tried and failed to find a Google feed, said so instead of inventing one, and then read the careers site in a browser to get real evidence rather than leaving a caveat. I supplied the correction that mattered: rank companies, not postings, and never exclude on employment type.
+
+- **What I understand now / still do not understand:** The filter had quietly encoded an assumption I do not hold — that a job must already be the right shape. Dropping it changes the output from a shortlist of six into a ranked argument about which conversations are worth having. Also worth saying: the nine unreadable companies are now the most important gap in the whole project, because four of them are the deepest education players on the list, and Google shows how badly the table misleads when they are silently missing. Still open: whether a browser-driven reader for Google, Adobe, Salesforce, and GitHub is worth building, or whether checking four careers pages by hand once a month is the honest answer.
+
+- **Evidence and next step:** `company-demand-2026-09-26.md` (18 companies, 5 kinds, 57 signal roles, plus the Google section), `lectern/demand_report.py`, `title_families.json` v0.3.0 with EDU_PRODUCT, `sources.json` with Google's manual check. Next: decide the unreadable-companies question, and measure the title rule.
+
 ---
 
 ## GitHub pushes
@@ -777,3 +798,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | | ↑ **the row above is the subject this commit actually carries.** The subject intended for it was *"feat(fall-2026): add the reject sampler; reading rejects exposed a false-positive class"*; a scripting error reused an earlier commit's subject line. The content is correct; history was not rewritten to fix a label. |
 | 2026-09-26 | feat(fall-2026): audit the filter by job function; ML 'training' was a false friend |
 | 2026-09-26 | feat(fall-2026): target becomes 'makes the materials'; body rule measured, cut twice |
+| 2026-09-26 | feat(fall-2026): rank companies by demand, not postings by fit; Google's absence was an API artefact |

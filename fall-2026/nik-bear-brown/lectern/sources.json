@@ -1,5 +1,5 @@
 {
-  "_comment": "Lectern's watch list. Every company here is checked on every run REGARDLESS of whether it has an education, education-advocate, or AI-advocate role today. Professor Bear's rule, 2026-09-26: 'AI grows so fast that the agent should check the company regardless if they have explicit educational roles or educational advocate roles or AI advocate roles. Because it's likely these companies are going to create those roles if they don't have them now. So the agent should check.' A company with zero matches is a company being watched, not a company to drop. Counts below are from the 2026-09-26 probe and are a snapshot, not a contract. Companies under 'unreachable' have no ATS recorded: the probe found no board on the three APIs Lectern reads, and the ATS they actually use has not been verified. Nothing is guessed — see ATS.md. 2026-09-26 (second pass): added Stripe, GitLab, Twilio, Netlify (Greenhouse) and Supabase (Ashby) from Professor Bear's list of companies that hire designer/developer/creator advocates.",
+  "_comment": "Lectern's watch list. Every company here is checked on every run REGARDLESS of whether it has an education, education-advocate, or AI-advocate role today. Professor Bear's rule, 2026-09-26: 'AI grows so fast that the agent should check the company regardless if they have explicit educational roles or educational advocate roles or AI advocate roles. Because it's likely these companies are going to create those roles if they don't have them now. So the agent should check.' A company with zero matches is a company being watched, not a company to drop. Counts below are from the 2026-09-26 probe and are a snapshot, not a contract. Companies under 'unreachable' have no ATS recorded: the probe found no board on the three APIs Lectern reads, and the ATS they actually use has not been verified. Nothing is guessed — see ATS.md. 2026-09-26 (second pass): added Stripe, GitLab, Twilio, Netlify (Greenhouse) and Supabase (Ashby) from Professor Bear's list of companies that hire designer/developer/creator advocates. IMPORTANT: a company in 'unreachable' is NOT a company with no demand — it is a company Lectern cannot read. Google is the clearest case and is documented with a manual check.",
   "schema_version": "0.1.0",
   "probed": "2026-09-26",
   "sources": [
@@ -192,11 +192,18 @@
     },
     {
       "company": "Google",
-      "ats": "unknown — not found on the three APIs Lectern can read",
+      "ats": "own careers site — no public JSON feed found; the site IS human-readable and searchable",
       "tier": 1,
       "why_watched": "Google for Education and Classroom are the incumbent K-12 infrastructure; Gemini for Education is the AI-era extension. The largest school footprint of anyone on this list.",
-      "blocker": "Tried 'google', 'Google', 'googledeepmind', 'deepmind' on all three on 2026-09-26: no board. See ATS.md.",
-      "status": "TODO: DATA SOURCE"
+      "blocker": "Tried careers.google.com/api/v3/search, .../api/jobs/jobs-v1/search and the www.google.com/about/careers/applications equivalents on 2026-09-26: all 404. Stopped rather than guess further endpoints. Lectern cannot automate this board.",
+      "status": "TODO: DATA SOURCE — automate or keep checking by hand",
+      "manual_check": {
+        "how": "https://www.google.com/about/careers/applications/jobs/results?q=%22education%22&location=United%20States",
+        "checked": "2026-09-26, read in a browser",
+        "found": "20 education roles on the first page alone — Google for Education product managers and engineers, Head of Industry Education, Product Marketing Manager Google Classroom, TWO Brand Marketing Manager (AI Education) posts, Brand Marketing Manager (Educator Social), Senior Strategy Manager Education, plus higher-ed sales and forward-deployed engineering.",
+        "notebooklm": "A search for \"NotebookLM\" returns 6 postings, including Senior UX Researcher, LEARNING FRONTIERS, LearnX — a Google learning organisation not otherwise visible from outside.",
+        "reading": "BUILDS and SELLS are both unmistakable, and there is a dedicated AI-Education marketing function. On the demand measure Google belongs at the top of the table; it is absent only because it cannot be read."
+      }
     },
     {
       "company": "Shopify",
