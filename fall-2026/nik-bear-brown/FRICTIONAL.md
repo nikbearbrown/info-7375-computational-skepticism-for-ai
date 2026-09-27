@@ -687,6 +687,29 @@ Where to check each claim in this log. Commits are listed in the push table belo
 
 - **Evidence and next step:** `SYNC.md` and `lectern/` here; `SYNC.md` and Rule 0 in the other two; `./lectern/sync.sh --check` now reports all three in sync. Next: exercise the recovery path deliberately, and decide whether the dated run outputs should also live in the master.
 
+### 2026-09-26 — Reading the rejects: the audit found a false-positive problem instead
+
+- **Date and what I was working on:** The one check left in my own acceptance criteria. 3,358 postings were rejected in the 2026-09-26 run and nobody had looked at what the filter threw away. I asked for a random sample: *"Give me a hundred or two hundred of the three thousand three hundred postings. Uh, as a random sample. So I can take a quick look at them to see what's being missed."*
+
+- **I tried / expected:** I expected to read 100 rejects and find a handful of missed teaching roles — false negatives.
+
+- **What happened:** The sample has not been read yet. But building it exposed two things first, and the second one is not what I was looking for.
+
+  - **`education` is in 618 of 618 Anthropic postings.** Every Anthropic ad ends with *"Minimum education: Bachelor's degree or an equivalent combination of education, training, and/or experience."* So the topic word carries no information on that board — the same boilerplate problem already found on Writer's board, and most of the reason **950 rejects matched exactly one teaching word**: the word was `education`, in a salary footer.
+  - **The topic-word rule is keeping recruiters, not teachers.** 79 of the 88 kept records were kept on a role word in the title. The other 9 were kept on topic words alone, and on inspection most are wrong: three Stripe **University Recruiter** postings, Notion's **Head of Early Career Recruiting**, OpenAI's **Integrated Marketing Manager, Youth Culture**. `university`, `campus`, and `student` are recruiting vocabulary as much as teaching vocabulary. Only Anthropic's **Head of Technical Training** is a clear true positive in that group.
+
+  So an audit aimed at false negatives found a **false-positive** problem instead, in the part of the rule I had paid least attention to.
+
+- **What I did:** Had `lectern/audit_rejects.py` written as a stored script rather than an ad-hoc query, so the sample is reproducible: seed `20260926` recorded in the output, and rerunning reproduces the same 100 rows. Two parts on purpose — a uniform random 100 (the only part that supports a rate: k MISSes means about k × 34 across all rejects) and all 63 of the closest calls, the rejects that matched two teaching words against a bar of three. The 950 one-word rejects are counted, not listed.
+
+  Both findings are written into the sample file as calls for me to make. **Neither has been changed in `keywords.json`** — adding `education` to Anthropic's ignore list would move the flagship company's counts, and demoting `university`/`campus`/`student` would move the kept total, so both are mine to decide rather than something to quietly fix.
+
+- **What Claude or another person contributed:** Claude Code (Opus 5) wrote the sampler, drew the sample, and found both problems while checking the snippets. It also stopped its first attempt: the near-miss tier was 1,013 postings, well past the 100–200 I asked for, so Part 2 was narrowed to the 63 closest calls. It did not change the filter, and it did not mark a verdict on any row — the Verdict column is empty and mine.
+
+- **What I understand now / still do not understand:** The reason to read rejects is not only to find what was missed. Reading them showed what boilerplate looks like from the other side, and that led straight to a false-positive class I would not have found by looking at the 88 keeps. Still open: the actual reading, the two calls above, and whether `university`/`campus`/`student` should require pairing with a real teaching word before they count.
+
+- **Evidence and next step:** `reject-audit-2026-09-26.md` — 100 random rows plus 63 closest calls, Verdict column blank; `lectern/audit_rejects.py` in the master, synced to both other classes. Next: read it, mark the MISSes, multiply, and decide the two calls.
+
 ---
 
 ## GitHub pushes
@@ -700,3 +723,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-24 | docs(fall-2026): log Gru's /v0–/v4 outputs for the downloadable Gru, with all 20 turns verbatim |
 | 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
 | 2026-09-26 | docs(fall-2026): make this folder the canonical master for the three-class project |
+| 2026-09-26 | feat(fall-2026): add the reject sampler; reading rejects exposed a false-positive class |
