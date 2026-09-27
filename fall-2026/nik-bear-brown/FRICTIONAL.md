@@ -710,6 +710,34 @@ Where to check each claim in this log. Commits are listed in the push table belo
 
 - **Evidence and next step:** `reject-audit-2026-09-26.md` — 100 random rows plus 63 closest calls, Verdict column blank; `lectern/audit_rejects.py` in the master, synced to both other classes. Next: read it, mark the MISSes, multiply, and decide the two calls.
 
+### 2026-09-26 — Auditing by job title instead of by posting, and finding the bug in my own audit
+
+- **Date and what I was working on:** The reject audit. I had a 163-row sample to read and did not want to read it, because reading postings is the wrong unit: *"Seems a better way to look for false positives would actually be to look at the job titles. Because they're probably less job titles than jobs… if we can sort of group and classify groups of job titles it means I don't have to look at 3,000 jobs I can look at a much smaller set of job titles."*
+
+- **I tried / expected:** I expected normalising titles to collapse 3,446 postings into a few hundred, because the same job is posted per city.
+
+- **What happened:** Normalising did almost nothing — 3,446 postings, 3,082 distinct titles, and only 2,701 after stripping locations and seniority. Titles are too varied for that. What worked was the other half of my idea: **classify titles into job FUNCTIONS.** Eighteen families cover every posting, so the read became "judge 18 rules, then read only the rows where the filter and the rule disagree."
+
+  **Then the audit found a bug in itself, not in the filter.** The first pass treated *training* as a teaching word and reported **27 rejected "education" jobs** — which read as a serious false-negative problem. They were *Pre-training Data Infrastructure Engineer*, *Research Engineer, Production Model Post-Training*, *Training Runtime Foundations*, *Researcher, Training*. **At an AI company "training" means training a model.** The filter had been right about all 25 of them; my classifier was wrong. `ML_TRAINING` is now the first family rule for exactly that reason.
+
+  With that fixed, the matrix says: **45 false positives, 2 candidate false negatives, 527 postings in families where the word genuinely means two jobs.**
+
+  The false positives are systematic, not scattered — one word misbehaving across a whole family:
+  - **13 SALES_ENABLEMENT + 7 TECH_ENABLEMENT.** `enablement` means sales support or making a system capable. Twenty of the 88 keeps.
+  - **9 EDU_SALES.** Canva's *Higher Education Account Executive*, *K-12 Education Account Manager*. Selling into schools is not teaching in them.
+  - **2 RECUITING.** Stripe's *University Recruiter*, Notion's *Head of Early Career Recruiting*.
+  - The rest are scattered — 5 ENGINEERING, 3 MARKETING, 2 PRODUCT, 2 G&A.
+
+  Only **two** candidate misses in the whole board, and both are real candidates: Notion's **[Contract] Language Training Specialist – Japanese**, which is literally a teaching job on a contract, and Anthropic's **Technical Documentation and Content Engineer, Claude Docs**, which is developer education under a different name.
+
+- **What I did:** Had the family rules written as `lectern/title_families.json` — each family declares whether it expects keep, reject, or *judge*, with a note saying what the word actually means in this industry — and `lectern/audit_titles.py` to apply them and print only the disagreements. Both in the master, synced to the other two classes.
+
+- **What Claude or another person contributed:** Claude Code (Opus 5) measured that title normalisation would not collapse the problem, built the family classifier, and caught its own `training` error when the 27 "misses" turned out to be ML jobs. It reported that error rather than quietly fixing the regex. I supplied the design: classify functions, not postings.
+
+- **What I understand now / still do not understand:** Two words carry nearly all the damage in this filter, and both are false friends in this specific industry: **`enablement`** (sales support) and **`training`** (model training). `education` is a third — meaningless in Anthropic's Logistics footer, and misleading in Canva's sales titles. Sorting by function made all three visible at once, which reading 163 sampled postings would not have. Still open: the 527 *judge* rows, the two candidate misses, and whether the 45 false positives get fixed by cutting `enablement` or by requiring it to pair with a teaching word.
+
+- **Evidence and next step:** `title-audit-2026-09-26.md` — the family matrix and the three disagreement tables, Verdict columns blank. `lectern/title_families.json` and `lectern/audit_titles.py`. The random sample `reject-audit-2026-09-26.md` still stands; sorting by function is cheaper but only finds errors in families someone thought to name. Next: rule on `enablement`.
+
 ---
 
 ## GitHub pushes
@@ -725,3 +753,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-26 | docs(fall-2026): make this folder the canonical master for the three-class project |
 | 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
 | | ↑ **the row above is the subject this commit actually carries.** The subject intended for it was *"feat(fall-2026): add the reject sampler; reading rejects exposed a false-positive class"*; a scripting error reused an earlier commit's subject line. The content is correct; history was not rewritten to fix a label. |
+| 2026-09-26 | feat(fall-2026): audit the filter by job function; ML 'training' was a false friend |

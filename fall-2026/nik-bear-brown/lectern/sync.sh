@@ -11,7 +11,7 @@ CHECK=0
 
 # Shared paths, relative to the nik-bear-brown folder. Everything else is class-specific.
 SHARED=(
-  "lectern/collect.py" "lectern/audit_rejects.py" "lectern/sources.json" "lectern/keywords.json" "lectern/ATS.md"
+  "lectern/collect.py" "lectern/audit_rejects.py" "lectern/audit_titles.py" "lectern/title_families.json" "lectern/sources.json" "lectern/keywords.json" "lectern/ATS.md"
   "facts/professor-bear-cv.json"
   "figma" "greenhouse-watch-demo"
 )
