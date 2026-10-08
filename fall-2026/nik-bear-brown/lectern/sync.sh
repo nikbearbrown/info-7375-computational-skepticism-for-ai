@@ -13,6 +13,7 @@ CHECK=0
 SHARED=(
   "lectern/collect.py" "lectern/audit_rejects.py" "lectern/audit_titles.py" "lectern/demand_report.py" "lectern/title_families.json" "lectern/sources.json" "lectern/keywords.json" "lectern/ATS.md"
   "facts/professor-bear-cv.json"
+  "SDD-job-search-project.md"
   "figma" "greenhouse-watch-demo"
 )
 # Where each target class keeps its copy of the collector. Branding's is its graded submission.
