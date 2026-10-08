@@ -65,7 +65,7 @@ def collect(query=None):
         start += len(batch)
         if start >= reported:
             break
-        time.sleep(1.5)  # extra courtesy: PCSX throttles sustained 1/sec
+        time.sleep(5)  # PCSX throttles hard: ~1 req per 5s sustained
     return jobs, reported
 
 
