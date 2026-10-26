@@ -36,7 +36,7 @@ lectern/
              (sources.json, faculty_config.json and the seeds in biolabs.json are generated from targets.json)
   collect/   collect.py · faculty_feed.py · collectors/                                   everything that talks to a source
   publish/   publish_delta.py · notify.py                                                 everything that changes state or tells someone
-  audit/     audit_rejects.py · audit_titles.py · demand_report.py · churn.py             read-only measurement of the filter and the market
+  audit/     audit_rejects.py · audit_titles.py · audit_gates.py · demand_report.py · churn.py   read-only measurement of the filter and the market
   tests/     test_*.py                                                                    no network
   ops/       daily.sh · sync.sh                                                           running it and copying it
   notes/     ATS.md
@@ -56,17 +56,17 @@ The folders follow the pipeline, not the file type: rules in, sources read, what
 
 | Stage | Files | What it does |
 |---|---|---|
-| **Rules and targets** | `config/targets.json` (the single list of targets) · `config/keywords.json` · `config/title_families.json` · generated from the list: `config/sources.json`, `config/faculty_config.json`, the seeds in `config/biolabs.json` (`ops/build_from_targets.py`) | The watch list (6 boards today); the filter, with a record of every word that was cut and the count that cut it; the 20 job families the title audit uses; the 21 schools and the queries for the faculty feed |
+| **Rules and targets** | `config/targets.json` (the single list of targets) · `config/keywords.json` (keywords, plus two gates: the allowed countries and no K-12) · `config/title_families.json` · generated from the list: `config/sources.json`, `config/faculty_config.json`, the seeds in `config/biolabs.json` (`ops/build_from_targets.py`) | The watch list (6 boards today); the filter, with a record of every word that was cut and the count that cut it; the 20 job families the title audit uses; the 21 schools and the queries for the faculty feed |
 | **Collect and judge** | `collect/collect.py` | Reads Greenhouse, Ashby and SmartRecruiters boards, turns the three formats into one, applies the filter, writes every posting with the reason it was kept or rejected |
 | **Lab pages** | `collect/collectors/biolabs.py` · `config/biolabs.json` | Reads public lab directory pages (robots.txt first, honest User-Agent), scores each lab page for data-heavy biology and writes a local record; no emails decoded, no outreach drafted. Adapted from the Biojobs repository |
 | **The big four** | `collect/collectors/` | Google, Amazon, Microsoft and Meta have no simple public feed; these collectors take hours and write to a local database (`monitor.db`, not tracked). Not yet part of the daily delta or the filter |
 | **Faculty listings** | `collect/faculty_feed.py` | Business-school faculty roles that mention AI, from two keyword feeds, each with the rule that fired |
 | **What changed** | `publish/publish_delta.py` | New, changed and gone since the last published run. A source that could not be read today never closes a posting |
 | **Post** | `publish/notify.py` | Builds the Discord messages (watched companies only, most-wanted first, nothing posted twice, anything with a path or email address refused). Also `post_labs()`: great-fit lab pages for Professor Bear to look at |
-| **Audit the filter** | `audit/audit_rejects.py` · `audit/audit_titles.py` · `audit/demand_report.py` | A reproducible random sample of rejects to read; the same audit by job function; companies ranked by whether they want this work done |
+| **Audit the filter** | `audit/audit_rejects.py` · `audit/audit_titles.py` · `audit/audit_gates.py` · `audit/demand_report.py` | A reproducible random sample of rejects to read; the same audit by job function; what the country rule and the K-12 rule drop, listed, before and after; companies ranked by whether they want this work done |
 | **Measure** | `audit/churn.py` | Are these real jobs that turn over, or postings that sit there? Closed is not hired |
 | **Operations** | `ops/daily.sh` · `ops/sync.sh` | The daily run; copying the shared files to the other two classes |
-| **Tests** | `tests/test_publish_delta.py` · `test_churn.py` · `test_connector_rule.py` · `test_notify.py` · `test_run_daily.py` | Run each with `python3 tests/test_x.py`; no network |
+| **Tests** | `tests/test_publish_delta.py` · `test_churn.py` · `test_connector_rule.py` · `test_gates.py` · `test_notify.py` · `test_run_daily.py` | Run each with `python3 tests/test_x.py`; no network |
 | **Notes** | `notes/ATS.md` | Which applicant-tracking system each company uses, and an honest "unknown" where it was not verified |
 | **Output** | `runs/` | Dated outputs. Tracked: the small deltas, churn reports and `published-state.json`. Ignored: full snapshots, raw payloads, ad text, logs, `monitor.db`, lab records |
 
@@ -114,7 +114,7 @@ flowchart LR
 - The other two classes keep a flat folder (Branding's is a student's graded path, and it should not move mid-term), so the master's folders are flattened on the way out. `lectern_paths.py` is what lets one set of files run in both layouts.
 - The big-four collectors are not in the daily delta or the filter.
 - `collect/collect.py` run with no `--out` writes its files into this folder; `ops/daily.sh` passes `runs/DATE`.
-- The filter has measured weak spots written into `keywords.json`; this README does not repeat them.
+- The filter has measured weak spots written into `keywords.json`; this README does not repeat them. The country rule reads a place from a list of names, not from a map: a foreign city that is neither named nor in the list is read as "no country" and kept (`audit/audit_gates.py` lists them).
 
 ## Keeping this folder's record
 

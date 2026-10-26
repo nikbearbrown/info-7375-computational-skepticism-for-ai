@@ -39,6 +39,15 @@ def payloads():
          "first_published": "2026-10-03T09:30:00-04:00", "absolute_url": "https://jobs.example.test/g/1005", "internal_job_id": 5005},
         {"id": 1006, "title": "Education Programs Lead", "content": "&lt;p&gt;No link on this one.&lt;/p&gt;", "location": {"name": "Remote"}, "departments": [],
          "first_published": "2026-10-03T09:30:00-04:00", "internal_job_id": 5006},
+        {"id": 1007, "title": "Education Programs Lead", "content": "&lt;p&gt;Run education programs.&lt;/p&gt;", "location": {"name": "Tokyo, Japan"}, "departments": [{"name": "Education"}],
+         "first_published": "2026-10-04T09:30:00-04:00", "absolute_url": "https://jobs.example.test/g/1007", "internal_job_id": 5007},               # country not allowed
+        {"id": 1008, "title": "K12 Education Lead", "content": "&lt;p&gt;Own the school programme.&lt;/p&gt;", "location": {"name": "Remote - US"}, "departments": [{"name": "Education"}],
+         "first_published": "2026-10-04T09:30:00-04:00", "absolute_url": "https://jobs.example.test/g/1008", "internal_job_id": 5008},               # K-12 role
+        {"id": 1009, "title": "K-12 Education Account Manager, South Korea (12 months contract)", "content": "&lt;p&gt;Own the school system lifecycle.&lt;/p&gt;",
+         "location": {"name": "Seoul, Seoul, Korea, republic of"}, "departments": [{"name": "Education"}], "first_published": "2026-10-04T09:30:00-04:00",
+         "absolute_url": "https://jobs.example.test/g/1009", "internal_job_id": 5009},                                                              # both
+        {"id": 1010, "title": "Learning Designer", "content": "&lt;p&gt;Design lessons.&lt;/p&gt;", "location": {"name": "S\u00e3o Paulo, Brazil"}, "departments": [{"name": "Learning"}],
+         "first_published": "2026-10-04T09:30:00-04:00", "absolute_url": "https://jobs.example.test/g/1010", "internal_job_id": 5010},               # an accent, an allowed country
     ]}
     ab = {"jobs": [
         {"id": "a-2001", "title": "Curriculum Lead", "descriptionHtml": "&lt;p&gt;Own curriculum &amp; courseware for the academy.&lt;/p&gt;", "location": "Boston, MA",
@@ -49,11 +58,15 @@ def payloads():
          "location": "Remote", "secondaryLocations": [], "publishedAt": "2026-10-04T10:00:00.000+00:00", "jobUrl": "https://jobs.example.test/a/2003", "department": "Marketing", "team": "Content"},
         {"id": "a-2004", "title": "Education Partnerships Manager", "descriptionHtml": "<p>No published date.</p>", "location": "Remote", "secondaryLocations": [],
          "jobUrl": "https://jobs.example.test/a/2004", "department": "Sales", "team": None},
+        {"id": "a-2005", "title": "Developer Advocate", "descriptionHtml": "<p>Advocate for developers.</p>", "location": "Berlin, Germany", "secondaryLocations": [{"location": "Boston, MA"}],
+         "publishedAt": "2026-10-04T11:00:00.000+00:00", "jobUrl": "https://jobs.example.test/a/2005", "department": "Developer Relations", "team": None},           # several places, one allowed
     ]}
     sr = {"jobs": [
         {"id": "sr-3001", "name": "Education Program Manager", "jobAd": {"sections": {"companyDescription": {"text": "We teach."}, "jobDescription": {"text": "<p>Run education programs.</p>"}}},
          "customField": [{"fieldLabel": "Org", "valueLabel": "Learning"}], "location": {"fullLocation": "New York, NY, US"}, "releasedDate": "2026-10-05T12:00:00.000Z",
          "postingUrl": "https://jobs.example.test/s/3001", "function": {"label": "Education"}},
+        {"id": "sr-3003", "name": "Education Program Manager", "jobAd": {"sections": {"jobDescription": {"text": "<p>Run education programs.</p>"}}}, "customField": [],
+         "location": {"fullLocation": "Taipei, Taiwan"}, "releasedDate": "2026-10-05T12:00:00.000Z", "postingUrl": "https://jobs.example.test/s/3003", "function": {"label": "Education"}},   # country not allowed
         {"id": "sr-3002", "name": "Warehouse Associate", "jobAd": {"sections": {"jobDescription": {"text": "Pack boxes."}}}, "customField": [], "location": {"fullLocation": "Reno, NV, US"},
          "releasedDate": "2026-10-05T12:00:00.000Z", "postingUrl": "https://jobs.example.test/s/3002", "function": {"label": "Operations"}},
     ], "_detail": True}
@@ -118,6 +131,10 @@ def main():
     for r in ("no-keyword-match", "missing-url", "unparseable-date", "duplicate"):
         assert r in rejects, f"fixtures do not cover reject {r}: {rejects}"
     assert any(str(k).startswith("only ") for k in rejects), f"no 'only N topic words' reject: {rejects}"
+    assert any(str(k).startswith("country not allowed") for k in rejects), f"no 'country not allowed' reject: {rejects}"
+    assert any(str(k).startswith("K-12 role") for k in rejects), f"no 'K-12 role' reject: {rejects}"
+    assert any(" and " not in str(k) and "country not allowed" in str(k) and "K-12 role" in str(k) for k in rejects), f"no reject for both gates: {rejects}"
+    assert any(r["kept"] and (r["matched"].get("location") or {}).get("country_named") is False for r in recs), "no kept posting with an unnamed location"
     sources = [{"company": p["company"], "provider": p["provider"], "status": "ok", "postings": len(p["payload"]["jobs"])} for p in pl]
     dump(os.path.join(ROOT, "02-filter", "fixtures", "views.json"), {"date": "2026-10-19", "sources": sources, "views": [strip_original(v) for v in views]})
     dump(os.path.join(ROOT, "02-filter", "expected.json"), {"counts": {"postings_fetched": len(views), "postings_unique": len(recs), "kept": sum(r["kept"] for r in recs), "rejected": rejects},
@@ -128,6 +145,7 @@ def main():
     stale = {k: v for k, v in zip(("source", "company", "source_id"), ("greenhouse", "ExampleCo Labs", "1999"))}
     earlier.append({**earlier[0], **stale, "title": "Developer Educator (closed)", "url": "https://jobs.example.test/g/1999", "text": "Gone from the board."})            # no longer on the board
     earlier.append({**earlier[0], "source": "greenhouse", "company": "ExampleCo Labs", "source_id": "1003", "title": "Payments Analyst", "url": "https://jobs.example.test/g/1003", "text": "Was kept earlier."})   # still on board, now rejected
+    earlier.append({**earlier[0], "source": "greenhouse", "company": "ExampleCo Labs", "source_id": "1007", "title": "Education Programs Lead", "url": "https://jobs.example.test/g/1007", "text": "Was kept before the country rule."})   # still on board, now rejected by a gate
     earlier.append({**earlier[0], "source": "ashby", "company": "ExampleCo Down", "source_id": "z-1", "title": "Educator", "url": "https://jobs.example.test/z/1", "text": "Its board is down today."})  # unavailable source
     earlier = [r for r in earlier if r["source_id"] != "a-2002"]                                                                                                   # a-2002 becomes new
     for r in earlier:

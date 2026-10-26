@@ -112,7 +112,7 @@ def main():
                 ok = check("message text byte-identical (with the heading added by the node)", all(m == e for m, e in zip(o["messages"], exp["messages"])) and len(o["messages"]) == len(exp["messages"])) and ok
                 ok = check("nothing was sent (send is false)", o["sent_count"] == 0 and o["posted_ids"] == []) and ok
             elif k == "05":
-                ok = check("first run: baseline is 'no earlier run'; every kept posting is new", "no earlier run" in o["baseline"] and o["new"] == o["kept"] == 6, str(o)) and ok
+                ok = check("first run: baseline is 'no earlier run'; every kept posting is new", "no earlier run" in o["baseline"] and o["new"] == o["kept"] == json.loads((ROOT / "02-filter" / "expected.json").read_text())["counts"]["kept"], str(o)) and ok
                 ok = check("state file written", os.path.exists(state_path)) and ok
                 ex2 = run.execute(wfs[k]["id"])
                 ok = check("same day again: refuses, because the state is not older than the run (as the Python does)", "not older than this run" in (err(ex2) or ""), str(err(ex2))) and ok

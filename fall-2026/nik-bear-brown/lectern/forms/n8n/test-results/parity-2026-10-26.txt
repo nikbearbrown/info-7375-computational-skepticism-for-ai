@@ -1,0 +1,25 @@
+# Parity and headless runs, 2026-10-26 (Lectern master: filter v0.6.0, the country rule and the K-12 rule; runs 2026-10-08 and 2026-10-18)
+
+## test_headless (n8n 1.113.3, disposable profile, no network)
+ALL PASSED: 01-collect, 02-filter, 03-delta, 04-post-to-discord, 05-daily
+fixtures: 17 unique synthetic postings, 8 kept; rejects now include a country reject, a K-12 reject, a posting that fails both, and a delta row whose reason is a gate
+
+## parity_real_data (the six boards on today's watch list, runs/2026-10-18/raw)
+boards read: 6   postings: python 1869, javascript 1869   only-in-one: 0
+kept: python 60, javascript 60
+PARITY: all 1869 postings identical on every field, keep decision and matched words
+
+## parity_delta (runs 2026-10-08 -> 2026-10-18; these files were written before the gates, so the fixtures are what exercise a gate)
+python: new 42, changed 7, gone 9   javascript: new 42, changed 7, gone 9
+PARITY: new, changed and gone are identical, including the reasons
+
+## parity_messages
+new 42; posted rows python 17, javascript 17; messages python 3, javascript 3
+PARITY: same rows in the same order and byte-identical messages
+
+## parity_location (ai-jobs snapshot of 2026-10-24: 84,282 postings; the place reader and the K-12 reader only)
+location lines: 12,882   titles: 68,319   K-12 titles found: 186
+PARITY: Python and JavaScript agree on all 12,882 location lines and all 68,319 titles
+
+## not run
+live_parity.py (it uses the network, and normalise() did not change).

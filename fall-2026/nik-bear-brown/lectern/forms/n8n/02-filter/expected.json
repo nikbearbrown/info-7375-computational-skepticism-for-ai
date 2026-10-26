@@ -1,17 +1,21 @@
 {
  "counts": {
-  "postings_fetched": 12,
-  "postings_unique": 11,
-  "kept": 6,
+  "postings_fetched": 18,
+  "postings_unique": 17,
+  "kept": 8,
   "rejected": {
    "no-keyword-match": 2,
    "duplicate": 1,
    "only 1 topic words, no role word in title": 1,
    "missing-url": 1,
-   "unparseable-date": 1
+   "country not allowed: Japan": 1,
+   "K-12 role: 'k12' in the title": 1,
+   "country not allowed: South Korea; K-12 role: 'k-12' in the title": 1,
+   "unparseable-date": 1,
+   "country not allowed: Taiwan": 1
   }
  },
- "keywords_version": "0.5.2",
+ "keywords_version": "0.6.0",
  "records": [
   {
    "source": "greenhouse",
@@ -36,7 +40,8 @@
     "materials": null,
     "connector": null,
     "kept_because": "role word in title",
-    "title_only": false
+    "title_only": false,
+    "location": null
    },
    "reject_reason": null
   },
@@ -64,7 +69,8 @@
     "materials": null,
     "connector": null,
     "kept_because": "4 topic words in body (>= 3)",
-    "title_only": false
+    "title_only": false,
+    "location": null
    },
    "reject_reason": null
   },
@@ -114,6 +120,77 @@
    "reject_reason": "missing-url"
   },
   {
+   "source": "greenhouse",
+   "company": "ExampleCo Labs",
+   "source_id": "1007",
+   "title": "Education Programs Lead",
+   "text": "Run education programs.",
+   "url": "https://jobs.example.test/g/1007",
+   "location_text": "Tokyo, Japan",
+   "department": "Education",
+   "date_posted": "2026-10-04",
+   "job_ref": "5007",
+   "kept": false,
+   "matched": null,
+   "reject_reason": "country not allowed: Japan"
+  },
+  {
+   "source": "greenhouse",
+   "company": "ExampleCo Labs",
+   "source_id": "1008",
+   "title": "K12 Education Lead",
+   "text": "Own the school programme.",
+   "url": "https://jobs.example.test/g/1008",
+   "location_text": "Remote - US",
+   "department": "Education",
+   "date_posted": "2026-10-04",
+   "job_ref": "5008",
+   "kept": false,
+   "matched": null,
+   "reject_reason": "K-12 role: 'k12' in the title"
+  },
+  {
+   "source": "greenhouse",
+   "company": "ExampleCo Labs",
+   "source_id": "1009",
+   "title": "K-12 Education Account Manager, South Korea (12 months contract)",
+   "text": "Own the school system lifecycle.",
+   "url": "https://jobs.example.test/g/1009",
+   "location_text": "Seoul, Seoul, Korea, republic of",
+   "department": "Education",
+   "date_posted": "2026-10-04",
+   "job_ref": "5009",
+   "kept": false,
+   "matched": null,
+   "reject_reason": "country not allowed: South Korea; K-12 role: 'k-12' in the title"
+  },
+  {
+   "source": "greenhouse",
+   "company": "ExampleCo Labs",
+   "source_id": "1010",
+   "title": "Learning Designer",
+   "text": "Design lessons.",
+   "url": "https://jobs.example.test/g/1010",
+   "location_text": "São Paulo, Brazil",
+   "department": "Learning",
+   "date_posted": "2026-10-04",
+   "job_ref": "5010",
+   "kept": true,
+   "matched": {
+    "role_title": [
+     "learning designer"
+    ],
+    "topic_text": [],
+    "flex_text": [],
+    "materials": null,
+    "connector": null,
+    "kept_because": "role word in title",
+    "title_only": true,
+    "location": null
+   },
+   "reject_reason": null
+  },
+  {
    "source": "ashby",
    "company": "ExampleCo Ashby",
    "source_id": "a-2001",
@@ -136,7 +213,8 @@
     "materials": null,
     "connector": null,
     "kept_because": "role word in title",
-    "title_only": false
+    "title_only": false,
+    "location": null
    },
    "reject_reason": null
   },
@@ -171,7 +249,8 @@
      ]
     },
     "kept_because": "account or partnership role whose body names higher education",
-    "title_only": false
+    "title_only": false,
+    "location": null
    },
    "reject_reason": null
   },
@@ -204,7 +283,12 @@
     },
     "connector": null,
     "kept_because": "body says it produces teaching materials for a named audience",
-    "title_only": false
+    "title_only": false,
+    "location": {
+     "country_named": false,
+     "countries_seen": [],
+     "kept_because": "the location names no country, so the rule keeps it (if_no_country_named)"
+    }
    },
    "reject_reason": null
   },
@@ -222,6 +306,33 @@
    "kept": false,
    "matched": null,
    "reject_reason": "unparseable-date"
+  },
+  {
+   "source": "ashby",
+   "company": "ExampleCo Ashby",
+   "source_id": "a-2005",
+   "title": "Developer Advocate",
+   "text": "Advocate for developers.",
+   "url": "https://jobs.example.test/a/2005",
+   "location_text": "Berlin, Germany · Boston, MA",
+   "department": "Developer Relations",
+   "date_posted": "2026-10-04",
+   "job_ref": null,
+   "kept": true,
+   "matched": {
+    "role_title": [
+     "advocate",
+     "developer advocate"
+    ],
+    "topic_text": [],
+    "flex_text": [],
+    "materials": null,
+    "connector": null,
+    "kept_because": "role word in title",
+    "title_only": true,
+    "location": null
+   },
+   "reject_reason": null
   },
   {
    "source": "smartrecruiters",
@@ -247,9 +358,25 @@
     "materials": null,
     "connector": null,
     "kept_because": "role word in title",
-    "title_only": false
+    "title_only": false,
+    "location": null
    },
    "reject_reason": null
+  },
+  {
+   "source": "smartrecruiters",
+   "company": "ExampleCo Recruiters",
+   "source_id": "sr-3003",
+   "title": "Education Program Manager",
+   "text": "Run education programs.",
+   "url": "https://jobs.example.test/s/3003",
+   "location_text": "Taipei, Taiwan",
+   "department": "Education",
+   "date_posted": "2026-10-05",
+   "job_ref": null,
+   "kept": false,
+   "matched": null,
+   "reject_reason": "country not allowed: Taiwan"
   },
   {
    "source": "smartrecruiters",

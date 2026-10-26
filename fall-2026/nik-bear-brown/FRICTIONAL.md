@@ -10,6 +10,8 @@
 
 **Update 2026-10-18.** This folder now has one numbered folder per Canvas assignment (`01-…` to `12-…`), each with a `PLAN.md`, and a master [`PLAN.md`](PLAN.md). The Week 2 work described below is folder `03-week-2-boondoggle-report/` (it was `boondoggle-report/`).
 
+**Update 2026-10-26.** Lectern's filter (`lectern/config/keywords.json`, now v0.6.0) has two new gates that drop a posting outside the allowed countries or titled K-12; the 2026-10-26 entry below records what was measured and which choices are still Professor Bear's.
+
 **What it records so far.** One working day, 2026-09-24, which went wrong before it went right.
 - **Getting Gru running took three tries.** The command line swallowed `/help` as its own command, then failed on a revoked login. Pasting the prompt into a fresh conversation, the brief's own fallback, worked.
 - **Mistake 1: the wrong application.** Claude Code read Professor Bear's folder in his *other* class (Prompt Engineering), assumed the work was greenhouse-watch, and ran 14 Gru turns specifying it. Professor Bear stopped it. The turns are kept.
@@ -943,6 +945,23 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **Evidence and next step:**
   - Evidence: `PLAN.md` and the twelve folders' `PLAN.md`; `lectern/publish_delta.py`, `lectern/test_publish_delta.py`, `lectern/runs/2026-10-18/delta-2026-10-18.{md,json,csv}`; `lectern/sync.sh --check` (shows the new script as drift in the other two classes).
   - Next: my decisions in `PLAN.md` (the pitch film first); then decide whether to commit this folder, sync the script, and publish the 2026-10-18 delta. Nothing in this folder has been committed or pushed.
+
+### 2026-10-26 — A posting from Seoul, and two gates added to the job filter
+
+- **Date and what I was working on:** 2026-10-26. Changing what Lectern's filter keeps, after I saw a listing in its results that was no use to me.
+- **I tried / expected:** I pasted the listing, *"K12 Education Account Manager, South Korea (12 months contract), Seoul, hybrid"*, from a design-software company, as the example of what should not come through. I said, by voice: *"keep it to English-speaking countries? Unless it's France or Italy. Or Brazil? Or Portugal? And no K-12. No."* I did not state a prediction of how many postings this would remove.
+- **What happened:**
+  - **The keywords could not say no.** The filter only knows what to keep, and this posting is kept by the word *education* in its title. So the rule became two gates that run after the keywords and can only drop what the keywords would have kept, each with a stated reason. `keywords.json` is v0.6.0; `collect.py` reads the two new rules (`location_rule`, `k12_rule`) and nothing else changed in what it does.
+  - **Measured before adding.** On the 3,243 saved ads of 2026-10-18 the keywords alone keep 92 and the gates 82: ten dropped, all for their country (Japan 4, South Korea 2, Germany 2, Indonesia 1, Mexico 1), eight of them on the six companies watched today. On a snapshot of 84,282 postings (titles and places only, no ad text) the title-keyword keeps fall from 1,056 to 886 (144 by country, 24 by K-12, 2 by both). The place reader agrees with the country codes the boards themselves report on 37,458 of 37,470 postings where both name a country. Of the 91 listings already published to Discord, ten would now show as gone.
+  - **The posting I pasted is dropped for both reasons**, in the snapshot of 2026-10-24 and in the tests. But **the same job in the 2026-10-18 ads is titled *District Education Advocate*, and its text says *school system* and never *K-12*.** A rule on the word K-12 in the title alone would have missed it; only the country rule caught it.
+  - **Traps looked for, on real titles and ads.** *K8* is Kubernetes (three titles), so the K-12 list says *k-8* with a hyphen. *K12* is also a company name, but the company field is not read. *Teacher* (270 titles), *school* (263) and *district* (130, mostly sales district managers) are too broad and were not added. A name shared with an American town (*Lebanon, PA* against *Beirut, Lebanon*; *New Mexico* against *Mexico*) is read by the state code. *Remote* with no country, *Remote - EMEA* and *Remote - Europe* name no country and are kept, marked as such.
+  - **Both n8n copies were regenerated and re-tested.** Headless, all five workflows pass; the filter agrees with the Python on all 1,869 postings of the six watched boards; the Python and JavaScript place readers agree on all 12,882 location lines and 68,319 titles of the snapshot.
+- **What I did:** Said what I wanted and pasted the example. Nothing here has been reviewed by me. **Four choices are mine, and Claude Code took a default for each:** which countries beyond the United States, United Kingdom, Canada, Australia, New Zealand and Ireland count as English-speaking (the default is none; India would bring back 20 postings in the snapshot and Singapore 22); what to do with a posting that names no country (the default keeps it); how wide K-12 is (the default is the title, in any spelling, plus grade bands such as *high school*); and whether the ad text is read for K-12 (the default is no; three OpenAI education roles that also cover higher education, and one Canva one, would go).
+- **What Claude or another person contributed:** Claude Code read the folder's rules, measured, wrote the two gates, `audit/audit_gates.py` and `tests/test_gates.py`, regenerated the n8n copies with their own tooling, and wrote this entry and `lectern/HISTORY.md`. It did not run `sync.sh`, post to Discord, push, or change the server.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: `lectern/config/keywords.json` (the comments of both rules hold the counts), `lectern/collect/collect.py`, `lectern/tests/test_gates.py` (17 tests), `lectern/audit/audit_gates.py` (reproduces the lists of what was dropped), `lectern/forms/n8n/test-results/parity-2026-10-26.txt`.
+  - Next: I read the lists of what the gates dropped and answer the four choices; then `./lectern/ops/sync.sh --check` and `./lectern/ops/sync.sh` for the other two classes, which are still on v0.5.2. Not pushed.
 
 ## GitHub pushes
 

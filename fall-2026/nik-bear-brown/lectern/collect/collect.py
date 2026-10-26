@@ -15,6 +15,9 @@ Design: SDD.md. P1 every kept record carries the source's own fields under `orig
 P2 the raw response is written before anything parses it. P3 the filter is keywords.json and
 every match is published. P4 one source failing does not stop the others. P5 a company with no
 match today stays on the watch list. Stdlib only. Exit 0 ran, 2 bad input, 3 every source failed.
+
+Two gates sit after the keywords (v0.6.0, both rules in keywords.json): a posting the keywords would keep is rejected,
+with the reason, if its place names no allowed country (`location_rule`) or it is a K-12 role (`k12_rule`).
 """
 import os as _os, sys as _sys
 for _p in (_os.path.dirname(_os.path.abspath(__file__)), _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))):
@@ -22,7 +25,7 @@ for _p in (_os.path.dirname(_os.path.abspath(__file__)), _os.path.dirname(_os.pa
         _sys.path.insert(0, _p)
         break
 import lectern_paths as lp   # where things are: see lectern_paths.py
-import argparse, csv, datetime as dt, html, json, os, re, sys, time, urllib.error, urllib.request
+import argparse, csv, datetime as dt, html, json, os, re, sys, time, unicodedata, urllib.error, urllib.request
 from urllib.parse import quote
 
 ALLOWED = {"boards-api.greenhouse.io", "api.ashbyhq.com", "api.smartrecruiters.com"}
@@ -153,8 +156,93 @@ def connector_evidence(title_lc, body_lc, kw):
     return {"title": tw, "institution": iw[:6]} if tw and iw else None
 
 
+def fold(s):
+    """Lower-case with accents removed ('São Paulo' -> 'sao paulo'), so the place lists can be written in plain letters."""
+    s = unicodedata.normalize("NFKD", s or "").lower()
+    return "".join(ch for ch in s if not unicodedata.combining(ch))
+
+
+_PLACES = {}
+
+
+def places_of(rule):
+    """Compile location_rule once: folded name -> country for its three tables, plus the regexes that find them."""
+    hit = _PLACES.get(id(rule))
+    if hit and hit[0] is rule:
+        return hit[1]
+    allowed = set(rule.get("allowed_countries") or [])
+    tables = {"names": {}, "places": {}, "codes": {}}
+    for country, spec in rule["countries"].items():
+        for kind, table in tables.items():
+            for w in spec.get(kind) or []:
+                w = fold(w).strip()
+                # a string two countries share goes to an allowed one: a stray posting costs less than a lost one
+                if w and (w not in table or (country in allowed and table[w] not in allowed)):
+                    table[w] = country
+    alt = lambda words: "|".join(re.escape(w) for w in sorted(words, key=lambda w: (-len(w), w)))   # longest first: 'new mexico' before 'mexico'
+    found = set(tables["names"]) | set(tables["places"])
+    seps = [fold(s) for s in rule.get("separators") or []]
+    work = [fold(w) for w in rule.get("workplace_words") or []]
+    compiled = {"allowed": allowed, **tables, "seps": seps,
+                "words": re.compile(r"(?<![a-z0-9])(?:" + alt(found) + r")(?![a-z0-9])") if found else None,
+                "codes_rx": re.compile(r"(?:,|-|\()\s*(" + alt(tables["codes"]) + r")\s*(?=$|[,\-()])") if tables["codes"] else None,
+                "work_rx": re.compile(r"(?<![a-z0-9])(?:" + alt(work) + r")(?![a-z0-9])") if work else None}
+    _PLACES[id(rule)] = (rule, compiled)
+    return compiled
+
+
+def _one_place(seg, t):
+    """One place ('Austin, TX') -> ('allowed' | 'outside', [countries]), or ('workplace' | 'unnamed', []).
+    Evidence in this order: a country's own name, then a state or province code after a comma ('Athens, GA' is Georgia,
+    USA), then a city or region. A name that a US town shares ('Lebanon, PA') sits among the cities, so the code beats it."""
+    hits = [m.group(0) for m in t["words"].finditer(seg)] if t["words"] else []
+    named = [t["names"][h] for h in hits if h in t["names"]]
+    if not named:
+        m = t["codes_rx"].search(seg) if t["codes_rx"] else None
+        named = [t["codes"][m.group(1)]] if m else [t["places"][h] for h in hits if h in t["places"]]
+    if named:
+        ok = sorted({c for c in named if c in t["allowed"]})
+        return ("allowed", ok) if ok else ("outside", sorted(set(named)))
+    rest = t["work_rx"].sub(" ", seg) if t["work_rx"] else seg
+    return ("workplace", []) if not re.sub(r"[^a-z]+", "", rest) else ("unnamed", [])
+
+
+def where(location_text, rule):
+    """Which countries a location line names. A posting in several places is allowed if ANY of them is; a line that
+    names no country at all ('Remote') is 'unnamed', and so is a mix of one foreign place and one that cannot be read.
+    -> {"decision": "allowed" | "outside" | "unnamed", "countries": [...]}"""
+    t = places_of(rule)
+    s = fold(location_text)
+    for sep in t["seps"]:
+        s = s.replace(sep, "\n")
+    ok, out, unnamed = set(), set(), False
+    for seg in (x.strip() for x in s.split("\n")):
+        if not seg:
+            continue
+        kind, cs = _one_place(seg, t)
+        if kind == "allowed":
+            ok.update(cs)
+        elif kind == "outside":
+            out.update(cs)
+        elif kind == "unnamed":
+            unnamed = True
+    if ok:
+        return {"decision": "allowed", "countries": sorted(ok)}
+    return {"decision": "outside" if out and not unnamed else "unnamed", "countries": sorted(out)}
+
+
+def k12_hits(title, body, rule):
+    """Phrases of k12_rule found in the title (and, if the rule lists any, the body)."""
+    dash = lambda s: re.sub("[‐-―−]", "-", s.lower())      # 'K–12' with an en dash is still K-12
+    t, b = dash(title), dash(body)
+    return {"title": [p for p in rule.get("title_phrases") or [] if word_in(p.lower(), t)],
+            "body": [p for p in rule.get("body_phrases") or [] if word_in(p.lower(), b)]}
+
+
 def judge(v, kw):
-    """Keep on a role word in the title, >=N topic words in the body, materials evidence, or connector evidence."""
+    """Keep on a role word in the title, >=N topic words in the body, materials evidence, or connector evidence.
+    A posting the keywords would keep is still rejected, with the reason, if its place names no allowed country
+    (location_rule) or it is a K-12 role (k12_rule). Both gates read only the rules file."""
     ignore = {w.lower() for w in (kw.get("ignore_words_by_company") or {}).get(v["company"], [])}
     tl, bl = v["title"].lower(), v["text"].lower()
     role = [w for w in kw["role_title"] if w.lower() not in ignore and word_in(w, tl)]
@@ -174,8 +262,27 @@ def judge(v, kw):
     else:
         return None, ("no-keyword-match" if not (role or topic) else
                       f"only {len(topic)} topic words, no role word in title")
+    blocked, place = [], None
+    loc_rule = kw.get("location_rule")
+    if loc_rule:
+        w = where(v.get("location_text") or "", loc_rule)
+        if w["decision"] == "outside":
+            blocked.append("country not allowed: " + ", ".join(w["countries"]))
+        elif w["decision"] == "unnamed" and loc_rule.get("if_no_country_named", "keep") == "reject":
+            blocked.append("no country named in the location")
+        elif w["decision"] == "unnamed":
+            place = {"country_named": False, "countries_seen": w["countries"],
+                     "kept_because": "the location names no country, so the rule keeps it (if_no_country_named)"}
+    k12_rule = kw.get("k12_rule")
+    if k12_rule:
+        h = k12_hits(v["title"], v["text"], k12_rule)
+        if h["title"] or h["body"]:
+            blocked.append("K-12 role: " + " and ".join(
+                [f"'{p}' in the title" for p in h["title"][:2]] + [f"'{p}' in the body" for p in h["body"][:2]]))
+    if blocked:
+        return None, "; ".join(blocked)
     return {"role_title": role, "topic_text": topic, "flex_text": flex, "materials": mats, "connector": conn,
-            "kept_because": why, "title_only": bool(role and not topic)}, None
+            "kept_because": why, "title_only": bool(role and not topic), "location": place}, None
 
 
 # ---------------------------------------------------------------- write
