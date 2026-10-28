@@ -67,6 +67,63 @@ class Match(unittest.TestCase):
         self.assertEqual(r["decision"], "no-match")
 
 
+STUDIOS = ej.load_studios()
+
+
+def at(company, title, location="Cary, North Carolina, United States", studios=STUDIOS):
+    return ej.judge_engine({"id": "x:9", "company": company, "title": title, "url": "u", "location_text": location}, KW, studios)
+
+
+class StudioList(unittest.TestCase):
+    def test_the_list_is_the_kept_studios_of_targets_json_and_only_those(self):
+        self.assertIn("epic games", STUDIOS)
+        self.assertIn("naughty dog", STUDIOS)
+        for dropped in ("twitch", "discord", "hasbro", "bethesda", "take-two interactive", "framestore", "foundry", "ubisoft"):
+            self.assertNotIn(dropped, STUDIOS, dropped)
+
+    def test_an_early_career_craft_title_at_a_listed_studio_is_a_game_job_without_naming_a_game(self):
+        r = at("Epic Games", "Web Engineer Intern")
+        self.assertEqual(r["decision"], "post")
+        self.assertIn("studio hint: Epic Games", r["reason"])
+        self.assertEqual(at("Roblox", "[2027] Software Engineer, Early Career")["decision"], "post")
+        self.assertEqual(at("Naughty Dog", "Associate Producer")["decision"], "post")
+
+    def test_the_same_title_elsewhere_is_not(self):
+        self.assertEqual(at("Twitch", "Software Engineer I")["decision"], "no-match")
+        self.assertEqual(at("Epic Games", "Web Engineer Intern", studios=frozenset())["decision"], "no-match")
+        self.assertEqual(at("Some Bank", "Software Engineer Intern")["decision"], "no-match")
+
+    def test_the_list_needs_an_early_career_word_so_it_does_not_open_every_engineering_job(self):
+        self.assertEqual(at("Epic Games", "Software Engineer")["decision"], "no-match")
+        self.assertEqual(at("Epic Games", "Senior Software Engineer")["decision"], "no-match")
+
+    def test_non_craft_early_career_titles_at_a_studio_stay_out(self):
+        for title in ("Intern - Manufacturing Engineer", "Intern - IT Software Engineer", "Marketing Intern", "Associate Counsel, Product & Privacy", "Machine Learning Intern",
+                      "Executive Assistant", "Associate Product Designer, Early Career", "Technical Product Management Intern", "Intern - Supply Chain Planning"):
+            self.assertEqual(at("Nintendo", title)["decision"], "no-match", title)
+
+    def test_the_gates_still_apply_to_the_studio_route(self):
+        self.assertEqual(at("Scopely", "Intern - QA Engineer", "IN - Bangalore, India")["decision"], "rejected")
+        self.assertEqual(at("Epic Games", "Web Engineer Intern", "Novi Sad, Vojvodina, Serbia")["reason"], "country not allowed: Serbia")
+
+
+class OtherLanguages(unittest.TestCase):
+    def test_french_portuguese_and_italian_internship_words_are_early_career(self):
+        for title in ("Stage Gameplay Programmer - 6 mois (F/H/NB)", "Level Designer Assistant - Stage 6 mois (F/H/NB)", "Stagiaire Game Designer", "Game Designer en alternance",
+                      "Estágio em Game Design", "Tirocinio Game Designer"):
+            self.assertEqual(judge(title, "Paris, France")["decision"], "post", title)
+
+    def test_early_stage_is_not_an_internship(self):
+        self.assertEqual(judge("Game Designer, Early Stage Studio")["decision"], "unstated")
+        self.assertEqual(judge("Account Executive, Early Stage")["decision"], "no-match")
+
+    def test_french_game_roles_and_french_senior_words(self):
+        self.assertEqual(judge("Programmeur de jeux (Contrat d'un an)", "Montreal, Quebec, Canada")["decision"], "unstated")
+        self.assertEqual(judge("Concepteur de jeux Stagiaire", "Montreal, Quebec, Canada")["decision"], "post")
+        self.assertEqual(judge("Artiste technique sénior·e - Personnages (Unreal)", "Montreal, Quebec, Canada")["decision"], "senior-or-mid")
+        self.assertEqual(judge("Directeur technique graphique (Unreal)", "Montreal, Quebec, Canada")["decision"], "senior-or-mid")
+
+
 class Gates(unittest.TestCase):
     def test_the_country_gate_applies_here_too(self):
         r = judge("Tools Programmer Intern", "Tokyo, Japan")

@@ -1,6 +1,6 @@
 {
- "_comment": "Lectern's filter. A posting is KEPT if any role_title word appears in its title, or if three or more topic_text words appear in its body. flex_text never causes a keep — it only annotates a kept record, because 'part-time' on its own has nothing to do with teaching. Every kept record records which words matched and where, so a reader can apply this file by hand to one posting and get the same answer. v0.2.0 (2026-09-26): added the alternative titles these roles are posted under — Developer/Designer/Creator Advocate, Design or Product Evangelist, Community Engineer, Community Architect, Product Education Manager, Technical Content Engineer, Developer Experience, DevRel, Technical Writer. Several are broad on purpose and the run report measures what noise they added. v0.2.1 (2026-09-26, same day): REMOVED 'developer experience' and 'advocacy' after measuring them. 'developer experience' fired on 11 postings and 10 were backend or platform software-engineering jobs (Anthropic, Figma, Stripe x2, GitLab, OpenAI x2, Notion, Replit, Canva) — the phrase names an engineering discipline, not an advocacy role. 'advocacy' fired once, on a customer-marketing programme. Kept: 'devrel', which found Vercel's DevRel Engineer. This is what P3 is for — the filter is a file, so a word that turns out to be noise gets cut and the cut is recorded. v0.3.0 (2026-09-26): Professor Bear refined the target — any job that DEVELOPS MATERIALS, whether to sell into universities, to teach the public, or to train the company's own people. Anthropic's 'Technical Documentation and Content Engineer, Claude Docs' is the model. Measured every candidate word against all 3,446 titles before adding: 11 of them appear in ZERO titles today and so cannot add noise; 'creator', 'documentation', and 'content engineer' each appear in exactly one title and it is the right one. 'learning experiences' found Replit's LEARNING EXPERIENCES CREATOR, a bullseye that v0.2.1 missed because it only had 'learning designer'. REJECTED as measured noise: bare 'learning' (42 titles, almost all Machine/Reinforcement Learning) and 'content strategy' (3 titles, all regional SEO marketing). v0.6.0 (2026-10-26): TWO GATES that apply after the keywords. Professor Bear, looking at a 'K12 Education Account Manager, South Korea (12 months contract), Seoul' from a design-software company: 'keep it to English-speaking countries? Unless it's France or Italy. Or Brazil? Or Portugal? And no K-12.' A posting the keywords would keep is now rejected, with its reason, if (1) location_rule: its place names no allowed country (the United States, United Kingdom, Canada, Australia, New Zealand, Ireland, France, Italy, Brazil, Portugal), or (2) k12_rule: its TITLE says K-12. Both are data at the end of this file and collect.py only reads them. The gates never touch a posting the keywords reject, so every old reject keeps its old reason. The numbers behind each choice are in measured_before_adding; the choices that are Professor Bear's to change are named in the _comment of each rule. v0.6.1 (2026-10-28): a second judge, for a second Discord channel. Professor Bear, 2026-10-28, with a list of Unity, Unreal and Godot job titles: 'any game jobs that an early-career person who knows Unreal or Godot or Unity, or has any experience there, could take' go to a new channel, #games-3d-simulations, and posting waits until he says go. New block `engine_rule` at the end of this file, read by collect/engine_jobs.py and publish/games_feed.py. collect.judge(), the country and K-12 gates and every #professor-bear post are unchanged; the two gates also apply to this channel.",
- "version": "0.6.1",
+ "_comment": "Lectern's filter. A posting is KEPT if any role_title word appears in its title, or if three or more topic_text words appear in its body. flex_text never causes a keep — it only annotates a kept record, because 'part-time' on its own has nothing to do with teaching. Every kept record records which words matched and where, so a reader can apply this file by hand to one posting and get the same answer. v0.2.0 (2026-09-26): added the alternative titles these roles are posted under — Developer/Designer/Creator Advocate, Design or Product Evangelist, Community Engineer, Community Architect, Product Education Manager, Technical Content Engineer, Developer Experience, DevRel, Technical Writer. Several are broad on purpose and the run report measures what noise they added. v0.2.1 (2026-09-26, same day): REMOVED 'developer experience' and 'advocacy' after measuring them. 'developer experience' fired on 11 postings and 10 were backend or platform software-engineering jobs (Anthropic, Figma, Stripe x2, GitLab, OpenAI x2, Notion, Replit, Canva) — the phrase names an engineering discipline, not an advocacy role. 'advocacy' fired once, on a customer-marketing programme. Kept: 'devrel', which found Vercel's DevRel Engineer. This is what P3 is for — the filter is a file, so a word that turns out to be noise gets cut and the cut is recorded. v0.3.0 (2026-09-26): Professor Bear refined the target — any job that DEVELOPS MATERIALS, whether to sell into universities, to teach the public, or to train the company's own people. Anthropic's 'Technical Documentation and Content Engineer, Claude Docs' is the model. Measured every candidate word against all 3,446 titles before adding: 11 of them appear in ZERO titles today and so cannot add noise; 'creator', 'documentation', and 'content engineer' each appear in exactly one title and it is the right one. 'learning experiences' found Replit's LEARNING EXPERIENCES CREATOR, a bullseye that v0.2.1 missed because it only had 'learning designer'. REJECTED as measured noise: bare 'learning' (42 titles, almost all Machine/Reinforcement Learning) and 'content strategy' (3 titles, all regional SEO marketing). v0.6.0 (2026-10-26): TWO GATES that apply after the keywords. Professor Bear, looking at a 'K12 Education Account Manager, South Korea (12 months contract), Seoul' from a design-software company: 'keep it to English-speaking countries? Unless it's France or Italy. Or Brazil? Or Portugal? And no K-12.' A posting the keywords would keep is now rejected, with its reason, if (1) location_rule: its place names no allowed country (the United States, United Kingdom, Canada, Australia, New Zealand, Ireland, France, Italy, Brazil, Portugal), or (2) k12_rule: its TITLE says K-12. Both are data at the end of this file and collect.py only reads them. The gates never touch a posting the keywords reject, so every old reject keeps its old reason. The numbers behind each choice are in measured_before_adding; the choices that are Professor Bear's to change are named in the _comment of each rule. v0.6.1 (2026-10-28): a second judge, for a second Discord channel. Professor Bear, 2026-10-28, with a list of Unity, Unreal and Godot job titles: 'any game jobs that an early-career person who knows Unreal or Godot or Unity, or has any experience there, could take' go to a new channel, #games-3d-simulations, and posting waits until he says go. New block `engine_rule` at the end of this file, read by collect/engine_jobs.py and publish/games_feed.py. collect.judge(), the country and K-12 gates and every #professor-bear post are unchanged; the two gates also apply to this channel. v0.6.2 (2026-10-28, same day): the game-studio list. Professor Bear said yes to a list of game companies so the games channel covers more studios, reviewed one by one, still dry run only. The list is the `games` section of config/targets.json (status `active` = on the list; 10 studios), not a second file; `studio_hint` below says what an early-career title at a listed studio needs to count. French, Portuguese and Italian internship words (stage, stagiaire, alternance, estágio, tirocinio) and five French game-role phrases were added because France, Italy, Brazil and Portugal are allowed countries and Kabam, Hasbro's Montreal studio and Ubisoft title their jobs that way.",
+ "version": "0.6.2",
  "keep_rule": {
   "role_title_min": 1,
   "topic_text_min_if_no_title_match": 3
@@ -95,7 +95,9 @@
   "k12 title phrase 'k8' (2026-10-26)": "3 hits, all Kubernetes (Coupang x2, OneTrust), 0 K-12. The list says 'k-8' with a hyphen.",
   "k12 title words 'teacher', 'school', 'district', bare 'elementary' (2026-10-26)": "'teacher' 270 titles (256 at one charter network, plus ESL teachers and a data-science role on teacher coaching), 'school' 263, 'district' 130 (district sales managers at Expeditors, AbbVie, Domino's). Too broad: not added. 'elementary school' and the other grade bands are in the list because they matched only K-12 jobs.",
   "engine_rule: bare words (2026-10-28)": "'game' 66 titles (includes Director of Community, Game Product Manager), 'games' 29 (22 are a Databricks sales vertical 'Media, Entertainment & Games', 7 at a newspaper's Games desk), 'gaming' 13 (sales and marketing roles at Socure, Databricks, Supabase), 'designer' 661, 'producer' 80, 'artist' 73, 'tester' 19 (penetration testers), 'qa' 129, 'engine' 89 (search engines, jet engines), '3d' 49 (3D printing), 'graphics' 27, 'rendering' 10, 'studio' 45, 'interactive' 12, 'vr' and 'xr' alone (a VR affiliate programme, XR optical displays), 'animator' alone (a marketing motion-graphics role), 'vfx' alone (film), 'associate producer' (a ride-share 'Associate Producer, Manifold'), 'technical producer' (an event producer at OpenAI), 'tools engineer' (storage and hardware tools), 'qa tester' (any software QA tester). All too broad: not added.",
-  "engine_rule: false friends (2026-10-28)": "'Unity Catalog' (Databricks, a data-governance product) and 'Design Systems Designer' (a UI design-systems role at SoFi, which contains 'systems designer'). Blanked before matching. Company names are not read, so 'Unity Technologies' or a hospital called 'Unity Health' cannot match by their name."
+  "engine_rule: false friends (2026-10-28)": "'Unity Catalog' (Databricks, a data-governance product) and 'Design Systems Designer' (a UI design-systems role at SoFi, which contains 'systems designer'). Blanked before matching. Company names are not read, so 'Unity Technologies' or a hospital called 'Unity Health' cannot match by their name.",
+  "engine_rule: 'stage' (2026-10-28)": "'stage' alone is also English: 25 titles say 'Early Stage' (startup sales and marketing roles at Vanta, SpaceX and others). 'early stage' is blanked as a false friend, so 'stage' counts only as the French word.",
+  "engine_rule: studio list, first version (2026-10-28)": "Craft words tried and not kept: 'technical' (a Technical Product Management Intern matched), 'production' (matches supply-chain and manufacturing). Non-craft words added after reading: 'product designer' and 'product design' (Roblox's Associate Product Designer matched), 'manufacturing' (Nintendo's Manufacturing Engineer Intern), 'it' (Nintendo's IT interns). 'assistant' is a leaky early word (three Executive Assistant postings at Epic); the craft test is what removes them."
  },
  "measured_before_adding": {
   "zero titles today, no noise possible": [
@@ -130,7 +132,9 @@
   "connector_rule third pass (2026-10-18)": "992 titles with a marketing/adoption/account/partner/sales/success word; 13 name higher education in the body; 12 already kept; 1 added by 'marketing'.",
   "location_rule (2026-10-26)": "Saved ads, 2026-10-18 run, 3,243 postings: the keywords alone keep 92; with the country rule 82. The 10 it drops: Japan 4, South Korea 2, Germany 2, Indonesia 1, Mexico 1; 8 of them on today's six boards. 2 kept postings name no country ('Remote' on a talent-community post, 'N/A'). Snapshot of 84,282 postings (715 boards, 2026-10-24, titles and places only): the reader names a country for 82,327 of them (97.7%); against the boards' own country codes it agrees on 37,458 of 37,470 (99.97%). Titles the keywords alone keep: 1,056; with both gates 886 (country 144, K-12 title 24, both 2); on the six watched boards 58 and 50.",
   "k12_rule (2026-10-26)": "212 of 84,282 titles; 2 on the six watched boards (Canva, South Korea and Vietnam, both also dropped by the country rule). Body: 5 of 3,243 ads say K-12, 4 kept, all 4 also name higher education; not dropped.",
-  "engine_rule (2026-10-28)": "Snapshot of 84,282 postings: 163 titles carry a phrase of a group that is on, 14 would be posted, 23 held back (no level word), 104 not early career, 22 dropped by the country gate. Zero titles today for 'godot', 'unreal engine', 'ue4', 'ue5', 'level designer', 'combat designer', 'quest designer', 'graphics programmer', 'physics programmer', 'audio programmer', 'network programmer', 'virtual production', 'digital twin', 'twinmotion', 'archviz', 'serious game', so those cannot add noise today. 'unity' matches 3 titles (all Scopely, senior) and one false friend. Lectern's own 3,243 saved postings: 0."
+  "engine_rule (2026-10-28)": "Snapshot of 84,282 postings: 163 titles carry a phrase of a group that is on, 14 would be posted, 23 held back (no level word), 104 not early career, 22 dropped by the country gate. Zero titles today for 'godot', 'unreal engine', 'ue4', 'ue5', 'level designer', 'combat designer', 'quest designer', 'graphics programmer', 'physics programmer', 'audio programmer', 'network programmer', 'virtual production', 'digital twin', 'twinmotion', 'archviz', 'serious game', so those cannot add noise today. 'unity' matches 3 titles (all Scopely, senior) and one false friend. Lectern's own 3,243 saved postings: 0.",
+  "engine_rule: studio list (2026-10-28)": "17 boards that the feed reads were checked one request each on 2026-10-28 (all answered 200) and their early-career titles read; the 12 studios first tried added 14 early-career craft titles, 11 in allowed countries. After the review, 10 studios stay and add 9 posts today (Epic 3, Roblox 2, Naughty Dog 2, Riot 1, Nintendo 1); Twitch (5) would have been the largest source of noise and is dropped.",
+  "engine_rule: other languages (2026-10-28)": "'stagiaire' 9 titles (4 at a hotel group, 4 at a ride-share, 1 at a pharma company, all internships), 'alternance' 3, 'estágio', 'estagio' and 'estagiário' 5 (a hotel group and a non-profit), 'tirocinio' 1: all internships, so all are early-career words. Game roles in French in the snapshot: 'Concepteur de jeux' and 'Programmeur de jeux' (Kabam, contracts), 'Concepteur·rice de jouabilité Sénior·e' and 'Artiste de VFX Sénior.e' (Hasbro Montreal). Ubisoft's board, read once for this review, titles its internships 'Stage Gameplay Programmer - 6 mois' and 'Level Designer Assistant - Stage'."
  },
  "materials_rule": {
   "_comment": "Professor Bear, 2026-09-26: 'everything's probably named differently, but that kind of job would be something to look out for.' Titles cannot carry this family — 'documentation' is in 2 of 3,446 titles and 'technical writer' in zero — so a posting is also KEPT when its BODY says the job is to produce teaching materials FOR a named audience. Both halves are required: a make-materials phrase AND an audience. 'Maintain documentation' in a tax director's ad matches the first and not the second, which is the whole point. TIGHTENED same day after measurement: the first version kept 101 extra postings at roughly one-in-ten precision, because phrases like 'technical documentation' and 'technical content' appear in almost every engineering, support, and legal ad — every product has docs. Nine phrase groups were removed and the threshold raised to TWO verb-object phrases. The removed list is kept here because a rule that failed is evidence about the corpus, not an embarrassment. Final pass: threshold back to ONE phrase (two matched nothing in the whole corpus), and three more phrases cut. The surviving list is 23 phrases that only a teaching-materials job uses. Measured precision of the body rule after all cuts is in the run report; it is the only rule here whose precision was measured rather than assumed, because it was the only one that failed loudly enough to force it.",
@@ -2759,7 +2763,7 @@
   "body_phrases": []
  },
  "engine_rule": {
-  "_comment": "Which postings go to #games-3d-simulations: a game, engine or real-time phrase in the TITLE (groups), an early-career word in the title (early_career), the allowed countries and no K-12 (the two gates above apply here too). By hand: lower-case the title, blank the false_friends, look for a phrase of a group that is switched on; if a veto_word is in the title it is not early career (so 'Associate Director' is a director); if an early_career word is in the title it is posted; if neither, the level is 'not stated'. Every decision carries its reason (collect/engine_jobs.py judge_engine). MEASURED on the ai-jobs snapshot of 2026-10-24 (84,282 postings, 715 boards, titles and places only): 163 titles contain a phrase of a group that is on; 104 name a level that is not early career (senior 58, lead 16, principal 15, staff 6, sr 4, manager 2, ii 2, director 1); 22 are dropped by the country gate (none by K-12); 23 name no level and are HELD BACK; 14 would be posted (11 Epic Games internships, an Associate Game Designer at Hasbro, at Naughty Dog and at Nintendo). Lectern's own saved boards (3,243 postings, 2026-10-18) contain none: no watch-list company is a game studio. WHY SO FEW: of the 51 game, film and engine companies on the feed's list that I checked, 17 have a board it can read (Epic, Riot, Roblox, Scopely, Supercell, Nintendo, Take-Two, Naughty Dog, Hasbro and a few more; Unity, Electronic Arts, Ubisoft, Activision, Blizzard and the rest sit on systems it cannot read yet), and studios post mostly senior jobs. THE EARLY-CAREER READING is the title and nothing else (the ad text is not in the feed): it agrees with the feed's own seniority label on 162 of 163 matched titles (the one difference is a 'Manager', and mine is right), but the two rules are of one family, so that is consistency, not proof; I read the 14 posted and all 14 are plausible entry points. A title that states no level may still be junior-friendly ('Game Programmer (1 Year Contract)') or may want five years; the title cannot say. THE CHOICES THAT ARE HIS, with the default taken: (1) posting is OFF (`posting`: \"off\"); a dry run shows what would go, and nothing is sent until he says go and this is set to \"on\" and the poster is run with --send. (2) include_unstated_level is false: the 23 with no level word are held back, not posted; true would add them. (3) The `simulation` group is OFF: it would add 10 postings (1 early career, 9 no level word); read by title, only the defense 'modeling and simulation' ones (Anduril, Shield AI) might be engine work, and the rest are chip, vehicle-dynamics, mechanical or drug-discovery simulation; switch it on with \"enabled\": true. (4) No list of game companies: a title like 'Software Engineer Intern' at a studio names no game or engine and is missed; a hint list of 12 studios would add 14 early-career craft titles (11 in allowed countries, 2 or 3 of them noise such as a manufacturing-engineer internship), and would put a second list of companies beside targets.json, so it was not added. SOURCE: see the 2026-10-28 entry in HISTORY.md; the feed's rights status is a decision of his too.",
+  "_comment": "Which postings go to #games-3d-simulations: (a) a game, engine or real-time phrase in the TITLE (groups), or (b) a craft role at a studio on the list (studio_hint; the list is the `games` section of config/targets.json, status `active`), AND an early-career word in the title (early_career), the allowed countries and no K-12 (the two gates above apply here too). By hand: lower-case the title, blank the false_friends, look for a phrase of a group that is switched on; if a veto_word is in the title it is not early career (so 'Associate Director' is a director); if an early_career word is in the title it is early career; failing a phrase, an early-career title at a listed studio counts if it has a craft_word and none of the non_craft_words; with neither level word the level is 'not stated'. Every decision carries its reason (collect/engine_jobs.py judge_engine). MEASURED on the ai-jobs snapshot of 2026-10-24 (84,282 postings, 715 boards, titles and places only): 178 titles reach a decision. 105 name a level that is not early career (senior 58, lead 16, principal 15, staff 6, sr 4, manager 2, ii 2, sénior 1, director 1); 25 are dropped by the country gate (China 12, Spain 5, India 2, Uruguay 2, Finland, South Korea, Serbia, Japan 1 each; none by K-12); 25 name no level and are HELD BACK; 23 would be posted, 14 by a title phrase (11 Epic Games internships; an Associate Game Designer at Hasbro, Naughty Dog and Nintendo) and 9 by the studio list (Epic 3, Roblox 2, Naughty Dog 2, Riot 1, Nintendo 1). Lectern's own saved boards (3,243 postings, 2026-10-18) contain none: no watch-list company is a game studio. THE STUDIO LIST, company by company, with a keep or drop line and the reason, is section H of TARGETS.md. Kept (10): Epic Games, Riot Games, Roblox, Scopely, Supercell, Nintendo, Naughty Dog, Jam City, Kabam, Bungie. Dropped (7): Take-Two (a corporate board), Bethesda (the feed's board is a physical-therapy employer, not the game company), Twitch and Discord (not game developers; Twitch alone would add 5 engineering postings), Hasbro (toys; the phrases already find its game roles), Framestore and Foundry (film VFX). The noise it was checked for: Nintendo has 17 early-career titles and 15 are IT, retail, supply-chain, localization or manufacturing interns, all removed by the non_craft_words; an 'Associate Product Designer' at Roblox got through the first version and is now removed. WHY SO FEW: of the 51 game, film and engine companies on the feed's list that I checked, 17 have a board the feed can read, and studios post mostly senior jobs. Of the five the feed cannot read, only Ubisoft has a public board that answers (SmartRecruiters 'Ubisoft2', 324 postings; judged with these rules it would add 6 French internships); Activision is on Workday, Blizzard on Phenom, Electronic Arts on a paged HTML site, Unity's system is not identified. THE EARLY-CAREER READING is the title and nothing else (the ad text is not in the feed): it agrees with the feed's own seniority label on 162 of 163 titles the first version matched (the one difference is a 'Manager', and this rule is right), but the two rules are of one family, so that is consistency, not proof; I read every title that would be posted and all are plausible entry points. A title that states no level may be junior-friendly ('Game Programmer (1 Year Contract)') or may want five years; the title cannot say. 'Early Stage' (25 titles, startups) is blanked so it does not read as 'stage', the French word for an internship. THE CHOICES THAT ARE HIS, with the default taken: (1) posting is OFF (`posting`: \"off\"); a dry run shows what would go, and nothing is sent until he says go and this is set to \"on\" and the poster is run with --send. (2) include_unstated_level is false: the 25 with no level word are held back, not posted; true would add them. (3) The `simulation` group is OFF: it would add 10 postings (1 early career, 9 no level word); read by title, only the defense 'modeling and simulation' ones (Anduril, Shield AI) might be engine work; switch it on with \"enabled\": true. (4) The studio list is on, with the verdicts above; he can flip any studio by changing its verdict in targets.json (status `active` = keep, `dropped` = drop) and running ops/build_from_targets.py. (5) Ubisoft: adding it to the feed's company list is a change in the ai-jobs repository, which is his to approve. SOURCE: see the 2026-10-28 entries in HISTORY.md; the feed's rights status is a decision of his too.",
   "channel": "games-3d-simulations",
   "posting": "off",
   "include_unstated_level": false,
@@ -2868,11 +2872,22 @@
      "simulation environments",
      "synthetic environment"
     ]
+   },
+   "game_roles_fr": {
+    "enabled": true,
+    "phrases": [
+     "concepteur de jeux",
+     "programmeur de jeux",
+     "artiste technique",
+     "artiste de niveau",
+     "concepteur·rice de jouabilité"
+    ]
    }
   },
   "false_friends": [
    "unity catalog",
-   "design systems"
+   "design systems",
+   "early stage"
   ],
   "early_career": {
    "words": [
@@ -2906,7 +2921,22 @@
     "producer i",
     "level 1",
     "game tester",
-    "playtester"
+    "playtester",
+    "stage",
+    "stagiaire",
+    "alternance",
+    "alternant",
+    "alternante",
+    "apprenti",
+    "apprentie",
+    "estágio",
+    "estagio",
+    "estagiário",
+    "estagiario",
+    "tirocinio",
+    "tirocinante",
+    "stagista",
+    "júnior"
    ],
    "veto_words": [
     "senior",
@@ -2929,7 +2959,79 @@
     "level 2",
     "level 3",
     "level 4",
-    "level 5"
+    "level 5",
+    "sénior",
+    "directeur",
+    "directrice",
+    "chef"
+   ]
+  },
+  "studio_hint": {
+   "enabled": true,
+   "craft_words": [
+    "engineer",
+    "engineering",
+    "programmer",
+    "developer",
+    "software",
+    "designer",
+    "artist",
+    "animator",
+    "animation",
+    "qa",
+    "sdet",
+    "tester",
+    "producer",
+    "vfx",
+    "audio"
+   ],
+   "non_craft_words": [
+    "marketing",
+    "sales",
+    "counsel",
+    "legal",
+    "recruit",
+    "recruiter",
+    "recruiting",
+    "supply chain",
+    "compensation",
+    "finance",
+    "accounting",
+    "accountant",
+    "hr",
+    "people",
+    "data science",
+    "data scientist",
+    "applied scientist",
+    "machine learning",
+    "ml",
+    "product management",
+    "product manager",
+    "product designer",
+    "product design",
+    "analyst",
+    "it",
+    "information technology",
+    "support",
+    "localization",
+    "community",
+    "manufacturing",
+    "retail",
+    "merchandising",
+    "communications",
+    "public relations",
+    "business intelligence",
+    "sustainability",
+    "e-commerce",
+    "project manager",
+    "program manager",
+    "customer",
+    "operations",
+    "facilities",
+    "procurement",
+    "planning",
+    "logistics",
+    "trade"
    ]
   }
  }

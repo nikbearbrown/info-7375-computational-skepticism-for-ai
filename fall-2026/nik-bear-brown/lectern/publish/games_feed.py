@@ -59,8 +59,8 @@ def build_messages(rows):
     return [tuple(m) for m in msgs]
 
 
-def judge_all(views, kw):
-    return [(v, ej.judge_engine(v, kw)) for v in views]
+def judge_all(views, kw, studios=frozenset()):
+    return [(v, ej.judge_engine(v, kw, studios)) for v in views]
 
 
 def wanted(judged, kw):
@@ -88,6 +88,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--jobs", required=True, help="the ai-jobs jobs.jsonl, or a Lectern all-jobs-DATE.json")
     ap.add_argument("--keywords", default=lp.config("keywords.json"))
+    ap.add_argument("--targets", help="default: config/targets.json, whose `games` section is the list of studios; none if the file is absent")
     ap.add_argument("--state", default=STATE, help="the ids already posted (default runs/posted-games-to-discord.json)")
     ap.add_argument("--sample", type=int, default=12, help="how many lines of the preview to print")
     ap.add_argument("--show-unstated", action="store_true", help="also list the postings held back because their title states no level")
@@ -101,7 +102,8 @@ def main(argv=None):
     if "engine_rule" not in kw:
         print(f"{a.keywords} has no engine_rule")
         return 2
-    judged = judge_all(ej.load_postings(a.jobs), kw)
+    studios = ej.load_studios(a.targets)
+    judged = judge_all(ej.load_postings(a.jobs), kw, studios)
     dec = collections.Counter(r["decision"] for _, r in judged)
     todo = wanted(judged, kw)
     state_exists = os.path.exists(a.state)
@@ -111,6 +113,8 @@ def main(argv=None):
 
     print(f"{len(judged):,} postings read from {os.path.basename(a.jobs)} · rules v{kw['version']} · posting is {kw['engine_rule'].get('posting', 'off').upper()}")
     print("  " + " · ".join(f"{k} {dec[k]}" for k in ("post", "unstated", "senior-or-mid", "rejected", "no-match")))
+    from_list = sum(1 for _, r in judged if r["decision"] == "post" and r["hits"] and r["hits"][0][0].startswith("studio hint"))
+    print(f"  studio list: {len(studios)} studios from targets.json" + (f"; {from_list} of the {dec['post']} posts come from it, the rest from a title phrase" if studios else " (none: titles only)"))
     print(f"  to post: {len(todo)} match; {len(todo) - len(new)} already posted; {len(new)} new, in {len(msgs)} message(s)"
           + ("" if state_exists else " (no memory of earlier posts yet)"))
     new.sort(key=lambda x: (x[0]["company"], x[0]["title"], x[0]["location_text"]))

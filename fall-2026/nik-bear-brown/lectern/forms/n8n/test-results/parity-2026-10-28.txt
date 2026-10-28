@@ -17,3 +17,6 @@ PARITY: Python and JavaScript agree on all 12,882 location lines and all 68,319 
 
 ## not ported
 The games judge (collect/engine_jobs.py) and its poster (publish/games_feed.py) are Python only. shared/keywords.json carries the new `engine_rule` block so that the copy of the rules is whole, and the n8n filter ignores it.
+
+## re-run later the same day on rules v0.6.2 (the game-studio list, French internship words)
+All of the above re-run after the change: headless ALL PASSED; real data 1869/1869 identical (60 kept by each); delta and messages identical; place and K-12 readers agree on all 12,882 location lines and 68,319 titles. The n8n filter ignores `engine_rule` and the new `games` section of config/targets.json.

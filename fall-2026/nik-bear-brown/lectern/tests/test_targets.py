@@ -10,8 +10,8 @@ import lectern_paths as lp
 
 DOC = json.load(open(lp.config("targets.json"), encoding="utf-8"))
 T = DOC["targets"]
-SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research"}
-STATUSES = {"active", "removed", "no-reader", "unreadable", "unchecked", "partial", "read-by-hand"}
+SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research", "games"}
+STATUSES = {"active", "removed", "no-reader", "unreadable", "unchecked", "partial", "read-by-hand", "dropped"}
 
 
 class Targets(unittest.TestCase):
@@ -55,6 +55,29 @@ class Targets(unittest.TestCase):
         import subprocess
         r = subprocess.run([sys.executable, os.path.join(lp.ROOT, "ops", "build_from_targets.py"), "--check"], capture_output=True, text=True)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_a_game_studio_carries_a_verdict_a_feed_name_and_a_reason(self):
+        games = [t for t in T if t["section"] == "games"]
+        self.assertTrue(games)
+        for t in games:
+            g = t["games"]
+            self.assertIn(g["verdict"], ("keep", "drop", "to-do"), t["id"])
+            self.assertEqual(t["status"], {"keep": "active", "drop": "dropped", "to-do": "no-reader"}[g["verdict"]], t["id"])
+            self.assertTrue(g["feed_names"] and t["why"], t["id"])
+
+    def test_the_game_studios_cannot_leak_into_the_watch_list_for_the_education_feed(self):
+        sources = json.load(open(lp.config("sources.json"), encoding="utf-8"))
+        watched = {b["company"] for s in sources["sources"] for b in s["boards"]}
+        self.assertFalse(watched & {t["name"] for t in T if t["section"] == "games"})
+        self.assertFalse({t["name"] for t in T if t["section"] == "games"} & set(k for k in sources["removed"] if k != "_comment"))
+
+    def test_the_studio_list_the_games_rule_reads_is_the_kept_studios(self):
+        import engine_jobs
+        studios = engine_jobs.studio_names(DOC)
+        self.assertIn("epic games", studios)
+        self.assertNotIn("twitch", studios)
+        self.assertNotIn("bethesda", studios)
+        self.assertEqual(len(studios), sum(1 for t in T if t["section"] == "games" and t["status"] == "active"))
 
     def test_a_reason_for_every_removal_is_still_visible_to_a_discovery_agent(self):
         removed = [t["name"] for t in T if t["status"] == "removed"]

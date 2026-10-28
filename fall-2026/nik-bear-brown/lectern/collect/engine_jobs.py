@@ -15,6 +15,10 @@ A posting is judged from its TITLE, its place and (for the K-12 gate) nothing el
   4. post          an early-career word is in the title ('Intern', 'Junior', 'Associate', 'Graduate', 'Engineer I', ...)
   5. unstated      the title says nothing about level; posted only if engine_rule.include_unstated_level is true
 
+A second way into step 1, for a studio on the list (config/targets.json, section `games`, status `active`): an early-career title
+with a craft word ('Software Engineer Intern', 'Associate Producer') and none of the non-craft words ('Marketing', 'Counsel',
+'Supply Chain') counts as a game job even though it names no game or engine, because the employer is a game studio.
+
 Stdlib only. No network. Every decision carries its reason.
 """
 import os as _os, sys as _sys
@@ -33,11 +37,17 @@ def title_text(title):
     return re.sub("[‐-―−]", "-", (title or "").lower())
 
 
-def role_hits(title, rule):
-    """[(group, phrase)] for every phrase of an enabled group found in the title, after the false friends are blanked."""
+def blanked(title, rule):
+    """The title in the form phrases are matched against, with the false friends ('unity catalog', 'early stage') blanked out."""
     t = title_text(title)
     for ff in rule.get("false_friends") or []:
         t = t.replace(ff.lower(), " ")
+    return t
+
+
+def role_hits(title, rule):
+    """[(group, phrase)] for every phrase of an enabled group found in the title, after the false friends are blanked."""
+    t = blanked(title, rule)
     return [(g, p) for g, spec in (rule.get("groups") or {}).items() if spec.get("enabled")
             for p in spec.get("phrases") or [] if collect.word_in(p.lower(), t)]
 
@@ -45,13 +55,39 @@ def role_hits(title, rule):
 def level_of(title, rule):
     """-> ('senior-or-mid' | 'early' | 'unstated', [the words that decided it]). A level word that is not early career wins:
     'Associate Director' is a director."""
-    t = title_text(title)
+    t = blanked(title, rule)
     ec = rule.get("early_career") or {}
     veto = [w for w in ec.get("veto_words") or [] if collect.word_in(w.lower(), t)]
     if veto:
         return "senior-or-mid", veto
     early = [w for w in ec.get("words") or [] if collect.word_in(w.lower(), t)]
     return ("early", early) if early else ("unstated", [])
+
+
+def studio_names(doc):
+    """The studios on the list: the case-folded names the feed uses for them (targets.json, section `games`, status `active`)."""
+    out = set()
+    for t in doc.get("targets") or []:
+        if t.get("section") == "games" and t.get("status") == "active":
+            out.update(n.casefold() for n in (t.get("games") or {}).get("feed_names") or [t["name"]])
+    return out
+
+
+def load_studios(path=None):
+    """The studio list from config/targets.json, or an empty set where that file does not exist (the other classes' flat copies)."""
+    try:
+        with open(path or lp.config("targets.json"), encoding="utf-8") as f:
+            return studio_names(json.load(f))
+    except FileNotFoundError:
+        return set()
+
+
+def studio_craft(title, spec):
+    """The craft word that makes an early-career title at a studio a game job, or None if there is none or a non-craft word is there."""
+    t = title_text(title)
+    craft = [w for w in spec.get("craft_words") or [] if collect.word_in(w.lower(), t)]
+    non = [w for w in spec.get("non_craft_words") or [] if collect.word_in(w.lower(), t)]
+    return craft[0] if craft and not non else None
 
 
 def posting_view(row):
@@ -73,14 +109,21 @@ def load_postings(path):
         return [posting_view(r) for r in json.load(f)["records"]]
 
 
-def judge_engine(view, kw):
-    """-> {decision, reason, hits, level, level_words}. decision is one of no-match, senior-or-mid, rejected, post, unstated."""
+def judge_engine(view, kw, studios=frozenset()):
+    """-> {decision, reason, hits, level, level_words}. decision is one of no-match, senior-or-mid, rejected, post, unstated.
+    `studios` is the case-folded studio list from load_studios(); without it only the title phrases count."""
     rule = kw["engine_rule"]
     hits = role_hits(view["title"], rule)
     out = {"decision": "no-match", "reason": "no engine or game phrase in the title", "hits": hits, "level": None, "level_words": []}
+    level, words = level_of(view["title"], rule)
+    hint = rule.get("studio_hint") or {}
+    if not hits and studios and hint.get("enabled") and level == "early" and view["company"].casefold() in studios:
+        craft = studio_craft(view["title"], hint)
+        if craft:
+            hits = [(f"studio hint: {view['company']}", craft)]
+            out["hits"] = hits
     if not hits:
         return out
-    level, words = level_of(view["title"], rule)
     out.update(level=level, level_words=words)
     if level == "senior-or-mid":
         out.update(decision="senior-or-mid", reason="not early career: " + ", ".join(f"'{w}'" for w in words[:2]) + " in the title")

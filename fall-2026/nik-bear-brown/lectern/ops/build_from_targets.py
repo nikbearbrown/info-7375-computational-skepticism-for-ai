@@ -125,6 +125,16 @@ def derive_tables(doc):
                            ("| School | Faculty-jobs page (direct link) | System | Titles readable by a script? | Robots file | Notes and to-do |", "|---|---|---|---|---|---|"))
     out["research"] = table([f"| {t['name']} | {label[t['type']]} | {t['why']} | {cells(t)} | {t['status_note']}{'. To-do: ' + t['todo'] if t['todo'] else ''} |" for t in sec("research")],
                             ("| Target | Type | Why | Data (direct link) | Status and to-do |", "|---|---|---|---|---|"))
+    def games_row(t):
+        g = t.get("games") or {}
+        a = (g.get("answers_2026_10_28") or {}).get("postings")
+        e = g.get("early_career_by_title_2026_10_24")
+        ec = (f"{e['early_career']}: {e['matched_by_a_phrase']} by a phrase, {e['added_by_the_list']} added by the list, "
+              f"{e['outside_allowed_countries']} outside the countries, {e['not_a_craft_role']} not a craft role") if e else "not read by the feed"
+        return (f"| {t['name']} | **{g.get('verdict', '')}** | {(t['provider'] + ': ') if t.get('provider') else ''}{cells(t)} | "
+                f"{a if a is not None else 'not read'} | {ec} | {t['why']} | {t['todo'] or 'none'} |")
+    out["games"] = table([games_row(t) for t in sec("games")],
+                         ("| Studio | Verdict | Board (provider) and its links | Postings answering 2026-10-28 | Early-career titles in the 2026-10-24 snapshot | Why this verdict; the noise | To-do |", "|---|---|---|---|---|---|---|"))
     out["removed"] = table([f"| {t['name']} | {t['removed']['on'] or 'earlier'} | {t['removed']['entry'].get('reason', '')} |" for t in T if t["status"] == "removed"],
                            ("| Removed | On | Reason, as recorded |", "|---|---|---|"))
     return out
