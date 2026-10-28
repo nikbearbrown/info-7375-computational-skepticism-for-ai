@@ -34,9 +34,9 @@ A day's run is `ops/daily.sh`: collect, then what is new (and post it), then chu
 lectern/
   config/    targets.json · keywords.json · title_families.json · biolabs.json · …        the rules and the list of targets: data you edit, not code
              (sources.json, faculty_config.json and the seeds in biolabs.json are generated from targets.json)
-  collect/   collect.py · faculty_feed.py · collectors/                                   everything that talks to a source
-  publish/   publish_delta.py · notify.py                                                 everything that changes state or tells someone
-  audit/     audit_rejects.py · audit_titles.py · audit_gates.py · demand_report.py · churn.py   read-only measurement of the filter and the market
+  collect/   collect.py · engine_jobs.py · faculty_feed.py · collectors/                                   everything that talks to a source
+  publish/   publish_delta.py · notify.py · games_feed.py                                                 everything that changes state or tells someone
+  audit/     audit_rejects.py · audit_titles.py · audit_gates.py · audit_engine_titles.py · demand_report.py · churn.py   read-only measurement of the filter and the market
   tests/     test_*.py                                                                    no network
   ops/       daily.sh · sync.sh                                                           running it and copying it
   notes/     ATS.md
@@ -63,10 +63,11 @@ The folders follow the pipeline, not the file type: rules in, sources read, what
 | **Faculty listings** | `collect/faculty_feed.py` | Business-school faculty roles that mention AI, from two keyword feeds, each with the rule that fired |
 | **What changed** | `publish/publish_delta.py` | New, changed and gone since the last published run. A source that could not be read today never closes a posting |
 | **Post** | `publish/notify.py` | Builds the Discord messages (watched companies only, most-wanted first, nothing posted twice, anything with a path or email address refused). Also `post_labs()`: great-fit lab pages for Professor Bear to look at |
-| **Audit the filter** | `audit/audit_rejects.py` · `audit/audit_titles.py` · `audit/audit_gates.py` · `audit/demand_report.py` | A reproducible random sample of rejects to read; the same audit by job function; what the country rule and the K-12 rule drop, listed, before and after; companies ranked by whether they want this work done |
+| **A second channel** | `collect/engine_jobs.py` · `publish/games_feed.py` · `engine_rule` in `config/keywords.json` | Early-career game, engine and real-time listings for #games-3d-simulations, judged from the title, with the country and K-12 gates. **Posting is off**: a dry run is the default and the rules say `"posting": "off"`. It reads the ai-jobs snapshot, because no watched company is a game studio |
+| **Audit the filter** | `audit/audit_rejects.py` · `audit/audit_titles.py` · `audit/audit_gates.py` · `audit/audit_engine_titles.py` · `audit/demand_report.py` | A reproducible random sample of rejects to read; the same audit by job function; what the country rule and the K-12 rule drop, listed, before and after; what each games phrase matches, and its noise; companies ranked by whether they want this work done |
 | **Measure** | `audit/churn.py` | Are these real jobs that turn over, or postings that sit there? Closed is not hired |
 | **Operations** | `ops/daily.sh` · `ops/sync.sh` | The daily run; copying the shared files to the other two classes |
-| **Tests** | `tests/test_publish_delta.py` · `test_churn.py` · `test_connector_rule.py` · `test_gates.py` · `test_notify.py` · `test_run_daily.py` | Run each with `python3 tests/test_x.py`; no network |
+| **Tests** | `tests/test_publish_delta.py` · `test_churn.py` · `test_connector_rule.py` · `test_gates.py` · `test_engine_jobs.py` · `test_games_feed.py` · `test_notify.py` · `test_run_daily.py` | Run each with `python3 tests/test_x.py`; no network |
 | **Notes** | `notes/ATS.md` | Which applicant-tracking system each company uses, and an honest "unknown" where it was not verified |
 | **Output** | `runs/` | Dated outputs. Tracked: the small deltas, churn reports and `published-state.json`. Ignored: full snapshots, raw payloads, ad text, logs, `monitor.db`, lab records |
 

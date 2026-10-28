@@ -78,6 +78,15 @@ Every push that touches this folder adds a row to the `## GitHub pushes` table, 
 
 **Standing instruction (Professor Bear, 2026-10-20):** the companies, schools and research groups Lectern looks at have **one** source of truth, `lectern/config/targets.json`; every form of Lectern (the Python, `lectern/forms/n8n/` and the others) reads it and none copies it. Change a target there, then run `python3 lectern/ops/build_from_targets.py`; it regenerates `sources.json`, the schools in `faculty_config.json`, the seeds in `biolabs.json` and the tables in `lectern/TARGETS.md` (`--check` says whether anything differs, and `tests/test_targets.py` fails if it does). A form may collect its own data and may propose a new target in its own `proposed-targets.jsonl` with a link to a public page that backs the claim, but never edits `targets.json`; a person promotes it. A removed target stays, with its reason and date.
 
+## Rule 8 — early-career game, engine and real-time listings are for #games-3d-simulations, and posting is OFF until Professor Bear says go
+
+**Standing instruction (Professor Bear, 2026-10-28):** *"any game jobs that an early-career person who knows Unreal or Godot or Unity, or has any experience there, could take"* go to a second Discord channel, #games-3d-simulations, not to #professor-bear. **Dry run only until he says go.**
+
+- **How:** `lectern/publish/games_feed.py` (a dry run is its default); the rules are `engine_rule` in `lectern/config/keywords.json`, judged by `lectern/collect/engine_jobs.py`. Three locks keep it from posting by accident: the rules say `"posting": "off"`; `--send` must be on the command line; and a first send with no memory of earlier posts needs `--post-all` (or `--baseline` first). Posted ids are remembered in `runs/posted-games-to-discord.json`, so nothing is posted twice.
+- **Where it reads:** the ai-jobs snapshot (every posting on the boards it reads), because none of the watched companies is a game studio. Rights for posting from it are a decision of his (see `lectern/HISTORY.md`, 2026-10-28).
+- **What goes in a post:** the title, company, place and link of the employer's own public posting, the words that matched, and the line "A person decides; the machine only ranks words." **What never does:** a local path, an email address, a webhook URL. The webhook stays in the home folder (`~/.discord-webhooks/games-3d-simulations`) and is never printed.
+- **One place posts.** If an always-on server is ever the poster, the Mac must not post to this channel (it would not know what the server posted). The country rule and the K-12 rule apply here too.
+
 ## Pushing from this folder
 
 - **Each push needs Professor Bear's word.** He approved the first push on 2026-09-24. There is no standing approval for this folder yet.

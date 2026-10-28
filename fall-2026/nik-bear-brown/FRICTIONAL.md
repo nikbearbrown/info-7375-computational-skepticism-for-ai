@@ -963,6 +963,23 @@ Where to check each claim in this log. Commits are listed in the push table belo
   - Evidence: `lectern/config/keywords.json` (the comments of both rules hold the counts), `lectern/collect/collect.py`, `lectern/tests/test_gates.py` (17 tests), `lectern/audit/audit_gates.py` (reproduces the lists of what was dropped), `lectern/forms/n8n/test-results/parity-2026-10-26.txt`.
   - Next: I read the lists of what the gates dropped and answer the four choices; then `./lectern/ops/sync.sh --check` and `./lectern/ops/sync.sh` for the other two classes, which are still on v0.5.2. Not pushed.
 
+### 2026-10-28 — Game and engine jobs for a second Discord channel, with posting off
+
+- **Date and what I was working on:** 2026-10-28. Adding a second destination to Lectern for early-career game, engine and real-time jobs.
+- **I tried / expected:** I pasted a list of job titles for deep Unity, Unreal and Godot skill (an AI-compiled draft, not fact-checked) and said, by voice, to add them and that *\"any game jobs that an early-career person who knows Unreal or Godot or Unity, or has any experience there, could take\"* should be posted to a new Discord channel I had just made, #games-3d-simulations. Dry run only until I say go. I did not state how many I expected.
+- **What happened:**
+  - **A second judge, so the education feed stays clean.** `keywords.json` v0.6.1 has an `engine_rule`; `collect/engine_jobs.py` judges a posting from its title and place; `publish/games_feed.py` posts. The country rule and the K-12 rule apply. Posting is locked three ways (the rules say off, `--send` is needed, a first send needs `--post-all`).
+  - **Measured before adding.** On a snapshot of 84,282 postings from 715 boards (titles and places only), 163 titles carry a game, engine or real-time phrase; 104 are senior or mid; 22 are in countries outside the allowed list; 23 state no level and are held back; **14 would be posted** (11 Epic Games internships and an Associate Game Designer each at Hasbro, Naughty Dog and Nintendo). **Lectern's own six boards contain none.**
+  - **The feed is thin for games.** Of 51 game, film and engine companies on its list that I checked, 17 have a board it can read. Unity, Electronic Arts, Ubisoft, Activision and Blizzard are not among them. The pasted list also says Godot is a learning engine and not a hiring engine; the snapshot agrees (zero Godot titles).
+  - **Traps found by reading.** *Unity Catalog* is a Databricks data product; *Design Systems Designer* contains *systems designer*; *games* and *gaming* are mostly sales verticals; *K8* had already been caught as Kubernetes. A test found a real bug in my own poster: a failed first send created the memory file, which would have switched off the first-send lock; fixed, with a test.
+  - **Not decided, and left to me:** whether to post titles with no level word (23 held back); whether to switch on the simulation group (10 more, about half not 3D); whether to add a list of game companies (14 more early-career titles at 12 studios, 2 or 3 of them noise); the rights question for posting individual postings from the ai-jobs snapshot; and where the poster runs, since the snapshot lives on the server.
+- **What I did:** Gave the instruction and the list, and the order not to post. I have not reviewed the rules, the 14, or the held-back list.
+- **What Claude or another person contributed:** Claude Code read the pasted list as data, measured every phrase against the snapshot, wrote the judge, the poster, the audit and 26 tests, regenerated and re-tested both n8n copies, and wrote `lectern/HISTORY.md` and Rule 8 in `CLAUDE.md`. It sent nothing, read no webhook, did not run `sync.sh`, did not push and touched no server.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: `lectern/config/keywords.json` (`engine_rule` and its comment), `lectern/collect/engine_jobs.py`, `lectern/publish/games_feed.py`, `lectern/audit/audit_engine_titles.py`, `lectern/tests/test_engine_jobs.py`, `lectern/tests/test_games_feed.py`, `lectern/forms/n8n/test-results/parity-2026-10-28.txt`.
+  - Next: I read the dry run and answer the five open questions; if I say go, set `posting` to `on`, choose where it runs, and run `--baseline` or `--post-all` once. Not pushed.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.

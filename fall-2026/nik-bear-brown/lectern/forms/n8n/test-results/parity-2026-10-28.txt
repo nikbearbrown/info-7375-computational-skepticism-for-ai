@@ -1,0 +1,19 @@
+# Parity and headless runs, 2026-10-28 (Lectern master: rules v0.6.1, which adds `engine_rule` for a games channel; nothing else the n8n form reads changed)
+
+## test_headless (n8n 1.113.3, disposable profile, no network)
+ALL PASSED: 01-collect, 02-filter, 03-delta, 04-post-to-discord, 05-daily
+
+## parity_real_data (the six boards on today's watch list, runs/2026-10-18/raw)
+boards read: 6   postings: python 1869, javascript 1869   only-in-one: 0
+kept: python 60, javascript 60
+PARITY: all 1869 postings identical on every field, keep decision and matched words
+
+## parity_delta / parity_messages (runs 2026-10-08 -> 2026-10-18)
+PARITY: new, changed and gone are identical, including the reasons
+PARITY: same rows in the same order and byte-identical messages
+
+## parity_location (ai-jobs snapshot of 2026-10-24: 84,282 postings)
+PARITY: Python and JavaScript agree on all 12,882 location lines and all 68,319 titles
+
+## not ported
+The games judge (collect/engine_jobs.py) and its poster (publish/games_feed.py) are Python only. shared/keywords.json carries the new `engine_rule` block so that the copy of the rules is whole, and the n8n filter ignores it.

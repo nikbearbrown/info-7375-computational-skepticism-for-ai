@@ -76,20 +76,20 @@ def build_messages(new, watched, first_time=(), already=()):
     return rows, msgs
 
 
-def post(title, text, send, prefix="Jobs: "):
-    """One embed. Returns True if Discord accepted it."""
+def post(title, text, send, prefix="Jobs: ", channel=CHANNEL):
+    """One embed to a channel (default #professor-bear). Returns True if Discord accepted it."""
     if re.search(r"/[U]sers/|/home/\w+|[\w.+-]+@[\w-]+\.[\w.]+|discord(app)?\.com/api/webhooks", title + text):
         print("NOT SENT: text contains a local path, email address or webhook URL")
         return False
     if not send:
-        print(f"DRY RUN, #{CHANNEL}, nothing sent: {title} ({len(text)} chars)")
+        print(f"DRY RUN, #{channel}, nothing sent: {title} ({len(text)} chars)")
         return False
     payload = {"username": "Professor Bear", "embeds": [{"title": prefix + title, "description": text, "color": 0xD97757}]}
-    req = urllib.request.Request(webhook_url(), data=json.dumps(payload).encode(),
+    req = urllib.request.Request(webhook_url(channel), data=json.dumps(payload).encode(),
                                  headers={"Content-Type": "application/json", "User-Agent": "lectern-notify/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=20) as r:
-            print(f"posted to #{CHANNEL}: HTTP {r.status}")
+            print(f"posted to #{channel}: HTTP {r.status}")
             return 200 <= r.status < 300
     except urllib.error.HTTPError as e:
         print(f"Discord refused it: HTTP {e.code}")
