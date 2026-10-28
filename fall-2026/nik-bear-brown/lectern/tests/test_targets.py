@@ -10,7 +10,7 @@ import lectern_paths as lp
 
 DOC = json.load(open(lp.config("targets.json"), encoding="utf-8"))
 T = DOC["targets"]
-SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research", "games"}
+SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research", "games", "consulting"}
 STATUSES = {"active", "removed", "no-reader", "unreadable", "unchecked", "partial", "read-by-hand", "dropped"}
 
 
@@ -65,11 +65,37 @@ class Targets(unittest.TestCase):
             self.assertEqual(t["status"], {"keep": "active", "drop": "dropped", "to-do": "no-reader"}[g["verdict"]], t["id"])
             self.assertTrue(g["feed_names"] and t["why"], t["id"])
 
-    def test_the_game_studios_cannot_leak_into_the_watch_list_for_the_education_feed(self):
+    def test_the_game_studios_and_consulting_firms_cannot_leak_into_the_watch_list_for_the_education_feed(self):
         sources = json.load(open(lp.config("sources.json"), encoding="utf-8"))
         watched = {b["company"] for s in sources["sources"] for b in s["boards"]}
-        self.assertFalse(watched & {t["name"] for t in T if t["section"] == "games"})
-        self.assertFalse({t["name"] for t in T if t["section"] == "games"} & set(k for k in sources["removed"] if k != "_comment"))
+        removed = set(k for k in sources["removed"] if k != "_comment")
+        unreachable = {u["company"] for u in sources["unreachable"]}
+        for section in ("games", "consulting"):
+            names = {t["name"] for t in T if t["section"] == section}
+            self.assertTrue(names, section)
+            for other in (watched, removed, unreachable):
+                self.assertFalse(names & other, (section, names & other))
+        # the generator turns only the `boards` section into the watch list: nothing in these sections may carry its other triggers
+        for t in T:
+            if t["section"] in ("games", "consulting"):
+                self.assertNotIn("unreachable", t, t["id"])
+                self.assertNotEqual(t["status"], "removed", t["id"])
+
+    def test_a_consulting_firm_carries_a_verdict_a_status_to_match_and_what_the_research_found(self):
+        firms = [t for t in T if t["section"] == "consulting"]
+        self.assertGreaterEqual(len(firms), 60)
+        for t in firms:
+            c = t["consulting"]
+            self.assertIn(c["verdict"], ("keep", "drop", "to-do"), t["id"])
+            self.assertIn(t["status"], {"keep": ("active",), "drop": ("dropped",), "to-do": ("no-reader", "unreadable")}[c["verdict"]], t["id"])
+            self.assertTrue(t["why"] and c["feed_names"], t["id"])
+            self.assertNotIn("h1b", json.dumps(t).lower(), t["id"])           # a third party's unsourced flag is not stored anywhere
+            if c["verdict"] == "keep":
+                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters"), t["id"])
+                self.assertTrue(t["data"] and c["board"]["slug"], t["id"])
+            if c["verdict"] == "to-do":
+                self.assertTrue(t["todo"], t["id"])
+        self.assertEqual(sum(1 for t in firms if t["status"] == "active"), 5)
 
     def test_the_studio_list_the_games_rule_reads_is_the_kept_studios(self):
         import engine_jobs

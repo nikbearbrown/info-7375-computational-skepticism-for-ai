@@ -88,6 +88,16 @@ Every push that touches this folder adds a row to the `## GitHub pushes` table, 
 - **What goes in a post:** the title, company, place and link of the employer's own public posting, the words that matched, and the line "A person decides; the machine only ranks words." **What never does:** a local path, an email address, a webhook URL. The webhook stays in the home folder (`~/.discord-webhooks/games-3d-simulations`) and is never printed.
 - **One place posts.** If an always-on server is ever the poster, the Mac must not post to this channel (it would not know what the server posted). The country rule and the K-12 rule apply here too.
 
+## Rule 9 — early-career consulting listings are for #consulting-firm, and posting is OFF until Professor Bear says go
+
+**Standing instruction (Professor Bear, 2026-10-28):** add the consulting firms from the directory he pasted and run *"another search, for consulting jobs"*; new jobs found are posted to a third Discord channel, #consulting-firm, after Lectern has been through them. **Dry run only until he says go.**
+
+- **How:** `lectern/publish/consulting_feed.py` (a dry run is its default; `--read` first reads the boards); rules are `consulting_rule` in `lectern/config/keywords.json`, judged by `lectern/collect/consulting_jobs.py`. The locks are the games poster's, in `lectern/publish/channel_feed.py`: the rules say `"posting": "off"`; `--send` must be on the command line; a first send with no memory of earlier posts needs `--post-all` (or `--baseline` first). Posted ids are remembered in `runs/posted-consulting-to-discord.json`.
+- **The firms** are the `consulting` section of `lectern/config/targets.json` (one list, Rule 7); `lectern/collect/consulting_collect.py` reads the boards of those with status `active`. **They never reach #professor-bear:** `collect.py` and `sources.json` come from the `boards` section only, and a test checks it. Section I of `lectern/TARGETS.md` shows every firm's verdict and reason.
+- **The directory:** its terms and robots file could not be read (a bot check), so it is a source of firm names only. **No field of it, including its visa flag, is stored anywhere**, and no post or record claims anything about sponsorship: that would need the Department of Labor and USCIS records, and his word to download them. Every post says sponsorship is not checked.
+- **What goes in a post:** the title, firm, place and link of the firm's own public posting, the words that matched, and the line "A person decides; the machine only ranks words." **What never does:** a local path, an email address, a webhook URL. The webhook stays in the home folder (`~/.discord-webhooks/consulting-firm`) and is never printed.
+- **One place posts.** If an always-on server is ever the poster, the Mac must not post to this channel. The country rule and the K-12 rule apply here too; a clearance in a title is vetoed.
+
 ## Pushing from this folder
 
 - **Each push needs Professor Bear's word.** He approved the first push on 2026-09-24. There is no standing approval for this folder yet.

@@ -135,6 +135,12 @@ def derive_tables(doc):
                 f"{a if a is not None else 'not read'} | {ec} | {t['why']} | {t['todo'] or 'none'} |")
     out["games"] = table([games_row(t) for t in sec("games")],
                          ("| Studio | Verdict | Board (provider) and its links | Postings answering 2026-10-28 | Early-career titles in the 2026-10-24 snapshot | Why this verdict; the noise | To-do |", "|---|---|---|---|---|---|---|"))
+    def consulting_row(t):
+        c = t.get("consulting") or {}
+        n = (c.get("postings_2026_10_28") or "")
+        return (f"| {t['name']} | {c.get('tier') or '-'} | **{c.get('verdict', '')}** | {c.get('system') or '-'} | {cells(t)} | {n or '-'} | {t['why']} | {t['todo'] or 'none'} |")
+    out["consulting"] = table([consulting_row(t) for t in sec("consulting")],
+                              ("| Firm | Tier | Verdict | System | Board or careers page | Postings 2026-10-28 | Why this verdict; what answered | To-do |", "|---|---|---|---|---|---|---|---|"))
     out["removed"] = table([f"| {t['name']} | {t['removed']['on'] or 'earlier'} | {t['removed']['entry'].get('reason', '')} |" for t in T if t["status"] == "removed"],
                            ("| Removed | On | Reason, as recorded |", "|---|---|---|"))
     return out

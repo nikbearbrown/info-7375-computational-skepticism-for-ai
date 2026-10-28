@@ -57,6 +57,18 @@
     "game-studio": {
       "label": "Game studio or engine maker",
       "meaning": "Makes games or a game engine; judged only for the games channel, never read by collect.py for #professor-bear"
+    },
+    "consulting-firm": {
+      "label": "Consulting firm",
+      "meaning": "Sells consulting; judged only for the consulting channel, never read by collect.py for #professor-bear"
+    },
+    "not-consulting-firm": {
+      "label": "Company that is not a consulting firm",
+      "meaning": "Named in the consulting list but an engineering, IT-services, insurance or data company; tagged, not treated as a consulting firm"
+    },
+    "in-house-strategy-group": {
+      "label": "In-house strategy group",
+      "meaning": "A company's own strategy or consulting team; its jobs are on that company's board; tagged, not treated as a consulting firm"
     }
   },
   "targets": [
@@ -3231,6 +3243,2102 @@
         "verdict": "to-do",
         "feed_names": [
           "Niantic"
+        ]
+      }
+    },
+    {
+      "id": "consulting-accenture-federal-services",
+      "name": "Accenture Federal Services",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `accenturefederalservices`); answered 2026-10-28. Accenture Federal Services is Accenture's separate federal subsidiary with its own board, named on Accenture's own Federal Services careers page. It is 720 of the 946 postings the five boards list, and mostly cleared government work: the clearance veto removes those titles. Whether it belongs on the list is Professor Bear's decision (the default keeps the board and vetoes clearance titles).",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/accenturefederalservices"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/accenturefederalservices/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
+      "todo": "",
+      "consulting": {
+        "verdict": "keep",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "greenhouse",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Accenture Federal Services"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/accenturefederalservices/jobs answered 200",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "accenturefederalservices"
+        },
+        "postings_2026_10_28": 720
+      }
+    },
+    {
+      "id": "consulting-altman-solon",
+      "name": "Altman Solon",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `altmansolonuslp`); answered 2026-10-28. A strategy consultancy for telecom, media and technology. Several of its early-career analyst roles are in Amsterdam, Warsaw and Munich, which the country gate drops.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/altmansolonuslp"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/altmansolonuslp/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
+      "todo": "",
+      "consulting": {
+        "verdict": "keep",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "greenhouse",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Altman Solon"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/altmansolonuslp/jobs answered 200, 19 postings; slug read from the firm's job-opportunities page",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "altmansolonuslp"
+        },
+        "postings_2026_10_28": 19
+      }
+    },
+    {
+      "id": "consulting-analysys-mason",
+      "name": "Analysys Mason",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (smartrecruiters, `AnalysysMason1`); answered 2026-10-28. A consultancy for telecom and digital; the slug is `AnalysysMason1`, not a guess from the name. Its graduate and internship roles are partly in Munich (country gate).",
+      "access": "api",
+      "provider": "smartrecruiters",
+      "data": [
+        {
+          "label": "board page",
+          "url": "https://careers.smartrecruiters.com/AnalysysMason1"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://api.smartrecruiters.com/v1/companies/AnalysysMason1/postings",
+          "call": true
+        }
+      ],
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
+      "todo": "",
+      "consulting": {
+        "verdict": "keep",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "smartrecruiters",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Analysys Mason"
+        ],
+        "what_answered": "GET api.smartrecruiters.com/v1/companies/AnalysysMason1/postings answered 200, totalFound 39; slug read from the firm's careers page, not guessed.",
+        "board": {
+          "provider": "smartrecruiters",
+          "slug": "AnalysysMason1"
+        },
+        "postings_2026_10_28": 39
+      }
+    },
+    {
+      "id": "consulting-baringa",
+      "name": "Baringa",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `baringa`); answered 2026-10-28. A management consultancy. Its board is mostly experienced hires; early-career roles are few.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/baringa"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/baringa/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
+      "todo": "",
+      "consulting": {
+        "verdict": "keep",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "greenhouse",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Baringa"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/baringa/jobs answered 200, 110 postings; slug read from the firm's experienced-careers page",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "baringa"
+        },
+        "postings_2026_10_28": 110
+      }
+    },
+    {
+      "id": "consulting-brattle",
+      "name": "Brattle Group",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `thebrattlegroup`); answered 2026-10-28. An economic consultancy, slug `thebrattlegroup`. Posts its graduate roles once per city, so the same title repeats.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/thebrattlegroup"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/thebrattlegroup/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
+      "todo": "",
+      "consulting": {
+        "verdict": "keep",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "greenhouse",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Brattle Group"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/thebrattlegroup/jobs answered 200, 58 postings; slug read from the firm's careers page, not guessed.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "thebrattlegroup"
+        },
+        "postings_2026_10_28": 58
+      }
+    },
+    {
+      "id": "consulting-aarete",
+      "name": "AArete",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET jobs.jobvite.com/aarete answered 200 HTML, 22 job links; linked from AArete's careers page",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://jobs.jobvite.com/aarete"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for jobvite. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "jobvite",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "AArete"
+        ],
+        "what_answered": "GET jobs.jobvite.com/aarete answered 200 HTML, 22 job links; linked from AArete's careers page"
+      }
+    },
+    {
+      "id": "consulting-accenture",
+      "name": "Accenture",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "Main board: POST /wday/cxs/accenture/AccentureCareers/jobs answered 200, total 2000 (2000 is probably the API's display cap, not the true count) || GET boards-api.greenhouse.io/v1/boards/accenturefederalservices/jobs answered 200, 720 postings; named on Accenture's own Federal Services careers page (accenture.com/us-en/careers/local/federal-careers) Own job search is accenture.com/us-en/careers/jobsearch (not fetched). Accenture Strategy is a unit of Accenture. ai-jobs has a Recruitee board named 'accenture' with 2 postings, one titled 'Senior Marketer (Sample)': a template account, not Accenture's board.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://accenture.wd103.myworkdayjobs.com/AccentureCareers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "workday + greenhouse",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Accenture"
+        ],
+        "what_answered": "POST /wday/cxs/accenture/AccentureCareers/jobs answered 200, total 2000 (2000 is probably the API's display cap, not the true count) || GET boards-api.greenhouse.io/v1/boards/accenturefederalservices/jobs answered 200, 720 postings; named on Accenture's own Federal Services careers page (accenture.com/us-en/careers/local/federal-careers)"
+      }
+    },
+    {
+      "id": "consulting-advancy",
+      "name": "Advancy",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET advancy.recruitee.com/api/offers/ answered 200 JSON, 16 offers; linked from Advancy's careers page /careers on advancy.com redirects to the careers-stories page.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://advancy.recruitee.com"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for recruitee. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "recruitee",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Advancy"
+        ],
+        "what_answered": "GET advancy.recruitee.com/api/offers/ answered 200 JSON, 16 offers; linked from Advancy's careers page"
+      }
+    },
+    {
+      "id": "consulting-alixpartners",
+      "name": "AlixPartners",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "job-search page answered 200 to a script (81 KB); it is a script-driven search page and the static HTML names no vendor",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://www.alixpartners.com/careers/job-search/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "Find the system by looking at the page's network calls; the static page names none.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "AlixPartners"
+        ],
+        "what_answered": "job-search page answered 200 to a script (81 KB); it is a script-driven search page and the static HTML names no vendor"
+      }
+    },
+    {
+      "id": "consulting-alvarez-marsal",
+      "name": "Alvarez & Marsal",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "unreadable",
+      "why": "robots.txt request met a Cloudflare challenge; nothing else fetched Refused: not pursued.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Could not be read by a script",
+      "todo": "Refused a script (a bot check or HTTP 403); left alone. Look by hand, or have someone check the site in a browser.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Alvarez & Marsal"
+        ],
+        "what_answered": "robots.txt request met a Cloudflare challenge; nothing else fetched"
+      }
+    },
+    {
+      "id": "consulting-bain",
+      "name": "Bain & Company",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "careers and find-a-role pages answered 200 to a script; find-a-role is a React page ('role-search-page-react') naming no vendor. The same page met a Cloudflare security check in the real browser, which was not passed",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://www.bain.com/careers/find-a-role/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "Find the system by looking at the page's network calls; the static page names none.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Bain & Company"
+        ],
+        "what_answered": "careers and find-a-role pages answered 200 to a script; find-a-role is a React page ('role-search-page-react') naming no vendor. The same page met a Cloudflare security check in the real browser, which was not passed"
+      }
+    },
+    {
+      "id": "consulting-bates-white",
+      "name": "Bates White Economic Consulting",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET answered 200 HTML (title 'viDesktop'); four lists linked from the firm's current-openings page (REID 3 summer program, 6 experienced, 4 PhD economists, 5 business support)",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://bateswhite-apply.viglobalcloud.com/viRecruitSelfApply/RecDefault.aspx?FilterREID=6"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for viRecruit (viglobalcloud.com). Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "viRecruit (viglobalcloud.com)",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Bates White Economic Consulting"
+        ],
+        "what_answered": "GET answered 200 HTML (title 'viDesktop'); four lists linked from the firm's current-openings page (REID 3 summer program, 6 experienced, 4 PhD economists, 5 business support)"
+      }
+    },
+    {
+      "id": "consulting-bearingpoint",
+      "name": "BearingPoint",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "open-roles page answered 200 (132 KB); static HTML names no vendor",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://www.bearingpoint.com/en/careers/open-roles/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "Find the system by looking at the page's network calls; the static page names none.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "BearingPoint"
+        ],
+        "what_answered": "open-roles page answered 200 (132 KB); static HTML names no vendor"
+      }
+    },
+    {
+      "id": "consulting-bcg",
+      "name": "Boston Consulting Group (BCG)",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET search-results answered 200 (231 KB); page loads Phenom scripts (cdn.phenompeople) and also names bcg.eightfold.ai, whose role was not determined bcg.com's own robots.txt request met a bot challenge, so only the careers host was read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://careers.bcg.com/global/en/search-results"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for phenom. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "phenom",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Boston Consulting Group (BCG)"
+        ],
+        "what_answered": "GET search-results answered 200 (231 KB); page loads Phenom scripts (cdn.phenompeople) and also names bcg.eightfold.ai, whose role was not determined"
+      }
+    },
+    {
+      "id": "consulting-gt-stax",
+      "name": "Grant Thornton Stax",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET answered 200 HTML (title 'Stax jobs | Stax openings | Stax careers'); 14 references on the firm's careers page",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://stax.hire.trakstar.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for trakstar hire. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "trakstar hire",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Grant Thornton Stax"
+        ],
+        "what_answered": "GET answered 200 HTML (title 'Stax jobs | Stax openings | Stax careers'); 14 references on the firm's careers page"
+      }
+    },
+    {
+      "id": "consulting-guidehouse",
+      "name": "Guidehouse",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "POST /wday/cxs/guidehouse/External/jobs answered 200, total 759",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://guidehouse.wd1.myworkdayjobs.com/External"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Guidehouse"
+        ],
+        "what_answered": "POST /wday/cxs/guidehouse/External/jobs answered 200, total 759"
+      }
+    },
+    {
+      "id": "consulting-huron",
+      "name": "Huron Consulting",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "POST /wday/cxs/huron/huroncareers/jobs answered 200, total 283",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://huron.wd1.myworkdayjobs.com/huroncareers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Huron Consulting"
+        ],
+        "what_answered": "POST /wday/cxs/huron/huroncareers/jobs answered 200, total 283"
+      }
+    },
+    {
+      "id": "consulting-kearney",
+      "name": "Kearney",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "unreadable",
+      "why": "GET /careers returned 403 with a Cloudflare 'Attention Required' page Refused: not pursued.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Could not be read by a script",
+      "todo": "Refused a script (a bot check or HTTP 403); left alone. Look by hand, or have someone check the site in a browser.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Kearney"
+        ],
+        "what_answered": "GET /careers returned 403 with a Cloudflare 'Attention Required' page"
+      }
+    },
+    {
+      "id": "consulting-simon-kucher",
+      "name": "Simon-Kucher & Partners",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET answered 200; linked from the firm's careers page",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://simon-kucher.csod.com/ux/ats/careersite/6/home?c=simon-kucher"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for cornerstone ondemand. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 1,
+        "kind": "consulting",
+        "system": "cornerstone ondemand",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Simon-Kucher & Partners"
+        ],
+        "what_answered": "GET answered 200; linked from the firm's careers page"
+      }
+    },
+    {
+      "id": "consulting-abeam",
+      "name": "ABeam Consulting",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "unreadable",
+      "why": "GET /us/en/careers returned 403, a Cloudflare 'Just a moment' challenge Refused: not pursued.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Could not be read by a script",
+      "todo": "Refused a script (a bot check or HTTP 403); left alone. Look by hand, or have someone check the site in a browser.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "ABeam Consulting"
+        ],
+        "what_answered": "GET /us/en/careers returned 403, a Cloudflare 'Just a moment' challenge"
+      }
+    },
+    {
+      "id": "consulting-abt",
+      "name": "Abt Associates",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET answered 200; linked from the firm's careers page",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt/jobs"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "An Oracle HCM reader (3 consulting firms and 2 tagged companies). The page answers; its REST form needs the site number and was not tested. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "oracle hcm candidate experience",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Abt Associates"
+        ],
+        "what_answered": "GET answered 200; linked from the firm's careers page"
+      }
+    },
+    {
+      "id": "consulting-accordion",
+      "name": "Accordion",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "careers page answered 200 (141 KB) and lists current-openings/<job>/ pages itself; no vendor",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://www.accordion.com/careers/current-openings/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for own site (WordPress). Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "own site (WordPress)",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Accordion"
+        ],
+        "what_answered": "careers page answered 200 (141 KB) and lists current-openings/<job>/ pages itself; no vendor"
+      }
+    },
+    {
+      "id": "consulting-adastra",
+      "name": "Adastra",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "careers page answered 200 (1.5 MB); no vendor seen in the HTML The site moved: adastragrp.com redirects to adastracorp.com.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://adastracorp.com/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "Find the system by looking at the page's network calls; the static page names none.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Adastra"
+        ],
+        "what_answered": "careers page answered 200 (1.5 MB); no vendor seen in the HTML"
+      }
+    },
+    {
+      "id": "consulting-alexander-group",
+      "name": "Alexander Group",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "careers page answered 200 (189 KB, 'Explore Our Current Openings'); no vendor seen",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://www.alexandergroup.com/careers/overview/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "Find the system by looking at the page's network calls; the static page names none.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Alexander Group"
+        ],
+        "what_answered": "careers page answered 200 (189 KB, 'Explore Our Current Openings'); no vendor seen"
+      }
+    },
+    {
+      "id": "consulting-alira-health",
+      "name": "Alira Health",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "POST /wday/cxs/alirahealth/AliraHealth/jobs answered 200, total 52",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://alirahealth.wd3.myworkdayjobs.com/AliraHealth"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Alira Health"
+        ],
+        "what_answered": "POST /wday/cxs/alirahealth/AliraHealth/jobs answered 200, total 52"
+      }
+    },
+    {
+      "id": "consulting-analysis-group",
+      "name": "Analysis Group",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET answered 200 HTML ('Job Listings at Analysis Group, Inc.'); a second portal, datasciencecareers-analysisgroup.icims.com, is linked too",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://professionalcareers-analysisgroup.icims.com/jobs/search"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "An iCIMS reader (2 firms); the pages answer. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "icims",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Analysis Group"
+        ],
+        "what_answered": "GET answered 200 HTML ('Job Listings at Analysis Group, Inc.'); a second portal, datasciencecareers-analysisgroup.icims.com, is linked too"
+      }
+    },
+    {
+      "id": "consulting-analytics8",
+      "name": "Analytics8",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "current-openings page answered 200 (455 KB) and loads a w.recruiterbox.com widget",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://www.analytics8.com/about-us/current-openings/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for recruiterbox (Trakstar). Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "recruiterbox (Trakstar)",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Analytics8"
+        ],
+        "what_answered": "current-openings page answered 200 (455 KB) and loads a w.recruiterbox.com widget"
+      }
+    },
+    {
+      "id": "consulting-ankura",
+      "name": "Ankura",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "POST /wday/cxs/ankura/Ankura/jobs answered 200, total 89",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://ankura.wd5.myworkdayjobs.com/Ankura"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Ankura"
+        ],
+        "what_answered": "POST /wday/cxs/ankura/Ankura/jobs answered 200, total 89"
+      }
+    },
+    {
+      "id": "consulting-aon",
+      "name": "Aon",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "jobs.aon.com answered 200 and names icims hosts aon.com/en/careers links to jobs.aon.com.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://jobs.aon.com/jobs"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "An iCIMS reader (2 firms); the pages answer. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "icims (Jibe front end)",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Aon"
+        ],
+        "what_answered": "jobs.aon.com answered 200 and names icims hosts"
+      }
+    },
+    {
+      "id": "consulting-armanino",
+      "name": "Armanino",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "unreadable",
+      "why": "armaninollp.com redirects to armanino.com, which returned 403 with a Cloudflare 'Just a moment' challenge Refused: not pursued.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Could not be read by a script",
+      "todo": "Refused a script (a bot check or HTTP 403); left alone. Look by hand, or have someone check the site in a browser.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Armanino"
+        ],
+        "what_answered": "armaninollp.com redirects to armanino.com, which returned 403 with a Cloudflare 'Just a moment' challenge"
+      }
+    },
+    {
+      "id": "consulting-adl",
+      "name": "Arthur D. Little",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "unreadable",
+      "why": "GET /en/careers returned 403 Forbidden (robots.txt also 403) Refused: not pursued.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Could not be read by a script",
+      "todo": "Refused a script (a bot check or HTTP 403); left alone. Look by hand, or have someone check the site in a browser.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Arthur D. Little"
+        ],
+        "what_answered": "GET /en/careers returned 403 Forbidden (robots.txt also 403)"
+      }
+    },
+    {
+      "id": "consulting-avanade",
+      "name": "Avanade",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "search-jobs page answered 200 (127 KB) /en/careers is a 404 page; the careers pages live under /en/career/.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://www.avanade.com/en/career/search-jobs"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for avature. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "avature",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Avanade"
+        ],
+        "what_answered": "search-jobs page answered 200 (127 KB)"
+      }
+    },
+    {
+      "id": "consulting-axtria",
+      "name": "Axtria",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "careers page answered 200 and links SuccessFactors job pages (company id axtriaindiP, an India entity) and JazzHR; which system serves US roles was not determined",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://career10.successfactors.com/sfcareer/jobreqcareer?jobId=10999&company=axtriaindiP"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A SuccessFactors reader (3 firms); the pages answer, a clean JSON list was not tested. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "successfactors (+ jazzhr links)",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Axtria"
+        ],
+        "what_answered": "careers page answered 200 and links SuccessFactors job pages (company id axtriaindiP, an India entity) and JazzHR; which system serves US roles was not determined"
+      }
+    },
+    {
+      "id": "consulting-baker-tilly",
+      "name": "Baker Tilly",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "POST /wday/cxs/bakertilly/BTCareers/jobs answered 200, total 505 Baker Tilly and Moss Adams combined on 2025-06-03 (press reports; web search, not the firm's own site).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://bakertilly.wd5.myworkdayjobs.com/BTCareers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Baker Tilly"
+        ],
+        "what_answered": "POST /wday/cxs/bakertilly/BTCareers/jobs answered 200, total 505"
+      }
+    },
+    {
+      "id": "consulting-bdo",
+      "name": "BDO",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET answered 200; both site names linked from the firm's careers page",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://ebqb.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/BDOEntryLevelCareers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "An Oracle HCM reader (3 consulting firms and 2 tagged companies). The page answers; its REST form needs the site number and was not tested. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "oracle hcm candidate experience",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "BDO"
+        ],
+        "what_answered": "GET answered 200; both site names linked from the firm's careers page"
+      }
+    },
+    {
+      "id": "consulting-berenschot",
+      "name": "Berenschot",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "vacatures page answered 200 (120 KB); no vendor seen Dutch firm; berenschot.com/careers is a 404, the careers pages are /careers-at-berenschot and berenschot.nl/vacatures.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://www.berenschot.nl/vacatures"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "Find the system by looking at the page's network calls; the static page names none.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Berenschot"
+        ],
+        "what_answered": "vacatures page answered 200 (120 KB); no vendor seen"
+      }
+    },
+    {
+      "id": "consulting-brg",
+      "name": "Berkeley Research Group",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "POST /wday/cxs/thinkbrg/BRG_External_Career_Site/jobs answered 200, total 141",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://thinkbrg.wd5.myworkdayjobs.com/BRG_External_Career_Site"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Berkeley Research Group"
+        ],
+        "what_answered": "POST /wday/cxs/thinkbrg/BRG_External_Career_Site/jobs answered 200, total 141"
+      }
+    },
+    {
+      "id": "consulting-bjss",
+      "name": "BJSS",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "unreadable",
+      "why": "bjss.com serves an expired certificate (not bypassed) CGI completed its purchase of BJSS on 2025-02-25 (press reports); look for BJSS roles on CGI's careers site instead.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Could not be read by a script",
+      "todo": "The site could not be read (an expired or failing certificate); not bypassed. CGI completed its purchase of BJSS on 2025-02-25 (press reports); look for BJSS roles on CGI's careers site instead.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "BJSS"
+        ],
+        "what_answered": "bjss.com serves an expired certificate (not bypassed)"
+      }
+    },
+    {
+      "id": "consulting-blue-matter",
+      "name": "Blue Matter Consulting",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET answered 200 ('Blue Matter - Career Page'); linked from the firm's careers page",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://bluematterconsulting.applytojob.com/apply"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for jazzhr. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "jazzhr",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Blue Matter Consulting"
+        ],
+        "what_answered": "GET answered 200 ('Blue Matter - Career Page'); linked from the firm's careers page"
+      }
+    },
+    {
+      "id": "consulting-booz-allen",
+      "name": "Booz Allen Hamilton",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "POST /wday/cxs/bah/BAH_Jobs/jobs answered 200, total 2000 (2000 is probably the API's display cap, not the true count)",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://bah.wd1.myworkdayjobs.com/BAH_Jobs"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Booz Allen Hamilton"
+        ],
+        "what_answered": "POST /wday/cxs/bah/BAH_Jobs/jobs answered 200, total 2000 (2000 is probably the API's display cap, not the true count)"
+      }
+    },
+    {
+      "id": "consulting-bridgespan",
+      "name": "Bridgespan Group",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "GET answered 200 (61 KB, 'Career Center'); linked from the firm's careers page",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://phh.tbe.taleo.net/phh01/ats/careers/v2/searchResults?org=THEBRIDG12&cws=40"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Taleo reader (2 firms); the pages answer. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "taleo business edition",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Bridgespan Group"
+        ],
+        "what_answered": "GET answered 200 (61 KB, 'Career Center'); linked from the firm's careers page"
+      }
+    },
+    {
+      "id": "consulting-bts",
+      "name": "BTS Group",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "careers page links to bts.hrmdirect.com, which redirects to apply.clearcompany.com/bts (200)",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://apply.clearcompany.com/bts"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for clearcompany. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "clearcompany",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "BTS Group"
+        ],
+        "what_answered": "careers page links to bts.hrmdirect.com, which redirects to apply.clearcompany.com/bts (200)"
+      }
+    },
+    {
+      "id": "consulting-buck",
+      "name": "Buck",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "unreadable",
+      "why": "buck.com failed certificate verification (unable to get local issuer certificate); not bypassed Rename to 'Buck' and the Gallagher ownership are from my own memory and were not confirmed here.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Could not be read by a script",
+      "todo": "The site could not be read (an expired or failing certificate); not bypassed. Rename to 'Buck' and the Gallagher ownership are from my own memory and were not confirmed here.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Buck"
+        ],
+        "what_answered": "buck.com failed certificate verification (unable to get local issuer certificate); not bypassed"
+      }
+    },
+    {
+      "id": "consulting-cambridge-associates",
+      "name": "Cambridge Associates",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "POST /wday/cxs/cambridgeassociates/Cambridge_Associates/jobs answered 200, total 45",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://cambridgeassociates.wd5.myworkdayjobs.com/Cambridge_Associates"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Cambridge Associates"
+        ],
+        "what_answered": "POST /wday/cxs/cambridgeassociates/Cambridge_Associates/jobs answered 200, total 45"
+      }
+    },
+    {
+      "id": "consulting-kaufman-hall",
+      "name": "Kaufman Hall",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "POST /wday/cxs/vizient/Vizient_Careers/jobs answered 200, total 238 (the whole Vizient board; Kaufman Hall postings carry 'Kaufman-Hall' in the title) The firm's careers page links to Vizient's Workday board.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://vizient.wd1.myworkdayjobs.com/Vizient_Careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader. One reader would cover 10 consulting firms (and 2 tagged companies): each board's own JSON list answered 200 with no login on 2026-10-28. Not built here; Professor Bear decides.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Kaufman Hall"
+        ],
+        "what_answered": "POST /wday/cxs/vizient/Vizient_Careers/jobs answered 200, total 238 (the whole Vizient board; Kaufman Hall postings carry 'Kaufman-Hall' in the title)"
+      }
+    },
+    {
+      "id": "consulting-strategyand",
+      "name": "Strategy& (formerly Booz & Company)",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "strategyand.pwc.com answered 200 ('Strategy& - the global strategy consulting team at PwC'); its join-us page leads to PwC, whose robots.txt request met a bot challenge, so nothing there was read Renamed, not merged: PwC completed its purchase of Booz & Company in April 2014 and the firm became Strategy& (press reports; web search). The directory's 3,400 employees is a pre-2014 figure. Not the same as Booz Allen Hamilton.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://www.strategyand.pwc.com/gx/en/join-us.html"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "Find the system by looking at the page's network calls; the static page names none.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Strategy& (formerly Booz & Company)"
+        ],
+        "what_answered": "strategyand.pwc.com answered 200 ('Strategy& - the global strategy consulting team at PwC'); its join-us page leads to PwC, whose robots.txt request met a bot challenge, so nothing there was read"
+      }
+    },
+    {
+      "id": "consulting-hackett",
+      "name": "The Hackett Group (incl. Archstone Consulting)",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "careers page answered 200 and links the site Archstone Consulting has been a Hackett division since 2009 (web search, secondary); the directory lists Archstone separately with HQ Miami.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://eeih.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "An Oracle HCM reader (3 consulting firms and 2 tagged companies). The page answers; its REST form needs the site number and was not tested. Not built.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "oracle hcm candidate experience",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "The Hackett Group (incl. Archstone Consulting)"
+        ],
+        "what_answered": "careers page answered 200 and links the site"
+      }
+    },
+    {
+      "id": "consulting-yakov",
+      "name": "Yakov and Partners",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "no-reader",
+      "why": "careers page answered 200 (11 KB); no vendor in the HTML Moscow. The country gate would drop Russia. Not pursued further.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "board or careers page",
+          "url": "https://yakovpartners.com/career/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "Find the system by looking at the page's network calls; the static page names none.",
+      "consulting": {
+        "verdict": "to-do",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Yakov and Partners"
+        ],
+        "what_answered": "careers page answered 200 (11 KB); no vendor in the HTML"
+      }
+    },
+    {
+      "id": "consulting-a-lign",
+      "name": "A-LIGN",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: cybersecurity compliance and audit. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.a-lign.com/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "A-LIGN"
+        ]
+      }
+    },
+    {
+      "id": "consulting-a1-consulting",
+      "name": "A1 Consulting Group",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: engineering, environmental and construction management (web search). Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "A1 Consulting Group"
+        ]
+      }
+    },
+    {
+      "id": "consulting-a3logics",
+      "name": "A3logics",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: software development. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "A3logics"
+        ]
+      }
+    },
+    {
+      "id": "consulting-abs-group",
+      "name": "ABS Group",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: assurance and risk consulting for engineered assets. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.abs-group.com/Careers-at-ABS-Group/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "oracle hcm candidate experience",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "ABS Group"
+        ]
+      }
+    },
+    {
+      "id": "consulting-acosta",
+      "name": "Acosta Group",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: sales and marketing services for consumer goods; no count in directory. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://acosta.jobs/agency/acosta/jobs/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "not determined (a .jobs site)",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Acosta Group"
+        ]
+      }
+    },
+    {
+      "id": "consulting-acxiom",
+      "name": "Acxiom",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: data and marketing technology. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.acxiom.com/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "workday",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Acxiom"
+        ]
+      }
+    },
+    {
+      "id": "consulting-advisory-board",
+      "name": "Advisory Board",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: healthcare research and software, part of Optum (to check). Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.advisory.com/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "not determined (careers page links to UnitedHealth Group's careers site)",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Advisory Board"
+        ]
+      }
+    },
+    {
+      "id": "consulting-aecom",
+      "name": "AECOM",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: engineering; no count in directory. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://aecom.jobs/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "not determined (a .jobs site)",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "AECOM"
+        ]
+      }
+    },
+    {
+      "id": "consulting-apex-consulting",
+      "name": "APEX Consulting",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: Islamabad; type not established. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "APEX Consulting"
+        ]
+      }
+    },
+    {
+      "id": "consulting-arcadis",
+      "name": "Arcadis",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: engineering and design consultancy. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://careers.arcadis.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "eightfold",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Arcadis"
+        ]
+      }
+    },
+    {
+      "id": "consulting-gallagher",
+      "name": "Arthur J. Gallagher & Co",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: insurance broker; no count in directory. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.ajg.com/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Arthur J. Gallagher & Co"
+        ]
+      }
+    },
+    {
+      "id": "consulting-arup",
+      "name": "Arup",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: engineering; no count in directory. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://jobs.arup.com/jobs/search/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "taleo",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Arup"
+        ]
+      }
+    },
+    {
+      "id": "consulting-atkinsrealis",
+      "name": "AtkinsRéalis (formerly Atkins)",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: engineering; to check rename. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://careers.atkinsrealis.com/en"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "not determined (own ATS API)",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "AtkinsRéalis (formerly Atkins)"
+        ]
+      }
+    },
+    {
+      "id": "consulting-atos",
+      "name": "Atos",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: IT services. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://jobs.atos.net/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "successfactors",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Atos"
+        ]
+      }
+    },
+    {
+      "id": "consulting-bae",
+      "name": "BAE Systems (formerly Detica)",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: defense company; Detica was bought in 2008, to check what it is called now. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "not determined",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "BAE Systems (formerly Detica)"
+        ]
+      }
+    },
+    {
+      "id": "consulting-black-veatch",
+      "name": "Black & Veatch",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: engineering firm's management consulting unit. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://careers.bv.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "successfactors",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Black & Veatch"
+        ]
+      }
+    },
+    {
+      "id": "consulting-hexaware",
+      "name": "Hexaware Technologies",
+      "type": "not-consulting-firm",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "Not a consulting firm: IT services. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://jobs.hexaware.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": 2,
+        "kind": "other",
+        "system": "oracle hcm candidate experience",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Hexaware Technologies"
+        ]
+      }
+    },
+    {
+      "id": "consulting-ab-inbev",
+      "name": "AB InBev",
+      "type": "in-house-strategy-group",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "An in-house strategy group: a company's own team, whose jobs are on that company's own board. Tagged, not treated as a consulting firm.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": null,
+        "kind": "in-house",
+        "system": "",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "AB InBev"
+        ]
+      }
+    },
+    {
+      "id": "consulting-airbus-in-house-consulting",
+      "name": "Airbus In-House Consulting",
+      "type": "in-house-strategy-group",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "An in-house strategy group: a company's own team, whose jobs are on that company's own board. Tagged, not treated as a consulting firm.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": null,
+        "kind": "in-house",
+        "system": "",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Airbus In-House Consulting"
+        ]
+      }
+    },
+    {
+      "id": "consulting-american-express-strategic-planning-group",
+      "name": "American Express Strategic Planning Group",
+      "type": "in-house-strategy-group",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "An in-house strategy group: a company's own team, whose jobs are on that company's own board. Tagged, not treated as a consulting firm.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": null,
+        "kind": "in-house",
+        "system": "",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "American Express Strategic Planning Group"
+        ]
+      }
+    },
+    {
+      "id": "consulting-bank-of-america-global-strategic-planning",
+      "name": "Bank of America (Global Strategic Planning)",
+      "type": "in-house-strategy-group",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "An in-house strategy group: a company's own team, whose jobs are on that company's own board. Tagged, not treated as a consulting firm.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": null,
+        "kind": "in-house",
+        "system": "",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Bank of America (Global Strategic Planning)"
+        ]
+      }
+    },
+    {
+      "id": "consulting-basf-management-consulting",
+      "name": "BASF Management Consulting",
+      "type": "in-house-strategy-group",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "An in-house strategy group: a company's own team, whose jobs are on that company's own board. Tagged, not treated as a consulting firm.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": null,
+        "kind": "in-house",
+        "system": "",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "BASF Management Consulting"
+        ]
+      }
+    },
+    {
+      "id": "consulting-bnp-paribas-cib-consulting-transformation",
+      "name": "BNP Paribas CIB Consulting & Transformation",
+      "type": "in-house-strategy-group",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "An in-house strategy group: a company's own team, whose jobs are on that company's own board. Tagged, not treated as a consulting firm.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": null,
+        "kind": "in-house",
+        "system": "",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "BNP Paribas CIB Consulting & Transformation"
+        ]
+      }
+    },
+    {
+      "id": "consulting-boeing-business-career-foundation-program",
+      "name": "Boeing Business Career Foundation Program",
+      "type": "in-house-strategy-group",
+      "section": "consulting",
+      "status": "dropped",
+      "why": "An in-house strategy group: a company's own team, whose jobs are on that company's own board. Tagged, not treated as a consulting firm.",
+      "access": "none",
+      "provider": "",
+      "data": [],
+      "reader": "",
+      "status_note": "Not on the consulting list",
+      "todo": "",
+      "consulting": {
+        "verdict": "drop",
+        "tier": null,
+        "kind": "in-house",
+        "system": "",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "Boeing Business Career Foundation Program"
         ]
       }
     }
