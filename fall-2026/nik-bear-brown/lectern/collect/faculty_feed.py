@@ -186,7 +186,8 @@ def discord(channel, title, text, send):
     """Post one embed. Refuses text with a local path, an email address or a webhook URL (the channel is public)."""
     if re.search(r"/[U]sers/|/home/\w+|[\w.+-]+@[\w-]+\.[\w.]+|discord(app)?\.com/api/webhooks", title + text):
         print("NOT SENT: text contains a local path, email address or webhook URL"); return
-    payload = {"username": "Professor Bear", "embeds": [{"title": "Jobs: " + title, "description": text, "color": 0xD97757}]}
+    body = f"**Jobs: {title}**\n{text}"       # plain text, not an embed: with embeds switched off in Discord an embed-only post looks empty
+    payload = {"username": "Professor Bear", "content": body if len(body) <= 2000 else body[:1990].rstrip() + "\n…", "flags": 4}
     if not send:
         print(f"DRY RUN, #{channel}, nothing sent: {title} ({len(text)} chars)"); return
     req = urllib.request.Request(webhook_url(channel), data=json.dumps(payload).encode(),

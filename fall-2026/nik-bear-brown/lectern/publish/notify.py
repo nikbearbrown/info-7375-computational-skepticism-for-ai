@@ -76,16 +76,22 @@ def build_messages(new, watched, first_time=(), already=()):
     return rows, msgs
 
 
+def payload(title, text, prefix="Jobs: "):
+    """The message as plain text, not an embed: a viewer who has embeds switched off in Discord (User Settings, Chat) sees an embed-only
+    post as an empty message (Seth, 2026-10-30). SUPPRESS_EMBEDS (flag 4) keeps Discord from adding a link-preview card under every URL."""
+    body = f"**{prefix}{title}**\n{text}"
+    return {"username": "Professor Bear", "content": body if len(body) <= 2000 else body[:1990].rstrip() + "\n…", "flags": 4}
+
+
 def post(title, text, send, prefix="Jobs: ", channel=CHANNEL):
-    """One embed to a channel (default #professor-bear). Returns True if Discord accepted it."""
+    """One plain-text message to a channel (default #professor-bear). Returns True if Discord accepted it."""
     if re.search(r"/[U]sers/|/home/\w+|[\w.+-]+@[\w-]+\.[\w.]+|discord(app)?\.com/api/webhooks", title + text):
         print("NOT SENT: text contains a local path, email address or webhook URL")
         return False
     if not send:
         print(f"DRY RUN, #{channel}, nothing sent: {title} ({len(text)} chars)")
         return False
-    payload = {"username": "Professor Bear", "embeds": [{"title": prefix + title, "description": text, "color": 0xD97757}]}
-    req = urllib.request.Request(webhook_url(channel), data=json.dumps(payload).encode(),
+    req = urllib.request.Request(webhook_url(channel), data=json.dumps(payload(title, text, prefix)).encode(),
                                  headers={"Content-Type": "application/json", "User-Agent": "lectern-notify/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=20) as r:

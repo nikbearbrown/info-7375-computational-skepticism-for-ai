@@ -46,6 +46,13 @@ class Notify(unittest.TestCase):
         self.assertFalse(notify.post("t", "see /Users/someone/file", send=False))
         self.assertFalse(notify.post("t", "write to a.b@example.com", send=True))
 
+    def test_a_post_is_plain_text_so_it_shows_with_embeds_switched_off(self):
+        p = notify.payload("3 new", "line one\nline two", prefix="Speakers: ")
+        self.assertNotIn("embeds", p)
+        self.assertEqual(p["content"], "**Speakers: 3 new**\nline one\nline two")
+        self.assertEqual(p["flags"], 4)                                  # SUPPRESS_EMBEDS: no link-preview cards
+        self.assertLessEqual(len(notify.payload("t", "x" * 5000)["content"]), 2000)
+
     def test_a_dry_run_records_nothing_as_posted(self):
         with tempfile.TemporaryDirectory() as d:
             p = os.path.join(d, "posted.json")
