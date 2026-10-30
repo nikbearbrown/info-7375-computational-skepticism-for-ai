@@ -1,0 +1,17 @@
+# Parity and headless runs, 2026-10-30 (Lectern master: rules v0.6.4, which adds `speakers_rule` for a speakers channel; nothing else the n8n form reads changed)
+
+## test_headless (n8n, disposable profile, no network)
+ALL PASSED: 01-collect, 02-filter, 03-delta, 04-post-to-discord, 05-daily (workflows regenerated with tools/build.py from shared/keywords.json = config/keywords.json v0.6.4)
+
+## parity_real_data (the six boards on today's watch list, runs/2026-10-18/raw)
+boards read: 6   postings: python 1869, javascript 1869   only-in-one: 0
+kept: python 60, javascript 60
+PARITY: all 1869 postings identical on every field, keep decision and matched words
+
+## parity_delta / parity_messages (runs 2026-10-08 -> 2026-10-18)
+PARITY: new, changed and gone are identical, including the reasons
+PARITY: same rows in the same order and byte-identical messages (new 42; posted rows python 17, javascript 17; messages python 3, javascript 3)
+
+## not re-run
+parity_location.py needs the ai-jobs snapshot (jobs.jsonl), which is not on this machine; the place and K-12 readers were not changed, so the 2026-10-28 result (12,882 location lines and 68,319 titles agree) stands but was not re-measured today.
+The n8n filter ignores `engine_rule`, `consulting_rule`, `speakers_rule` and the games, consulting and speakers sections of config/targets.json.

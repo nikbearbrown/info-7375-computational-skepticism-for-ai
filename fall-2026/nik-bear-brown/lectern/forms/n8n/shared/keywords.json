@@ -1,6 +1,6 @@
 {
  "_comment": "Lectern's filter. A posting is KEPT if any role_title word appears in its title, or if three or more topic_text words appear in its body. flex_text never causes a keep — it only annotates a kept record, because 'part-time' on its own has nothing to do with teaching. Every kept record records which words matched and where, so a reader can apply this file by hand to one posting and get the same answer. v0.2.0 (2026-09-26): added the alternative titles these roles are posted under — Developer/Designer/Creator Advocate, Design or Product Evangelist, Community Engineer, Community Architect, Product Education Manager, Technical Content Engineer, Developer Experience, DevRel, Technical Writer. Several are broad on purpose and the run report measures what noise they added. v0.2.1 (2026-09-26, same day): REMOVED 'developer experience' and 'advocacy' after measuring them. 'developer experience' fired on 11 postings and 10 were backend or platform software-engineering jobs (Anthropic, Figma, Stripe x2, GitLab, OpenAI x2, Notion, Replit, Canva) — the phrase names an engineering discipline, not an advocacy role. 'advocacy' fired once, on a customer-marketing programme. Kept: 'devrel', which found Vercel's DevRel Engineer. This is what P3 is for — the filter is a file, so a word that turns out to be noise gets cut and the cut is recorded. v0.3.0 (2026-09-26): Professor Bear refined the target — any job that DEVELOPS MATERIALS, whether to sell into universities, to teach the public, or to train the company's own people. Anthropic's 'Technical Documentation and Content Engineer, Claude Docs' is the model. Measured every candidate word against all 3,446 titles before adding: 11 of them appear in ZERO titles today and so cannot add noise; 'creator', 'documentation', and 'content engineer' each appear in exactly one title and it is the right one. 'learning experiences' found Replit's LEARNING EXPERIENCES CREATOR, a bullseye that v0.2.1 missed because it only had 'learning designer'. REJECTED as measured noise: bare 'learning' (42 titles, almost all Machine/Reinforcement Learning) and 'content strategy' (3 titles, all regional SEO marketing). v0.6.0 (2026-10-26): TWO GATES that apply after the keywords. Professor Bear, looking at a 'K12 Education Account Manager, South Korea (12 months contract), Seoul' from a design-software company: 'keep it to English-speaking countries? Unless it's France or Italy. Or Brazil? Or Portugal? And no K-12.' A posting the keywords would keep is now rejected, with its reason, if (1) location_rule: its place names no allowed country (the United States, United Kingdom, Canada, Australia, New Zealand, Ireland, France, Italy, Brazil, Portugal), or (2) k12_rule: its TITLE says K-12. Both are data at the end of this file and collect.py only reads them. The gates never touch a posting the keywords reject, so every old reject keeps its old reason. The numbers behind each choice are in measured_before_adding; the choices that are Professor Bear's to change are named in the _comment of each rule. v0.6.1 (2026-10-28): a second judge, for a second Discord channel. Professor Bear, 2026-10-28, with a list of Unity, Unreal and Godot job titles: 'any game jobs that an early-career person who knows Unreal or Godot or Unity, or has any experience there, could take' go to a new channel, #games-3d-simulations, and posting waits until he says go. New block `engine_rule` at the end of this file, read by collect/engine_jobs.py and publish/games_feed.py. collect.judge(), the country and K-12 gates and every #professor-bear post are unchanged; the two gates also apply to this channel. v0.6.2 (2026-10-28, same day): the game-studio list. Professor Bear said yes to a list of game companies so the games channel covers more studios, reviewed one by one, still dry run only. The list is the `games` section of config/targets.json (status `active` = on the list; 10 studios), not a second file; `studio_hint` below says what an early-career title at a listed studio needs to count. French, Portuguese and Italian internship words (stage, stagiaire, alternance, estágio, tirocinio) and five French game-role phrases were added because France, Italy, Brazil and Portugal are allowed countries and Kabam, Hasbro's Montreal studio and Ubisoft title their jobs that way. v0.6.3 (2026-10-28, later still): a third judge, for a third Discord channel. Professor Bear, 2026-10-28: add the consulting firms of the directory he pasted and 'another search, for consulting jobs', posted to #consulting-firm after Lectern has been through them, dry run only until he says go. New block `consulting_rule` at the end of this file, read by collect/consulting_jobs.py and publish/consulting_feed.py; the firms are the `consulting` section of config/targets.json. collect.judge(), the games rule and every #professor-bear post are unchanged; the country and K-12 gates apply here too.",
- "version": "0.6.3",
+ "version": "0.6.4",
  "keep_rule": {
   "role_title_min": 1,
   "topic_text_min_if_no_title_match": 3
@@ -3164,5 +3164,38 @@
     "chef"
    ]
   }
+ },
+ "speakers_rule": {
+  "_comment": "Which companies go to the speakers channel (posting OFF): a COMPANY, not a posting, judged from SOURCED SIGNALS and never from words in a title (collect/speakers_judge.py). A lead needs (1) mcp_docs: the company's own public page for its own MCP, with an https link, and (2) a public contact route the company itself publishes; then the score is the sum of weights: mcp_docs 30, devrel_team 15 (a DevRel team or program page, or a job post for the role), mcp_talk 20 for the first talk about the MCP plus 5 for each further one up to +10, named_people 10 (at least one person found whose page shows them talking about the MCP; the names are in the local speaker-records/, never here), community_channel 5, and contact_route 10 if it is a DevRel page, a speaker form or a partnerships form but only 5 if it is a community forum or a public handle (a route, not one for speakers). Total 100. A score at or above min_score (60) posts; below it the company is held back, and so is one with no route. A 'to-do' company (a question for Professor Bear is open) is held back, not scored. If the links were re-checked (speakers_collect.py --check), a signal counts only if its link answered 2xx, or turned the script away (robots, 401, 403, 429) for a page the researcher OPENED; a 404 or 410 never counts. The score says how likely a company is to send someone; it is a screening heuristic and was not validated against any invitation sent, because none was. By hand: no mcp_docs link that answers means not-mcp; no route means held back; else add the weights. MEASURED on the 67 companies researched on 2026-10-30 from the companies' own pages (six research passes, then one request per link: 195 links, 179 answered 200, 10 turned the script away by robots.txt, 5 were 404, 1 was 403): 31 would be posted, 35 are held back (6 of them have talks and a named person and no published route: Docker, Notion, PayPal, Postman, Snowflake, Stripe), 1 is not-mcp (Salesforce: its docs page refused the researcher and the script, so its MCP rests on no opened page yet). At other minimums the same list posts 47 (40), 40 (50), 23 (70), 9 (80). Of the 16 links that did not answer 2xx, 5 are the researchers' own bad links (two MongoDB videos, a Datadog job post, a Zapier webinar, a GitLab evangelists page), which now count for nothing. What it cannot do: a forum is not a speaker bureau (only 3 companies have a DevRel page, speaker form or partnerships form that answers: Autodesk, Apify, Exa; GitLab's find-a-speaker page returns 404); 'opened' is the researcher's word, not the script's; a status of GA, beta or experimental is only what the page says; and no person was contacted, so willingness to speak is unknown for every company. Weights, min_score and the route kinds are settings here, not constants in the code.",
+  "channel": "speakers",
+  "posting": "off",
+  "include_unstated_level": false,
+  "min_score": 60,
+  "weights": {
+   "mcp_docs": 30,
+   "devrel_team": 15,
+   "mcp_talk": 20,
+   "mcp_talk_extra_each": 5,
+   "mcp_talk_extra_max": 10,
+   "named_people": 10,
+   "community_channel": 5,
+   "contact_route": 10,
+   "contact_route_weak": 5
+  },
+  "contact_route_kinds": [
+   "devrel-page",
+   "speaker-form",
+   "partnerships-form"
+  ],
+  "contact_route_weak_kinds": [
+   "community-page",
+   "public-handle"
+  ],
+  "signal_kinds": [
+   "mcp_docs",
+   "devrel_team",
+   "mcp_talk",
+   "community_channel"
+  ]
  }
 }

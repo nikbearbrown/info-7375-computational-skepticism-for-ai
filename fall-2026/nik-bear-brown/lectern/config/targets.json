@@ -69,6 +69,10 @@
     "in-house-strategy-group": {
       "label": "In-house strategy group",
       "meaning": "A company's own strategy or consulting team; its jobs are on that company's board; tagged, not treated as a consulting firm"
+    },
+    "mcp-company": {
+      "label": "Company with its own MCP",
+      "meaning": "Ships an MCP server of its own; judged only for the speakers channel, never read by collect.py for #professor-bear"
     }
   },
   "targets": [
@@ -5340,6 +5344,3764 @@
         "feed_names": [
           "Boeing Business Career Foundation Program"
         ]
+      }
+    },
+    {
+      "id": "speakers-epic-games",
+      "name": "Epic Games",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Unreal MCP (ModelContextProtocol plugin; UE 5.8) and UEFN MCP (experimental), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor"
+        },
+        {
+          "label": "public route",
+          "url": "https://forums.unrealengine.com/t/unreal-mcp-feedback-thread/2743365"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Unreal Engine 5.8 (Unreal Editor) and Unreal Editor for Fortnite (UEFN)",
+        "mcp": {
+          "name": "Unreal MCP (ModelContextProtocol plugin; UE 5.8) and UEFN MCP",
+          "primary_source": "https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor",
+          "source_kind": "docs",
+          "status": "experimental",
+          "announced": "2026-06",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://communities.unrealengine.com/events/details/epic-games-stockholm-presents-finding-the-fun-in-procedural-world-building-with-pcg-amp-making-development-fast-and-intuitive-with-verse/",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://forums.unrealengine.com/t/unreal-mcp-is-now-available-in-uefn/2745278",
+            "opened": true,
+            "date": "2026-08-21",
+            "title": "Creating in Fortnite livestream: Unreal MCP in UEFN"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://forums.unrealengine.com/",
+            "opened": false
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://forums.unrealengine.com/t/unreal-mcp-feedback-thread/2743365",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-figma",
+      "name": "Figma",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Figma MCP server (remote at mcp.figma.com/mcp, plus desktop server) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developers.figma.com/docs/figma-mcp-server/"
+        },
+        {
+          "label": "public route",
+          "url": "https://forum.figma.com/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Figma (Design, FigJam, Slides, Make)",
+        "mcp": {
+          "name": "Figma MCP server (remote at mcp.figma.com/mcp, plus desktop server)",
+          "primary_source": "https://developers.figma.com/docs/figma-mcp-server/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developers.figma.com/docs/figma-mcp-server/",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://fig-events.figma.com/getting-started-with-figma-for-developers",
+            "opened": true,
+            "date": "2026-09 (page shows Tuesday Sept 29, year not stated; 2026 matches the weekday)",
+            "title": "Getting Started with Figma for Developers (includes Figma MCP server live demo)"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://forum.figma.com/",
+            "opened": true
+          }
+        ],
+        "people_found": 4,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://forum.figma.com/",
+          "opened": true
+        },
+        "signals_withheld_because_they_name_a_person": 3
+      }
+    },
+    {
+      "id": "speakers-unity",
+      "name": "Unity",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Unity CLI MCP mode ('unity mcp'); replaces the deprecated in-editor Unity MCP server from the AI Assistant package (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.unity.com/en-us/unity-cli/replace-mcp-server-unity-cli"
+        },
+        {
+          "label": "public route",
+          "url": "https://unity.com/blog/unity-ai-mcp-how-to-get-started"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "The in-editor MCP server is deprecated in Unity's own docs; its replacement (Unity CLI MCP mode) has no stage stated. Ask which one a speaker would cover. No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Unity Editor (Unity 6+)",
+        "mcp": {
+          "name": "Unity CLI MCP mode ('unity mcp'); replaces the deprecated in-editor Unity MCP server from the AI Assistant package",
+          "primary_source": "https://docs.unity.com/en-us/unity-cli/replace-mcp-server-unity-cli",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.unity.com/en-us/unity-cli/replace-mcp-server-unity-cli",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discussions.unity.com",
+            "opened": false
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://unity.com/blog/unity-ai-mcp-how-to-get-started",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-adobe",
+      "name": "Adobe",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Adobe Express Developer MCP Server (npm @adobe/express-developer-mcp) (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developer.adobe.com/express/add-ons/docs/guides/getting-started/local-development/mcp-server"
+        },
+        {
+          "label": "public route",
+          "url": "https://developer.adobe.com/express/add-ons/docs/guides/getting-started/local-development/mcp-server"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "Adobe's own pages call the Express Developer server an MCP; the Claude connector is not called MCP on Adobe's own pages. No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Adobe Express (add-on developer MCP); Adobe for creativity (Photoshop, Express, Firefly etc. in Claude)",
+        "mcp": {
+          "name": "Adobe Express Developer MCP Server (npm @adobe/express-developer-mcp)",
+          "primary_source": "https://developer.adobe.com/express/add-ons/docs/guides/getting-started/local-development/mcp-server",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "2025-09",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developer.adobe.com/express/add-ons/docs/guides/getting-started/local-development/mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://forums.creativeclouddeveloper.com/t/mcp-server-workshop-for-adobe-express/11396",
+            "opened": true,
+            "date": "2025-09-09",
+            "title": "Workshop: MCP Server for Adobe Express Add-on Developers"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discord.com/invite/nc3QDyFeb4",
+            "opened": false
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://developer.adobe.com/express/add-ons/docs/guides/getting-started/local-development/mcp-server",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-canva",
+      "name": "Canva",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Canva MCP (remote server mcp.canva.com/mcp) and Canva Dev MCP server (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.canva.dev/docs/mcp/"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.canva.dev/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Canva (design platform)",
+        "mcp": {
+          "name": "Canva MCP (remote server mcp.canva.com/mcp) and Canva Dev MCP server",
+          "primary_source": "https://www.canva.dev/docs/mcp/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-04",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.canva.dev/docs/mcp/",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.canva.dev/",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.canva.dev/",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-autodesk",
+      "name": "Autodesk",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Autodesk MCP servers (Fusion MCP, Fusion Data MCP, Fusion Compute MCP, AutoCAD/Civil 3D MCP, Revit MCP, Product Help MCP) (GA), per the company's own help-centre. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://help.autodesk.com/view/ADSKMCP/ENU/"
+        },
+        {
+          "label": "public route",
+          "url": "https://aps.autodesk.com/contact-support"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Autodesk Fusion, AutoCAD, Civil 3D, Revit, Autodesk Platform Services (APS)",
+        "mcp": {
+          "name": "Autodesk MCP servers (Fusion MCP, Fusion Data MCP, Fusion Compute MCP, AutoCAD/Civil 3D MCP, Revit MCP, Product Help MCP)",
+          "primary_source": "https://help.autodesk.com/view/ADSKMCP/ENU/",
+          "source_kind": "help-centre",
+          "status": "GA",
+          "announced": "2026-05",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://help.autodesk.com/view/ADSKMCP/ENU/",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://aps.autodesk.com/blog/devcon-mcp-workshop-now-speaks-net",
+            "opened": true,
+            "date": "2026-07",
+            "title": "DevCon 2026 MCP workshop (7-step, Node.js/.NET/Python tracks)"
+          }
+        ],
+        "people_found": 3,
+        "contact_route": {
+          "kind": "devrel-page",
+          "url": "https://aps.autodesk.com/contact-support",
+          "opened": false
+        }
+      }
+    },
+    {
+      "id": "speakers-miro",
+      "name": "Miro",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Miro MCP server (mcp.miro.com) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developers.miro.com/docs/mcp-intro"
+        },
+        {
+          "label": "public route",
+          "url": "https://developers.miro.com/docs/mcp-intro"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Miro (visual collaboration boards)",
+        "mcp": {
+          "name": "Miro MCP server (mcp.miro.com)",
+          "primary_source": "https://developers.miro.com/docs/mcp-intro",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developers.miro.com/docs/mcp-intro",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://miro.com/events/webinar/mcp-du-contexte-visuel-au-code-france/",
+            "opened": true,
+            "date": "2026-09-30",
+            "title": "Votre agent IA et Miro, du contexte individuel a la collaboration visuelle - grace a MCP"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://developers.miro.com/docs/mcp-intro",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://developers.miro.com/docs/mcp-intro",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-framer",
+      "name": "Framer",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Framer MCP (mcp.framer.com/mcp) (unknown), per the company's own help-centre. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.framer.com/help/articles/getting-started-with-framer-mcp"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Framer (website builder)",
+        "mcp": {
+          "name": "Framer MCP (mcp.framer.com/mcp)",
+          "primary_source": "https://www.framer.com/help/articles/getting-started-with-framer-mcp",
+          "source_kind": "help-centre",
+          "status": "unknown",
+          "announced": "2026-10",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.framer.com/help/articles/getting-started-with-framer-mcp",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-webflow",
+      "name": "Webflow",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Webflow MCP server (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developers.webflow.com/mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.webflow.com/events"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Webflow (site builder and CMS)",
+        "mcp": {
+          "name": "Webflow MCP server",
+          "primary_source": "https://developers.webflow.com/mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developers.webflow.com/mcp",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://community.webflow.com/events/post/developer-office-hours---may-2026-48xk7rTZPH0iQTs",
+            "opened": true,
+            "date": "2026-05-20",
+            "title": "Developer Office Hours - May 2026 (Apps, APIs, the MCP Server)"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.webflow.com/",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.webflow.com/events",
+          "opened": false
+        },
+        "signals_withheld_because_they_name_a_person": 1
+      }
+    },
+    {
+      "id": "speakers-roblox",
+      "name": "Roblox",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Roblox Studio MCP server (built into Studio) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://create.roblox.com/docs/studio/mcp"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Roblox Studio (game creation)",
+        "mcp": {
+          "name": "Roblox Studio MCP server (built into Studio)",
+          "primary_source": "https://create.roblox.com/docs/studio/mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://create.roblox.com/docs/studio/mcp",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-blender-lab-blender-extra",
+      "name": "Blender Lab / Blender (extra)",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Blender Lab MCP server (add-on v1.0.3, Blender 5.1+) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.blender.org/lab/mcp-server/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Blender (3D creation)",
+        "mcp": {
+          "name": "Blender Lab MCP server (add-on v1.0.3, Blender 5.1+)",
+          "primary_source": "https://www.blender.org/lab/mcp-server/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.blender.org/lab/mcp-server/",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-github",
+      "name": "GitHub",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: GitHub MCP Server (unknown), per the company's own github-org. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://github.com/github/github-mcp-server"
+        },
+        {
+          "label": "public route",
+          "url": "https://github.com/github/github-mcp-server/discussions"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "GitHub (code hosting, Copilot)",
+        "mcp": {
+          "name": "GitHub MCP Server",
+          "primary_source": "https://github.com/github/github-mcp-server",
+          "source_kind": "github-org",
+          "status": "unknown",
+          "announced": "2025-04",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://github.com/github/github-mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://phpconference.nl/?p=6397",
+            "opened": true,
+            "date": "2026-03",
+            "title": "Build your own MCP server (workshop)"
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://resources.github.com/webcasts/github-roadmap-webinar-q3-americas-europe/",
+            "opened": false,
+            "date": "2025-Q3",
+            "title": "GitHub Roadmap Webinar Q3 2025 (search snippet says it covers MCP Server enhancements)"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://github.com/github/github-mcp-server/discussions",
+            "opened": true
+          }
+        ],
+        "people_found": 3,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://github.com/github/github-mcp-server/discussions",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-gitlab",
+      "name": "GitLab",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: GitLab MCP server (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.gitlab.com/user/model_context_protocol/mcp_server/"
+        },
+        {
+          "label": "public route",
+          "url": "https://about.gitlab.com/community/evangelists/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No named person sourced from an opened page.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "GitLab (DevSecOps platform)",
+        "mcp": {
+          "name": "GitLab MCP server",
+          "primary_source": "https://docs.gitlab.com/user/model_context_protocol/mcp_server/",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.gitlab.com/user/model_context_protocol/mcp_server/",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://about.gitlab.com/community/evangelists/",
+            "opened": false
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://forum.gitlab.com",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "speaker-form",
+          "url": "https://about.gitlab.com/community/evangelists/",
+          "opened": false
+        }
+      }
+    },
+    {
+      "id": "speakers-atlassian",
+      "name": "Atlassian",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Atlassian Rovo MCP Server (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developer.atlassian.com/cloud/rovo-mcp/"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.atlassian.com/forums/Atlassian-Rovo-MCP-Server/gh-p/AtlassianMCPServer"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Atlassian Cloud (Jira, Confluence, Bitbucket, Loom)",
+        "mcp": {
+          "name": "Atlassian Rovo MCP Server",
+          "primary_source": "https://developer.atlassian.com/cloud/rovo-mcp/",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "2026-02",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developer.atlassian.com/cloud/rovo-mcp/",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://events.atlassian.com/atlascamp26-amsterdam/session/3766272/ai-everywhere-unlocking-atlassian-power-with-the-atlassian-rovo-mcp-server",
+            "opened": true,
+            "date": "2026-02-09",
+            "title": "AI everywhere: Unlocking Atlassian power with the Atlassian Rovo MCP server"
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://events.atlassian.com/atlascamp26-bengaluru/session/4043626/ai-everywhere-unlocking-atlassian-power-with-the-atlassian-rovo-mcp-server",
+            "opened": true,
+            "date": "2026-06-23",
+            "title": "AI everywhere: Unlocking Atlassian power with the Atlassian Rovo MCP server"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.atlassian.com/forums/Atlassian-Rovo-MCP-Server/gh-p/AtlassianMCPServer",
+            "opened": true
+          }
+        ],
+        "people_found": 4,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.atlassian.com/forums/Atlassian-Rovo-MCP-Server/gh-p/AtlassianMCPServer",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-jetbrains",
+      "name": "JetBrains",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: JetBrains IDE built-in MCP Server (MCP Server plugin, bundled) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.jetbrains.com/help/idea/mcp-server.html"
+        },
+        {
+          "label": "public route",
+          "url": "https://platform.jetbrains.com"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "JetBrains IDEs (IntelliJ IDEA etc.)",
+        "mcp": {
+          "name": "JetBrains IDE built-in MCP Server (MCP Server plugin, bundled)",
+          "primary_source": "https://www.jetbrains.com/help/idea/mcp-server.html",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-08",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.jetbrains.com/help/idea/mcp-server.html",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://platform.jetbrains.com",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://platform.jetbrains.com",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-vercel",
+      "name": "Vercel",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Vercel MCP (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://vercel.com/docs/mcp/vercel-mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.vercel.com/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Vercel (frontend cloud)",
+        "mcp": {
+          "name": "Vercel MCP",
+          "primary_source": "https://vercel.com/docs/mcp/vercel-mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-08",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://vercel.com/docs/mcp/vercel-mcp",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://vercel.com/blog/vercel-ship-2026-recap.md",
+            "opened": false,
+            "date": "2026",
+            "title": "Ship 2026 keynote (recap mentions MCP servers on Vercel and MCP Events)"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.vercel.com/",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.vercel.com/",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-netlify",
+      "name": "Netlify",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Netlify MCP server (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Netlify (web hosting/deploy)",
+        "mcp": {
+          "name": "Netlify MCP server",
+          "primary_source": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-cloudflare",
+      "name": "Cloudflare",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Cloudflare managed remote MCP servers (API server at mcp.cloudflare.com/mcp + product servers) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
+        },
+        {
+          "label": "public route",
+          "url": "https://discord.cloudflare.com"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Cloudflare (network, Workers, security)",
+        "mcp": {
+          "name": "Cloudflare managed remote MCP servers (API server at mcp.cloudflare.com/mcp + product servers)",
+          "primary_source": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://cloudflare.tv/event/mcp-servers-on-cloudflare-workers/oZKkq0Z4",
+            "opened": true,
+            "date": "2025-04-07",
+            "title": "MCP servers on Cloudflare Workers"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discord.cloudflare.com",
+            "opened": false
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://discord.cloudflare.com",
+          "opened": false
+        },
+        "signals_withheld_because_they_name_a_person": 1
+      }
+    },
+    {
+      "id": "speakers-docker",
+      "name": "Docker",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Docker MCP Catalog and Toolkit (plus open-source MCP Gateway) (beta), per the company's own announcement. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.docker.com/blog/announcing-docker-mcp-catalog-and-toolkit/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Docker Desktop / Docker Hub",
+        "mcp": {
+          "name": "Docker MCP Catalog and Toolkit (plus open-source MCP Gateway)",
+          "primary_source": "https://www.docker.com/blog/announcing-docker-mcp-catalog-and-toolkit/",
+          "source_kind": "announcement",
+          "status": "beta",
+          "announced": "2025-05",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.docker.com/blog/announcing-docker-mcp-catalog-and-toolkit/",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.docker.com/resources/using-mcp-in-practice-webinar/",
+            "opened": true,
+            "title": "Using MCP in Practice: From Quick Experiments to Multi-Agent Systems (on-demand webinar; covers MCP Toolkit and Catalog)"
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-postman",
+      "name": "Postman",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Postman MCP Server (remote at mcp.postman.com, local STDIO also) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://learning.postman.com/docs/developer/postman-api/postman-mcp-server/postman-mcp-remote-server"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Postman (API platform)",
+        "mcp": {
+          "name": "Postman MCP Server (remote at mcp.postman.com, local STDIO also)",
+          "primary_source": "https://learning.postman.com/docs/developer/postman-api/postman-mcp-server/postman-mcp-remote-server",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://learning.postman.com/docs/developer/postman-api/postman-mcp-server/postman-mcp-remote-server",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://luma.com/rytyc1jj",
+            "opened": true,
+            "title": "Agents & APIs Madrid Developer Meetup (session: powering AI agents with MCP and Postman)"
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-sentry",
+      "name": "Sentry",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Sentry MCP server (remote, mcp.sentry.dev) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://mcp.sentry.dev/"
+        },
+        {
+          "label": "public route",
+          "url": "https://sentry.io/_/events/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Sentry (error and performance monitoring)",
+        "mcp": {
+          "name": "Sentry MCP server (remote, mcp.sentry.dev)",
+          "primary_source": "https://mcp.sentry.dev/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://mcp.sentry.dev/",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discord.gg/sentry",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://sentry.io/_/events/",
+          "opened": true
+        },
+        "signals_withheld_because_they_name_a_person": 1
+      }
+    },
+    {
+      "id": "speakers-supabase",
+      "name": "Supabase",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Supabase MCP server (hosted remote at mcp.supabase.com + local CLI) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://supabase.com/docs/guides/getting-started/mcp"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Supabase (Postgres backend platform)",
+        "mcp": {
+          "name": "Supabase MCP server (hosted remote at mcp.supabase.com + local CLI)",
+          "primary_source": "https://supabase.com/docs/guides/getting-started/mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-04",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://supabase.com/docs/guides/getting-started/mcp",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-neon",
+      "name": "Neon",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Neon MCP Server (hosted at mcp.neon.tech/mcp) (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://neon.com/docs/ai/neon-mcp-server"
+        },
+        {
+          "label": "public route",
+          "url": "https://neon.com/docs/introduction/support"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "The researcher found that Neon appears to be part of Databricks now: ask which company a speaker would come through. No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Neon (serverless Postgres)",
+        "mcp": {
+          "name": "Neon MCP Server (hosted at mcp.neon.tech/mcp)",
+          "primary_source": "https://neon.com/docs/ai/neon-mcp-server",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "2025-04",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://neon.com/docs/ai/neon-mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://neon.com/discord",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://neon.com/docs/introduction/support",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-mongodb",
+      "name": "MongoDB",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: MongoDB MCP Server (plus Atlas managed MCP listed in docs sidebar) (GA), per the company's own announcement. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.mongodb.com/products/updates/mongodb-mcp-server-generally-available/"
+        },
+        {
+          "label": "public route",
+          "url": "https://www.mongodb.com/community"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "MongoDB / MongoDB Atlas",
+        "mcp": {
+          "name": "MongoDB MCP Server (plus Atlas managed MCP listed in docs sidebar)",
+          "primary_source": "https://www.mongodb.com/products/updates/mongodb-mcp-server-generally-available/",
+          "source_kind": "announcement",
+          "status": "GA",
+          "announced": "2025-09",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.mongodb.com/products/updates/mongodb-mcp-server-generally-available/",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.mongodb.com/developer/videos/how-to-setup-an-mcp-server-in-cursor-mongodb-mcp-cursor",
+            "opened": false,
+            "date": "2025-06",
+            "title": "How to Setup an MCP Server in Cursor"
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.mongodb.com/developer/videos/how-to-use-the-official-mongodb-mcp-in-vs-code-databaseconcepts-vscode-mcp",
+            "opened": false,
+            "title": "How to Use the Official MongoDB MCP in VS Code"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://github.com/mongodb-js/mongodb-mcp-server/discussions",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://www.mongodb.com/community",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-snowflake",
+      "name": "Snowflake",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Snowflake-managed MCP server (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Snowflake (data cloud)",
+        "mcp": {
+          "name": "Snowflake-managed MCP server",
+          "primary_source": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "2025-10",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.snowflake.com/en/webinars/virtual-hands-on-lab/designing-a-snowflake-mcp-server-built-for-your-data-2026-08-13/",
+            "opened": true,
+            "date": "2026-08",
+            "title": "Designing a Snowflake MCP Server, Built for Your Data"
+          }
+        ],
+        "people_found": 3,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-databricks",
+      "name": "Databricks",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Databricks managed MCP servers (Genie One, Databricks SQL, AI Search, UC functions) via Unity Gateway (preview), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.databricks.com/aws/en/agents/mcp/managed-mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.databricks.com/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Databricks (data and AI platform)",
+        "mcp": {
+          "name": "Databricks managed MCP servers (Genie One, Databricks SQL, AI Search, UC functions) via Unity Gateway",
+          "primary_source": "https://docs.databricks.com/aws/en/agents/mcp/managed-mcp",
+          "source_kind": "docs",
+          "status": "preview",
+          "announced": "2026-01",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.databricks.com/aws/en/agents/mcp/managed-mcp",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.databricks.com/",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.databricks.com/",
+          "opened": true
+        },
+        "signals_withheld_because_they_name_a_person": 1
+      }
+    },
+    {
+      "id": "speakers-elastic",
+      "name": "Elastic",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Elastic Agent Builder MCP server (endpoint {KIBANA_URL}/api/agent_builder/mcp) (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.elastic.co/docs/solutions/search/agent-builder/mcp-server"
+        },
+        {
+          "label": "public route",
+          "url": "https://www.elastic.co/community"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Elasticsearch / Kibana (Elastic Agent Builder)",
+        "mcp": {
+          "name": "Elastic Agent Builder MCP server (endpoint {KIBANA_URL}/api/agent_builder/mcp)",
+          "primary_source": "https://www.elastic.co/docs/solutions/search/agent-builder/mcp-server",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "2025-10",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.elastic.co/docs/solutions/search/agent-builder/mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://www.elastic.co/community",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://luma.com/imgwiftz",
+            "opened": true,
+            "title": "Building Search-Aligned Autonomous Systems with MCP, Elastic, and Tron"
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://sessionize.com/somdevsupport/",
+            "opened": true,
+            "title": "Scaling the Context Engine: Deploying Elastic's MCP Server on Amazon Bedrock AgentCore Runtime"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discuss.elastic.co",
+            "opened": true
+          }
+        ],
+        "people_found": 3,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://www.elastic.co/community",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-grafana-labs",
+      "name": "Grafana Labs",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Grafana MCP server (open source, mcp-grafana) and Grafana Cloud hosted MCP server (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://grafana.com/docs/grafana-cloud/machine-learning/mcp/"
+        },
+        {
+          "label": "public route",
+          "url": "https://grafana.com/community/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Grafana / Grafana Cloud",
+        "mcp": {
+          "name": "Grafana MCP server (open source, mcp-grafana) and Grafana Cloud hosted MCP server",
+          "primary_source": "https://grafana.com/docs/grafana-cloud/machine-learning/mcp/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-07",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://grafana.com/docs/grafana-cloud/machine-learning/mcp/",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://community.grafana.com/t/grafana-campfire-using-the-grafana-mcp-server-grafana-community-call-july-2025/154984",
+            "opened": true,
+            "date": "2025-07-24",
+            "title": "Grafana Campfire: Using the Grafana MCP Server (Community Call)"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.grafana.com/",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://grafana.com/community/",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-datadog",
+      "name": "Datadog",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Datadog MCP Server (remote) (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.datadoghq.com/bits_ai/mcp_server/"
+        },
+        {
+          "label": "public route",
+          "url": "https://www.datadoghq.com/community/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "The GA date comes from a press release seen in search results only.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Datadog (observability platform)",
+        "mcp": {
+          "name": "Datadog MCP Server (remote)",
+          "primary_source": "https://docs.datadoghq.com/bits_ai/mcp_server/",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "2025-06",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.datadoghq.com/bits_ai/mcp_server/",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://careers.datadoghq.com/detail/8177798/",
+            "opened": false
+          }
+        ],
+        "people_found": 3,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://www.datadoghq.com/community/",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-pagerduty",
+      "name": "PagerDuty",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: PagerDuty MCP Server (hosted at mcp.pagerduty.com/mcp; self-hosted deprecated) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.pagerduty.com/ai-automation/advance/pagerduty-mcp-server"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.pagerduty.com"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "PagerDuty (incident management)",
+        "mcp": {
+          "name": "PagerDuty MCP Server (hosted at mcp.pagerduty.com/mcp; self-hosted deprecated)",
+          "primary_source": "https://docs.pagerduty.com/ai-automation/advance/pagerduty-mcp-server",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.pagerduty.com/ai-automation/advance/pagerduty-mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.pagerduty.com/event/pagerduty-livestream-mcp-community-april/",
+            "opened": true,
+            "date": "2026-04-29",
+            "title": "PagerDuty MCP Community (livestream)"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.pagerduty.com",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.pagerduty.com",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-hashicorp",
+      "name": "HashiCorp",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Terraform MCP server (also Vault and Vault Radar MCP servers) (GA), per the company's own announcement. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://hashicorp.com/blog/terraform-mcp-server-is-now-generally-available"
+        },
+        {
+          "label": "public route",
+          "url": "https://discuss.hashicorp.com/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Terraform (HCP Terraform / Terraform Enterprise)",
+        "mcp": {
+          "name": "Terraform MCP server (also Vault and Vault Radar MCP servers)",
+          "primary_source": "https://hashicorp.com/blog/terraform-mcp-server-is-now-generally-available",
+          "source_kind": "announcement",
+          "status": "GA",
+          "announced": "2025-05",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://hashicorp.com/blog/terraform-mcp-server-is-now-generally-available",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://hashicorp.com/ar/conferences/hashiconf/agenda/9-26/from-code-to-context-automating-secure-devops-with-hashicorp-mcp-servers",
+            "opened": true,
+            "date": "2025-09-26",
+            "title": "From code to context: Automating secure DevOps with HashiCorp MCP servers"
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.hashicorp.com/resources/hashicast-changelog-terraform-mcp-server-consul-1-21",
+            "opened": true,
+            "date": "2025-06-04",
+            "title": "HashiCast CHANGELOG: Terraform MCP Server, Consul 1.21"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discuss.hashicorp.com/",
+            "opened": true
+          }
+        ],
+        "people_found": 4,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://discuss.hashicorp.com/",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-stripe",
+      "name": "Stripe",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Stripe MCP server (hosted at mcp.stripe.com) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.stripe.com/mcp"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Stripe (payments platform)",
+        "mcp": {
+          "name": "Stripe MCP server (hosted at mcp.stripe.com)",
+          "primary_source": "https://docs.stripe.com/mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.stripe.com/mcp",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://stripe.com/sessions/2026/developer-keynote",
+            "opened": true,
+            "date": "2026",
+            "title": "Advancing developer craft (Developer keynote, Stripe Sessions 2026)"
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-shopify",
+      "name": "Shopify",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Shopify Dev MCP server (@shopify/dev-mcp) plus storefront-side MCPs (Catalog, Cart, Checkout, Customer Accounts) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://shopify.dev/docs/apps/build/devmcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.shopify.dev"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "Shopify has several MCP servers and some tools were removed for a newer protocol: ask which one a speaker covers. No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Shopify (commerce platform)",
+        "mcp": {
+          "name": "Shopify Dev MCP server (@shopify/dev-mcp) plus storefront-side MCPs (Catalog, Cart, Checkout, Customer Accounts)",
+          "primary_source": "https://shopify.dev/docs/apps/build/devmcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://shopify.dev/docs/apps/build/devmcp",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.shopify.dev",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.shopify.dev",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-salesforce",
+      "name": "Salesforce",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Salesforce Hosted MCP Servers (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.md"
+        },
+        {
+          "label": "public route",
+          "url": "https://trailhead.salesforce.com/trailblazer-community/topics/mcp"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "developer.salesforce.com refused the researcher (403); the primary source was seen in search results only. No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Salesforce (CRM, Agentforce)",
+        "mcp": {
+          "name": "Salesforce Hosted MCP Servers",
+          "primary_source": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.md",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "2026-04",
+          "opened": false
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.md",
+            "opened": false
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://trailhead.salesforce.com/trailblazer-community/topics/mcp",
+            "opened": true,
+            "date": "2026-03",
+            "title": "Agentforce NOW Ask Me Anything: Scaling your Agentic Architecture: MCP Servers in GA"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://trailhead.salesforce.com/trailblazer-community/topics/mcp",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://trailhead.salesforce.com/trailblazer-community/topics/mcp",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-hubspot",
+      "name": "HubSpot",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Remote HubSpot MCP server (mcp.hubspot.com), plus a local HubSpot Developer MCP server for app/CMS development (GA), per the company's own changelog. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developers.hubspot.com/changelog/remote-hubspot-mcp-server-is-now-generally-available"
+        },
+        {
+          "label": "public route",
+          "url": "https://developers.hubspot.com/community"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "HubSpot (CRM)",
+        "mcp": {
+          "name": "Remote HubSpot MCP server (mcp.hubspot.com), plus a local HubSpot Developer MCP server for app/CMS development",
+          "primary_source": "https://developers.hubspot.com/changelog/remote-hubspot-mcp-server-is-now-generally-available",
+          "source_kind": "changelog",
+          "status": "GA",
+          "announced": "2026-04",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developers.hubspot.com/changelog/remote-hubspot-mcp-server-is-now-generally-available",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://developers.hubspot.com/community",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://developers.hubspot.com/community",
+          "opened": true
+        },
+        "signals_withheld_because_they_name_a_person": 1
+      }
+    },
+    {
+      "id": "speakers-notion",
+      "name": "Notion",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Notion MCP (hosted remote server at mcp.notion.com/mcp) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developers.notion.com/docs/mcp"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Notion (workspace and docs)",
+        "mcp": {
+          "name": "Notion MCP (hosted remote server at mcp.notion.com/mcp)",
+          "primary_source": "https://developers.notion.com/docs/mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-07",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developers.notion.com/docs/mcp",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://workos.com/blog/mcp-night-2-0-demo-recap-notion-prd-to-prototype",
+            "opened": true,
+            "date": "2025-09",
+            "title": "Notion PRD to prototype demo via Notion MCP"
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-linear",
+      "name": "Linear",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Linear MCP server (mcp.linear.app/mcp) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://linear.app/docs/mcp"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Linear (issue tracking)",
+        "mcp": {
+          "name": "Linear MCP server (mcp.linear.app/mcp)",
+          "primary_source": "https://linear.app/docs/mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-05",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://linear.app/docs/mcp",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-asana",
+      "name": "Asana",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Asana MCP server V2 (mcp.asana.com/v2/mcp) (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developers.asana.com/docs/using-asanas-mcp-server"
+        },
+        {
+          "label": "public route",
+          "url": "https://developers.asana.com/docs/using-asanas-mcp-server"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "Asana's docs and forum disagree on the shutdown date of the old V1 server (both dates have passed). No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Asana (work management)",
+        "mcp": {
+          "name": "Asana MCP server V2 (mcp.asana.com/v2/mcp)",
+          "primary_source": "https://developers.asana.com/docs/using-asanas-mcp-server",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "2026-02",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://forum.asana.com/t/new-v2-mcp-server-now-generally-available/1122647",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-zapier",
+      "name": "Zapier",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Zapier MCP (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.zapier.com/mcp/home"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.zapier.com"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Zapier (automation)",
+        "mcp": {
+          "name": "Zapier MCP",
+          "primary_source": "https://docs.zapier.com/mcp/home",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.zapier.com/mcp/home",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://partnerhub.zapier.com/upcomingevent/detail/01k00000000001D00hE",
+            "opened": false,
+            "date": "2025-05",
+            "title": "Intro to Zapier MCP: Best use cases"
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://zapier.com/resources/webinar/ai-mcp-ama",
+            "opened": false,
+            "title": "AI MCP AMA"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.zapier.com",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.zapier.com",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-twilio",
+      "name": "Twilio",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Twilio MCP server (hosted docs server at mcp.twilio.com/docs; earlier Twilio Alpha MCP server) (beta), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.twilio.com/docs/ai/mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://www.twilio.com/en-us/developers"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Twilio (communications APIs)",
+        "mcp": {
+          "name": "Twilio MCP server (hosted docs server at mcp.twilio.com/docs; earlier Twilio Alpha MCP server)",
+          "primary_source": "https://www.twilio.com/docs/ai/mcp",
+          "source_kind": "docs",
+          "status": "beta",
+          "announced": "2026-06",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.twilio.com/docs/ai/mcp",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://www.twilio.com/en-us/developers",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://www.twilio.com/en-us/developers",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-intercom",
+      "name": "Intercom",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Intercom MCP server (mcp.intercom.com/mcp, US and EU) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developers.intercom.com/docs/guides/mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.intercom.com"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Intercom (customer service platform)",
+        "mcp": {
+          "name": "Intercom MCP server (mcp.intercom.com/mcp, US and EU)",
+          "primary_source": "https://developers.intercom.com/docs/guides/mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developers.intercom.com/docs/guides/mcp",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.intercom.com",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.intercom.com",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-paypal",
+      "name": "PayPal",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: PayPal MCP server (remote at mcp.paypal.com; local via @paypal/mcp; part of the Agent Toolkit) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developer.paypal.com/ai-tools/mcp-server.md"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "PayPal (payments)",
+        "mcp": {
+          "name": "PayPal MCP server (remote at mcp.paypal.com; local via @paypal/mcp; part of the Agent Toolkit)",
+          "primary_source": "https://developer.paypal.com/ai-tools/mcp-server.md",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-04",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developer.paypal.com/ai-tools/mcp-server.md",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://luma.com/xq20jjz5",
+            "opened": true,
+            "title": "Making Commerce Agent-Native: PayPal's MCP Implementation"
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-block-square",
+      "name": "Block (Square)",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Square MCP server (remote at mcp.squareup.com/mcp; local via npx square-mcp-server) (beta), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developer.squareup.com/docs/mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://developer.squareup.com/forums/c/mcp/14"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Square (payments and commerce, Block)",
+        "mcp": {
+          "name": "Square MCP server (remote at mcp.squareup.com/mcp; local via npx square-mcp-server)",
+          "primary_source": "https://developer.squareup.com/docs/mcp",
+          "source_kind": "docs",
+          "status": "beta",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developer.squareup.com/docs/mcp",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.apollographql.com/blog/meet-the-builders-highlights-from-the-mcp-server-builder-meetup",
+            "opened": true,
+            "date": "2025-06",
+            "title": "Building Reliable MCP Servers with Goose & MCP Tool Layering in Square MCP Server"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://developer.squareup.com/forums/c/mcp/14",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://developer.squareup.com/forums/c/mcp/14",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-plaid",
+      "name": "Plaid",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Plaid Dashboard MCP server (api.dashboard.plaid.com/mcp/) and local Plaid AI coding toolkit MCP (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://plaid.com/docs/resources/mcp/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Plaid (financial data APIs)",
+        "mcp": {
+          "name": "Plaid Dashboard MCP server (api.dashboard.plaid.com/mcp/) and local Plaid AI coding toolkit MCP",
+          "primary_source": "https://plaid.com/docs/resources/mcp/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-05",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://plaid.com/docs/resources/mcp/",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-apify",
+      "name": "Apify",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Apify MCP server (hosted at mcp.apify.com; local via @apify/actors-mcp-server) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.apify.com/platform/mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://apify.com/partners"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Apify platform (Actors / web scraping and automation)",
+        "mcp": {
+          "name": "Apify MCP server (hosted at mcp.apify.com; local via @apify/actors-mcp-server)",
+          "primary_source": "https://docs.apify.com/platform/mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.apify.com/platform/mcp",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://apify.com/resources/mcp-creator-webinar",
+            "opened": true,
+            "title": "Building and monetizing MCP servers on Apify"
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://apify.com/resources/mcp-webinar",
+            "opened": true,
+            "date": "2025-04",
+            "title": "Apify + Make: jump start your AI agents with MCP"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discord.apify.com/",
+            "opened": false
+          }
+        ],
+        "people_found": 3,
+        "contact_route": {
+          "kind": "partnerships-form",
+          "url": "https://apify.com/partners",
+          "opened": false
+        }
+      }
+    },
+    {
+      "id": "speakers-firecrawl",
+      "name": "Firecrawl",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Firecrawl MCP server (hosted mcp.firecrawl.dev; local firecrawl-mcp) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.firecrawl.dev/mcp-server/clients"
+        },
+        {
+          "label": "public route",
+          "url": "https://www.firecrawl.dev/firestarters"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Firecrawl (web scraping / crawling API)",
+        "mcp": {
+          "name": "Firecrawl MCP server (hosted mcp.firecrawl.dev; local firecrawl-mcp)",
+          "primary_source": "https://docs.firecrawl.dev/mcp-server/clients",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.firecrawl.dev/mcp-server/clients",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://www.firecrawl.dev/firestarters",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discord.gg/firecrawl",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://www.firecrawl.dev/firestarters",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-browserbase",
+      "name": "Browserbase",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Browserbase MCP server (hosted Streamable HTTP; built on Stagehand) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.browserbase.com/integrations/mcp/introduction"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Browserbase (cloud headless browsers; Stagehand)",
+        "mcp": {
+          "name": "Browserbase MCP server (hosted Streamable HTTP; built on Stagehand)",
+          "primary_source": "https://docs.browserbase.com/integrations/mcp/introduction",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-07",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.browserbase.com/integrations/mcp/introduction",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-pinecone",
+      "name": "Pinecone",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Pinecone MCP server (@pinecone-database/mcp, run via npx) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.pinecone.io/guides/operations/mcp-server"
+        },
+        {
+          "label": "public route",
+          "url": "https://community.pinecone.io/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Pinecone (vector database, Assistant)",
+        "mcp": {
+          "name": "Pinecone MCP server (@pinecone-database/mcp, run via npx)",
+          "primary_source": "https://docs.pinecone.io/guides/operations/mcp-server",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-04",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.pinecone.io/guides/operations/mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://www.pinecone.io/careers/4433b308-1ff4-4b5f-9184-810e5d9844f6/",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://luma.com/gr6eqznl",
+            "opened": true,
+            "date": "2025-05",
+            "title": "Model Context Protocol (MCP) Explained - Technical AMA for Developers"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.pinecone.io/",
+            "opened": false
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://community.pinecone.io/",
+          "opened": false
+        }
+      }
+    },
+    {
+      "id": "speakers-elevenlabs",
+      "name": "ElevenLabs",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: ElevenLabs hosted MCP server (api.elevenlabs.io/v1/mcp, OAuth) (GA), per the company's own changelog. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://elevenlabs.io/docs/changelog/2026/8/22.md"
+        },
+        {
+          "label": "public route",
+          "url": "https://elevenlabs.io/docs/help-center/other/is-there-a-community-for-eleven-labs"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "ElevenLabs (voice, speech and agents platform)",
+        "mcp": {
+          "name": "ElevenLabs hosted MCP server (api.elevenlabs.io/v1/mcp, OAuth)",
+          "primary_source": "https://elevenlabs.io/docs/changelog/2026/8/22.md",
+          "source_kind": "changelog",
+          "status": "GA",
+          "announced": "2026-08",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://elevenlabs.io/docs/changelog/2026/8/22.md",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://elevenlabs.io/careers/969bbf7d-037c-4965-812e-442105ce58c1/developer-advocate",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://elevenlabs.io/docs/help-center/other/is-there-a-community-for-eleven-labs",
+            "opened": false
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://elevenlabs.io/docs/help-center/other/is-there-a-community-for-eleven-labs",
+          "opened": false
+        }
+      }
+    },
+    {
+      "id": "speakers-hugging-face",
+      "name": "Hugging Face",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Hugging Face MCP Server (huggingface.co/mcp) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://huggingface.co/docs/hub/agents-mcp.md"
+        },
+        {
+          "label": "public route",
+          "url": "https://huggingface.co/spaces/huggingface/HuggingDiscussions/discussions/69"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Hugging Face Hub",
+        "mcp": {
+          "name": "Hugging Face MCP Server (huggingface.co/mcp)",
+          "primary_source": "https://huggingface.co/docs/hub/agents-mcp.md",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-06",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://huggingface.co/docs/hub/agents-mcp.md",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discuss.huggingface.co/",
+            "opened": false
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://huggingface.co/spaces/huggingface/HuggingDiscussions/discussions/69",
+          "opened": false
+        }
+      }
+    },
+    {
+      "id": "speakers-perplexity",
+      "name": "Perplexity",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Perplexity MCP Server (hosted api.perplexity.ai/mcp; npm @perplexity-ai/mcp-server) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server.md"
+        },
+        {
+          "label": "public route",
+          "url": "https://docs.perplexity.ai/docs/resources/discussions"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Perplexity API Platform (Search, Agent, Sonar APIs)",
+        "mcp": {
+          "name": "Perplexity MCP Server (hosted api.perplexity.ai/mcp; npm @perplexity-ai/mcp-server)",
+          "primary_source": "https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server.md",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server.md",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.perplexity.ai/",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://docs.perplexity.ai/docs/resources/discussions",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-exa",
+      "name": "Exa",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Exa MCP server (hosted mcp.exa.ai/mcp; npm exa-mcp-server) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://exa.ai/docs/reference/exa-mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://exa.ai/contact/partners"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Exa (AI web search API)",
+        "mcp": {
+          "name": "Exa MCP server (hosted mcp.exa.ai/mcp; npm exa-mcp-server)",
+          "primary_source": "https://exa.ai/docs/reference/exa-mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://exa.ai/docs/reference/exa-mcp",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://jobs.ashbyhq.com/exa/fd015edb-c29b-40ff-aa6f-b477c730b4c1",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discord.gg/HCShtBqbfV",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "partnerships-form",
+          "url": "https://exa.ai/contact/partners",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-tavily",
+      "name": "Tavily",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Tavily MCP server (hosted mcp.tavily.com/mcp; npm tavily-mcp) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.tavily.com/documentation/mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://www.tavily.com/community"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Tavily (search / extract / crawl API for AI agents)",
+        "mcp": {
+          "name": "Tavily MCP server (hosted mcp.tavily.com/mcp; npm tavily-mcp)",
+          "primary_source": "https://docs.tavily.com/documentation/mcp",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.tavily.com/documentation/mcp",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://www.tavily.com/blog/what-we-shipped-september-2026",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.tavily.com/",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://www.tavily.com/community",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-algolia",
+      "name": "Algolia",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Algolia MCP servers (Public, Productivity, DevEx, DocSearch) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.algolia.com/doc/guides/algolia-ai/mcp-server/overview"
+        },
+        {
+          "label": "public route",
+          "url": "https://www.algolia.com/developers"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Algolia (search and retrieval platform)",
+        "mcp": {
+          "name": "Algolia MCP servers (Public, Productivity, DevEx, DocSearch)",
+          "primary_source": "https://www.algolia.com/doc/guides/algolia-ai/mcp-server/overview",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-04",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.algolia.com/doc/guides/algolia-ai/mcp-server/overview",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://www.algolia.com/blog/algolia/saying-goodbye-to-our-discourse-forums-and-what-comes-next",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.algolia.com/blog/engineering/building-an-ai-powered-mcp-client-for-algolia",
+            "opened": true,
+            "date": "2025",
+            "title": "Building an AI-powered MCP client for Algolia"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://alg.li/discord",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://www.algolia.com/developers",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-mapbox",
+      "name": "Mapbox",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Mapbox MCP servers (Mapbox MCP Server, DevKit, Docs, Figma) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.mapbox.com/location-ai/mcp-servers/"
+        },
+        {
+          "label": "public route",
+          "url": "https://docs.mapbox.com/help/getting-started/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Mapbox (maps, location and geospatial APIs)",
+        "mcp": {
+          "name": "Mapbox MCP servers (Mapbox MCP Server, DevKit, Docs, Figma)",
+          "primary_source": "https://docs.mapbox.com/location-ai/mcp-servers/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-10",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.mapbox.com/location-ai/mcp-servers/",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://www.mapbox.com/blog/a-new-commitment-to-developer-relations-at-mapbox",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.mapbox.com/blog/how-the-mapbox-devkit-mcp-server-enhances-ai-coding-workflows",
+            "opened": true,
+            "date": "2025-10",
+            "title": "Vibe Coding with Mapbox DevKit MCP (live demo and webinar)"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discord.com/invite/uMpcC5RmJh",
+            "opened": true
+          }
+        ],
+        "people_found": 3,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://docs.mapbox.com/help/getting-started/",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-cloudinary",
+      "name": "Cloudinary",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Cloudinary MCP servers (Asset Management, Environment Config, Structured Metadata, Analysis, MediaFlows) (beta), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://cloudinary.com/documentation/cloudinary_llm_mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://cloudinary.com/developers/community"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Cloudinary (image and video platform)",
+        "mcp": {
+          "name": "Cloudinary MCP servers (Asset Management, Environment Config, Structured Metadata, Analysis, MediaFlows)",
+          "primary_source": "https://cloudinary.com/documentation/cloudinary_llm_mcp",
+          "source_kind": "docs",
+          "status": "beta",
+          "announced": "2025-06",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://cloudinary.com/documentation/cloudinary_llm_mcp",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://cloudinary.com/developers/community",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://discord.com/invite/D8ddQj6KnH",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://cloudinary.com/developers/community",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-box",
+      "name": "Box",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Box MCP server (hosted at mcp.box.com) (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developer.box.com/guides/box-mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://developer.box.com/support"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Box (content cloud, Box AI)",
+        "mcp": {
+          "name": "Box MCP server (hosted at mcp.box.com)",
+          "primary_source": "https://developer.box.com/guides/box-mcp",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developer.box.com/guides/box-mcp",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://community.box.com/general-15/welcome-to-our-community-340",
+            "opened": false
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://community.box.com/",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://developer.box.com/support",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-aws",
+      "name": "AWS",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: AWS MCP Server (part of Agent Toolkit for AWS) (GA), per the company's own announcement. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://aws.amazon.com/about-aws/whats-new/2026/05/aws-mcp-server/"
+        },
+        {
+          "label": "public route",
+          "url": "https://aws.amazon.com/products/developer-tools/agent-toolkit-for-aws/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "AWS (Agent Toolkit for AWS, including the managed AWS MCP Server)",
+        "mcp": {
+          "name": "AWS MCP Server (part of Agent Toolkit for AWS)",
+          "primary_source": "https://aws.amazon.com/about-aws/whats-new/2026/05/aws-mcp-server/",
+          "source_kind": "announcement",
+          "status": "GA",
+          "announced": "2026-05",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/05/aws-mcp-server/",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://aws.amazon.com/products/developer-tools/agent-toolkit-for-aws/",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://aws.amazon.com/products/developer-tools/agent-toolkit-for-aws/",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-microsoft",
+      "name": "Microsoft",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Microsoft Learn MCP Server (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://learn.microsoft.com/en-us/training/support/mcp"
+        },
+        {
+          "label": "public route",
+          "url": "https://learn.microsoft.com/answers/questions/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "Microsoft publishes several MCP servers (Learn, Playwright, Azure): ask which one a speaker covers. No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Microsoft Learn (docs), Playwright (browser testing), Azure",
+        "mcp": {
+          "name": "Microsoft Learn MCP Server",
+          "primary_source": "https://learn.microsoft.com/en-us/training/support/mcp",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "unknown (page ms.date 2026-05-05)",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://learn.microsoft.com/en-us/training/support/mcp",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://www.testmuai.com/video/ai-powered-debugging-browser-automation-with-playwright-mcp",
+            "opened": true,
+            "date": "2025",
+            "title": "AI-Powered Debugging & Browser Automation with Playwright MCP"
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://youtu.be/CR4mBQFVWUU",
+            "opened": false,
+            "date": "2025",
+            "title": "Supercharged Testing: AI-Powered Workflows with Playwright + MCP"
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://developer.microsoft.com/en-us/reactor/events/26141/",
+            "opened": true,
+            "date": "2025-07",
+            "title": "MCP Dev Days: Day 2 - Builders (livestream; sessions on building MCP servers, Azure API Center as MCP registry, MCP C# SDK)"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://learn.microsoft.com/answers/questions/",
+            "opened": true
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://learn.microsoft.com/answers/questions/",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-google",
+      "name": "Google",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Google Cloud remote MCP servers (managed) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.cloud.google.com/mcp/overview"
+        },
+        {
+          "label": "public route",
+          "url": "https://developers.google.com/workspace/guides/configure-mcp-servers"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "Google's own repository says it is not an officially supported Google product; the Cloud remote servers are the supported ones. No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Google Cloud, Google Maps Platform, Google Workspace",
+        "mcp": {
+          "name": "Google Cloud remote MCP servers (managed)",
+          "primary_source": "https://docs.cloud.google.com/mcp/overview",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "unknown",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.cloud.google.com/mcp/overview",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://docs.cloud.google.com/mcp/overview",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://developers.google.com/workspace/guides/configure-mcp-servers",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-okta-auth0",
+      "name": "Okta (Auth0)",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Auth0 MCP Server (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://auth0.com/docs/get-started/auth0-mcp-server"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Auth0 (Okta Customer Identity Cloud)",
+        "mcp": {
+          "name": "Auth0 MCP Server",
+          "primary_source": "https://auth0.com/docs/get-started/auth0-mcp-server",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "2025-09",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://auth0.com/docs/get-started/auth0-mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://www.okta.com/company/careers/senior-developer-advocate-auth0/",
+            "opened": false
+          }
+        ],
+        "people_found": 1,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-slack",
+      "name": "Slack",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Slack MCP server (hosted at mcp.slack.com/mcp) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://docs.slack.dev/ai/slack-mcp-server/"
+        },
+        {
+          "label": "public route",
+          "url": "https://docs.slack.dev/developer-support"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Slack",
+        "mcp": {
+          "name": "Slack MCP server (hosted at mcp.slack.com/mcp)",
+          "primary_source": "https://docs.slack.dev/ai/slack-mcp-server/",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "unknown",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://docs.slack.dev/ai/slack-mcp-server/",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://docs.slack.dev/developer-support",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://slack.dev/newsletter/platform-newsletter-july-2026/",
+            "opened": true,
+            "date": "2026-07",
+            "title": "Slack Dev Huddles, Episode 7 (explains MCP, wiring up your own MCP server, live Slackbot demo); identification as the MCP episode is from the newsletter wording"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://slackcommunity.com",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://docs.slack.dev/developer-support",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-sanity",
+      "name": "Sanity",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Sanity MCP server (hosted at mcp.sanity.io) (GA), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.sanity.io/docs/compute-and-ai/mcp-server"
+        },
+        {
+          "label": "public route",
+          "url": "https://www.sanity.io/docs/compute-and-ai/mcp-server"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Sanity (headless CMS / content platform)",
+        "mcp": {
+          "name": "Sanity MCP server (hosted at mcp.sanity.io)",
+          "primary_source": "https://www.sanity.io/docs/compute-and-ai/mcp-server",
+          "source_kind": "docs",
+          "status": "GA",
+          "announced": "2025-12",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.sanity.io/docs/compute-and-ai/mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://www.sanity.io/docs/compute-and-ai/mcp-server",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://www.sanity.io/docs/compute-and-ai/mcp-server",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-contentful",
+      "name": "Contentful",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: Contentful MCP server (@contentful/mcp-server) (unknown), per the company's own github-org. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://github.com/contentful/contentful-mcp-server"
+        },
+        {
+          "label": "public route",
+          "url": "https://www.contentful.com/help/getting-started/how-to-get-help/"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "Contentful's docs and blog returned HTTP 429 to the researcher; the hosted server is known from search summaries only. No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Contentful (headless CMS)",
+        "mcp": {
+          "name": "Contentful MCP server (@contentful/mcp-server)",
+          "primary_source": "https://github.com/contentful/contentful-mcp-server",
+          "source_kind": "github-org",
+          "status": "unknown",
+          "announced": "2025-10",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://github.com/contentful/contentful-mcp-server",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://www.contentful.com/discord/",
+            "opened": false
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://www.contentful.com/help/getting-started/how-to-get-help/",
+          "opened": false
+        }
+      }
+    },
+    {
+      "id": "speakers-red-hat",
+      "name": "Red Hat",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: MCP server for Red Hat OpenShift (preview), per the company's own announcement. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://www.redhat.com/en/blog/model-context-protocol-server-red-hat-openshift-now-available-technology-preview"
+        },
+        {
+          "label": "public route",
+          "url": "https://github.com/containers/kubernetes-mcp-server/issues/new"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "Red Hat Enterprise Linux, OpenShift, Ansible Automation Platform, Lightspeed, Satellite",
+        "mcp": {
+          "name": "MCP server for Red Hat OpenShift",
+          "primary_source": "https://www.redhat.com/en/blog/model-context-protocol-server-red-hat-openshift-now-available-technology-preview",
+          "source_kind": "announcement",
+          "status": "preview",
+          "announced": "2026-05",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://www.redhat.com/en/blog/model-context-protocol-server-red-hat-openshift-now-available-technology-preview",
+            "opened": true
+          },
+          {
+            "kind": "devrel_team",
+            "url": "https://developers.redhat.com/index.php/events/devoxx-uk-2026",
+            "opened": true
+          },
+          {
+            "kind": "mcp_talk",
+            "url": "https://youtu.be/TFdB9_qQvgE",
+            "opened": false,
+            "date": "2026-05",
+            "title": "Token exchange demo video (linked from the OpenShift MCP blog)"
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://github.com/containers/kubernetes-mcp-server/issues/new",
+            "opened": true
+          }
+        ],
+        "people_found": 4,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://github.com/containers/kubernetes-mcp-server/issues/new",
+          "opened": true
+        }
+      }
+    },
+    {
+      "id": "speakers-ibm",
+      "name": "IBM",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: watsonx Orchestrate ADK MCP server (ibm-watsonx-orchestrate-mcp-server) (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developer.watson-orchestrate.ibm.com/mcp_server/wxOmcp_overview"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. The page does not say whether the MCP is GA, beta or experimental. No public route the company itself publishes was found.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "watsonx Orchestrate (plus ContextForge MCP gateway, watsonx.data)",
+        "mcp": {
+          "name": "watsonx Orchestrate ADK MCP server (ibm-watsonx-orchestrate-mcp-server)",
+          "primary_source": "https://developer.watson-orchestrate.ibm.com/mcp_server/wxOmcp_overview",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "unknown",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developer.watson-orchestrate.ibm.com/mcp_server/wxOmcp_overview",
+            "opened": true
+          }
+        ],
+        "people_found": 2,
+        "contact_route": {}
+      }
+    },
+    {
+      "id": "speakers-nvidia",
+      "name": "NVIDIA",
+      "type": "mcp-company",
+      "section": "speakers",
+      "status": "active",
+      "why": "Ships its own MCP: NVIDIA CUDA MCP Server (Nsight AI), hosted (unknown), per the company's own docs. Researched 2026-10-30 from the company's own pages.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "MCP page",
+          "url": "https://developer.nvidia.com/nsight-ai"
+        },
+        {
+          "label": "public route",
+          "url": "https://developer.nvidia.com/nsight-ai"
+        }
+      ],
+      "reader": "collect/speakers_collect.py",
+      "status_note": "Read by collect/speakers_collect.py for the speakers channel only",
+      "todo": "No DevRel team page or job post found. No named person sourced from an opened page. The page does not say whether the MCP is GA, beta or experimental.",
+      "speakers": {
+        "verdict": "keep",
+        "researched": "2026-10-30",
+        "product": "NVIDIA CUDA / Nsight (also NeMo Agent Toolkit, docs sites)",
+        "mcp": {
+          "name": "NVIDIA CUDA MCP Server (Nsight AI), hosted",
+          "primary_source": "https://developer.nvidia.com/nsight-ai",
+          "source_kind": "docs",
+          "status": "unknown",
+          "announced": "unknown",
+          "opened": true
+        },
+        "signals": [
+          {
+            "kind": "mcp_docs",
+            "url": "https://developer.nvidia.com/nsight-ai",
+            "opened": true
+          },
+          {
+            "kind": "community_channel",
+            "url": "https://forums.developer.nvidia.com/c/developer-tools/nsight-copilot/739",
+            "opened": true
+          }
+        ],
+        "people_found": 0,
+        "contact_route": {
+          "kind": "community-page",
+          "url": "https://developer.nvidia.com/nsight-ai",
+          "opened": true
+        }
       }
     }
   ]

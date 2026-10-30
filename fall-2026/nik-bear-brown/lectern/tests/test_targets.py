@@ -10,7 +10,7 @@ import lectern_paths as lp
 
 DOC = json.load(open(lp.config("targets.json"), encoding="utf-8"))
 T = DOC["targets"]
-SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research", "games", "consulting"}
+SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research", "games", "consulting", "speakers"}
 STATUSES = {"active", "removed", "no-reader", "unreadable", "unchecked", "partial", "read-by-hand", "dropped"}
 
 
@@ -75,9 +75,12 @@ class Targets(unittest.TestCase):
             self.assertTrue(names, section)
             for other in (watched, removed, unreachable):
                 self.assertFalse(names & other, (section, names & other))
+        # the speakers list is different on purpose: Figma, Canva, Miro and Notion are on the #professor-bear watch list AND ship an MCP, and several
+        # companies removed from it for not being educational AI (GitLab, Vercel, Supabase, Twilio ...) or with no data source (Salesforce, GitHub ...) ship one
+        # too, so names are not compared. Being on the speakers list changes nothing about the watch list: the generator reads only `boards`.
         # the generator turns only the `boards` section into the watch list: nothing in these sections may carry its other triggers
         for t in T:
-            if t["section"] in ("games", "consulting"):
+            if t["section"] in ("games", "consulting", "speakers"):
                 self.assertNotIn("unreachable", t, t["id"])
                 self.assertNotEqual(t["status"], "removed", t["id"])
 
@@ -96,6 +99,40 @@ class Targets(unittest.TestCase):
             if c["verdict"] == "to-do":
                 self.assertTrue(t["todo"], t["id"])
         self.assertEqual(sum(1 for t in firms if t["status"] == "active"), 5)
+
+    def test_a_speaker_company_carries_an_mcp_with_its_own_source_signals_with_links_and_a_status_to_match(self):
+        cos = [t for t in T if t["section"] == "speakers"]
+        self.assertGreaterEqual(len(cos), 60)
+        self.assertEqual(len({t["name"] for t in cos}), len(cos))
+        for t in cos:
+            s = t["speakers"]
+            self.assertIn(s["verdict"], ("keep", "drop", "to-do"), t["id"])
+            self.assertIn(t["status"], {"keep": ("active",), "drop": ("dropped",), "to-do": ("unchecked",)}[s["verdict"]], t["id"])
+            self.assertEqual(t["type"], "mcp-company", t["id"])
+            self.assertTrue(t["why"] and s["product"] and s["researched"], t["id"])
+            if s["verdict"] != "drop":
+                self.assertTrue(s["mcp"]["name"] and s["mcp"]["primary_source"].startswith("https://"), t["id"])
+                self.assertIn("mcp_docs", [g["kind"] for g in s["signals"]], t["id"])
+            for g in s["signals"] + ([s["contact_route"]] if s["contact_route"] else []):
+                self.assertTrue(g["url"].startswith("https://"), (t["id"], g))
+                self.assertIsInstance(g["opened"], bool, (t["id"], g))
+            self.assertIsInstance(s["people_found"], int, t["id"])
+
+    def test_the_public_list_names_no_person_and_holds_no_email_address_or_phone_number(self):
+        import re
+        text = json.dumps([t for t in T if t["section"] == "speakers"], ensure_ascii=False)
+        self.assertFalse(re.search(r"[\w.+-]+@[\w-]+\.[\w.]+", text))
+        self.assertFalse(re.search(r"(?<!\d)(\+\d{1,3}[ -])?\(?\d{3}\)?[ -]\d{3}[ -]\d{4}(?!\d)", re.sub(r"https?://\S+", "", text)))
+        self.assertNotIn("mailto:", text)
+        self.assertFalse([k for t in T if t["section"] == "speakers" for k in t["speakers"] if k in ("people", "person", "names", "email", "phone")])
+        folder = os.path.join(lp.ROOT, "speaker-records")                      # the local records name people: if they are here, none of the names may leak
+        import glob
+        recs = [json.loads(l) for p in glob.glob(os.path.join(folder, "people-*.jsonl")) for l in open(p, encoding="utf-8") if l.strip()]
+        if not recs:
+            self.skipTest("no local speaker-records/ on this machine: the names cannot be checked here")
+        low = text.lower()
+        leaked = [r["name"] for r in recs if len(r["name"].split()[-1]) > 3 and re.search(r"(?<![a-z])" + re.escape(r["name"].split()[-1].lower()) + r"(?![a-z])", low)]
+        self.assertEqual(leaked, [])
 
     def test_the_studio_list_the_games_rule_reads_is_the_kept_studios(self):
         import engine_jobs

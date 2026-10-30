@@ -141,6 +141,18 @@ def derive_tables(doc):
         return (f"| {t['name']} | {c.get('tier') or '-'} | **{c.get('verdict', '')}** | {c.get('system') or '-'} | {cells(t)} | {n or '-'} | {t['why']} | {t['todo'] or 'none'} |")
     out["consulting"] = table([consulting_row(t) for t in sec("consulting")],
                               ("| Firm | Tier | Verdict | System | Board or careers page | Postings 2026-10-28 | Why this verdict; what answered | To-do |", "|---|---|---|---|---|---|---|---|"))
+    def speakers_row(t):
+        s = t.get("speakers") or {}
+        m = s.get("mcp") or {}
+        kinds = {}
+        for g in s.get("signals") or []:
+            kinds[g["kind"]] = kinds.get(g["kind"], 0) + 1
+        sig = ", ".join(f"{k} {n}" for k, n in sorted(kinds.items())) or "none"
+        route = s.get("contact_route") or {}
+        return (f"| {t['name']} | **{s.get('verdict', '')}** | {s.get('product', '')} | {md_link(m['name'], m['primary_source']) if m.get('primary_source') else (m.get('name') or 'none found')} "
+                f"({m.get('status') or 'unknown'}) | {sig} | {s.get('people_found', 0)} | {md_link(route['kind'], route['url']) if route.get('url') else 'none published'} | {t['why']} | {t['todo'] or 'none'} |")
+    out["speakers"] = table([speakers_row(t) for t in sec("speakers")],
+                            ("| Company | Verdict | Product | MCP (primary source) and its status | Sourced signals | People found (names are local only) | Public route | Why this verdict | To-do |", "|---|---|---|---|---|---|---|---|---|"))
     out["removed"] = table([f"| {t['name']} | {t['removed']['on'] or 'earlier'} | {t['removed']['entry'].get('reason', '')} |" for t in T if t["status"] == "removed"],
                            ("| Removed | On | Reason, as recorded |", "|---|---|---|"))
     return out
