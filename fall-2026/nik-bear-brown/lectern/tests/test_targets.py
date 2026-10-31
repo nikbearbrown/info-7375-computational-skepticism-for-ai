@@ -10,7 +10,7 @@ import lectern_paths as lp
 
 DOC = json.load(open(lp.config("targets.json"), encoding="utf-8"))
 T = DOC["targets"]
-SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research", "games", "consulting", "speakers"}
+SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research", "games", "consulting", "speakers", "federal508"}
 STATUSES = {"active", "removed", "no-reader", "unreadable", "unchecked", "partial", "read-by-hand", "dropped"}
 
 
@@ -70,7 +70,7 @@ class Targets(unittest.TestCase):
         watched = {b["company"] for s in sources["sources"] for b in s["boards"]}
         removed = set(k for k in sources["removed"] if k != "_comment")
         unreachable = {u["company"] for u in sources["unreachable"]}
-        for section in ("games", "consulting"):
+        for section in ("games", "consulting", "federal508"):
             names = {t["name"] for t in T if t["section"] == section}
             self.assertTrue(names, section)
             for other in (watched, removed, unreachable):
@@ -80,7 +80,7 @@ class Targets(unittest.TestCase):
         # too, so names are not compared. Being on the speakers list changes nothing about the watch list: the generator reads only `boards`.
         # the generator turns only the `boards` section into the watch list: nothing in these sections may carry its other triggers
         for t in T:
-            if t["section"] in ("games", "consulting", "speakers"):
+            if t["section"] in ("games", "consulting", "speakers", "federal508"):
                 self.assertNotIn("unreachable", t, t["id"])
                 self.assertNotEqual(t["status"], "removed", t["id"])
 
@@ -99,6 +99,31 @@ class Targets(unittest.TestCase):
             if c["verdict"] == "to-do":
                 self.assertTrue(t["todo"], t["id"])
         self.assertEqual(sum(1 for t in firms if t["status"] == "active"), 5)
+
+    def test_a_federal_508_employer_carries_a_verdict_a_status_to_match_a_kind_and_what_the_research_found(self):
+        emps = [t for t in T if t["section"] == "federal508"]
+        self.assertGreaterEqual(len(emps), 60)
+        self.assertEqual(len({t["name"] for t in emps}), len(emps))
+        for t in emps:
+            f = t["federal508"]
+            self.assertEqual(t["type"], "federal-508-employer", t["id"])
+            self.assertIn(f["verdict"], ("keep", "drop", "to-do"), t["id"])
+            self.assertIn(t["status"], {"keep": ("active",), "drop": ("dropped",), "to-do": ("no-reader", "unchecked")}[f["verdict"]], t["id"])
+            self.assertIn(f["kind"], ("federal-contractor", "civic-tech", "accessibility-specialist", "agency"), t["id"])
+            self.assertTrue(t["why"] and f["feed_names"] and f["researched"], t["id"])
+            if f["verdict"] == "keep":
+                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters"), t["id"])
+                self.assertTrue(f["board"]["slug"] and f["board"]["provider"] == t["provider"], t["id"])
+                self.assertIsInstance(f["postings_2026_10_31"], int, t["id"])
+            if f["verdict"] == "to-do":
+                self.assertTrue(t["todo"], t["id"])
+        self.assertEqual(sum(1 for t in emps if t["status"] == "active"), 17)
+
+    def test_the_federal_508_list_names_no_person_and_holds_no_email_address(self):
+        import re
+        text = json.dumps([t for t in T if t["section"] == "federal508"], ensure_ascii=False)
+        self.assertFalse(re.search(r"[\w.+-]+@[\w-]+\.[\w.]+", text))
+        self.assertNotIn("mailto:", text)
 
     def test_a_speaker_company_carries_an_mcp_with_its_own_source_signals_with_links_and_a_status_to_match(self):
         cos = [t for t in T if t["section"] == "speakers"]

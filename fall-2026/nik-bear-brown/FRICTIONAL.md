@@ -1016,6 +1016,22 @@ Where to check each claim in this log. Commits are listed in the push table belo
   - Evidence: `lectern/config/keywords.json` (`speakers_rule` and its comment), `lectern/config/targets.json` (section `speakers`) and section J of `lectern/TARGETS.md`, `lectern/collect/speakers_judge.py`, `lectern/collect/speakers_collect.py`, `lectern/publish/speakers_feed.py`, `lectern/audit/audit_speakers.py`, `lectern/tests/test_speakers_judge.py`, `test_speakers_collect.py`, `test_speakers_feed.py`, `lectern/forms/n8n/test-results/parity-2026-10-30.txt`. The people are in `lectern/speaker-records/` on the Mac that built it, not in the repository.
   - Next: I read the list and the local people file and answer the open questions; if I say go, name the channel, set `posting` to `on` and run `--baseline` or `--post-all` once. Not pushed.
 
+### 2026-10-31 — Federal 508 and accessibility work for a friend: a fifth search, with posting off
+
+- **Date and what I was working on:** 2026-10-31. Adding a federal Section 508 search to Lectern.
+- **I tried / expected:** I said, in these words (with the friend's name left out, because this repository is public): "Can we have the job search also look for something called Federal 508 work? For [a friend], I think she's looking for contract work. Or remote work." I expected it to look like the other searches.
+- **What happened:**
+  - **A judge of its own.** A Section 508 or accessibility phrase in the title, a US place, and `remote` in the title or place or `contract` in the title. A fitting role that says neither is held back. A clearance in a title is a flag on the post, not a veto. No level is read, because an audit is not an entry-level job.
+  - **A research pass listed 67 employers** (civic-tech and federal contractors, large integrators, accessibility firms, agencies' 508 offices) and found each one's job system. It was an agent's reading, so every readable board was fetched again here: 17 are readable (16 Greenhouse, 1 Ashby). One of my own first guesses was wrong and the agent caught it: the Ashby slug `fable` answers but belongs to an unrelated company.
+  - **The result is that it would post nothing today.** The 17 readable boards hold 3,542 postings, read once on 2026-10-31; one names a 508 phrase (Accenture Federal Services, 'UX Designer with 508 Compliance', Arlington, VA) and it is onsite, so it is held back. The postings that matter are on boards Lectern cannot read (Workday: Guidehouse has a 'Section 508 Subject Matter Expert') and behind API keys someone must request (USAJOBS for agency jobs, SAM.gov for contract opportunities).
+  - **Not decided, and left to me:** the channel's name (`federal-508` is a placeholder); whether a clearance should hide a posting (`clearance_policy`); whether 'consultant' in a title counts as contract; whether to build a Workday reader and to request the two keys (each key is requested on the site by whoever will use it; nothing here did); whether the ai-jobs snapshot, a wider net, should be read; and whether anything should be posted at all.
+- **What I did:** Gave the instruction above. I have not reviewed the list or the judge. I have not written to the friend.
+- **What Claude or another person contributed:** Claude Code wrote the judge, the collector, the poster, 20 new tests and 2 added to test_targets, folded the employers into `targets.json` (section `federal508`), generated section K of `TARGETS.md`, wrote Rule 11, refreshed and re-tested the n8n copy, and ran one research agent.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: `lectern/config/keywords.json` (`federal508_rule` and its comment), `lectern/config/targets.json` (section `federal508`) and section K of `lectern/TARGETS.md`, `lectern/collect/federal508_jobs.py`, `lectern/collect/federal508_collect.py`, `lectern/publish/federal508_feed.py`, `lectern/tests/test_federal508_jobs.py`, `test_federal508_feed.py`, `lectern/forms/n8n/test-results/parity-2026-10-31.txt`.
+  - Next: I answer the open questions; if I want real postings in it, a Workday reader and the two keys come first; if I say go, name the channel, set `posting` to `on` and run `--baseline` or `--post-all` once. Not pushed.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.

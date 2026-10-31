@@ -1,6 +1,6 @@
 {
  "_comment": "Lectern's filter. A posting is KEPT if any role_title word appears in its title, or if three or more topic_text words appear in its body. flex_text never causes a keep — it only annotates a kept record, because 'part-time' on its own has nothing to do with teaching. Every kept record records which words matched and where, so a reader can apply this file by hand to one posting and get the same answer. v0.2.0 (2026-09-26): added the alternative titles these roles are posted under — Developer/Designer/Creator Advocate, Design or Product Evangelist, Community Engineer, Community Architect, Product Education Manager, Technical Content Engineer, Developer Experience, DevRel, Technical Writer. Several are broad on purpose and the run report measures what noise they added. v0.2.1 (2026-09-26, same day): REMOVED 'developer experience' and 'advocacy' after measuring them. 'developer experience' fired on 11 postings and 10 were backend or platform software-engineering jobs (Anthropic, Figma, Stripe x2, GitLab, OpenAI x2, Notion, Replit, Canva) — the phrase names an engineering discipline, not an advocacy role. 'advocacy' fired once, on a customer-marketing programme. Kept: 'devrel', which found Vercel's DevRel Engineer. This is what P3 is for — the filter is a file, so a word that turns out to be noise gets cut and the cut is recorded. v0.3.0 (2026-09-26): Professor Bear refined the target — any job that DEVELOPS MATERIALS, whether to sell into universities, to teach the public, or to train the company's own people. Anthropic's 'Technical Documentation and Content Engineer, Claude Docs' is the model. Measured every candidate word against all 3,446 titles before adding: 11 of them appear in ZERO titles today and so cannot add noise; 'creator', 'documentation', and 'content engineer' each appear in exactly one title and it is the right one. 'learning experiences' found Replit's LEARNING EXPERIENCES CREATOR, a bullseye that v0.2.1 missed because it only had 'learning designer'. REJECTED as measured noise: bare 'learning' (42 titles, almost all Machine/Reinforcement Learning) and 'content strategy' (3 titles, all regional SEO marketing). v0.6.0 (2026-10-26): TWO GATES that apply after the keywords. Professor Bear, looking at a 'K12 Education Account Manager, South Korea (12 months contract), Seoul' from a design-software company: 'keep it to English-speaking countries? Unless it's France or Italy. Or Brazil? Or Portugal? And no K-12.' A posting the keywords would keep is now rejected, with its reason, if (1) location_rule: its place names no allowed country (the United States, United Kingdom, Canada, Australia, New Zealand, Ireland, France, Italy, Brazil, Portugal), or (2) k12_rule: its TITLE says K-12. Both are data at the end of this file and collect.py only reads them. The gates never touch a posting the keywords reject, so every old reject keeps its old reason. The numbers behind each choice are in measured_before_adding; the choices that are Professor Bear's to change are named in the _comment of each rule. v0.6.1 (2026-10-28): a second judge, for a second Discord channel. Professor Bear, 2026-10-28, with a list of Unity, Unreal and Godot job titles: 'any game jobs that an early-career person who knows Unreal or Godot or Unity, or has any experience there, could take' go to a new channel, #games-3d-simulations, and posting waits until he says go. New block `engine_rule` at the end of this file, read by collect/engine_jobs.py and publish/games_feed.py. collect.judge(), the country and K-12 gates and every #professor-bear post are unchanged; the two gates also apply to this channel. v0.6.2 (2026-10-28, same day): the game-studio list. Professor Bear said yes to a list of game companies so the games channel covers more studios, reviewed one by one, still dry run only. The list is the `games` section of config/targets.json (status `active` = on the list; 10 studios), not a second file; `studio_hint` below says what an early-career title at a listed studio needs to count. French, Portuguese and Italian internship words (stage, stagiaire, alternance, estágio, tirocinio) and five French game-role phrases were added because France, Italy, Brazil and Portugal are allowed countries and Kabam, Hasbro's Montreal studio and Ubisoft title their jobs that way. v0.6.3 (2026-10-28, later still): a third judge, for a third Discord channel. Professor Bear, 2026-10-28: add the consulting firms of the directory he pasted and 'another search, for consulting jobs', posted to #consulting-firm after Lectern has been through them, dry run only until he says go. New block `consulting_rule` at the end of this file, read by collect/consulting_jobs.py and publish/consulting_feed.py; the firms are the `consulting` section of config/targets.json. collect.judge(), the games rule and every #professor-bear post are unchanged; the country and K-12 gates apply here too.",
- "version": "0.6.4",
+ "version": "0.6.5",
  "keep_rule": {
   "role_title_min": 1,
   "topic_text_min_if_no_title_match": 3
@@ -3196,6 +3196,130 @@
    "devrel_team",
    "mcp_talk",
    "community_channel"
+  ]
+ },
+ "federal508_rule": {
+  "_comment": "Which postings go to #federal-508 (a Discord channel name that is a PLACEHOLDER of the build; Professor Bear has not named one): a Section 508 or digital-accessibility PHRASE in the TITLE (groups: section-508 = 'section 508', '508 compliance', 'trusted tester', 'vpat', 'wcag', 'a11y', 'assistive technology' and others; accessibility = 'accessibility', 'digital accessibility'), none of the not_digital_words (building, facility, wheelchair, paratransit ...: physical access, not ICT), a place in allowed_countries (the United States only here; a place that names no country, like 'Remote', passes), AND a sign of the kind of work Professor Bear's friend wants: REMOTE in the title or the place (remote_words) or CONTRACT in the title (contract_words: contract, contractor, 1099, freelance, temporary, c2c, consultant ...). A fitting role that says neither is HELD BACK ('unstated'), not posted. A CLEARANCE in the title is a flag the post shows, not a veto (clearance_policy 'flag'; set 'veto' to hide them): a person with no clearance should see it, and it is her call. NO LEVEL IS READ: the work is audit-first, an audit is not an entry-level job. By hand: lower-case the title; if no phrase of a group that is switched on is there it does not match; if a not_digital word is there it is not digital; then the country; then remote or contract posts it and neither holds it back. Every decision carries its reason (collect/federal508_jobs.py judge_federal508). WHY A JUDGE OF ITS OWN: the main keep rule looks for teaching and training words; an accessibility auditor is not one. MEASURED on 2026-10-31 by reading the 17 federal-contractor, civic-tech and accessibility-firm boards Lectern can read once (3,542 postings, titles and places only): ONE posting names a phrase, Accenture Federal Services' 'UX Designer with 508 Compliance' (Arlington, VA), and it is HELD BACK because it says neither remote nor contract. So the dry run posts NOTHING today. On Lectern's own saved files the same: 1 of 1,891 (2026-10-08) and 1 of 3,243 (2026-10-18) postings, OpenAI's 'Product Designer, Accessibility' in San Francisco, held back; none of the 946 consulting-board postings but the one above. WHY SO FEW: the boards Lectern can read are not where federal 508 work is posted. The agents' research of 2026-10-31 found the one clear 508 title on a Workday board that has no reader (Guidehouse, 'Section 508 Subject Matter Expert'); the agencies' own 508 offices hire through USAJOBS, whose API needs a key someone must request; contract work is posted on SAM.gov, whose API needs a key too. A Workday reader and the two keys are the three things that would put real postings in this channel. NOT CHECKED, AND NEVER CLAIMED: pay, the kind of engagement (employee, 1099, subcontract), whether a role is federal at all (the company's kind is shown from the list, the agency is not), sponsorship, citizenship. The titles were read from the boards' lists, not the ads.",
+  "channel": "federal-508",
+  "posting": "off",
+  "include_unstated_level": false,
+  "clearance_policy": "flag",
+  "if_no_country_named": "keep",
+  "allowed_countries": [
+   "United States"
+  ],
+  "groups": {
+   "section-508": {
+    "enabled": true,
+    "phrases": [
+     "section 508",
+     "508 compliance",
+     "508 compliant",
+     "508 tester",
+     "508 testing",
+     "508 specialist",
+     "508 analyst",
+     "508 coordinator",
+     "508 program",
+     "508 accessibility",
+     "508 remediation",
+     "508 auditor",
+     "508 audit",
+     "508 lead",
+     "508 manager",
+     "508 sme",
+     "trusted tester",
+     "ict accessibility",
+     "ict testing",
+     "vpat",
+     "accessibility conformance report",
+     "wcag",
+     "a11y",
+     "assistive technology",
+     "assistive technologies"
+    ]
+   },
+   "accessibility": {
+    "enabled": true,
+    "phrases": [
+     "accessibility",
+     "digital accessibility",
+     "accessible design",
+     "accessible technology"
+    ]
+   }
+  },
+  "false_friends": [],
+  "not_digital_words": [
+   "building",
+   "buildings",
+   "facility",
+   "facilities",
+   "construction",
+   "architect",
+   "architectural",
+   "wheelchair",
+   "paratransit",
+   "vehicle",
+   "vehicles",
+   "pedestrian",
+   "sidewalk",
+   "transit",
+   "civil engineer",
+   "plumber",
+   "hvac",
+   "ramp"
+  ],
+  "remote_words": [
+   "remote",
+   "telework",
+   "teleworker",
+   "telecommute",
+   "work from home",
+   "wfh",
+   "home-based",
+   "home based",
+   "virtual",
+   "anywhere",
+   "distributed",
+   "nationwide"
+  ],
+  "contract_words": [
+   "contract",
+   "contractor",
+   "1099",
+   "freelance",
+   "temporary",
+   "c2c",
+   "corp to corp",
+   "subcontract",
+   "fixed-term",
+   "fixed term",
+   "consultant",
+   "consulting"
+  ],
+  "clearance_words": [
+   "cleared",
+   "clearance",
+   "secret",
+   "top secret",
+   "ts/sci",
+   "public trust",
+   "polygraph"
+  ],
+  "federal_words": [
+   "508",
+   "federal",
+   "government",
+   "gov",
+   "dod",
+   "dhs",
+   "hhs",
+   "irs",
+   "usda",
+   "gsa",
+   "nasa",
+   "fedramp"
   ]
  }
 }

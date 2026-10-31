@@ -1,0 +1,17 @@
+# Parity and headless runs, 2026-10-31 (Lectern master: rules v0.6.5, which adds `federal508_rule` for a federal-508 channel; nothing else the n8n form reads changed)
+
+## test_headless (n8n, disposable profile, no network)
+ALL PASSED: 01-collect, 02-filter, 03-delta, 04-post-to-discord, 05-daily (workflows regenerated with tools/build.py from shared/keywords.json = config/keywords.json; only 02-filter changed, because it embeds the rules file)
+
+## parity_real_data (the six boards on today's watch list, runs/2026-10-18/raw)
+boards read: 6   postings: python 1869, javascript 1869   only-in-one: 0
+kept: python 60, javascript 60
+PARITY: all 1869 postings identical on every field, keep decision and matched words
+
+## parity_delta / parity_messages (runs 2026-10-08 -> 2026-10-18)
+PARITY: new 42, changed 7, gone 9 identical, including the reasons
+PARITY: same rows in the same order and byte-identical messages (new 42; posted rows python 17, javascript 17; messages python 3, javascript 3)
+
+## not re-run
+parity_location.py needs the ai-jobs snapshot (jobs.jsonl), which is not on this machine; the place and K-12 readers were not changed.
+The n8n filter ignores `engine_rule`, `consulting_rule`, `speakers_rule`, `federal508_rule` and the games, consulting, speakers and federal508 sections of config/targets.json.

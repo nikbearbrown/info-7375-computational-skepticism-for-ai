@@ -73,6 +73,10 @@
     "mcp-company": {
       "label": "Company with its own MCP",
       "meaning": "Ships an MCP server of its own; judged only for the speakers channel, never read by collect.py for #professor-bear"
+    },
+    "federal-508-employer": {
+      "label": "Employer of federal 508 or accessibility work",
+      "meaning": "Hires for Section 508, digital-accessibility or federal accessibility-audit work, or is a federal agency's own 508 office; judged only for the federal-508 channel, never read by collect.py for #professor-bear"
     }
   },
   "targets": [
@@ -9102,6 +9106,2204 @@
           "url": "https://developer.nvidia.com/nsight-ai",
           "opened": true
         }
+      }
+    },
+    {
+      "id": "federal508-nava-pbc",
+      "name": "Nava PBC",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `navapbc`); the board names itself 'Nava PBC'. Opened careers page (no ATS link in static HTML); Greenhouse API slug navapbc returned name 'Nava PBC', 20 postings, no keyword titles.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.navapbc.com/careers"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/navapbc"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/navapbc/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "civic-tech",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Nava PBC"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/navapbc answered 200, company name 'Nava PBC'; the list had 20 postings. Opened careers page (no ATS link in static HTML); Greenhouse API slug navapbc returned name 'Nava PBC', 20 postings, no keyword titles.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "navapbc"
+        },
+        "postings_2026_10_31": 20,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-ad-hoc",
+      "name": "Ad Hoc",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "unchecked",
+      "why": "Opened page (35 KB) but static HTML has no ATS link; Greenhouse slugs adhocteam/adhoc returned 404.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://adhoc.team/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Board not found yet",
+      "todo": "Find which system its postings are on, by hand: the research did not find one.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "civic-tech",
+        "system": "not determined",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Ad Hoc"
+        ],
+        "what_answered": "Opened page (35 KB) but static HTML has no ATS link; Greenhouse slugs adhocteam/adhoc returned 404."
+      }
+    },
+    {
+      "id": "federal508-truss",
+      "name": "Truss",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `trussworksinc`); the board names itself 'TrussWorks, Inc'. Opened /jobs: embeds boards.greenhouse.io/embed/job_board/js?for=trussworksinc; API name 'TrussWorks, Inc', 2 postings, none matching.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://truss.works/jobs"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/trussworksinc"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/trussworksinc/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "civic-tech",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Truss"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/trussworksinc answered 200, company name 'TrussWorks, Inc'; the list had 2 postings. Opened /jobs: embeds boards.greenhouse.io/embed/job_board/js?for=trussworksinc; API name 'TrussWorks, Inc', 2 postings, none matching.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "trussworksinc"
+        },
+        "postings_2026_10_31": 2,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-oddball",
+      "name": "Oddball",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `oddball`); the board names itself 'Oddball'. Opened page; links to boards.greenhouse.io/oddball; API name 'Oddball', 11 postings, none matching.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://oddball.io/company/careers/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/oddball"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/oddball/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "federal-contractor",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Oddball"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/oddball answered 200, company name 'Oddball'; the list had 11 postings. Opened page; links to boards.greenhouse.io/oddball; API name 'Oddball', 11 postings, none matching.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "oddball"
+        },
+        "postings_2026_10_31": 11,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-coforma",
+      "name": "Coforma",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; postings link to coforma.pinpointhq.com/en/postings/<uuid>. Pinpoint not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://coforma.io/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for Pinpoint, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "civic-tech",
+        "system": "other (pinpoint)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Coforma"
+        ],
+        "what_answered": "Opened page; postings link to coforma.pinpointhq.com/en/postings/<uuid>. Pinpoint not read."
+      }
+    },
+    {
+      "id": "federal508-skylight-digital",
+      "name": "Skylight Digital",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `skylighthq`); the board names itself 'Skylight'. Opened page; embeds greenhouse job_board/js?for=skylighthq; API name 'Skylight', 16 postings, none matching.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://skylight.digital/careers/join/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/skylighthq"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/skylighthq/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "civic-tech",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Skylight Digital"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/skylighthq answered 200, company name 'Skylight'; the list had 16 postings. Opened page; embeds greenhouse job_board/js?for=skylighthq; API name 'Skylight', 16 postings, none matching.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "skylighthq"
+        },
+        "postings_2026_10_31": 16,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-bixal",
+      "name": "Bixal",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; assets served from teamtailor-cdn.com; job URLs under careers.bixal.com/jobs/<id>-<slug>; /jobs.rss exists. Postings not parsed.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://careers.bixal.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for Teamtailor, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "civic-tech",
+        "system": "other (teamtailor)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Bixal"
+        ],
+        "what_answered": "Opened page; assets served from teamtailor-cdn.com; job URLs under careers.bixal.com/jobs/<id>-<slug>; /jobs.rss exists. Postings not parsed."
+      }
+    },
+    {
+      "id": "federal508-fearless",
+      "name": "Fearless",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "fearless.com/careers is a meta-refresh to https://jobs.fearless.com, which answers HTTP 303 with phenompeople CSP headers. Body not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.fearless.com/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for probably Phenom, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "other (probably phenom)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Fearless"
+        ],
+        "what_answered": "fearless.com/careers is a meta-refresh to https://jobs.fearless.com, which answers HTTP 303 with phenompeople CSP headers. Body not read."
+      }
+    },
+    {
+      "id": "federal508-flexion",
+      "name": "Flexion",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links to https://apply.workable.com/flexion-inc-1/. Workable not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://flexion.us/about-us/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for Workable, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "other (workable)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Flexion"
+        ],
+        "what_answered": "Opened page; links to https://apply.workable.com/flexion-inc-1/. Workable not read."
+      }
+    },
+    {
+      "id": "federal508-aquia",
+      "name": "Aquia",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `aquia`); the board names itself 'Aquia'. Opened careers page (Squarespace, no ATS link); API slug aquia returned name 'Aquia' but 0 postings.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.aquia.us/careers/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/aquia"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/aquia/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "federal-contractor",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Aquia"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/aquia answered 200, company name 'Aquia'; the list had 0 postings. Opened careers page (Squarespace, no ATS link); API slug aquia returned name 'Aquia' but 0 postings.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "aquia"
+        },
+        "postings_2026_10_31": 0,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-agile-six",
+      "name": "Agile Six",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `agilesix`); the board names itself 'Agile Six Applications'. agile6.com/careers redirected to job-boards.greenhouse.io/agilesix (opened); API name 'Agile Six Applications', 1 posting.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://job-boards.greenhouse.io/agilesix"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/agilesix"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/agilesix/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "civic-tech",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Agile Six"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/agilesix answered 200, company name 'Agile Six Applications'; the list had 1 postings. agile6.com/careers redirected to job-boards.greenhouse.io/agilesix (opened); API name 'Agile Six Applications', 1 posting.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "agilesix"
+        },
+        "postings_2026_10_31": 1,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-code-for-america",
+      "name": "Code for America",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `codeforamerica`); the board names itself 'Code for America'. Careers page returned HTTP 403 to my fetch (not opened). API slug codeforamerica returned name 'Code for America', 10 postings, none matching.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://codeforamerica.org/jobs/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/codeforamerica"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/codeforamerica/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "civic-tech",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Code for America"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/codeforamerica answered 200, company name 'Code for America'; the list had 10 postings. Careers page returned HTTP 403 to my fetch (not opened). API slug codeforamerica returned name 'Code for America', 10 postings, none matching.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "codeforamerica"
+        },
+        "postings_2026_10_31": 10,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-us-digital-response",
+      "name": "US Digital Response",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "usdigitalresponse.org/careers 404; web search result points to us-digital-response.breezy.hr; host answers 200. Postings not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://us-digital-response.breezy.hr/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for Breezy HR, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "civic-tech",
+        "system": "other (breezy hr)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "US Digital Response"
+        ],
+        "what_answered": "usdigitalresponse.org/careers 404; web search result points to us-digital-response.breezy.hr; host answers 200. Postings not read."
+      }
+    },
+    {
+      "id": "federal508-rebellion-defense",
+      "name": "Rebellion Defense",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `rebelliondefense`); the board names itself 'Rebellion Defense'. Homepage opened (no careers link found); API name 'Rebellion Defense', 0 postings.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://rebelliondefense.com/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/rebelliondefense"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/rebelliondefense/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "federal-contractor",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Rebellion Defense"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/rebelliondefense answered 200, company name 'Rebellion Defense'; the list had 0 postings. Homepage opened (no careers link found); API name 'Rebellion Defense', 0 postings.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "rebelliondefense"
+        },
+        "postings_2026_10_31": 0,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-anduril",
+      "name": "Anduril",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `andurilindustries`); the board names itself 'Anduril Industries'. Opened careers page (no static ATS link); API slug andurilindustries name 'Anduril Industries', jobs array length 2565, none with keyword titles.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.anduril.com/careers"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/andurilindustries"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/andurilindustries/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "federal-contractor",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Anduril"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/andurilindustries answered 200, company name 'Anduril Industries'; the list had 2565 postings. Opened careers page (no static ATS link); API slug andurilindustries name 'Anduril Industries', jobs array length 2565, none with keyword titles.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "andurilindustries"
+        },
+        "postings_2026_10_31": 2565,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-palantir",
+      "name": "Palantir",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links jobs.lever.co/palantir/<uuid>; api.lever.co/v0/postings/palantir returned 299 postings, none with keywords in title.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.palantir.com/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Lever reader (api.lever.co answers a plain GET). Not built; one more host for the allowlist.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "lever",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Palantir"
+        ],
+        "what_answered": "Opened page; links jobs.lever.co/palantir/<uuid>; api.lever.co/v0/postings/palantir returned 299 postings, none with keywords in title."
+      }
+    },
+    {
+      "id": "federal508-accenture-federal-services",
+      "name": "Accenture Federal Services",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `accenturefederalservices`); the board names itself 'Accenture Federal Services'. Opened page; links job-boards.greenhouse.io/accenturefederalservices/jobs/...; API name 'Accenture Federal Services', 719 postings.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.accenture.com/us-en/careers/local/federal-careers"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/accenturefederalservices"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/accenturefederalservices/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "federal-contractor",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Accenture Federal Services"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/accenturefederalservices answered 200, company name 'Accenture Federal Services'; the list had 719 postings. Opened page; links job-boards.greenhouse.io/accenturefederalservices/jobs/...; API name 'Accenture Federal Services', 719 postings.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "accenturefederalservices"
+        },
+        "postings_2026_10_31": 719,
+        "accessibility_titles_2026_10_31": 1
+      }
+    },
+    {
+      "id": "federal508-bellese-technologies",
+      "name": "Bellese Technologies",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links jobs.lever.co/bellese; api.lever.co returned 9 postings, none matching.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.bellese.io/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Lever reader (api.lever.co answers a plain GET). Not built; one more host for the allowlist.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "lever",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Bellese Technologies"
+        ],
+        "what_answered": "Opened page; links jobs.lever.co/bellese; api.lever.co returned 9 postings, none matching."
+      }
+    },
+    {
+      "id": "federal508-raft",
+      "name": "Raft",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `raft`); the board names itself 'Raft Company Website'. Opened page; job links use ?gh_jid= (Greenhouse); API slug raft name 'Raft Company Website', 28 postings, none matching.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://teamraft.com/careers/current-opportunities/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/raft"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/raft/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "federal-contractor",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Raft"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/raft answered 200, company name 'Raft Company Website'; the list had 28 postings. Opened page; job links use ?gh_jid= (Greenhouse); API slug raft name 'Raft Company Website', 28 postings, none matching.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "raft"
+        },
+        "postings_2026_10_31": 28,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-metrostar",
+      "name": "MetroStar",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `metrostarsystems`); the board names itself 'MetroStar'. Opened page; job links use metrostar.com/job-post/?gh_jid=; API name 'MetroStar', 63 postings, none matching.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.metrostar.com/join-us/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/metrostarsystems"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/metrostarsystems/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "federal-contractor",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "MetroStar"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/metrostarsystems answered 200, company name 'MetroStar'; the list had 63 postings. Opened page; job links use metrostar.com/job-post/?gh_jid=; API name 'MetroStar', 63 postings, none matching.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "metrostarsystems"
+        },
+        "postings_2026_10_31": 63,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-booz-allen-hamilton",
+      "name": "Booz Allen Hamilton",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links https://bah.wd1.myworkdayjobs.com/BAH_Jobs. Workday public CXS JSON answered (search 'accessibility' 38, '508' 18, 'WCAG' 3 body matches) but no title contains a keyword in first 20 results each.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.boozallen.com/careers.html"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader (the public list answers a POST with no login; see section I's to-do). Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "workday",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Booz Allen Hamilton"
+        ],
+        "what_answered": "Opened page; links https://bah.wd1.myworkdayjobs.com/BAH_Jobs. Workday public CXS JSON answered (search 'accessibility' 38, '508' 18, 'WCAG' 3 body matches) but no title contains a keyword in first 20 results each."
+      }
+    },
+    {
+      "id": "federal508-deloitte",
+      "name": "Deloitte",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; search at apply.deloitte.com/en_US/careers/SearchJobs; backing ATS not identified.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://apply.deloitte.com/en_US/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for own-site, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "own-site",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Deloitte"
+        ],
+        "what_answered": "Opened page; search at apply.deloitte.com/en_US/careers/SearchJobs; backing ATS not identified."
+      }
+    },
+    {
+      "id": "federal508-guidehouse",
+      "name": "Guidehouse",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links https://guidehouse.wd1.myworkdayjobs.com/External; CXS search returned the listed title.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://guidehouse.com/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader (the public list answers a POST with no login; see section I's to-do). Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "workday",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Guidehouse"
+        ],
+        "what_answered": "Opened page; links https://guidehouse.wd1.myworkdayjobs.com/External; CXS search returned the listed title."
+      }
+    },
+    {
+      "id": "federal508-maximus",
+      "name": "Maximus",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "careers.maximus.com did not resolve; www.maximus.com/careers redirected to https://maximus.avature.net/careers/USHome (opened). Postings not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.maximus.com/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for Avature, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "other (avature)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Maximus"
+        ],
+        "what_answered": "careers.maximus.com did not resolve; www.maximus.com/careers redirected to https://maximus.avature.net/careers/USHome (opened). Postings not read."
+      }
+    },
+    {
+      "id": "federal508-icf",
+      "name": "ICF",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "careers.icf.com is a Phenom site (opened). Workday board icf.wd5.myworkdayjobs.com/ICFExternal_Career_Site answered CXS JSON and a posting's externalUrl and text name ICF; 37 'accessibility', 21 '508' body matches, no keyword title in first results.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://careers.icf.com/us/en/search-results"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader (the public list answers a POST with no login; see section I's to-do). Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "workday",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "ICF"
+        ],
+        "what_answered": "careers.icf.com is a Phenom site (opened). Workday board icf.wd5.myworkdayjobs.com/ICFExternal_Career_Site answered CXS JSON and a posting's externalUrl and text name ICF; 37 'accessibility', 21 '508' body matches, no keyword title in first results."
+      }
+    },
+    {
+      "id": "federal508-gdit",
+      "name": "GDIT",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links gdit.wd5.myworkdayjobs.com/en-US/External_Career_Site; CXS searches (33/8/5 body matches) showed no keyword title.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.gdit.com/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader (the public list answers a POST with no login; see section I's to-do). Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "workday",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "GDIT"
+        ],
+        "what_answered": "Opened page; links gdit.wd5.myworkdayjobs.com/en-US/External_Career_Site; CXS searches (33/8/5 body matches) showed no keyword title."
+      }
+    },
+    {
+      "id": "federal508-leidos",
+      "name": "Leidos",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "careers.leidos.com returned 403 to me; Workday board answered CXS JSON and a posting's externalUrl and text name Leidos (50 'accessibility', 14 '508' body matches; no keyword title).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://leidos.wd5.myworkdayjobs.com/External"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader (the public list answers a POST with no login; see section I's to-do). Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "workday",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Leidos"
+        ],
+        "what_answered": "careers.leidos.com returned 403 to me; Workday board answered CXS JSON and a posting's externalUrl and text name Leidos (50 'accessibility', 14 '508' body matches; no keyword title)."
+      }
+    },
+    {
+      "id": "federal508-saic",
+      "name": "SAIC",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "unchecked",
+      "why": "First fetch returned 200 with references to apply.app.jobvite.com scripts; later fetch got 403. Not conclusive.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://jobs.saic.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Board not found yet",
+      "todo": "Find which system its postings are on, by hand: the research did not find one.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "not determined",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "SAIC"
+        ],
+        "what_answered": "First fetch returned 200 with references to apply.app.jobvite.com scripts; later fetch got 403. Not conclusive."
+      }
+    },
+    {
+      "id": "federal508-caci",
+      "name": "CACI",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened careers.caci.com (links searchcareers.caci.com). Workday board caci.wd1/External answered CXS JSON; posting externalUrl and text name CACI (44/32/13 body matches; no keyword title).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://careers.caci.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader (the public list answers a POST with no login; see section I's to-do). Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "workday",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "CACI"
+        ],
+        "what_answered": "Opened careers.caci.com (links searchcareers.caci.com). Workday board caci.wd1/External answered CXS JSON; posting externalUrl and text name CACI (44/32/13 body matches; no keyword title)."
+      }
+    },
+    {
+      "id": "federal508-mantech",
+      "name": "ManTech",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links https://mantech.avature.net/en_US/careers/ and careers.mantech.com/talentcommunity. Postings not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.mantech.com/careers/why-mantech/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for Avature, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "other (avature)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "ManTech"
+        ],
+        "what_answered": "Opened page; links https://mantech.avature.net/en_US/careers/ and careers.mantech.com/talentcommunity. Postings not read."
+      }
+    },
+    {
+      "id": "federal508-peraton-incl-former-perspecta",
+      "name": "Peraton (incl. former Perspecta)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links careers-peraton.icims.com/jobs/search. Postings not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.careers.peraton.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "An iCIMS reader. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "icims",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Peraton (incl. former Perspecta)"
+        ],
+        "what_answered": "Opened page; links careers-peraton.icims.com/jobs/search. Postings not read."
+      }
+    },
+    {
+      "id": "federal508-unisys",
+      "name": "Unisys",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links unisys.wd5.myworkdayjobs.com/External; CXS 'accessibility' returned 5 body matches, none keyword title.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.unisys.com/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader (the public list answers a POST with no login; see section I's to-do). Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "workday",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Unisys"
+        ],
+        "what_answered": "Opened page; links unisys.wd5.myworkdayjobs.com/External; CXS 'accessibility' returned 5 body matches, none keyword title."
+      }
+    },
+    {
+      "id": "federal508-tyler-technologies",
+      "name": "Tyler Technologies",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; embeds app.jobvite.com/TalentNetwork widget with ci=q6NaVfwI. Jobvite not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.tylertech.com/careers/job-openings"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for Jobvite, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "other (jobvite)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Tyler Technologies"
+        ],
+        "what_answered": "Opened page; embeds app.jobvite.com/TalentNetwork widget with ci=q6NaVfwI. Jobvite not read."
+      }
+    },
+    {
+      "id": "federal508-granicus",
+      "name": "Granicus",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links https://careers-granicus.icims.com. Postings not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://granicus.com/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "An iCIMS reader. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "icims",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Granicus"
+        ],
+        "what_answered": "Opened page; links https://careers-granicus.icims.com. Postings not read."
+      }
+    },
+    {
+      "id": "federal508-opengov",
+      "name": "OpenGov",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (ashby, `opengov`); the company's careers page links to this board. Opened page; links jobs.ashbyhq.com/opengov/<uuid>; Ashby API returned 96 postings, none with keywords.",
+      "access": "api",
+      "provider": "ashby",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://opengov.com/careers/"
+        },
+        {
+          "label": "board page",
+          "url": "https://jobs.ashbyhq.com/opengov"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://api.ashbyhq.com/posting-api/job-board/opengov",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "federal-contractor",
+        "system": "ashby",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "OpenGov"
+        ],
+        "what_answered": "GET api.ashbyhq.com/posting-api/job-board/opengov answered 200 with 96 postings; the slug is the one the company's own careers page links to. Opened page; links jobs.ashbyhq.com/opengov/<uuid>; Ashby API returned 96 postings, none with keywords.",
+        "board": {
+          "provider": "ashby",
+          "slug": "opengov"
+        },
+        "postings_2026_10_31": 96,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-salesforce-incl-public-sector",
+      "name": "Salesforce (incl. Public Sector)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "careers page opened (no static ATS link). Workday CXS board salesforce.wd12/External_Career_Site answered with the listed title; company name inside postings not confirmed.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://careers.salesforce.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader (the public list answers a POST with no login; see section I's to-do). Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "workday",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Salesforce (incl. Public Sector)"
+        ],
+        "what_answered": "careers page opened (no static ATS link). Workday CXS board salesforce.wd12/External_Career_Site answered with the listed title; company name inside postings not confirmed."
+      }
+    },
+    {
+      "id": "federal508-servicenow-federal",
+      "name": "ServiceNow (Federal)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page (links /jobs/); ATS not identified. Guessed Workday tenant returned HTTP 500.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://careers.servicenow.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for own-site, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "federal-contractor",
+        "system": "own-site",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "ServiceNow (Federal)"
+        ],
+        "what_answered": "Opened page (links /jobs/); ATS not identified. Guessed Workday tenant returned HTTP 500."
+      }
+    },
+    {
+      "id": "federal508-deque-systems",
+      "name": "Deque Systems",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; lists roles as www.deque.com/careers/<slug>/ pages; job page title read: 'Accessibility Consultant - Deque'. No external ATS board link found; Greenhouse slugs deque/dequesystems 404.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.deque.com/company/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for WordPress listing, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "own-site (wordpress listing)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Deque Systems"
+        ],
+        "what_answered": "Opened page; lists roles as www.deque.com/careers/<slug>/ pages; job page title read: 'Accessibility Consultant - Deque'. No external ATS board link found; Greenhouse slugs deque/dequesystems 404."
+      }
+    },
+    {
+      "id": "federal508-level-access",
+      "name": "Level Access",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `levelaccess`); the board names itself 'Level Access'. Opened page; embeds greenhouse job_board/js?for=levelaccess; API name 'Level Access', 4 postings, none matching.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.levelaccess.com/careers/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/levelaccess"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/levelaccess/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "accessibility-specialist",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Level Access"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/levelaccess answered 200, company name 'Level Access'; the list had 4 postings. Opened page; embeds greenhouse job_board/js?for=levelaccess; API name 'Level Access', 4 postings, none matching.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "levelaccess"
+        },
+        "postings_2026_10_31": 4,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-tpgi-vispero",
+      "name": "TPGi (Vispero)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "tpgi.com redirects to vispero.com; /careers/ opened and links the UKG job board. Postings not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://vispero.com/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for UKG Recruiting, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "other (ukg recruiting)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "TPGi (Vispero)"
+        ],
+        "what_answered": "tpgi.com redirects to vispero.com; /careers/ opened and links the UKG job board. Postings not read."
+      }
+    },
+    {
+      "id": "federal508-evinced",
+      "name": "Evinced",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; four role pages (BDR EMEA, Enterprise AE EMEA/DACH, Technical Account Manager x2); none keyword titles. No ATS link.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://evinced.com/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for own-site, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "own-site",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Evinced"
+        ],
+        "what_answered": "Opened page; four role pages (BDR EMEA, Enterprise AE EMEA/DACH, Technical Account Manager x2); none keyword titles. No ATS link."
+      }
+    },
+    {
+      "id": "federal508-audioeye",
+      "name": "AudioEye",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `audioeye`); the board names itself 'AudioEye'. Careers page returned 429 (not opened). API name 'AudioEye', 2 postings, none matching.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.audioeye.com/careers/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/audioeye"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/audioeye/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "accessibility-specialist",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "AudioEye"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/audioeye answered 200, company name 'AudioEye'; the list had 2 postings. Careers page returned 429 (not opened). API name 'AudioEye', 2 postings, none matching.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "audioeye"
+        },
+        "postings_2026_10_31": 2,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-fable-accessibility-platform",
+      "name": "Fable (accessibility platform)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "unchecked",
+      "why": "Homepage opened, no careers link in static HTML, /careers 404. WARNING: Ashby slug 'fable' answers 200 with 7 postings but they are for a different company (security training, San Francisco); do not use. Web search suggests Workable/Welcome to the Jungle listings.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://makeitfable.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Board not found yet",
+      "todo": "Find which system its postings are on, by hand: the research did not find one.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "not determined",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Fable (accessibility platform)"
+        ],
+        "what_answered": "Homepage opened, no careers link in static HTML, /careers 404. WARNING: Ashby slug 'fable' answers 200 with 7 postings but they are for a different company (security training, San Francisco); do not use. Web search suggests Workable/Welcome to the Jungle listings."
+      }
+    },
+    {
+      "id": "federal508-siteimprove",
+      "name": "Siteimprove",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened careers.siteimprove.com/open-positions/ (large WordPress-style page); backing ATS not identified.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://careers.siteimprove.com/open-positions/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for own-site, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "own-site",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Siteimprove"
+        ],
+        "what_answered": "Opened careers.siteimprove.com/open-positions/ (large WordPress-style page); backing ATS not identified."
+      }
+    },
+    {
+      "id": "federal508-bureau-of-internet-accessibility-boia",
+      "name": "Bureau of Internet Accessibility (BoIA)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; distributed workforce, applications by email, no ATS board and no postings listed.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.boia.org/about/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for own-site, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "own-site",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Bureau of Internet Accessibility (BoIA)"
+        ],
+        "what_answered": "Opened page; distributed workforce, applications by email, no ATS board and no postings listed."
+      }
+    },
+    {
+      "id": "federal508-equal-entry",
+      "name": "Equal Entry",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "unchecked",
+      "why": "Opened /about/ only; /careers 404; no job links.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://equalentry.com/about/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Board not found yet",
+      "todo": "Find which system its postings are on, by hand: the research did not find one.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "not determined",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Equal Entry"
+        ],
+        "what_answered": "Opened /about/ only; /careers 404; no job links."
+      }
+    },
+    {
+      "id": "federal508-perkins-access-perkins-school-for-the-blind",
+      "name": "Perkins Access (Perkins School for the Blind)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links perkins.wd503.myworkdayjobs.com/PRKNS; CXS searches for accessibility/508/WCAG returned 0. perkinsaccess.org not opened.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.perkins.org/working-at-perkins/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A Workday reader (the public list answers a POST with no login; see section I's to-do). Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "workday",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Perkins Access (Perkins School for the Blind)"
+        ],
+        "what_answered": "Opened page; links perkins.wd503.myworkdayjobs.com/PRKNS; CXS searches for accessibility/508/WCAG returned 0. perkinsaccess.org not opened."
+      }
+    },
+    {
+      "id": "federal508-accessibility-partners",
+      "name": "Accessibility Partners",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "unchecked",
+      "why": "Homepage opened; /careers 404; no job link seen.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.accessibilitypartners.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Board not found yet",
+      "todo": "Find which system its postings are on, by hand: the research did not find one.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "not determined",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Accessibility Partners"
+        ],
+        "what_answered": "Homepage opened; /careers 404; no job link seen."
+      }
+    },
+    {
+      "id": "federal508-knowbility",
+      "name": "Knowbility",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; no ATS links found.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://knowbility.org/about/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for own-site, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "own-site",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Knowbility"
+        ],
+        "what_answered": "Opened page; no ATS links found."
+      }
+    },
+    {
+      "id": "federal508-usablenet",
+      "name": "Usablenet",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "unchecked",
+      "why": "Opened page (24 KB); no ATS links in static HTML.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://usablenet.com/careers"
+        }
+      ],
+      "reader": "",
+      "status_note": "Board not found yet",
+      "todo": "Find which system its postings are on, by hand: the research did not find one.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "not determined",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Usablenet"
+        ],
+        "what_answered": "Opened page (24 KB); no ATS links in static HTML."
+      }
+    },
+    {
+      "id": "federal508-aira",
+      "name": "Aira",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Opened page; links secure6.saashr.com/ta/6195354.careers. Postings not read.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://aira.io/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for UKG/saashr, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "other (ukg/saashr)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Aira"
+        ],
+        "what_answered": "Opened page; links secure6.saashr.com/ta/6195354.careers. Postings not read."
+      }
+    },
+    {
+      "id": "federal508-pope-tech",
+      "name": "Pope Tech",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "unchecked",
+      "why": "Homepage and /about opened; no careers link found.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.pope.tech/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Board not found yet",
+      "todo": "Find which system its postings are on, by hand: the research did not find one.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "not determined",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Pope Tech"
+        ],
+        "what_answered": "Homepage and /about opened; no careers link found."
+      }
+    },
+    {
+      "id": "federal508-tenon",
+      "name": "Tenon",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "dropped",
+      "why": "tenon.io redirects to Level Access Tenon-retiring FAQ; use Level Access board.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.levelaccess.com:443/tenon-retiring-faqs/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the list",
+      "todo": "",
+      "federal508": {
+        "verdict": "drop",
+        "kind": "accessibility-specialist",
+        "system": "none (product retired into level access)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Tenon"
+        ],
+        "what_answered": "tenon.io redirects to Level Access Tenon-retiring FAQ; use Level Access board."
+      }
+    },
+    {
+      "id": "federal508-assistiv-labs",
+      "name": "Assistiv Labs",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "unchecked",
+      "why": "Homepage opened; no careers link in static HTML.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://assistivlabs.com/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Board not found yet",
+      "todo": "Find which system its postings are on, by hand: the research did not find one.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "not determined",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Assistiv Labs"
+        ],
+        "what_answered": "Homepage opened; no careers link in static HTML."
+      }
+    },
+    {
+      "id": "federal508-intopia",
+      "name": "Intopia",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "unchecked",
+      "why": "Homepage opened; /careers 404.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://intopia.digital/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Board not found yet",
+      "todo": "Find which system its postings are on, by hand: the research did not find one.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "not determined",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Intopia"
+        ],
+        "what_answered": "Homepage opened; /careers 404."
+      }
+    },
+    {
+      "id": "federal508-pivotal-accessibility",
+      "name": "Pivotal Accessibility",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "Homepage opened and links /careers/ and loads wp-job-openings plugin assets; /careers/ page itself not separately opened.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.pivotalaccessibility.com/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "A reader for WordPress 'WP Job Openings' plugin, or a look by hand. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "accessibility-specialist",
+        "system": "own-site (wordpress 'wp job openings' plugin)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Pivotal Accessibility"
+        ],
+        "what_answered": "Homepage opened and links /careers/ and loads wp-job-openings plugin assets; /careers/ page itself not separately opened."
+      }
+    },
+    {
+      "id": "federal508-3play-media",
+      "name": "3Play Media",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `3playmedia`); the board names itself '3Play Media'. Opened page; embeds greenhouse job_board/js?for=3playmedia; API name '3Play Media', 1 posting.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://www.3playmedia.com/careers/"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/3playmedia"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/3playmedia/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "accessibility-specialist",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "3Play Media"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/3playmedia answered 200, company name '3Play Media'; the list had 1 postings. Opened page; embeds greenhouse job_board/js?for=3playmedia; API name '3Play Media', 1 posting.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "3playmedia"
+        },
+        "postings_2026_10_31": 1,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-accessibe",
+      "name": "accessiBe",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (greenhouse, `accessibe`); the board names itself 'accessiBe'. accessibe.com/careers links job-boards.eu.greenhouse.io/accessibe; boards-api.greenhouse.io/v1/boards/accessibe name 'accessiBe', 4 postings.",
+      "access": "api",
+      "provider": "greenhouse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://job-boards.eu.greenhouse.io/accessibe"
+        },
+        {
+          "label": "board page",
+          "url": "https://boards.greenhouse.io/accessibe"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/accessibe/jobs",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "accessibility-specialist",
+        "system": "greenhouse",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "accessiBe"
+        ],
+        "what_answered": "GET boards-api.greenhouse.io/v1/boards/accessibe answered 200, company name 'accessiBe'; the list had 4 postings (the company's careers page links to the EU-region board page of the same slug). accessibe.com/careers links job-boards.eu.greenhouse.io/accessibe; boards-api.greenhouse.io/v1/boards/accessibe name 'accessiBe', 4 postings.",
+        "board": {
+          "provider": "greenhouse",
+          "slug": "accessibe"
+        },
+        "postings_2026_10_31": 4,
+        "accessibility_titles_2026_10_31": 0
+      }
+    },
+    {
+      "id": "federal508-userway",
+      "name": "UserWay",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "dropped",
+      "why": "Opened page; it points to levelaccess.com/careers/.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://userway.org/careers/"
+        }
+      ],
+      "reader": "",
+      "status_note": "Not on the list",
+      "todo": "",
+      "federal508": {
+        "verdict": "drop",
+        "kind": "accessibility-specialist",
+        "system": "none (now level access)",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "UserWay"
+        ],
+        "what_answered": "Opened page; it points to levelaccess.com/careers/."
+      }
+    },
+    {
+      "id": "federal508-dhs-office-of-accessible-systems-technology",
+      "name": "DHS Office of Accessible Systems & Technology",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "A federal agency's own 508 or accessibility office. Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "USAJOBS",
+          "url": "https://www.usajobs.gov/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "USAJOBS needs an API key, which is requested on the site by whoever will use it; a script cannot register for it. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "agency",
+        "system": "usajobs",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "DHS Office of Accessible Systems & Technology"
+        ],
+        "what_answered": "Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/)."
+      }
+    },
+    {
+      "id": "federal508-social-security-administration-section-508-office",
+      "name": "Social Security Administration (Section 508 office)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "A federal agency's own 508 or accessibility office. Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "USAJOBS",
+          "url": "https://www.usajobs.gov/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "USAJOBS needs an API key, which is requested on the site by whoever will use it; a script cannot register for it. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "agency",
+        "system": "usajobs",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Social Security Administration (Section 508 office)"
+        ],
+        "what_answered": "Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/)."
+      }
+    },
+    {
+      "id": "federal508-department-of-veterans-affairs-section-508-office",
+      "name": "Department of Veterans Affairs Section 508 Office",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "A federal agency's own 508 or accessibility office. Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "USAJOBS",
+          "url": "https://www.usajobs.gov/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "USAJOBS needs an API key, which is requested on the site by whoever will use it; a script cannot register for it. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "agency",
+        "system": "usajobs",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Department of Veterans Affairs Section 508 Office"
+        ],
+        "what_answered": "Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/)."
+      }
+    },
+    {
+      "id": "federal508-gsa-section508-gov-it-accessibility",
+      "name": "GSA (Section508.gov / IT Accessibility)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "A federal agency's own 508 or accessibility office. Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "USAJOBS",
+          "url": "https://www.usajobs.gov/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "USAJOBS needs an API key, which is requested on the site by whoever will use it; a script cannot register for it. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "agency",
+        "system": "usajobs",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "GSA (Section508.gov / IT Accessibility)"
+        ],
+        "what_answered": "Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/)."
+      }
+    },
+    {
+      "id": "federal508-hhs-section-508-program",
+      "name": "HHS (Section 508 program)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "A federal agency's own 508 or accessibility office. Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "USAJOBS",
+          "url": "https://www.usajobs.gov/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "USAJOBS needs an API key, which is requested on the site by whoever will use it; a script cannot register for it. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "agency",
+        "system": "usajobs",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "HHS (Section 508 program)"
+        ],
+        "what_answered": "Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/)."
+      }
+    },
+    {
+      "id": "federal508-irs-it-accessibility",
+      "name": "IRS (IT Accessibility)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "A federal agency's own 508 or accessibility office. Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "USAJOBS",
+          "url": "https://www.usajobs.gov/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "USAJOBS needs an API key, which is requested on the site by whoever will use it; a script cannot register for it. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "agency",
+        "system": "usajobs",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "IRS (IT Accessibility)"
+        ],
+        "what_answered": "Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/)."
+      }
+    },
+    {
+      "id": "federal508-department-of-state-section-508",
+      "name": "Department of State (Section 508)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "A federal agency's own 508 or accessibility office. Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "USAJOBS",
+          "url": "https://www.usajobs.gov/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "USAJOBS needs an API key, which is requested on the site by whoever will use it; a script cannot register for it. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "agency",
+        "system": "usajobs",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "Department of State (Section 508)"
+        ],
+        "what_answered": "Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/)."
+      }
+    },
+    {
+      "id": "federal508-uspto-section-508",
+      "name": "USPTO (Section 508)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "no-reader",
+      "why": "A federal agency's own 508 or accessibility office. Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "USAJOBS",
+          "url": "https://www.usajobs.gov/"
+        }
+      ],
+      "reader": "",
+      "status_note": "No reader for it yet",
+      "todo": "USAJOBS needs an API key, which is requested on the site by whoever will use it; a script cannot register for it. Not built.",
+      "federal508": {
+        "verdict": "to-do",
+        "kind": "agency",
+        "system": "usajobs",
+        "researched": "2026-10-31",
+        "feed_names": [
+          "USPTO (Section 508)"
+        ],
+        "what_answered": "Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/)."
       }
     }
   ]

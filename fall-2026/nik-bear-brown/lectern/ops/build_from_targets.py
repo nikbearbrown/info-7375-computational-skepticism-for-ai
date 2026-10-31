@@ -153,6 +153,14 @@ def derive_tables(doc):
                 f"({m.get('status') or 'unknown'}) | {sig} | {s.get('people_found', 0)} | {md_link(route['kind'], route['url']) if route.get('url') else 'none published'} | {t['why']} | {t['todo'] or 'none'} |")
     out["speakers"] = table([speakers_row(t) for t in sec("speakers")],
                             ("| Company | Verdict | Product | MCP (primary source) and its status | Sourced signals | People found (names are local only) | Public route | Why this verdict | To-do |", "|---|---|---|---|---|---|---|---|---|"))
+    def f508_row(t):
+        f = t.get("federal508") or {}
+        n = f.get("postings_2026_10_31")
+        hits = f.get("accessibility_titles_2026_10_31")
+        return (f"| {t['name']} | {f.get('kind', '')} | **{f.get('verdict', '')}** | {f.get('system') or '-'} | {cells(t)} | {n if n is not None else '-'} | "
+                f"{hits if hits is not None else '-'} | {t['why']} | {t['todo'] or 'none'} |")
+    out["federal508"] = table([f508_row(t) for t in sec("federal508")],
+                              ("| Employer | Kind | Verdict | System | Board or careers page | Postings 2026-10-31 | Titles with a 508 or accessibility phrase | Why this verdict; what answered | To-do |", "|---|---|---|---|---|---|---|---|---|"))
     out["removed"] = table([f"| {t['name']} | {t['removed']['on'] or 'earlier'} | {t['removed']['entry'].get('reason', '')} |" for t in T if t["status"] == "removed"],
                            ("| Removed | On | Reason, as recorded |", "|---|---|---|"))
     return out
