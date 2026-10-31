@@ -488,6 +488,42 @@ There is **one early reader**, `collect/collectors/biolabs.py` (seeds and rules 
 | USPTO (Section 508) | agency | **to-do** | usajobs | [USAJOBS](https://www.usajobs.gov/) | - | - | A federal agency's own 508 or accessibility office. Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/). | USAJOBS needs an API key, which is requested on the site by whoever will use it; a script cannot register for it. Not built. |
 <!-- /targets:federal508 -->
 
+### K.2 What the work needs and where it is: a brief pasted 2026-10-31
+
+**What this is.** A brief Professor Bear pasted on 2026-10-31, written by another tool, on what a person doing federal Section 508 work needs and where that work is, for the friend named in this section's introduction. **These are the brief's claims, not Lectern's findings: nothing in it was checked here** (its own sources are listed at the end). The person it was written for is not named here because this repository is public; the full text, with that person's details, is kept in a private note outside the repository.
+
+**The headline.** The gate for the testing work is the DHS Trusted Tester v5 certification, the brief says: agencies that use the Trusted Tester process accept conformance results only from certified testers, DHS procurement language requires TTv5 or later, kept current, from anyone testing on a contract, and contractor postings list it as a hard requirement. IAAP certifications (CPACC, WAS, CPWA) appear as "preferred", not as a gate. The business-side paperwork is a separate question from certification:
+
+| Requirement | When it applies | Notes (the brief's) |
+|---|---|---|
+| DHS Trusted Tester v5 | Any federal 508 testing role or contract | Kept current over the life of a contract |
+| SAM.gov registration and a UEI | Bidding on or receiving a federal contract directly | Free; renews every year; third-party services that charge for it are to be ignored |
+| A UEI only | Subcontracts over $30,000 under a federal prime | Many primes want full SAM registration from subcontractors anyway |
+| A public trust background investigation | Many agency-facing tester roles | Usually arranged by the hiring firm; the person must be able to pass one |
+| Small-business certifications (WOSB and others) | Set-aside contracts | Only if the person qualifies |
+| IAAP CPACC, WAS, CPWA | An optional differentiator | Rarely required |
+
+**Four lanes: where the work is, and which of them Lectern can see.**
+
+| Lane | What it is (the brief's words, shortened) | Can Lectern see it? |
+|---|---|---|
+| 1. Contract tester roles that require Trusted Tester | Staffing and consulting firms hiring 508 testers for agency work, plus freelance postings. The fastest route to income, and no SAM registration is needed when working through a firm. Some firms hire before the certification and require it within 90 days. | **Partly.** This is what the federal-508 channel reads, but only on boards Lectern can read (17 of the 67 employers). |
+| 2. Prime contractors that win 508 work | The subcontracting targets: pull award history from USAspending (a public API, no key, the brief says) and SAM.gov award notices, then rank firms by how many 508, accessibility or ICT-testing awards each has won. The output is companies to approach, not bids. | **No.** Not built, and no job board shows it. |
+| 3. Open solicitations on SAM.gov | The Get Opportunities API v2, with a free public key from Account Details on sam.gov. The site's keyword search is weak, so pull broadly and filter the descriptions. Most are too big for one person to bid on; they are intelligence on which agencies are buying and who competes. | **No.** Needs a key that a person requests (to-do 15). |
+| 4. Vendors selling to government that need an Accessibility Conformance Report | Software and edtech companies need one to compete in federal procurement. It is ordinary commercial work, with no SAM registration, and the lane that best fits an audit first, then research and design. | **No.** Not a job-board matter: these vendors would come from a list of companies selling into agencies, not from postings. |
+
+**The brief's pushback, kept because it changes what to build.** A federal testing contract is scoped to testing. The research and design work wanted afterwards usually will not fit under it and would need a new procurement. So the wedge works in lanes 2 and 4 and poorly in lane 3, and a search that only scrapes SAM.gov would hand back opportunities that cannot be bid and do not lead to the work wanted.
+
+**Search terms.** The brief lists `Section 508`, `508 compliance`, `508 testing`, `Trusted Tester`, `TTv5`, `accessibility testing`, `ICT accessibility`, `VPAT`, `Accessibility Conformance Report`, `WCAG 2.1 AA` and `digital accessibility`. Compared by hand with the phrases in `federal508_rule` (`config/keywords.json`, v0.6.5): **every one already matches a title except `TTv5`** (`accessibility testing` matches through `accessibility`, `WCAG 2.1 AA` through `wcag`). `TTv5` was not added: a rule here changes only after it is measured, and nothing has measured how many postings `TTv5` alone would add.
+
+**NAICS codes.** The brief says not to hardcode them but to take them from the codes on past 508 awards (lane 2) and use those for lane 3. The research's sighting of NAICS 541512 on the 508 notices it saw (this section's introduction) is one observation, not a code to filter on.
+
+**One mismatch with the judge, not changed.** `public trust` is on the judge's clearance list, so a title that says it gets the clearance flag. The brief treats a public trust investigation as something the person must be able to pass, not as a clearance. Whether to flag it differently is Professor Bear's decision.
+
+**Questions the brief says set the search's filters** (the answers are not recorded here): whether there is a business entity registered in SAM.gov; whether the person takes 1099 or W-2 tester work through a firm or only direct clients; whether the person can pass a public trust investigation; remote only, or the Washington, DC area too; and any small-business certification.
+
+**The brief's own sources** (none read here): [Section508.gov, DHS Trusted Tester Process and Certification Program](https://section508.gov/test/trusted-tester); [a DHS Acquisition Planning Forecast record, cited for the TTv5 requirement](https://apfs-cloud.dhs.gov/record/70342/public-print); [the GSA Get Opportunities Public API](https://open.gsa.gov/api/get-opportunities-public-api/); [a SAM.gov and UEI registration overview on a third-party site](https://opengrants.io/encyclopedia/readiness/sam-gov-and-uei-registration/); and two example tester postings, [one](https://dtprosusa.applytojob.com/apply/PMssFe1zfl/DHS-Certified-Trusted-508-Tester) and [two](https://thinkbeyondthelabel.dejobs.org/washington-dc/senior-manual-508-tester-fema-bpa-dc-area/1AFB63F8BF6649779C86B0FEDAE8501D/job).
+
 ## What we do not have (the to-do list)
 
 1. **The lab reader is a start, not a reader.** `biolabs.py` covers directory pages and a keyword score; the people-page stage, funding at lab level, the HMS labs page, and every institute, think tank and department page are still unread by script.
@@ -504,6 +540,6 @@ There is **one early reader**, `collect/collectors/biolabs.py` (seeds and rules 
 12. **Game studios the feed cannot read** (section H): Ubisoft answers on SmartRecruiters (`Ubisoft2`) and needs only a line in the feed's company list; Activision is on Workday, Blizzard on Phenom, Electronic Arts on a paged HTML site, Unity's system is not identified; Niantic's board is empty. No reader was built: only Ubisoft's would be small, and it belongs in the ai-jobs repository.
 13. **Board 'bethesda' in the feed is a physical-therapy employer**, not the game company: a wrong-company match to correct in the ai-jobs repository.
 14. **Consulting firms Lectern cannot read** (section I): a Workday reader (10 consulting firms and 2 tagged companies answered a public JSON list with no login; Accenture, Guidehouse, Huron and Booz Allen Hamilton among them), then Oracle HCM (3); 8 firms whose system is not determined; 7 that refused a script or could not be reached (Alvarez & Marsal and Kearney among them). Not built; Professor Bear decides which.
-15. **Federal 508 work Lectern cannot read** (section K): a Workday reader (8 of the employers; 10 consulting firms too), a USAJOBS key and a SAM.gov key, each requested by a person on the site, and a Lever reader (Palantir, Bellese). Until then the federal-508 dry run posts nothing.
+15. **Federal 508 work Lectern cannot read** (section K): a Workday reader (8 of the employers; 10 consulting firms too), a USAJOBS key and a SAM.gov key, each requested by a person on the site, and a Lever reader (Palantir, Bellese). Until then the federal-508 dry run posts nothing. The brief in section K.2 adds two lanes that no job board shows and nothing here builds: prime contractors found from USAspending award history, and vendors that need an Accessibility Conformance Report.
 
 *Written 2026-10-20 from the repository's own files and the link and feed checks named above. A classification is a reading by the author of this file, not a verdict by Professor Bear, who has not reviewed it.*
