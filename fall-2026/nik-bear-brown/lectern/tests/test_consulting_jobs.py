@@ -90,8 +90,9 @@ class Judge(unittest.TestCase):
 class Collector(unittest.TestCase):
     def test_the_boards_it_reads_are_the_kept_firms_of_targets_json_and_none_is_on_the_watch_list(self):
         boards = consulting_collect.boards_from_targets(DOC)
-        self.assertEqual(sorted(b[0] for b in boards), ["Accenture Federal Services", "Altman Solon", "Analysys Mason", "Baringa", "Brattle Group"])
-        self.assertEqual({b[1] for b in boards}, {"greenhouse", "smartrecruiters"})
+        self.assertEqual(sorted(b[0] for b in boards), ["Accenture Federal Services", "Alira Health", "Altman Solon", "Analysys Mason", "Ankura", "Baringa", "Berkeley Research Group",
+                                                        "Brattle Group", "Guidehouse", "Huron Consulting"])
+        self.assertEqual({b[1] for b in boards}, {"greenhouse", "smartrecruiters", "workday"})
         with open(lp.config("sources.json")) as f:
             sources = json.load(f)
         watched = {b["company"] for s in sources["sources"] for b in s["boards"]}
@@ -110,6 +111,8 @@ class Collector(unittest.TestCase):
             def fake(provider, slug):
                 if slug == "baringa":
                     raise OSError("down")
+                if provider == "workday":
+                    return {"total": 1, "complete": True, "jobs": [{"title": "Junior Analyst", "externalPath": "/job/Boston/Junior-Analyst_1", "locationsText": "Boston, MA", "bulletFields": ["1"]}]}
                 return {"jobs": [{"id": 5, "title": "Junior Analyst", "absolute_url": "u", "location": {"name": "London"}}]} if provider == "greenhouse" else {"jobs": []}
             consulting_collect.fetch_list = fake
             consulting_collect.PAUSE = 0

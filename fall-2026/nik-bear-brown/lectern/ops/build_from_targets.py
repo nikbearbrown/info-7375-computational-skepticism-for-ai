@@ -135,12 +135,19 @@ def derive_tables(doc):
                 f"{a if a is not None else 'not read'} | {ec} | {t['why']} | {t['todo'] or 'none'} |")
     out["games"] = table([games_row(t) for t in sec("games")],
                          ("| Studio | Verdict | Board (provider) and its links | Postings answering 2026-10-28 | Early-career titles in the 2026-10-24 snapshot | Why this verdict; the noise | To-do |", "|---|---|---|---|---|---|---|"))
+    def latest(d, prefix, base):
+        """The newest dated count under keys `<prefix>_YYYY_MM_DD`; shown with its date when it is not the table's own date `base`."""
+        keys = sorted(k for k in d if k.startswith(prefix + "_") and isinstance(d[k], int))
+        if not keys:
+            return None
+        date = keys[-1][len(prefix) + 1:].replace("_", "-")
+        return d[keys[-1]] if date == base else f"{d[keys[-1]]} ({date})"
     def consulting_row(t):
         c = t.get("consulting") or {}
-        n = (c.get("postings_2026_10_28") or "")
+        n = latest(c, "postings", "2026-10-28") or ""
         return (f"| {t['name']} | {c.get('tier') or '-'} | **{c.get('verdict', '')}** | {c.get('system') or '-'} | {cells(t)} | {n or '-'} | {t['why']} | {t['todo'] or 'none'} |")
     out["consulting"] = table([consulting_row(t) for t in sec("consulting")],
-                              ("| Firm | Tier | Verdict | System | Board or careers page | Postings 2026-10-28 | Why this verdict; what answered | To-do |", "|---|---|---|---|---|---|---|---|"))
+                              ("| Firm | Tier | Verdict | System | Board or careers page | Postings 2026-10-28 (a later read is dated) | Why this verdict; what answered | To-do |", "|---|---|---|---|---|---|---|---|"))
     def speakers_row(t):
         s = t.get("speakers") or {}
         m = s.get("mcp") or {}
@@ -155,12 +162,12 @@ def derive_tables(doc):
                             ("| Company | Verdict | Product | MCP (primary source) and its status | Sourced signals | People found (names are local only) | Public route | Why this verdict | To-do |", "|---|---|---|---|---|---|---|---|---|"))
     def f508_row(t):
         f = t.get("federal508") or {}
-        n = f.get("postings_2026_10_31")
-        hits = f.get("accessibility_titles_2026_10_31")
+        n = latest(f, "postings", "2026-10-31")
+        hits = latest(f, "accessibility_titles", "2026-10-31")
         return (f"| {t['name']} | {f.get('kind', '')} | **{f.get('verdict', '')}** | {f.get('system') or '-'} | {cells(t)} | {n if n is not None else '-'} | "
                 f"{hits if hits is not None else '-'} | {t['why']} | {t['todo'] or 'none'} |")
     out["federal508"] = table([f508_row(t) for t in sec("federal508")],
-                              ("| Employer | Kind | Verdict | System | Board or careers page | Postings 2026-10-31 | Titles with a 508 or accessibility phrase | Why this verdict; what answered | To-do |", "|---|---|---|---|---|---|---|---|---|"))
+                              ("| Employer | Kind | Verdict | System | Board or careers page | Postings 2026-10-31 (a later read is dated) | Titles with a 508 or accessibility phrase | Why this verdict; what answered | To-do |", "|---|---|---|---|---|---|---|---|---|"))
     out["removed"] = table([f"| {t['name']} | {t['removed']['on'] or 'earlier'} | {t['removed']['entry'].get('reason', '')} |" for t in T if t["status"] == "removed"],
                            ("| Removed | On | Reason, as recorded |", "|---|---|---|"))
     return out

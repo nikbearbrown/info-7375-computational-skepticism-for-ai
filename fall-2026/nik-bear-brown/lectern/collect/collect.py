@@ -29,8 +29,16 @@ import argparse, csv, datetime as dt, html, json, os, re, sys, time, unicodedata
 from urllib.parse import quote
 
 ALLOWED = {"boards-api.greenhouse.io", "api.ashbyhq.com", "api.smartrecruiters.com"}
+# Workday boards, one host each, only the ones whose robots.txt and terms were read and allow it (see TARGETS.md section K and I, HISTORY.md 2026-11-01).
+# Not here on purpose: bah.wd1 (Booz Allen terms forbid bots), icf.wd5 and leidos.wd5 (terms forbid scraping), caci.wd1 (robots.txt disallows its board),
+# cambridgeassociates.wd5 and bakertilly.wd5 (terms forbid automated access), perkins.wd503 (terms forbid robots), accenture.wd103 (its list has no place and is capped at a count that is not
+# the true one), vizient.wd1 (a different employer's board: none of its 227 titles names Kaufman Hall).
+WORKDAY_HOSTS = {"guidehouse.wd1.myworkdayjobs.com", "gdit.wd5.myworkdayjobs.com", "unisys.wd5.myworkdayjobs.com", "salesforce.wd12.myworkdayjobs.com",
+                 "huron.wd1.myworkdayjobs.com", "alirahealth.wd3.myworkdayjobs.com", "ankura.wd5.myworkdayjobs.com", "thinkbrg.wd5.myworkdayjobs.com"}
+ALLOWED |= WORKDAY_HOSTS
 HERE = lp.ROOT
 TODAY = dt.date.today().isoformat()
+USER_AGENT = "lectern (course project)"
 
 
 class InputError(Exception):
@@ -38,19 +46,92 @@ class InputError(Exception):
 
 
 # ---------------------------------------------------------------- fetch
-def get(url, timeout=30):
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *a, **k):
+        return None
+
+
+def _checked(url):
     from urllib.parse import urlparse
     p = urlparse(url)
     if p.scheme != "https" or p.hostname not in ALLOWED:
         raise InputError(f"refusing host {p.hostname!r}: not in {sorted(ALLOWED)}")
+    return url
 
-    class NoRedirect(urllib.request.HTTPRedirectHandler):
-        def redirect_request(self, *a, **k):
-            return None
 
-    req = urllib.request.Request(url, headers={"User-Agent": "lectern (course project)"})
-    with urllib.request.build_opener(NoRedirect).open(req, timeout=timeout) as r:
+def get(url, timeout=30):
+    req = urllib.request.Request(_checked(url), headers={"User-Agent": USER_AGENT})
+    with urllib.request.build_opener(_NoRedirect).open(req, timeout=timeout) as r:
         return json.loads(r.read().decode("utf-8"))
+
+
+def get_json(url, timeout=30):
+    """A GET that answers JSON only (the same guards as post_json): one posting's own record on a Workday board."""
+    req = urllib.request.Request(_checked(url), headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+    with urllib.request.build_opener(_NoRedirect).open(req, timeout=timeout) as r:
+        if "json" not in (r.headers.get("Content-Type") or "").lower():
+            raise ValueError(f"not JSON: Content-Type {r.headers.get('Content-Type')!r}")
+        return json.loads(r.read().decode("utf-8"))
+
+
+def post_json(url, body, timeout=30):
+    """POST a JSON body, answer parsed. Same host list, no redirects (a redirect to a sign-in page is an error, not a board), and a reply
+    that is not JSON is an error: an HTML error page is never parsed."""
+    req = urllib.request.Request(_checked(url), data=json.dumps(body).encode("utf-8"), method="POST",
+                                 headers={"User-Agent": USER_AGENT, "Accept": "application/json", "Content-Type": "application/json"})
+    with urllib.request.build_opener(_NoRedirect).open(req, timeout=timeout) as r:
+        if "json" not in (r.headers.get("Content-Type") or "").lower():
+            raise ValueError(f"not JSON: Content-Type {r.headers.get('Content-Type')!r}")
+        return json.loads(r.read().decode("utf-8"))
+
+
+WORKDAY_SLUG = re.compile(r"^([a-z0-9-]+)\.(wd\d+)/([A-Za-z0-9_-]+)$")
+WORKDAY_PAGE = 20          # postings a request (the most the public list is known to give)
+WORKDAY_DISPLAY_CAP = 2000
+WORKDAY_MAX_PAGES = 250    # 5,000 postings: a stop in case a board never says it has ended
+
+
+def workday_parts(slug):
+    """'guidehouse.wd1/External' -> (host, tenant, site)."""
+    m = WORKDAY_SLUG.match(slug or "")
+    if not m:
+        raise InputError(f"not a Workday board id (tenant.wdN/site): {slug!r}")
+    return f"{m.group(1)}.{m.group(2)}.myworkdayjobs.com", m.group(1), m.group(3)
+
+
+def workday_places(slug, external_path):
+    """The places one Workday posting names, from its own record: its main location and its additional locations. One request.
+    The list says '3 Locations' and nothing more; this is how a posting is found to include 'US - Remote (Any location)'."""
+    host, tenant, site = workday_parts(slug)
+    if not re.match(r"^/job/[^/]+/[^/]+$", external_path or ""):
+        raise InputError(f"not a posting address: {external_path!r}")
+    info = (get_json(f"https://{host}/wday/cxs/{tenant}/{site}{external_path}").get("jobPostingInfo") or {})
+    return [x for x in [info.get("location")] + list(info.get("additionalLocations") or []) if x]
+
+
+def fetch_workday(slug, pause=1.2):
+    """Every posting on one Workday board's public list: one POST a page of 20, a pause between pages, never the ad text.
+    -> {"total": the count the board gives, "jobs": [...], "pages": n, "complete": bool}. The list is read until it ends or says it is done."""
+    host, tenant, site = workday_parts(slug)
+    url = f"https://{host}/wday/cxs/{tenant}/{site}/jobs"
+    jobs, seen, total, pages = [], set(), None, 0
+    while pages < WORKDAY_MAX_PAGES:
+        if pages:
+            time.sleep(pause)
+        page = post_json(url, {"appliedFacets": {}, "limit": WORKDAY_PAGE, "offset": len(seen), "searchText": ""})
+        pages += 1
+        got = page.get("jobPostings")
+        if not isinstance(got, list):
+            raise ValueError("no jobPostings list in the reply")
+        if total is None:
+            total = int(page.get("total") or 0)
+        fresh = [j for j in got if j.get("externalPath") not in seen]      # the list can shift while it is read: a posting counts once
+        seen.update(j.get("externalPath") for j in fresh)
+        jobs.extend(fresh)
+        if not got or len(seen) >= total:
+            break
+    # a total of exactly 2000 is the board's display cap, not a count (Accenture's list went on past it): not complete
+    return {"total": total or 0, "jobs": jobs, "pages": pages, "complete": len(jobs) >= (total or 0) and total != WORKDAY_DISPLAY_CAP}
 
 
 def fetch_board(provider, slug, want_detail=True):

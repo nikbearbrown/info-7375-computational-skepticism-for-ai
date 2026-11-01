@@ -1033,6 +1033,23 @@ Where to check each claim in this log. Commits are listed in the push table belo
   - Evidence: `lectern/config/keywords.json` (`federal508_rule` and its comment), `lectern/config/targets.json` (section `federal508`) and section K of `lectern/TARGETS.md`, `lectern/collect/federal508_jobs.py`, `lectern/collect/federal508_collect.py`, `lectern/publish/federal508_feed.py`, `lectern/tests/test_federal508_jobs.py`, `test_federal508_feed.py`, `lectern/forms/n8n/test-results/parity-2026-10-31.txt`; for the brief, section K.2 of `lectern/TARGETS.md` and the `2026-10-31 (later)` entry in `lectern/HISTORY.md`.
   - Next: I answer the open questions; if I want real postings in it, a Workday reader and the two keys come first; if I say go, name the channel, set `posting` to `on` and run `--baseline` or `--post-all` once. Not pushed.
 
+### 2026-11-01 — A Workday reader for the federal-508 and consulting channels
+
+- **Date and what I was working on:** 2026-11-01. Building a reader for Workday job boards so the federal-508 channel (and the consulting channel) can read the boards that hold most real federal 508 postings.
+- **I tried / expected:** My instruction, as it reached Claude Code from the session that started this one: build a Workday reader; check each board's robots.txt and terms first and respect them; flip the Workday entries in the list to `active` only after fetching each board and checking the employer's name from a posting; keep posting off. I expected the 508 postings the research had found to show up.
+- **What happened:**
+  - **Four boards forbid a script and one more is blocked, so they are not read.** Booz Allen, ICF, Leidos and Perkins say in their terms that bots, scraping or data mining are not allowed; Cambridge Associates and Baker Tilly say the same (consulting); CACI's robots.txt disallows its board. Their entries are `unreadable` with the clause named. Huron and BRG have no terms-of-use page I could find; Workday's own terms page I could not find either. Accenture's main board and Kaufman Hall (Vizient's board) were tried and are not read, for reasons in the list.
+  - **Nine boards are read:** Guidehouse, GDIT, Unisys and Salesforce (federal 508), and Guidehouse, Huron, Alira Health, Ankura and Berkeley Research Group (consulting). A posting on each names the employer.
+  - **The first read posted nothing, and that was wrong in a way that mattered.** The Guidehouse 'Section 508 Subject Matter Expert' title is listed with the place '3 Locations', so the rule held it back as saying neither remote nor contract. Its own record lists 'US - Remote (Any location)'. I had the reader look up a Workday posting's places when its title already matches a 508 phrase and its place is only a count (two lookups today); the dry run then posts **one** listing. That one lookup decides whether the channel has anything to say, so it is a design choice worth my review.
+  - **Numbers (2026-11-01):** federal 508, 21 boards, 7,598 postings (4,059 on the Workday boards), three titles with a phrase, one would be posted; consulting, 10 boards, 2,295 postings (1,351 on Workday), 70 would be posted, 33 of them from the Workday boards (7 of those show only a count for a place, so their country was not checked).
+  - **Posting is off.** The dry runs read no webhook and sent nothing.
+- **What I did:** Gave the instruction. I have not reviewed the reader, the list changes or the numbers.
+- **What Claude or another person contributed:** Claude Code read the robots files and terms, wrote the reader, `tests/test_workday.py` (22 tests), the list changes, the notes in `keywords.json`, `HISTORY.md` and this entry, and ran every test file and the n8n headless test.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: `lectern/collect/collect.py` (`fetch_workday`, `post_json`), `lectern/collect/consulting_collect.py`, `lectern/collect/federal508_collect.py` (`name_the_places`), `lectern/tests/test_workday.py`, the `UPDATE 2026-11-01` text in `lectern/config/keywords.json`, section I and K of `lectern/TARGETS.md`, `lectern/HISTORY.md`.
+  - Open questions: whether the consulting reader should also look up the places of the 7 postings that show only a count; whether to ask Booz Allen, ICF, Leidos, CACI and Perkins for permission or look at their boards by hand; whether Guidehouse's board, read three times in one hour while building this, should be read less often. Not pushed.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.

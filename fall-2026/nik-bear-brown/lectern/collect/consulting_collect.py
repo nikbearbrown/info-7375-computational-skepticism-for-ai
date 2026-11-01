@@ -4,8 +4,8 @@
     python3 consulting_collect.py [--out runs/DATE] [--only SLUG]
 
 The firms are the `consulting` section of config/targets.json with status `active` (a board Lectern's own readers can read:
-Greenhouse, Ashby, SmartRecruiters). One request per board, a pause between boards, the same host list and user agent as
-collect.py. It reads the postings' LISTS (title, place, link), never the ad text: the consulting judge reads titles.
+Greenhouse, Ashby, SmartRecruiters, Workday). One request per board (Workday: one per page of 20 postings), a pause between
+requests, the same host list and user agent as collect.py. It reads the postings' LISTS (title, place, link), never the ad text: the consulting judge reads titles.
 
 This is deliberately NOT part of collect.py: collect.py reads the watch list for the #professor-bear feed, and the consulting
 firms must never enter it (config/sources.json is generated from the `boards` section only; a test checks it).
@@ -20,7 +20,7 @@ for _p in (_os.path.dirname(_os.path.abspath(__file__)), _os.path.dirname(_os.pa
         _sys.path.insert(0, _p)
         break
 import lectern_paths as lp   # where things are: see lectern_paths.py
-import argparse, datetime as dt, json, os, sys, time
+import argparse, datetime as dt, json, os, re, sys, time
 from urllib.parse import quote
 
 import collect
@@ -42,7 +42,36 @@ def fetch_list(provider, slug):
         return collect.get(f"https://api.ashbyhq.com/posting-api/job-board/{quote(slug)}")
     if provider == "smartrecruiters":
         return collect.fetch_board("smartrecruiters", slug, want_detail=False)          # the list only: no call per posting
+    if provider == "workday":
+        return collect.fetch_workday(slug, pause=PAUSE)                                  # the list only: one POST a page, a pause between pages
     raise collect.InputError(f"unknown provider {provider!r}")
+
+
+def raw_name(provider, slug, today):
+    """The file a board's response is kept in: a Workday id has a slash ('guidehouse.wd1/External')."""
+    return f"{provider}-{re.sub(r'[^a-z0-9._-]+', '_', slug.lower())}-{today}.json"
+
+
+def workday_posted(text, today=None):
+    """'Posted Today' / 'Posted Yesterday' / 'Posted 3 Days Ago' -> an ISO date; 'Posted 30+ Days Ago' and anything else -> None (not a date)."""
+    today = today or dt.date.today()
+    t = (text or "").lower()
+    if "today" in t:
+        return today.isoformat()
+    if "yesterday" in t:
+        return (today - dt.timedelta(days=1)).isoformat()
+    m = re.search(r"posted (\d+) days? ago", t)
+    return (today - dt.timedelta(days=int(m.group(1)))).isoformat() if m else None
+
+
+def workday_place(j):
+    """A Workday list item's place. The list gives 'US - TX, San Antonio', a count ('2 Locations': no place named) or nothing at all; when
+    it gives nothing the place is read from the city in the posting's own address (/job/<city>/<title>_<id>)."""
+    loc = (j.get("locationsText") or "").strip()
+    if loc:
+        return loc
+    m = re.match(r"/job/([^/]+)/", j.get("externalPath") or "")
+    return re.sub(r"\s+", " ", m.group(1).replace("-", " ")).strip() if m else ""
 
 
 def records(provider, firm, slug, payload):
@@ -52,6 +81,11 @@ def records(provider, firm, slug, payload):
         if provider == "greenhouse":
             r = dict(source_id=str(j.get("id")), title=(j.get("title") or "").strip(), url=j.get("absolute_url"),
                      location_text=(j.get("location") or {}).get("name", ""), department="", date_posted=collect.iso_date(j.get("first_published") or j.get("updated_at")))
+        elif provider == "workday":
+            host, _tenant, site = collect.workday_parts(slug)
+            ref = (j.get("bulletFields") or [None])[0]
+            r = dict(external_path=j.get("externalPath"), source_id=str(ref or j.get("externalPath")), title=(j.get("title") or "").strip(), url=f"https://{host}/en-US/{site}{j.get('externalPath')}",
+                     location_text=workday_place(j), department="", date_posted=workday_posted(j.get("postedOn")))
         elif provider == "ashby":
             locs = [j.get("location") or ""] + [x.get("location") or "" for x in (j.get("secondaryLocations") or [])]
             r = dict(source_id=str(j.get("id")), title=(j.get("title") or "").strip(), url=j.get("jobUrl"), location_text=" · ".join(x for x in locs if x),
@@ -63,6 +97,14 @@ def records(provider, firm, slug, payload):
                      department=((j.get("function") or {}).get("label") or ""), date_posted=collect.iso_date(j.get("releasedDate")))
         out.append({"source": provider, "company": firm, **r})
     return out
+
+
+def board_ok(name, provider, got, payload):
+    """The status line of a board that answered. A Workday list says how many postings it holds: if fewer came back, the line says so."""
+    st = {"company": name, "provider": provider, "status": "ok", "postings": len(got)}
+    if provider == "workday":
+        st.update(listed_total=payload["total"], complete=bool(payload["complete"]))
+    return st
 
 
 def main(argv=None):
@@ -88,15 +130,15 @@ def main(argv=None):
             time.sleep(PAUSE)
         try:
             payload = fetch_list(provider, slug)
-            collect.write_json(os.path.join(raw_dir, f"{provider}-{slug.lower()}-{today}.json"), payload)      # raw first
+            collect.write_json(os.path.join(raw_dir, raw_name(provider, slug, today)), payload)      # raw first
         except Exception as e:                                                                                  # one board failing does not stop the others
             status.append({"company": firm, "provider": provider, "status": "unavailable", "reason": f"{type(e).__name__}: {e}"})
             print(f"  {firm:28} UNAVAILABLE ({type(e).__name__})", file=sys.stderr)
             continue
         got = records(provider, firm, slug, payload)
         recs += got
-        status.append({"company": firm, "provider": provider, "status": "ok", "postings": len(got)})
-        print(f"  {firm:28} {len(got):4} postings")
+        status.append(board_ok(firm, provider, got, payload))
+        print(f"  {firm:28} {len(got):4} postings" + ("" if status[-1].get("complete", True) else f"  (the board lists {payload['total']}: not all came back)"))
     if not any(s["status"] == "ok" for s in status):
         print("every board failed or none is listed: nothing written", file=sys.stderr)
         return 3

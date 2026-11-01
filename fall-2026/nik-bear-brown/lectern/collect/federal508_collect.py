@@ -4,7 +4,7 @@
     python3 federal508_collect.py [--out runs/DATE] [--only SLUG]
 
 The employers are the `federal508` section of config/targets.json with status `active` (a board Lectern's own readers can read: Greenhouse, Ashby,
-SmartRecruiters). One request per board, a pause between boards, the same host list and user agent as collect.py. It reads the postings' LISTS (title, place,
+SmartRecruiters, Workday). One request per board (Workday: one per page of 20 postings), a pause between requests, the same host list and user agent as collect.py. It reads the postings' LISTS (title, place,
 link), never the ad text: the judge reads titles. The readers and the record shape are consulting_collect.py's, written once.
 
 This is deliberately NOT part of collect.py: collect.py reads the watch list for the #professor-bear feed, and these employers must never enter it
@@ -20,10 +20,11 @@ for _p in (_os.path.dirname(_os.path.abspath(__file__)), _os.path.dirname(_os.pa
         _sys.path.insert(0, _p)
         break
 import lectern_paths as lp   # where things are: see lectern_paths.py
-import argparse, datetime as dt, json, os, sys, time
+import argparse, datetime as dt, json, os, re, sys, time
 
 import collect
 import consulting_collect as cc
+import federal508_jobs as fj
 
 PAUSE = cc.PAUSE
 
@@ -32,6 +33,28 @@ def boards_from_targets(doc):
     """[(employer, provider, slug)] for the employers whose board Lectern can read (status active)."""
     return [(t["name"], t["provider"], t["federal508"]["board"]["slug"]) for t in doc["targets"]
             if t.get("section") == "federal508" and t.get("status") == "active"]
+
+
+COUNT_PLACE = re.compile(r"^\d+ locations?$", re.I)
+
+
+def name_the_places(recs, slug, rule, pause=None):
+    """A Workday list gives a count ('3 Locations') where a posting has several places, and a 'US - Remote' among them is invisible. For the few postings whose TITLE
+    already has a Section 508 or accessibility phrase and whose place is only a count, one request to the posting's own record gives its places. Nothing else is
+    fetched, and a failed request keeps the count. Mutates and returns recs."""
+    for r in recs:
+        if r.get("source") != "workday" or not COUNT_PLACE.match(r["location_text"].strip()) or not fj.role_hits(r["title"], rule):
+            continue
+        time.sleep(PAUSE if pause is None else pause)
+        try:
+            places = collect.workday_places(slug, r.get("external_path"))
+        except Exception as e:
+            print(f"    places of '{r['title']}' not read ({type(e).__name__}): the count stays", file=sys.stderr)
+            continue
+        if places:
+            r["location_text"] = " · ".join(places)
+            r["places_from_posting"] = True
+    return recs
 
 
 def main(argv=None):
@@ -49,6 +72,8 @@ def main(argv=None):
         print(f"INPUT ERROR: {e}", file=sys.stderr)
         return 2
     boards = [b for b in boards if not a.only or b[2] == a.only]
+    with open(lp.config("keywords.json"), encoding="utf-8") as f:
+        rule = json.load(f)["federal508_rule"]
     raw_dir = os.path.join(out, "federal508-raw")
     os.makedirs(raw_dir, exist_ok=True)
     recs, status = [], []
@@ -57,15 +82,17 @@ def main(argv=None):
             time.sleep(PAUSE)
         try:
             payload = cc.fetch_list(provider, slug)
-            collect.write_json(os.path.join(raw_dir, f"{provider}-{slug.lower()}-{today}.json"), payload)      # raw first
+            collect.write_json(os.path.join(raw_dir, cc.raw_name(provider, slug, today)), payload)      # raw first
         except Exception as e:                                                                                  # one board failing does not stop the others
             status.append({"company": name, "provider": provider, "status": "unavailable", "reason": f"{type(e).__name__}: {e}"})
             print(f"  {name:28} UNAVAILABLE ({type(e).__name__})", file=sys.stderr)
             continue
         got = cc.records(provider, name, slug, payload)
+        if provider == "workday":
+            got = name_the_places(got, slug, rule)
         recs += got
-        status.append({"company": name, "provider": provider, "status": "ok", "postings": len(got)})
-        print(f"  {name:28} {len(got):4} postings")
+        status.append(cc.board_ok(name, provider, got, payload))
+        print(f"  {name:28} {len(got):4} postings" + ("" if status[-1].get("complete", True) else f"  (the board lists {payload['total']}: not all came back)"))
     if not any(s["status"] == "ok" for s in status):
         print("every board failed or none is listed: nothing written", file=sys.stderr)
         return 3

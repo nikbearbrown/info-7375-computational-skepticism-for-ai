@@ -94,11 +94,11 @@ class Targets(unittest.TestCase):
             self.assertTrue(t["why"] and c["feed_names"], t["id"])
             self.assertNotIn("h1b", json.dumps(t).lower(), t["id"])           # a third party's unsourced flag is not stored anywhere
             if c["verdict"] == "keep":
-                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters"), t["id"])
+                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters", "workday"), t["id"])
                 self.assertTrue(t["data"] and c["board"]["slug"], t["id"])
             if c["verdict"] == "to-do":
                 self.assertTrue(t["todo"], t["id"])
-        self.assertEqual(sum(1 for t in firms if t["status"] == "active"), 5)
+        self.assertEqual(sum(1 for t in firms if t["status"] == "active"), 10)
 
     def test_a_federal_508_employer_carries_a_verdict_a_status_to_match_a_kind_and_what_the_research_found(self):
         emps = [t for t in T if t["section"] == "federal508"]
@@ -108,16 +108,16 @@ class Targets(unittest.TestCase):
             f = t["federal508"]
             self.assertEqual(t["type"], "federal-508-employer", t["id"])
             self.assertIn(f["verdict"], ("keep", "drop", "to-do"), t["id"])
-            self.assertIn(t["status"], {"keep": ("active",), "drop": ("dropped",), "to-do": ("no-reader", "unchecked")}[f["verdict"]], t["id"])
+            self.assertIn(t["status"], {"keep": ("active",), "drop": ("dropped",), "to-do": ("no-reader", "unreadable", "unchecked")}[f["verdict"]], t["id"])
             self.assertIn(f["kind"], ("federal-contractor", "civic-tech", "accessibility-specialist", "agency"), t["id"])
             self.assertTrue(t["why"] and f["feed_names"] and f["researched"], t["id"])
             if f["verdict"] == "keep":
-                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters"), t["id"])
+                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters", "workday"), t["id"])
                 self.assertTrue(f["board"]["slug"] and f["board"]["provider"] == t["provider"], t["id"])
-                self.assertIsInstance(f["postings_2026_10_31"], int, t["id"])
+                self.assertTrue([k for k in f if k.startswith("postings_20") and isinstance(f[k], int)], t["id"])
             if f["verdict"] == "to-do":
                 self.assertTrue(t["todo"], t["id"])
-        self.assertEqual(sum(1 for t in emps if t["status"] == "active"), 17)
+        self.assertEqual(sum(1 for t in emps if t["status"] == "active"), 21)
 
     def test_the_federal_508_list_names_no_person_and_holds_no_email_address(self):
         import re
