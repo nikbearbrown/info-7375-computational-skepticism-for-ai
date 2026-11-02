@@ -229,6 +229,60 @@ class Places(unittest.TestCase):
         self.assertEqual(slept, [0.9])
 
 
+class ConsultingPlaces(unittest.TestCase):
+    """The consulting channel looks up a count-only place for the postings its own judge would post, and for no others."""
+
+    def setUp(self):
+        self.real = collect.workday_places
+        self.asked = []
+
+        def fake(slug, path):
+            self.asked.append(path)
+            return {"/job/X/0_0": ["US - NY, New York", "US - Remote"], "/job/X/1_1": ["IN - Mumbai", "JP - Tokyo"]}.get(path, ["US - TX, Austin"])
+        collect.workday_places = fake
+
+    def tearDown(self):
+        collect.workday_places = self.real
+
+    def recs(self, *rows):
+        return cc.records("workday", "Huron", "huron.wd1/External",
+                          {"jobs": [{"title": t, "externalPath": f"/job/X/{i}_{i}", "locationsText": p, "bulletFields": [str(i)]} for i, (t, p) in enumerate(rows)]})
+
+    def test_only_a_post_with_a_count_for_a_place_is_looked_up(self):
+        recs = cc.name_the_places(self.recs(("Summer Analyst Intern", "3 Locations"), ("Analyst Intern", "2 Locations"),
+                                            ("Senior Consultant", "3 Locations"), ("Summer Analyst Intern", "US - TX, Dallas"),
+                                            ("Data Engineer", "4 Locations"), ("Analyst", "3 Locations")), "huron.wd1/External", KW, pause=0)
+        self.assertEqual(self.asked, ["/job/X/0_0", "/job/X/1_1"])          # senior, a named place, no role word and no early sign are not looked up
+        self.assertEqual(recs[0]["location_text"], "US - NY, New York · US - Remote")
+        self.assertTrue(recs[0]["places_from_posting"])
+        self.assertEqual([r["location_text"] for r in recs[2:]], ["3 Locations", "US - TX, Dallas", "4 Locations", "3 Locations"])
+
+    def test_the_places_decide_what_the_judge_does_with_the_posting(self):
+        before = self.recs(("Summer Analyst Intern", "3 Locations"), ("Summer Analyst Intern", "3 Locations"))
+        self.assertEqual([cj.judge_consulting(cj.posting_view(r), KW)["decision"] for r in before], ["post", "post"])        # a count names no country
+        recs = cc.name_the_places(before, "huron.wd1/External", KW, pause=0)
+        self.assertEqual([cj.judge_consulting(cj.posting_view(r), KW)["decision"] for r in recs], ["post", "rejected"])      # the second one's places are India and Japan
+
+    def test_a_failed_lookup_keeps_the_count_and_the_other_boards_are_untouched(self):
+        def boom(slug, path):
+            raise OSError("down")
+        collect.workday_places = boom
+        rows = [dict(source="greenhouse", title="Summer Analyst Intern", location_text="2 Locations", external_path=None)]
+        with contextlib.redirect_stderr(io.StringIO()):
+            recs = cc.name_the_places(self.recs(("Summer Analyst Intern", "2 Locations")), "huron.wd1/External", KW, pause=0)
+            other = cc.name_the_places(rows, "x", KW, pause=0)
+        self.assertEqual((recs[0]["location_text"], other[0]["location_text"]), ("2 Locations", "2 Locations"))
+
+    def test_it_pauses_before_each_request(self):
+        slept, real_sleep = [], cc.time.sleep
+        cc.time.sleep = slept.append
+        try:
+            cc.name_the_places(self.recs(("Summer Analyst Intern", "3 Locations"), ("Analyst Intern", "2 Locations")), "huron.wd1/External", KW, pause=0.7)
+        finally:
+            cc.time.sleep = real_sleep
+        self.assertEqual(slept, [0.7, 0.7])
+
+
 class Boards(unittest.TestCase):
     ACTIVE = [(t["section"], t["name"], t["provider"], t[t["section"]]["board"]["slug"]) for t in DOC["targets"]
               if t["section"] in ("federal508", "consulting") and t["status"] == "active" and t["provider"] == "workday"]

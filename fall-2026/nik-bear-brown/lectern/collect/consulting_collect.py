@@ -24,6 +24,7 @@ import argparse, datetime as dt, json, os, re, sys, time
 from urllib.parse import quote
 
 import collect
+import consulting_jobs as cj
 
 PAUSE = 1.2          # seconds between boards: a polite pace, one request per board unless a list has more than one page
 
@@ -99,6 +100,33 @@ def records(provider, firm, slug, payload):
     return out
 
 
+COUNT_PLACE = re.compile(r"^\d+ locations?$", re.I)
+
+
+def name_places(recs, slug, wanted, pause=None):
+    """A Workday list gives a count ('3 Locations') where a posting has several places, and a country or a 'Remote' among them is invisible. For the postings
+    whose place is only a count AND that `wanted(record)` says matter (the channel's own judge would post them), one request to the posting's own record gives
+    its places. Nothing else is fetched, and a failed request keeps the count. Mutates and returns recs."""
+    for r in recs:
+        if r.get("source") != "workday" or not COUNT_PLACE.match((r.get("location_text") or "").strip()) or not wanted(r):
+            continue
+        time.sleep(PAUSE if pause is None else pause)
+        try:
+            places = collect.workday_places(slug, r.get("external_path"))
+        except Exception as e:
+            print(f"    places of '{r['title']}' not read ({type(e).__name__}): the count stays", file=sys.stderr)
+            continue
+        if places:
+            r["location_text"] = " · ".join(places)
+            r["places_from_posting"] = True
+    return recs
+
+
+def name_the_places(recs, slug, kw, pause=None):
+    """The consulting channel: look up the places of the Workday postings that the consulting judge would post on their title and a count alone."""
+    return name_places(recs, slug, lambda r: cj.judge_consulting(cj.posting_view(r), kw)["decision"] == "post", pause)
+
+
 def board_ok(name, provider, got, payload):
     """The status line of a board that answered. A Workday list says how many postings it holds: if fewer came back, the line says so."""
     st = {"company": name, "provider": provider, "status": "ok", "postings": len(got)}
@@ -122,6 +150,8 @@ def main(argv=None):
         print(f"INPUT ERROR: {e}", file=sys.stderr)
         return 2
     boards = [b for b in boards if not a.only or b[2] == a.only]
+    with open(lp.config("keywords.json"), encoding="utf-8") as f:
+        kw = json.load(f)
     raw_dir = os.path.join(out, "consulting-raw")
     os.makedirs(raw_dir, exist_ok=True)
     recs, status = [], []
@@ -136,6 +166,8 @@ def main(argv=None):
             print(f"  {firm:28} UNAVAILABLE ({type(e).__name__})", file=sys.stderr)
             continue
         got = records(provider, firm, slug, payload)
+        if provider == "workday":
+            got = name_the_places(got, slug, kw)
         recs += got
         status.append(board_ok(firm, provider, got, payload))
         print(f"  {firm:28} {len(got):4} postings" + ("" if status[-1].get("complete", True) else f"  (the board lists {payload['total']}: not all came back)"))

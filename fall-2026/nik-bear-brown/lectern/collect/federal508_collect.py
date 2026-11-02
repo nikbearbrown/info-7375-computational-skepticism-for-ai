@@ -35,26 +35,10 @@ def boards_from_targets(doc):
             if t.get("section") == "federal508" and t.get("status") == "active"]
 
 
-COUNT_PLACE = re.compile(r"^\d+ locations?$", re.I)
-
-
 def name_the_places(recs, slug, rule, pause=None):
-    """A Workday list gives a count ('3 Locations') where a posting has several places, and a 'US - Remote' among them is invisible. For the few postings whose TITLE
-    already has a Section 508 or accessibility phrase and whose place is only a count, one request to the posting's own record gives its places. Nothing else is
-    fetched, and a failed request keeps the count. Mutates and returns recs."""
-    for r in recs:
-        if r.get("source") != "workday" or not COUNT_PLACE.match(r["location_text"].strip()) or not fj.role_hits(r["title"], rule):
-            continue
-        time.sleep(PAUSE if pause is None else pause)
-        try:
-            places = collect.workday_places(slug, r.get("external_path"))
-        except Exception as e:
-            print(f"    places of '{r['title']}' not read ({type(e).__name__}): the count stays", file=sys.stderr)
-            continue
-        if places:
-            r["location_text"] = " · ".join(places)
-            r["places_from_posting"] = True
-    return recs
+    """The federal-508 channel: look up the places of the Workday postings whose TITLE already has a Section 508 or accessibility phrase and whose place is only
+    a count (consulting_collect.name_places does the look-up and keeps the count if it fails)."""
+    return cc.name_places(recs, slug, lambda r: bool(fj.role_hits(r["title"], rule)), pause)
 
 
 def main(argv=None):
