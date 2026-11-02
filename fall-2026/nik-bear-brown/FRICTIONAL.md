@@ -1068,6 +1068,22 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-26 | feat(fall-2026): rank companies by demand, not postings by fit; Google's absence was an API artefact |
 | 2026-10-07 | chore(fall-2026): first real sync; add demand_report.py to the shared list; log the show-tell films |
 | 2026-10-07 | docs(fall-2026): add the project software design document, written by Gru in silent mode |
+### 2026-11-02 — A USAJOBS reader, built and tested but not yet run
+
+- **Date and what I was working on:** 2026-11-02. Building a reader for USAJOBS' own search API so the federal-508 channel can find the agencies' postings, not only the contractors'.
+- **I tried / expected:** I requested a USAJOBS API key, which a script cannot do. USAJOBS emailed it to me. I did not paste the key into the chat; I stored it myself in `~/.usajobs/key` (mode 600, outside the repo) from a terminal command Claude Code gave me. Then I asked for the reader. I expected to see the agencies' 508 postings.
+- **What happened:**
+  - **The reader is built and tested, and has made no real request.** USAJOBS asks for the email the key was registered with as the User-Agent, and `~/.usajobs/email` does not exist yet. The helper stops with an error that names that file and shows no value.
+  - **No `active` entry for USAJOBS is in the list yet**, because an active entry carries a measured posting count and there is none. The 8 agency entries now say the reader is built and the first read is waiting for the email.
+  - **The key is in no file of the Lectern folder or the course notes** (a search found 0 of 245 files).
+  - **A limit I expect:** USAJOBS' keyword search matches the whole ad, but the judge reads the title, so a posting whose title does not say 508 or accessibility will not be posted. The first read will show how big that gap is. The field names for the remote flag are unchecked until then.
+- **What I did:** Requested the key, stored it myself, and gave the instruction. I have not reviewed the reader.
+- **What Claude or another person contributed:** Claude Code wrote the reader, `tests/test_usajobs.py` (14 tests, no network), the list note changes, `HISTORY.md` and this entry, and ran every test file.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: `lectern/collect/collect.py` (`usajobs_login`, `fetch_usajobs`), `lectern/collect/consulting_collect.py` (`records`), `lectern/tests/test_usajobs.py`, the 2026-11-02 entry in `lectern/HISTORY.md`.
+  - Next: I put the registered email in `~/.usajobs/email`; then one real read, a dry run, and the first active entry. Not pushed.
+
 | 2026-10-18 | data(lectern): delta 2026-10-18: +42 new, ~7 changed, -9 gone |
 | 2026-10-18 | docs(fall-2026): one numbered folder and plan per Canvas assignment; publish_delta.py; collectors in the sync list |
 | 2026-10-18 | docs(fall-2026): publish profile.yml for exercise 06 and a layout for its film; Stripe and Writer off the watch list |

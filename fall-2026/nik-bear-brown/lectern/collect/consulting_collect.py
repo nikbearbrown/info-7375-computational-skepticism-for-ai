@@ -45,6 +45,8 @@ def fetch_list(provider, slug):
         return collect.fetch_board("smartrecruiters", slug, want_detail=False)          # the list only: no call per posting
     if provider == "workday":
         return collect.fetch_workday(slug, pause=PAUSE)                                  # the list only: one POST a page, a pause between pages
+    if provider == "usajobs":
+        return collect.fetch_usajobs(slug, pause=PAUSE)                                  # USAJOBS' search API: a key and an email from ~/.usajobs, the list only
     raise collect.InputError(f"unknown provider {provider!r}")
 
 
@@ -75,6 +77,25 @@ def workday_place(j):
     return re.sub(r"\s+", " ", m.group(1).replace("-", " ")).strip() if m else ""
 
 
+def truthy(v):
+    return v is True or str(v).strip().lower() in ("true", "yes", "y", "1")
+
+
+def usajobs_place(j):
+    """A USAJOBS result's places in the words the judges read: each place with its country, and 'Remote' when USAJOBS marks the posting remote. USAJOBS' telework
+    flag is NOT turned into a word: 'telework eligible' means an office job that may be done from home some days, which is not remote work."""
+    places = []
+    for x in j.get("places") or []:
+        name = (x.get("name") or "").strip()
+        if name and x.get("country") and x["country"].lower() not in name.lower():
+            name = f"{name}, {x['country']}"
+        if name and name not in places:
+            places.append(name)
+    if truthy(j.get("remote_indicator")):
+        places.append("Remote")
+    return " · ".join(places)
+
+
 def records(provider, firm, slug, payload):
     """One board's payload -> [{source, company, source_id, title, url, location_text, department, date_posted}]."""
     out = []
@@ -87,6 +108,14 @@ def records(provider, firm, slug, payload):
             ref = (j.get("bulletFields") or [None])[0]
             r = dict(external_path=j.get("externalPath"), source_id=str(ref or j.get("externalPath")), title=(j.get("title") or "").strip(), url=f"https://{host}/en-US/{site}{j.get('externalPath')}",
                      location_text=workday_place(j), department="", date_posted=workday_posted(j.get("postedOn")))
+        elif provider == "usajobs":
+            # the employer is the agency that posts it, so the posting is shown under its name, not under 'USAJOBS'
+            r = dict(source_id=str(j.get("object_id") or j.get("id")), title=(j.get("title") or "").strip(), url=j.get("url"), location_text=usajobs_place(j),
+                     department=j.get("department") or "", date_posted=collect.iso_date(j.get("published")), matched_by=j.get("matched_by"),
+                     remote_indicator=j.get("remote_indicator"), telework_eligible=j.get("telework_eligible"), closes=collect.iso_date(j.get("closes")))
+            firm_here = j.get("organization") or firm
+            out.append({"source": provider, "company": firm_here, **r})
+            continue
         elif provider == "ashby":
             locs = [j.get("location") or ""] + [x.get("location") or "" for x in (j.get("secondaryLocations") or [])]
             r = dict(source_id=str(j.get("id")), title=(j.get("title") or "").strip(), url=j.get("jobUrl"), location_text=" · ".join(x for x in locs if x),
@@ -130,8 +159,10 @@ def name_the_places(recs, slug, kw, pause=None):
 def board_ok(name, provider, got, payload):
     """The status line of a board that answered. A Workday list says how many postings it holds: if fewer came back, the line says so."""
     st = {"company": name, "provider": provider, "status": "ok", "postings": len(got)}
-    if provider == "workday":
+    if provider in ("workday", "usajobs"):
         st.update(listed_total=payload["total"], complete=bool(payload["complete"]))
+        if provider == "usajobs":
+            st["queries"] = payload["queries"]
     return st
 
 

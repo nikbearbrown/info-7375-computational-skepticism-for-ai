@@ -36,6 +36,8 @@ ALLOWED = {"boards-api.greenhouse.io", "api.ashbyhq.com", "api.smartrecruiters.c
 WORKDAY_HOSTS = {"guidehouse.wd1.myworkdayjobs.com", "gdit.wd5.myworkdayjobs.com", "unisys.wd5.myworkdayjobs.com", "salesforce.wd12.myworkdayjobs.com",
                  "huron.wd1.myworkdayjobs.com", "alirahealth.wd3.myworkdayjobs.com", "ankura.wd5.myworkdayjobs.com", "thinkbrg.wd5.myworkdayjobs.com"}
 ALLOWED |= WORKDAY_HOSTS
+# USAJOBS' own public search API (developer.usajobs.gov), for the federal-508 channel: it needs a key and the registered email, both kept outside the repo (see usajobs_login).
+ALLOWED.add("data.usajobs.gov")
 HERE = lp.ROOT
 TODAY = dt.date.today().isoformat()
 USER_AGENT = "lectern (course project)"
@@ -65,9 +67,9 @@ def get(url, timeout=30):
         return json.loads(r.read().decode("utf-8"))
 
 
-def get_json(url, timeout=30):
-    """A GET that answers JSON only (the same guards as post_json): one posting's own record on a Workday board."""
-    req = urllib.request.Request(_checked(url), headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+def get_json(url, timeout=30, headers=None):
+    """A GET that answers JSON only (the same guards as post_json): one posting's own record on a Workday board. `headers` replace the defaults key by key."""
+    req = urllib.request.Request(_checked(url), headers={"User-Agent": USER_AGENT, "Accept": "application/json", **(headers or {})})
     with urllib.request.build_opener(_NoRedirect).open(req, timeout=timeout) as r:
         if "json" not in (r.headers.get("Content-Type") or "").lower():
             raise ValueError(f"not JSON: Content-Type {r.headers.get('Content-Type')!r}")
@@ -132,6 +134,80 @@ def fetch_workday(slug, pause=1.2):
             break
     # a total of exactly 2000 is the board's display cap, not a count (Accenture's list went on past it): not complete
     return {"total": total or 0, "jobs": jobs, "pages": pages, "complete": len(jobs) >= (total or 0) and total != WORKDAY_DISPLAY_CAP}
+
+
+USAJOBS_DIR = os.path.join(os.path.expanduser("~"), ".usajobs")
+USAJOBS_QUERIES = ("508", "accessibility", "WCAG", "assistive technology", "VPAT", "a11y")   # USAJOBS' Keyword search: it matches the whole ad, the judge then reads the TITLE
+USAJOBS_PAGE = 500          # results a request (the most the API gives)
+USAJOBS_MAX_PAGES = 20      # a stop per query in case a search never says it has ended
+
+
+def usajobs_login(home=None):
+    """(key, email) from <home or ~/.usajobs>/key and /email, both made by the person, mode 600 like the Discord webhooks. USAJOBS asks for the key in an
+    Authorization-Key header and the registered email as the User-Agent. Nothing here ever prints either value: an error names the file, never its content."""
+    d = home or USAJOBS_DIR
+    out = []
+    for name, shape in (("key", r"[A-Za-z0-9+/=_-]{20,}"), ("email", r"[^@\s]+@[^@\s]+\.[^@\s]+")):
+        path = os.path.join(d, name)
+        try:
+            mode = os.stat(path).st_mode & 0o777
+            with open(path, encoding="utf-8") as f:
+                v = f.read().strip()
+        except OSError:
+            raise InputError(f"{path} not found: USAJOBS needs the {'key it sent' if name == 'key' else 'email the key was registered with (it is the User-Agent)'} in that file")
+        if mode & 0o077:
+            raise InputError(f"{path} is readable by others (mode {mode:o}): chmod 600 it")
+        if not re.fullmatch(shape, v):
+            raise InputError(f"{path} does not have the shape of a USAJOBS {name} (value not shown)")
+        out.append(v)
+    return tuple(out)
+
+
+def _usajobs_item(d):
+    """The few fields of one USAJOBS search result that the judge and the feed need. Never the ad text (summary, duties, qualifications)."""
+    det = ((d.get("UserArea") or {}).get("Details") or {})
+    names = lambda k: [x.get("Name") for x in (d.get(k) or []) if x.get("Name")]
+    return {"id": d.get("PositionID"), "title": d.get("PositionTitle"), "url": d.get("PositionURI"), "organization": d.get("OrganizationName"),
+            "department": d.get("DepartmentName"), "places": [{"name": x.get("LocationName"), "country": x.get("CountryCode")} for x in (d.get("PositionLocation") or [])],
+            "published": d.get("PublicationStartDate"), "closes": d.get("ApplicationCloseDate"), "offering": names("PositionOfferingType"), "schedule": names("PositionSchedule"),
+            "remote_indicator": det.get("RemoteIndicator"), "telework_eligible": det.get("TeleworkEligible"), "clearance": det.get("SecurityClearance")}
+
+
+def fetch_usajobs(slug="search", pause=1.2, login=None):
+    """What USAJOBS' search API finds for USAJOBS_QUERIES: one GET a page of up to 500, a pause between requests, each posting once. `login` is (key, email) or read from ~/.usajobs.
+    -> {"total": postings found (each once), "jobs": [...trimmed...], "pages": n, "complete": bool, "queries": {query: the count USAJOBS gave}}."""
+    if slug != "search":
+        raise InputError(f"unknown USAJOBS board {slug!r}")
+    key, email = login or usajobs_login()
+    head = {"User-Agent": email, "Authorization-Key": key}
+    jobs, seen, counts, pages, complete = [], {}, {}, 0, True
+    for q in USAJOBS_QUERIES:
+        got_q, page_no, want = 0, 1, None
+        while page_no <= USAJOBS_MAX_PAGES:
+            if pages:
+                time.sleep(pause)
+            r = (get_json(f"https://data.usajobs.gov/api/search?Keyword={quote(q)}&ResultsPerPage={USAJOBS_PAGE}&Page={page_no}", headers=head).get("SearchResult") or {})
+            pages += 1
+            items = r.get("SearchResultItems")
+            if not isinstance(items, list):
+                raise ValueError("no SearchResultItems list in the reply")
+            if want is None:
+                want = int(r.get("SearchResultCountAll") or 0)
+            for it in items:
+                got_q += 1
+                d = it.get("MatchedObjectDescriptor") or {}
+                oid = str(it.get("MatchedObjectId") or d.get("PositionID"))
+                if oid in seen:
+                    seen[oid]["matched_by"].append(q)
+                    continue
+                seen[oid] = {**_usajobs_item(d), "object_id": oid, "matched_by": [q]}
+                jobs.append(seen[oid])
+            if not items or got_q >= want:
+                break
+            page_no += 1
+        counts[q] = want or 0
+        complete = complete and got_q >= (want or 0)
+    return {"total": len(jobs), "jobs": jobs, "pages": pages, "complete": complete, "queries": counts}
 
 
 def fetch_board(provider, slug, want_detail=True):

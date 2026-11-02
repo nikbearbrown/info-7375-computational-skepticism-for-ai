@@ -76,7 +76,7 @@ def judge_federal508(view, kw, kinds=None):
     place = ej.title_text(view["location_text"])
     hits = role_hits(view["title"], rule)
     out = {"decision": "no-match", "reason": "no Section 508 or accessibility phrase in the title", "hits": hits, "remote": [], "contract": [], "clearance": [], "federal": [],
-           "kind": (kinds or {}).get(view["company"].casefold())}
+           "kind": (kinds or {}).get(view["company"].casefold()) or ("agency" if str(view.get("id")).startswith("usajobs:") else None)}
     if not hits:
         return out
     phys = _hits(rule.get("not_digital_words"), t)
