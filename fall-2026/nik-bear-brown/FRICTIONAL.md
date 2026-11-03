@@ -1084,24 +1084,6 @@ Where to check each claim in this log. Commits are listed in the push table belo
   - Evidence: `lectern/collect/sam_opportunities.py`, `lectern/tests/test_sam_opportunities.py`, the 2026-11-02 SAM.gov entry in `lectern/HISTORY.md`; the file and the report are local (`runs/sam-cache/`, `runs/<date>/sam-opportunities-*.json`, not committed).
   - Next: I decide whether to build the USAspending award history for lane 2. Not pushed.
 
-## GitHub pushes
-
-One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
-
-| 2026-10-18 | data(lectern): delta 2026-10-18: +42 new, ~7 changed, -9 gone |
-| 2026-10-18 | docs(fall-2026): one numbered folder and plan per Canvas assignment; publish_delta.py; collectors in the sync list |
-| 2026-10-18 | docs(fall-2026): publish profile.yml for exercise 06 and a layout for its film; Stripe and Writer off the watch list |
-| 2026-10-18 | docs(fall-2026): correct why Stripe and Writer were removed; profile revisions block; layouts for the profile and résumé films |
-| 2026-10-18 | docs(fall-2026): word the business-school target as bringing real AI expertise in to direct an AI centre |
-| 2026-10-18 | docs(fall-2026): exercise 06 folder: README, RUN_LOG, resume.json copy, private-notes ignore; Brown and eight more schools on the watch list |
-| 2026-10-19 | docs(fall-2026): ai-explainer layout and evidence for the résumé-JSON film; résumé, profile and gaps framing |
-| 2026-10-19 | feat(fall-2026): post new listings to Discord automatically; daily.sh; text-out for the big-four collectors; résumé-film evidence |
-| 2026-10-19 | docs(fall-2026): add Track D, part-time research by outreach to labs, to the profile |
-| 2026-10-19 | docs(fall-2026): propose the lab record for the part-time research outreach search |
-| 2026-10-19 | docs(fall-2026): the lab is the unit; fit and target rules for the outreach search; places to read |
-| 2026-10-19 | docs(fall-2026): add the big Boston hospitals to the outreach search |
-| 2026-10-19 | docs(fall-2026): distance rule and the list of places for the outreach search |
-| 2026-10-19 | docs(fall-2026): add Moderna as a company to look at; what the Kendall Square map showed |
 ### 2026-11-02 — Prime-contractor leads from USAspending
 
 - **Date and what I was working on:** 2026-11-02. A friend is starting a small Section 508 testing firm, and her own brief says she needs contracts, subcontracts and client leads, not jobs. I asked for the USAspending route to find the primes that win 508 work.
@@ -1112,16 +1094,17 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
   - **It is not mostly the big integrators.** The top of the list is small and mid-size remediation and testing firms (Grafik Industries, FedWriters, Sylver Rain Consulting, Arcsource Group, Level Access, Accessible Systems Consulting, Deque ...). Many awards are small: 135 of the 230 are under $250k.
   - **One false positive in my read of 18 descriptions:** 'BLDG. 508 REMEDIATION AND DEMOLITION' is Building 508, not an accessibility job. I added the physical-site words and re-ran.
 - **What I did:** Gave the instruction. I have not reviewed the reader or the lead list.
-- **What Claude or another person contributed:** Claude Code probed the API, wrote `collect/usaspending_primes.py` and `tests/test_usaspending_primes.py` (16 tests), ran the search twice, read a sample of descriptions to check them, and updated `HISTORY.md` and `TARGETS.md`.
+- **What Claude or another person contributed:** Claude Code probed the API, wrote `collect/usaspending_primes.py` and `tests/test_usaspending_primes.py` (22 tests), ran the search twice, read a sample of descriptions to check them, and updated `HISTORY.md` and `TARGETS.md`.
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:**
   - Evidence: `lectern/collect/usaspending_primes.py`, `lectern/tests/test_usaspending_primes.py`, the USAspending entry in `lectern/HISTORY.md`; the lead file is local (`runs/<date>/usaspending-primes-<date>.json`, not committed).
-  - Next: I decide whether to check which leads are small or women-owned businesses (SAM.gov entity data, a different extract) and whether to build the lead lists for the non-federal markets. Not pushed.
+  - **I then said to check which leads are small businesses.** USAspending's own recipient record carries each firm's business types from its SAM.gov registration, so no other extract was needed: of 134 leads read (one timed out), 111 are registered small, 44 women-owned small (WOSB), 18 EDWOSB, 37 in the 8(a) program; 6 are in California. A first count of 'disadvantaged' firms (79) was mostly a legacy label, so I dropped it.
+  - Next: I decide whether to build the lead lists for the non-federal markets. Not pushed.
 
-| 2026-10-19 | docs(fall-2026): a company team is treated like a lab; Moderna's research teams |
-| 2026-10-19 | docs(fall-2026): add the MIT Media Lab; Whitehead and Media Lab addresses beside the Broad |
-| 2026-10-19 | docs(fall-2026): filter the Boston and Cambridge institutes by his five interests; think tank defined broadly |
-| 2026-10-19 | feat(fall-2026): post great-fit labs to Discord for review before any approach; Rule 5; Northeastern arrangement noted |
+## GitHub pushes
+
+One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
+
 | Date | GitHub note |
 |---|---|
 | 2026-09-24 | feat(fall-2026): start Professor Bear's Boondoggle Report with ten Gru turns and a Frictional log |
@@ -1148,3 +1131,21 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-20 | docs(fall-2026): remove eight software-product companies from the watch list, not educational AI |
 | 2026-10-20 | docs(fall-2026): remove HubSpot from the watch list, education is product training; Miro stays |
 | 2026-10-20 | feat(fall-2026): one list of targets for every form of Lectern; forms/ folders and shared comparison plumbing |
+| 2026-10-18 | data(lectern): delta 2026-10-18: +42 new, ~7 changed, -9 gone |
+| 2026-10-18 | docs(fall-2026): one numbered folder and plan per Canvas assignment; publish_delta.py; collectors in the sync list |
+| 2026-10-18 | docs(fall-2026): publish profile.yml for exercise 06 and a layout for its film; Stripe and Writer off the watch list |
+| 2026-10-18 | docs(fall-2026): correct why Stripe and Writer were removed; profile revisions block; layouts for the profile and résumé films |
+| 2026-10-18 | docs(fall-2026): word the business-school target as bringing real AI expertise in to direct an AI centre |
+| 2026-10-18 | docs(fall-2026): exercise 06 folder: README, RUN_LOG, resume.json copy, private-notes ignore; Brown and eight more schools on the watch list |
+| 2026-10-19 | docs(fall-2026): ai-explainer layout and evidence for the résumé-JSON film; résumé, profile and gaps framing |
+| 2026-10-19 | feat(fall-2026): post new listings to Discord automatically; daily.sh; text-out for the big-four collectors; résumé-film evidence |
+| 2026-10-19 | docs(fall-2026): add Track D, part-time research by outreach to labs, to the profile |
+| 2026-10-19 | docs(fall-2026): propose the lab record for the part-time research outreach search |
+| 2026-10-19 | docs(fall-2026): the lab is the unit; fit and target rules for the outreach search; places to read |
+| 2026-10-19 | docs(fall-2026): add the big Boston hospitals to the outreach search |
+| 2026-10-19 | docs(fall-2026): distance rule and the list of places for the outreach search |
+| 2026-10-19 | docs(fall-2026): add Moderna as a company to look at; what the Kendall Square map showed |
+| 2026-10-19 | docs(fall-2026): a company team is treated like a lab; Moderna's research teams |
+| 2026-10-19 | docs(fall-2026): add the MIT Media Lab; Whitehead and Media Lab addresses beside the Broad |
+| 2026-10-19 | docs(fall-2026): filter the Boston and Cambridge institutes by his five interests; think tank defined broadly |
+| 2026-10-19 | feat(fall-2026): post great-fit labs to Discord for review before any approach; Rule 5; Northeastern arrangement noted |

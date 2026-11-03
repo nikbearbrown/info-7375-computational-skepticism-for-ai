@@ -15,10 +15,13 @@ What it does:
     the physical-access words (building, ramp, wheelchair ...) are ruled out. Rows the API matched elsewhere are counted, not kept.
   * 'strong' is a 508 or work phrase in the description ('SECTION 508 AUDIT, TESTING AND TRAINING SERVICES'); 'weak' is only the generic word 'accessibility'. Leads are ranked by strong awards
     first, then by the dollars on them.
-  * Prime awards are grouped by recipient (UEI where given): awards, dollars, agencies, latest end date, and the biggest descriptions. Subawards are grouped by the PRIME that passes
+  * Prime awards are grouped by recipient (UEI where given): awards, dollars, agencies, latest end date, and the biggest descriptions. Each prime lead is then looked up ONCE
+    (api.usaspending.gov/api/v2/recipient/<id>/) for its business types as USAspending holds them from the recipient's SAM.gov registration (small business, women-owned, veteran-owned,
+    8(a)/HUBZone), its parent company and its state; never its street address. A lookup that fails leaves the flags unknown (None), never guessed. --no-business-types skips it. Subawards are grouped by the PRIME that passes
     the work down and by the SUBAWARDEE that does it.
 
-What it cannot tell: whether a recipient is a small business (the award rows do not say), whether the description is the whole scope, and whether a firm would subcontract to anyone. A lead is a company
+What it cannot tell: whether the description is the whole scope, and whether a firm would subcontract to anyone. 'Small' is what the firm said in its SAM.gov registration, measured against the
+size standard of its own NAICS code, so it does not say the firm is small next to a particular rival. A lead is a company
 to look at, not a promise. Award Amount is the amount on the award, not necessarily the 508 part of it.
 
 Writes: <out>/usaspending-primes-<date>.json   the leads and the matching awards (local, not committed: USAspending lists a sole proprietor under their own name, so a few recipients are people)
@@ -40,9 +43,11 @@ PAUSE = 1.2
 MAX_PAGES = 10                   # per query: 1,000 rows; a search that has more is reported as not complete
 QUERIES = ("section 508", "508 compliance", "508 testing", "508 remediation", "508 audit", "trusted tester", "accessibility testing", "accessibility audit",
            "accessibility remediation", "digital accessibility", "wcag", "vpat")
-AWARD_FIELDS = ["Award ID", "Recipient Name", "Recipient UEI", "Description", "Award Amount", "Awarding Agency", "Awarding Sub Agency", "Start Date", "End Date", "Contract Award Type", "NAICS", "PSC"]
+AWARD_FIELDS = ["Award ID", "Recipient Name", "Recipient UEI", "recipient_id", "Description", "Award Amount", "Awarding Agency", "Awarding Sub Agency", "Start Date", "End Date", "Contract Award Type", "NAICS", "PSC"]
 SUB_FIELDS = ["Sub-Award ID", "Sub-Awardee Name", "Sub-Award Amount", "Sub-Award Date", "Sub-Award Description", "Prime Recipient Name", "Prime Award ID", "Awarding Agency", "Awarding Sub Agency"]
 STRONG_GROUP = "section-508"
+RECIPIENT_URL = "https://api.usaspending.gov/api/v2/recipient/{}/"
+RECIPIENT_ID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}-[A-Z]$")
 # award descriptions use the short forms the rule's not_digital_words do not list ('BLDG. 508 REMEDIATION AND DEMOLITION' is Building 508): a physical-site award is not 508 work
 PHYSICAL_SITE = ("bldg", "demolition", "asbestos", "abatement", "hazmat")
 
@@ -130,7 +135,7 @@ def group_awards(kept):
     by = {}
     for r in kept:
         k = r.get("Recipient UEI") or (r.get("Recipient Name") or "").upper()
-        g = by.setdefault(k, {"name": r.get("Recipient Name"), "uei": r.get("Recipient UEI"), "awards": 0, "strong_awards": 0, "dollars": 0.0, "strong_dollars": 0.0,
+        g = by.setdefault(k, {"name": r.get("Recipient Name"), "uei": r.get("Recipient UEI"), "recipient_id": r.get("recipient_id"), "awards": 0, "strong_awards": 0, "dollars": 0.0, "strong_dollars": 0.0,
                               "agencies": collections.Counter(), "latest_end": "", "examples": []})
         amt = money(r.get("Award Amount"))
         g["awards"] += 1
@@ -175,6 +180,53 @@ def group_subs(kept, by):
     return sorted(out, key=lead_rank)
 
 
+FLAGS = ("small_business", "women_owned", "wosb", "edwosb", "veteran_owned", "sdvosb", "eight_a")
+
+
+def business_flags(types):
+    """business_types as USAspending lists them (from the recipient's SAM.gov registration, as the firm entered it, not a check of any certification) -> the flags a small firm
+    cares about. All None for a list that is not known. 'women_owned' is any women-owned type; 'wosb' and 'edwosb' are the women-owned SMALL business types; 'eight_a' is the 8(a)
+    program. The legacy 'self certified small disadvantaged business' type is deliberately not counted as anything: most recipients carry it."""
+    if types is None:
+        return dict.fromkeys(FLAGS)
+    t = {x.lower() for x in types}
+    return {"small_business": "small_business" in t, "women_owned": any("women" in x or "woman" in x for x in t),
+            "wosb": any(x.startswith("women_owned_small_business") or x.startswith("joint_venture_women_owned_small") for x in t),
+            "edwosb": any("economically_disadvantaged_women_owned" in x for x in t), "veteran_owned": any("veteran" in x for x in t),
+            "sdvosb": any("service_disabled_veteran" in x for x in t), "eight_a": any(x.startswith("8a") or x.startswith("sba_certified_8a") for x in t)}
+
+
+def lookup_recipient(recipient_id, get=None):
+    """One recipient's business types, parent company and state from USAspending (one GET). Not the street address: a sole proprietor's business address can be a home."""
+    if not RECIPIENT_ID.match(recipient_id or ""):
+        raise collect.InputError(f"not a recipient id: {recipient_id!r}")
+    r = (get or collect.get_json)(RECIPIENT_URL.format(recipient_id))
+    types = r.get("business_types")
+    return {"business_types": sorted(types) if isinstance(types, list) else None, "parent_name": r.get("parent_name"),
+            "state": ((r.get("location") or {}).get("state_code") or "") or None, "recipient_level": r.get("recipient_level")}
+
+
+def enrich(leads, pause=PAUSE, get=None, limit=None):
+    """Add business_types and the flags to each prime lead, one request each. A lead without a usable id, or whose request fails, keeps None (unknown): it is never guessed.
+    -> how many were looked up. Mutates leads."""
+    done = 0
+    for g in leads[:limit]:
+        g.update(business_flags(None), business_types=None, parent_name=None, state=None)
+        if not RECIPIENT_ID.match(g.get("recipient_id") or ""):
+            continue
+        if done:
+            time.sleep(pause)
+        try:
+            info = lookup_recipient(g["recipient_id"], get)
+        except Exception as e:
+            print(f"    business types of '{g['name']}' not read ({type(e).__name__}): unknown", file=sys.stderr)
+            done += 1
+            continue
+        done += 1
+        g.update(info, **business_flags(info["business_types"]))
+    return done
+
+
 def run(rule, since, until, subawards=True, pause=PAUSE, max_pages=MAX_PAGES, post=None):
     """Every query at each level -> a result dict. One query failing is recorded and does not stop the others."""
     result, failed = {"levels": {}}, []
@@ -200,6 +252,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--since", default=None, help="first day of the window (default: 1 October three full fiscal years before the current one)")
     ap.add_argument("--no-subawards", action="store_true")
+    ap.add_argument("--no-business-types", action="store_true", help="skip the one lookup per prime lead of its business types (small, women-owned ...)")
     ap.add_argument("--max-pages", type=int, default=MAX_PAGES)
     ap.add_argument("--out", default=None, help="default runs/<today>")
     a = ap.parse_args(argv)
@@ -216,6 +269,7 @@ def main(argv=None):
         return 3
     aw = res["levels"]["awards"]["kept"]
     leads = {"primes": group_awards(aw)}
+    looked = 0 if a.no_business_types else enrich(leads["primes"])
     if "subawards" in res["levels"]:
         sk = res["levels"]["subawards"]["kept"]
         leads["primes_that_subcontract"] = group_subs(sk, "prime")
@@ -233,8 +287,15 @@ def main(argv=None):
               + (f"; NOT complete for {v['incomplete_queries']}" if v["incomplete_queries"] else ""))
     if res["failed"]:
         print(f"{len(res['failed'])} searches failed: " + "; ".join(f"{x['level']}/{x['query']}" for x in res["failed"]), file=sys.stderr)
+    if looked:
+        P = leads["primes"]
+        known = [g for g in P if g.get("business_types") is not None]
+        n = lambda k: sum(1 for g in known if g[k])
+        print(f"business types read for {len(known)} of {len(P)} prime leads: small business {n('small_business')}, women-owned {n('women_owned')} (WOSB {n('wosb')}, EDWOSB {n('edwosb')}), "
+              f"veteran-owned {n('veteran_owned')} (service-disabled {n('sdvosb')}), 8(a) {n('eight_a')}")
     for g in leads["primes"][:15]:
-        print(f"  {g['name'][:40]:40} {g['strong_awards']:3} strong / {g['awards']:3} awards  ${g['dollars']:>14,.0f}  latest end {g['latest_end']}  {', '.join(g['agencies'][:2])[:50]}")
+        flag = "" if g.get("business_types") is None else (" small" if g["small_business"] else " NOT-small") + (" women" if g["women_owned"] else "")
+        print(f"  {g['name'][:40]:40} {g['strong_awards']:3} strong / {g['awards']:3} awards  ${g['dollars']:>14,.0f}  latest end {g['latest_end']}{flag}")
     print(f"-> {os.path.basename(dest)}")
     return 0
 

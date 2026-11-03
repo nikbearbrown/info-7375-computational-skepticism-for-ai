@@ -122,6 +122,66 @@ class Leads(unittest.TestCase):
         self.assertEqual((up.money(None), up.money("x"), up.money("12.5")), (0.0, 0.0, 12.5))
 
 
+RID = "158a27a7-5130-14eb-4ee8-53ef8ab0494d-C"
+
+
+class Business(unittest.TestCase):
+    TYPES = ["limited_liability_corporation", "small_business", "women_owned_small_business", "woman_owned_business", "self_certified_small_disadvanted_business"]
+
+    def test_the_flags_read_the_types_and_a_list_that_is_not_known_stays_unknown(self):
+        f = up.business_flags(self.TYPES)
+        self.assertEqual((f["small_business"], f["women_owned"], f["wosb"], f["edwosb"], f["veteran_owned"], f["eight_a"]), (True, True, True, False, False, False))
+        self.assertEqual(up.business_flags(["other_than_small_business"])["small_business"], False)
+        self.assertEqual(up.business_flags(None), dict.fromkeys(up.FLAGS))
+        v = up.business_flags(["service_disabled_veteran_owned_business", "8a_program_participant", "economically_disadvantaged_women_owned_small_business"])
+        self.assertEqual((v["veteran_owned"], v["sdvosb"], v["eight_a"], v["edwosb"], v["wosb"], v["women_owned"]), (True, True, True, True, False, True))
+
+    def test_the_legacy_self_certified_disadvantaged_type_counts_for_nothing(self):
+        f = up.business_flags(["self_certified_small_disadvanted_business", "limited_liability_corporation"])
+        self.assertEqual(sorted(k for k, v in f.items() if v), [])
+
+    def test_a_lookup_keeps_types_parent_and_state_and_never_the_street_address(self):
+        got = []
+        reply = {"business_types": self.TYPES, "parent_name": "BIG PARENT", "recipient_level": "C",
+                 "location": {"address_line1": "12 HOME STREET", "city_name": "NORMAN", "state_code": "OK", "zip": "73071"}}
+        info = up.lookup_recipient(RID, get=lambda url: got.append(url) or reply)
+        self.assertEqual(got, ["https://api.usaspending.gov/api/v2/recipient/" + RID + "/"])
+        self.assertEqual((info["parent_name"], info["state"]), ("BIG PARENT", "OK"))
+        self.assertEqual(info["business_types"], sorted(self.TYPES))
+        self.assertNotIn("HOME STREET", json.dumps(info))
+        self.assertNotIn("73071", json.dumps(info))
+
+    def test_an_id_that_is_not_a_recipient_id_is_refused_before_any_request(self):
+        for bad in ("", None, "../../x", "158a27a7-5130-14eb-4ee8-53ef8ab0494d", "https://evil.example.com/x-C"):
+            with self.assertRaises(collect.InputError, msg=bad):
+                up.lookup_recipient(bad, get=lambda url: self.fail("a request was made"))
+
+    def test_enrich_looks_each_lead_up_once_pauses_between_requests_and_keeps_unknown_on_a_failure(self):
+        leads = [{"name": "A", "recipient_id": RID}, {"name": "B", "recipient_id": RID.replace("158a", "158b")}, {"name": "C", "recipient_id": None}]
+        calls, slept = [], []
+        real = up.time.sleep
+        up.time.sleep = slept.append
+
+        def get(url):
+            calls.append(url)
+            if "158b" in url:
+                raise OSError("down")
+            return {"business_types": ["small_business"], "location": {"state_code": "CA"}}
+        try:
+            with contextlib.redirect_stderr(io.StringIO()):
+                n = up.enrich(leads, pause=0.3, get=get)
+        finally:
+            up.time.sleep = real
+        self.assertEqual((n, len(calls), slept), (2, 2, [0.3]))
+        self.assertEqual((leads[0]["small_business"], leads[0]["state"]), (True, "CA"))
+        self.assertEqual((leads[1]["small_business"], leads[1]["business_types"]), (None, None))
+        self.assertEqual((leads[2]["small_business"], leads[2]["business_types"]), (None, None))
+
+    def test_the_award_search_asks_for_the_recipient_id(self):
+        self.assertIn("recipient_id", up.AWARD_FIELDS)
+        self.assertEqual(up.group_awards([dict(award(1, "SECTION 508 SUPPORT"), recipient_id=RID, strength="strong")])[0]["recipient_id"], RID)
+
+
 class Run(unittest.TestCase):
     def test_one_failing_search_is_recorded_and_the_others_still_run(self):
         good = Fake({"section 508": [award(1, "SECTION 508 SUPPORT")]})
