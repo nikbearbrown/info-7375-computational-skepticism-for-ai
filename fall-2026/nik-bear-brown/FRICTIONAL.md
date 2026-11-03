@@ -1050,39 +1050,21 @@ Where to check each claim in this log. Commits are listed in the push table belo
   - Evidence: `lectern/collect/collect.py` (`fetch_workday`, `post_json`), `lectern/collect/consulting_collect.py`, `lectern/collect/federal508_collect.py` (`name_the_places`), `lectern/tests/test_workday.py`, the `UPDATE 2026-11-01` text in `lectern/config/keywords.json`, section I and K of `lectern/TARGETS.md`, `lectern/HISTORY.md`.
   - Open questions (the first, whether the consulting reader should look up the places of the 7 count-only postings, was answered yes by Professor Bear: done, 2 of the 7 drop out, 69 would be posted, see HISTORY.md): whether to ask Booz Allen, ICF, Leidos, CACI and Perkins for permission or look at their boards by hand; whether Guidehouse's board, read three times in one hour while building this, should be read less often. Not pushed.
 
-## GitHub pushes
-
-One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
-
-| Date | GitHub note |
-|---|---|
-| 2026-09-24 | feat(fall-2026): start Professor Bear's Boondoggle Report with ten Gru turns and a Frictional log |
-| 2026-09-24 | docs(fall-2026): state that Assignment 2 specifies a downloadable Gru, and keep the wrong-application start on the record |
-| 2026-09-24 | docs(fall-2026): log Gru's /v0–/v4 outputs for the downloadable Gru, with all 20 turns verbatim |
-| 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
-| 2026-09-26 | docs(fall-2026): make this folder the canonical master for the three-class project |
-| 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
-| | ↑ **the row above is the subject this commit actually carries.** The subject intended for it was *"feat(fall-2026): add the reject sampler; reading rejects exposed a false-positive class"*; a scripting error reused an earlier commit's subject line. The content is correct; history was not rewritten to fix a label. |
-| 2026-09-26 | feat(fall-2026): audit the filter by job function; ML 'training' was a false friend |
-| 2026-09-26 | feat(fall-2026): target becomes 'makes the materials'; body rule measured, cut twice |
-| 2026-09-26 | feat(fall-2026): rank companies by demand, not postings by fit; Google's absence was an API artefact |
-| 2026-10-07 | chore(fall-2026): first real sync; add demand_report.py to the shared list; log the show-tell films |
-| 2026-10-07 | docs(fall-2026): add the project software design document, written by Gru in silent mode |
-### 2026-11-02 — A USAJOBS reader, built and tested but not yet run
+### 2026-11-02 — A USAJOBS reader, built, tested and read once
 
 - **Date and what I was working on:** 2026-11-02. Building a reader for USAJOBS' own search API so the federal-508 channel can find the agencies' postings, not only the contractors'.
-- **I tried / expected:** I requested a USAJOBS API key, which a script cannot do. USAJOBS emailed it to me. I did not paste the key into the chat; I stored it myself in `~/.usajobs/key` (mode 600, outside the repo) from a terminal command Claude Code gave me. Then I asked for the reader. I expected to see the agencies' 508 postings.
+- **I tried / expected:** I requested a USAJOBS API key, which a script cannot do. USAJOBS emailed it to me. I did not paste the key into the chat; I stored it myself in `~/.usajobs/key` (mode 600, outside the repo) from a terminal command Claude Code gave me. The first time I ran the command for the registered address I left the placeholder word in it, and Claude Code's reader refused it, so no request went out; the second time I gave the address in chat and said it was fine to add (an email is not a password). I expected to see the agencies' 508 postings.
 - **What happened:**
-  - **The reader is built and tested, and has made no real request.** USAJOBS asks for the email the key was registered with as the User-Agent, and `~/.usajobs/email` does not exist yet. The helper stops with an error that names that file and shows no value.
-  - **No `active` entry for USAJOBS is in the list yet**, because an active entry carries a measured posting count and there is none. The 8 agency entries now say the reader is built and the first read is waiting for the email.
-  - **The key is in no file of the Lectern folder or the course notes** (a search found 0 of 245 files).
-  - **A limit I expect:** USAJOBS' keyword search matches the whole ad, but the judge reads the title, so a posting whose title does not say 508 or accessibility will not be posted. The first read will show how big that gap is. The field names for the remote flag are unchecked until then.
-- **What I did:** Requested the key, stored it myself, and gave the instruction. I have not reviewed the reader.
-- **What Claude or another person contributed:** Claude Code wrote the reader, `tests/test_usajobs.py` (14 tests, no network), the list note changes, `HISTORY.md` and this entry, and ran every test file.
+  - **The first real read worked:** 142 postings from 41 agencies, all complete. The remote and telework fields are real (2 postings remote, 58 telework eligible).
+  - **Nothing would be posted.** The search matches the whole ad but the judge reads the title: 141 of the 142 have no phrase in the title, and the one that does, a Smithsonian 'Visitor Experience and Accessibility Manager', is held back. The '508' search mostly returned aircraft mechanics and similar.
+  - **One `active` entry, 'USAJOBS (all federal agencies)', is in the list** with the measured count; the 8 agency offices are marked as covered by it.
+  - **The key is in no file of the book folder** (a search found 0 files).
+- **What I did:** Requested the key, stored it myself, gave the address, and gave the instruction. I have not reviewed the reader or the 142 postings.
+- **What Claude or another person contributed:** Claude Code wrote the reader, `tests/test_usajobs.py` (14 tests, no network), the list changes, `HISTORY.md` and this entry, made the real read and ran every test file.
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:**
-  - Evidence: `lectern/collect/collect.py` (`usajobs_login`, `fetch_usajobs`), `lectern/collect/consulting_collect.py` (`records`), `lectern/tests/test_usajobs.py`, the 2026-11-02 entry in `lectern/HISTORY.md`.
-  - Next: I put the registered email in `~/.usajobs/email`; then one real read, a dry run, and the first active entry. Not pushed.
+  - Evidence: `lectern/collect/collect.py` (`usajobs_login`, `fetch_usajobs`), `lectern/collect/consulting_collect.py` (`records`), `lectern/tests/test_usajobs.py`, the 2026-11-02 USAJOBS entry in `lectern/HISTORY.md`.
+  - Next: I decide whether the judge should also read the ad summary and duties, which is a rule change. Not pushed.
 
 ### 2026-11-02 — SAM.gov's public contract-opportunities file, read once
 
@@ -1091,14 +1073,19 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 - **What happened:**
   - **The file downloads with no login and no key.** About 213 MB, refreshed nightly. I checked the header and the first 188 rows first, then read the whole file once: 69,635 notices, none malformed. It is Windows-1252, not UTF-8.
   - **The description is full text inline,** not a link.
-  - **Very little is 508 work.** 32 notices were surfaced (22 distinct titles). Three distinct titles name accessibility or assistive technology (an assistive-technology device award, an assistive-technology presolicitation for students, and a transit research announcement repeated six times). The other 23 only list Section 508 or WCAG as one requirement among many in a notice for something else. None is a 508 testing or remediation contract.
+  - **Very little is 508 work.** The first, loose match surfaced 32 notices (22 distinct titles): three distinct titles name accessibility or assistive technology (an assistive-technology device award, an assistive-technology presolicitation for students, and a transit research announcement repeated six times) and 23 only list Section 508 or WCAG as one requirement among many in a notice for something else. None is a 508 testing or remediation contract.
+  - **I chose stronger phrases,** so now only a phrase that says 508 is the work (508 testing, remediation, audit, Trusted Tester ...) counts in a description. Re-run on the same file: 10 surfaced (4 distinct titles); the one description hit names 'accessibility testing' inside a service-desk request. So on this day SAM.gov has no notice that asks for 508 testing or remediation as the work.
   - **The awards link I gave** (`sam.gov/reports/awards/standard`) is a JavaScript page the script cannot read, so I do not know whether its export needs a login.
 - **What I did:** Gave the instruction and the awards link. I have not reviewed the reader or the 32 notices.
 - **What Claude or another person contributed:** Claude Code looked for the download address, read the header, wrote `collect/sam_opportunities.py` and `tests/test_sam_opportunities.py` (21 tests), added the two hosts to the allowlist, ran the one real read, and updated `HISTORY.md` and `TARGETS.md`.
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:**
   - Evidence: `lectern/collect/sam_opportunities.py`, `lectern/tests/test_sam_opportunities.py`, the 2026-11-02 SAM.gov entry in `lectern/HISTORY.md`; the file and the report are local (`runs/sam-cache/`, `runs/<date>/sam-opportunities-*.json`, not committed).
-  - Next: I decide whether to surface only title hits, require a stronger phrase in the description, or read the 32 by hand; and whether to build the USAspending award history for lane 2. Not pushed.
+  - Next: I decide whether to build the USAspending award history for lane 2. Not pushed.
+
+## GitHub pushes
+
+One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
 
 | 2026-10-18 | data(lectern): delta 2026-10-18: +42 new, ~7 changed, -9 gone |
 | 2026-10-18 | docs(fall-2026): one numbered folder and plan per Canvas assignment; publish_delta.py; collectors in the sync list |
@@ -1118,6 +1105,20 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-19 | docs(fall-2026): add the MIT Media Lab; Whitehead and Media Lab addresses beside the Broad |
 | 2026-10-19 | docs(fall-2026): filter the Boston and Cambridge institutes by his five interests; think tank defined broadly |
 | 2026-10-19 | feat(fall-2026): post great-fit labs to Discord for review before any approach; Rule 5; Northeastern arrangement noted |
+| Date | GitHub note |
+|---|---|
+| 2026-09-24 | feat(fall-2026): start Professor Bear's Boondoggle Report with ten Gru turns and a Frictional log |
+| 2026-09-24 | docs(fall-2026): state that Assignment 2 specifies a downloadable Gru, and keep the wrong-application start on the record |
+| 2026-09-24 | docs(fall-2026): log Gru's /v0–/v4 outputs for the downloadable Gru, with all 20 turns verbatim |
+| 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
+| 2026-09-26 | docs(fall-2026): make this folder the canonical master for the three-class project |
+| 2026-09-26 | feat(fall-2026): add assignment-3 with its five standard records |
+| | ↑ **the row above is the subject this commit actually carries.** The subject intended for it was *"feat(fall-2026): add the reject sampler; reading rejects exposed a false-positive class"*; a scripting error reused an earlier commit's subject line. The content is correct; history was not rewritten to fix a label. |
+| 2026-09-26 | feat(fall-2026): audit the filter by job function; ML 'training' was a false friend |
+| 2026-09-26 | feat(fall-2026): target becomes 'makes the materials'; body rule measured, cut twice |
+| 2026-09-26 | feat(fall-2026): rank companies by demand, not postings by fit; Google's absence was an API artefact |
+| 2026-10-07 | chore(fall-2026): first real sync; add demand_report.py to the shared list; log the show-tell films |
+| 2026-10-07 | docs(fall-2026): add the project software design document, written by Gru in silent mode |
 | 2026-10-19 | docs(fall-2026): a first search of Northeastern's business school and Institute for Experiential AI; two great fits posted |
 | 2026-10-19 | fix(fall-2026): correct the skills note in the derived résumé; record what it omits |
 | 2026-10-19 | docs(fall-2026): check lab funding against the NIH and NSF award databases, from a student's version |

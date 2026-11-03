@@ -112,12 +112,12 @@ class Targets(unittest.TestCase):
             self.assertIn(f["kind"], ("federal-contractor", "civic-tech", "accessibility-specialist", "agency"), t["id"])
             self.assertTrue(t["why"] and f["feed_names"] and f["researched"], t["id"])
             if f["verdict"] == "keep":
-                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters", "workday"), t["id"])
+                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters", "workday", "usajobs"), t["id"])
                 self.assertTrue(f["board"]["slug"] and f["board"]["provider"] == t["provider"], t["id"])
                 self.assertTrue([k for k in f if k.startswith("postings_20") and isinstance(f[k], int)], t["id"])
             if f["verdict"] == "to-do":
                 self.assertTrue(t["todo"], t["id"])
-        self.assertEqual(sum(1 for t in emps if t["status"] == "active"), 21)
+        self.assertEqual(sum(1 for t in emps if t["status"] == "active"), 22)
 
     def test_the_federal_508_list_names_no_person_and_holds_no_email_address(self):
         import re

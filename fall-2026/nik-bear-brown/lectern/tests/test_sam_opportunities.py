@@ -176,18 +176,25 @@ class Read(unittest.TestCase):
 class Judge(unittest.TestCase):
     def kind(self, title="Plain", desc=""):
         rec = {"title": title, "description": desc}
-        return sam.strength(rec, sam.phrase_finder(RULE), RULE), rec
+        return sam.strength(rec, sam.phrase_finder(RULE), RULE, sam.work_finder(RULE)), rec
 
     def test_a_phrase_in_the_title_wins_and_a_part_number_is_not_section_508(self):
         self.assertEqual(self.kind("Section 508 Testing Services")[0], "title")
         self.assertEqual(self.kind("53--NUT,PLAIN,ASSEMBLED WASHER 508")[0], None)
         self.assertEqual(self.kind("Hose 5330-508 assembly", "NSN 5310-00-508")[0], None)
 
-    def test_a_section_508_phrase_in_the_description_is_surfaced_and_a_bare_accessibility_word_is_only_counted(self):
-        self.assertEqual(self.kind("Website refresh", "The contractor shall meet Section 508 requirements.")[0], "description-508")
+    def test_a_work_phrase_in_the_description_is_surfaced_and_a_requirement_clause_is_only_a_mention(self):
+        self.assertEqual(self.kind("Website refresh", "The contractor shall provide Section 508 testing and remediation of PDF documents.")[0], "description-work")
+        k, rec = self.kind("Website refresh", "The contractor shall meet Section 508 requirements. WCAG and VPAT required.")
+        self.assertEqual((k, rec["work_phrases"], sorted(p for _, p in rec["description_hits"])), ("description-mention", [], ["section 508", "vpat", "wcag"]))
         self.assertEqual(self.kind("Janitorial", "Provides accessibility for visitors.")[0], "description-accessibility")
-        k, rec = self.kind("Website refresh", "WCAG and VPAT required")
-        self.assertEqual((k, sorted(p for _, p in rec["description_hits"])), ("description-508", ["vpat", "wcag"]))
+
+    def test_the_work_phrases_come_from_the_rules_file_and_match_whole_words_only(self):
+        self.assertIn("trusted tester", RULE["opportunity_work_phrases"])
+        self.assertEqual(self.kind("Support", "Staff must be a DHS Trusted Tester.")[0], "description-work")
+        self.assertEqual(self.kind("Support", "A 508 testing-lab fee")[0], "description-work")        # a hyphen ends the word
+        self.assertEqual(self.kind("Support", "Part A1508 testingx")[0], None)
+        self.assertEqual(sam.work_finder({})("508 testing"), [])
 
     def test_the_fingerprint_changes_with_the_deadline_and_the_description_but_not_with_the_contact(self):
         a = {k: "x" for k in ("title", "type", "active", "archive_date", "response_deadline", "description")}
@@ -198,14 +205,15 @@ class Judge(unittest.TestCase):
 
 class Analyse(unittest.TestCase):
     def setUp(self):
-        self.path = write_csv([row(1, "Section 508 Remediation Services"), row(2, "Website", "Must meet Section 508"), row(3, "Grease trap cleaning"),
-                               row(4, "Section 508 Tester", active="No"), row(5, "Cafeteria", "good accessibility")])
+        self.path = write_csv([row(1, "Section 508 Remediation Services"), row(2, "Website", "Contractor performs Section 508 testing of the portal."),
+                               row(3, "Grease trap cleaning"), row(4, "Section 508 Tester", active="No"), row(5, "Cafeteria", "good accessibility"),
+                               row(6, "Software licences", "Product must meet Section 508 and provide a VPAT.")])
 
     def test_only_active_title_or_section_508_notices_are_surfaced_and_the_rest_counted(self):
         stats, surfaced, new, changed = sam.analyse(self.path, RULE, {})
         self.assertEqual(sorted(r["notice_id"] for r in surfaced), ["id1", "id2"])
-        self.assertEqual((stats["rows"], stats["active"], stats["new"], stats["changed"]), (5, 4, 2, 0))
-        self.assertEqual(stats["matches_by_strength"], {"title": 2, "description-508": 1, "description-accessibility": 1})
+        self.assertEqual((stats["rows"], stats["active"], stats["new"], stats["changed"]), (6, 5, 2, 0))
+        self.assertEqual(stats["matches_by_strength"], {"title": 2, "description-work": 1, "description-mention": 1, "description-accessibility": 1})
         self.assertEqual(stats["encoding"], "utf-8")                       # plain ASCII is valid UTF-8; the dash test above is the Windows-1252 one
 
     def test_a_notice_seen_before_is_not_new_and_a_changed_one_is_changed(self):

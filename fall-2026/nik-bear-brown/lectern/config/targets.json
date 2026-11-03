@@ -11175,6 +11175,46 @@
       }
     },
     {
+      "id": "federal508-usajobs-all-federal-agencies",
+      "name": "USAJOBS (all federal agencies)",
+      "type": "federal-508-employer",
+      "section": "federal508",
+      "status": "active",
+      "why": "The federal government's own job site, searched through its public API (developer.usajobs.gov). It searches every agency at once by keyword, so it stands for the agencies' own 508 and accessibility offices (DHS, SSA, VA, GSA, HHS, IRS, State, USPTO below) without reading them one by one. The API needs a key that a person requests and the email it was registered with as the User-Agent; both are kept outside the repo in ~/.usajobs. Each posting names its own agency (41 agencies in the first read), and that agency is the employer shown.",
+      "access": "api",
+      "provider": "usajobs",
+      "data": [
+        {
+          "label": "USAJOBS",
+          "url": "https://www.usajobs.gov/"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://data.usajobs.gov/api/search",
+          "call": true
+        }
+      ],
+      "reader": "collect/federal508_collect.py (collect.fetch_usajobs)",
+      "status_note": "Read by collect/federal508_collect.py for the federal-508 channel only; first real read 2026-11-02: 142 postings, 1 title with a phrase, none to post",
+      "todo": "",
+      "federal508": {
+        "verdict": "keep",
+        "kind": "agency",
+        "system": "usajobs",
+        "researched": "2026-11-02",
+        "feed_names": [
+          "USAJOBS (all federal agencies)"
+        ],
+        "what_answered": "The search API answered 200 for six keyword searches (508, accessibility, WCAG, assistive technology, VPAT, a11y); 142 distinct postings from 41 agencies, all complete. The 'remote' and 'telework eligible' flags are real fields (2 postings remote, 58 telework eligible). The keyword search matches the whole ad but the judge reads only the title, so 141 of the 142 have no phrase in the title.",
+        "board": {
+          "provider": "usajobs",
+          "slug": "search"
+        },
+        "postings_2026_11_02": 142,
+        "accessibility_titles_2026_11_02": 1
+      }
+    },
+    {
       "id": "federal508-userway",
       "name": "UserWay",
       "type": "federal-508-employer",
@@ -11219,8 +11259,8 @@
         }
       ],
       "reader": "",
-      "status_note": "USAJOBS reader built, first real read waiting for the registered email",
-      "todo": "The USAJOBS reader is built (collect.fetch_usajobs: the key Professor Bear requested sits in ~/.usajobs, outside the repo) but has not made a real request yet: it needs the email the key was registered with in ~/.usajobs/email, because USAJOBS asks for it as the User-Agent. After one real read, ONE entry for USAJOBS (all federal agencies) goes in as active; it searches every agency by phrase, so this office is not read on its own.",
+      "status_note": "Covered by the national USAJOBS entry, not read office by office",
+      "todo": "Covered by the national entry 'USAJOBS (all federal agencies)', which searches every agency by phrase; this office is not read on its own. Its postings appear in the feed only if the posting TITLE names a Section 508 or accessibility phrase.",
       "federal508": {
         "verdict": "to-do",
         "kind": "agency",
@@ -11248,8 +11288,8 @@
         }
       ],
       "reader": "",
-      "status_note": "USAJOBS reader built, first real read waiting for the registered email",
-      "todo": "The USAJOBS reader is built (collect.fetch_usajobs: the key Professor Bear requested sits in ~/.usajobs, outside the repo) but has not made a real request yet: it needs the email the key was registered with in ~/.usajobs/email, because USAJOBS asks for it as the User-Agent. After one real read, ONE entry for USAJOBS (all federal agencies) goes in as active; it searches every agency by phrase, so this office is not read on its own.",
+      "status_note": "Covered by the national USAJOBS entry, not read office by office",
+      "todo": "Covered by the national entry 'USAJOBS (all federal agencies)', which searches every agency by phrase; this office is not read on its own. Its postings appear in the feed only if the posting TITLE names a Section 508 or accessibility phrase.",
       "federal508": {
         "verdict": "to-do",
         "kind": "agency",
@@ -11277,8 +11317,8 @@
         }
       ],
       "reader": "",
-      "status_note": "USAJOBS reader built, first real read waiting for the registered email",
-      "todo": "The USAJOBS reader is built (collect.fetch_usajobs: the key Professor Bear requested sits in ~/.usajobs, outside the repo) but has not made a real request yet: it needs the email the key was registered with in ~/.usajobs/email, because USAJOBS asks for it as the User-Agent. After one real read, ONE entry for USAJOBS (all federal agencies) goes in as active; it searches every agency by phrase, so this office is not read on its own.",
+      "status_note": "Covered by the national USAJOBS entry, not read office by office",
+      "todo": "Covered by the national entry 'USAJOBS (all federal agencies)', which searches every agency by phrase; this office is not read on its own. Its postings appear in the feed only if the posting TITLE names a Section 508 or accessibility phrase.",
       "federal508": {
         "verdict": "to-do",
         "kind": "agency",
@@ -11306,8 +11346,8 @@
         }
       ],
       "reader": "",
-      "status_note": "USAJOBS reader built, first real read waiting for the registered email",
-      "todo": "The USAJOBS reader is built (collect.fetch_usajobs: the key Professor Bear requested sits in ~/.usajobs, outside the repo) but has not made a real request yet: it needs the email the key was registered with in ~/.usajobs/email, because USAJOBS asks for it as the User-Agent. After one real read, ONE entry for USAJOBS (all federal agencies) goes in as active; it searches every agency by phrase, so this office is not read on its own.",
+      "status_note": "Covered by the national USAJOBS entry, not read office by office",
+      "todo": "Covered by the national entry 'USAJOBS (all federal agencies)', which searches every agency by phrase; this office is not read on its own. Its postings appear in the feed only if the posting TITLE names a Section 508 or accessibility phrase.",
       "federal508": {
         "verdict": "to-do",
         "kind": "agency",
@@ -11335,8 +11375,8 @@
         }
       ],
       "reader": "",
-      "status_note": "USAJOBS reader built, first real read waiting for the registered email",
-      "todo": "The USAJOBS reader is built (collect.fetch_usajobs: the key Professor Bear requested sits in ~/.usajobs, outside the repo) but has not made a real request yet: it needs the email the key was registered with in ~/.usajobs/email, because USAJOBS asks for it as the User-Agent. After one real read, ONE entry for USAJOBS (all federal agencies) goes in as active; it searches every agency by phrase, so this office is not read on its own.",
+      "status_note": "Covered by the national USAJOBS entry, not read office by office",
+      "todo": "Covered by the national entry 'USAJOBS (all federal agencies)', which searches every agency by phrase; this office is not read on its own. Its postings appear in the feed only if the posting TITLE names a Section 508 or accessibility phrase.",
       "federal508": {
         "verdict": "to-do",
         "kind": "agency",
@@ -11364,8 +11404,8 @@
         }
       ],
       "reader": "",
-      "status_note": "USAJOBS reader built, first real read waiting for the registered email",
-      "todo": "The USAJOBS reader is built (collect.fetch_usajobs: the key Professor Bear requested sits in ~/.usajobs, outside the repo) but has not made a real request yet: it needs the email the key was registered with in ~/.usajobs/email, because USAJOBS asks for it as the User-Agent. After one real read, ONE entry for USAJOBS (all federal agencies) goes in as active; it searches every agency by phrase, so this office is not read on its own.",
+      "status_note": "Covered by the national USAJOBS entry, not read office by office",
+      "todo": "Covered by the national entry 'USAJOBS (all federal agencies)', which searches every agency by phrase; this office is not read on its own. Its postings appear in the feed only if the posting TITLE names a Section 508 or accessibility phrase.",
       "federal508": {
         "verdict": "to-do",
         "kind": "agency",
@@ -11393,8 +11433,8 @@
         }
       ],
       "reader": "",
-      "status_note": "USAJOBS reader built, first real read waiting for the registered email",
-      "todo": "The USAJOBS reader is built (collect.fetch_usajobs: the key Professor Bear requested sits in ~/.usajobs, outside the repo) but has not made a real request yet: it needs the email the key was registered with in ~/.usajobs/email, because USAJOBS asks for it as the User-Agent. After one real read, ONE entry for USAJOBS (all federal agencies) goes in as active; it searches every agency by phrase, so this office is not read on its own.",
+      "status_note": "Covered by the national USAJOBS entry, not read office by office",
+      "todo": "Covered by the national entry 'USAJOBS (all federal agencies)', which searches every agency by phrase; this office is not read on its own. Its postings appear in the feed only if the posting TITLE names a Section 508 or accessibility phrase.",
       "federal508": {
         "verdict": "to-do",
         "kind": "agency",
@@ -11422,8 +11462,8 @@
         }
       ],
       "reader": "",
-      "status_note": "USAJOBS reader built, first real read waiting for the registered email",
-      "todo": "The USAJOBS reader is built (collect.fetch_usajobs: the key Professor Bear requested sits in ~/.usajobs, outside the repo) but has not made a real request yet: it needs the email the key was registered with in ~/.usajobs/email, because USAJOBS asks for it as the User-Agent. After one real read, ONE entry for USAJOBS (all federal agencies) goes in as active; it searches every agency by phrase, so this office is not read on its own.",
+      "status_note": "Covered by the national USAJOBS entry, not read office by office",
+      "todo": "Covered by the national entry 'USAJOBS (all federal agencies)', which searches every agency by phrase; this office is not read on its own. Its postings appear in the feed only if the posting TITLE names a Section 508 or accessibility phrase.",
       "federal508": {
         "verdict": "to-do",
         "kind": "agency",

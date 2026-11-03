@@ -16,8 +16,10 @@ How it behaves, and why:
     of fields is counted and skipped, never guessed at.
   * Only the fields the judge needs are kept. The contact names, emails, phones and faxes in the file are dropped as it is read: this repo is public and the post carries no
     person's name.
-  * A notice is surfaced when its TITLE has a federal508_rule phrase, or its DESCRIPTION has a phrase of the section-508 group. A description that only has the generic word
-    'accessibility' is counted and not surfaced (it is in a lot of boilerplate). Only notices marked Active are surfaced.
+  * A notice is surfaced when its TITLE has a federal508_rule phrase, or its DESCRIPTION has a phrase of federal508_rule.opportunity_work_phrases ('508 testing', 'trusted
+    tester', 'accessibility remediation' ...: 508 as the WORK asked for). A description that only names Section 508 or WCAG is counted as a mention, and one that only has the
+    generic word 'accessibility' is counted too: neither is surfaced, because they are mostly a requirement clause in a notice for something else (2026-11-02: 23 of 23).
+    Only notices marked Active are surfaced.
   * New or changed is by NoticeId and a fingerprint of title, type, dates and description: runs/sam-seen.json remembers the surfaced notices.
 
 This is research for the federal-508 channel, not a feed: contract opportunities are solicitations a business bids on, not job postings, and nothing here posts anywhere.
@@ -194,15 +196,28 @@ def phrase_finder(rule):
     return lambda text: [(where[p], p) for p in dict.fromkeys(rx.findall(text.lower()))]
 
 
-def strength(rec, find, rule):
-    """'title' | 'description-508' | 'description-accessibility' | None. Fills rec['title_hits'] / rec['description_hits']."""
+def work_finder(rule):
+    """-> find(text) giving the opportunity_work_phrases found, whole words only: the phrases that say 508 or accessibility is the work asked for."""
+    phrases = sorted({p.lower() for p in rule.get("opportunity_work_phrases") or []}, key=len, reverse=True)
+    if not phrases:
+        return lambda text: []
+    rx = re.compile(r"(?<![a-z0-9])(" + "|".join(re.escape(p) for p in phrases) + r")(?![a-z0-9])")
+    return lambda text: list(dict.fromkeys(rx.findall(text.lower())))
+
+
+def strength(rec, find, rule, work=None):
+    """'title' | 'description-work' | 'description-mention' | 'description-accessibility' | None. Fills rec['title_hits'] / rec['description_hits'] / rec['work_phrases'].
+    Only the first two are surfaced: a description that names Section 508 without asking for 508 work is a mention (a requirement clause), not an opportunity."""
     blank = (lambda t: ej.blanked(t, rule)) if rule.get("false_friends") else (lambda t: t)
     rec["title_hits"] = find(blank(rec["title"]))
     rec["description_hits"] = find(blank(rec["description"]))
+    rec["work_phrases"] = (work or work_finder(rule))(blank(rec["description"]))
     if rec["title_hits"]:
         return "title"
+    if rec["work_phrases"]:
+        return "description-work"
     if any(g == "section-508" for g, _ in rec["description_hits"]):
-        return "description-508"
+        return "description-mention"
     return "description-accessibility" if rec["description_hits"] else None
 
 
@@ -237,17 +252,17 @@ def diff(surfaced, seen):
 
 def analyse(path, rule, seen):
     """Read the whole extract once. -> (stats, surfaced records, new, changed)."""
-    find = phrase_finder(rule)
+    find, work = phrase_finder(rule), work_finder(rule)
     counts, types, by, surfaced = collections.Counter(), collections.Counter(), collections.Counter(), []
     for rec in read_rows(path, counts):
         types[rec["type"]] += 1
-        s = strength(rec, find, rule)
+        s = strength(rec, find, rule, work)
         if rec["active"].lower() == "yes":
             counts["active"] += 1
         if not s:
             continue
         by[s] += 1
-        if s in ("title", "description-508") and rec["active"].lower() == "yes":
+        if s in ("title", "description-work") and rec["active"].lower() == "yes":
             rec["strength"] = s
             surfaced.append(rec)
     new, changed, same = diff(surfaced, seen)
@@ -302,7 +317,7 @@ def main(argv=None):
         seen.update({r["notice_id"]: {"fingerprint": r["fingerprint"], "last_seen": today} for r in surfaced})
         collect.write_json(a.seen, seen)
     print(f"extract: {outcome}; {stats['rows']:,} rows ({stats['encoding']}; {stats['malformed_rows']} malformed, {stats['undecodable_characters']} undecodable characters), {stats['active']:,} active")
-    print(f"matches: {stats['matches_by_strength']}; surfaced (active, title or section-508 in the description): {stats['surfaced']}: {stats['new']} new, {stats['changed']} changed, {stats['unchanged']} unchanged")
+    print(f"matches: {stats['matches_by_strength']}; surfaced (active; a phrase in the title or a work phrase in the description): {stats['surfaced']}: {stats['new']} new, {stats['changed']} changed, {stats['unchanged']} unchanged")
     print(f"-> {os.path.basename(dest)}" + ("" if not a.no_save else "  (nothing remembered)"))
     return 0
 
