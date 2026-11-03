@@ -1119,18 +1119,22 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-26 | feat(fall-2026): rank companies by demand, not postings by fit; Google's absence was an API artefact |
 | 2026-10-07 | chore(fall-2026): first real sync; add demand_report.py to the shared list; log the show-tell films |
 | 2026-10-07 | docs(fall-2026): add the project software design document, written by Gru in silent mode |
-| 2026-10-19 | docs(fall-2026): a first search of Northeastern's business school and Institute for Experiential AI; two great fits posted |
-| 2026-10-19 | fix(fall-2026): correct the skills note in the derived résumé; record what it omits |
-| 2026-10-19 | docs(fall-2026): check lab funding against the NIH and NSF award databases, from a student's version |
-| 2026-10-19 | docs(fall-2026): note the n8n form of the Lectern pipeline and what testing it found |
-| 2026-10-19 | docs(fall-2026): remove Replit from the watch list, not educational AI; --only option for sync.sh |
-| 2026-10-20 | docs(fall-2026): a README and a daily history for the Lectern folder; the n8n form beside the Python |
-| 2026-10-20 | docs(fall-2026): TARGETS.md, every target classified with its data link, its reader and what is missing |
-| 2026-10-20 | refactor(fall-2026): organise lectern/ into config, collect, publish, audit, tests and ops, with one place for paths |
-| 2026-10-20 | feat(fall-2026): a lab-page collector adapted from Biojobs; everything about Lectern moves into lectern/ |
-| 2026-10-20 | docs(fall-2026): remove eight software-product companies from the watch list, not educational AI |
-| 2026-10-20 | docs(fall-2026): remove HubSpot from the watch list, education is product training; Miro stays |
-| 2026-10-20 | feat(fall-2026): one list of targets for every form of Lectern; forms/ folders and shared comparison plumbing |
+### 2026-11-02 — California school districts as a lead list
+
+- **Date and what I was working on:** 2026-11-02. A friend starting a small Section 508 testing firm named school districts, county offices of education and the schools for the deaf and blind among her markets. I said to start with schools.
+- **I tried / expected:** My instruction: yes, start with schools. I expected a list of districts to approach.
+- **What happened:**
+  - **The obvious source was not open to a script.** The California Department of Education's own directory download answered with a bot-detection page, so it was left alone. Two open-data APIs (the Urban Institute's and data.ca.gov's) disallow `/api/` in their robots.txt. **Claude Code made one request to each before reading its robots.txt** (it fetched both in one command, twice) and said so; it did not use the Urban data and used the other only to find a link on a different host that is allowed.
+  - **A state open-data hub does publish the file** (the California district offices, 2025-26) with a download that needs no login: 1,009 offices with enrollment and students with disabilities, and no website or person.
+  - **The list:** 1,006 offices after leaving out three, at her request (their names are in a local file, not in the repo). The 158 largest hold 67% of the students; Los Angeles Unified is largest at 497,105.
+  - **It is only a size ranking.** It does not say which office has a deadline or a need, and it has no website or contact for any lead.
+- **What I did:** Gave the instruction. I have not reviewed the reader or the list.
+- **What Claude or another person contributed:** Claude Code checked robots.txt and the access routes, wrote `collect/ca_school_districts.py` and `tests/test_ca_school_districts.py` (14 tests), ran the one fetch, and updated `HISTORY.md` and `TARGETS.md`.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: `lectern/collect/ca_school_districts.py`, `lectern/tests/test_ca_school_districts.py`, the California school districts entry in `lectern/HISTORY.md`; the lists are local (`runs/<date>/ca-school-district-leads-*`, not committed).
+  - Next: I decide whether to build the other markets (hospitals, health centers, colleges, transit, aging agencies) and how to find each office's accessibility page. Not pushed.
+
 | 2026-10-18 | data(lectern): delta 2026-10-18: +42 new, ~7 changed, -9 gone |
 | 2026-10-18 | docs(fall-2026): one numbered folder and plan per Canvas assignment; publish_delta.py; collectors in the sync list |
 | 2026-10-18 | docs(fall-2026): publish profile.yml for exercise 06 and a layout for its film; Stripe and Writer off the watch list |
@@ -1149,3 +1153,15 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-19 | docs(fall-2026): add the MIT Media Lab; Whitehead and Media Lab addresses beside the Broad |
 | 2026-10-19 | docs(fall-2026): filter the Boston and Cambridge institutes by his five interests; think tank defined broadly |
 | 2026-10-19 | feat(fall-2026): post great-fit labs to Discord for review before any approach; Rule 5; Northeastern arrangement noted |
+| 2026-10-19 | docs(fall-2026): a first search of Northeastern's business school and Institute for Experiential AI; two great fits posted |
+| 2026-10-19 | fix(fall-2026): correct the skills note in the derived résumé; record what it omits |
+| 2026-10-19 | docs(fall-2026): check lab funding against the NIH and NSF award databases, from a student's version |
+| 2026-10-19 | docs(fall-2026): note the n8n form of the Lectern pipeline and what testing it found |
+| 2026-10-19 | docs(fall-2026): remove Replit from the watch list, not educational AI; --only option for sync.sh |
+| 2026-10-20 | docs(fall-2026): a README and a daily history for the Lectern folder; the n8n form beside the Python |
+| 2026-10-20 | docs(fall-2026): TARGETS.md, every target classified with its data link, its reader and what is missing |
+| 2026-10-20 | refactor(fall-2026): organise lectern/ into config, collect, publish, audit, tests and ops, with one place for paths |
+| 2026-10-20 | feat(fall-2026): a lab-page collector adapted from Biojobs; everything about Lectern moves into lectern/ |
+| 2026-10-20 | docs(fall-2026): remove eight software-product companies from the watch list, not educational AI |
+| 2026-10-20 | docs(fall-2026): remove HubSpot from the watch list, education is product training; Miro stays |
+| 2026-10-20 | feat(fall-2026): one list of targets for every form of Lectern; forms/ folders and shared comparison plumbing |
