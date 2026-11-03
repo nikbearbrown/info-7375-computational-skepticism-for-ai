@@ -165,14 +165,26 @@ def usajobs_login(home=None):
     return tuple(out)
 
 
+USAJOBS_AD_CHARS = 8000     # characters of an ad's summary, duties and qualifications kept for the judge
+
+
+def _ad_text(d, det):
+    """The posting's own summary, major duties and qualification summary, joined. The judge looks in it only for the phrases that say 508 is the WORK asked for."""
+    duties = det.get("MajorDuties")
+    parts = [det.get("JobSummary"), " ".join(duties) if isinstance(duties, list) else duties, d.get("QualificationSummary")]
+    return plain(" ".join(p for p in parts if p))[:USAJOBS_AD_CHARS]
+
+
 def _usajobs_item(d):
-    """The few fields of one USAJOBS search result that the judge and the feed need. Never the ad text (summary, duties, qualifications)."""
+    """The fields of one USAJOBS search result that the judge and the feed need: title, agency, places, dates, the remote flag, and the ad's summary and duties (kept in the
+    local run files only, never in a post). No contact, pay or application text."""
     det = ((d.get("UserArea") or {}).get("Details") or {})
     names = lambda k: [x.get("Name") for x in (d.get(k) or []) if x.get("Name")]
     return {"id": d.get("PositionID"), "title": d.get("PositionTitle"), "url": d.get("PositionURI"), "organization": d.get("OrganizationName"),
             "department": d.get("DepartmentName"), "places": [{"name": x.get("LocationName"), "country": x.get("CountryCode")} for x in (d.get("PositionLocation") or [])],
             "published": d.get("PublicationStartDate"), "closes": d.get("ApplicationCloseDate"), "offering": names("PositionOfferingType"), "schedule": names("PositionSchedule"),
-            "remote_indicator": det.get("RemoteIndicator"), "telework_eligible": det.get("TeleworkEligible"), "clearance": det.get("SecurityClearance")}
+            "remote_indicator": det.get("RemoteIndicator"), "telework_eligible": det.get("TeleworkEligible"), "clearance": det.get("SecurityClearance"),
+            "ad_text": _ad_text(d, det)}
 
 
 def fetch_usajobs(slug="search", pause=1.2, login=None):

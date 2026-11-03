@@ -41,7 +41,7 @@ def _loc(v):
 
 def _flags(r):
     clr = ([w for w in r["clearance"] if w != "clearance"] or r["clearance"])[:1]          # 'secret' says more than 'clearance'
-    f = (["remote"] if r["remote"] else []) + (["contract"] if r["contract"] else []) + ([("clearance named: " + clr[0]) if clr[0] != "clearance" else "clearance named"] if clr else [])
+    f = (["508 named in the ad text, not the title"] if r["hits"] and all(g == "ad-text" for g, _ in r["hits"]) else []) + (["remote"] if r["remote"] else []) + (["contract"] if r["contract"] else []) + ([("clearance named: " + clr[0]) if clr[0] != "clearance" else "clearance named"] if clr else [])
     return " [" + ", ".join(f) + "]" if f else ""
 
 

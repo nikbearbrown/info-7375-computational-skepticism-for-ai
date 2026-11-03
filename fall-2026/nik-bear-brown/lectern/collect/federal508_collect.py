@@ -5,7 +5,7 @@
 
 The employers are the `federal508` section of config/targets.json with status `active` (a board Lectern's own readers can read: Greenhouse, Ashby,
 SmartRecruiters, Workday). One request per board (Workday: one per page of 20 postings), a pause between requests, the same host list and user agent as collect.py. It reads the postings' LISTS (title, place,
-link), never the ad text: the judge reads titles. The readers and the record shape are consulting_collect.py's, written once.
+link), never the ad text: the judge reads titles. (USAJOBS' answer carries each posting's summary and duties; they are kept in the local run file and the judge looks in them only for the phrases that say 508 is the work.) The readers and the record shape are consulting_collect.py's, written once.
 
 This is deliberately NOT part of collect.py: collect.py reads the watch list for the #professor-bear feed, and these employers must never enter it
 (config/sources.json is generated from the `boards` section only; a test checks it).

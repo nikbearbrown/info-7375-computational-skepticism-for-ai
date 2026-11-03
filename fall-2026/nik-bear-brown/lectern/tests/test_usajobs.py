@@ -105,12 +105,21 @@ class Fetch(unittest.TestCase):
             self.assertNotIn(EMAIL, url)
             self.assertEqual((headers["Authorization-Key"], headers["User-Agent"]), (KEY, EMAIL))
 
-    def test_only_a_few_fields_are_kept_and_never_the_ad_text(self):
-        out, _ = self.read({"508": [result(1, remote="True")]})
+    def test_the_summary_duties_and_qualifications_are_kept_for_the_judge_and_nothing_else_of_the_ad(self):
+        duties = ["Performs Section 508 testing of web applications.", "Writes reports."]
+        out, _ = self.read({"508": [result(1, remote="True", extra={"MajorDuties": duties, "ApplicationInstructions": "SECRET HOW TO APPLY", "AgencyContactEmail": "hr@agency.example"})]})
+        job = out["jobs"][0]
+        self.assertIn("MORE AD TEXT", job["ad_text"])
+        self.assertIn("Performs Section 508 testing of web applications.", job["ad_text"])
+        self.assertIn("LONG AD TEXT", job["ad_text"])
         text = json.dumps(out)
-        for gone in ("LONG AD TEXT", "MORE AD TEXT", "QualificationSummary"):
+        for gone in ("SECRET HOW TO APPLY", "hr@agency.example"):
             self.assertNotIn(gone, text)
-        self.assertEqual((out["jobs"][0]["title"], out["jobs"][0]["organization"], out["jobs"][0]["remote_indicator"]), ("Accessibility Specialist", "Department of Examples", "True"))
+        self.assertEqual((job["title"], job["organization"], job["remote_indicator"]), ("Accessibility Specialist", "Department of Examples", "True"))
+
+    def test_the_ad_text_is_capped(self):
+        out, _ = self.read({"508": [result(1, extra={"JobSummary": "x" * 20000})]})
+        self.assertLessEqual(len(out["jobs"][0]["ad_text"]), collect.USAJOBS_AD_CHARS)
 
     def test_a_search_that_gave_fewer_than_it_counted_is_not_complete(self):
         def lying(url, timeout=30, headers=None):
@@ -171,6 +180,37 @@ class Records(unittest.TestCase):
         self.assertEqual((jr["decision"], bool(jr["remote"]), jr["kind"]), ("post", True, "agency"))
         self.assertEqual(jo["decision"], "unstated")
         self.assertEqual(ja["decision"], "rejected")
+
+    def test_the_record_carries_the_ad_text_as_its_description(self):
+        r = self.recs(result(1, extra={"MajorDuties": ["Section 508 testing"]}))[0]
+        self.assertIn("Section 508 testing", r["description"])
+        self.assertEqual(fj.posting_view(r)["description"], r["description"])
+        self.assertNotIn("description", fj.posting_view({k: v for k, v in r.items() if k != "description"}))
+
+    def test_a_work_phrase_in_the_ad_text_makes_a_plain_title_a_match_and_a_requirement_clause_does_not(self):
+        work, clause, none = self.recs(result(1, "IT Specialist (APPSW)", remote="True", extra={"MajorDuties": ["Conducts Section 508 testing and accessibility audits."]}),
+                                       result(2, "IT Specialist (APPSW)", remote="True", extra={"MajorDuties": ["Builds software that meets Section 508."]}),
+                                       result(3, "IT Specialist (APPSW)", remote="True"))
+        jw, jc, jn = (fj.judge_federal508(fj.posting_view(x), KW, {}) for x in (work, clause, none))
+        self.assertEqual(jw["decision"], "post")
+        self.assertTrue(all(g == "ad-text" for g, _ in jw["hits"]))
+        self.assertIn("in the ad text", jw["reason"])
+        self.assertEqual((jc["decision"], jn["decision"]), ("no-match", "no-match"))
+        self.assertIn("or the ad text", jc["reason"])
+
+    def test_a_title_phrase_still_wins_and_a_view_without_ad_text_is_judged_from_the_title_alone(self):
+        t = fj.judge_federal508(fj.posting_view(self.recs(result(1, "Section 508 Tester", remote="True"))[0]), KW, {})
+        self.assertEqual((t["decision"], {g for g, _ in t["hits"]}), ("post", {"section-508"}))
+        plain = {"id": "x:1", "company": "Acme", "title": "Developer", "url": "", "location_text": "US - Remote"}
+        self.assertEqual(fj.judge_federal508(plain, KW, {})["reason"], "no Section 508 or accessibility phrase in the title")
+
+    def test_the_feed_says_when_the_phrase_was_in_the_ad_and_not_the_title(self):
+        import federal508_feed
+        r = self.recs(result(1, "IT Specialist (APPSW)", remote="True", extra={"MajorDuties": ["Performs 508 testing."]}))[0]
+        v = fj.posting_view(r)
+        line = federal508_feed.row_text(v, fj.judge_federal508(v, KW, {}))
+        self.assertIn("508 named in the ad text, not the title", line)
+        self.assertIn("remote", line)
 
     def test_the_status_line_says_what_usajobs_counted_for_each_query(self):
         payload = {"jobs": [], "total": 5, "complete": False, "pages": 3, "queries": {"508": 5}}

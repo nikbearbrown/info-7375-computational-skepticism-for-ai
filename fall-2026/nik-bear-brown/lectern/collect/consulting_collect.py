@@ -112,7 +112,8 @@ def records(provider, firm, slug, payload):
             # the employer is the agency that posts it, so the posting is shown under its name, not under 'USAJOBS'
             r = dict(source_id=str(j.get("object_id") or j.get("id")), title=(j.get("title") or "").strip(), url=j.get("url"), location_text=usajobs_place(j),
                      department=j.get("department") or "", date_posted=collect.iso_date(j.get("published")), matched_by=j.get("matched_by"),
-                     remote_indicator=j.get("remote_indicator"), telework_eligible=j.get("telework_eligible"), closes=collect.iso_date(j.get("closes")))
+                     remote_indicator=j.get("remote_indicator"), telework_eligible=j.get("telework_eligible"), closes=collect.iso_date(j.get("closes")),
+                     description=j.get("ad_text") or "")
             firm_here = j.get("organization") or firm
             out.append({"source": provider, "company": firm_here, **r})
             continue

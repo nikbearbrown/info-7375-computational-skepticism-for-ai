@@ -7,7 +7,9 @@ for teaching and training words, and an accessibility auditor is not one.
 
 A posting is judged from its TITLE and its place (the boards' lists carry no ad text here). The first test that fails gives the reason:
 
-  1. no-match      no phrase of an enabled group of federal508_rule.groups is in the title ('Section 508 Tester', 'Accessibility Specialist', 'WCAG', ...)
+  1. no-match      no phrase of an enabled group of federal508_rule.groups is in the title ('Section 508 Tester', 'Accessibility Specialist', 'WCAG', ...), and, for a posting
+                   that comes WITH its ad text (USAJOBS' list does), no phrase of federal508_rule.opportunity_work_phrases ('508 testing', 'trusted tester' ...: 508 as the work)
+                   in that text. The ad text is looked at only when the title has no phrase; every other source is judged from the title alone.
   2. not-digital   a word of not_digital_words is there ('Building Accessibility', 'Wheelchair', 'Paratransit': physical access, not ICT)
   3. rejected      the place names no allowed country (this channel allows the United States only: federal work); a place that names none ('Remote') passes
   4. post          the title or the place says REMOTE, or the title says CONTRACT ('Contractor', '1099', 'Temporary', 'Consultant' ...)
@@ -30,7 +32,26 @@ import copy, json
 import collect
 import engine_jobs as ej
 
-posting_view, load_postings = ej.posting_view, ej.load_postings
+def posting_view(row):
+    """ej.posting_view, plus the ad text when the posting came with it (USAJOBS: summary and duties), under 'description'."""
+    v = ej.posting_view(row)
+    if row.get("description"):
+        v["description"] = row["description"]
+    return v
+
+
+def load_postings(path):
+    """ej.load_postings with this module's posting_view, so the ad text of a posting that has one reaches the judge."""
+    with open(path, encoding="utf-8") as f:
+        if path.endswith(".jsonl"):
+            return [posting_view(json.loads(l)) for l in f if l.strip()]
+        return [posting_view(r) for r in json.load(f)["records"]]
+
+
+def work_hits(text, rule):
+    """[('ad-text', phrase)] for the opportunity_work_phrases found in an ad's text, whole words only."""
+    t = (text or "").lower()
+    return [("ad-text", p) for p in dict.fromkeys(x.lower() for x in rule.get("opportunity_work_phrases") or []) if collect.word_in(p, t)]
 
 
 def _hits(words, text):
@@ -74,8 +95,8 @@ def judge_federal508(view, kw, kinds=None):
     rule = kw["federal508_rule"]
     t = ej.blanked(view["title"], rule)
     place = ej.title_text(view["location_text"])
-    hits = role_hits(view["title"], rule)
-    out = {"decision": "no-match", "reason": "no Section 508 or accessibility phrase in the title", "hits": hits, "remote": [], "contract": [], "clearance": [], "federal": [],
+    hits = role_hits(view["title"], rule) or work_hits(view.get("description"), rule)
+    out = {"decision": "no-match", "reason": "no Section 508 or accessibility phrase in the title" + (" or the ad text" if view.get("description") else ""), "hits": hits, "remote": [], "contract": [], "clearance": [], "federal": [],
            "kind": (kinds or {}).get(view["company"].casefold()) or ("agency" if str(view.get("id")).startswith("usajobs:") else None)}
     if not hits:
         return out
@@ -100,9 +121,10 @@ def judge_federal508(view, kw, kinds=None):
         return out
     g, phrase = max(hits, key=lambda h: len(h[1]))
     what = f"'{phrase}' ({g})"
+    where_ = "the ad text" if g == "ad-text" else "the title"
     how = ([f"remote: '{out['remote'][0]}'"] if out["remote"] else []) + ([f"contract: '{out['contract'][0]}'"] if out["contract"] else [])
     if how:
-        out.update(decision="post", reason=f"{what} in the title; " + "; ".join(how))
+        out.update(decision="post", reason=f"{what} in {where_}; " + "; ".join(how))
     else:
-        out.update(decision="unstated", reason=f"{what} in the title; neither remote nor contract is stated, so held back")
+        out.update(decision="unstated", reason=f"{what} in {where_}; neither remote nor contract is stated, so held back")
     return out

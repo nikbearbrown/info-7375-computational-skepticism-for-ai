@@ -1056,15 +1056,16 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **I tried / expected:** I requested a USAJOBS API key, which a script cannot do. USAJOBS emailed it to me. I did not paste the key into the chat; I stored it myself in `~/.usajobs/key` (mode 600, outside the repo) from a terminal command Claude Code gave me. The first time I ran the command for the registered address I left the placeholder word in it, and Claude Code's reader refused it, so no request went out; the second time I gave the address in chat and said it was fine to add (an email is not a password). I expected to see the agencies' 508 postings.
 - **What happened:**
   - **The first real read worked:** 142 postings from 41 agencies, all complete. The remote and telework fields are real (2 postings remote, 58 telework eligible).
-  - **Nothing would be posted.** The search matches the whole ad but the judge reads the title: 141 of the 142 have no phrase in the title, and the one that does, a Smithsonian 'Visitor Experience and Accessibility Manager', is held back. The '508' search mostly returned aircraft mechanics and similar.
+  - **Nothing would be posted.** The search matches the whole ad but the judge read only the title: 141 of the 142 had no phrase in the title, and the one that did, a Smithsonian 'Visitor Experience and Accessibility Manager', is held back. The '508' search mostly returned aircraft mechanics and similar.
+  - **I said to try reading the ad text,** so the judge now also looks in each posting's own summary and duties for the phrases that say 508 is the work (USAJOBS only; every other source is still judged from the title). Same 142 postings: two matched, none to post. The new one is a FEMA 'Training Specialist (Distance Learning)' whose duties say it maintains 'trusted tester' certification and works with the Section 508 coordinator; it is onsite in Maryland, so it is held back.
   - **One `active` entry, 'USAJOBS (all federal agencies)', is in the list** with the measured count; the 8 agency offices are marked as covered by it.
   - **The key is in no file of the book folder** (a search found 0 files).
 - **What I did:** Requested the key, stored it myself, gave the address, and gave the instruction. I have not reviewed the reader or the 142 postings.
-- **What Claude or another person contributed:** Claude Code wrote the reader, `tests/test_usajobs.py` (14 tests, no network), the list changes, `HISTORY.md` and this entry, made the real read and ran every test file.
+- **What Claude or another person contributed:** Claude Code wrote the reader, `tests/test_usajobs.py` (19 tests, no network), the list changes, `HISTORY.md` and this entry, made the real read and ran every test file.
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:**
   - Evidence: `lectern/collect/collect.py` (`usajobs_login`, `fetch_usajobs`), `lectern/collect/consulting_collect.py` (`records`), `lectern/tests/test_usajobs.py`, the 2026-11-02 USAJOBS entry in `lectern/HISTORY.md`.
-  - Next: I decide whether the judge should also read the ad summary and duties, which is a rule change. Not pushed.
+  - Next: I read the FEMA posting and decide whether onsite roles like it belong in the channel at all (the channel is for remote or contract work). Not pushed.
 
 ### 2026-11-02 — SAM.gov's public contract-opportunities file, read once
 
