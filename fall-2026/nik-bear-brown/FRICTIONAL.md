@@ -1101,6 +1101,21 @@ Where to check each claim in this log. Commits are listed in the push table belo
   - **I then said to check which leads are small businesses.** USAspending's own recipient record carries each firm's business types from its SAM.gov registration, so no other extract was needed: of 134 leads read (one timed out), 111 are registered small, 44 women-owned small (WOSB), 18 EDWOSB, 37 in the 8(a) program; 6 are in California. A first count of 'disadvantaged' firms (79) was mostly a legacy label, so I dropped it.
   - Next: I decide whether to build the lead lists for the non-federal markets. Not pushed.
 
+### 2026-11-03 — SAM.gov set-aside filter for the VA, the Defense Department and the FAA
+
+- **Date and what I was working on:** 2026-11-03. The friend starting a small Section 508 testing firm answered the questions put to her. She said yes to filtering SAM.gov for small-business and women-owned set-asides at those three agencies, and gave job titles, 1099 or W-2 either, remote preferred, and that a clearance-sponsoring role is a plus.
+- **I tried / expected:** I passed her answer on. I expected the filter to turn up some notices that ask for 508 work.
+- **What happened:**
+  - **The filter found none.** On the 2026-11-02 extract (69,635 notices), 15,494 active notices at the three agencies are set aside for a small or women-owned small business (DoD 15,140, VA 331, FAA 23). None asks for 508 testing as the work (tier A 0), and none of the 277 IT-coded ones names Section 508 (tier B 0). 27 mention accessibility or Section 508 anywhere, mostly construction and supply notices about site access. The one that names Section 508 is a DoD software-licence sources-sought.
+  - **A bug on the way:** the first printout showed agencies called 'OD' and 'A' because of a wrong string slice; fixed before the numbers were used.
+  - **The result is a statement about that day's notices, not about the market.** The larger IT and web contracts, where the work sits, are reached through the USAspending prime list.
+- **What I did:** Passed her answer on. I have not decided on her job-search answers (see below).
+- **What Claude or another person contributed:** Claude Code wrote `collect/sam_setaside.py` and `tests/test_sam_setaside.py` (11 tests, no network), ran it on the cached file (no request), and updated `HISTORY.md`, `README.md` and `.gitignore`. The friend supplied the answers; the filter's choices (small business and women-owned only; the IT test) are Claude's reading of her words.
+- **What I understand now / still do not understand:** Not yet stated by me. Open: whether to add her titles to the federal-508 phrases, stop requiring 'contract' for W-2 roles, and flag 'clearance sponsored' (a rule change; nothing changed).
+- **Evidence and next step:**
+  - Evidence: the 2026-11-03 entry in `lectern/HISTORY.md`; `lectern/runs/2026-11-03/sam-setaside-2026-11-03.json` (local, not committed).
+  - Next: the Guidehouse link goes to her; the two health files wait for me to download them. Not pushed.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
