@@ -1135,6 +1135,21 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
   - Evidence: `lectern/collect/ca_school_districts.py`, `lectern/tests/test_ca_school_districts.py`, the California school districts entry in `lectern/HISTORY.md`; the lists are local (`runs/<date>/ca-school-district-leads-*`, not committed).
   - Next: I decide whether to build the other markets (hospitals, health centers, colleges, transit, aging agencies) and how to find each office's accessibility page. Not pushed.
 
+### 2026-11-02 — Children's hospitals and health centers: the two federal sources are closed to a script
+
+- **Date and what I was working on:** 2026-11-02. A friend starting a small Section 508 testing firm named children's hospitals and federally qualified health centers among her markets. I said to build those next.
+- **I tried / expected:** My instruction: build children's hospitals and health centers. I expected a list from the federal health-center and hospital data.
+- **What happened:**
+  - **HRSA's data host says no to AI agents** in its robots.txt, naming Claude's fetchers among others. Claude Code did not fetch from it and did not try a different user-agent name.
+  - **CMS's data host answered 'Access Denied'** to the one request made. It did not retry or work around it.
+  - **Nothing was built.** I would need to download the two files myself in a browser; a reader can then be written against their real columns.
+- **What I did:** Gave the instruction. I have not downloaded the files.
+- **What Claude or another person contributed:** Claude Code read both robots.txt files, made one API request, stopped at the refusal, and updated `HISTORY.md` and `.gitignore`.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: the 'children's hospitals and health centers' entry in `lectern/HISTORY.md`.
+  - Next: I download the CMS Hospital General Information file and the HRSA health-center sites file into the local `runs/manual-downloads/` folder, then ask for the reader. Not pushed.
+
 | 2026-10-18 | data(lectern): delta 2026-10-18: +42 new, ~7 changed, -9 gone |
 | 2026-10-18 | docs(fall-2026): one numbered folder and plan per Canvas assignment; publish_delta.py; collectors in the sync list |
 | 2026-10-18 | docs(fall-2026): publish profile.yml for exercise 06 and a layout for its film; Stripe and Writer off the watch list |

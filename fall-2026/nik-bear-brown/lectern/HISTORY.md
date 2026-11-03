@@ -145,6 +145,14 @@ The collector existed before this folder did. According to the 2026-09-26 entry 
 - **Not changed, on purpose:** no rule. The brief's search terms were compared by hand with `federal508_rule`: all match already except `TTv5`, which was not added because nothing measured it. `public trust` stays on the clearance list although the brief treats it as a background investigation, not a clearance (his decision). Nothing in the brief was checked here. No key requested, no download, no post, no push, no `sync.sh`. The friend is not named in the repository; the full text is kept in a private note outside it.
 
 
+## 2026-11-02: children's hospitals and health centers: both federal sources are closed to a script (nothing built)
+
+- **Asked for:** 'children's hospitals + FQHCs', the next of the friend's markets. The natural sources are HRSA's list of health center sites and the CMS hospital list (it labels children's hospitals).
+- **HRSA (`data.hrsa.gov`):** its robots.txt lists AI crawlers and agents by name, including `Claude-User`, `Claude-Web`, `ClaudeBot` and `anthropic-ai`, with `Disallow: /`. **Not fetched.** A different user-agent name would only get around the rule, so none was tried.
+- **CMS (`data.cms.gov`):** its robots.txt allows the dataset paths (10-second crawl delay), but the one request made, to the provider-data catalog API for the hospital dataset, answered **403 Access Denied** from the host's edge protection. **Not retried, and no workaround tried.**
+- **Two requests were made in all** (both hosts' robots.txt, then that one API call). Nothing from either host was used.
+- **The way forward is by hand:** a person downloads the two files in a browser (CMS Hospital General Information; HRSA Health Center Service Delivery and Look-Alike Sites) into `runs/manual-downloads/` (local, git-ignored), and a reader is built against the real columns. A file a person saved is not crawling. Nothing is built until those files exist, because their columns have not been seen.
+
 ## 2026-11-02: California school districts as a lead list (research for a founder; no rule change, nothing posted)
 
 - **Why:** the friend starting a small Section 508 testing firm named school districts, county offices of education and the schools for the deaf and blind among her markets ('start with schools'). They are lists of organizations, so `collect/ca_school_districts.py` builds a ranked list from public data, not postings.
