@@ -40,6 +40,8 @@ ALLOWED |= WORKDAY_HOSTS
 ALLOWED.add("data.usajobs.gov")
 # SAM.gov's public Contract Opportunities extract (collect/sam_opportunities.py): the download address on sam.gov answers 303 to a signed link on its own storage host.
 ALLOWED |= {"sam.gov", "falextracts.s3.amazonaws.com"}
+# USAspending.gov's open API (api.usaspending.gov/api/v2; no key, no login; the host has no robots.txt), for collect/usaspending_primes.py.
+ALLOWED.add("api.usaspending.gov")
 HERE = lp.ROOT
 TODAY = dt.date.today().isoformat()
 USER_AGENT = "lectern (course project)"

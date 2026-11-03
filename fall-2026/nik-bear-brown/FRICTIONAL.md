@@ -1102,6 +1102,22 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-19 | docs(fall-2026): add the big Boston hospitals to the outreach search |
 | 2026-10-19 | docs(fall-2026): distance rule and the list of places for the outreach search |
 | 2026-10-19 | docs(fall-2026): add Moderna as a company to look at; what the Kendall Square map showed |
+### 2026-11-02 — Prime-contractor leads from USAspending
+
+- **Date and what I was working on:** 2026-11-02. A friend is starting a small Section 508 testing firm, and her own brief says she needs contracts, subcontracts and client leads, not jobs. I asked for the USAspending route to find the primes that win 508 work.
+- **I tried / expected:** My instruction: build the USAspending prime leads first. I expected a short list of big integrators such as Booz Allen, Leidos and Deloitte.
+- **What happened:**
+  - **The data is open: no key, no login.** 24 searches over prime awards and subawards from 2023-10-01 to today; none failed.
+  - **230 awards from 135 recipients** have a Section 508 or work phrase in the award's own description; 44 recipients have two or more. 21 primes pass 508 work down to subawardees.
+  - **It is not mostly the big integrators.** The top of the list is small and mid-size remediation and testing firms (Grafik Industries, FedWriters, Sylver Rain Consulting, Arcsource Group, Level Access, Accessible Systems Consulting, Deque ...). Many awards are small: 135 of the 230 are under $250k.
+  - **One false positive in my read of 18 descriptions:** 'BLDG. 508 REMEDIATION AND DEMOLITION' is Building 508, not an accessibility job. I added the physical-site words and re-ran.
+- **What I did:** Gave the instruction. I have not reviewed the reader or the lead list.
+- **What Claude or another person contributed:** Claude Code probed the API, wrote `collect/usaspending_primes.py` and `tests/test_usaspending_primes.py` (16 tests), ran the search twice, read a sample of descriptions to check them, and updated `HISTORY.md` and `TARGETS.md`.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: `lectern/collect/usaspending_primes.py`, `lectern/tests/test_usaspending_primes.py`, the USAspending entry in `lectern/HISTORY.md`; the lead file is local (`runs/<date>/usaspending-primes-<date>.json`, not committed).
+  - Next: I decide whether to check which leads are small or women-owned businesses (SAM.gov entity data, a different extract) and whether to build the lead lists for the non-federal markets. Not pushed.
+
 | 2026-10-19 | docs(fall-2026): a company team is treated like a lab; Moderna's research teams |
 | 2026-10-19 | docs(fall-2026): add the MIT Media Lab; Whitehead and Media Lab addresses beside the Broad |
 | 2026-10-19 | docs(fall-2026): filter the Boston and Cambridge institutes by his five interests; think tank defined broadly |
