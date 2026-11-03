@@ -1031,7 +1031,7 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:**
   - Evidence: `lectern/config/keywords.json` (`federal508_rule` and its comment), `lectern/config/targets.json` (section `federal508`) and section K of `lectern/TARGETS.md`, `lectern/collect/federal508_jobs.py`, `lectern/collect/federal508_collect.py`, `lectern/publish/federal508_feed.py`, `lectern/tests/test_federal508_jobs.py`, `test_federal508_feed.py`, `lectern/forms/n8n/test-results/parity-2026-10-31.txt`; for the brief, section K.2 of `lectern/TARGETS.md` and the `2026-10-31 (later)` entry in `lectern/HISTORY.md`.
-  - Next: I answer the open questions; if I want real postings in it, a Workday reader and the two keys come first; if I say go, name the channel, set `posting` to `on` and run `--baseline` or `--post-all` once. Not pushed.
+  - Next: I answer the open questions; if I want real postings in it, a Workday reader and the two keys come first; if I say go, name the channel, set `posting` to `on` and run `--baseline` or `--post-all` once. Pushed on 2026-11-02 at my word, together with the brief (section K.2).
 
 ## GitHub pushes
 
@@ -1081,3 +1081,6 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-10-20 | docs(fall-2026): remove eight software-product companies from the watch list, not educational AI |
 | 2026-10-20 | docs(fall-2026): remove HubSpot from the watch list, education is product training; Miro stays |
 | 2026-10-20 | feat(fall-2026): one list of targets for every form of Lectern; forms/ folders and shared comparison plumbing |
+| 2026-11-02 | feat(fall-2026): Lectern v0.6.5, a federal Section 508 search for remote or contract work: 67 employers in targets.json (17 readable), a judge, a collector, a dry-run poster (posting off) |
+| 2026-11-02 | docs(fall-2026): file the federal 508 brief in TARGETS.md section K.2: what the work needs, the four lanes, what Lectern can see (no rule change) |
+| 2026-11-02 | docs(fall-2026): GitHub pushes rows for the federal 508 search and its brief |
