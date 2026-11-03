@@ -1084,6 +1084,22 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
   - Evidence: `lectern/collect/collect.py` (`usajobs_login`, `fetch_usajobs`), `lectern/collect/consulting_collect.py` (`records`), `lectern/tests/test_usajobs.py`, the 2026-11-02 entry in `lectern/HISTORY.md`.
   - Next: I put the registered email in `~/.usajobs/email`; then one real read, a dry run, and the first active entry. Not pushed.
 
+### 2026-11-02 — SAM.gov's public contract-opportunities file, read once
+
+- **Date and what I was working on:** 2026-11-02. Looking for federal Section 508 contract work on SAM.gov without the Get Opportunities API, which caps a personal key without a role at 10 requests a day.
+- **I tried / expected:** My instruction: use the public Contract Opportunities extract (no login, no key); download at most once a day and skip it if unchanged; do not assume UTF-8; diff on Notice ID; check whether the description holds full text; keep any key optional; and say which fields are needed and that they are in the file before writing code. I expected to find 508 contract opportunities.
+- **What happened:**
+  - **The file downloads with no login and no key.** About 213 MB, refreshed nightly. I checked the header and the first 188 rows first, then read the whole file once: 69,635 notices, none malformed. It is Windows-1252, not UTF-8.
+  - **The description is full text inline,** not a link.
+  - **Very little is 508 work.** 32 notices were surfaced (22 distinct titles). Three distinct titles name accessibility or assistive technology (an assistive-technology device award, an assistive-technology presolicitation for students, and a transit research announcement repeated six times). The other 23 only list Section 508 or WCAG as one requirement among many in a notice for something else. None is a 508 testing or remediation contract.
+  - **The awards link I gave** (`sam.gov/reports/awards/standard`) is a JavaScript page the script cannot read, so I do not know whether its export needs a login.
+- **What I did:** Gave the instruction and the awards link. I have not reviewed the reader or the 32 notices.
+- **What Claude or another person contributed:** Claude Code looked for the download address, read the header, wrote `collect/sam_opportunities.py` and `tests/test_sam_opportunities.py` (21 tests), added the two hosts to the allowlist, ran the one real read, and updated `HISTORY.md` and `TARGETS.md`.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: `lectern/collect/sam_opportunities.py`, `lectern/tests/test_sam_opportunities.py`, the 2026-11-02 SAM.gov entry in `lectern/HISTORY.md`; the file and the report are local (`runs/sam-cache/`, `runs/<date>/sam-opportunities-*.json`, not committed).
+  - Next: I decide whether to surface only title hits, require a stronger phrase in the description, or read the 32 by hand; and whether to build the USAspending award history for lane 2. Not pushed.
+
 | 2026-10-18 | data(lectern): delta 2026-10-18: +42 new, ~7 changed, -9 gone |
 | 2026-10-18 | docs(fall-2026): one numbered folder and plan per Canvas assignment; publish_delta.py; collectors in the sync list |
 | 2026-10-18 | docs(fall-2026): publish profile.yml for exercise 06 and a layout for its film; Stripe and Writer off the watch list |

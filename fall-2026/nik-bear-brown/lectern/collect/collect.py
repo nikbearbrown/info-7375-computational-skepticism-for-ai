@@ -38,6 +38,8 @@ WORKDAY_HOSTS = {"guidehouse.wd1.myworkdayjobs.com", "gdit.wd5.myworkdayjobs.com
 ALLOWED |= WORKDAY_HOSTS
 # USAJOBS' own public search API (developer.usajobs.gov), for the federal-508 channel: it needs a key and the registered email, both kept outside the repo (see usajobs_login).
 ALLOWED.add("data.usajobs.gov")
+# SAM.gov's public Contract Opportunities extract (collect/sam_opportunities.py): the download address on sam.gov answers 303 to a signed link on its own storage host.
+ALLOWED |= {"sam.gov", "falextracts.s3.amazonaws.com"}
 HERE = lp.ROOT
 TODAY = dt.date.today().isoformat()
 USER_AGENT = "lectern (course project)"
