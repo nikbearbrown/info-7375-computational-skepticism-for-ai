@@ -21,7 +21,7 @@ What it does:
 What it cannot tell: whether a recipient is a small business (the award rows do not say), whether the description is the whole scope, and whether a firm would subcontract to anyone. A lead is a company
 to look at, not a promise. Award Amount is the amount on the award, not necessarily the 508 part of it.
 
-Writes: <out>/usaspending-primes-<date>.json   the leads and the matching awards (local, not committed)
+Writes: <out>/usaspending-primes-<date>.json   the leads and the matching awards (local, not committed: USAspending lists a sole proprietor under their own name, so a few recipients are people)
 Exit 0 ran, 2 bad input, 3 nothing could be fetched.
 """
 import os as _os, sys as _sys
@@ -224,7 +224,7 @@ def main(argv=None):
     os.makedirs(out, exist_ok=True)
     dest = os.path.join(out, f"usaspending-primes-{today}.json")
     collect.write_json(dest, {"tool": "lectern usaspending_primes", "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "window": [since, today],
-                              "note": "Companies that won or were subcontracted federal Section 508 / accessibility work, from USAspending.gov. Leads to look at, not promises. No people named.",
+                              "note": "Companies that won or were subcontracted federal Section 508 / accessibility work, from USAspending.gov. Leads to look at, not promises. A sole proprietor can be listed under their own name by USAspending: this file is local and is not committed or posted.",
                               "counts": {k: v["counts"] for k, v in res["levels"].items()}, "incomplete_queries": {k: v["incomplete_queries"] for k, v in res["levels"].items()},
                               "failed": res["failed"], "leads": leads, "matching_awards": aw})
     for level, v in res["levels"].items():
