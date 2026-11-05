@@ -49,9 +49,19 @@ class Judge(unittest.TestCase):
 
     def test_roles_that_are_not_consulting_are_named_as_such(self):
         for title, word in (("Associate Software Engineer-Hire-to-Train Program", "software"), ("Clinical Research Associate", "clinical research"), ("Service Desk Support Analyst", "service desk"),
-                            ("Attack Sensing & Warning Analyst Junior", "attack sensing"), ("Business Analyst / Tester", "tester"), ("Business & Office Management Intern, Associate", "office management")):
+                            ("Attack Sensing & Warning Analyst Junior", "attack sensing"), ("Business Analyst / Tester", "tester"), ("Business & Office Management Intern, Associate", "office management"),
+                            ("Tax Associate, Business Incentives Group - Summer 2027 (Atlanta)", "tax"), ("Assurance Intern, Risk Advisory Services - Summer 2027 (Boston)", "assurance"),
+                            ("Audit Associate - Fall 2027", "audit")):
             r = judge(title)
             self.assertEqual((r["decision"], r["reason"]), ("not-consulting", f"not a consulting role: '{word}' in the title"), title)
+
+    def test_tax_audit_and_assurance_are_whole_words_and_the_firm_is_not_read(self):
+        # added 2026-11-04: 14 of the 21 posts the Oracle boards gave were BDO tax and assurance campus roles, audit and tax work, not consulting
+        self.assertEqual(judge("Taxonomy Analyst Intern")["decision"], "post")
+        r = cj.judge_consulting({"id": "x", "company": "Tax Audit Assurance Partners", "title": "Summer Analyst Intern", "url": "u", "location_text": "Boston, MA, United States"}, KW)
+        self.assertEqual(r["decision"], "post")
+        for w in ("assurance", "audit", "tax"):
+            self.assertIn(w, KW["consulting_rule"]["not_consulting_words"])
 
     def test_a_clearance_in_the_title_is_vetoed_whatever_the_level(self):
         for title in ("Cleared Change Management Consultant", "Data Analyst in California (Secret Cleared)", "Junior Analyst, TS/SCI with Polygraph", "Consultant - Active Secret Clearance required", "Analyst, Public Trust"):
@@ -66,11 +76,36 @@ class Judge(unittest.TestCase):
         self.assertEqual(judge("Junior Analyst, TS/SCI", kw=kw)["decision"], "post")
 
     def test_the_country_gate_treats_consulting_offices_like_every_other_posting(self):
-        r = judge("Internship Strategy Consulting (m/f/d)", "Munich, Germany")
-        self.assertEqual((r["decision"], r["reason"]), ("rejected", "country not allowed: Germany"))
-        self.assertEqual(judge("2027 Research Analyst - International Arbitration - Madrid", "Madrid, Spain")["decision"], "rejected")
+        r = judge("Internship Strategy Consulting (m/f/d)", "Stockholm, Sweden")
+        self.assertEqual((r["decision"], r["reason"]), ("rejected", "country not allowed: Sweden"))
+        self.assertEqual(judge("2027 Research Analyst - International Arbitration - Singapore", "Singapore")["decision"], "rejected")
         for place in ("Paris, France", "Milan, Italy", "São Paulo, Brazil", "Lisbon, Portugal", "London, England, United Kingdom", "Sydney, New South Wales, Australia", "Toronto, Ontario, Canada"):
             self.assertEqual(judge("Summer Analyst Intern", place)["decision"], "post", place)
+
+    def test_consulting_allows_five_more_countries_than_the_main_rule_and_the_main_rule_is_not_changed(self):
+        # added 2026-11-05 (Professor Bear: a longer country list for consulting): the five countries whose early-sign titles the main list had dropped
+        self.assertEqual(KW["consulting_rule"]["extra_allowed_countries"], ["Germany", "Netherlands", "Norway", "Poland", "Spain"])
+        for place in ("Munich, Germany", "Amsterdam, Netherlands", "Oslo, Norway", "Warsaw, Poland", "Madrid, Spain"):
+            r = judge("Summer Analyst Intern", place)
+            self.assertEqual(r["decision"], "post", place)
+        self.assertEqual(judge("Summer Analyst Intern", "Stockholm, Sweden")["decision"], "rejected")
+        self.assertEqual(collect.where("Munich, Germany", KW["location_rule"])["decision"], "outside")      # the main rule's own list is untouched
+        self.assertNotIn("Germany", KW["location_rule"]["allowed_countries"])
+        kw = copy.deepcopy(KW)
+        kw["consulting_rule"]["extra_allowed_countries"] = []
+        self.assertEqual(judge("Summer Analyst Intern", "Munich, Germany", kw=kw)["decision"], "rejected")
+
+    def test_audit_remediation_is_consulting_but_an_audit_title_is_not(self):
+        # added 2026-11-05 (Professor Bear: Audit Remediation counts as consulting); 'audit' stays a not-consulting word for every other title
+        self.assertEqual(KW["consulting_rule"]["not_consulting_exceptions"], ["audit remediation"])
+        self.assertEqual(judge("Audit Remediation Analyst")["decision"], "unstated")
+        self.assertEqual(judge("Summer 2027 Audit Remediation Analyst")["decision"], "post")
+        self.assertEqual(judge("Senior Audit Remediation Analyst")["decision"], "senior-or-mid")
+        for title in ("Audit Associate - Fall 2027", "Audit Analyst Intern, Summer 2027"):
+            r = judge(title)
+            self.assertEqual((r["decision"], r["reason"]), ("not-consulting", "not a consulting role: 'audit' in the title"), title)
+        # an exception cancels only the word it contains: 'tax' beside it still counts
+        self.assertEqual(judge("Tax and Audit Remediation Analyst Intern")["decision"], "not-consulting")
 
     def test_the_k12_gate_applies_here_too(self):
         r = judge("K-12 Education Consultant Intern")
@@ -90,9 +125,9 @@ class Judge(unittest.TestCase):
 class Collector(unittest.TestCase):
     def test_the_boards_it_reads_are_the_kept_firms_of_targets_json_and_none_is_on_the_watch_list(self):
         boards = consulting_collect.boards_from_targets(DOC)
-        self.assertEqual(sorted(b[0] for b in boards), ["Accenture Federal Services", "Alira Health", "Altman Solon", "Analysys Mason", "Ankura", "Baringa", "Berkeley Research Group",
-                                                        "Brattle Group", "Guidehouse", "Huron Consulting"])
-        self.assertEqual({b[1] for b in boards}, {"greenhouse", "smartrecruiters", "workday"})
+        self.assertEqual(sorted(b[0] for b in boards), ["ABS Group", "Abt Associates", "Accenture Federal Services", "Alira Health", "Altman Solon", "Analysys Mason", "Ankura", "BDO", "BDO (campus site)", "Baringa",
+                                                        "Berkeley Research Group", "Brattle Group", "Guidehouse", "Hexaware Technologies", "Huron Consulting", "The Hackett Group (incl. Archstone Consulting)"])
+        self.assertEqual({b[1] for b in boards}, {"greenhouse", "smartrecruiters", "workday", "oracle"})
         with open(lp.config("sources.json")) as f:
             sources = json.load(f)
         watched = {b["company"] for s in sources["sources"] for b in s["boards"]}
@@ -113,6 +148,8 @@ class Collector(unittest.TestCase):
                     raise OSError("down")
                 if provider == "workday":
                     return {"total": 1, "complete": True, "jobs": [{"title": "Junior Analyst", "externalPath": "/job/Boston/Junior-Analyst_1", "locationsText": "Boston, MA", "bulletFields": ["1"]}]}
+                if provider == "oracle":
+                    return {"total": 1, "complete": True, "jobs": [{"Id": "9", "Title": "Junior Analyst", "PostedDate": "2026-11-02", "PrimaryLocation": "Boston, MA, United States", "secondaryLocations": []}]}
                 return {"jobs": [{"id": 5, "title": "Junior Analyst", "absolute_url": "u", "location": {"name": "London"}}]} if provider == "greenhouse" else {"jobs": []}
             consulting_collect.fetch_list = fake
             consulting_collect.PAUSE = 0

@@ -4,7 +4,7 @@
     python3 consulting_collect.py [--out runs/DATE] [--only SLUG]
 
 The firms are the `consulting` section of config/targets.json with status `active` (a board Lectern's own readers can read:
-Greenhouse, Ashby, SmartRecruiters, Workday). One request per board (Workday: one per page of 20 postings), a pause between
+Greenhouse, Ashby, SmartRecruiters, Workday, Oracle). One request per board (Workday: one per page of 20 postings; Oracle: one per page of 25), a pause between
 requests, the same host list and user agent as collect.py. It reads the postings' LISTS (title, place, link), never the ad text: the consulting judge reads titles.
 
 This is deliberately NOT part of collect.py: collect.py reads the watch list for the #professor-bear feed, and the consulting
@@ -45,6 +45,8 @@ def fetch_list(provider, slug):
         return collect.fetch_board("smartrecruiters", slug, want_detail=False)          # the list only: no call per posting
     if provider == "workday":
         return collect.fetch_workday(slug, pause=PAUSE)                                  # the list only: one POST a page, a pause between pages
+    if provider == "oracle":
+        return collect.fetch_oracle(slug, pause=PAUSE)                                   # the list only: one GET a page of 25, a pause between pages
     if provider == "usajobs":
         return collect.fetch_usajobs(slug, pause=PAUSE)                                  # USAJOBS' search API: a key and an email from ~/.usajobs, the list only
     raise collect.InputError(f"unknown provider {provider!r}")
@@ -75,6 +77,19 @@ def workday_place(j):
         return loc
     m = re.match(r"/job/([^/]+)/", j.get("externalPath") or "")
     return re.sub(r"\s+", " ", m.group(1).replace("-", " ")).strip() if m else ""
+
+
+def oracle_place(j):
+    """An Oracle list item's places in the words the judges read: the main place (it names its country, 'Atlanta, GA, United States'), then each other place the
+    posting names. The reply's two-letter country code is not used: 'IN' is not a word the country reader knows."""
+    places = []
+    for x in [j.get("PrimaryLocation")] + list(j.get("secondaryLocations") or []):
+        if isinstance(x, dict):
+            x = x.get("Name") or x.get("LocationName") or x.get("name")
+        x = (x or "").strip()
+        if x and x not in places:
+            places.append(x)
+    return " · ".join(places)
 
 
 def truthy(v):
@@ -108,6 +123,10 @@ def records(provider, firm, slug, payload):
             ref = (j.get("bulletFields") or [None])[0]
             r = dict(external_path=j.get("externalPath"), source_id=str(ref or j.get("externalPath")), title=(j.get("title") or "").strip(), url=f"https://{host}/en-US/{site}{j.get('externalPath')}",
                      location_text=workday_place(j), department="", date_posted=workday_posted(j.get("postedOn")))
+        elif provider == "oracle":
+            host, site = collect.oracle_parts(slug)
+            r = dict(source_id=str(j.get("Id")), title=(j.get("Title") or "").strip(), url=f"https://{host}/hcmUI/CandidateExperience/en/sites/{site}/job/{j.get('Id')}",
+                     location_text=oracle_place(j), department="", date_posted=collect.iso_date(j.get("PostedDate")))
         elif provider == "usajobs":
             # the employer is the agency that posts it, so the posting is shown under its name, not under 'USAJOBS'
             r = dict(source_id=str(j.get("object_id") or j.get("id")), title=(j.get("title") or "").strip(), url=j.get("url"), location_text=usajobs_place(j),
@@ -158,9 +177,9 @@ def name_the_places(recs, slug, kw, pause=None):
 
 
 def board_ok(name, provider, got, payload):
-    """The status line of a board that answered. A Workday list says how many postings it holds: if fewer came back, the line says so."""
+    """The status line of a board that answered. A Workday or Oracle list says how many postings it holds: if fewer came back, the line says so."""
     st = {"company": name, "provider": provider, "status": "ok", "postings": len(got)}
-    if provider in ("workday", "usajobs"):
+    if provider in ("workday", "oracle", "usajobs"):
         st.update(listed_total=payload["total"], complete=bool(payload["complete"]))
         if provider == "usajobs":
             st["queries"] = payload["queries"]

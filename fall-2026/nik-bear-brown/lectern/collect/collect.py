@@ -36,6 +36,12 @@ ALLOWED = {"boards-api.greenhouse.io", "api.ashbyhq.com", "api.smartrecruiters.c
 WORKDAY_HOSTS = {"guidehouse.wd1.myworkdayjobs.com", "gdit.wd5.myworkdayjobs.com", "unisys.wd5.myworkdayjobs.com", "salesforce.wd12.myworkdayjobs.com",
                  "huron.wd1.myworkdayjobs.com", "alirahealth.wd3.myworkdayjobs.com", "ankura.wd5.myworkdayjobs.com", "thinkbrg.wd5.myworkdayjobs.com"}
 ALLOWED |= WORKDAY_HOSTS
+# Oracle Recruiting Cloud (HCM) candidate sites, one host each (a host can hold several sites; the site number names the board), only the ones whose employer's
+# terms were read and hold no clause against it (HISTORY.md 2026-11-03). None of the three hosts has a robots.txt (each answers 404).
+ORACLE_HOSTS = {"ebqb.fa.us2.oraclecloud.com", "egpy.fa.us2.oraclecloud.com", "eeih.fa.us2.oraclecloud.com",
+                "hbbq.fa.us2.oraclecloud.com",                       # ABS Group (added 2026-11-05)
+                "fa-etqo-saasfaprod1.fa.ocs.oraclecloud.com"}        # Hexaware: its vanity address jobs.hexaware.com only loads this host's page
+ALLOWED |= ORACLE_HOSTS
 # USAJOBS' own public search API (developer.usajobs.gov), for the federal-508 channel: it needs a key and the registered email, both kept outside the repo (see usajobs_login).
 ALLOWED.add("data.usajobs.gov")
 # SAM.gov's public Contract Opportunities extract (collect/sam_opportunities.py): the download address on sam.gov answers 303 to a signed link on its own storage host.
@@ -138,6 +144,47 @@ def fetch_workday(slug, pause=1.2):
             break
     # a total of exactly 2000 is the board's display cap, not a count (Accenture's list went on past it): not complete
     return {"total": total or 0, "jobs": jobs, "pages": pages, "complete": len(jobs) >= (total or 0) and total != WORKDAY_DISPLAY_CAP}
+
+
+ORACLE_SLUG = re.compile(r"^([a-z0-9-]+)\.fa\.([a-z0-9-]+)/(CX_[0-9]+)$")
+ORACLE_PAGE = 25           # postings a request: the number the candidate site's own page asks for
+ORACLE_MAX_PAGES = 200     # 5,000 postings: a stop in case a board never says it has ended
+
+
+def oracle_parts(slug):
+    """'ebqb.fa.us2/CX_1001' -> ('ebqb.fa.us2.oraclecloud.com', 'CX_1001'). The site number is the board: the page's own `data-sitenumber`,
+    which the public address of a site (…/sites/BDOEntryLevelCareers) hides."""
+    m = ORACLE_SLUG.match(slug or "")
+    if not m:
+        raise InputError(f"not an Oracle board id (pod.fa.region/CX_number): {slug!r}")
+    return f"{m.group(1)}.fa.{m.group(2)}.oraclecloud.com", m.group(3)
+
+
+def fetch_oracle(slug, pause=1.2):
+    """Every posting on one Oracle candidate site's public list: one GET a page of 25, a pause between pages, newest first, never the ad text (the reply carries a
+    short description; this reader does not keep it). -> {"total": the count the site gives, "jobs": [...], "pages": n, "complete": bool}.
+    A reply with no list is an error, not an empty board."""
+    host, site = oracle_parts(slug)
+    jobs, seen, total, pages, received = [], set(), None, 0, 0
+    while pages < ORACLE_MAX_PAGES:
+        if pages:
+            time.sleep(pause)
+        page = get_json(f"https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations"
+                        f"&finder=findReqs;siteNumber={site},limit={ORACLE_PAGE},offset={received},sortBy=POSTING_DATES_DESC")
+        pages += 1
+        items = page.get("items")
+        got = items[0].get("requisitionList") if isinstance(items, list) and items and isinstance(items[0], dict) else None
+        if not isinstance(got, list):
+            raise ValueError("no requisitionList in the reply")
+        if total is None:
+            total = int(items[0].get("TotalJobsCount") or 0)
+        received += len(got)
+        fresh = [j for j in got if j.get("Id") not in seen]               # the list can shift while it is read: a posting counts once
+        seen.update(j.get("Id") for j in fresh)
+        jobs.extend(fresh)
+        if not got or received >= total:
+            break
+    return {"total": total or 0, "jobs": jobs, "pages": pages, "complete": len(jobs) >= (total or 0)}
 
 
 USAJOBS_DIR = os.path.join(os.path.expanduser("~"), ".usajobs")

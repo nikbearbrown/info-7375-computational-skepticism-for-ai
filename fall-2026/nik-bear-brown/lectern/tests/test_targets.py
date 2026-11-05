@@ -94,11 +94,11 @@ class Targets(unittest.TestCase):
             self.assertTrue(t["why"] and c["feed_names"], t["id"])
             self.assertNotIn("h1b", json.dumps(t).lower(), t["id"])           # a third party's unsourced flag is not stored anywhere
             if c["verdict"] == "keep":
-                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters", "workday"), t["id"])
+                self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters", "workday", "oracle"), t["id"])
                 self.assertTrue(t["data"] and c["board"]["slug"], t["id"])
             if c["verdict"] == "to-do":
                 self.assertTrue(t["todo"], t["id"])
-        self.assertEqual(sum(1 for t in firms if t["status"] == "active"), 10)
+        self.assertEqual(sum(1 for t in firms if t["status"] == "active"), 16)
 
     def test_a_federal_508_employer_carries_a_verdict_a_status_to_match_a_kind_and_what_the_research_found(self):
         emps = [t for t in T if t["section"] == "federal508"]

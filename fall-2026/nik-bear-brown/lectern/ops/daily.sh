@@ -28,4 +28,7 @@ python3 audit/churn.py --write 2>/dev/null || echo "churn needs at least two sna
 echo "== faculty listings"
 python3 collect/faculty_feed.py $SEND
 
+echo "== consulting listings (#consulting-firm; ops/consulting_daily.sh, added 2026-11-05)"
+bash ops/consulting_daily.sh $([[ -z "$SEND" ]] && echo --no-post) || echo "consulting stopped (see above); the rest of the day is unaffected"
+
 echo "done $DATE. Nothing was committed or pushed."

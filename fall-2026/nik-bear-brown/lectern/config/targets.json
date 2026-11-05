@@ -3917,29 +3917,40 @@
       "name": "Abt Associates",
       "type": "consulting-firm",
       "section": "consulting",
-      "status": "no-reader",
-      "why": "GET answered 200; linked from the firm's careers page",
-      "access": "none",
-      "provider": "",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (oracle, `egpy.fa.us2/CX_3001`, the site 'Abt Global'), read 2026-11-03: the host has no robots.txt (404); no terms-of-use page was found on Abt's site (its home page links only a privacy policy), so there is no clause to weigh, which is not a licence; the site names the employer in its own title. The list is read by GET, a page of 25 at a time with a pause, titles and places only. Oracle's own terms for hosted candidate sites could not be read (not looked for beyond the host's robots.txt, which does not exist: it answers 404).",
+      "access": "api",
+      "provider": "oracle",
       "data": [
         {
-          "label": "board or careers page",
-          "url": "https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt/jobs"
+          "label": "board page",
+          "url": "https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://egpy.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_3001,limit=25,offset=0,sortBy=POSTING_DATES_DESC",
+          "call": true
         }
       ],
-      "reader": "",
-      "status_note": "No reader for it yet",
-      "todo": "An Oracle HCM reader (3 consulting firms and 2 tagged companies). The page answers; its REST form needs the site number and was not tested. Not built.",
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
+      "todo": "",
       "consulting": {
-        "verdict": "to-do",
+        "verdict": "keep",
         "tier": 2,
         "kind": "consulting",
-        "system": "oracle hcm candidate experience",
+        "system": "oracle",
         "researched": "2026-10-28",
         "feed_names": [
           "Abt Associates"
         ],
-        "what_answered": "GET answered 200; linked from the firm's careers page"
+        "what_answered": "GET /hcmRestApi/resources/latest/recruitingCEJobRequisitions (site CX_3001) answered 200 with JSON, no login (2026-11-03); the site number was read from the page's own data-sitenumber; Abt's careers page links the site.",
+        "board": {
+          "provider": "oracle",
+          "slug": "egpy.fa.us2/CX_3001"
+        },
+        "oracle_terms_checked": "2026-11-03",
+        "postings_2026_11_03": 8
       }
     },
     {
@@ -4350,29 +4361,81 @@
       "name": "BDO",
       "type": "consulting-firm",
       "section": "consulting",
-      "status": "no-reader",
-      "why": "GET answered 200; both site names linked from the firm's careers page",
-      "access": "none",
-      "provider": "",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (oracle, `ebqb.fa.us2/CX_1`, the experienced-hires site 'BDO USA Experienced Career Site'), read 2026-11-03: the host has no robots.txt (404); BDO's website terms and its legal page for job seekers hold no clause on robots, scraping, crawling, data mining or automated means (the text was searched for each); the site names the employer in its own title. The list is read by GET, a page of 25 at a time with a pause, titles and places only. Oracle's own terms for hosted candidate sites could not be read (not looked for beyond the host's robots.txt, which does not exist: it answers 404).",
+      "access": "api",
+      "provider": "oracle",
       "data": [
         {
-          "label": "board or careers page",
-          "url": "https://ebqb.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/BDOEntryLevelCareers"
+          "label": "board page",
+          "url": "https://ebqb.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/BDOExperiencedCareers"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://ebqb.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC",
+          "call": true
         }
       ],
-      "reader": "",
-      "status_note": "No reader for it yet",
-      "todo": "An Oracle HCM reader (3 consulting firms and 2 tagged companies). The page answers; its REST form needs the site number and was not tested. Not built.",
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
+      "todo": "",
       "consulting": {
-        "verdict": "to-do",
+        "verdict": "keep",
         "tier": 2,
         "kind": "consulting",
-        "system": "oracle hcm candidate experience",
+        "system": "oracle",
         "researched": "2026-10-28",
         "feed_names": [
           "BDO"
         ],
-        "what_answered": "GET answered 200; both site names linked from the firm's careers page"
+        "what_answered": "GET /hcmRestApi/resources/latest/recruitingCEJobRequisitions (site CX_1) answered 200 with JSON, no login (2026-11-03); the site number was read from the page's own data-sitenumber; BDO's careers page links the site.",
+        "board": {
+          "provider": "oracle",
+          "slug": "ebqb.fa.us2/CX_1"
+        },
+        "oracle_terms_checked": "2026-11-03",
+        "postings_2026_11_03": 595
+      }
+    },
+    {
+      "id": "consulting-bdo-campus",
+      "name": "BDO (campus site)",
+      "type": "consulting-firm",
+      "section": "consulting",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (oracle, `ebqb.fa.us2/CX_1001`, the campus site 'BDO USA Campus Career Site': BDO's entry-level hiring), read 2026-11-03. Same host, same checks and same reading as BDO's experienced-hires site (the host has no robots.txt; BDO's website terms and job-seeker legal page hold no clause on automated means). A second target because the site number, not the firm, is the board; one requisition can be listed on both sites, and a feed counts it once by its id.",
+      "access": "api",
+      "provider": "oracle",
+      "data": [
+        {
+          "label": "board page",
+          "url": "https://ebqb.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/BDOEntryLevelCareers"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://ebqb.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1001,limit=25,offset=0,sortBy=POSTING_DATES_DESC",
+          "call": true
+        }
+      ],
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
+      "todo": "",
+      "consulting": {
+        "verdict": "keep",
+        "tier": 2,
+        "kind": "consulting",
+        "system": "oracle",
+        "researched": "2026-10-28",
+        "feed_names": [
+          "BDO (campus site)"
+        ],
+        "what_answered": "GET /hcmRestApi/resources/latest/recruitingCEJobRequisitions (site CX_1001) answered 200 with JSON, no login (2026-11-03); the site number was read from the page's own data-sitenumber; BDO's careers page links the site.",
+        "board": {
+          "provider": "oracle",
+          "slug": "ebqb.fa.us2/CX_1001"
+        },
+        "oracle_terms_checked": "2026-11-03",
+        "postings_2026_11_03": 82
       }
     },
     {
@@ -4714,29 +4777,40 @@
       "name": "The Hackett Group (incl. Archstone Consulting)",
       "type": "consulting-firm",
       "section": "consulting",
-      "status": "no-reader",
-      "why": "careers page answered 200 and links the site Archstone Consulting has been a Hackett division since 2009 (web search, secondary); the directory lists Archstone separately with HQ Miami.",
-      "access": "none",
-      "provider": "",
+      "status": "active",
+      "why": "Readable by Lectern's own readers (oracle, `eeih.fa.us2/CX_6`, the site 'The Hackett Group'), read 2026-11-03: the host has no robots.txt (404); Hackett's terms of use hold no clause on robots, scraping or automated means, only a 'Limited Use of the Site' clause that lets a visitor view, copy or print for information and non-commercial use, which a course project reading public titles and places meets (the one judgement call); the site names the employer in its own title. The list is read by GET, a page of 25 at a time with a pause, titles and places only. Archstone Consulting is a Hackett division (web search, secondary). Oracle's own terms for hosted candidate sites could not be read (not looked for beyond the host's robots.txt, which does not exist: it answers 404).",
+      "access": "api",
+      "provider": "oracle",
       "data": [
         {
-          "label": "board or careers page",
-          "url": "https://eeih.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6/"
+          "label": "board page",
+          "url": "https://eeih.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://eeih.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_6,limit=25,offset=0,sortBy=POSTING_DATES_DESC",
+          "call": true
         }
       ],
-      "reader": "",
-      "status_note": "No reader for it yet",
-      "todo": "An Oracle HCM reader (3 consulting firms and 2 tagged companies). The page answers; its REST form needs the site number and was not tested. Not built.",
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
+      "todo": "",
       "consulting": {
-        "verdict": "to-do",
+        "verdict": "keep",
         "tier": 2,
         "kind": "consulting",
-        "system": "oracle hcm candidate experience",
+        "system": "oracle",
         "researched": "2026-10-28",
         "feed_names": [
           "The Hackett Group (incl. Archstone Consulting)"
         ],
-        "what_answered": "careers page answered 200 and links the site"
+        "what_answered": "GET /hcmRestApi/resources/latest/recruitingCEJobRequisitions (site CX_6) answered 200 with JSON, no login (2026-11-03), total 406 on the first page; the site number was read from the page's own data-sitenumber; Hackett's careers page links the site.",
+        "board": {
+          "provider": "oracle",
+          "slug": "eeih.fa.us2/CX_6"
+        },
+        "oracle_terms_checked": "2026-11-03",
+        "postings_2026_11_03": 406
       }
     },
     {
@@ -4849,30 +4923,46 @@
     {
       "id": "consulting-abs-group",
       "name": "ABS Group",
-      "type": "not-consulting-firm",
+      "type": "consulting-firm",
       "section": "consulting",
-      "status": "dropped",
-      "why": "Not a consulting firm: assurance and risk consulting for engineered assets. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
-      "access": "none",
-      "provider": "",
+      "status": "active",
+      "why": "On the list at Professor Bear's word, 2026-11-05. It was tagged 'not a consulting firm' on 2026-10-28 (assurance and risk consulting for engineered assets), its postings are mostly engineering and inspection roles, so the judge's role-word test keeps almost none (2026-11-05: 110 of 124 titles have no consulting role word). Readable by Lectern's own readers (oracle, `hbbq.fa.us2/CX_1`, ABS Group's candidate site), read once on 2026-11-05: the host has no robots.txt (404); ABS Group's Terms of Use (limitation of liability and use of the site) hold no clause on robots, scraping or automated means. The list is read by GET, a page of 25 at a time with a pause, titles and places only. Oracle's own terms for hosted candidate sites could not be read (not looked for beyond the host's robots.txt, which does not exist: it answers 404).",
+      "access": "api",
+      "provider": "oracle",
       "data": [
+        {
+          "label": "board page",
+          "url": "https://hbbq.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://hbbq.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC",
+          "call": true
+        },
         {
           "label": "careers page",
           "url": "https://www.abs-group.com/Careers-at-ABS-Group/"
         }
       ],
-      "reader": "",
-      "status_note": "Not on the consulting list",
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
       "todo": "",
       "consulting": {
-        "verdict": "drop",
+        "verdict": "keep",
         "tier": 2,
         "kind": "other",
-        "system": "oracle hcm candidate experience",
+        "system": "oracle",
         "researched": "2026-10-28",
         "feed_names": [
           "ABS Group"
-        ]
+        ],
+        "what_answered": "GET /hcmRestApi/resources/latest/recruitingCEJobRequisitions (site CX_1) answered 200 with JSON, no login (2026-11-05), total 124 on the first page; the site number was read from the page's own data-sitenumber; the firm's careers page links the site.",
+        "board": {
+          "provider": "oracle",
+          "slug": "hbbq.fa.us2/CX_1"
+        },
+        "oracle_terms_checked": "2026-11-05",
+        "postings_2026_11_05": 124
       }
     },
     {
@@ -5216,30 +5306,46 @@
     {
       "id": "consulting-hexaware",
       "name": "Hexaware Technologies",
-      "type": "not-consulting-firm",
+      "type": "consulting-firm",
       "section": "consulting",
-      "status": "dropped",
-      "why": "Not a consulting firm: IT services. Tagged, not treated as one. Whether to keep any of these is Professor Bear's decision.",
-      "access": "none",
-      "provider": "",
+      "status": "active",
+      "why": "On the list at Professor Bear's word, 2026-11-05. It was tagged 'not a consulting firm' on 2026-10-28 (IT services); its postings are mostly technology roles with no consulting role word (2026-11-05: 208 of 264), and the country gate removes the India and Mexico ones (32). Readable by Lectern's own readers (oracle, `fa-etqo-saasfaprod1.fa.ocs/CX_1`: the host behind its vanity address jobs.hexaware.com, whose page loads that host's candidate site), read once on 2026-11-05: the host has no robots.txt (404); Hexaware's site has no terms-of-use page that was found (the likely addresses answer 404), and its disclaimer and privacy policy hold no clause on robots, scraping or automated means. The list is read by GET, a page of 25 at a time with a pause, titles and places only. Oracle's own terms for hosted candidate sites could not be read (not looked for beyond the host's robots.txt, which does not exist: it answers 404).",
+      "access": "api",
+      "provider": "oracle",
       "data": [
+        {
+          "label": "board page",
+          "url": "https://fa-etqo-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://fa-etqo-saasfaprod1.fa.ocs.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber=CX_1,limit=25,offset=0,sortBy=POSTING_DATES_DESC",
+          "call": true
+        },
         {
           "label": "careers page",
           "url": "https://jobs.hexaware.com/"
         }
       ],
-      "reader": "",
-      "status_note": "Not on the consulting list",
+      "reader": "collect/consulting_collect.py",
+      "status_note": "Read by collect/consulting_collect.py for the consulting channel only",
       "todo": "",
       "consulting": {
-        "verdict": "drop",
+        "verdict": "keep",
         "tier": 2,
         "kind": "other",
-        "system": "oracle hcm candidate experience",
+        "system": "oracle",
         "researched": "2026-10-28",
         "feed_names": [
           "Hexaware Technologies"
-        ]
+        ],
+        "what_answered": "GET /hcmRestApi/resources/latest/recruitingCEJobRequisitions (site CX_1) answered 200 with JSON, no login (2026-11-05), total 264 on the first page; the site number was read from the page's own data-sitenumber; the firm's careers page links the site.",
+        "board": {
+          "provider": "oracle",
+          "slug": "fa-etqo-saasfaprod1.fa.ocs/CX_1"
+        },
+        "oracle_terms_checked": "2026-11-05",
+        "postings_2026_11_05": 264
       }
     },
     {

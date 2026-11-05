@@ -24,7 +24,7 @@ def rec(n, title, loc, company="Made Up Consulting"):
 ROWS = [rec(1, "2027 Research Analyst (Economics)", "Boston, Massachusetts, United States"), rec(2, "2027 Research Analyst (Economics)", "Chicago, Illinois, United States"),
         rec(3, "2027 Research Analyst (Economics)", "Washington, District of Columbia, United States"), rec(4, "Summer 2027 Intern, Strategy", "London, England, United Kingdom"),
         rec(5, "Senior Consultant", "Boston, MA"), rec(6, "Business Analyst", "Boston, MA"), rec(7, "Cleared Junior Analyst", "Arlington, VA"),
-        rec(8, "Graduate Analyst (m/f/d)", "Munich, Germany"), rec(9, "Associate Software Engineer", "Boston, MA")]
+        rec(8, "Graduate Analyst (m/f/d)", "Stockholm, Sweden"), rec(9, "Associate Software Engineer", "Boston, MA")]
 
 
 class Feed(unittest.TestCase):
@@ -85,7 +85,7 @@ class Feed(unittest.TestCase):
         posted = out.split("to post:")[1].split("held back, no level or early sign")[0]
         self.assertIn("Business Analyst", listing)
         self.assertNotIn("Senior Consultant", posted)
-        self.assertNotIn("Munich", posted)
+        self.assertNotIn("Stockholm", posted)
         self.assertNotIn("Software Engineer", posted)
 
     def test_sending_is_refused_while_the_rules_say_off_and_a_first_send_needs_post_all(self):
