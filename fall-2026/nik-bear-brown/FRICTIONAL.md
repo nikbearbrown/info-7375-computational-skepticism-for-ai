@@ -1179,7 +1179,6 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-26 | feat(fall-2026): rank companies by demand, not postings by fit; Google's absence was an API artefact |
 | 2026-10-07 | chore(fall-2026): first real sync; add demand_report.py to the shared list; log the show-tell films |
 | 2026-10-07 | docs(fall-2026): add the project software design document, written by Gru in silent mode |
-| 2026-11-05 | feat(fall-2026): consulting channel live: Oracle HCM reader, ABS Group and Hexaware boards, tax and audit out, Audit Remediation in, five more countries, daily run, baseline |
 ### 2026-11-02 — California school districts as a lead list
 
 - **Date and what I was working on:** 2026-11-02. A friend starting a small Section 508 testing firm named school districts, county offices of education and the schools for the deaf and blind among her markets. I said to start with schools.
@@ -1244,3 +1243,18 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-02 | feat(fall-2026): Lectern v0.6.5, a federal Section 508 search for remote or contract work: 67 employers in targets.json (17 readable), a judge, a collector, a dry-run poster (posting off) |
 | 2026-11-02 | docs(fall-2026): file the federal 508 brief in TARGETS.md section K.2: what the work needs, the four lanes, what Lectern can see (no rule change) |
 | 2026-11-02 | docs(fall-2026): GitHub pushes rows for the federal 508 search and its brief |
+| 2026-11-05 | docs(fall-2026): note in TARGETS.md K.2 that the federal-508 friend's answers are kept privately (no name, no rule change) |
+| 2026-11-05 | feat(fall-2026): a Workday reader for Lectern's federal-508 and consulting channels, nine boards read, seven employers left unread by their terms or robots.txt |
+| 2026-11-05 | feat(fall-2026): the consulting reader looks up the places of count-only Workday posts it would post; 7 requests, 2 drop out, 69 would be posted |
+| 2026-11-05 | feat(fall-2026): a USAJOBS reader for the federal-508 channel, built and tested, no real request made yet (the key stays in ~/.usajobs, outside the repo) |
+| 2026-11-05 | feat(fall-2026): read SAM.gov's public contract-opportunities extract (no key): once-a-day check, cp1252, diff on NoticeId; 69,635 notices read, none is 508 work as such |
+| 2026-11-05 | feat(fall-2026): stronger 508 phrases for SAM.gov notices (32 surfaced -> 10); USAJOBS read for real (142 postings, none to post) and added as one active federal-508 entry |
+| 2026-11-05 | feat(fall-2026): USAJOBS ads are read for 508 work phrases when the title has none (142 postings: 2 match, both onsite, none to post) |
+| 2026-11-05 | feat(fall-2026): prime-contractor leads for 508 work from USAspending (no key): 230 awards, 135 recipients, 21 primes that subcontract it |
+| 2026-11-05 | fix(fall-2026): say that USAspending can list a sole proprietor under their own name, so the lead file stays local |
+| 2026-11-05 | feat(fall-2026): USAspending leads carry business types: of 134 read, 111 small, 44 women-owned small, 6 in California |
+| 2026-11-05 | feat(fall-2026): California school districts and county offices of education as a lead list (state open data, 1,006 offices ranked by enrollment; the offices asked to be left out stay in a local file) |
+| 2026-11-05 | docs(fall-2026): children's hospitals and health centers: HRSA disallows AI agents and CMS denies a script, so nothing is fetched; the files are to be downloaded by hand |
+| 2026-11-05 | feat(fall-2026): SAM.gov set-aside filter for VA, DoD and FAA (research for a founder; nothing found, nothing posted) |
+| 2026-11-05 | feat(fall-2026): consulting channel live: Oracle HCM reader, ABS Group and Hexaware boards, tax and audit out, Audit Remediation in, five more countries, daily run, baseline |
+| 2026-11-05 | docs(fall-2026): GitHub pushes rows for the 14 commits of 2026-11-05: consulting channel live, the federal 508 readers and lead lists |
