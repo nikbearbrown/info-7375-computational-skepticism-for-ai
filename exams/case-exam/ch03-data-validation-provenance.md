@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Dana leads care management for a hospital network. She wants a model that, at the moment a patient is discharged, flags who is likely to be readmitted within 30 days, so that nurses can phone the highest-risk patients first. Her team has three years of discharge records. She asked an AI analyst to build the model and report how well it works.
+Divya leads care management for a hospital network. She wants a model that, at the moment a patient is discharged, flags who is likely to be readmitted within 30 days, so that nurses can phone the highest-risk patients first. Her team has three years of discharge records. She asked an AI analyst to build the model and report how well it works.
 
 ## 2. The instruction given to the AI analyst
 
@@ -32,7 +32,7 @@ Dana leads care management for a hospital network. She wants a model that, at th
 1. **(5 points)** What is wrong with the agent's model and its 0.94? Name the problem with the exact term for it.
 2. **(2 points)** Describe the single check or re-run you would ask for that shows whether the 0.94 is real.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Dana why the model cannot be used for its purpose as built. Use no technical terms.
+4. **(1 point)** In two sentences, tell Divya why the model cannot be used for its purpose as built. Use no technical terms.
 
 ---
 

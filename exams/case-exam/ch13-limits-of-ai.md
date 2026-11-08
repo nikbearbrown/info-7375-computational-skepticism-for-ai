@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Dr. Rahman is chief medical officer of a health network with twelve rural clinics. A vendor's AI triage assistant tells clinic staff which patients need urgent attention. At a city hospital pilot it scored 99% on test cases, and the vendor wants the clinics to stop requiring a nurse to review each triage decision. Dr. Rahman asked an AI agent to review the vendor's plan and recommend whether to agree.
+Professor Bear is chief medical officer of a health network with twelve rural clinics. A vendor's AI triage assistant tells clinic staff which patients need urgent attention. At a city hospital pilot it scored 99% on test cases, and the vendor wants the clinics to stop requiring a nurse to review each triage decision. Professor Bear asked an AI agent to review the vendor's plan and recommend whether to agree.
 
 ## 2. The instruction given to the AI agent
 
@@ -30,7 +30,7 @@ Dr. Rahman is chief medical officer of a health network with twelve rural clinic
 1. **(5 points)** What is wrong with the agent's reasoning for removing the review step? Name the limit the agent is denying, with the exact term.
 2. **(2 points)** Name one check or condition you would require before any review step is removed.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Dr. Rahman why more data will not make the nurse review unnecessary. Use no technical terms.
+4. **(1 point)** In two sentences, tell Professor Bear why more data will not make the nurse review unnecessary. Use no technical terms.
 
 ---
 

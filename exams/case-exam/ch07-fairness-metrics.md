@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Rosa is chief people officer at a staffing firm that uses a model to shortlist résumés for recruiters. The firm's written fairness policy says the screening model must satisfy "equalized odds" across gender, and the board will review compliance next week. She asked an AI analyst to check the model against that policy.
+Rui is chief people officer at a staffing firm that uses a model to shortlist résumés for recruiters. The firm's written fairness policy says the screening model must satisfy "equalized odds" across gender, and the board will review compliance next week. She asked an AI analyst to check the model against that policy.
 
 ## 2. The instruction given to the AI analyst
 
@@ -32,7 +32,7 @@ Rosa is chief people officer at a staffing firm that uses a model to shortlist r
 1. **(5 points)** What is wrong with the agent's conclusion? Name the criterion the agent actually measured and the one the policy requires.
 2. **(2 points)** Name the specific quantities you would ask the agent to compute to test the policy.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Rosa what the audit has and has not shown. Use no technical terms.
+4. **(1 point)** In two sentences, tell Rui what the audit has and has not shown. Use no technical terms.
 
 ---
 

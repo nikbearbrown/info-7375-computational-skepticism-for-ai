@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Jonah is the product lead at a language-learning app. His team tested a new onboarding flow in an A/B test and he must decide whether to roll it out to everyone, to one group of users, or not at all. He asked an AI analyst to find out whether the new flow helps and which users benefit. The company has about 60,000 users in the test.
+Jun is the product lead at a language-learning app. His team tested a new onboarding flow in an A/B test and he must decide whether to roll it out to everyone, to one group of users, or not at all. He asked an AI analyst to find out whether the new flow helps and which users benefit. The company has about 60,000 users in the test.
 
 ## 2. The instruction given to the AI analyst
 
@@ -31,7 +31,7 @@ Jonah is the product lead at a language-learning app. His team tested a new onbo
 1. **(5 points)** What is the statistical problem with the agent's finding? Name it with the exact term.
 2. **(2 points)** Name two specific things you would ask the agent to do (a calculation or a new test) to find out whether the segment result is real.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, explain to Jonah why he should not build a campaign yet. Use no technical terms.
+4. **(1 point)** In two sentences, explain to Jun why he should not build a campaign yet. Use no technical terms.
 
 ---
 

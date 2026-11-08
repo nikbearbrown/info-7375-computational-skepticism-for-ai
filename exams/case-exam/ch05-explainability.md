@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Tomas is a credit officer at a community bank. About a third of small-loan applicants are declined by the bank's scoring model, and many ask what they could change to be approved. He wants a short, honest explanation he can give them. He asked an AI analyst to explain what drives the model's declines and what applicants can do about it.
+Tarun is a credit officer at a community bank. About a third of small-loan applicants are declined by the bank's scoring model, and many ask what they could change to be approved. He wants a short, honest explanation he can give them. He asked an AI analyst to explain what drives the model's declines and what applicants can do about it.
 
 ## 2. The instruction given to the AI analyst
 
@@ -36,7 +36,7 @@ Tomas is a credit officer at a community bank. About a third of small-loan appli
 1. **(5 points)** What is wrong with the agent's interpretation and advice? Name the problem with the exact term for it.
 2. **(2 points)** Name one check or kind of analysis you would ask for before telling applicants what to change.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Tomas what the ranking does and does not tell him. Use no technical terms.
+4. **(1 point)** In two sentences, tell Tarun what the ranking does and does not tell him. Use no technical terms.
 
 ---
 

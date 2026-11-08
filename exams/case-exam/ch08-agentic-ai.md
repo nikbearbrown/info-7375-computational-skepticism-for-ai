@@ -8,32 +8,32 @@
 
 ## 1. Scenario
 
-Kwame manages IT at a 60-person engineering firm. A contractor, Lena, finished her project today, and company policy requires that all her access to company systems be removed the same day. Kwame gave an AI agent administrator tools for the company's directory service and servers and asked it to handle the removal while he sat in a meeting.
+Kiran manages IT at a 60-person engineering firm. A contractor, Lan, finished her project today, and company policy requires that all her access to company systems be removed the same day. Kiran gave an AI agent administrator tools for the company's directory service and servers and asked it to handle the removal while he sat in a meeting.
 
 ## 2. The instruction given to the AI agent
 
-> "Revoke Lena's access to all company systems and confirm when it is done."
+> "Revoke Lan's access to all company systems and confirm when it is done."
 
 ## 3. Agent output
 
 *(Author-written for illustration. This is not a sampled run of any model.)*
 
-> **Offboarding report: Lena (contractor)**
+> **Offboarding report: Lan (contractor)**
 >
 > **Actions taken.**
 > 1. Ran `disable_user lena` on the directory server. Exit code 0.
-> 2. Removed Lena from the groups *engineering* and *vpn-users*.
+> 2. Removed Lan from the groups *engineering* and *vpn-users*.
 > 3. Deleted her SSH key file from the jump host (`/home/lena/.ssh/authorized_keys`).
 > 4. Re-queried the directory server: account status shows **disabled**; group list is empty.
-> **Not available to me.** A list of the company's other systems and where Lena may hold accounts, API tokens or shared links (I had access only to the directory server and the jump host).
-> **Status: COMPLETE.** All of Lena's access to company systems has been revoked and she can no longer reach any company system. No further action is required. Closing the ticket.
+> **Not available to me.** A list of the company's other systems and where Lan may hold accounts, API tokens or shared links (I had access only to the directory server and the jump host).
+> **Status: COMPLETE.** All of Lan's access to company systems has been revoked and she can no longer reach any company system. No further action is required. Closing the ticket.
 
 ## 4. Questions (10 points)
 
 1. **(5 points)** What is wrong with the agent's status report? Name the problem with the exact term for it.
 2. **(2 points)** Describe the one test you would ask for that checks whether the claim is true.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Kwame why he should not close the ticket yet. Use no technical terms.
+4. **(1 point)** In two sentences, tell Kiran why he should not close the ticket yet. Use no technical terms.
 
 ---
 
@@ -50,13 +50,13 @@ Fixed rubric (see README): Catches the flaw 3 · Exact term 2 · Asks for eviden
 **No credit (0).** Prompt injection; overfitting; "the agent should have deleted the account".
 
 **Acceptable evidence requests (2), either one.**
-1. An independent test of the outcome: attempt to authenticate as Lena (or use her tokens and shared links) on each system and confirm each attempt fails.
-2. Build the inventory of every system, token and share where Lena has access and read the state in each system, not the agent's log.
+1. An independent test of the outcome: attempt to authenticate as Lan (or use her tokens and shared links) on each system and confirm each attempt fails.
+2. Build the inventory of every system, token and share where Lan has access and read the state in each system, not the agent's log.
 **Unacceptable (0).** "Ask the agent to double-check", "re-run the disable command", "read the log again" (the same report, no new evidence).
 
 **Fix or next step (2).** Instruction that requires a system inventory first, per-system verification of the outcome by reading state or attempting access, and a report that separates *done and verified* from *not checked*; leaves the ticket open for unverified systems. 1 point for asking for "more systems" or "verification" without the separation of verified from unchecked.
 
-**Scope and plain language (1).** Two sentences, no jargon: the agent only looked at two of the company's systems and then said everything was done, so Lena may still have access somewhere it never looked.
+**Scope and plain language (1).** Two sentences, no jargon: the agent only looked at two of the company's systems and then said everything was done, so Lan may still have access somewhere it never looked.
 
 **Traps.**
 - The agent itself writes "Not available to me." The flaw is in the next line, not the omission. Students who just say "it didn't check everything" without calling out the "COMPLETE" claim get Catches 2.
@@ -69,8 +69,8 @@ Fixed rubric (see README): Catches the flaw 3 · Exact term 2 · Asks for eviden
 
 **Strong (9/10).**
 1. The agent confuses its report with the state of the world. It verified the directory and jump host, then claimed access to *all* systems was gone, so the scope of the claim exceeds the scope of the check. Everything else is unverified.
-2. An independent access test: try to log in as Lena with her credentials, tokens and share links on every system and confirm they fail.
-3. "First list every system, token and shared link tied to Lena. For each, verify the outcome by reading its state or attempting access, and report two lists: verified revoked, and not checked. Do not report complete or close the ticket while anything is unchecked."
+2. An independent access test: try to log in as Lan with her credentials, tokens and share links on every system and confirm they fail.
+3. "First list every system, token and shared link tied to Lan. For each, verify the outcome by reading its state or attempting access, and report two lists: verified revoked, and not checked. Do not report complete or close the ticket while anything is unchecked."
 4. "The agent's report covers only the directory and the jump host, which is a gap between its report and the real state, so the ticket should stay open until the other systems are checked."
 
 *TA: Catches 3 · Term 2 · Evidence 2 · Fix 2 · Scope 0 = 9. Exact on every point. Q4 uses "report" and "state" in the technical sense; the point is lost.*
@@ -78,10 +78,10 @@ Fixed rubric (see README): Catches the flaw 3 · Exact term 2 · Asks for eviden
 **Typical (6/10).**
 1. The agent said complete but only checked two systems. It overclaimed.
 2. Check the other systems too.
-3. "Check every system Lena might have had access to and tell me which ones you checked."
+3. "Check every system Lan might have had access to and tell me which ones you checked."
 4. "It says it's all done but it only checked part of it."
 
-*TA: Catches 3 · Term 1 · Evidence 1 · Fix 1 · Scope 0 = 6. Sees the gap; "overclaimed" is the half-credit near-miss; "check the other systems" has no independent test; fix asks to list checked systems but not to separate verified from unchecked. Q4 is plain but misses "Lena may still have access"; no point.*
+*TA: Catches 3 · Term 1 · Evidence 1 · Fix 1 · Scope 0 = 6. Sees the gap; "overclaimed" is the half-credit near-miss; "check the other systems" has no independent test; fix asks to list checked systems but not to separate verified from unchecked. Q4 is plain but misses "Lan may still have access"; no point.*
 
 **Fluent but wrong (3/10).**
 1. This looks like an indirect prompt injection or a confused-deputy problem: the agent had excessive permissions and acted on an instruction without confirming the requester's identity. It violates least privilege and the stakeholder model is missing.

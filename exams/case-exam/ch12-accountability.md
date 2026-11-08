@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Mr. Eze is general counsel at a consumer lender that plans to use an AI system to approve or decline small loans automatically. Its board has told him that before launch there must be a written plan showing who is accountable if the system fails or treats applicants unfairly. He asked an AI agent to draft the accountability plan so that he can take it to the board.
+Ishaan is general counsel at a consumer lender that plans to use an AI system to approve or decline small loans automatically. Its board has told him that before launch there must be a written plan showing who is accountable if the system fails or treats applicants unfairly. He asked an AI agent to draft the accountability plan so that he can take it to the board.
 
 ## 2. The instruction given to the AI agent
 
@@ -35,7 +35,7 @@ Mr. Eze is general counsel at a consumer lender that plans to use an AI system t
 1. **(5 points)** What is wrong with how this plan assigns accountability? Name the problem with the exact term.
 2. **(2 points)** Name one question or test you would apply to the plan to see whether anyone is really accountable.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Mr. Eze why a committee signature is not enough. Use no technical terms.
+4. **(1 point)** In two sentences, tell Ishaan why a committee signature is not enough. Use no technical terms.
 
 ---
 

@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Ms. Alvarez is the curriculum director for a school district. Last year, families could opt in to an AI math-tutoring app; some used it heavily and most did not. The school board will vote on funding the app for all 30 schools. She asked an AI analyst to estimate what the app does for end-of-year math scores.
+Anjali is the curriculum director for a school district. Last year, families could opt in to an AI math-tutoring app; some used it heavily and most did not. The school board will vote on funding the app for all 30 schools. She asked an AI analyst to estimate what the app does for end-of-year math scores.
 
 ## 2. The instruction given to the AI analyst
 
@@ -31,7 +31,7 @@ Ms. Alvarez is the curriculum director for a school district. Last year, familie
 1. **(5 points)** What is wrong with the agent's handling of the concern it raised itself? Name the problem with the exact term for it.
 2. **(2 points)** Name one study design or analysis that would give better evidence about what the app does.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Ms. Alvarez whether the 11-point figure can be used to justify the funding. Use no technical terms.
+4. **(1 point)** In two sentences, tell Anjali whether the 11-point figure can be used to justify the funding. Use no technical terms.
 
 ---
 

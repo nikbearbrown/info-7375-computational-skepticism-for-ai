@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Hannah is claims director at a home-insurance company that handles about 3,000 claims a month. Leadership wants AI to speed up processing and has asked her for a plan that shows which steps AI will perform and which steps people will perform. She asked an AI agent to draft the plan, which she will present to the executive committee.
+Hema is claims director at a home-insurance company that handles about 3,000 claims a month. Leadership wants AI to speed up processing and has asked her for a plan that shows which steps AI will perform and which steps people will perform. She asked an AI agent to draft the plan, which she will present to the executive committee.
 
 ## 2. The instruction given to the AI agent
 
@@ -37,7 +37,7 @@ Hannah is claims director at a home-insurance company that handles about 3,000 c
 1. **(5 points)** What is missing that makes this map unsafe to adopt? Name the problem with the exact term for it.
 2. **(2 points)** Name one test or exercise that would show whether the pipeline can catch its own errors.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Hannah why "every step has an owner" is not enough. Use no technical terms.
+4. **(1 point)** In two sentences, tell Hema why "every step has an owner" is not enough. Use no technical terms.
 
 ---
 

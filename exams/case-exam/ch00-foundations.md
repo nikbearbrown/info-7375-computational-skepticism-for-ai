@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Marisol runs payments risk at a regional credit union with 1.2 million cardholders. A vendor has sold her a card-fraud model and she must decide whether to switch it on for every cardholder. A false alarm freezes a customer's card; a missed fraud costs the credit union money. She asked an AI analyst to evaluate the model on a month of transactions the model had never seen.
+Meena runs payments risk at a regional credit union with 1.2 million cardholders. A vendor has sold her a card-fraud model and she must decide whether to switch it on for every cardholder. A false alarm freezes a customer's card; a missed fraud costs the credit union money. She asked an AI analyst to evaluate the model on a month of transactions the model had never seen.
 
 ## 2. The instruction given to the AI analyst
 
@@ -32,7 +32,7 @@ Marisol runs payments risk at a regional credit union with 1.2 million cardholde
 1. **(5 points)** What is wrong with the agent's conclusion? Name the problem with the exact term for it.
 2. **(2 points)** Write the one number, comparison or table you would ask the agent to produce that turns "98.1% accuracy" from a headline into evidence.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, explain to Marisol why the 98.1% figure does not yet tell her whether to deploy. Use no technical terms.
+4. **(1 point)** In two sentences, explain to Meena why the 98.1% figure does not yet tell her whether to deploy. Use no technical terms.
 
 ---
 

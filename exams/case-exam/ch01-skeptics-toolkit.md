@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Dr. Okafor directs a university library and is deciding whether first-year students may rely on an AI research assistant that writes short summaries of journal articles. The library cannot afford to read every summary, so the decision will rest on a measured accuracy figure. She asked an AI analyst to measure it.
+Professor Bear directs a university library and is deciding whether first-year students may rely on an AI research assistant that writes short summaries of journal articles. The library cannot afford to read every summary, so the decision will rest on a measured accuracy figure. She asked an AI analyst to measure it.
 
 ## 2. The instruction given to the AI analyst
 
@@ -32,7 +32,7 @@ Dr. Okafor directs a university library and is deciding whether first-year stude
 1. **(5 points)** What is wrong with how the agent produced its 94% figure? Name the problem with the exact term for it.
 2. **(2 points)** Describe the one check you would ask for that gives independent evidence of accuracy.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Dr. Okafor why 94% cannot yet be used to decide. Use no technical terms.
+4. **(1 point)** In two sentences, tell Professor Bear why 94% cannot yet be used to decide. Use no technical terms.
 
 ---
 

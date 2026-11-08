@@ -8,7 +8,7 @@
 
 ## 1. Scenario
 
-Nadia is communications lead at a hospital. The board meets tomorrow and she wants one slide that shows how patient satisfaction changed after the hospital introduced a new discharge process. Satisfaction was 91.2% in the six months before (412 survey responses) and 92.5% in the six months after (398 responses). She asked an AI agent to make the chart.
+Nisha is communications lead at a hospital. The board meets tomorrow and she wants one slide that shows how patient satisfaction changed after the hospital introduced a new discharge process. Satisfaction was 91.2% in the six months before (412 survey responses) and 92.5% in the six months after (398 responses). She asked an AI agent to make the chart.
 
 ## 2. The instruction given to the AI agent
 
@@ -32,7 +32,7 @@ Nadia is communications lead at a hospital. The board meets tomorrow and she wan
 1. **(5 points)** What is wrong with the agent's chart design? Name the problem with the exact term for it.
 2. **(2 points)** Name one change or addition that would let the board judge whether the 1.3-point change is meaningful.
 3. **(2 points)** Write the corrected instruction you would send to the agent.
-4. **(1 point)** In two sentences, tell Nadia what is wrong with showing the chart as designed. Use no technical terms.
+4. **(1 point)** In two sentences, tell Nisha what is wrong with showing the chart as designed. Use no technical terms.
 
 ---
 
