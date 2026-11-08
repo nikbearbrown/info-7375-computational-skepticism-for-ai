@@ -1,10 +1,10 @@
 # INFO 7375 case exam: direct and audit an AI agent
 
-Draft for Bear's review, written 2026-11-08. Nothing here is committed or pushed. The existing jargon pool (`../multiple-answer/`) and `../predict-the-prompt/` are untouched.
+Draft for Bear's review, written 2026-11-08. The existing jargon pool (`../multiple-answer/`) and `../predict-the-prompt/` are untouched.
 
 ## What this is
 
-The exam has two parts: 30 points of multiple-answer jargon questions (the existing pool) and **10 points of one case**. A case gives the student:
+The exam is **100 points, all cases**: 10 of the 13 chapters, chosen at random, one 10-point case each, answered as essays on paper in class (no laptop, no phone). The multiple-answer pool is for practice only. Each case is worth **10 points**. A case gives the student:
 
 1. a **scenario** with a stakeholder and a goal,
 2. the **instruction** that was given to an AI analyst or agent,

@@ -12,6 +12,16 @@
 
 **What is not here yet.** Chapters outside the bank's scope (see the bank README), essay questions (retired), and the predict-the-prompt exams (pilot; see below).
 
+## The exam: case-based, written on paper in class
+
+The exam is a **100-point, case-based exam**. There are no multiple-answer questions on the exam itself.
+
+- **Format.** Each question is one case from [`case-exam/`](case-exam/readme.md): a scenario, the instruction given to an AI agent, the agent's output with one flaw in it, and four probes worth 10 points. Each question is an **essay-style answer** written **in class**.
+- **Materials.** Paper, pencil or pen only. **No laptop, no phone.**
+- **Coverage.** The book has 13 chapters, and a 100-point exam of 10-point cases fits **10 cases**. So **10 of the 13 chapters are examined, chosen at random** by the instructor. You will not know in advance which three are left out, so prepare all 13.
+- **Grading.** Teaching assistants grade by the fixed 10-point rubric in `case-exam/readme.md`; the exact use of the course's terms is what earns the points, not polish or length.
+- **Practice.** The multiple-answer bank and practice exams below are for studying the terms. They are not the exam format.
+
 ## Contents
 
 | Path | What |
