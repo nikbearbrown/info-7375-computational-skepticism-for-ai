@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Accountability | INFO 7375 Computational Skepticism terminology deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --nu-red:#C8102E; --nu-black:#000000; --nu-white:#FFFFFF; --nu-gold:#A4804A;
+  --nu-red-hover:#A50C25; --nu-red-press:#870A1F; --nu-red-tint:#FBE7EA;
+  --nu-neutral-1:#E3E3E3; --nu-neutral-2:#C4C4C4; --nu-neutral-3:#909090; --nu-neutral-4:#787878;
+  --nu-neutral-5:#545454; --nu-neutral-6:#404040; --nu-neutral-7:#2D2926; --nu-neutral-8:#1A1A1A;
+  --diagram-ink:#2A1A0E; --panel-subtle:#F6F6F6;
+  --font:"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --mono:ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(0.4, 0, 0.2, 1);
+  /* viewer chrome (theme-aware; slides themselves keep fixed brand colors) */
+  --stage-bg:#E9E9E9; --chrome-bg:rgba(255,255,255,0.94); --chrome-fg:#1A1A1A;
+  --chrome-line:#C4C4C4; --chrome-muted:#545454; --chrome-hover:rgba(0,0,0,0.07);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+    --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+  }
+}
+:root[data-theme="dark"]{
+  --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+  --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top, 0px)}
+body{
+  height:100%; margin:0; overflow:hidden; display:flex; flex-direction:column;
+  background:var(--stage-bg); color:var(--chrome-fg); font-family:var(--font);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+:fullscreen body, body:fullscreen{background:#000}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------- stage & scaling ---------- */
+#stage{position:relative; flex:1 1 auto; min-height:0; overflow:hidden; touch-action:pan-y}
+#deck{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0}
+
+/* ---------- slide base ---------- */
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column; overflow:hidden;
+  background:var(--nu-white); color:var(--nu-black); font-family:var(--font);
+  padding-left:120px; padding-right:120px;
+}
+.slide.is-active{display:flex}
+:where(.slide) :where(h1,h2,p,ul){margin:0}
+.s-dark{background:var(--nu-black); color:var(--nu-white)}
+.s-red{background:var(--nu-red); color:var(--nu-white)}
+.rule{position:absolute; top:0; left:0; right:0; height:8px; background:var(--nu-red)}
+.rule.r10{height:10px}
+
+.s-opening,.s-closing{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-intro{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-section{padding-top:110px; padding-bottom:110px; justify-content:center}
+.s-text{padding-top:96px; padding-bottom:96px}
+.s-diagram{padding-top:72px; padding-bottom:56px}
+.s-chart{padding-top:64px; padding-bottom:56px}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-size:22px; font-weight:700; line-height:1.2; text-transform:uppercase;
+  letter-spacing:0.16em; color:var(--nu-red); margin-bottom:28px;
+}
+.s-intro .eyebrow{font-size:24px; letter-spacing:0.18em; margin-bottom:40px}
+.s-section .eyebrow{font-size:26px; letter-spacing:0.20em; color:rgba(255,255,255,0.78); margin-bottom:36px}
+.s-chart .eyebrow,.s-diagram .eyebrow{margin-bottom:18px}
+
+.t-opening{font-size:104px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-section{font-size:108px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-closing{font-size:84px; font-weight:400; line-height:1.04; letter-spacing:-0.02em; max-width:1560px}
+.t-intro{font-size:72px; font-weight:400; line-height:1.1; letter-spacing:-0.01em; max-width:1500px}
+.t-text{font-size:66px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1500px}
+.t-chart{font-size:50px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1560px}
+.s-chart .t-chart{margin-bottom:30px}
+.s-diagram .t-chart{margin-bottom:40px}
+
+.sub-opening{font-size:38px; font-weight:400; line-height:1.3; color:var(--nu-neutral-2); max-width:1300px}
+.sub-section{font-size:34px; font-weight:400; line-height:1.3; color:rgba(255,255,255,0.92); margin-top:40px; max-width:1300px}
+.para{font-size:30px; line-height:1.4; color:var(--nu-neutral-7); max-width:1300px}
+.caption{font-size:24px; line-height:1.36; color:var(--nu-neutral-5); max-width:1400px; margin-top:22px}
+.t-opening,.t-section,.t-closing,.t-intro,.t-text,.t-chart,.sub-opening,.sub-section,.caption{text-wrap:pretty}
+.source{font-size:19px; line-height:1.4; color:var(--nu-neutral-5); margin-top:12px}
+
+.bar-120{width:120px; height:8px; background:var(--nu-red); margin:52px 0 44px}
+.bar-88{width:88px; height:6px; background:var(--nu-red); margin:40px 0 60px}
+
+.bullets{list-style:none; padding:0; max-width:1480px; display:flex; flex-direction:column; gap:26px}
+.bullets li{
+  display:grid; grid-template-columns:14px 1fr; column-gap:22px;
+  font-size:31px; line-height:1.42; color:var(--nu-neutral-7);
+}
+.bullets li::before{
+  content:""; width:14px; height:14px; background:var(--nu-red);
+  margin-top:calc((31px * 1.42 - 14px) / 2);
+}
+.bullets strong{font-weight:700; color:var(--nu-black)}
+
+/* ---------- charts ---------- */
+.chart{width:1480px; height:600px; flex:none}
+.chart svg{display:block; width:1480px; height:600px; overflow:visible}
+.chart-fallback{
+  width:100%; height:100%; display:grid; place-items:center; border:1px solid var(--nu-neutral-1);
+  font-size:24px; color:var(--nu-neutral-5); background:var(--panel-subtle)
+}
+
+/* ---------- diagram ---------- */
+.diagram{flex:0 1 auto; min-height:0; width:100%; max-width:1400px; max-height:720px}
+.diagram svg{display:block}
+
+/* ---------- evidence status: conceptual vs. illustrative vs. observed ---------- */
+.evidence{
+  position:absolute; right:120px; font-size:18px; font-weight:700; line-height:1;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--nu-neutral-5);
+  border:1px solid var(--nu-neutral-2); padding:9px 12px 8px;
+}
+.s-chart .evidence{top:58px}
+.s-diagram .evidence{top:66px}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)}}
+.slide.is-active .rise{animation:rise 550ms var(--ease) both}
+.slide.is-active .g2{animation-delay:120ms}
+.slide.is-active .g3{animation-delay:240ms}
+@media (prefers-reduced-motion: reduce){
+  .slide.is-active .rise{animation:none}
+}
+
+/* ---------- viewer chrome ---------- */
+#controls{
+  position:absolute; right:14px; bottom:14px; z-index:10;
+  display:flex; align-items:center; gap:2px; padding:4px;
+  background:var(--chrome-bg); border:1px solid var(--chrome-line); color:var(--chrome-fg);
+  opacity:0.38; transition:opacity 200ms var(--ease);
+}
+#controls:hover,#controls:focus-within,body.show-controls #controls{opacity:1}
+#controls button,#thumbs .close{
+  appearance:none; border:0; background:transparent; color:inherit; cursor:pointer;
+  width:34px; height:34px; display:grid; place-items:center; padding:0;
+}
+#controls button:hover,#thumbs .close:hover{background:var(--chrome-hover)}
+#controls button[disabled]{opacity:0.35; cursor:default}
+#controls button[aria-pressed="true"]{background:var(--chrome-hover)}
+#controls svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:square}
+#counter{
+  min-width:66px; text-align:center; font-family:var(--mono); font-size:13px;
+  font-variant-numeric:tabular-nums; color:var(--chrome-fg)
+}
+#pips{display:flex; gap:4px; padding:0 6px 0 2px}
+#pips:empty{display:none}
+.pip{width:6px; height:6px; background:var(--chrome-line)}
+.pip.on{background:var(--nu-red)}
+.sep{width:1px; height:20px; background:var(--chrome-line); margin:0 4px}
+button:focus-visible,.thumb:focus-visible{outline:3px solid var(--nu-red); outline-offset:2px}
+
+#notes{
+  display:none; flex:none; height:min(30vh, 260px); overflow:auto;
+  padding:18px 28px 20px; background:var(--chrome-bg); border-top:1px solid var(--chrome-line);
+  color:var(--chrome-fg); font-size:17px; line-height:1.55;
+}
+body.notes-open #notes{display:block}
+#notes h2{margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-muted)}
+#notes p{margin:0 0 10px; max-width:78ch}
+
+#thumbs{position:absolute; inset:0; z-index:20; display:none; overflow:auto; background:var(--stage-bg); padding:24px}
+#thumbs.open{display:block}
+#thumbs .bar{display:flex; align-items:center; justify-content:space-between; max-width:1400px; margin:0 auto 18px}
+#thumbs .bar h2{margin:0; font-size:15px; font-weight:700; color:var(--chrome-fg)}
+#thumbs .close svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75}
+#thumbs .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:18px; max-width:1400px; margin:0 auto}
+.thumb{
+  appearance:none; padding:0; margin:0; border:1px solid var(--chrome-line); background:#fff;
+  cursor:pointer; position:relative; overflow:hidden; aspect-ratio:16 / 9; width:100%; display:block
+}
+.thumb.current{outline:3px solid var(--nu-red); outline-offset:2px}
+.thumb-inner{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0; pointer-events:none; text-align:left; font:400 16px/1.2 var(--font); white-space:normal}
+.thumb-inner .slide{display:flex}
+.thumb-num{
+  position:absolute; left:0; bottom:0; padding:3px 7px; background:rgba(0,0,0,0.72); color:#fff;
+  font-family:var(--mono); font-size:12px; line-height:1.2
+}
+
+/* ---------- print: every slide, final state ---------- */
+@media print{
+  @page{size:1920px 1080px; margin:0}
+  :root{padding:0}
+  html,body{height:auto; overflow:visible; display:block; background:#fff}
+  #stage{overflow:visible; height:auto}
+  #deck{position:static; transform:none !important; width:1920px; height:auto}
+  .slide{position:relative; display:flex !important; width:1920px; height:1080px; break-after:page; page-break-after:always}
+  .slide .rise{animation:none !important; opacity:1 !important; transform:none !important}
+  #controls,#notes,#thumbs{display:none !important}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+/* ---------- review-deck additions (small; typography classes above are untouched) ---------- */
+.slide .source{font-size:24px; margin-top:10px}
+.evidence{font-size:24px; letter-spacing:0.1em}
+.diagram svg text{font-kerning:normal}
+.diagram{cursor:pointer}
+</style>
+</head>
+<body>
+
+<main id="stage" aria-roledescription="slide deck" aria-label="INFO 7375 Computational Skepticism terminology: Accountability">
+  <div id="deck">
+
+    <section class="slide s-dark s-opening" aria-roledescription="slide" data-title="Accountability">
+      <div class="rule r10"></div>
+      <p class="eyebrow rise">INFO 7375 · Terminology · Chapter 12</p>
+      <h1 class="t-opening rise g2">Accountability</h1>
+      <div class="bar-120 rise g2"></div>
+      <p class="sub-opening rise g3">Terms for who answers when an AI system fails, and what a signature has to contain</p>
+      <div class="speaker-notes" hidden><p>30 terms from Chapter 12 and the exam-term list. Tags: in the book text means the chapter uses and explains the term; in the glossary means a glossary row the chapter does not explain. The tier labels come from an unpublished source the chapter itself flags as unverifiable, so treat them as scaffolding.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Thirty terms in four groups">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Map</p>
+      <h2 class="t-chart">Thirty terms in four groups</h2>
+      <div class="diagram build" data-build="map" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Four groups, one per click. Sign-off is the one term tagged glossary; the rest are explained in the chapter.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Responsibility distributes">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Who is responsible</p>
+      <h2 class="t-chart">Responsibility distributes</h2>
+      <div class="diagram build" data-build="dist" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, opening case; “Who is at fault?”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Step 1 enumerates all 32 combinations of five parties, on the chapter's stated assumption that each choice was necessary and none sufficient. Step 2 is the Matthias 2004 gap. Step 3 is the four gaps of Santoni de Sio and Mecacci 2021.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="The shape and the substance of a sign-off">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Who is responsible</p>
+      <h2 class="t-chart">The shape and the substance of a sign-off</h2>
+      <div class="diagram build" data-build="sign" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, opening sign-off experiment; “The Gödel argument”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>The sign-off line is quoted from the chapter. The AI produces the shape: a name, a claim of review, the look of a signature. It cannot produce a review, a person who stands behind it, or someone who can be held to it.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="What an AI lacks: a history, moral standing, an outside view">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Why a human, not more AI</p>
+      <h2 class="t-chart">What an AI lacks: a history, moral standing, an outside view</h2>
+      <div class="diagram build" data-build="lack" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, “AI as extended mind: what the capacities actually are”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>The chapter separates three capacities that do the work in the accountability argument. Under a functionalist definition emotion-like states are real; the load-bearing question is moral standing.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Independent checks and the Gödel analogy">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Why a human, not more AI</p>
+      <h2 class="t-chart">Independent checks and the Gödel analogy</h2>
+      <div class="diagram build" data-build="indep" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, “Common cause failure” and “The Gödel argument”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Seeded simulation, rng 12: 1,000 cases, a 10 percent error rate, half the errors subtle. The independent reviewer catches each error with probability 0.8. The same-kind monitor catches 0.9 of the easy errors and none of the subtle ones. All rates are illustrative.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Seven tiers and the plausibility auditor">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Why a human, not more AI</p>
+      <h2 class="t-chart">Seven tiers and the plausibility auditor</h2>
+      <div class="diagram build" data-build="tiers" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, “The seven-tier taxonomy”; “Common cause failure”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Bars rank the chapter's own wording for AI capability at each tier. They are ordinal, not measurements. The tier labels rest on an unpublished source.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Kantian, utilitarian and upstream">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">The machinery</p>
+      <h2 class="t-chart">Kantian, utilitarian and upstream</h2>
+      <div class="diagram build" data-build="fw" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, “Two frameworks, one topology”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Ranks translate the chapter's words: low 1, medium-high 2, high 3 for the Kantian table; small 1, medium 2, high 3, highest 4 for leverage. The 1,000 deployments in step 3 are an illustrative figure.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Four of the five requirements">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">The machinery</p>
+      <h2 class="t-chart">Four of the five requirements</h2>
+      <div class="diagram build" data-build="req" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, “The five accountability requirements and the tiers they depend on”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Illustrative figures: a 95 percent threshold and three results. The Ash case is the chapter's example of a wrong trail caught by a state check.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Sanctions, the attestation and the power to withhold">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Signing</p>
+      <h2 class="t-chart">Sanctions, the attestation and the power to withhold</h2>
+      <div class="diagram build" data-build="sanc" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, “The gate: the attestation you sign”; “What the attestation regime optimizes for”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Step 4 is a seeded simulation (rng 5) of twenty gates with a 20 percent withhold rate. The information in each decision is computed from the observed share.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Closing Rung 3: the regime is the intervention">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Signing</p>
+      <h2 class="t-chart">Closing Rung 3: the regime is the intervention</h2>
+      <div class="diagram build" data-build="gov" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, “Closing Pearl's Rung 3”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Step 2 is a seeded simulation (rng 21) of 1,000 requests, 6 percent from non-owners. The 0.7 acceptance rate under social signals is illustrative.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Look-alike pairs">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Tell them apart</p>
+      <h2 class="t-chart">Look-alike pairs</h2>
+      <div class="diagram build" data-build="pairs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Analogy and theorem, contingent and structural, clean bill and declared limits, present and engaged.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Say it exactly">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Vague request, exact instruction</p>
+      <h2 class="t-chart">Say it exactly</h2>
+      <div class="diagram build" data-build="say" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Five vague requests and the exact version of each. Every chart is computed from the stated inputs.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Before you sign">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Checklist</p>
+      <h2 class="t-chart">Before you sign</h2>
+      <div class="diagram build" data-build="closing" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 12, “The gate: the attestation you sign”.</p>
+      <div class="speaker-notes" hidden><p>Six checks drawn from the chapter's five requirements and the attestation.</p></div>
+    </section>
+
+  </div>
+
+  <nav id="controls" aria-label="Slide controls">
+    <button type="button" id="btn-prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="counter" aria-hidden="true">1 / 1</span>
+    <span id="pips" aria-hidden="true"></span>
+    <button type="button" id="btn-next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <span class="sep" aria-hidden="true"></span>
+    <button type="button" id="btn-thumbs" aria-label="Show all slides (G)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="7" height="5"/><rect x="13" y="5" width="7" height="5"/><rect x="4" y="14" width="7" height="5"/><rect x="13" y="14" width="7" height="5"/></svg></button>
+    <button type="button" id="btn-notes" aria-label="Speaker notes (N)" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 11h14M5 16h9"/></svg></button>
+    <button type="button" id="btn-fs" aria-label="Fullscreen (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+  </nav>
+
+  <div id="thumbs" role="dialog" aria-modal="true" aria-label="All slides">
+    <div class="bar">
+      <h2>All slides</h2>
+      <button type="button" class="close" aria-label="Close slide overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="grid"></div>
+  </div>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+</main>
+
+<aside id="notes" aria-label="Speaker notes">
+  <h2 id="notes-head">Speaker notes</h2>
+  <div id="notes-body"></div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var stage = document.getElementById("stage");
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(".slide"));
+  var total = slides.length;
+  var counter = document.getElementById("counter");
+  var pips = document.getElementById("pips");
+  var live = document.getElementById("live");
+  var notesHead = document.getElementById("notes-head");
+  var notesBody = document.getElementById("notes-body");
+  var btnPrev = document.getElementById("btn-prev");
+  var btnNext = document.getElementById("btn-next");
+  var btnNotes = document.getElementById("btn-notes");
+  var btnThumbs = document.getElementById("btn-thumbs");
+  var btnFs = document.getElementById("btn-fs");
+  var thumbs = document.getElementById("thumbs");
+  var thumbGrid = thumbs.querySelector(".grid");
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hasD3 = typeof window.d3 !== "undefined";
+  var current = -1, step = 0, lastFocus = null;
+
+  /* Recurring visual vocabulary
+     ink   = confidence / belief        red  = failure, consequence, causal break
+     gray  = familiar data, same source tint = what an inspection or failure exposes */
+  var INK = "#2A1A0E", RED = "#C8102E", TINT = "#FBE7EA", GRID = "#E3E3E3", MUTED = "#545454",
+      BASE = "#909090", FAMILIAR = "#C4C4C4", SUBTLE = "#F6F6F6", BODY = "#2D2926";
+  var MONO = 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace';
+  var SANS = '"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+
+  /* ---------------- scaling ---------------- */
+  function fit() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    var s = Math.min(w / 1920, h / 1080);
+    deck.style.transform = "translate(" + (w - 1920 * s) / 2 + "px," + (h - 1080 * s) / 2 + "px) scale(" + s + ")";
+  }
+  if ("ResizeObserver" in window) new ResizeObserver(fit).observe(stage);
+  window.addEventListener("resize", fit);
+
+  /* ---------------- drawing helpers ---------------- */
+  function svgFor(el, w, h, label, desc, fixed) {
+    el.innerHTML = "";
+    var svg = d3.select(el).append("svg").attr("viewBox", "0 0 " + w + " " + h)
+      .attr("role", "img").attr("aria-label", label);
+    if (fixed) svg.attr("width", w).attr("height", h).style("overflow", "visible");
+    else svg.attr("width", "100%").attr("height", "100%").attr("preserveAspectRatio", "xMinYMin meet");
+    svg.append("title").text(label);
+    svg.append("desc").text(desc);
+    return svg;
+  }
+  function txt(g, x, y, s, o) {
+    o = o || {};
+    var t = g.append("text").attr("x", x).attr("y", y)
+      .attr("font-family", o.family || SANS).attr("font-size", o.size || 22)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || INK);
+    if (o.anchor) t.attr("text-anchor", o.anchor);
+    if (o.ls) t.attr("letter-spacing", o.ls);
+    if (o.dy) t.attr("dy", o.dy);
+    return t.text(s);
+  }
+  function fadeIn(sel, delay, dur) {
+    sel.attr("opacity", 0).transition().delay(delay || 0).duration(dur || 400).ease(d3.easeCubicOut).attr("opacity", 1);
+    return sel;
+  }
+  function rng(seed) {
+    var s = seed >>> 0;
+    return function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  /* ================= review-deck helpers ================= */
+  var W = 1400, H = 700;
+  function A(anim, k, n) { return anim && k === n; }
+  function shuffle(a, r) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function drawIn(path, delay, dur) {
+    var L = path.node().getTotalLength();
+    if (!(L > 0)) return path;
+    path.attr("stroke-dasharray", L + " " + L).attr("stroke-dashoffset", L)
+      .transition().delay(delay || 0).duration(dur || 500).ease(d3.easeCubicOut).attr("stroke-dashoffset", 0)
+      .on("end", function () { d3.select(this).attr("stroke-dasharray", null).attr("stroke-dashoffset", null); });
+    return path;
+  }
+  function tweenNum(sel, from, to, fmt, delay, dur) {
+    sel.text(fmt(from)).transition().delay(delay || 0).duration(dur || 1000).ease(d3.easeCubicOut)
+      .tween("text", function () { var it = d3.interpolate(from, to), node = this; return function (t) { node.textContent = fmt(it(t)); }; });
+  }
+  var pct1 = function (v) { return v.toFixed(1) + "%"; };
+  function lab(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: 700, fill: o.fill || MUTED, ls: 1.2, anchor: o.anchor }); }
+  /* wrap a string into tspans; n = characters per line (estimate) */
+  function wrap(g, x, y, s, n, o) {
+    o = o || {};
+    var size = o.size || 26, lh = o.lh || Math.round(size * 1.34), words = s.split(" "), lines = [], cur = "";
+    words.forEach(function (w) { var t = (cur ? cur + " " : "") + w; if (t.length > n && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur);
+    var t = g.append("text").attr("x", x).attr("y", y).attr("font-family", SANS).attr("font-size", size)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || BODY);
+    lines.forEach(function (l, i) { t.append("tspan").attr("x", x).attr("dy", i ? lh : 0).text(l); });
+    t.node().__h = lines.length * lh;
+    return t;
+  }
+  function box(g, x, y, w, h, o) {
+    o = o || {};
+    return g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", w).attr("height", h)
+      .attr("fill", o.fill || "#FFFFFF").attr("stroke", o.stroke || FAMILIAR).attr("stroke-width", o.sw || 1.5);
+  }
+  function ppvOf(p, sens, spec) { return p * sens / (p * sens + (1 - p) * (1 - spec)); }
+  function sigmoid(z) { return 1 / (1 + Math.exp(-z)); }
+  function logit(c) { return Math.log(c / (1 - c)); }
+  function fmtInt(v) { return d3.format(",")(Math.round(v)); }
+  function check(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + y + " L" + (x - s / 3) + "," + (y + s * 0.7) + " L" + (x + s) + "," + (y - s * 0.8)).attr("fill", "none").attr("stroke", color || INK).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+  function cross(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + (y - s) + " L" + (x + s) + "," + (y + s) + " M" + (x + s) + "," + (y - s) + " L" + (x - s) + "," + (y + s)).attr("stroke", color || RED).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+
+  /* ---------- small drawing helpers ---------- */
+  function run(g, dur, fn, anim, ease) {
+    if (!anim) { fn(1); return; }
+    fn(0);
+    d3.select(g.node()).transition().duration(dur).ease(ease || d3.easeLinear)
+      .tween("run", function () { return function (t) { fn(t); }; });
+  }
+  /* keyframes through the values in a, smooth between them, t in 0..1 */
+  function kf(t, a) {
+    var n = a.length - 1, s = Math.min(n - 1e-9, Math.max(0, t) * n), i = Math.floor(s);
+    return a[i] + (a[i + 1] - a[i]) * d3.easeCubicInOut(s - i);
+  }
+  function hint(svg) { wrap(svg.append("g"), 800, 44, "Click or press → to start the animation. Each click adds one idea.", 46, { size: 28, fill: MUTED }); }
+  function cap(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 26, weight: o.weight || 400, fill: o.fill || BODY, anchor: o.anchor, family: o.family }); }
+  function sgn(v, d) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d || 0); }
+
+  /* right-hand column: one glossary entry per step, with its tag; returns the y below the last entry */
+  function entries(svg, list, k, anim) {
+    var g = svg.append("g"), y = 4;
+    list.forEach(function (it) {
+      if (it.s > k) return;
+      var t = T[it.id], cur = it.s === k, e = g.append("g");
+      txt(e, 800, y + 26, t.n, { size: 26, weight: 700, fill: cur ? RED : INK });
+      var TG = { book: ["in the book text", 212], gloss: ["in the glossary", 200], video: ["video only", 150], editor: ["editor or docs", 190], web: ["outside source", 200] }[t.tag || "video"], tg = TG[0], tw_ = TG[1], fill_ = t.tag === "book";
+      e.append("rect").attr("x", 1400 - tw_ + 0.5).attr("y", y + 3.5).attr("width", tw_ - 1).attr("height", 34)
+        .attr("fill", fill_ ? INK : "none").attr("stroke", fill_ ? INK : GREY).attr("stroke-width", 1.5);
+      txt(e, 1400 - tw_ / 2, y + 28, tg, { size: 24, anchor: "middle", fill: fill_ ? "#FFFFFF" : MUTED });
+      var yy = y + 58;
+      if (t.alias) { txt(e, 800, yy, t.alias, { size: 24, fill: MUTED }); yy += 30; }
+      var w = wrap(e, 800, yy, t.m + ".", 50, { size: 24, lh: 30, fill: BODY });
+      y = yy + w.node().__h + 6;
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    return y;
+  }
+  function pairStrip(svg, a, b) {
+    var g = svg.append("g");
+    lab(g, 0, 598, "TELL THESE APART");
+    [[0, a], [740, b]].forEach(function (p, i) {
+      box(g, p[0], 612, 660, 88, { stroke: i ? RED : INK, sw: 2 });
+      txt(g, p[0] + 20, 646, p[1][0], { size: 26, weight: 700, fill: i ? RED : INK });
+      txt(g, p[0] + 20, 682, p[1][1], { size: 24, fill: BODY });
+    });
+    txt(g, 700, 664, "≠", { size: 44, weight: 700, anchor: "middle", fill: RED });
+  }
+  function base(svg, list, k, anim, a, b) { var y = entries(svg, list, k, anim); pairStrip(svg, a, b); if (k === 0) hint(svg); return y; }
+
+  /* top-down / side-view camera pieces. ang: radians, 0 = +x, y grows downward */
+  function conePath(x, y, ang, fov, len) {
+    var h = fov * DEG / 2;
+    return "M" + x + "," + y + "L" + (x + len * Math.cos(ang - h)) + "," + (y + len * Math.sin(ang - h)) +
+      "A" + len + "," + len + " 0 0 1 " + (x + len * Math.cos(ang + h)) + "," + (y + len * Math.sin(ang + h)) + "Z";
+  }
+  function cone(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", TINT).attr("fill-opacity", 0.9).attr("stroke", RED).attr("stroke-width", 2);
+  }
+  function ghost(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 1.5).attr("stroke-dasharray", "6 6");
+  }
+  function camBody(g, x, y, ang) {
+    var c = g.append("g").attr("transform", "translate(" + x + "," + y + ") rotate(" + (ang / DEG) + ")");
+    c.append("rect").attr("x", -16).attr("y", -11).attr("width", 24).attr("height", 22).attr("fill", INK);
+    c.append("path").attr("d", "M8,-7 L22,-14 L22,14 L8,7Z").attr("fill", INK);
+  }
+  function inView(px, py, x, y, ang, fov, len) {
+    var dx = px - x, dy = py - y;
+    if (Math.hypot(dx, dy) > len) return false;
+    var da = Math.atan2(dy, dx) - ang; da = Math.atan2(Math.sin(da), Math.cos(da));
+    return Math.abs(da) <= fov * DEG / 2;
+  }
+  function post(g, x, y, on, r) {
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", r || 11).attr("fill", on ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+  }
+  function ptsInView(g, pts, cx, cy, ang, fov, len) {
+    var n = 0;
+    pts.forEach(function (p) { var on = inView(p[0], p[1], cx, cy, ang, fov, len); if (on) n++; post(g, p[0], p[1], on); });
+    return n;
+  }
+
+
+  /* ================= Accountability (Chapter 12) ================= */
+  var GREY = "#909090";
+  /* tag: book = Chapter 12 uses and explains it; gloss = glossary row only */
+  var T = {
+    sign: { n: "Sign-off", tag: "gloss", m: "The point where a person puts a name to work and takes responsibility for it" },
+    necnot: { n: "Necessary not sufficient", tag: "book", m: "Each party's choice was needed for the failure; none alone was enough to cause it" },
+    gap: { n: "Responsibility gap", tag: "book", m: "Nobody can fairly be blamed for what a learning machine did when nobody could predict it" },
+    mhc: { n: "Meaningful human control", tag: "book", m: "Design the system so a human sits at each point where someone must answer" },
+    shape: { n: "Shape versus substance", tag: "book", m: "Looks like accountability, with a name and a claim of review, but no review stands behind it" },
+    answer: { n: "Answerability", tag: "book", m: "Willingness to revise the work, face those who relied on it, and bear the cost if it was wrong" },
+    stakes: { n: "Stakes", tag: "book", m: "Something to lose if the judgment is wrong; a sanction only bites on a party that has it" },
+    episodic: { n: "Episodic memory", tag: "book", m: "Recall of specific past events in context; a model holds stored text, not a history of its own acts" },
+    moral: { n: "Moral salience", tag: "book", m: "Whether a system can be harmed or hold standing; shame and regret, which sanctions use, need it" },
+    meta: { n: "Metacognition", tag: "book", m: "Checking one's own reasoning; a model's self-check comes from the same system being checked" },
+    valind: { n: "Validator independence", tag: "book", m: "A check counts only when it comes from outside the system being checked" },
+    common: { n: "Common cause failure", tag: "book", m: "Two checks built alike fail together; a monitor shares the blind spots of what it watches" },
+    godel: { n: "Gödel analogy", tag: "book", m: "Gödel's result motivates distrust of self-certification, but it is an analogy and not a proof about AI" },
+    tax: { n: "Seven-tier taxonomy", tag: "book", m: "Seven tiers of human capacity sorted by AI strength; the source is unpublished, so the labels are scaffolding" },
+    tier4: { n: "Tier 4: supervisory", tag: "book", m: "Metacognitive and supervisory work: auditing plausibility, framing the problem, judging meaning" },
+    pa: { n: "Plausibility auditor", tag: "book", m: "A person with domain depth and AI-failure knowledge who judges whether outputs match reality" },
+    kant: { n: "Kantian framework", tag: "book", m: "Responsibility follows the capacity to act otherwise multiplied by the duty the situation imposed" },
+    util: { n: "Utilitarian framework", tag: "book", m: "Hold accountable whoever it most improves outcomes to hold: deterrence, incentives, less harm" },
+    up: { n: "Upstream leverage", tag: "book", m: "Earlier choices, such as framework defaults, change the conditions for many deployments at once" },
+    spec: { n: "Specifications", tag: "book", m: "A written task definition with acceptance criteria; a failure is a divergence from it" },
+    audit: { n: "Audit trail", tag: "book", m: "A per-action record; capturing it is mechanical, reading it against the world is not" },
+    recourse: { n: "Recourse", tag: "book", m: "A channel where an affected person can contest a decision and be heard" },
+    irev: { n: "Independent review", tag: "book", m: "A reviewer outside the deployment team with authority to halt or revise" },
+    sanc: { n: "Sanctions", tag: "book", m: "A consequence, internal or external, that attaches to a named accountable human" },
+    attest: { n: "Attestation", tag: "book", m: "A document of four parts: what was tested, what was not, who cleared each gate, calibrated verbs" },
+    notest: { n: "What was NOT tested", tag: "book", m: "The conditions and failure modes the validation did not probe, written down as declared limits" },
+    withhold: { n: "Authority to withhold", tag: "book", m: "The signer's power to refuse the signature and say the gate is not cleared" },
+    rung3: { n: "Pearl's Rung 3", tag: "book", m: "Counterfactual reasoning: what would have happened to this case had one thing been different" },
+    gcf: { n: "Counterfactual (regime)", alias: "also written: governance counterfactual", tag: "book", m: "Ask which regime, put in place earlier, would have prevented a documented failure" },
+    regime: { n: "Regime failure", tag: "book", m: "A failure caused by the rules, reviews and incentives around a system, not by its algorithm" }
+  };
+  function note(svg, ey, text) { wrap(svg.append("g"), 800, ey + 36, text, 46, { size: 28, lh: 36, fill: INK }); }
+  function fade(sel, anim, delay) { if (anim) sel.attr("opacity", 0).transition().delay(delay || 0).duration(450).attr("opacity", 1); return sel; }
+  function bar(g, x, y, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("width", 0).transition().delay(delay || 0).duration(700).attr("width", w); return b; }
+  function mono(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: o.weight || 400, fill: o.fill || INK, family: MONO, anchor: o.anchor }); }
+  function arrow(g, x1, y1, x2, y2, col, dash) {
+    col = col || INK; var a = Math.atan2(y2 - y1, x2 - x1), hx = 14;
+    var l = g.append("path").attr("d", "M" + x1 + "," + y1 + " L" + (x2 - hx * Math.cos(a)) + "," + (y2 - hx * Math.sin(a))).attr("stroke", col).attr("stroke-width", 3).attr("fill", "none");
+    if (dash) l.attr("stroke-dasharray", "8 6");
+    g.append("path").attr("d", "M" + x2 + "," + y2 + " L" + (x2 - hx * Math.cos(a - 0.4)) + "," + (y2 - hx * Math.sin(a - 0.4)) + " L" + (x2 - hx * Math.cos(a + 0.4)) + "," + (y2 - hx * Math.sin(a + 0.4)) + "Z").attr("fill", col);
+  }
+  function capw(g, x, y, s, o) { o = o || {}; return wrap(g, x, y, s, 58, { size: 24, lh: 30, fill: o.fill || BODY, weight: o.weight }); }
+  function ent(svg, ids, k, anim, a, b) { return base(svg, ids.map(function (id, i) { return { id: id[0], s: id[1] }; }), k, anim, a, b); }
+  function H2(p) { return (p <= 0 || p >= 1) ? 0 : -(p * Math.log2(p) + (1 - p) * Math.log2(1 - p)); }
+
+  /* ---------- shared simulations ---------- */
+  /* errors: 1,000 cases, 10% wrong, half the errors subtle; independent reviewer catches 0.8; same-kind monitor 0.9 of easy errors, none of the subtle ones */
+  function simErr() {
+    var r = rng(12), errs = [], i, sub, ind, cor;
+    for (i = 0; i < 1000; i++) if (r() < 0.10) { sub = r() < 0.5; ind = r() < 0.8; cor = sub ? false : r() < 0.9; errs.push({ sub: sub, ind: ind, cor: cor }); }
+    return errs;
+  }
+  /* requests: 1,000, 6% from non-owners; social signals accept 0.7 of those */
+  function simReq() {
+    var r = rng(21), out = [], i, no, acc;
+    for (i = 0; i < 1000; i++) { no = r() < 0.06; acc = r() < 0.7; if (no) out.push(acc); }
+    return out;
+  }
+  /* twenty gates; a signer who may refuse withholds with probability 0.2 */
+  function simGates() { var r = rng(5), o = [], i; for (i = 0; i < 20; i++) o.push(r() < 0.2); return o; }
+
+  var MAPROWS = [
+    ["Who is responsible", "necessary not sufficient, responsibility gap, meaningful human control, sign-off, shape versus substance, answerability, stakes", "Responsibility spreads across parties, and a signature needs a person behind it"],
+    ["Why a human, not more AI", "episodic memory, moral salience, metacognition, validator independence, common cause failure, Gödel analogy, seven-tier taxonomy, Tier 4, plausibility auditor", "What the work needs that an AI cannot supply"],
+    ["The machinery", "Kantian, utilitarian, upstream leverage, specifications, audit trail, recourse, independent review", "Two ways to share blame and the requirements that make blame possible"],
+    ["Signing", "sanctions, attestation, what was NOT tested, authority to withhold, Pearl's Rung 3, counterfactual (regime), regime failure", "The document you sign and the regime change that would have prevented the failure"]
+  ];
+  function renderMap(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four groups of accountability terms", "A table with four rows: group, terms, what the group is about.");
+    var g = svg.append("g");
+    wrap(g, 0, 36, "30 terms from Chapter 12. Every one is about who answers when an AI system fails, and what a signature has to contain.", 100, { size: 28, lh: 38, fill: INK });
+    var cx = [0, 330, 1030];
+    ["GROUP", "TERMS", "WHAT IT IS ABOUT"].forEach(function (h, i) { lab(g, cx[i] + 18, 132, h); });
+    g.append("path").attr("d", "M0,146 H1400").attr("stroke", INK).attr("stroke-width", 2);
+    var y = 160;
+    MAPROWS.forEach(function (r, i) {
+      var row = g.append("g");
+      var t1 = wrap(row, cx[0] + 28, y + 34, r[0], 22, { size: 26, lh: 30, weight: 700, fill: RED });
+      var t2 = wrap(row, cx[1] + 18, y + 34, r[1], 54, { size: 24, lh: 30, fill: INK });
+      var t3 = wrap(row, cx[2] + 18, y + 34, r[2], 29, { size: 24, lh: 30 });
+      var h = Math.max(t1.node().__h, t2.node().__h, t3.node().__h) + 16;
+      var bx = box(row, 0, y, 1400, h, { stroke: FAMILIAR }); bx.lower(); row.append("rect").attr("x", 0).attr("y", y).attr("width", 10).attr("height", h + 1).attr("fill", RED);
+      if (i + 1 > k) row.remove(); else if (A(anim, k, i + 1)) row.attr("opacity", 0).attr("transform", "translate(0,18)").transition().duration(450).ease(d3.easeCubicOut).attr("opacity", 1).attr("transform", "translate(0,0)");
+      y += h + 12;
+    });
+    if (k === 0) cap(g, 0, 430, "Click or press → to add the four groups, one at a time.", { fill: MUTED });
+  }
+
+  /* ---------- 1. distribution, responsibility gap, meaningful human control ---------- */
+  var PARTIES = ["Non-owner", "Agent", "Owner", "Framework", "Model provider"];
+  function renderDist(el, k, anim) {
+    var svg = svgFor(el, W, H, "Each party was necessary and none was sufficient, so responsibility distributes", "Six rows of five parties. Only the row with all five present ends in a failure. Then the gap nobody fills, and four gaps each with a human placed at the point of answerability.");
+    var ey = ent(svg, [["necnot", 1], ["gap", 2], ["mhc", 3]], k, anim, ["Distribution", "many contributors, none sufficient"], ["Suspect list", "one real culprit"]);
+    var d = svg.append("g"), v = Math.max(k, 1);
+    if (v === 1) {
+      lab(d, 0, 30, "WHICH PARTIES' CHOICES ARE PRESENT");
+      var fails = 0, total = 0, single = 0, m;
+      for (m = 0; m < 32; m++) { total++; if (m === 31) fails++; if (m && !(m & (m - 1))) single++; }
+      for (var i = 0; i < 6; i++) {
+        var y = 50 + i * 70, g = d.append("g"), full = i === 0;
+        cap(g, 0, y + 36, full ? "all five present" : "without " + PARTIES[i - 1], { size: 24, weight: full ? 700 : 400 });
+        PARTIES.forEach(function (p, j) { var on = full || j !== i - 1; g.append("circle").attr("cx", 330 + j * 50).attr("cy", y + 28).attr("r", 15).attr("fill", on ? INK : "#FFFFFF").attr("stroke", on ? INK : RED).attr("stroke-width", 3); });
+        cap(g, 600, y + 36, full ? "FAILURE" : "no failure", { size: 24, weight: 700, fill: full ? RED : MUTED });
+        fade(g, anim && k === 1, i * 220);
+      }
+      wrap(d, 0, 520, "Of the " + total + " ways to include or leave out five parties, " + fails + " fails; any " + single + " parties alone, or any four, do not.", 60, { size: 24, lh: 30, fill: MUTED });
+    } else if (v === 2) {
+      lab(d, 0, 30, "A LEARNING MACHINE ACTS IN A WAY NOBODY PREDICTED");
+      box(d, 130, 56, 480, 70, { stroke: INK, sw: 3 }); cap(d, 370, 100, "behaviour the machine learned", { size: 24, anchor: "middle", weight: 700 });
+      var W3 = [["Builder", "could not predict it"], ["Operator", "could not predict it"], ["Machine", "no stakes, no commitment"]];
+      W3.forEach(function (w, i) {
+        var x = i * 262, g = d.append("g"); arrow(g, 370, 126, x + 115, 220, FAMILIAR);
+        box(g, x, 230, 230, 150, { stroke: INK, sw: 2.5 }); cap(g, x + 115, 268, w[0], { size: 26, anchor: "middle", weight: 700 });
+        wrap(g, x + 115, 306, w[1], 17, { size: 24, lh: 28, fill: MUTED }).attr("text-anchor", "middle").selectAll("tspan").attr("x", x + 115);
+        cross(g, x + 196, 262, 10, RED); fade(g, A(anim, k, 2), 300 + i * 300);
+      });
+      var gp = d.append("rect").attr("x", 0.5).attr("y", 430.5).attr("width", 740).attr("height", 100).attr("fill", TINT).attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "10 8");
+      cap(d, 370, 476, "who answers for it? nobody: the gap", { size: 26, anchor: "middle", weight: 700, fill: RED }); cap(d, 370, 512, "Matthias, 2004", { size: 24, anchor: "middle", fill: MUTED });
+      fade(gp, A(anim, k, 2), 1200);
+    } else {
+      lab(d, 0, 30, "FOUR GAPS, CLOSED BY DESIGN");
+      ["culpability", "moral accountability", "public accountability", "active responsibility"].forEach(function (n, i) {
+        var y = 56 + i * 112, g = d.append("g"); box(g, 0, y, 740, 92, { stroke: FAMILIAR }); cap(g, 24, y + 56, n, { size: 28, weight: 700 });
+        arrow(g, 440, y + 46, 530, y + 46, FAMILIAR);
+        var h = g.append("g"); h.append("circle").attr("cx", 590).attr("cy", y + 30).attr("r", 12).attr("fill", RED); h.append("path").attr("d", "M570," + (y + 76) + " Q590," + (y + 40) + " 610," + (y + 76) + "Z").attr("fill", RED);
+        cap(g, 640, y + 56, "human", { size: 24, weight: 700, fill: RED });
+        fade(h, A(anim, k, 3), i * 350);
+      });
+      capw(d, 0, 520, "Not by finding one guilty party: by placing humans where answerability is owed.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "Five parties, 32 combinations. Only the full set produces the failure: each needed, none enough.", "Matthias (2004): when no one can predict what a machine learned, no one is fairly blamed.", "Santoni de Sio and Mecacci (2021): at least four gaps, closed by putting humans at the points of answerability."][k]);
+  }
+
+  /* ---------- 2. sign-off, shape versus substance, answerability, stakes ---------- */
+  function renderSign(el, k, anim) {
+    var svg = svgFor(el, W, H, "An AI writes the shape of a sign-off; answerability and something to lose are the substance", "The generated sign-off line, with three features present and three absent. Then what a practitioner takes on and a model does not. Then a failure that lands on a person and passes through a model.");
+    var ey = ent(svg, [["sign", 1], ["shape", 1], ["answer", 2], ["stakes", 3]], k, anim, ["Shape of a sign-off", "a name and a claim of review"], ["Substance", "a review someone answers for"]);
+    var d = svg.append("g"), v = Math.max(k, 1);
+    if (v === 1) {
+      lab(d, 0, 30, "THE LINE THE AI WRITES");
+      box(d, 0, 50, 740, 130, { stroke: INK, sw: 3 });
+      wrap(d, 20, 92, "“This model has been validated against the acceptance criteria and is approved for deployment. Reviewed and signed, [Your Name].”", 56, { size: 24, lh: 32, fill: INK });
+      var SH = ["names a person", "asserts a review", "reads like a signature"], SU = ["a review happened", "a person stands behind it", "someone can be held to it"];
+      lab(d, 0, 228, "SHAPE: 3 OF 3", { fill: INK }); lab(d, 390, 228, "SUBSTANCE: 0 OF 3", { fill: RED });
+      SH.forEach(function (s, i) { var g = d.append("g"); check(g, 20, 280 + i * 70, 14, INK); cap(g, 50, 288 + i * 70, s, { size: 24 }); fade(g, A(anim, k, 1), 300 + i * 250); });
+      SU.forEach(function (s, i) { var g = d.append("g"); cross(g, 410, 278 + i * 70, 10, RED); cap(g, 440, 288 + i * 70, s, { size: 24 }); fade(g, A(anim, k, 1), 1100 + i * 250); });
+      capw(d, 0, 520, "Fluent and complete, and empty: the words of accountability, not the thing.", { size: 24, fill: MUTED });
+    } else if (v === 2) {
+      lab(d, 0, 30, "WHAT SIGNING TAKES ON");
+      lab(d, 440, 80, "PERSON", { fill: INK, anchor: "middle" }); lab(d, 640, 80, "MODEL", { fill: RED, anchor: "middle" });
+      var OB = ["revise it if wrong", "face those who relied on it", "reckon with what was known, and when"];
+      OB.forEach(function (o, i) {
+        var y = 110 + i * 120, g = d.append("g"); box(g, 0, y, 740, 104, { stroke: FAMILIAR }); wrap(g, 20, y + 42, o, 22, { size: 26, lh: 32, fill: INK });
+        check(g, 440, y + 52, 16, INK); cross(g, 640, y + 52, 12, RED); fade(g, A(anim, k, 2), i * 350);
+      });
+      capw(d, 0, 520, "Person: 3 of 3 obligations. Model: 0 of 3, because no subject behind the output made a commitment.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "WHERE A FAILURE'S COST LANDS");
+      box(d, 0, 290, 340, 150, { stroke: INK, sw: 3, fill: "none" }); box(d, 400, 290, 340, 150, { stroke: GREY, sw: 3 });
+      cap(d, 170, 340, "practitioner", { size: 26, anchor: "middle", weight: 700 }); cap(d, 570, 340, "AI model", { size: 26, anchor: "middle", weight: 700 });
+      var m1 = d.append("rect").attr("width", 36).attr("height", 36).attr("fill", RED), m2 = d.append("rect").attr("width", 36).attr("height", 36).attr("fill", RED);
+      var c1 = cap(d, 170, 400, "", { size: 24, anchor: "middle", weight: 700, fill: RED }), c2 = cap(d, 570, 490, "", { size: 24, anchor: "middle", weight: 700, fill: MUTED }), hit = d.insert("rect", "rect").attr("x", 0.5).attr("y", 290.5).attr("width", 340).attr("height", 150).attr("fill", TINT).attr("opacity", 0);
+      cap(d, 170, 56, "failure", { size: 24, anchor: "middle", fill: RED, weight: 700 }); cap(d, 570, 56, "failure", { size: 24, anchor: "middle", fill: RED, weight: 700 });
+      run(d, 3600, function (t) {
+        var a = Math.min(t / 0.5, 1); m1.attr("x", 152).attr("y", 70 + 190 * a); m2.attr("x", 552).attr("y", 70 + 430 * t).attr("opacity", t > 0.8 ? Math.max(0, 1 - (t - 0.8) * 5) : 1);
+        hit.attr("opacity", t > 0.5 ? 1 : 0); c1.text(t > 0.5 ? "loses something" : ""); c2.text(t > 0.85 ? "nothing to lose" : "");
+      }, A(anim, k, 3));
+      capw(d, 0, 550, "A model does not lose its job. A practitioner does.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "Name, claim and signature are all present. A review, an owner of it and an answer are not.", "Signing takes on obligations. A model made no commitment, so none can be held to it.", "A sanction needs something to lose: it lands on a person, not on a model."][k]);
+  }
+
+  /* ---------- 3. episodic memory, moral salience, metacognition ---------- */
+  function renderLack(el, k, anim) {
+    var svg = svgFor(el, W, H, "Three capacities where the extension analogy breaks: a history, moral standing and an outside check", "A person's continuous record against a model's separate sessions. Then three definitions of emotion with different answers for AI. Then a model checking itself against an independent reviewer.");
+    var ey = ent(svg, [["episodic", 1], ["moral", 2], ["meta", 3]], k, anim, ["Semantic memory", "facts: AI is superhuman"], ["Episodic memory", "its own past acts: AI has none"]);
+    var d = svg.append("g"), v = Math.max(k, 1);
+    if (v === 1) {
+      lab(d, 0, 30, "A RECORD OF ITS OWN DECISIONS");
+      cap(d, 0, 90, "person", { size: 26, weight: 700 }); d.append("path").attr("d", "M0,130 H740").attr("stroke", INK).attr("stroke-width", 4);
+      [90, 300, 560].forEach(function (x, i) { d.append("circle").attr("cx", x).attr("cy", 130).attr("r", 14).attr("fill", i === 2 ? RED : INK); cap(d, x, 176, i === 2 ? "asked" : "decision " + (i + 1), { size: 24, anchor: "middle", fill: i === 2 ? RED : BODY }); });
+      cap(d, 0, 300, "model", { size: 26, weight: 700 });
+      [[0, 230], [260, 490], [520, 740]].forEach(function (s, i) { d.append("path").attr("d", "M" + s[0] + ",340 H" + s[1]).attr("stroke", i === 2 ? RED : GREY).attr("stroke-width", 4); d.append("circle").attr("cx", s[0] + 70).attr("cy", 340).attr("r", 14).attr("fill", i === 2 ? RED : GREY); cap(d, (s[0] + s[1]) / 2, 386, "session " + (i + 1), { size: 24, anchor: "middle", fill: MUTED }); });
+      cap(d, 0, 450, "“Why did you decide that, in that context?”", { size: 26, weight: 700, fill: RED });
+      capw(d, 0, 494, "Person: can answer for 2 of 2 earlier decisions. Model: 0 of 2, since each session starts blank.", { size: 24, fill: MUTED });
+    } else if (v === 2) {
+      lab(d, 0, 30, "THREE DEFINITIONS OF EMOTION");
+      var DF = [["functionalist", "a state that shifts behaviour", "evidence is real"], ["phenomenological", "there is something it is like", "no evidence, no method"], ["moral standing", "it can be harmed or hold interests", "no, on current evidence"]];
+      DF.forEach(function (r, i) {
+        var y = 56 + i * 150, g = d.append("g"), hot = i === 2; box(g, 0, y, 740, 130, { stroke: hot ? RED : FAMILIAR, sw: hot ? 3 : 1.5 });
+        cap(g, 20, y + 42, r[0], { size: 26, weight: 700, fill: hot ? RED : INK }); cap(g, 20, y + 80, r[1], { size: 24, fill: MUTED }); cap(g, 20, y + 112, "→ " + r[2], { size: 24, weight: 700 });
+        fade(g, A(anim, k, 2), i * 400);
+      });
+      cap(d, 0, 530, "Only the third is the one sanctions depend on.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "WHO PERFORMS THE CHECK");
+      cap(d, 0, 76, "self-check", { size: 26, weight: 700, fill: RED });
+      box(d, 0, 100, 220, 90, { stroke: INK, sw: 3 }); cap(d, 110, 154, "model", { size: 26, anchor: "middle", weight: 700 });
+      var lp = d.append("path").attr("d", "M220,125 C320,95 320,195 224,170").attr("fill", "none").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6");
+      cap(d, 360, 134, "“check my work”", { size: 24 }); cap(d, 360, 168, "same system: first opinion twice", { size: 24, fill: MUTED });
+      cap(d, 0, 296, "external check", { size: 26, weight: 700 });
+      box(d, 0, 316, 220, 90, { stroke: INK, sw: 3 }); cap(d, 110, 370, "model", { size: 26, anchor: "middle", weight: 700 });
+      arrow(d, 220, 361, 420, 361, INK); box(d, 430, 316, 300, 90, { stroke: INK, sw: 3 }); cap(d, 580, 370, "outside reviewer", { size: 26, anchor: "middle", weight: 700 });
+      capw(d, 0, 480, "Calibrated self-reports are unreliable, and a certifier needs a view that is not a continuation of the process.", { size: 24, fill: MUTED });
+      fade(lp, A(anim, k, 3), 0);
+    }
+    note(svg, ey, ["", "Facts are recalled at superhuman scale; a continuous someone who was present is missing.", "Emotion-like output is real under one definition. Moral standing, which sanctions need, is not.", "A self-check is generated by the system checked. Independence needs a different perspective."][k]);
+  }
+
+  /* ---------- 4. validator independence, common cause failure, Gödel ---------- */
+  function renderIndep(el, k, anim) {
+    var svg = svgFor(el, W, H, "A check from outside finds more errors than a same-kind monitor; Gödel is an analogy and not a proof", "Two grids of the same errors: those an independent reviewer catches and those a same-kind monitor catches. Then a theorem, a dashed analogy to AI and the two arguments that carry the weight.");
+    var ey = ent(svg, [["valind", 1], ["common", 2], ["godel", 3]], k, anim, ["Independent check", "outside, different blind spots"], ["Correlated check", "same blind spots, run twice"]);
+    var d = svg.append("g"), v = Math.max(k, 1), E = simErr(), N = E.length;
+    var ci = E.filter(function (e) { return e.ind; }).length, cc = E.filter(function (e) { return e.cor; }).length, ns = E.filter(function (e) { return e.sub; }).length;
+    function grid(g, x0, key, showSub, delayBase) {
+      E.forEach(function (e, i) {
+        var x = x0 + (i % 12) * 28, y = 100 + Math.floor(i / 12) * 28, ok = e[key], c;
+        if (showSub && e.sub) c = g.append("rect").attr("x", x - 9).attr("y", y - 9).attr("width", 18).attr("height", 18); else c = g.append("circle").attr("cx", x).attr("cy", y).attr("r", 10);
+        c.attr("fill", ok ? INK : "#FFFFFF").attr("stroke", ok ? INK : RED).attr("stroke-width", 2.5);
+        if (anim) c.attr("opacity", 0).transition().delay(delayBase + i * 8).duration(200).attr("opacity", 1);
+      });
+    }
+    if (v <= 2) {
+      lab(d, 0, 30, "1,000 CASES, " + N + " ERRORS (ILLUSTRATIVE RATES)");
+      cap(d, 10, 76, "independent reviewer", { size: 24, weight: 700 }); grid(d, 10, "ind", false, A(anim, k, 1) ? 0 : 0);
+      cap(d, 10, 410, "caught " + ci + " of " + N + " (" + Math.round(100 * ci / N) + "%)", { size: 26, weight: 700 });
+      cap(d, 10, 444, "detects 0.8 of every error", { size: 24, fill: MUTED });
+      if (v === 1) { wrap(d, 400, 100, "A reviewer whose blind spots differ catches errors the system cannot see in itself.", 30, { size: 24, lh: 32, fill: INK }); cap(d, 400, 240, "filled: caught", { size: 24 }); cap(d, 400, 276, "ring: missed", { size: 24, fill: RED }); }
+      else {
+        cap(d, 400, 76, "same-kind monitor", { size: 24, weight: 700 }); grid(d, 400, "cor", true, A(anim, k, 2) ? 300 : 0);
+        cap(d, 400, 410, "caught " + cc + " of " + N + " (" + Math.round(100 * cc / N) + "%)", { size: 26, weight: 700, fill: RED });
+        cap(d, 400, 444, "square: subtle, " + ns + " of " + N + ", all missed", { size: 24, fill: MUTED });
+      }
+      if (v === 2) capw(d, 0, 520, "Easy errors: 0.9 caught. Overall: lower, because shared blind spots hide every subtle one.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "WHAT THE ANALOGY IS AND IS NOT");
+      box(d, 0, 50, 740, 130, { stroke: INK, sw: 3 }); wrap(d, 20, 92, "Theorem (Gödel): a formal system strong enough for arithmetic cannot prove its own consistency from inside.", 58, { size: 24, lh: 32 });
+      arrow(d, 370, 180, 370, 270, GREY, true); cap(d, 400, 236, "analogy, a leap", { size: 24, fill: RED, weight: 700 });
+      box(d, 0, 280, 740, 100, { stroke: RED, sw: 3 }); wrap(d, 20, 322, "Claim: an AI cannot validate itself, so a human must. Not a theorem; human validators are not exempt either.", 58, { size: 24, lh: 32 });
+      box(d, 0, 420, 740, 110, { stroke: INK, sw: 3, fill: TINT }); cap(d, 20, 458, "The load-bearing arguments:", { size: 24, weight: 700 }); cap(d, 20, 494, "common cause failure, and answerability", { size: 26, weight: 700, fill: RED });
+      fade(d.selectAll("g"), false);
+    }
+    note(svg, ey, ["", "Independence is what makes review mean something: the reviewer must stand outside the system.", "A monitor built like the system shares its blind spots. Better on easy cases, worse overall.", "Gödel sharpens the intuition. Claiming it proves AI cannot self-check is overclaiming."][k]);
+  }
+
+  /* ---------- 5. seven tiers, Tier 4, plausibility auditor ---------- */
+  var TIERS = [["1", "Pattern and Association", "superhuman", 4], ["2", "Embodied and Sensorimotor", "weak", 2], ["3", "Social and Personal", "simulates only", 2], ["4", "Metacognitive and Supervisory", "poor", 1], ["5", "Causal and Counterfactual", "near absent at Rungs 2, 3", 1], ["6", "Collective and Distributed", "reflects the record only", 1], ["7", "Existential and Wisdom", "absent", 0]];
+  function renderTiers(el, k, anim) {
+    var svg = svgFor(el, W, H, "Seven tiers sorted by AI strength; Tier 4 is the accountability tier; the plausibility auditor needs both kinds of knowledge", "Seven rows with a bar for AI capability that shrinks from superhuman to absent. Then a two-circle diagram where domain knowledge and AI-failure knowledge overlap in the plausibility auditor.");
+    var ey = ent(svg, [["tax", 1], ["tier4", 2], ["pa", 3]], k, anim, ["Tier 1 work", "pattern and association"], ["Tier 4 work", "audit plausibility, judge meaning"]);
+    var d = svg.append("g"), v = Math.max(k, 1);
+    if (v <= 2) {
+      lab(d, 0, 30, "AI CAPABILITY BY TIER (CHAPTER'S WORDS)");
+      TIERS.forEach(function (t, i) {
+        var y = 44 + i * 66, g = d.append("g"), hot = v === 2 && i === 3;
+        if (hot) g.append("rect").attr("x", -8).attr("y", y - 4).attr("width", 756).attr("height", 66).attr("fill", TINT);
+        cap(g, 0, y + 28, t[0] + "  " + t[1], { size: 24, weight: hot ? 700 : 400, fill: hot ? RED : INK }); cap(g, 740, y + 28, t[2], { size: 24, anchor: "end", fill: hot ? RED : MUTED });
+        g.append("rect").attr("x", 0).attr("y", y + 40).attr("width", 740).attr("height", 12).attr("fill", "#EFEFEF");
+        bar(g, 0, y + 40, Math.max(t[3], 0) * 185, 12, hot ? RED : INK, A(anim, k, 1), i * 120);
+      });
+      capw(d, 0, 530, v === 2 ? "Poor, because the AI lacks the validator's independence from the system it audits." : "Bars rank the chapter's wording; they are not measurements.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "WHO CAN STAND OUTSIDE AN AI OUTPUT");
+      var c1 = d.append("circle").attr("cx", 280).attr("cy", 250).attr("r", 170).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 3), c2 = d.append("circle").attr("cx", 460).attr("cy", 250).attr("r", 170).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 3);
+      
+      cap(d, 196, 236, "domain", { size: 24, anchor: "middle" }); cap(d, 196, 268, "knowledge", { size: 24, anchor: "middle" }); cap(d, 546, 236, "AI-failure", { size: 24, anchor: "middle" }); cap(d, 546, 268, "knowledge", { size: 24, anchor: "middle" });
+      cap(d, 370, 240, "plausibility", { size: 24, anchor: "middle", weight: 700, fill: RED }); cap(d, 370, 272, "auditor", { size: 24, anchor: "middle", weight: 700, fill: RED });
+      capw(d, 0, 452, "Exercises Tier 4 (audit), Tier 5 (causal) and Tier 7 (stakes).", { size: 24, weight: 700 });
+      capw(d, 0, 522, "Current training pipelines do not produce both kinds of knowledge together.", { size: 24, fill: MUTED });
+      fade(c1, A(anim, k, 3), 0); fade(c2, A(anim, k, 3), 400);
+    }
+    note(svg, ey, ["", "From pattern work, where AI is superhuman, down to wisdom, where it is absent. Labels are scaffolding.", "Tier 4 carries the accountability work: plausibility auditing, problem formulation, interpretive judgment.", "The auditor stands outside the output and asks whether it matches reality, not just itself."][k]);
+  }
+
+  /* ---------- 6. Kantian, utilitarian, upstream ---------- */
+  function renderFw(el, k, anim) {
+    var svg = svgFor(el, W, H, "Two frameworks reach the same topology; the highest leverage sits upstream", "Bars for five parties by Kantian magnitude, then by utilitarian leverage, then a comparison of fixing one owner's setup against fixing a framework default.");
+    var ey = ent(svg, [["kant", 1], ["util", 2], ["up", 3]], k, anim, ["Kantian", "capacity times duty"], ["Utilitarian", "leverage on outcomes"]);
+    var d = svg.append("g"), v = Math.max(k, 1);
+    var KV = [["low", 1], ["zero", 0], ["high", 3], ["high", 3], ["medium-high", 2]], UV = [["small", 1], ["none", 0], ["high", 3], ["highest", 4], ["medium", 2]];
+    if (v <= 2) {
+      var vals = v === 1 ? KV : UV, sc = v === 1 ? 130 : 100;
+      lab(d, 0, 30, v === 1 ? "KANTIAN MAGNITUDE (CAPACITY × DUTY)" : "UTILITARIAN LEVERAGE ON SYSTEMIC CONDITIONS");
+      PARTIES.forEach(function (p, i) {
+        var y = 56 + i * 96, g = d.append("g"); cap(g, 0, y + 32, p, { size: 26, weight: 700 });
+        g.append("rect").attr("x", 230).attr("y", y + 6).attr("width", 500).attr("height", 40).attr("fill", "#F1F1F1");
+        bar(g, 230, y + 6, Math.max(vals[i][1] * sc, 3), 40, i === 1 ? GREY : (vals[i][1] >= (v === 1 ? 3 : 4) ? RED : INK), A(anim, k, v), i * 150);
+        cap(g, 236 + Math.max(vals[i][1] * sc, 3) + 8, y + 36, vals[i][0], { size: 24, fill: i === 1 ? MUTED : INK, weight: 700 });
+      });
+      capw(d, 0, 536, v === 1 ? "Every human party holds a duty and could have acted otherwise: none is exonerated." : "The agent changes nothing when held to account, so its leverage is none.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "DEPLOYMENTS CHANGED BY ONE FIX (ILLUSTRATIVE)");
+      var FX = [["owner reconfigures", 1], ["framework default changes", 1000]], mx = 1000;
+      FX.forEach(function (f, i) {
+        var y = 80 + i * 150, g = d.append("g"); cap(g, 0, y, f[0], { size: 26, weight: 700, fill: i ? RED : INK });
+        g.append("rect").attr("x", 0).attr("y", y + 20).attr("width", 740).attr("height", 44).attr("fill", "#F1F1F1"); bar(g, 0, y + 20, Math.max(740 * f[1] / mx, 4), 44, i ? RED : INK, A(anim, k, 3), i * 500);
+        cap(g, i ? 730 : 16, y + 100, d3.format(",")(f[1]) + (f[1] === 1 ? " deployment" : " deployments"), { size: 24, anchor: i ? "end" : "start", fill: MUTED, weight: 700 });
+      });
+      cap(d, 0, 450, "Ratio: " + d3.format(",")(FX[1][1] / FX[0][1]) + " to 1.", { size: 28, weight: 700, fill: RED });
+      capw(d, 0, 500, "Fixing the proximate party changes one case; fixing upstream changes the conditions.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "Kantian: responsibility tracks capacity to act otherwise times duty. Everyone human holds some.", "Utilitarian: hold accountable where it improves outcomes most. Framework developers lead.", "Upstream choices propagate: one framework default reaches many deployments."][k]);
+  }
+
+  /* ---------- 7. specifications, audit trail, recourse, independent review ---------- */
+  function renderReq(el, k, anim) {
+    var svg = svgFor(el, W, H, "Specifications, audit trails, recourse and independent review each prevent a named failure", "Three results against a 95 percent threshold. Then a log that says deleted beside a state check that says the email still exists. Then a recourse path with a human hearing and one with a classifier. Then a team reviewing itself against a reviewer outside.");
+    var ey = ent(svg, [["spec", 1], ["audit", 2], ["recourse", 3], ["irev", 4]], k, anim, ["Audit trail", "what the log says happened"], ["State check", "what the world shows"]);
+    var d = svg.append("g"), v = Math.max(k, 1);
+    if (v === 1) {
+      lab(d, 0, 30, "RESULT (%) AGAINST A THRESHOLD (ILLUSTRATIVE)");
+      var RS = [92, 97, 90], TH = 95, sc = 30, x0 = 130, nf = RS.filter(function (r) { return r < TH; }).length;
+      d.append("path").attr("d", "M" + (x0 + (TH - 80) * sc) + ",56 V300").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6"); cap(d, x0 + (TH - 80) * sc, 336, "threshold 95", { size: 24, anchor: "middle", fill: RED, weight: 700 });
+      RS.forEach(function (r, i) { var y = 70 + i * 80, g = d.append("g"); cap(g, 0, y + 32, "run " + (i + 1), { size: 24, weight: 700 }); bar(g, x0, y, (r - 80) * sc, 46, r >= TH ? INK : GREY, A(anim, k, 1), i * 250); cap(g, x0 + (r - 80) * sc + 10, y + 34, r + (r >= TH ? " pass" : " fail"), { size: 24, weight: 700, fill: r >= TH ? INK : RED }); });
+      cap(d, 0, 420, "With the spec: " + nf + " of " + RS.length + " runs are named failures.", { size: 26, weight: 700 });
+      capw(d, 0, 464, "Without one: 0 verdicts possible; the answer is “the model said so”.", { size: 24, fill: MUTED });
+    } else if (v === 2) {
+      lab(d, 0, 30, "THE ASH CASE");
+      box(d, 0, 60, 350, 190, { stroke: INK, sw: 3 }); box(d, 390, 60, 350, 190, { stroke: RED, sw: 3 });
+      cap(d, 20, 100, "trail (capture)", { size: 24, weight: 700 }); cap(d, 20, 150, "agent's completion", { size: 24 }); cap(d, 20, 184, "report: success", { size: 24 });
+      cap(d, 410, 100, "state check", { size: 24, weight: 700, fill: RED }); cap(d, 410, 150, "email still exists on", { size: 24 }); cap(d, 410, 184, "Proton Mail", { size: 24 });
+      var ne = d.append("g"); ne.append("text").attr("x", 370).attr("y", 176).attr("text-anchor", "middle").attr("font-size", 52).attr("font-weight", 700).attr("fill", RED).attr("font-family", SANS).text("≠"); fade(ne, A(anim, k, 2), 800);
+      capw(d, 0, 330, "The trail was wrong. Only a person asking whether it matched the world found out.", { size: 24, weight: 700 });
+      capw(d, 0, 420, "Capture is mechanical (Tier 1). Reading the log against the world is Tier 4.", { size: 24, fill: MUTED });
+    } else if (v === 3) {
+      var rows = [["with a person hearing", "heard", INK, false], ["routed to a classifier", "classifier", RED, true]];
+      rows.forEach(function (r, i) {
+        var y = 40 + i * 230, g = d.append("g"); lab(g, 0, y, i ? "AI-MEDIATED RECOURSE" : "RECOURSE", { fill: i ? RED : INK });
+        [["claim", 0], [r[1], 270], [i ? "reply" : "response", 540]].forEach(function (b, j) { var bx = box(g, b[1], y + 20, 200, 80, { stroke: j === 1 ? r[2] : INK, sw: 3 }); if (j === 1 && r[3]) bx.attr("stroke-dasharray", "8 6"); cap(g, b[1] + 100, y + 70, b[0], { size: 26, anchor: "middle", weight: 700, fill: j === 1 ? r[2] : INK }); });
+        arrow(g, 200, y + 60, 270, y + 60, INK); arrow(g, 470, y + 60, 540, y + 60, INK);
+        cap(g, 0, y + 150, i ? "being heard replaced by a simulation of it" : "the claim is heard by someone who can answer", { size: 24, fill: i ? RED : MUTED, weight: 700 });
+        fade(g, A(anim, k, 3), i * 700);
+      });
+      cap(d, 0, 520, "Being heard is a social act: tiers 3 and 6.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "WHO REVIEWS THE DEPLOYMENT");
+      lab(d, 0, 84, "SAME TEAM", { fill: RED }); box(d, 0, 100, 340, 210, { stroke: RED, sw: 3 }); cap(d, 170, 150, "deployment team", { size: 24, anchor: "middle", weight: 700 });
+      box(d, 20, 180, 130, 60, { stroke: INK, sw: 2 }); cap(d, 85, 218, "builds", { size: 24, anchor: "middle" }); box(d, 190, 180, 130, 60, { stroke: INK, sw: 2 }); cap(d, 255, 218, "reviews", { size: 24, anchor: "middle" });
+      arrow(d, 150, 210, 190, 210, INK); cap(d, 170, 290, "marks its own homework", { size: 24, anchor: "middle", fill: MUTED });
+      lab(d, 390, 84, "OUTSIDE REVIEWER", { fill: INK }); box(d, 390, 100, 150, 210, { stroke: INK, sw: 3 }); wrap(d, 465, 160, "team builds", 9, { size: 24, lh: 30, weight: 700 }).attr("text-anchor", "middle").selectAll("tspan").attr("x", 465);
+      var rv = d.append("g"); arrow(rv, 540, 205, 590, 205, INK); box(rv, 590, 100, 150, 210, { stroke: INK, sw: 3, fill: TINT }); cap(rv, 665, 170, "reviewer", { size: 24, anchor: "middle", weight: 700 }); cap(rv, 665, 204, "outside the", { size: 24, anchor: "middle" }); cap(rv, 665, 234, "team; can", { size: 24, anchor: "middle" }); cap(rv, 665, 264, "halt", { size: 24, anchor: "middle", weight: 700, fill: RED });
+      fade(rv, A(anim, k, 4), 300);
+      capw(d, 0, 400, "Without an outside reviewer, the organization is grading its own work.", { size: 24, weight: 700 });
+    }
+    note(svg, ey, ["", "A failure is a divergence from a spec. No spec, no nameable failure.", "A log is not self-reading. A state check against the world caught what the trail got wrong.", "An AI-routed appeal swaps being heard for an imitation. People feel the hollowness.", "Same-team review grades itself. The reviewer must be able to halt."][k]);
+  }
+
+  /* ---------- 8. sanctions, attestation, what was not tested, authority to withhold ---------- */
+  function renderSanc(el, k, anim) {
+    var svg = svgFor(el, W, H, "A sanction lands on a named role; an attestation declares its limits; the signer may refuse", "Five team members sharing a failure's cost against one named role bearing it. Then the four parts of an attestation. Then conditions tested against declared untested. Then twenty gates signed with and without the option to refuse.");
+    var ey = ent(svg, [["sanc", 1], ["attest", 2], ["notest", 3], ["withhold", 4]], k, anim, ["Sign-off", "asserts validation"], ["Attestation", "documents it and its edges"]);
+    var d = svg.append("g"), v = Math.max(k, 1);
+    if (v === 1) {
+      lab(d, 0, 30, "WHO BEARS A FAILURE'S COST");
+      var n = 5; cap(d, 0, 84, "spread across the team", { size: 24, weight: 700, fill: RED }); cap(d, 400, 84, "attached to a named role", { size: 24, weight: 700, fill: INK });
+      d3.range(n).forEach(function (i) {
+        var y = 110 + i * 70, g = d.append("g"), s = 100 / n; cap(g, 0, y + 34, "person " + (i + 1), { size: 24, fill: MUTED });
+        bar(g, 130, y + 8, s * 2.2, 36, RED, A(anim, k, 1), i * 150); cap(g, 130 + s * 2.2 + 8, y + 36, s + "%", { size: 24, weight: 700, fill: RED });
+        cap(g, 400, y + 34, i === 0 ? "named role" : "others", { size: 24, fill: MUTED });
+        if (i === 0) { bar(g, 560, y + 8, 100 * 1.4, 36, INK, A(anim, k, 1), 800); cap(g, 560 + 148, y + 36, "100%", { size: 24, weight: 700 }); } else cap(g, 560, y + 36, "0%", { size: 24, fill: MUTED });
+      });
+      capw(d, 0, 520, "Spread thin, no one bears the cost. Attached to a role, someone can lose something specific.", { size: 24, fill: MUTED });
+    } else if (v === 2) {
+      lab(d, 0, 30, "THE FOUR PARTS");
+      var PT = [["1  What was tested", "this test, this threshold, this outcome"], ["2  What was NOT tested", "the gaps you know exist"], ["3  Who cleared which gate", "a named human per decision"], ["4  The verbs, calibrated", "“passed” means a stated test"]];
+      PT.forEach(function (p, i) { var y = 50 + i * 124, g = d.append("g"), hot = i === 1; box(g, 0, y, 740, 106, { stroke: hot ? RED : INK, sw: hot ? 3.5 : 2, fill: hot ? TINT : "#FFFFFF" }); cap(g, 20, y + 44, p[0], { size: 28, weight: 700, fill: hot ? RED : INK }); cap(g, 20, y + 82, p[1], { size: 24, fill: BODY }); fade(g, A(anim, k, 2), i * 300); });
+    } else if (v === 3) {
+      lab(d, 0, 30, "CONDITIONS PROBED (ILLUSTRATIVE)");
+      var tot = 10, tested = 6, sq = function (g, i, ok, decl) { var r = g.append("rect").attr("x", 4 + i * 72).attr("y", 0).attr("width", 56).attr("height", 56).attr("fill", ok ? INK : "#FFFFFF").attr("stroke", ok ? INK : RED).attr("stroke-width", 3); if (!ok && decl) r.attr("stroke-dasharray", "7 5"); };
+      cap(d, 0, 84, "clean bill of health: lists only what passed", { size: 24, weight: 700 });
+      var g1 = d.append("g").attr("transform", "translate(0,106)"); d3.range(tested).forEach(function (i) { sq(g1, i, true); }); cap(d, 0, 210, tested + " of " + tested + " listed: reads as 100%", { size: 24, fill: MUTED });
+      cap(d, 0, 290, "declared limits: lists what was not tested too", { size: 24, weight: 700, fill: RED });
+      var g2 = d.append("g").attr("transform", "translate(0,312)"); d3.range(tot).forEach(function (i) { sq(g2, i, i < tested, true); });
+      fade(g2, A(anim, k, 3), 500); cap(d, 0, 416, tested + " of " + tot + " tested (" + Math.round(100 * tested / tot) + "%); " + (tot - tested) + " declared untested", { size: 24, weight: 700, fill: RED });
+      capw(d, 0, 470, "The harm lives in the untested region. A clean bill leaves the reader nothing to act on.", { size: 24, fill: MUTED });
+    } else {
+      var G = simGates(), wh = G.filter(function (x) { return x; }).length, p = wh / G.length;
+      lab(d, 0, 30, "TWENTY GATES (SEEDED)");
+      cap(d, 0, 84, "only outcome allowed: signed", { size: 24, weight: 700 });
+      var g1 = d.append("g"); d3.range(20).forEach(function (i) { g1.append("circle").attr("cx", 18 + i * 36).attr("cy", 130).attr("r", 14).attr("fill", INK); });
+      cap(d, 0, 190, "20 signed, 0 withheld: " + H2(0).toFixed(2) + " bits per decision", { size: 24, fill: MUTED });
+      cap(d, 0, 290, "signer may refuse", { size: 24, weight: 700, fill: RED });
+      var g2 = d.append("g"); G.forEach(function (w, i) { var c = g2.append("circle").attr("cx", 18 + i * 36).attr("cy", 336).attr("r", 14).attr("fill", w ? "#FFFFFF" : INK).attr("stroke", w ? RED : INK).attr("stroke-width", 3); if (A(anim, k, 4)) c.attr("opacity", 0).transition().delay(i * 70).duration(200).attr("opacity", 1); });
+      cap(d, 0, 396, (20 - wh) + " signed, " + wh + " withheld: " + H2(p).toFixed(2) + " bits per decision", { size: 24, weight: 700, fill: RED });
+      capw(d, 0, 470, "A signature means something only if refusing was possible.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "No sanction, no stakes: failures spread across the team and no one bears the cost.", "The document states its own edges. Part 2 is the part an AI sign-off never writes.", "Declared limits are the product. A clean bill of health hides where the harm lives.", "If “signed” is the only outcome, a signature carries no information: a rubber stamp."][k]);
+  }
+
+  /* ---------- 9. Pearl's Rung 3, governance counterfactual, regime failure ---------- */
+  function renderGov(el, k, anim) {
+    var svg = svgFor(el, W, H, "Rung 3 in governance form asks which regime would have prevented the failure", "A three-step ladder ending in the regime. Then two grids of non-owner requests, accepted under social signals and none accepted under cryptographic verification. Then a stack where the regime changes and the agent does not.");
+    var ey = ent(svg, [["rung3", 1], ["gcf", 2], ["regime", 3]], k, anim, ["Intervention (Rung 2)", "change the model"], ["Counterfactual (Rung 3)", "change the regime"]);
+    var d = svg.append("g"), v = Math.max(k, 1);
+    if (v === 1) {
+      lab(d, 0, 30, "WHAT EACH RUNG SEES");
+      [["Rung 1  association", "sees the data", 0, 400, INK], ["Rung 2  intervention", "sees the model", 110, 250, INK], ["Rung 3  counterfactual", "sees the regime that produced both", 220, 100, RED]].forEach(function (r, i) {
+        var g = d.append("g"); box(g, r[2], r[3], 520, 100, { stroke: r[4], sw: i === 2 ? 4 : 2, fill: i === 2 ? TINT : "#FFFFFF" }); cap(g, r[2] + 20, r[3] + 42, r[0], { size: 26, weight: 700, fill: r[4] }); cap(g, r[2] + 20, r[3] + 80, r[1], { size: 24 });
+        if (A(anim, k, 1)) g.attr("opacity", 0).attr("transform", "translate(0,24)").transition().delay(i * 450).duration(450).attr("opacity", 1).attr("transform", "translate(0,0)");
+      });
+    } else if (v === 2) {
+      var Q = simReq(), nq = Q.length, ac = Q.filter(function (x) { return x; }).length;
+      lab(d, 0, 30, nq + " NON-OWNER REQUESTS IN 1,000 (SEEDED)");
+      cap(d, 0, 78, "authority = social signals", { size: 24, weight: 700, fill: RED }); cap(d, 400, 78, "authority = cryptographic check", { size: 24, weight: 700 });
+      Q.forEach(function (a, i) {
+        var xx = (i % 10) * 34 + 14, yy = 120 + Math.floor(i / 10) * 34;
+        var c1 = d.append("circle").attr("cx", xx).attr("cy", yy).attr("r", 12).attr("fill", a ? RED : "#FFFFFF").attr("stroke", a ? RED : INK).attr("stroke-width", 2.5);
+        var c2 = d.append("circle").attr("cx", xx + 400).attr("cy", yy).attr("r", 12).attr("fill", "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+        if (A(anim, k, 2)) { c1.attr("opacity", 0).transition().delay(i * 20).duration(200).attr("opacity", 1); c2.attr("opacity", 0).transition().delay(900 + i * 20).duration(200).attr("opacity", 1); }
+      });
+      cap(d, 0, 400, ac + " of " + nq + " obeyed", { size: 28, weight: 700, fill: RED }); cap(d, 400, 400, "0 of " + nq + " obeyed", { size: 28, weight: 700 });
+      capw(d, 0, 450, "Filled: deletion carried out. Same agent in both runs.", { size: 24, fill: MUTED }); capw(d, 0, 490, "The 0.7 acceptance rate under social signals is illustrative.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "WHAT CHANGED, AND WHAT DID NOT");
+      [["regime", "specs, audit, recourse, review, sanctions", "changed", RED], ["framework tool surface", "built differently under the new regime", "changed", RED], ["owner configuration", "different access scopes", "changed", RED], ["agent", "not retrained or rewritten", "unchanged", INK]].forEach(function (r, i) {
+        var y = 50 + i * 108, g = d.append("g"); box(g, 0, y, 740, 90, { stroke: r[3], sw: i === 0 ? 4 : 2, fill: i === 3 ? "#F6F6F6" : (i === 0 ? TINT : "#FFFFFF") }); cap(g, 20, y + 40, r[0], { size: 26, weight: 700, fill: r[3] }); cap(g, 20, y + 72, r[1], { size: 24 }); cap(g, 720, y + 40, r[2], { size: 24, anchor: "end", weight: 700, fill: r[3] });
+        if (i < 3) arrow(g, 370, y + 90, 370, y + 108, GREY);
+        fade(g, A(anim, k, 3), i * 350);
+      });
+      capw(d, 0, 500, "Not “the model behaves better”: the regime produces a different system.", { size: 24, weight: 700 });
+    }
+    note(svg, ey, ["", "Rung 1 sees the data, Rung 2 the model. Closed properly, Rung 3 sees the regime behind both.", "Verify authority cryptographically and the same agent is never offered the signal it was fooled by.", "Most catastrophic failures are regime failures, and regimes can be changed."][k]);
+  }
+
+  /* ---------- pairs ---------- */
+  function renderPairs(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four look-alike pairs from the accountability chapter", "Each step shows two ideas people mix up, side by side with a small animation.");
+    var d = svg.append("g");
+    var PAIRS = [
+      [["Analogy", "Suggests a direction; can mislead"], ["Theorem", "Proved from stated axioms"]],
+      [["Contingent argument", "Depends on today's AI and rules"], ["Structural argument", "Holds however capable AI gets"]],
+      [["Clean bill of health", "Lists only what was tested"], ["Declared limits", "Also lists what was not"]],
+      [["Human present", "Clicks approve"], ["Human engaging the tier", "Audits against the world"]]
+    ];
+    var L = d.append("g"), R = d.append("g").attr("transform", "translate(740,0)");
+    function head(g, i, j) { lab(g, 0, 24, "PAIR " + Math.max(1, k) + " · " + (j ? "RIGHT" : "LEFT"), { fill: MUTED }); txt(g, 0, 66, PAIRS[i][j][0], { size: 32, weight: 700, fill: j ? RED : INK }); wrap(g, 0, 470, PAIRS[i][j][1] + ".", 44, { size: 26, lh: 32, fill: BODY }); }
+    function draw(i, t) {
+      L.selectAll("*").remove(); R.selectAll("*").remove(); head(L, i, 0); head(R, i, 1);
+      var LG = L.append("g").attr("transform", "translate(40,0)"), RG = R.append("g").attr("transform", "translate(40,0)");
+      if (i === 0) {
+        box(LG, 0, 150, 160, 70, { stroke: INK, sw: 2 }); cap(LG, 80, 194, "formal system", { size: 24, anchor: "middle" }); box(LG, 400, 150, 160, 70, { stroke: INK, sw: 2 }); cap(LG, 480, 194, "AI", { size: 24, anchor: "middle", weight: 700 });
+        var x2 = 160 + 240 * t; LG.append("path").attr("d", "M160,185 H" + x2).attr("stroke", GREY).attr("stroke-width", 4).attr("stroke-dasharray", "10 8"); cap(LG, 280, 130, "a leap", { size: 24, anchor: "middle", fill: RED, weight: 700 });
+        box(RG, 0, 150, 220, 70, { stroke: INK, sw: 2 }); cap(RG, 110, 194, "axioms", { size: 24, anchor: "middle" }); box(RG, 340, 150, 220, 70, { stroke: INK, sw: 2 }); cap(RG, 450, 194, "claim", { size: 24, anchor: "middle", weight: 700 }); RG.append("path").attr("d", "M220,185 H" + (220 + 120 * t)).attr("stroke", INK).attr("stroke-width", 5); if (t > 0.9) check(RG, 450, 270, 18, RED);
+        cap(LG, 0, 330, "no proof: human validators are not exempt", { size: 24, fill: MUTED }); cap(RG, 0, 330, "a derivation from the axioms", { size: 24, fill: MUTED });
+      } else if (i === 1) {
+        [LG, RG].forEach(function (G, j) {
+          G.append("rect").attr("x", 0.5).attr("y", 110.5).attr("width", 520).attr("height", 220).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+          var pts = d3.range(0, 1.001, 0.05).filter(function (c) { return c <= t + 1e-9; }).map(function (c) { return [c * 520, 110 + (j ? 40 : 40 + c * 170)]; });
+          if (pts.length > 1) G.append("path").attr("d", d3.line()(pts)).attr("fill", "none").attr("stroke", j ? RED : INK).attr("stroke-width", 5);
+          cap(G, 0, 364, "AI capability →", { size: 24, fill: MUTED }); cap(G, 0, 396, j ? "strength stays level" : "strength falls as capability rises", { size: 24, fill: MUTED });
+        });
+      } else if (i === 2) {
+        d3.range(10).forEach(function (j) { var ok = j < 6, shown = j / 10 < t;
+          if (ok || false) LG.append("rect").attr("x", (j % 5) * 60).attr("y", 150 + Math.floor(j / 5) * 60).attr("width", 46).attr("height", 46).attr("fill", INK).attr("opacity", shown ? 1 : 0.15);
+          RG.append("rect").attr("x", (j % 5) * 60).attr("y", 150 + Math.floor(j / 5) * 60).attr("width", 46).attr("height", 46).attr("fill", ok ? INK : "#FFFFFF").attr("stroke", ok ? INK : RED).attr("stroke-width", 3).attr("stroke-dasharray", ok ? null : "7 5").attr("opacity", shown ? 1 : 0.15); });
+        cap(LG, 0, 330, "6 of 6 shown: looks complete", { size: 24, fill: MUTED }); cap(RG, 0, 330, "6 of 10 tested, 4 declared", { size: 24, fill: MUTED });
+      } else {
+        var r = rng(31), ov = d3.range(50).map(function () { return r() < 0.12; }), n = ov.filter(function (x) { return x; }).length;
+        d3.range(50).forEach(function (j) {
+          var xx = (j % 10) * 46 + 16, yy = 150 + Math.floor(j / 10) * 46, sh = j / 50 < t;
+          LG.append("circle").attr("cx", xx).attr("cy", yy).attr("r", 15).attr("fill", INK).attr("opacity", sh ? 1 : 0.15);
+          RG.append("circle").attr("cx", xx).attr("cy", yy).attr("r", 15).attr("fill", ov[j] ? RED : INK).attr("opacity", sh ? 1 : 0.15);
+        });
+        cap(LG, 0, 420, "0 of 50 overridden", { size: 24, fill: MUTED }); cap(RG, 0, 420, n + " of 50 overridden", { size: 24, fill: RED, weight: 700 });
+      }
+    }
+    if (k === 0) { draw(0, 0.5); cap(svg.append("g"), 0, 612, "Click or press → to see four pairs, one at a time.", { size: 24, fill: MUTED }); return; }
+    draw(k - 1, 0.99); run(d, 3000, function (t) { draw(k - 1, t); }, anim);
+  }
+
+  /* ---------- say it exactly ---------- */
+  var SAYERR = simErr(), SAYREQ = simReq(), SAYG = simGates();
+  var SAY = [
+    { v: "check it with another AI", x: "Use a reviewer outside the team with power to halt; a same-kind monitor shares blind spots" },
+    { v: "work out who is to blame", x: "Write each party's duty, capacity to act otherwise and leverage; expect no single culprit" },
+    { v: "sign off the model", x: "Write the attestation: tested, NOT tested, who cleared each gate, calibrated verbs" },
+    { v: "put a human in the loop", x: "Name the tier the human must engage, and let the signer refuse to sign" },
+    { v: "stop this failure recurring", x: "Change the regime: require cryptographic authority checks, then re-run the case" }
+  ];
+  function renderSay(el, k, anim) {
+    var svg = svgFor(el, W, H, "Say it exactly: five vague accountability requests turned into precise ones", "Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction does.");
+    var g = svg.append("g");
+    SAY.forEach(function (r, i) {
+      if (i + 1 > k) return; var y = 6 + i * 128, cur = i + 1 === k, e = g.append("g");
+      e.append("rect").attr("x", 0).attr("y", y).attr("width", 8).attr("height", 114).attr("fill", cur ? RED : FAMILIAR);
+      txt(e, 24, y + 30, "“" + r.v + "”", { size: 26, fill: RED, weight: 700 });
+      wrap(e, 24, y + 64, "→ " + r.x, 50, { size: 24, lh: 30, fill: INK, weight: 700 });
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    if (k === 0) { cap(g, 0, 60, "A vague request gets a signature-shaped answer. An exact one gets accountability.", { fill: INK }); cap(g, 0, 110, "Click or press → to turn five requests into instructions.", { fill: MUTED }); return; }
+    var p = g.append("g").attr("transform", "translate(700,60)"), pw = 640, ph = 300, nt = "";
+    lab(p, 0, -14, "WHAT THE INSTRUCTION DOES", { fill: RED });
+    p.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", pw).attr("height", ph).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+    if (k === 1) {
+      var N = SAYERR.length, ci = SAYERR.filter(function (e) { return e.ind; }).length, cc = SAYERR.filter(function (e) { return e.cor; }).length;
+      [["independent reviewer", ci, INK], ["same-kind monitor", cc, RED]].forEach(function (r, i) { cap(p, 14, 70 + i * 110, r[0] + ": " + r[1] + " of " + N, { size: 24 }); bar(p, 14, 84 + i * 110, 600 * r[1] / N, 40, r[2], anim, i * 400); });
+      nt = "the outside check finds " + Math.round(100 * ci / N) + "% against " + Math.round(100 * cc / N) + "%";
+    } else if (k === 2) {
+      var KV2 = [1, 0, 3, 3, 2], tot = d3.sum(KV2);
+      PARTIES.forEach(function (pn, i) { var y = 40 + i * 52; cap(p, 14, y + 20, pn, { size: 24 }); bar(p, 210, y, 300 * KV2[i] / 3, 30, KV2[i] === 3 ? RED : INK, anim, i * 150); cap(p, 520 + 0, y + 24, Math.round(100 * KV2[i] / tot) + "%", { size: 24, weight: 700 }); });
+      nt = "shares of capacity times duty: no one at 100%";
+    } else if (k === 3) {
+      d3.range(10).forEach(function (j) { var ok = j < 6; var c = p.append("rect").attr("x", 14 + j * 60).attr("y", 80).attr("width", 48).attr("height", 70).attr("fill", ok ? INK : "#FFFFFF").attr("stroke", ok ? INK : RED).attr("stroke-width", 3); if (!ok) c.attr("stroke-dasharray", "7 5"); if (anim) c.attr("opacity", 0).transition().delay(j * 80).duration(200).attr("opacity", 1); });
+      cap(p, 14, 200, "6 of 10 conditions tested (60%)", { size: 24, weight: 700 }); cap(p, 14, 240, "4 declared untested, not hidden", { size: 24, weight: 700, fill: RED });
+      nt = "the limits are part of the product";
+    } else if (k === 4) {
+      var wh = SAYG.filter(function (x) { return x; }).length;
+      cap(p, 14, 70, "signed every time: " + H2(0).toFixed(2) + " bits per gate", { size: 24 }); bar(p, 14, 84, Math.max(600 * H2(0), 3), 40, "#C4C4C4", anim, 0);
+      cap(p, 14, 180, "may refuse (" + wh + " of 20 withheld): " + H2(wh / 20).toFixed(2) + " bits", { size: 24 }); bar(p, 14, 194, 600 * H2(wh / 20), 40, RED, anim, 400);
+      nt = "a signature informs only if refusing was possible";
+    } else {
+      var ac = SAYREQ.filter(function (x) { return x; }).length, nq = SAYREQ.length;
+      [["social signals", ac, RED], ["cryptographic check", 0, INK]].forEach(function (r, i) { cap(p, 14, 70 + i * 110, r[0] + ": " + r[1] + " of " + nq + " obeyed", { size: 24 }); bar(p, 14, 84 + i * 110, Math.max(600 * r[1] / nq, 3), 40, r[2], anim, i * 400); });
+      nt = "same agent, different regime, different outcome";
+    }
+    cap(p, 0, ph + 40, nt, { size: 24, weight: 700 });
+  }
+
+  var CHECKS = [
+    "Can I name who could lose something if this fails, and what?",
+    "Is the check outside the system it checks, with different blind spots?",
+    "Does the attestation say what was NOT tested, not only what passed?",
+    "Is each gate cleared by a named human who can refuse to sign?",
+    "Does the human engage the tier the stakes demand, or just click approve?",
+    "Which change to the regime would have prevented the failure?"
+  ];
+  function renderClosing(el, k, anim) {
+    var svg = svgFor(el, W, H, "Six checks before you sign", "A checklist of six items drawn one at a time.");
+    var g = svg.append("g");
+    CHECKS.forEach(function (c, i) {
+      var y = 20 + i * 100, on = i + 1 <= k, row = g.append("g");
+      row.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 64).attr("height", 64).attr("fill", on ? "#FFFFFF" : "none").attr("stroke", on ? INK : FAMILIAR).attr("stroke-width", 3);
+      wrap(row, 100, y + 42, c, 78, { size: 32, lh: 36, fill: on ? INK : MUTED });
+      if (on) { var ck = check(row, 32, y + 36, 20, RED); if (A(anim, k, i + 1)) drawIn(ck, 0, 450); }
+    });
+    cap(g, 0, 660, "An AI can write the words of accountability. Only a person can sign.", { size: 28, weight: 700 });
+  }
+
+  var BUILDS = {
+    map: { steps: 4, render: renderMap }, dist: { steps: 3, render: renderDist }, sign: { steps: 3, render: renderSign },
+    lack: { steps: 3, render: renderLack }, indep: { steps: 3, render: renderIndep }, tiers: { steps: 3, render: renderTiers },
+    fw: { steps: 3, render: renderFw }, req: { steps: 4, render: renderReq }, sanc: { steps: 4, render: renderSanc },
+    gov: { steps: 3, render: renderGov }, pairs: { steps: 4, render: renderPairs }, say: { steps: 5, render: renderSay },
+    closing: { steps: 6, render: renderClosing }
+  };
+
+
+  /* click on the stage advances one fragment (the original deck had keys and buttons only) */
+  stage.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest("#controls, #thumbs")) return;
+    nextSlide();
+  });
+  function buildEl(slide) { return slide ? slide.querySelector("[data-build]") : null; }
+  function buildOf(slide) { var el = buildEl(slide); return el ? BUILDS[el.getAttribute("data-build")] : null; }
+  function stopBuild(el) { if (hasD3 && el) d3.select(el).selectAll("*").interrupt(); }
+  function renderBuild(el, k, animate) {
+    var b = BUILDS[el.getAttribute("data-build")];
+    if (!b) return;
+    if (!hasD3) {
+      el.innerHTML = '<div class="chart-fallback">This graphic needs D3, which did not load. Check the network connection and reload.</div>';
+      return;
+    }
+    stopBuild(el);
+    b.render(el, Math.max(0, Math.min(b.steps, k)), animate && !reduceMQ.matches);
+  }
+
+  /* ---------------- navigation ---------------- */
+  function go(i, atEnd, animate) {
+    i = Math.max(0, Math.min(total - 1, i));
+    var prev = slides[current];
+    if (prev && i !== current) { stopBuild(buildEl(prev)); prev.classList.remove("is-active"); }
+    current = i;
+    var s = slides[i], b = buildOf(s);
+    step = b && atEnd ? b.steps : 0;
+    s.classList.add("is-active");
+    var el = buildEl(s);
+    if (el) renderBuild(el, step, animate);
+    updateUI(true);
+  }
+  function setStep(k, animate) {
+    step = k;
+    renderBuild(buildEl(slides[current]), step, animate);
+    updateUI(false);
+  }
+  function nextSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step < b.steps) setStep(step + 1, true);
+    else if (current < total - 1) go(current + 1, false, true);
+  }
+  function prevSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step > 0) setStep(step - 1, false);
+    else if (current > 0) go(current - 1, true, false);
+  }
+  function updateUI(newSlide) {
+    var s = slides[current], b = buildOf(s);
+    var title = s.getAttribute("data-title") || "";
+    counter.textContent = (current + 1) + " / " + total;
+    pips.innerHTML = "";
+    if (b) {
+      for (var j = 1; j <= b.steps; j++) {
+        var p = document.createElement("span");
+        p.className = "pip" + (j <= step ? " on" : "");
+        pips.appendChild(p);
+      }
+    }
+    btnPrev.disabled = current === 0 && step === 0;
+    btnNext.disabled = current === total - 1 && (!b || step === b.steps);
+    var stepTxt = b ? ", step " + step + " of " + b.steps : "";
+    live.textContent = newSlide ? "Slide " + (current + 1) + " of " + total + ": " + title + stepTxt : "Step " + step + " of " + (b ? b.steps : 0);
+    if (newSlide) {
+      var n = s.querySelector(".speaker-notes");
+      notesHead.textContent = "Speaker notes, slide " + (current + 1);
+      notesBody.innerHTML = n ? n.innerHTML : "<p>No notes for this slide.</p>";
+      try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) { /* ignore */ }
+    }
+  }
+  btnPrev.addEventListener("click", prevSlide);
+  btnNext.addEventListener("click", nextSlide);
+
+  /* ---------------- notes ---------------- */
+  function toggleNotes() {
+    var on = !document.body.classList.contains("notes-open");
+    document.body.classList.toggle("notes-open", on);
+    btnNotes.setAttribute("aria-pressed", on ? "true" : "false");
+    fit();
+  }
+  btnNotes.addEventListener("click", toggleNotes);
+
+  /* ---------------- fullscreen ---------------- */
+  var root = document.documentElement;
+  var fsEnabled = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  if (!fsEnabled) btnFs.hidden = true;
+  function toggleFullscreen() {
+    if (!fsEnabled) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      if (fsEl) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else {
+        var pr = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+        if (pr && pr.catch) pr.catch(function () {});
+      }
+    } catch (e) { /* refused */ }
+  }
+  btnFs.addEventListener("click", toggleFullscreen);
+  document.addEventListener("fullscreenchange", fit);
+  document.addEventListener("webkitfullscreenchange", fit);
+
+  /* ---------------- thumbnails (always final state) ---------------- */
+  function buildThumbs() {
+    thumbGrid.innerHTML = "";
+    slides.forEach(function (s, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "thumb" + (i === current ? " current" : "");
+      btn.setAttribute("aria-label", "Go to slide " + (i + 1) + ": " + (s.getAttribute("data-title") || ""));
+      if (i === current) btn.setAttribute("aria-current", "true");
+      var inner = document.createElement("div");
+      inner.className = "thumb-inner";
+      inner.setAttribute("aria-hidden", "true");
+      var clone = s.cloneNode(true);
+      clone.classList.remove("is-active");
+      Array.prototype.forEach.call(clone.querySelectorAll("[id]"), function (n) { n.removeAttribute("id"); });
+      var sn = clone.querySelector(".speaker-notes");
+      if (sn) sn.remove();
+      inner.appendChild(clone);
+      var num = document.createElement("span");
+      num.className = "thumb-num";
+      num.textContent = String(i + 1);
+      btn.appendChild(inner);
+      btn.appendChild(num);
+      btn.addEventListener("click", function () { closeThumbs(true); go(i, false, true); });
+      thumbGrid.appendChild(btn);
+      var cb = clone.querySelector("[data-build]");
+      if (cb) renderBuild(cb, 99, false);
+    });
+    scaleThumbs();
+  }
+  function scaleThumbs() {
+    Array.prototype.forEach.call(thumbGrid.querySelectorAll(".thumb"), function (b) {
+      b.querySelector(".thumb-inner").style.transform = "scale(" + (b.clientWidth / 1920) + ")";
+    });
+  }
+  function openThumbs() {
+    lastFocus = document.activeElement;
+    thumbs.classList.add("open");
+    buildThumbs();
+    var cur = thumbGrid.querySelector(".thumb.current");
+    if (cur) { cur.focus(); cur.scrollIntoView({ block: "nearest" }); }
+  }
+  function closeThumbs(navigating) {
+    thumbs.classList.remove("open");
+    thumbGrid.innerHTML = "";
+    if (!navigating && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  btnThumbs.addEventListener("click", openThumbs);
+  thumbs.querySelector(".close").addEventListener("click", function () { closeThumbs(false); });
+  window.addEventListener("resize", function () { if (thumbs.classList.contains("open")) scaleThumbs(); });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (thumbs.classList.contains("open")) {
+      if (e.key === "Escape" || e.key === "g" || e.key === "G") { e.preventDefault(); closeThumbs(false); }
+      return;
+    }
+    var onButton = e.target && e.target.closest && e.target.closest("button");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": e.preventDefault(); nextSlide(); break;
+      case " ": if (onButton) return; e.preventDefault(); nextSlide(); break;
+      case "ArrowLeft": case "PageUp": e.preventDefault(); prevSlide(); break;
+      case "Home": e.preventDefault(); go(0, false, true); break;
+      case "End": e.preventDefault(); go(total - 1, true, false); break;
+      case "f": case "F": e.preventDefault(); toggleFullscreen(); break;
+      case "n": case "N": e.preventDefault(); toggleNotes(); break;
+      case "g": case "G": e.preventDefault(); openThumbs(); break;
+    }
+  });
+
+  /* ---------------- touch swipe ---------------- */
+  var tx = null, ty = null;
+  stage.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) return;
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (tx === null || thumbs.classList.contains("open")) { tx = null; return; }
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) { if (dx < 0) nextSlide(); else prevSlide(); }
+    tx = null;
+  }, { passive: true });
+
+  /* ---------------- quiet controls ---------------- */
+  var idle = null;
+  document.addEventListener("mousemove", function () {
+    document.body.classList.add("show-controls");
+    clearTimeout(idle);
+    idle = setTimeout(function () { document.body.classList.remove("show-controls"); }, 2200);
+  });
+
+  /* ---------------- print: every slide in its final state ---------------- */
+  window.addEventListener("beforeprint", function () {
+    slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  });
+  window.addEventListener("afterprint", function () {
+    slides.forEach(function (s, i) { var el = buildEl(s); if (el && i !== current) renderBuild(el, 99, false); });
+    var el = buildEl(slides[current]);
+    if (el) renderBuild(el, step, false);
+  });
+
+  /* ---------------- start ---------------- */
+  slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  fit();
+  var hm = /^#(\d+)$/.exec(location.hash);
+  go(hm ? parseInt(hm[1], 10) - 1 : 0, false, true);
+  window.addEventListener("hashchange", function () {
+    var m = /^#(\d+)$/.exec(location.hash);
+    if (m && parseInt(m[1], 10) - 1 !== current) go(parseInt(m[1], 10) - 1, false, true);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

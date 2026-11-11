@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Data validation | INFO 7375 Computational Skepticism terminology deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --nu-red:#C8102E; --nu-black:#000000; --nu-white:#FFFFFF; --nu-gold:#A4804A;
+  --nu-red-hover:#A50C25; --nu-red-press:#870A1F; --nu-red-tint:#FBE7EA;
+  --nu-neutral-1:#E3E3E3; --nu-neutral-2:#C4C4C4; --nu-neutral-3:#909090; --nu-neutral-4:#787878;
+  --nu-neutral-5:#545454; --nu-neutral-6:#404040; --nu-neutral-7:#2D2926; --nu-neutral-8:#1A1A1A;
+  --diagram-ink:#2A1A0E; --panel-subtle:#F6F6F6;
+  --font:"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --mono:ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(0.4, 0, 0.2, 1);
+  /* viewer chrome (theme-aware; slides themselves keep fixed brand colors) */
+  --stage-bg:#E9E9E9; --chrome-bg:rgba(255,255,255,0.94); --chrome-fg:#1A1A1A;
+  --chrome-line:#C4C4C4; --chrome-muted:#545454; --chrome-hover:rgba(0,0,0,0.07);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+    --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+  }
+}
+:root[data-theme="dark"]{
+  --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+  --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top, 0px)}
+body{
+  height:100%; margin:0; overflow:hidden; display:flex; flex-direction:column;
+  background:var(--stage-bg); color:var(--chrome-fg); font-family:var(--font);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+:fullscreen body, body:fullscreen{background:#000}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------- stage & scaling ---------- */
+#stage{position:relative; flex:1 1 auto; min-height:0; overflow:hidden; touch-action:pan-y}
+#deck{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0}
+
+/* ---------- slide base ---------- */
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column; overflow:hidden;
+  background:var(--nu-white); color:var(--nu-black); font-family:var(--font);
+  padding-left:120px; padding-right:120px;
+}
+.slide.is-active{display:flex}
+:where(.slide) :where(h1,h2,p,ul){margin:0}
+.s-dark{background:var(--nu-black); color:var(--nu-white)}
+.s-red{background:var(--nu-red); color:var(--nu-white)}
+.rule{position:absolute; top:0; left:0; right:0; height:8px; background:var(--nu-red)}
+.rule.r10{height:10px}
+
+.s-opening,.s-closing{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-intro{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-section{padding-top:110px; padding-bottom:110px; justify-content:center}
+.s-text{padding-top:96px; padding-bottom:96px}
+.s-diagram{padding-top:72px; padding-bottom:56px}
+.s-chart{padding-top:64px; padding-bottom:56px}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-size:22px; font-weight:700; line-height:1.2; text-transform:uppercase;
+  letter-spacing:0.16em; color:var(--nu-red); margin-bottom:28px;
+}
+.s-intro .eyebrow{font-size:24px; letter-spacing:0.18em; margin-bottom:40px}
+.s-section .eyebrow{font-size:26px; letter-spacing:0.20em; color:rgba(255,255,255,0.78); margin-bottom:36px}
+.s-chart .eyebrow,.s-diagram .eyebrow{margin-bottom:18px}
+
+.t-opening{font-size:104px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-section{font-size:108px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-closing{font-size:84px; font-weight:400; line-height:1.04; letter-spacing:-0.02em; max-width:1560px}
+.t-intro{font-size:72px; font-weight:400; line-height:1.1; letter-spacing:-0.01em; max-width:1500px}
+.t-text{font-size:66px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1500px}
+.t-chart{font-size:50px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1560px}
+.s-chart .t-chart{margin-bottom:30px}
+.s-diagram .t-chart{margin-bottom:40px}
+
+.sub-opening{font-size:38px; font-weight:400; line-height:1.3; color:var(--nu-neutral-2); max-width:1300px}
+.sub-section{font-size:34px; font-weight:400; line-height:1.3; color:rgba(255,255,255,0.92); margin-top:40px; max-width:1300px}
+.para{font-size:30px; line-height:1.4; color:var(--nu-neutral-7); max-width:1300px}
+.caption{font-size:24px; line-height:1.36; color:var(--nu-neutral-5); max-width:1400px; margin-top:22px}
+.t-opening,.t-section,.t-closing,.t-intro,.t-text,.t-chart,.sub-opening,.sub-section,.caption{text-wrap:pretty}
+.source{font-size:19px; line-height:1.4; color:var(--nu-neutral-5); margin-top:12px}
+
+.bar-120{width:120px; height:8px; background:var(--nu-red); margin:52px 0 44px}
+.bar-88{width:88px; height:6px; background:var(--nu-red); margin:40px 0 60px}
+
+.bullets{list-style:none; padding:0; max-width:1480px; display:flex; flex-direction:column; gap:26px}
+.bullets li{
+  display:grid; grid-template-columns:14px 1fr; column-gap:22px;
+  font-size:31px; line-height:1.42; color:var(--nu-neutral-7);
+}
+.bullets li::before{
+  content:""; width:14px; height:14px; background:var(--nu-red);
+  margin-top:calc((31px * 1.42 - 14px) / 2);
+}
+.bullets strong{font-weight:700; color:var(--nu-black)}
+
+/* ---------- charts ---------- */
+.chart{width:1480px; height:600px; flex:none}
+.chart svg{display:block; width:1480px; height:600px; overflow:visible}
+.chart-fallback{
+  width:100%; height:100%; display:grid; place-items:center; border:1px solid var(--nu-neutral-1);
+  font-size:24px; color:var(--nu-neutral-5); background:var(--panel-subtle)
+}
+
+/* ---------- diagram ---------- */
+.diagram{flex:0 1 auto; min-height:0; width:100%; max-width:1400px; max-height:720px}
+.diagram svg{display:block}
+
+/* ---------- evidence status: conceptual vs. illustrative vs. observed ---------- */
+.evidence{
+  position:absolute; right:120px; font-size:18px; font-weight:700; line-height:1;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--nu-neutral-5);
+  border:1px solid var(--nu-neutral-2); padding:9px 12px 8px;
+}
+.s-chart .evidence{top:58px}
+.s-diagram .evidence{top:66px}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)}}
+.slide.is-active .rise{animation:rise 550ms var(--ease) both}
+.slide.is-active .g2{animation-delay:120ms}
+.slide.is-active .g3{animation-delay:240ms}
+@media (prefers-reduced-motion: reduce){
+  .slide.is-active .rise{animation:none}
+}
+
+/* ---------- viewer chrome ---------- */
+#controls{
+  position:absolute; right:14px; bottom:14px; z-index:10;
+  display:flex; align-items:center; gap:2px; padding:4px;
+  background:var(--chrome-bg); border:1px solid var(--chrome-line); color:var(--chrome-fg);
+  opacity:0.38; transition:opacity 200ms var(--ease);
+}
+#controls:hover,#controls:focus-within,body.show-controls #controls{opacity:1}
+#controls button,#thumbs .close{
+  appearance:none; border:0; background:transparent; color:inherit; cursor:pointer;
+  width:34px; height:34px; display:grid; place-items:center; padding:0;
+}
+#controls button:hover,#thumbs .close:hover{background:var(--chrome-hover)}
+#controls button[disabled]{opacity:0.35; cursor:default}
+#controls button[aria-pressed="true"]{background:var(--chrome-hover)}
+#controls svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:square}
+#counter{
+  min-width:66px; text-align:center; font-family:var(--mono); font-size:13px;
+  font-variant-numeric:tabular-nums; color:var(--chrome-fg)
+}
+#pips{display:flex; gap:4px; padding:0 6px 0 2px}
+#pips:empty{display:none}
+.pip{width:6px; height:6px; background:var(--chrome-line)}
+.pip.on{background:var(--nu-red)}
+.sep{width:1px; height:20px; background:var(--chrome-line); margin:0 4px}
+button:focus-visible,.thumb:focus-visible{outline:3px solid var(--nu-red); outline-offset:2px}
+
+#notes{
+  display:none; flex:none; height:min(30vh, 260px); overflow:auto;
+  padding:18px 28px 20px; background:var(--chrome-bg); border-top:1px solid var(--chrome-line);
+  color:var(--chrome-fg); font-size:17px; line-height:1.55;
+}
+body.notes-open #notes{display:block}
+#notes h2{margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-muted)}
+#notes p{margin:0 0 10px; max-width:78ch}
+
+#thumbs{position:absolute; inset:0; z-index:20; display:none; overflow:auto; background:var(--stage-bg); padding:24px}
+#thumbs.open{display:block}
+#thumbs .bar{display:flex; align-items:center; justify-content:space-between; max-width:1400px; margin:0 auto 18px}
+#thumbs .bar h2{margin:0; font-size:15px; font-weight:700; color:var(--chrome-fg)}
+#thumbs .close svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75}
+#thumbs .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:18px; max-width:1400px; margin:0 auto}
+.thumb{
+  appearance:none; padding:0; margin:0; border:1px solid var(--chrome-line); background:#fff;
+  cursor:pointer; position:relative; overflow:hidden; aspect-ratio:16 / 9; width:100%; display:block
+}
+.thumb.current{outline:3px solid var(--nu-red); outline-offset:2px}
+.thumb-inner{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0; pointer-events:none; text-align:left; font:400 16px/1.2 var(--font); white-space:normal}
+.thumb-inner .slide{display:flex}
+.thumb-num{
+  position:absolute; left:0; bottom:0; padding:3px 7px; background:rgba(0,0,0,0.72); color:#fff;
+  font-family:var(--mono); font-size:12px; line-height:1.2
+}
+
+/* ---------- print: every slide, final state ---------- */
+@media print{
+  @page{size:1920px 1080px; margin:0}
+  :root{padding:0}
+  html,body{height:auto; overflow:visible; display:block; background:#fff}
+  #stage{overflow:visible; height:auto}
+  #deck{position:static; transform:none !important; width:1920px; height:auto}
+  .slide{position:relative; display:flex !important; width:1920px; height:1080px; break-after:page; page-break-after:always}
+  .slide .rise{animation:none !important; opacity:1 !important; transform:none !important}
+  #controls,#notes,#thumbs{display:none !important}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+/* ---------- review-deck additions (small; typography classes above are untouched) ---------- */
+.slide .source{font-size:24px; margin-top:10px}
+.evidence{font-size:24px; letter-spacing:0.1em}
+.diagram svg text{font-kerning:normal}
+.diagram{cursor:pointer}
+</style>
+</head>
+<body>
+
+<main id="stage" aria-roledescription="slide deck" aria-label="INFO 7375 Computational Skepticism terminology: Chapter 3, data validation">
+  <div id="deck">
+
+    <section class="slide s-dark s-opening" aria-roledescription="slide" data-title="Data validation">
+      <div class="rule r10"></div>
+      <p class="eyebrow rise">INFO 7375 · Terminology · Chapter 3</p>
+      <h1 class="t-opening rise g2">Data validation</h1>
+      <div class="bar-120 rise g2"></div>
+      <p class="sub-opening rise g3">Terms for asking what a dataset can show, and what it cannot</p>
+      <div class="speaker-notes" hidden><p>30 terms from Chapter 3. Tags: in the book text means the chapter uses and explains the term; outside source means it comes only from a named reference outside the chapter. The chapter is the Reconstructing the Epistemic Frame chapter; this deck follows its order: the frame, the procedural pass, charts and silent failures, then the interrogation.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Thirty terms in four groups">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Map</p>
+      <h2 class="t-chart">Thirty terms in four groups</h2>
+      <div class="diagram build" data-build="map" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, all sections.</p>
+      <div class="speaker-notes" hidden><p>Four groups, one per click.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Frame, row-count question, silent join drop">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">The frame</p>
+      <h2 class="t-chart">Frame, row-count question, silent join drop</h2>
+      <div class="diagram build" data-build="join" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, the opening case and “Reconstructing the epistemic frame”; Exercise 1.</p>
+      <div class="speaker-notes" hidden><p>The 85,000 and 79,400 are from Exercise 1. The 200-customer join is seeded: 30 customers have their ID typed differently, and a join fails for 35% of them and 2% of the others.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Recording instrument and Plato’s Cave">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">The frame</p>
+      <h2 class="t-chart">Recording instrument and Plato’s Cave</h2>
+      <div class="diagram build" data-build="cave" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, “Why this chapter” and the opening case.</p>
+      <div class="speaker-notes" hidden><p>Sensor window and shadow heights are computed from similar triangles: shadow height = object height times wall distance over object distance.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Procedural EDA, column type, sentinel, correlation">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">The procedural pass</p>
+      <h2 class="t-chart">Procedural EDA, column type, sentinel, correlation</h2>
+      <div class="diagram build" data-build="eda" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, “The procedural EDA pass”.</p>
+      <div class="speaker-notes" hidden><p>Zip-code counts, the 999 sentinel and both scatter plots are invented or seeded; every mean and r is computed from them.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="MCAR, MAR, MNAR and the missingness matrix">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">The procedural pass</p>
+      <h2 class="t-chart">MCAR, MAR, MNAR and the missingness matrix</h2>
+      <div class="diagram build" data-build="miss" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, “Missingness”; Rubin 1976.</p>
+      <div class="speaker-notes" hidden><p>4,000 people with income rising with age. MCAR drops 30% at random; MAR drops 60% of under-30s and 15% of others; MNAR drops 70% of the top third and 10% of the rest. Rules are mine; the taxonomy is Rubin (1976) as the chapter cites it.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Outlier, IQR rule, z-score rule">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">The procedural pass</p>
+      <h2 class="t-chart">Outlier, IQR rule, z-score rule</h2>
+      <div class="diagram build" data-build="out" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, “Outliers”.</p>
+      <div class="speaker-notes" hidden><p>120 values around 50 plus five planted extremes. Quartiles use linear interpolation.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Marks and channels, ranking, expressiveness">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Reading a chart</p>
+      <h2 class="t-chart">Marks and channels, ranking, expressiveness</h2>
+      <div class="diagram build" data-build="enc" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, “A chart is an argument”; Cleveland and McGill 1984; Mackinlay 1986, “Automating the design of graphical presentations”.</p>
+      <div class="speaker-notes" hidden><p>Expressiveness is the chapter’s exercise vocabulary, not explained there; it comes from Mackinlay (1986).</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Sampling, time window, label, feature engineering">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Six silent failures</p>
+      <h2 class="t-chart">Sampling, time window, label, feature engineering</h2>
+      <div class="diagram build" data-build="assume" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, “Hidden assumptions that hide in plain sight”.</p>
+      <div class="speaker-notes" hidden><p>Each panel is a seeded simulation under rules stated in the notes: reach-weighted sampling, a rate that steps down in 2021, click chance 0.1 + 0.4 interest, and a retention assumption of 0.90 breaking to 0.70.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Access boundary, datasheets, boundary leakage">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Six silent failures</p>
+      <h2 class="t-chart">Access boundary, datasheets, boundary leakage</h2>
+      <div class="diagram build" data-build="bound" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, “The access assumption” and “What would change my mind”; Gebru et al. 2021.</p>
+      <div class="speaker-notes" hidden><p>The emails and the leak grid are seeded illustrations. The datasheet questions are paraphrased examples; the chapter cites 57 questions in seven sections (Gebru et al. 2021).</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Prediction-lock, gap analysis, row tracing, do not delegate">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">The interrogation</p>
+      <h2 class="t-chart">Prediction-lock, gap analysis, row tracing, do not delegate</h2>
+      <div class="diagram build" data-build="interr" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, “Reconstructing the epistemic frame” and “Strategic delegation in EDA”.</p>
+      <div class="speaker-notes" hidden><p>The twelve-versus-nine-month example follows the chapter’s Step 3 example. Monthly counts are seeded. The traced hops are invented to show the kinds of surprise.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Look-alike pairs">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Tell them apart</p>
+      <h2 class="t-chart">Look-alike pairs</h2>
+      <div class="diagram build" data-build="pairs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3.</p>
+      <div class="speaker-notes" hidden><p>Missing value and dropped row, MAR and MNAR, label and construct, schema and boundary.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Say it exactly">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Vague request, exact instruction</p>
+      <h2 class="t-chart">Say it exactly</h2>
+      <div class="diagram build" data-build="say" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3.</p>
+      <div class="speaker-notes" hidden><p>Five requests and exact versions. Every chart reuses numbers computed on earlier slides.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Before you call a dataset clean">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Checklist</p>
+      <h2 class="t-chart">Before you call a dataset clean</h2>
+      <div class="diagram build" data-build="closing" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 3, “Chapter summary”.</p>
+      <div class="speaker-notes" hidden><p>Six checks.</p></div>
+    </section>
+
+  </div>
+
+  <nav id="controls" aria-label="Slide controls">
+    <button type="button" id="btn-prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="counter" aria-hidden="true">1 / 1</span>
+    <span id="pips" aria-hidden="true"></span>
+    <button type="button" id="btn-next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <span class="sep" aria-hidden="true"></span>
+    <button type="button" id="btn-thumbs" aria-label="Show all slides (G)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="7" height="5"/><rect x="13" y="5" width="7" height="5"/><rect x="4" y="14" width="7" height="5"/><rect x="13" y="14" width="7" height="5"/></svg></button>
+    <button type="button" id="btn-notes" aria-label="Speaker notes (N)" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 11h14M5 16h9"/></svg></button>
+    <button type="button" id="btn-fs" aria-label="Fullscreen (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+  </nav>
+
+  <div id="thumbs" role="dialog" aria-modal="true" aria-label="All slides">
+    <div class="bar">
+      <h2>All slides</h2>
+      <button type="button" class="close" aria-label="Close slide overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="grid"></div>
+  </div>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+</main>
+
+<aside id="notes" aria-label="Speaker notes">
+  <h2 id="notes-head">Speaker notes</h2>
+  <div id="notes-body"></div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var stage = document.getElementById("stage");
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(".slide"));
+  var total = slides.length;
+  var counter = document.getElementById("counter");
+  var pips = document.getElementById("pips");
+  var live = document.getElementById("live");
+  var notesHead = document.getElementById("notes-head");
+  var notesBody = document.getElementById("notes-body");
+  var btnPrev = document.getElementById("btn-prev");
+  var btnNext = document.getElementById("btn-next");
+  var btnNotes = document.getElementById("btn-notes");
+  var btnThumbs = document.getElementById("btn-thumbs");
+  var btnFs = document.getElementById("btn-fs");
+  var thumbs = document.getElementById("thumbs");
+  var thumbGrid = thumbs.querySelector(".grid");
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hasD3 = typeof window.d3 !== "undefined";
+  var current = -1, step = 0, lastFocus = null;
+
+  /* Recurring visual vocabulary
+     ink   = confidence / belief        red  = failure, consequence, causal break
+     gray  = familiar data, same source tint = what an inspection or failure exposes */
+  var INK = "#2A1A0E", RED = "#C8102E", TINT = "#FBE7EA", GRID = "#E3E3E3", MUTED = "#545454",
+      BASE = "#909090", FAMILIAR = "#C4C4C4", SUBTLE = "#F6F6F6", BODY = "#2D2926";
+  var MONO = 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace';
+  var SANS = '"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+
+  /* ---------------- scaling ---------------- */
+  function fit() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    var s = Math.min(w / 1920, h / 1080);
+    deck.style.transform = "translate(" + (w - 1920 * s) / 2 + "px," + (h - 1080 * s) / 2 + "px) scale(" + s + ")";
+  }
+  if ("ResizeObserver" in window) new ResizeObserver(fit).observe(stage);
+  window.addEventListener("resize", fit);
+
+  /* ---------------- drawing helpers ---------------- */
+  function svgFor(el, w, h, label, desc, fixed) {
+    el.innerHTML = "";
+    var svg = d3.select(el).append("svg").attr("viewBox", "0 0 " + w + " " + h)
+      .attr("role", "img").attr("aria-label", label);
+    if (fixed) svg.attr("width", w).attr("height", h).style("overflow", "visible");
+    else svg.attr("width", "100%").attr("height", "100%").attr("preserveAspectRatio", "xMinYMin meet");
+    svg.append("title").text(label);
+    svg.append("desc").text(desc);
+    return svg;
+  }
+  function txt(g, x, y, s, o) {
+    o = o || {};
+    var t = g.append("text").attr("x", x).attr("y", y)
+      .attr("font-family", o.family || SANS).attr("font-size", o.size || 22)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || INK);
+    if (o.anchor) t.attr("text-anchor", o.anchor);
+    if (o.ls) t.attr("letter-spacing", o.ls);
+    if (o.dy) t.attr("dy", o.dy);
+    return t.text(s);
+  }
+  function fadeIn(sel, delay, dur) {
+    sel.attr("opacity", 0).transition().delay(delay || 0).duration(dur || 400).ease(d3.easeCubicOut).attr("opacity", 1);
+    return sel;
+  }
+  function rng(seed) {
+    var s = seed >>> 0;
+    return function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  /* ================= review-deck helpers ================= */
+  var W = 1400, H = 700;
+  function A(anim, k, n) { return anim && k === n; }
+  function shuffle(a, r) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function drawIn(path, delay, dur) {
+    var L = path.node().getTotalLength();
+    if (!(L > 0)) return path;
+    path.attr("stroke-dasharray", L + " " + L).attr("stroke-dashoffset", L)
+      .transition().delay(delay || 0).duration(dur || 500).ease(d3.easeCubicOut).attr("stroke-dashoffset", 0)
+      .on("end", function () { d3.select(this).attr("stroke-dasharray", null).attr("stroke-dashoffset", null); });
+    return path;
+  }
+  function tweenNum(sel, from, to, fmt, delay, dur) {
+    sel.text(fmt(from)).transition().delay(delay || 0).duration(dur || 1000).ease(d3.easeCubicOut)
+      .tween("text", function () { var it = d3.interpolate(from, to), node = this; return function (t) { node.textContent = fmt(it(t)); }; });
+  }
+  var pct1 = function (v) { return v.toFixed(1) + "%"; };
+  function lab(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: 700, fill: o.fill || MUTED, ls: 1.2, anchor: o.anchor }); }
+  /* wrap a string into tspans; n = characters per line (estimate) */
+  function wrap(g, x, y, s, n, o) {
+    o = o || {};
+    var size = o.size || 26, lh = o.lh || Math.round(size * 1.34), words = s.split(" "), lines = [], cur = "";
+    words.forEach(function (w) { var t = (cur ? cur + " " : "") + w; if (t.length > n && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur);
+    var t = g.append("text").attr("x", x).attr("y", y).attr("font-family", SANS).attr("font-size", size)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || BODY);
+    lines.forEach(function (l, i) { t.append("tspan").attr("x", x).attr("dy", i ? lh : 0).text(l); });
+    t.node().__h = lines.length * lh;
+    return t;
+  }
+  function box(g, x, y, w, h, o) {
+    o = o || {};
+    return g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", w).attr("height", h)
+      .attr("fill", o.fill || "#FFFFFF").attr("stroke", o.stroke || FAMILIAR).attr("stroke-width", o.sw || 1.5);
+  }
+  function ppvOf(p, sens, spec) { return p * sens / (p * sens + (1 - p) * (1 - spec)); }
+  function sigmoid(z) { return 1 / (1 + Math.exp(-z)); }
+  function logit(c) { return Math.log(c / (1 - c)); }
+  function fmtInt(v) { return d3.format(",")(Math.round(v)); }
+  function check(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + y + " L" + (x - s / 3) + "," + (y + s * 0.7) + " L" + (x + s) + "," + (y - s * 0.8)).attr("fill", "none").attr("stroke", color || INK).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+  function cross(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + (y - s) + " L" + (x + s) + "," + (y + s) + " M" + (x + s) + "," + (y - s) + " L" + (x - s) + "," + (y + s)).attr("stroke", color || RED).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+
+  /* ---------- small drawing helpers ---------- */
+  function run(g, dur, fn, anim, ease) {
+    if (!anim) { fn(1); return; }
+    fn(0);
+    d3.select(g.node()).transition().duration(dur).ease(ease || d3.easeLinear)
+      .tween("run", function () { return function (t) { fn(t); }; });
+  }
+  /* keyframes through the values in a, smooth between them, t in 0..1 */
+  function kf(t, a) {
+    var n = a.length - 1, s = Math.min(n - 1e-9, Math.max(0, t) * n), i = Math.floor(s);
+    return a[i] + (a[i + 1] - a[i]) * d3.easeCubicInOut(s - i);
+  }
+  function hint(svg) { wrap(svg.append("g"), 800, 44, "Click or press → to start the animation. Each click adds one idea.", 46, { size: 28, fill: MUTED }); }
+  function cap(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 26, weight: o.weight || 400, fill: o.fill || BODY, anchor: o.anchor, family: o.family }); }
+  function sgn(v, d) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d || 0); }
+
+  /* right-hand column: one glossary entry per step, with its tag; returns the y below the last entry */
+  function entries(svg, list, k, anim) {
+    var g = svg.append("g"), y = 4;
+    list.forEach(function (it) {
+      if (it.s > k) return;
+      var t = T[it.id], cur = it.s === k, e = g.append("g");
+      txt(e, 800, y + 26, t.n, { size: 26, weight: 700, fill: cur ? RED : INK });
+      var TG = { book: ["in the book text", 212], gloss: ["in the glossary", 200], video: ["video only", 150], editor: ["editor or docs", 190], web: ["outside source", 200] }[t.tag || "video"], tg = TG[0], tw_ = TG[1], fill_ = t.tag === "book";
+      e.append("rect").attr("x", 1400 - tw_ + 0.5).attr("y", y + 3.5).attr("width", tw_ - 1).attr("height", 34)
+        .attr("fill", fill_ ? INK : "none").attr("stroke", fill_ ? INK : GREY).attr("stroke-width", 1.5);
+      txt(e, 1400 - tw_ / 2, y + 28, tg, { size: 24, anchor: "middle", fill: fill_ ? "#FFFFFF" : MUTED });
+      var yy = y + 58;
+      if (t.alias) { txt(e, 800, yy, t.alias, { size: 24, fill: MUTED }); yy += 30; }
+      var w = wrap(e, 800, yy, t.m + ".", 50, { size: 24, lh: 30, fill: BODY });
+      y = yy + w.node().__h + 6;
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    return y;
+  }
+  function pairStrip(svg, a, b) {
+    var g = svg.append("g");
+    lab(g, 0, 598, "TELL THESE APART");
+    [[0, a], [740, b]].forEach(function (p, i) {
+      box(g, p[0], 612, 660, 88, { stroke: i ? RED : INK, sw: 2 });
+      txt(g, p[0] + 20, 646, p[1][0], { size: 26, weight: 700, fill: i ? RED : INK });
+      txt(g, p[0] + 20, 682, p[1][1], { size: 24, fill: BODY });
+    });
+    txt(g, 700, 664, "≠", { size: 44, weight: 700, anchor: "middle", fill: RED });
+  }
+  function base(svg, list, k, anim, a, b) { var y = entries(svg, list, k, anim); pairStrip(svg, a, b); if (k === 0) hint(svg); return y; }
+
+  /* top-down / side-view camera pieces. ang: radians, 0 = +x, y grows downward */
+  function conePath(x, y, ang, fov, len) {
+    var h = fov * DEG / 2;
+    return "M" + x + "," + y + "L" + (x + len * Math.cos(ang - h)) + "," + (y + len * Math.sin(ang - h)) +
+      "A" + len + "," + len + " 0 0 1 " + (x + len * Math.cos(ang + h)) + "," + (y + len * Math.sin(ang + h)) + "Z";
+  }
+  function cone(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", TINT).attr("fill-opacity", 0.9).attr("stroke", RED).attr("stroke-width", 2);
+  }
+  function ghost(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 1.5).attr("stroke-dasharray", "6 6");
+  }
+  function camBody(g, x, y, ang) {
+    var c = g.append("g").attr("transform", "translate(" + x + "," + y + ") rotate(" + (ang / DEG) + ")");
+    c.append("rect").attr("x", -16).attr("y", -11).attr("width", 24).attr("height", 22).attr("fill", INK);
+    c.append("path").attr("d", "M8,-7 L22,-14 L22,14 L8,7Z").attr("fill", INK);
+  }
+  function inView(px, py, x, y, ang, fov, len) {
+    var dx = px - x, dy = py - y;
+    if (Math.hypot(dx, dy) > len) return false;
+    var da = Math.atan2(dy, dx) - ang; da = Math.atan2(Math.sin(da), Math.cos(da));
+    return Math.abs(da) <= fov * DEG / 2;
+  }
+  function post(g, x, y, on, r) {
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", r || 11).attr("fill", on ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+  }
+  function ptsInView(g, pts, cx, cy, ang, fov, len) {
+    var n = 0;
+    pts.forEach(function (p) { var on = inView(p[0], p[1], cx, cy, ang, fov, len); if (on) n++; post(g, p[0], p[1], on); });
+    return n;
+  }
+
+
+  /* ================= Data validation (INFO 7375 Computational Skepticism, Chapter 3) ================= */
+  var DEG = Math.PI / 180, uid = 0, GREY = "#909090";
+  /* tag: book = Chapter 3 uses and explains it; gloss = exam-term list row only; web = outside source only */
+  var T = {
+    frame: { n: "Epistemic frame", tag: "book", m: "Every unwritten decision about what was recorded, kept, joined and cut off" },
+    nq: { n: "Row-count question", tag: "book", m: "Ask why the table has exactly this many rows, and how many it should have had" },
+    jdrop: { n: "Silent join drop", tag: "book", m: "Rows with no match across the sources vanish from the merge, with no error" },
+    instr: { n: "Recording instrument", tag: "book", m: "The sensor, form or system that did the recording, and what it could not see" },
+    cave: { n: "Plato's Cave", tag: "book", m: "A dataset is shadows on a wall. EDA measures the shadows, not the fire" },
+    eda: { n: "Procedural EDA", tag: "book", m: "The standard pass: types, shape, distributions, missingness, correlations, outliers" },
+    ctype: { n: "Column type", tag: "book", m: "Numeric, count, nominal, ordinal, time or text. The right plot depends on it" },
+    sent: { n: "Sentinel value", tag: "book", m: "A placeholder such as 999 or N/A standing in for unknown" },
+    pear: { n: "Pearson correlation", tag: "book", m: "A score for straight-line association only. y = x² can score near zero" },
+    mcar: { n: "MCAR", tag: "book", m: "Missing completely at random: no pattern at all" },
+    mar: { n: "MAR", tag: "book", m: "Missing at random: gaps follow a column you see" },
+    mnar: { n: "MNAR", tag: "book", m: "Missing not at random: gaps follow the value" },
+    mmat: { n: "Missingness matrix", tag: "book", m: "Dark where missing; stripes mean columns fail together" },
+    out: { n: "Outlier", tag: "book", m: "An extreme value flagged as a candidate. A person decides what it is" },
+    iqr: { n: "IQR rule", tag: "book", m: "Flag values below Q1 − 1.5 × IQR or above Q3 + 1.5 × IQR" },
+    zs: { n: "Z-score rule", tag: "book", m: "Flag values with |z| > 3. The mean and spread it uses are pulled by the outliers" },
+    mc: { n: "Marks and channels", tag: "book", m: "A mark is the shape drawn per row; a channel is the visual property carrying a value" },
+    rank: { n: "Channel ranking", tag: "book", m: "Position reads best, then length. Area and color intensity read worst" },
+    expr: { n: "Expressiveness", tag: "web", m: "Match the channel to the data type. Size on a category implies an order that is not there" },
+    samp: { n: "Sampling assumption", tag: "book", alias: "also: convenience sample", m: "The data is whoever was easy to reach; deployment meets everyone" },
+    tw: { n: "Time-window assumption", tag: "book", m: "Trained on one period, deployed into a shifted one" },
+    lab: { n: "Label assumption", tag: "book", m: "The label is a proxy, not the thing you care about" },
+    feat: { n: "Feature-engineering", tag: "book", m: "A column that is someone's model output, not raw data" },
+    acc: { n: "Access boundary", tag: "book", alias: "the access assumption", m: "The data's reach is the schema plus everything its contents point to" },
+    ds: { n: "Datasheets for Datasets", tag: "book", m: "Gebru et al.: 57 questions in seven sections that document a dataset's life" },
+    leak: { n: "Boundary leakage", tag: "book", alias: "unconsented data leakage", m: "Private material escaping through a corpus's edge; hard to find at scale without red-teaming" },
+    plock: { n: "Prediction-lock", tag: "book", m: "A written, dated prediction of the dataset's frame, made before any plot" },
+    gap: { n: "Gap analysis", tag: "book", m: "The difference between the locked prediction and the traced frame is what you learned" },
+    trace: { n: "Row tracing", tag: "book", m: "Pick one row and follow its values back through every source system" },
+    nodel: { n: "Do not delegate", tag: "book", m: "Rebuilding the frame stays with you; an AI version holds nothing you lacked" }
+  };
+  function note(svg, ey, text) { wrap(svg.append("g"), 800, ey + 36, text, 46, { size: 28, lh: 36, fill: INK }); }
+  function fade(sel, anim, delay) { if (anim) sel.attr("opacity", 0).transition().delay(delay || 0).duration(450).attr("opacity", 1); return sel; }
+  function bar(g, x, y, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("width", 0).transition().delay(delay || 0).duration(700).attr("width", w); return b; }
+  function mono(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: o.weight || 400, fill: o.fill || INK, family: MONO, anchor: o.anchor }); }
+  function normal(r) { var u = Math.max(r(), 1e-9), v = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function mean(a) { return d3.mean(a); }
+  function qnt(a, p) { return d3.quantile(a.slice().sort(d3.ascending), p); }
+  function corr(a, b) { var ma = mean(a), mb = mean(b), s = 0, x = 0, y = 0; for (var i = 0; i < a.length; i++) { s += (a[i] - ma) * (b[i] - mb); x += (a[i] - ma) * (a[i] - ma); y += (b[i] - mb) * (b[i] - mb); } return s / Math.sqrt(x * y); }
+  function fmtK(v) { return (v < 0 ? "−" : v > 0 ? "+" : "") + d3.format(",")(Math.abs(Math.round(v))); }
+  function hypoHit(n, bad, total) { var p = 1, i; for (i = 0; i < n; i++) p *= (total - bad - i) / (total - i); return 1 - p; }
+
+  /* ---------- computed data, all seeded ---------- */
+  var JD = (function () {
+    var r = rng(11), b = {}, pts = [], i, nb = 0;
+    while (nb < 30) { var j = Math.floor(r() * 200); if (!b[j]) { b[j] = 1; nb++; } }
+    for (i = 0; i < 200; i++) { var B = !!b[i]; pts.push({ c: i % 20, rw: Math.floor(i / 20), B: B, drop: r() < (B ? 0.35 : 0.02) }); }
+    var kept = pts.filter(function (p) { return !p.drop; }), keptB = kept.filter(function (p) { return p.B; }).length;
+    return { pts: pts, dropped: 200 - kept.length, kept: kept.length, nB: 30, keptB: keptB, shareB: keptB / kept.length };
+  })();
+  var MS = (function () {
+    var r = rng(21), n = 4000, P = [], i;
+    for (i = 0; i < n; i++) { var a = 20 + r() * 45; P.push({ a: a, i: 20000 + 700 * (a - 20) + normal(r) * 9000, u: r() }); }
+    var tm = mean(P.map(function (p) { return p.i; })), q67 = qnt(P.map(function (p) { return p.i; }), 0.67);
+    function obs(f) { var o = P.filter(function (p) { return !f(p); }); return { bias: mean(o.map(function (p) { return p.i; })) - tm, miss: 1 - o.length / n }; }
+    function band(f, g) { var s = P.filter(g), o = s.filter(function (p) { return !f(p); }); return mean(o.map(function (p) { return p.i; })) - mean(s.map(function (p) { return p.i; })); }
+    var fMar = function (p) { return p.u < (p.a < 30 ? 0.6 : 0.15); };
+    return { n: n, tm: tm, mcar: obs(function (p) { return p.u < 0.3; }), mar: obs(fMar), mnar: obs(function (p) { return p.u < (p.i > q67 ? 0.7 : 0.1); }),
+      marYoung: band(fMar, function (p) { return p.a < 30; }), marOld: band(fMar, function (p) { return p.a >= 30; }) };
+  })();
+  var OD = (function () {
+    var r = rng(5), v = [], i;
+    for (i = 0; i < 120; i++) v.push(Math.round(50 + 8 * normal(r)));
+    [95, 105, 120, 150, 420].forEach(function (x) { v.push(x); });
+    var q1 = qnt(v, 0.25), q3 = qnt(v, 0.75), iq = q3 - q1, lo = q1 - 1.5 * iq, hi = q3 + 1.5 * iq, m = mean(v), sd = d3.deviation(v);
+    var jr = rng(8), pts = v.map(function (x) { return { x: x, j: jr() }; });
+    return { pts: pts, v: v, q1: q1, q3: q3, lo: lo, hi: hi, m: m, sd: sd, zhi: m + 3 * sd, iqrN: v.filter(function (x) { return x < lo || x > hi; }).length,
+      zN: v.filter(function (x) { return Math.abs(x - m) / sd > 3; }).length };
+  })();
+
+  /* ---------- map ---------- */
+  var MAPROWS = [
+    ["The frame", "epistemic frame, row-count question, silent join drop, recording instrument, Plato's Cave", "What a dataset is, and who decided what it holds"],
+    ["The procedural pass", "procedural EDA, column type, sentinel value, Pearson correlation, MCAR, MAR, MNAR, missingness matrix, outlier, IQR rule, z-score rule", "What the standard checks show, and what they cannot"],
+    ["Charts and silent failures", "marks and channels, channel ranking, expressiveness, sampling (convenience sample), time-window, label, feature-engineering, access boundary, datasheets, boundary leakage", "How a chart argues, and six failures EDA misses"],
+    ["The interrogation", "prediction-lock, gap analysis, row tracing, do not delegate", "The work that comes after EDA, and what stays with you"]
+  ];
+  function renderMap(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four groups of data-validation terms", "A table with four rows: group, terms, what the group is about.");
+    var g = svg.append("g");
+    wrap(g, 0, 36, "30 terms from Chapter 3. Every one is about asking what a dataset can show, and what it cannot.", 96, { size: 28, lh: 38, fill: INK });
+    var cx = [0, 380, 1010];
+    ["GROUP", "TERMS", "WHAT IT IS ABOUT"].forEach(function (h, i) { lab(g, cx[i] + 18, 152, h); });
+    g.append("path").attr("d", "M0,168 H1400").attr("stroke", INK).attr("stroke-width", 2);
+    MAPROWS.forEach(function (r, i) {
+      if (i + 1 > k) return;
+      var y = 184 + i * 118, row = g.append("g");
+      box(row, 0, y, 1400, 106, { stroke: FAMILIAR });
+      row.append("rect").attr("x", 0).attr("y", y).attr("width", 10).attr("height", 107).attr("fill", RED);
+      wrap(row, cx[0] + 28, y + 44, r[0], 22, { size: 26, lh: 30, weight: 700, fill: RED });
+      wrap(row, cx[1] + 18, y + 32, r[1], 52, { size: 24, lh: 30, fill: INK });
+      wrap(row, cx[2] + 18, y + 34, r[2], 30, { size: 24, lh: 30 });
+      if (A(anim, k, i + 1)) row.attr("opacity", 0).attr("transform", "translate(0,18)").transition().duration(450).ease(d3.easeCubicOut).attr("opacity", 1).attr("transform", "translate(0,0)");
+    });
+    if (k === 0) cap(g, 0, 430, "Click or press → to add the four groups, one at a time.", { fill: MUTED });
+  }
+
+  /* ---------- 1. frame, row-count question, silent join drop ---------- */
+  function renderJoin(el, k, anim) {
+    var svg = svgFor(el, W, H, "A dataset is built from decisions; the row count and the join hide the ones that went wrong", "Four unwritten decisions. Then expected rows against actual rows. Then a grid of customers in which a join silently removes rows, mostly from one group.");
+    var ey = base(svg, [{ id: "frame", s: 1 }, { id: "nq", s: 2 }, { id: "jdrop", s: 3 }], k, anim, ["Missing value", "a cell that exists and is empty"], ["Dropped row", "a row that never reached the table"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k === kk;
+    if (kk === 1) {
+      lab(d, 0, 30, "CHOICES MADE BEFORE YOU SAW THE DATA");
+      [["What to record", "a sensor, a form, a field"], ["What to include", "filters and date ranges"], ["How to join", "keys and match rules"], ["Where to stop", "a cut-off date or sample size"]].forEach(function (c, i) {
+        var y = 50 + i * 118, g = d.append("g");
+        box(g, 0, y, 740, 96, { stroke: INK, sw: 2 });
+        cap(g, 20, y + 40, c[0], { size: 26, weight: 700 }); cap(g, 20, y + 78, c[1], { size: 24, fill: MUTED });
+        var ck = check(g, 500, y + 36, 11, INK); cap(g, 524, y + 44, "decided", { size: 24 });
+        var cr = cross(g, 500, y + 72, 9, RED); cap(g, 524, y + 80, "not written down", { size: 24, fill: RED, weight: 700 });
+        if (an) { fade(g, true, i * 350); drawIn(ck, i * 350 + 200, 300); drawIn(cr, i * 350 + 450, 300); }
+      });
+      cap(d, 0, 548, "Each row is a decision. None of them is a column.", { size: 26, weight: 700 });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "EXPECTED N VERSUS ACTUAL N");
+      var sc = 700 / 85000, gx = 79400 * sc;
+      cap(d, 0, 90, "documented: 85,000 customer records", { size: 24 }); bar(d, 0, 104, 85000 * sc, 44, FAMILIAR, an, 0);
+      cap(d, 0, 216, "merged table: 79,400 rows", { size: 24 }); bar(d, 0, 230, gx, 44, INK, an, 300);
+      var gr = bar(d, gx, 230, 5600 * sc, 44, RED, an, 900);
+      var gt = cap(d, gx + 5600 * sc, 312, "", { size: 26, weight: 700, fill: RED, anchor: "end" });
+      if (an) tweenNum(gt, 0, 5600, function (v) { return "gap " + fmtInt(v) + " (" + (v / 85000 * 100).toFixed(1) + "%)"; }, 900, 800); else gt.text("gap 5,600 (" + (5600 / 85000 * 100).toFixed(1) + "%)");
+      cap(d, 0, 400, "Missing-value check on the 79,400 rows that exist: nothing to see.", { size: 24, fill: MUTED });
+      cap(d, 0, 440, "The 5,600 are not empty cells. They are rows that are not there.", { size: 24, fill: MUTED });
+      cap(d, 0, 520, "Why exactly 79,400? What should N have been?", { size: 28, weight: 700 });
+    } else {
+      lab(d, 0, 30, "200 CUSTOMERS, ONE JOIN ON CUSTOMER ID");
+      var gg = d.append("g");
+      JD.pts.forEach(function (p) {
+        var c = gg.append("circle").attr("cx", 14 + p.c * 26).attr("cy", 64 + p.rw * 26).attr("r", 9).attr("fill", p.B ? RED : INK);
+        if (p.drop) { if (an) c.transition().delay(600 + (p.c + p.rw * 20) * 8).duration(500).attr("opacity", 0); else c.attr("opacity", 0); }
+      });
+      var kt = cap(d, 0, 380, "", { size: 26, weight: 700 });
+      cap(d, 0, 420, "ink dot: any other customer", { size: 24, fill: MUTED }); cap(d, 330, 420, "red dot: ID typed differently", { size: 24, fill: RED });
+      if (an) tweenNum(kt, 200, JD.kept, function (v) { return "kept " + Math.round(v) + " of 200 · dropped " + (200 - Math.round(v)); }, 600, 1400); else kt.text("kept " + JD.kept + " of 200 · dropped " + JD.dropped);
+      cap(d, 0, 470, "Dropped overall: " + (JD.dropped / 2).toFixed(1) + "%. Missing values left: 0.", { size: 24 });
+      cap(d, 0, 510, "Red share of the table: " + (JD.nB / 200 * 100).toFixed(1) + "% → " + (JD.shareB * 100).toFixed(1) + "%. No error was raised.", { size: 24, weight: 700, fill: RED });
+    }
+    note(svg, ey, ["", "The frame is every decision made on the way to the table. Almost none is written down.", "Compare N with what the sources say it should be. The gap is the first finding.", "A join keeps only matches. A group that fails to match is under-represented, and nothing flags it."][k]);
+  }
+
+  /* ---------- 2. recording instrument, Plato's Cave ---------- */
+  function renderCave(el, k, anim) {
+    var svg = svgFor(el, W, H, "An instrument records only part of the world; a dataset is its shadows", "A sensor window sweeps across a field of objects and records only those inside it. Then one object moves away from a light and its shadow on a wall shrinks, while the object stays the same.");
+    var ey = base(svg, [{ id: "instr", s: 1 }, { id: "cave", s: 2 }], k, anim, ["Shadow", "what the instrument recorded"], ["Fire and objects", "what was actually there"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k === kk;
+    if (kk === 1) {
+      lab(d, 0, 30, "A FIELD OF 24 THINGS, ONE SENSOR");
+      var r = rng(17), P = d3.range(24).map(function () { return [30 + r() * 700, 70 + r() * 290]; });
+      var x0 = 200, W1 = 360, g = d.append("g");
+      run(g, 2600, function (t) {
+        g.selectAll("*").remove(); var w = W1 * t, n = 0;
+        g.append("rect").attr("x", x0).attr("y", 56).attr("width", w).attr("height", 320).attr("fill", TINT).attr("stroke", RED).attr("stroke-width", 2);
+        P.forEach(function (p) { var on = p[0] >= x0 && p[0] <= x0 + w; if (on) n++; g.append("circle").attr("cx", p[0]).attr("cy", p[1]).attr("r", 10).attr("fill", on ? INK : "#FFFFFF").attr("stroke", on ? INK : RED).attr("stroke-width", 2.5); });
+        cap(g, 0, 420, "recorded: " + n + " of 24", { size: 28, weight: 700 });
+        cap(g, 0, 462, "never recorded: " + (24 - n) + " (hollow, outside the sensor)", { size: 24, fill: RED, weight: 700 });
+        cap(g, 0, 512, "The table holds " + n + " rows and looks complete.", { size: 24, fill: MUTED });
+        cap(g, 0, 548, "Nothing in it shows the " + (24 - n) + " it could not see.", { size: 24, fill: MUTED });
+      }, an);
+    } else {
+      lab(d, 0, 30, "SAME OBJECT, DIFFERENT SHADOW");
+      var lx = 40, wx = 690, cy = 250, hh = 40, g2 = d.append("g");
+      d.append("path").attr("d", "M" + wx + ",40 V470").attr("stroke", INK).attr("stroke-width", 5);
+      d.append("circle").attr("cx", lx).attr("cy", cy).attr("r", 14).attr("fill", RED); cap(d, lx - 10, cy + 50, "fire", { size: 24, fill: RED, weight: 700 });
+      cap(d, wx, 510, "wall", { size: 24, anchor: "middle", weight: 700 });
+      run(g2, 3600, function (t) {
+        g2.selectAll("*").remove();
+        var xo = kf(t, [200, 600, 200]), s = (wx - lx) / (xo - lx), sh = hh * s;
+        [[hh, 1], [-hh, -1]].forEach(function (e) { g2.append("path").attr("d", "M" + lx + "," + cy + " L" + wx + "," + (cy + e[0] * s)).attr("stroke", FAMILIAR).attr("stroke-width", 1.5).attr("stroke-dasharray", "6 6"); });
+        g2.append("rect").attr("x", xo - 8).attr("y", cy - hh).attr("width", 16).attr("height", 2 * hh).attr("fill", INK);
+        g2.append("rect").attr("x", wx - 22).attr("y", cy - sh).attr("width", 20).attr("height", 2 * sh).attr("fill", RED);
+        cap(g2, 0, 548, "shadow height " + Math.round(2 * sh) + " (measured exactly). Object height 80 never changed.", { size: 24, weight: 700 });
+      }, an);
+    }
+    note(svg, ey, ["", "Every dataset was recorded by something. What it could not see is simply absent, not empty.", "EDA can measure the shadow to the pixel. The shadow's size says how far the object stood from the fire, not what the object is."][k]);
+  }
+
+  /* ---------- 3. procedural EDA, column type, sentinel, Pearson ---------- */
+  var SENT = (function () {
+    var r = rng(9), v = [], i;
+    for (i = 0; i < 60; i++) v.push(Math.max(18, Math.min(80, Math.round(40 + 12 * normal(r)))));
+    for (i = 0; i < 8; i++) v.push(999);
+    var real = v.filter(function (x) { return x !== 999; }), c = [0, 0, 0, 0, 0, 0, 0];
+    real.forEach(function (x) { c[Math.min(6, Math.floor((x - 10) / 10))]++; });
+    return { c: c, m1: mean(v), m2: mean(real) };
+  })();
+  var PR = (function () {
+    var r = rng(31), a = [], b = [], c = [], e = [], i;
+    for (i = 0; i < 60; i++) { var x = -3 + 6 * r(); a.push(x); b.push(x * x + 0.3 * normal(r)); var u = -3 + 6 * r(); c.push(u); e.push(u + 0.8 * normal(r)); }
+    return { a: a, b: b, c: c, e: e, r1: corr(a, b), r2: corr(c, e) };
+  })();
+  var ZIPS = [["02115", 7], ["10001", 5], ["94103", 4], ["60614", 2], ["30301", 2]];
+  function renderEda(el, k, anim) {
+    var svg = svgFor(el, W, H, "The procedural pass passes every check; column type, sentinels and linear correlation each hide something", "Five checks that pass, each with what it cannot tell you. Zip codes averaged as numbers. A histogram with a spike at 999. Two scatter plots with their Pearson correlations.");
+    var ey = base(svg, [{ id: "eda", s: 1 }, { id: "ctype", s: 2 }, { id: "sent", s: 3 }, { id: "pear", s: 4 }], k, anim, ["Numeric column", "arithmetic means something"], ["Categorical column", "arithmetic is meaningless"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k === kk;
+    if (kk === 1) {
+      lab(d, 0, 30, "CHECK"); lab(d, 260, 30, "WHAT IT CANNOT TELL YOU");
+      [["Shape and types", "whether the row count is right"], ["Distributions", "why the shape is what it is"], ["Missingness", "the reason a value is missing"], ["Correlations", "a link the instrument never let in"], ["Outliers", "whether to remove, cap or keep"]].forEach(function (c, i) {
+        var y = 60 + i * 92, g = d.append("g");
+        g.append("path").attr("d", "M0," + y + " H740").attr("stroke", FAMILIAR).attr("stroke-width", 1.5);
+        cap(g, 44, y + 52, c[0], { size: 26, weight: 700 });
+        var ck = check(g, 14, y + 42, 11, INK);
+        wrap(g, 260, y + 40, c[1], 36, { size: 24, lh: 28, fill: RED });
+        if (an) { fade(g, true, i * 400); drawIn(ck, i * 400 + 100, 300); }
+      });
+      cap(d, 0, 540, "All five pass. None can see what was never written.", { size: 26, weight: 700 });
+    } else if (kk === 2) {
+      var tot = d3.sum(ZIPS, function (z) { return z[1]; }), mz = d3.sum(ZIPS, function (z) { return +z[0] * z[1]; }) / tot;
+      lab(d, 0, 30, "20 CUSTOMERS' ZIP CODES");
+      lab(d, 0, 76, "READ AS A NUMBER", { fill: RED }); lab(d, 400, 76, "READ AS A CATEGORY");
+      ZIPS.forEach(function (z, i) {
+        var y = 126 + i * 56, g = d.append("g");
+        mono(g, 0, y, z[0] + " → " + (+z[0]), { size: 24, fill: RED });
+        mono(g, 400, y, z[0], { size: 24 }); bar(g, 520, y - 22, z[1] * 30, 28, INK, an, 300 + i * 120); cap(g, 520 + z[1] * 30 + 10, y, "" + z[1], { size: 24 });
+        fade(g, an, i * 120);
+      });
+      var mt = cap(d, 0, 450, "", { size: 28, weight: 700, fill: RED });
+      if (an) tweenNum(mt, 0, mz, function (v) { return "mean zip = " + fmtInt(v); }, 700, 1000); else mt.text("mean zip = " + fmtInt(mz));
+      cap(d, 0, 492, "a place that does not exist,", { size: 24, fill: RED }); cap(d, 0, 522, "and 02115 lost its zero", { size: 24, fill: RED });
+      cap(d, 400, 450, "most common: 02115 (7 of 20)", { size: 24, weight: 700 }); cap(d, 400, 492, "counts only; no order, no mean", { size: 24, fill: MUTED });
+    } else if (kk === 3) {
+      lab(d, 0, 30, "68 AGES, 8 OF THEM 999");
+      var mx = 24, ph = 300, bx = 30, bw = 64, base_ = 400, gg = d.append("g");
+      SENT.c.forEach(function (c, i) {
+        var x = bx + i * (bw + 6), h = c / mx * ph;
+        bar(gg, x, base_ - h, bw, h, INK, an, i * 80); cap(gg, x + bw / 2, base_ - h - 8, "" + c, { size: 24, anchor: "middle" });
+        cap(gg, x + bw / 2, base_ + 30, "" + (10 + i * 10), { size: 24, anchor: "middle", fill: MUTED });
+      });
+      var sx = bx + 7 * (bw + 6) + 24, sh_ = 8 / mx * ph;
+      bar(gg, sx, base_ - sh_, bw, sh_, RED, an, 700); cap(gg, sx + bw / 2, base_ - sh_ - 8, "8", { size: 24, anchor: "middle", fill: RED, weight: 700 }); cap(gg, sx + bw / 2, base_ + 30, "999", { size: 24, anchor: "middle", fill: RED, weight: 700 });
+      d.append("path").attr("d", "M" + (sx - 20) + "," + (base_ - 14) + " l8,-12 M" + (sx - 12) + "," + (base_ - 14) + " l8,-12").attr("stroke", INK).attr("stroke-width", 3);
+      d.append("path").attr("d", "M0," + base_ + " H740").attr("stroke", INK).attr("stroke-width", 2);
+      cap(d, 0, 478, "mean age with the 999s: " + SENT.m1.toFixed(1), { size: 26, weight: 700, fill: RED });
+      cap(d, 0, 520, "mean age after treating 999 as unknown: " + SENT.m2.toFixed(1), { size: 26, weight: 700 });
+    } else {
+      lab(d, 0, 30, "TWO RELATIONSHIPS, TWO CORRELATIONS");
+      [[PR.a, PR.b, 0, PR.r1, "y = x² plus noise"], [PR.c, PR.e, 400, PR.r2, "y = x plus noise"]].forEach(function (p, pi) {
+        var g = d.append("g").attr("transform", "translate(" + p[2] + ",0)"), xs = d3.scaleLinear().domain([-3, 3]).range([10, 340]), ys = d3.scaleLinear().domain(pi ? [-4, 4] : [-1, 10]).range([420, 70]);
+        g.append("rect").attr("x", 0.5).attr("y", 60.5).attr("width", 350).attr("height", 370).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+        p[0].forEach(function (x, i) { var c = g.append("circle").attr("cx", xs(x)).attr("cy", ys(p[1][i])).attr("r", 5).attr("fill", INK); if (an) c.attr("opacity", 0).transition().delay(i * 25).duration(200).attr("opacity", 1); });
+        var m = d3.mean(p[0]), my = d3.mean(p[1]), sxy = 0, sxx = 0; p[0].forEach(function (x, i) { sxy += (x - m) * (p[1][i] - my); sxx += (x - m) * (x - m); });
+        var sl = sxy / sxx, ic = my - sl * m, ln = g.append("path").attr("d", "M" + xs(-3) + "," + ys(ic - 3 * sl) + " L" + xs(3) + "," + ys(ic + 3 * sl)).attr("stroke", RED).attr("stroke-width", 4);
+        if (an) drawIn(ln, 1500, 500);
+        cap(g, 0, 470, "r = " + (p[3] < 0 ? "−" : "") + Math.abs(p[3]).toFixed(2), { size: 30, weight: 700, fill: pi ? INK : RED }); cap(g, 0, 512, p[4], { size: 24, fill: MUTED });
+      });
+      cap(d, 0, 552, "The left pair is fully determined by x, yet r is near zero.", { size: 24, weight: 700 });
+    }
+    note(svg, ey, ["", "Run the standard checks first. They are necessary, and they read only what is written.", "Classify before you plot. A zip code looks numeric, but its mean is meaningless.", "A placeholder can pass as a real value and drag every summary with it.", "r sees straight lines only. A curve can score near zero."][k]);
+  }
+
+  /* ---------- 4. MCAR, MAR, MNAR, missingness matrix ---------- */
+  function renderMiss(el, k, anim) {
+    var svg = svgFor(el, W, H, "Three kinds of missing data shift an average differently; a matrix shows columns failing together", "A bias axis with the observed-minus-true mean income for three missingness rules. Then two missingness matrices: scattered gaps and aligned stripes.");
+    var ey = base(svg, [{ id: "mcar", s: 1 }, { id: "mar", s: 2 }, { id: "mnar", s: 3 }, { id: "mmat", s: 4 }], k, anim, ["MAR", "depends on a column you observed"], ["MNAR", "depends on the missing value itself"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k === kk;
+    if (kk <= 3) {
+      lab(d, 0, 30, "BIAS OF THE OBSERVED MEAN, 0 = TRUE MEAN (" + fmtInt(MS.n) + " PEOPLE)");
+      var lim = Math.ceil(Math.max(Math.abs(MS.mnar.bias), Math.abs(MS.mar.bias)) * 1.35 / 1000) * 1000, sx = d3.scaleLinear().domain([-lim, lim]).range([40, 720]);
+      var rows = [["MCAR: 30% missing at random", MS.mcar], ["MAR: young skip more", MS.mar], ["MNAR: high earners skip", MS.mnar]];
+      d.append("path").attr("d", "M" + sx(0) + ",60 V470").attr("stroke", FAMILIAR).attr("stroke-width", 2).attr("stroke-dasharray", "6 6");
+      rows.forEach(function (rw, i) {
+        if (i + 1 > kk) return;
+        var y = 100 + i * 150, g = d.append("g"), b = rw[1].bias;
+        cap(g, 0, y, rw[0], { size: 24, weight: 700, fill: i + 1 === kk ? RED : INK });
+        g.append("path").attr("d", "M40," + (y + 44) + " H720").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+        var dot = g.append("circle").attr("cy", y + 44).attr("r", 14).attr("fill", i + 1 === kk ? RED : INK).attr("cx", sx(b));
+        var vt = cap(g, sx(b), y + 92, fmtK(b) + " (" + (rw[1].miss * 100).toFixed(0) + "% missing)", { size: 24, weight: 700, anchor: "start" });
+        if (b > 0) vt.attr("x", Math.max(sx(0) + 14, sx(b) - 20)); else vt.attr("x", Math.max(0, sx(b) - 20));
+        g.append("path").attr("d", "M" + sx(0) + "," + (y + 24) + " V" + (y + 64)).attr("stroke", INK).attr("stroke-width", 3);
+        if (an && i + 1 === kk) { dot.attr("cx", sx(0)).transition().duration(900).ease(d3.easeCubicOut).attr("cx", sx(b)); fade(vt, true, 600); }
+      });
+      if (kk === 2) cap(d, 0, 540, "inside age bands: " + fmtK(MS.marYoung) + " and " + fmtK(MS.marOld) + " (age explains it)", { size: 24, fill: MUTED });
+      if (kk === 3) cap(d, 0, 540, "nothing observed explains the bias; it points low", { size: 24, fill: RED, weight: 700 });
+    } else {
+      lab(d, 0, 30, "MISSINGNESS MATRICES: 18 ROWS, 6 COLUMNS");
+      var r2 = rng(3), cw = 44, rh = 17, share = 0;
+      [0, 1].forEach(function (pi) {
+        var g = d.append("g").attr("transform", "translate(" + (pi ? 410 : 20) + ",60)");
+        g.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", 6 * cw).attr("height", 18 * rh).attr("fill", "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2);
+        d3.range(18).forEach(function (ri) {
+          var sub = pi && (ri === 2 || ri === 3 || ri === 7 || ri === 8 || ri === 9 || ri === 14);
+          if (pi && sub) share++;
+          d3.range(6).forEach(function (ci) {
+            var miss = sub ? (ci === 2 || ci === 3) : r2() < (pi ? 0.03 : 0.16);
+            if (miss) { var c = g.append("rect").attr("x", ci * cw + 1).attr("y", ri * rh + 1).attr("width", cw - 2).attr("height", rh - 2).attr("fill", pi && sub ? RED : INK); if (an) c.attr("opacity", 0).transition().delay(300 + ri * 40).duration(250).attr("opacity", 1); }
+          });
+        });
+      });
+      cap(d, 20, 420, "scattered gaps", { size: 26, weight: 700 }); cap(d, 410, 420, "aligned stripes", { size: 26, weight: 700, fill: RED });
+      cap(d, 20, 462, "no shared pattern", { size: 24, fill: MUTED }); cap(d, 410, 462, "columns 3, 4: same " + share + " rows", { size: 24, fill: RED });
+      cap(d, 0, 540, "The matrix finds the pattern. Only reasoning finds the cause.", { size: 24, weight: 700 });
+    }
+    note(svg, ey, ["", "Random dropout leaves the average close to the truth. It only costs rows.", "Missing depends on age, which is observed, so the bias can be corrected by conditioning on age.", "Missing depends on income itself. The data looks fine; EDA cannot detect it.", "Stripes show columns failing together, not why."][k]);
+  }
+
+  /* ---------- 5. outlier, IQR rule, z-score rule ---------- */
+  function renderOut(el, k, anim) {
+    var svg = svgFor(el, W, H, "Two rules flag outliers; the z-score rule is dulled by the outliers it is hunting", "A strip of 125 values. The IQR rule's fences flag seven values; the z-score rule's band flags only one, because the extremes inflate the spread.");
+    var ey = base(svg, [{ id: "out", s: 1 }, { id: "iqr", s: 2 }, { id: "zs", s: 3 }], k, anim, ["IQR rule", "fences from the middle half"], ["Z-score rule", "distance from the mean in SDs"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k === kk;
+    var sx = d3.scaleLinear().domain([0, 440]).range([30, 730]), y0 = 170;
+    lab(d, 0, 30, "125 VALUES ON ONE AXIS");
+    var flagged = function (x) { return kk === 3 ? Math.abs(x - OD.m) / OD.sd > 3 : (x < OD.lo || x > OD.hi); };
+    d.append("path").attr("d", "M30,330 H730").attr("stroke", INK).attr("stroke-width", 2);
+    [0, 100, 200, 300, 400].forEach(function (t) { d.append("path").attr("d", "M" + sx(t) + ",330 v8").attr("stroke", INK).attr("stroke-width", 2); cap(d, sx(t), 366, "" + t, { size: 24, anchor: "middle", fill: MUTED }); });
+    if (kk >= 2) {
+      var g1 = d.append("g");
+      g1.append("rect").attr("x", sx(OD.q1)).attr("y", 100).attr("width", sx(OD.q3) - sx(OD.q1)).attr("height", 220).attr("fill", TINT);
+      [OD.lo, OD.hi].forEach(function (f, i) { g1.append("path").attr("d", "M" + sx(f) + ",90 V330").attr("stroke", kk === 2 ? RED : GREY).attr("stroke-width", kk === 2 ? 4 : 2).attr("stroke-dasharray", "8 6"); });
+      if (kk === 2) {
+        cap(g1, 0, 62, "Q1 − 1.5·IQR = " + OD.lo.toFixed(0), { size: 24, fill: RED, weight: 700 });
+        cap(g1, sx(OD.hi) + 8, 90, "Q3 + 1.5·IQR = " + OD.hi.toFixed(0), { size: 24, fill: RED, weight: 700 });
+        cap(g1, sx((OD.q1 + OD.q3) / 2), 130, "middle half", { size: 24, anchor: "middle", fill: MUTED });
+        fade(g1, an, 0);
+      }
+    }
+    if (kk === 3) {
+      var g2 = d.append("g"), hx = sx(OD.zhi), mx = sx(OD.m);
+      g2.append("path").attr("d", "M" + mx + ",100 V330").attr("stroke", INK).attr("stroke-width", 3);
+      g2.append("path").attr("d", "M" + hx + ",90 V330").attr("stroke", RED).attr("stroke-width", 4).attr("stroke-dasharray", "8 6");
+      cap(g2, hx - 8, 86, "mean + 3 SD = " + OD.zhi.toFixed(0), { size: 24, anchor: "end", fill: RED, weight: 700 });
+      cap(g2, hx + 10, 128, "mean " + OD.m.toFixed(0) + ", SD " + OD.sd.toFixed(0), { size: 24 });
+      fade(g2, an, 0);
+    }
+    OD.pts.forEach(function (p, i) {
+      var f = flagged(p.x), c = d.append("circle").attr("cx", sx(p.x)).attr("cy", 250 + (p.j - 0.5) * 150).attr("r", 5).attr("fill", f ? RED : INK).attr("opacity", f ? 1 : 0.75);
+      if (an && f) c.attr("r", 14).transition().delay(400).duration(600).attr("r", 6);
+    });
+    var cnt = kk === 3 ? OD.zN : OD.iqrN;
+    cap(d, 0, 430, (kk === 3 ? "z-score rule" : "IQR rule") + " flags " + cnt + " of " + OD.v.length + " (red)", { size: 28, weight: 700, fill: RED });
+    if (kk === 1) { cap(d, 0, 478, "420: a decimal slip? a real CEO? a code for unknown?", { size: 24 }); cap(d, 0, 516, "The rule flags. Domain knowledge decides.", { size: 24, fill: MUTED, weight: 700 }); }
+    if (kk === 2) cap(d, 0, 478, "Quartiles ignore the extremes, so the fences stay put.", { size: 24, fill: MUTED });
+    if (kk === 3) { cap(d, 0, 478, "The extremes inflate the SD, which widens the band.", { size: 24, fill: MUTED }); cap(d, 0, 516, "IQR flagged " + OD.iqrN + "; z flagged " + OD.zN + ".", { size: 24, weight: 700 }); }
+    note(svg, ey, ["", "An outlier is a flag, not a verdict. Triage first, then decide whether to remove, impute, cap or keep.", "Fences sit 1.5 IQRs beyond the quartiles. The extremes do not move them.", "The mean and SD come from data the outliers contaminate, so the band swallows them."][k]);
+  }
+
+  /* ---------- 6. marks and channels, ranking, expressiveness ---------- */
+  function renderEnc(el, k, anim) {
+    var svg = svgFor(el, W, H, "A chart is marks and channels; some channels read better, and a channel must fit its data", "A scatter plot labelled with its mark and channels. Then two values encoded by position, length, area and color intensity. Then a category encoded by hue and by size.");
+    var ey = base(svg, [{ id: "mc", s: 1 }, { id: "rank", s: 2 }, { id: "expr", s: 3 }], k, anim, ["Expressiveness", "channel matches the data type"], ["Effectiveness", "strongest channel to the key variable"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k === kk;
+    if (kk === 1) {
+      lab(d, 0, 30, "ONE ROW = ONE POINT");
+      var r = rng(31), cols = [INK, RED, GREY], xs = d3.scaleLinear().domain([20, 60]).range([70, 720]), ys = d3.scaleLinear().domain([30, 120]).range([360, 60]);
+      d.append("path").attr("d", "M60,60 V370 H730").attr("fill", "none").attr("stroke", INK).attr("stroke-width", 2);
+      cap(d, 730, 408, "age →", { size: 24, anchor: "end", fill: MUTED }); cap(d, 76, 76, "salary ($k)", { size: 24, fill: MUTED });
+      d3.range(15).forEach(function (i) {
+        var a = 22 + r() * 36, s = 38 + (a - 20) * 1.3 + r() * 18, c = cols[i % 3], p = d.append("circle").attr("cx", xs(a)).attr("cy", ys(s)).attr("r", 10).attr("fill", c);
+        if (an) p.attr("opacity", 0).transition().delay(i * 90).duration(250).attr("opacity", 1);
+      });
+      [["mark: one point per row", INK], ["x position carries age", INK], ["y position carries salary", INK], ["hue carries department", RED]].forEach(function (c, i) {
+        var g = d.append("g"); cap(g, 0, 450 + i * 36, c[0], { size: 24, weight: 700, fill: c[1] }); fade(g, an, 1700 + i * 350);
+      });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "THE SAME TWO VALUES, 40 AND 50");
+      var g = d.append("g"), ROWS = ["position", "length", "area", "color intensity"], X0 = 230, SW = 500;
+      ROWS.forEach(function (nm, i) {
+        var y = 100 + i * 112, rw = g.append("g");
+        cap(rw, 0, y + 10, nm, { size: 26, weight: 700, fill: i < 2 ? INK : RED });
+        rw.append("path").attr("d", "M0," + (y + 40) + " H740").attr("stroke", FAMILIAR).attr("stroke-width", 1.5);
+        var sc = SW / 60;
+        if (i === 0) { rw.append("path").attr("d", "M" + X0 + "," + (y + 10) + " H" + (X0 + SW)).attr("stroke", INK).attr("stroke-width", 2); [40, 50].forEach(function (v) { rw.append("circle").attr("cx", X0 + v * sc).attr("cy", y + 10).attr("r", 10).attr("fill", INK); }); }
+        if (i === 1) [40, 50].forEach(function (v, j) { rw.append("rect").attr("x", X0).attr("y", y - 12 + j * 22).attr("width", v * sc).attr("height", 18).attr("fill", INK); });
+        if (i === 2) [40, 50].forEach(function (v, j) { rw.append("circle").attr("cx", X0 + 60 + j * 120).attr("cy", y + 10).attr("r", Math.sqrt(v / Math.PI) * 4.2).attr("fill", INK); });
+        if (i === 3) [40, 50].forEach(function (v, j) { var gr = Math.round(255 - v / 60 * 220); rw.append("rect").attr("x", X0 + j * 120).attr("y", y - 14).attr("width", 100).attr("height", 48).attr("fill", "rgb(" + gr + "," + gr + "," + gr + ")").attr("stroke", INK).attr("stroke-width", 1.5); });
+        fade(rw, an, i * 450);
+      });
+      cap(d, 0, 556, "Position and length make the 10-unit gap easy to see.", { size: 24, weight: 700 });
+    } else {
+      lab(d, 0, 30, "HUE: NO ORDER IMPLIED", { fill: INK }); lab(d, 400, 30, "SIZE: ORDER IMPLIED", { fill: RED });
+      var cs = [INK, RED, GREY], nm = ["Dept A", "Dept B", "Dept C"], rr = [16, 30, 46];
+      nm.forEach(function (n, i) {
+        var y = 130 + i * 130, g = d.append("g");
+        g.append("circle").attr("cx", 80).attr("cy", y).attr("r", 36).attr("fill", cs[i]); cap(g, 150, y + 8, n, { size: 26 });
+        g.append("circle").attr("cx", 480).attr("cy", y).attr("r", rr[i]).attr("fill", INK); cap(g, 550, y + 8, n, { size: 26 });
+        fade(g, an, i * 300);
+      });
+      cap(d, 0, 540, "Same data both sides. On the right, Dept C looks like “more”.", { size: 24, weight: 700, fill: RED });
+    }
+    note(svg, ey, ["", "Every chart is marks plus channels. Ask which channel carries which variable.", "Cleveland and McGill: position, then length. A heatmap's color is for overview, not for 0.43 against 0.51.", "Hue for a category implies no order. Size does, so the chart says something the data does not."][k]);
+  }
+
+  /* ---------- 7. sampling, time-window, label, feature-engineering ---------- */
+  var SP = (function () {
+    var r = rng(41), pop = [], smp = [], i;
+    for (i = 0; i < 2000; i++) { var u = r(), sel = Math.pow(1 - u, 2); pop.push(u); if (r() < sel) smp.push(u); }
+    var hp = d3.range(10).map(function () { return 0; }), hs = hp.slice();
+    pop.forEach(function (u) { hp[Math.min(9, Math.floor(u * 10))]++; }); smp.forEach(function (u) { hs[Math.min(9, Math.floor(u * 10))]++; });
+    return { hp: hp, hs: hs, np: pop.length, ns: smp.length, farP: pop.filter(function (u) { return u > 0.7; }).length / pop.length, farS: smp.filter(function (u) { return u > 0.7; }).length / smp.length };
+  })();
+  var TW = (function () {
+    var r = rng(61), s = [], i;
+    for (i = 0; i < 48; i++) s.push((i < 24 ? 0.30 : 0.18) + 0.015 * normal(r));
+    var train = mean(s.slice(0, 12)), late = s.slice(36);
+    return { s: s, train: train, err: mean(late.map(function (v) { return train - v; })) };
+  })();
+  var LB = (function () {
+    var r = rng(51), P = [], i;
+    for (i = 0; i < 400; i++) { var c = r(); P.push({ c: c, k: r() < 0.1 + 0.4 * c }); }
+    var qs = [0, 0, 0, 0], qn = [0, 0, 0, 0];
+    P.forEach(function (p) { var b = Math.min(3, Math.floor(p.c * 4)); qn[b]++; if (p.k) qs[b]++; });
+    var cl = P.filter(function (p) { return p.k; }), hi = P.filter(function (p) { return p.c > 0.75; });
+    return { q: qs.map(function (s, i) { return s / qn[i]; }), nCl: cl.length, lowShare: cl.filter(function (p) { return p.c < 0.5; }).length / cl.length, hiMiss: hi.filter(function (p) { return !p.k; }).length / hi.length };
+  })();
+  var CLV = [40, 55, 30, 80, 65];
+  function renderAssume(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four silent assumptions: who was sampled, when, what the label means, and who built a feature", "A population histogram against a sample histogram. A rate over four years with a flat prediction. Click rate by interest quartile. Old and recomputed customer lifetime value for five customers.");
+    var ey = base(svg, [{ id: "samp", s: 1 }, { id: "tw", s: 2 }, { id: "lab", s: 3 }, { id: "feat", s: 4 }], k, anim, ["Label", "the proxy that was recorded"], ["Construct", "the thing you care about"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k === kk;
+    if (kk === 1) {
+      lab(d, 0, 30, "2,000 PEOPLE BY HOW EASY THEY ARE TO REACH");
+      var g = d.append("g"), bw = 66, bb = 380, mx = d3.max(SP.hp);
+      SP.hp.forEach(function (c, i) {
+        var x = 20 + i * (bw + 4), h = c / mx * 300;
+        bar(g, x, bb - h, bw, h, FAMILIAR, an, 0); var hs_ = SP.hs[i] / mx * 300; bar(g, x + 10, bb - hs_, bw - 20, hs_, INK, an, 400 + i * 60);
+      });
+      d.append("path").attr("d", "M10," + bb + " H740").attr("stroke", INK).attr("stroke-width", 2);
+      cap(d, 20, bb + 32, "easy to reach", { size: 24, fill: MUTED }); cap(d, 740, bb + 32, "hard to reach", { size: 24, fill: MUTED, anchor: "end" });
+      cap(d, 0, 470, "grey: everyone (2,000) · ink: the sample (" + fmtInt(SP.ns) + ")", { size: 24 });
+      cap(d, 0, 512, "Hardest-to-reach 30%: " + (SP.farP * 100).toFixed(0) + "% of people, " + (SP.farS * 100).toFixed(0) + "% of the sample.", { size: 24, weight: 700, fill: RED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "CONVERSION RATE BY MONTH, 4 YEARS");
+      var sx = d3.scaleLinear().domain([0, 47]).range([50, 730]), sy = d3.scaleLinear().domain([0.1, 0.36]).range([400, 70]);
+      d.append("rect").attr("x", sx(0)).attr("y", 60).attr("width", sx(11) - sx(0)).attr("height", 340).attr("fill", TINT);
+      cap(d, sx(0) + 6, 96, "trained here", { size: 24, fill: RED, weight: 700 });
+      d.append("path").attr("d", "M50,400 H730").attr("stroke", INK).attr("stroke-width", 2);
+      ["2019", "2020", "2021", "2022"].forEach(function (y, i) { cap(d, sx(i * 12), 432, y, { size: 24, fill: MUTED }); });
+      var line = d3.line().x(function (v, i) { return sx(i); }).y(function (v) { return sy(v); });
+      var pl = d.append("path").attr("d", line(TW.s)).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 3.5); if (an) drawIn(pl, 0, 1400);
+      var pr = d.append("path").attr("d", "M" + sx(12) + "," + sy(TW.train) + " H" + sx(47)).attr("stroke", RED).attr("stroke-width", 4).attr("stroke-dasharray", "10 8"); if (an) fade(pr, true, 1300);
+      cap(d, 0, 480, "model's flat prediction: " + (TW.train * 100).toFixed(0) + "%. Actual in 2022: " + (mean(TW.s.slice(36)) * 100).toFixed(0) + "%.", { size: 24, weight: 700 });
+      cap(d, 0, 520, "average miss in 2022: " + (TW.err * 100).toFixed(0) + " points, with full confidence.", { size: 24, fill: RED, weight: 700 });
+    } else if (kk === 3) {
+      lab(d, 0, 30, "CLICK RATE BY HOW INTERESTED THE PERSON IS");
+      var g3 = d.append("g"), qn = ["lowest", "second", "third", "highest"];
+      LB.q.forEach(function (v, i) {
+        var x = 40 + i * 175, h = v * 340;
+        bar(g3, x, 390 - h, 130, h, i === 3 ? INK : FAMILIAR, an, i * 200); cap(g3, x + 65, 390 - h - 10, (v * 100).toFixed(0) + "%", { size: 26, weight: 700, anchor: "middle" });
+        cap(g3, x + 65, 424, qn[i], { size: 24, anchor: "middle", fill: MUTED });
+      });
+      d.append("path").attr("d", "M20,390 H740").attr("stroke", INK).attr("stroke-width", 2);
+      cap(d, 0, 478, "Clicks from below-median interest: " + (LB.lowShare * 100).toFixed(0) + "% of " + LB.nCl + " clicks.", { size: 24, weight: 700, fill: RED });
+      cap(d, 0, 520, "Top-quartile people who never clicked: " + (LB.hiMiss * 100).toFixed(0) + "%.", { size: 24, weight: 700 });
+    } else {
+      lab(d, 0, 30, "customer_lifetime_value = spend × 1 / (1 − retention)");
+      cap(d, 0, 76, "old model: retention 0.90 → 10 months", { size: 24, fill: MUTED }); cap(d, 0, 108, "assumption breaks: retention 0.70 → 3.3 months", { size: 24, fill: RED, weight: 700 });
+      var g4 = d.append("g"), sc = 560 / 800;
+      CLV.forEach(function (s, i) {
+        var y = 150 + i * 70, oldv = s * 10, nv = s / (1 - 0.7), gg = g4.append("g");
+        cap(gg, 0, y + 26, "$" + s, { size: 24, fill: MUTED });
+        bar(gg, 80, y, oldv * sc, 24, FAMILIAR, an, i * 150); cap(gg, 80 + oldv * sc + 8, y + 20, "" + oldv, { size: 24 });
+        bar(gg, 80, y + 28, nv * sc, 24, RED, an, i * 150 + 300); cap(gg, 80 + nv * sc + 8, y + 48, "" + Math.round(nv), { size: 24, fill: RED, weight: 700 });
+      });
+      cap(d, 0, 540, "grey: the column you inherited · red: what it should say now", { size: 24, weight: 700 });
+    }
+    note(svg, ey, ["", "Convenience data leans toward the easy end of every distribution. The world is wider.", "A model trained on 2019 predicts 2019 in 2022, and nothing in the table says the world moved.", "A click is not interest. The label is what got recorded, not what you wanted to measure.", "Old assumptions in a column break every model built on it."][k]);
+  }
+
+  /* ---------- 8. access boundary, datasheets, boundary leakage ---------- */
+  var BD = (function () {
+    var r = rng(71), msgs = [], i, ext = [-80, -20, 40, 150, 215];
+    for (i = 0; i < 40; i++) { var a = r() * Math.PI * 2, rr = Math.sqrt(r()) * 84, refs = []; ext.forEach(function (e, j) { if (r() < 0.22) refs.push(j); }); msgs.push({ x: Math.cos(a) * rr, y: Math.sin(a) * rr, refs: refs }); }
+    return { msgs: msgs, ext: ext, out: msgs.filter(function (m) { return m.refs.length > 0; }).length };
+  })();
+  var DSS = [["Motivation", "Why was it created?"], ["Composition", "What does each instance stand for?"], ["Collection process", "How was the data acquired?"], ["Preprocessing", "What cleaning or labelling was done?"], ["Uses", "What has it been used for?"], ["Distribution", "How is it shared?"], ["Maintenance", "Who keeps it up to date?"]];
+  var LK = (function () {
+    var r = rng(81), bad = {}, nb = 0, cells = [], i, pick = {};
+    while (nb < 5) { var j = Math.floor(r() * 1000); if (!bad[j]) { bad[j] = 1; nb++; } }
+    var np = 0; while (np < 50) { var q = Math.floor(r() * 1000); if (!pick[q]) { pick[q] = 1; np++; } }
+    for (i = 0; i < 1000; i++) cells.push({ bad: !!bad[i], pick: !!pick[i] });
+    return { cells: cells, hits: cells.filter(function (c) { return c.bad && c.pick; }).length, p: [50, 100, 200, 400].map(function (n) { return [n, hypoHit(n, 5, 1000)]; }) };
+  })();
+  function renderBound(el, k, anim) {
+    var svg = svgFor(el, W, H, "A dataset reaches past its schema; a datasheet documents it; leakage at the edge is hard to find", "A corpus of 40 messages with lines to things outside it. Seven datasheet sections down a timeline. A grid of 1,000 messages with 5 leaky ones and a random spot check.");
+    var ey = base(svg, [{ id: "acc", s: 1 }, { id: "ds", s: 2 }, { id: "leak", s: 3 }], k, anim, ["Schema", "the columns that were declared"], ["Boundary", "schema plus all its contents point to"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k === kk;
+    if (kk === 1) {
+      lab(d, 0, 30, "40 EMAILS IN THE CORPUS, AND WHAT THEY POINT TO");
+      var cx = 380, cy = 285, R = 172, g = d.append("g").attr("transform", "translate(" + cx + "," + cy + ")");
+      g.append("circle").attr("r", R).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6");
+      g.append("circle").attr("r", 96).attr("fill", SUBTLE).attr("stroke", INK).attr("stroke-width", 3);
+      var NAMES = ["phone numbers", "addresses", "card fragments", "internal docs", "other people"];
+      BD.ext.forEach(function (a, j) {
+        var ar = a * DEG, px = Math.cos(ar) * R, py = Math.sin(ar) * R, lg = g.append("g");
+        lg.append("circle").attr("cx", px).attr("cy", py).attr("r", 10).attr("fill", RED);
+        var right = Math.cos(ar) >= 0, t = cap(lg, px + (right ? 16 : -16), py + (Math.sin(ar) > 0.5 ? 30 : Math.sin(ar) < -0.5 ? -14 : 8), NAMES[j], { size: 24, weight: 700, fill: RED, anchor: right ? "start" : "end" });
+        fade(lg, an, 500);
+      });
+      BD.msgs.forEach(function (m, i) {
+        m.refs.forEach(function (j) { var ar = BD.ext[j] * DEG, ln = g.append("path").attr("d", "M" + m.x + "," + m.y + " L" + (Math.cos(ar) * R) + "," + (Math.sin(ar) * R)).attr("stroke", RED).attr("stroke-width", 1.5).attr("opacity", 0.55); if (an) drawIn(ln, 600 + i * 25, 400); });
+        g.append("circle").attr("cx", m.x).attr("cy", m.y).attr("r", 6).attr("fill", INK);
+      });
+      cap(d, cx, 524, BD.out + " of 40 messages point outside. No access rule was broken.", { size: 24, weight: 700, anchor: "middle" });
+      cap(d, cx, 556, "grey disc: the schema · dashed ring: the real boundary", { size: 24, fill: MUTED, anchor: "middle" });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "57 QUESTIONS IN 7 SECTIONS");
+      d.append("path").attr("d", "M20,70 V450").attr("stroke", INK).attr("stroke-width", 3);
+      var pt = d.append("g");
+      DSS.forEach(function (s, i) {
+        var y = 74 + i * 62, g2 = d.append("g");
+        g2.append("circle").attr("cx", 20).attr("cy", y).attr("r", 11).attr("fill", i === 0 ? RED : INK);
+        cap(g2, 54, y + 4, s[0], { size: 26, weight: 700 }); cap(g2, 54, y + 34, "e.g. " + s[1], { size: 24, fill: MUTED });
+        fade(g2, an, i * 330);
+      });
+      cap(d, 0, 540, "Gebru et al. suggest reading them before collecting any data.", { size: 24, weight: 700 });
+    } else {
+      lab(d, 0, 30, "1,000 MESSAGES, 5 LEAKY, A RANDOM SPOT CHECK OF 50");
+      var g3 = d.append("g");
+      LK.cells.forEach(function (c, i) {
+        var x = 10 + (i % 40) * 18, y = 56 + Math.floor(i / 40) * 15, rc = g3.append("rect").attr("x", x).attr("y", y).attr("width", 13).attr("height", 11).attr("fill", c.bad ? RED : FAMILIAR);
+        if (c.pick) { rc.attr("stroke", INK).attr("stroke-width", 2.5); }
+        if (c.bad) rc.attr("width", 15).attr("height", 13);
+      });
+      cap(d, 0, 470, "red: leaky · outlined: in the spot check · hits: " + LK.hits + " of 5", { size: 24, weight: 700 });
+      cap(d, 0, 512, "Chance a random spot check finds one:", { size: 24 });
+      cap(d, 0, 548, LK.p.map(function (p) { return p[0] + " → " + (p[1] * 100).toFixed(0) + "%"; }).join(" · "), { size: 26, weight: 700, fill: RED });
+    }
+    note(svg, ey, ["", "The boundary is the schema plus everything its contents reference. It is sharpest for emails, near-absent for sensor logs.", "A datasheet is the checklist version of this chapter: the questions, in order.", "Small examples show the leak easily. At scale, random checks mostly miss, so targeted red-teaming is needed."][k]);
+  }
+
+  /* ---------- 9. prediction-lock, gap analysis, row tracing, do not delegate ---------- */
+  var MO = (function () {
+    var r = rng(91), c = [], i;
+    for (i = 0; i < 9; i++) c.push(Math.round(6600 + 300 * normal(r)));
+    return { c: c, tot: d3.sum(c), avg: mean(c) };
+  })();
+  function renderInterr(el, k, anim) {
+    var svg = svgFor(el, W, H, "Lock a prediction, find the gap, trace a row, and keep the interrogation yourself", "A prediction card that locks. Twelve predicted months against nine found. A row traced back through three systems. Three tiers of work: delegate, verify, do not delegate.");
+    var ey = base(svg, [{ id: "plock", s: 1 }, { id: "gap", s: 2 }, { id: "trace", s: 3 }, { id: "nodel", s: 4 }], k, anim, ["Verify before trusting", "AI claims about what data means"], ["Do not delegate", "the frame reconstruction"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k === kk;
+    if (kk === 1) {
+      lab(d, 0, 30, "WRITTEN BEFORE THE FIRST HISTOGRAM");
+      box(d, 0, 56, 740, 380, { stroke: INK, sw: 3 });
+      [["represents", "support tickets for all customers"], ["collected by", "export from the ticketing system"], ["excluded", "nothing"], ["time period", "12 months"]].forEach(function (f, i) {
+        var y = 110 + i * 78, g = d.append("g"); cap(g, 24, y, f[0], { size: 24, fill: MUTED, weight: 700 }); cap(g, 240, y, f[1], { size: 26 });
+        g.append("path").attr("d", "M24," + (y + 18) + " H570").attr("stroke", FAMILIAR).attr("stroke-width", 1.5); fade(g, an, i * 400);
+      });
+      var lk = d.append("g");
+      lk.append("rect").attr("x", 604).attr("y", 200).attr("width", 100).attr("height", 70).attr("fill", RED);
+      var sh = lk.append("path").attr("d", "M624,200 v-26 a30,30 0 0 1 60,0 v26").attr("fill", "none").attr("stroke", RED).attr("stroke-width", 9);
+      if (an) { sh.attr("transform", "translate(0,-26)").transition().delay(1700).duration(500).attr("transform", "translate(0,0)"); fade(lk, true, 1500); }
+      cap(d, 0, 486, "LOCKED, dated, before any plot", { size: 28, weight: 700, fill: RED });
+      cap(d, 0, 528, "Without it, the answer feels obvious afterwards.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "12 MONTHS PREDICTED, 9 FOUND");
+      var mx = 7600, bw = 48, g = d.append("g"), L = "JFMAMJJASOND".split("");
+      d3.range(12).forEach(function (i) {
+        var x = 20 + i * 60, hgt = 280;
+        g.append("rect").attr("x", x + 0.5).attr("y", 80.5).attr("width", bw).attr("height", hgt).attr("fill", "none").attr("stroke", i < 9 ? GREY : RED).attr("stroke-width", i < 9 ? 1.5 : 3).attr("stroke-dasharray", i < 9 ? "0" : "6 5");
+        if (i < 9) bar(g, x + 1, 80 + hgt - MO.c[i] / mx * hgt, bw - 1, MO.c[i] / mx * hgt, INK, an, i * 120);
+        cap(g, x + bw / 2, 396, L[i], { size: 24, anchor: "middle", fill: i < 9 ? MUTED : RED, weight: i < 9 ? 400 : 700 });
+      });
+      var gp = cap(d, 0, 470, "", { size: 28, weight: 700, fill: RED });
+      cap(d, 0, 512, "rows found: " + fmtInt(MO.tot) + " = " + (MO.tot / MO.avg).toFixed(1) + " months at " + fmtInt(MO.avg) + " a month", { size: 24 });
+      cap(d, 0, 552, "A year was predicted; about nine months arrived. Pursue it.", { size: 24, fill: MUTED });
+      if (an) tweenNum(gp, 0, 3, function (v) { return "gap: " + Math.round(v) + " of 12 months (" + (Math.round(v) / 12 * 100).toFixed(0) + "%)"; }, 1300, 700); else gp.text("gap: 3 of 12 months (25%)");
+    } else if (kk === 3) {
+      lab(d, 0, 30, "ONE ROW, FOLLOWED BACK");
+      var HOPS = [["merged table, row 40,217", "customer_id = 412", INK], ["CRM export", "cust_id = \"00412\"", INK], ["ticketing system", "client = \"00412 \"", INK], ["the source behind that", "unreachable", RED]], NOTE = ["", "renamed, and cast to a number: zeros lost", "a trailing space: matches only after trimming", "document the opacity: that is a finding"];
+      var dot = d.append("g");
+      HOPS.forEach(function (h, i) {
+        var y = 56 + i * 124, g = d.append("g");
+        g.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 740).attr("height", 80).attr("fill", "#FFFFFF").attr("stroke", i === 3 ? RED : INK).attr("stroke-width", 2).attr("stroke-dasharray", i === 3 ? "8 6" : "0");
+        cap(g, 20, y + 34, h[0], { size: 26, weight: 700, fill: i === 3 ? RED : INK }); mono(g, 20, y + 66, h[1], { size: 24, fill: h[2] });
+        if (i > 0) cap(g, 420, y + 34, NOTE[i], { size: 24, fill: RED, weight: 700, anchor: "start" }).call(function (t) { wrapTo(t, 320); });
+        if (i < 3) { g.append("path").attr("d", "M370," + (y + 84) + " V" + (y + 120)).attr("stroke", INK).attr("stroke-width", 3); }
+        fade(g, an, i * 600);
+      });
+    } else {
+      lab(d, 0, 30, "THREE TIERS OF EDA WORK");
+      var TIERS = [["Delegate freely", "plots, summary statistics, missingness counts, outlier flags", FAMILIAR], ["Verify before trusting", "why a value is missing; what is “normal” for this domain", INK], ["Do not delegate", "the frame reconstruction, the prediction-lock, row tracing, boundary scoping", RED]];
+      TIERS.forEach(function (t, i) {
+        var y = 56 + i * 164, g = d.append("g"), hot = i === 2;
+        g.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 740).attr("height", 144).attr("fill", hot ? TINT : "#FFFFFF").attr("stroke", t[2] === FAMILIAR ? FAMILIAR : t[2]).attr("stroke-width", hot ? 3 : 2);
+        g.append("rect").attr("x", 0).attr("y", y).attr("width", 12).attr("height", 145).attr("fill", t[2]);
+        cap(g, 34, y + 42, t[0], { size: 28, weight: 700, fill: hot ? RED : INK }); wrap(g, 34, y + 84, t[1], 56, { size: 24, lh: 30 });
+        fade(g, an, i * 400);
+      });
+    }
+    note(svg, ey, ["", "Write down what you expect the dataset to be, in your own words, before any plot.", "The distance between the locked prediction and what you found is the learning.", "Trace one row to its source. If the source is out of reach, say so; that is itself a finding.", "The AI solves fast. You verify what its output is evidence of."][k]);
+  }
+  function wrapTo(t, w) {
+    /* shrink to fit: break a one-line text into two tspans at a space near the middle */
+    var s = t.text(), words = s.split(" "), half = Math.ceil(words.length / 2), x = t.attr("x"), y = +t.attr("y");
+    if (s.length * 12.4 <= w) return;
+    t.text(null); t.append("tspan").attr("x", x).text(words.slice(0, half).join(" ")); t.append("tspan").attr("x", x).attr("dy", 28).text(words.slice(half).join(" "));
+    t.attr("y", y - 14);
+  }
+
+  /* ---------- look-alike pairs ---------- */
+  function renderPairs(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four look-alike pairs in data validation", "Four pairs shown one at a time, each with a left and right picture: missing value and dropped row, MAR and MNAR, label and construct, schema and boundary.");
+    var d = svg.append("g");
+    var PAIRS = [
+      [["Missing value", "A cell exists and is empty"], ["Dropped row", "A row never reached the table"]],
+      [["MAR", "Gaps follow a column you can see"], ["MNAR", "Gaps follow the missing value itself"]],
+      [["Label", "What was recorded, such as a click"], ["Construct", "What you care about, such as interest"]],
+      [["Schema", "The columns that were declared"], ["Boundary", "The schema plus everything it points to"]]
+    ];
+    var L = d.append("g"), R = d.append("g").attr("transform", "translate(740,0)");
+    function head(g, i, j) { lab(g, 0, 24, "PAIR " + Math.max(1, k) + " · " + (j ? "RIGHT" : "LEFT"), { fill: MUTED }); txt(g, 0, 66, PAIRS[i][j][0], { size: 32, weight: 700, fill: j ? RED : INK }); wrap(g, 0, 470, PAIRS[i][j][1] + ".", 44, { size: 26, lh: 32, fill: BODY }); }
+    function draw(i, t) {
+      L.selectAll("*").remove(); R.selectAll("*").remove(); head(L, i, 0); head(R, i, 1);
+      var LG = L.append("g").attr("transform", "translate(60,0)"), RG = R.append("g").attr("transform", "translate(60,0)");
+      if (i === 0) {
+        [LG, RG].forEach(function (G, j) {
+          d3.range(5).forEach(function (ri) {
+            if (j && ri === 2) { G.append("rect").attr("x", 20.5).attr("y", 110.5 + ri * 50).attr("width", 300).attr("height", 40).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 2).attr("stroke-dasharray", "6 6").attr("opacity", 1 - Math.min(1, t * 1.6)); }
+            var show = !(j && ri === 2) || t < 0.5, o = j && ri === 2 ? Math.max(0, 1 - t * 2) : 1;
+            if (show) { G.append("rect").attr("x", 20.5).attr("y", 110.5 + ri * 50).attr("width", 300).attr("height", 40).attr("fill", "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2).attr("opacity", o); G.append("rect").attr("x", 40).attr("y", 124).attr("width", 0).attr("height", 0); mono(G, 36, 138 + ri * 50, ((j && ri === 2) ? "" : (!j && ri === 2 ? "" : "customer " + (ri + 1))), { size: 24 }).attr("opacity", o); }
+          });
+          if (!j) { G.append("rect").attr("x", 21).attr("y", 211).attr("width", 299).attr("height", 39).attr("fill", t > 0.4 ? TINT : "#FFFFFF"); mono(G, 36, 238, t > 0.4 ? "(empty)" : "", { size: 24, fill: RED }); }
+          cap(G, 20, 400, j ? "rows: 4 · empty cells: 0" : "rows: 5 · empty cells: 1", { size: 24, weight: 700, fill: j ? RED : INK });
+          cap(G, 20, 436, j ? "the check finds nothing" : "the check finds it", { size: 24, fill: MUTED });
+        });
+      } else if (i === 1) {
+        var r = rng(13), pts = d3.range(40).map(function () { var a = 20 + r() * 45, inc = 20 + (a - 20) * 0.7 + normal(r) * 9; return [a, inc, r()]; });
+        var mi = qnt(pts.map(function (p) { return p[1]; }), 0.7);
+        [LG, RG].forEach(function (G, j) {
+          var xs = d3.scaleLinear().domain([20, 65]).range([20, 330]), ys = d3.scaleLinear().domain([0, 70]).range([380, 120]), nm = 0;
+          G.append("path").attr("d", "M20,120 V380 H330").attr("fill", "none").attr("stroke", INK).attr("stroke-width", 2);
+          pts.forEach(function (p, ii) {
+            var miss = j ? (p[1] > mi && p[2] < 0.8) : (p[0] < 30 && p[2] < 0.8); if (miss) nm++;
+            G.append("circle").attr("cx", xs(p[0])).attr("cy", ys(p[1])).attr("r", 7).attr("fill", miss ? "#FFFFFF" : INK).attr("stroke", miss ? RED : INK).attr("stroke-width", 2.5).attr("opacity", ii / 40 < t ? 1 : 0.1);
+          });
+          cap(G, 20, 408, j ? "income →  hollow = missing" : "age →  hollow = missing", { size: 24, fill: MUTED });
+          cap(G, 20, 440, j ? "hollow dots sit high on income" : "hollow dots sit at low age", { size: 24, weight: 700, fill: j ? RED : INK });
+        });
+      } else if (i === 2) {
+        var lr = rng(23), cs = d3.range(30).map(function () { var c = lr(); return [c, lr() < 0.1 + 0.4 * c]; });
+        LG.append("path").attr("d", "M20,380 H330").attr("stroke", INK).attr("stroke-width", 2);
+        RG.append("path").attr("d", "M20,380 H330").attr("stroke", INK).attr("stroke-width", 2);
+        cs.forEach(function (c, ii) {
+          var on = ii / 30 < t, x = 20 + c[0] * 310;
+          LG.append("circle").attr("cx", 40 + (ii % 10) * 30).attr("cy", 150 + Math.floor(ii / 10) * 50).attr("r", 12).attr("fill", c[1] ? INK : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5).attr("opacity", on ? 1 : 0.1);
+          RG.append("circle").attr("cx", x).attr("cy", 150 + (ii % 6) * 38).attr("r", 9).attr("fill", RED).attr("opacity", on ? 0.9 : 0.1);
+        });
+        cap(LG, 20, 408, "filled = clicked", { size: 24, fill: MUTED }); cap(RG, 20, 408, "low interest → high interest", { size: 24, fill: MUTED });
+        cap(LG, 20, 440, "all anyone recorded", { size: 24, weight: 700 }); cap(RG, 20, 440, "never in the table", { size: 24, weight: 700, fill: RED });
+      } else {
+        LG.append("circle").attr("cx", 170).attr("cy", 230).attr("r", 70).attr("fill", SUBTLE).attr("stroke", INK).attr("stroke-width", 3);
+        RG.append("circle").attr("cx", 170).attr("cy", 230).attr("r", 70).attr("fill", SUBTLE).attr("stroke", INK).attr("stroke-width", 3);
+        RG.append("circle").attr("cx", 170).attr("cy", 230).attr("r", 70 + 60 * t).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6");
+        cap(LG, 170, 236, "schema", { size: 24, anchor: "middle", weight: 700 }); cap(RG, 170, 236, "schema", { size: 24, anchor: "middle", weight: 700 });
+        d3.range(8).forEach(function (j) { var a = j * Math.PI / 4 + 0.4, rr = 70 + 60 * t; if (t > 0.3) RG.append("path").attr("d", "M" + (170 + 70 * Math.cos(a)) + "," + (230 + 70 * Math.sin(a)) + " L" + (170 + rr * Math.cos(a)) + "," + (230 + rr * Math.sin(a))).attr("stroke", RED).attr("stroke-width", 2); });
+        cap(LG, 20, 408, "what you declared", { size: 24, fill: MUTED }); cap(RG, 20, 408, "what the contents reach", { size: 24, fill: RED, weight: 700 });
+      }
+    }
+    if (k === 0) { draw(0, 0.99); cap(svg.append("g"), 0, 612, "Click or press → to see four pairs, one at a time.", { size: 24, fill: MUTED }); return; }
+    draw(k - 1, 0.99); run(d, 3000, function (t) { draw(k - 1, t); }, anim);
+  }
+
+  /* ---------- say it exactly ---------- */
+  var SAY = [
+    { v: "check that the data is clean", x: "Compare merged rows to source rows (79,400 of 85,000) and report the gap by group" },
+    { v: "the data has some missing values", x: "Name the mechanism, MCAR, MAR or MNAR, and compare the observed mean with the true one" },
+    { v: "find the outliers", x: "Flag values beyond Q1 − 1.5 × IQR and Q3 + 1.5 × IQR, then decide each with domain knowledge" },
+    { v: "is this chart honest", x: "Name the mark and the channel for each variable; the key variable gets position or length" },
+    { v: "can we trust this dataset", x: "Lock a written prediction of its frame, trace one row, and report the gap" }
+  ];
+  function renderSay(el, k, anim) {
+    var svg = svgFor(el, W, H, "Say it exactly: five vague requests about data turned into precise ones", "Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction measures.");
+    var g = svg.append("g");
+    SAY.forEach(function (r, i) {
+      if (i + 1 > k) return; var y = 6 + i * 128, cur = i + 1 === k, e = g.append("g");
+      e.append("rect").attr("x", 0).attr("y", y).attr("width", 8).attr("height", 114).attr("fill", cur ? RED : FAMILIAR);
+      txt(e, 24, y + 30, "“" + r.v + "”", { size: 26, fill: RED, weight: 700 });
+      wrap(e, 24, y + 64, "→ " + r.x, 50, { size: 24, lh: 30, fill: INK, weight: 700 });
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    if (k === 0) { cap(g, 0, 60, "A vague request gets a procedural pass. An exact one gets an answer.", { fill: INK }); cap(g, 0, 110, "Click or press → to turn five requests into instructions.", { fill: MUTED }); return; }
+    var p = g.append("g").attr("transform", "translate(700,60)"), pw = 640, ph = 300, nt = "";
+    lab(p, 0, -14, "WHAT THE INSTRUCTION MEASURES", { fill: RED });
+    p.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", pw).attr("height", ph).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+    if (k === 1) {
+      var sc = 560 / 85000;
+      cap(p, 14, 40, "source: 85,000", { size: 24 }); bar(p, 14, 50, 85000 * sc, 28, FAMILIAR, anim, 0);
+      cap(p, 14, 120, "merged: 79,400", { size: 24 }); bar(p, 14, 130, 79400 * sc, 28, INK, anim, 300); bar(p, 14 + 79400 * sc, 130, 5600 * sc, 28, RED, anim, 800);
+      cap(p, 14, 200, "red group: " + (JD.nB / 200 * 100).toFixed(0) + "% of source", { size: 24 }); bar(p, 14, 210, JD.nB / 200 * 560 * 2, 28, FAMILIAR, anim, 0);
+      cap(p, 14, 280, "red group: " + (JD.shareB * 100).toFixed(1) + "% of merged", { size: 24, fill: RED, weight: 700 }); bar(p, 14, 288, JD.shareB * 1120, 0.1, RED, false, 0);
+      nt = "gap " + fmtInt(5600) + " rows = " + (5600 / 85000 * 100).toFixed(1) + "%, concentrated in one group";
+    } else if (k === 2) {
+      var lim = Math.ceil(Math.abs(MS.mnar.bias) * 1.35 / 1000) * 1000, sx = d3.scaleLinear().domain([-lim, lim]).range([40, 600]);
+      p.append("path").attr("d", "M" + sx(0) + ",30 V270").attr("stroke", INK).attr("stroke-width", 2);
+      [["MCAR", MS.mcar.bias], ["MAR", MS.mar.bias], ["MNAR", MS.mnar.bias]].forEach(function (r, i) { var y = 60 + i * 80; cap(p, 14, y - 10, r[0] + " " + fmtK(r[1]), { size: 24, fill: i === 2 ? RED : INK, weight: 700 }); var c = p.append("circle").attr("cx", sx(r[1])).attr("cy", y + 14).attr("r", 12).attr("fill", i === 2 ? RED : INK); if (anim) c.attr("cx", sx(0)).transition().delay(i * 300).duration(800).attr("cx", sx(r[1])); });
+      nt = "observed mean minus true mean";
+    } else if (k === 3) {
+      cap(p, 14, 60, "IQR rule flags " + OD.iqrN, { size: 24, weight: 700 }); bar(p, 14, 74, OD.iqrN * 70, 40, RED, anim, 0);
+      cap(p, 14, 180, "z-score rule flags " + OD.zN, { size: 24, weight: 700 }); bar(p, 14, 194, OD.zN * 70, 40, INK, anim, 400);
+      nt = "same " + OD.v.length + " values, two rules, two answers";
+    } else if (k === 4) {
+      [0.43, 0.51].forEach(function (v, i) {
+        var y = 60 + i * 110, gr = Math.round(255 - v * 220);
+        cap(p, 14, y, "" + v.toFixed(2), { size: 24, weight: 700 });
+        p.append("rect").attr("x", 90).attr("y", y - 28).attr("width", 70).attr("height", 44).attr("fill", "rgb(" + gr + "," + gr + "," + gr + ")").attr("stroke", INK).attr("stroke-width", 1.5);
+        bar(p, 190, y - 28, v * 800, 44, INK, anim, i * 300);
+      });
+      nt = "the same 0.43 and 0.51: color vs length";
+    } else {
+      var L = "JFMAMJJASOND".split("");
+      d3.range(12).forEach(function (i) { var x = 14 + i * 50; p.append("rect").attr("x", x + 0.5).attr("y", 60.5).attr("width", 40).attr("height", 150).attr("fill", i < 9 ? INK : "none").attr("stroke", i < 9 ? INK : RED).attr("stroke-width", 2).attr("stroke-dasharray", i < 9 ? "0" : "6 5").attr("opacity", i < 9 && anim ? 0.2 : 1).transition().delay(anim ? i * 70 : 0).attr("opacity", 1); cap(p, x + 20, 240, L[i], { size: 24, anchor: "middle", fill: i < 9 ? MUTED : RED }); });
+      cap(p, 14, 40, "predicted 12 months · found 9", { size: 24, weight: 700 });
+      nt = "gap: 3 of 12 months (25%)";
+    }
+    cap(p, 0, ph + 40, nt, { size: 24, weight: 700 });
+  }
+
+  var CHECKS = [
+    "Why are there exactly N rows, and what should N be?",
+    "Do the column types match what each column means?",
+    "Why is each value missing: MCAR, MAR or MNAR?",
+    "Which channel carries the variable that matters?",
+    "Which of the six silent assumptions could this break?",
+    "Did I lock a prediction before the first plot?"
+  ];
+  function renderClosing(el, k, anim) {
+    var svg = svgFor(el, W, H, "Six checks before you call a dataset clean", "A checklist of six items drawn one at a time.");
+    var g = svg.append("g");
+    CHECKS.forEach(function (c, i) {
+      var y = 20 + i * 100, on = i + 1 <= k, row = g.append("g");
+      row.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 64).attr("height", 64).attr("fill", on ? "#FFFFFF" : "none").attr("stroke", on ? INK : FAMILIAR).attr("stroke-width", 3);
+      wrap(row, 100, y + 42, c, 78, { size: 32, lh: 36, fill: on ? INK : MUTED });
+      if (on) { var ck = check(row, 32, y + 36, 20, RED); if (A(anim, k, i + 1)) drawIn(ck, 0, 450); }
+    });
+    cap(g, 0, 660, "Then say it exactly: not “the data is clean”, but “79,400 of 85,000 rows, gap by group”.", { size: 28, weight: 700 });
+  }
+
+  var BUILDS = {
+    map: { steps: 4, render: renderMap }, join: { steps: 3, render: renderJoin }, cave: { steps: 2, render: renderCave },
+    eda: { steps: 4, render: renderEda }, miss: { steps: 4, render: renderMiss }, out: { steps: 3, render: renderOut },
+    enc: { steps: 3, render: renderEnc }, assume: { steps: 4, render: renderAssume }, bound: { steps: 3, render: renderBound },
+    interr: { steps: 4, render: renderInterr }, pairs: { steps: 4, render: renderPairs }, say: { steps: 5, render: renderSay },
+    closing: { steps: 6, render: renderClosing }
+  };
+
+  /* click on the stage advances one fragment (the original deck had keys and buttons only) */
+  stage.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest("#controls, #thumbs")) return;
+    nextSlide();
+  });
+  function buildEl(slide) { return slide ? slide.querySelector("[data-build]") : null; }
+  function buildOf(slide) { var el = buildEl(slide); return el ? BUILDS[el.getAttribute("data-build")] : null; }
+  function stopBuild(el) { if (hasD3 && el) d3.select(el).selectAll("*").interrupt(); }
+  function renderBuild(el, k, animate) {
+    var b = BUILDS[el.getAttribute("data-build")];
+    if (!b) return;
+    if (!hasD3) {
+      el.innerHTML = '<div class="chart-fallback">This graphic needs D3, which did not load. Check the network connection and reload.</div>';
+      return;
+    }
+    stopBuild(el);
+    b.render(el, Math.max(0, Math.min(b.steps, k)), animate && !reduceMQ.matches);
+  }
+
+  /* ---------------- navigation ---------------- */
+  function go(i, atEnd, animate) {
+    i = Math.max(0, Math.min(total - 1, i));
+    var prev = slides[current];
+    if (prev && i !== current) { stopBuild(buildEl(prev)); prev.classList.remove("is-active"); }
+    current = i;
+    var s = slides[i], b = buildOf(s);
+    step = b && atEnd ? b.steps : 0;
+    s.classList.add("is-active");
+    var el = buildEl(s);
+    if (el) renderBuild(el, step, animate);
+    updateUI(true);
+  }
+  function setStep(k, animate) {
+    step = k;
+    renderBuild(buildEl(slides[current]), step, animate);
+    updateUI(false);
+  }
+  function nextSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step < b.steps) setStep(step + 1, true);
+    else if (current < total - 1) go(current + 1, false, true);
+  }
+  function prevSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step > 0) setStep(step - 1, false);
+    else if (current > 0) go(current - 1, true, false);
+  }
+  function updateUI(newSlide) {
+    var s = slides[current], b = buildOf(s);
+    var title = s.getAttribute("data-title") || "";
+    counter.textContent = (current + 1) + " / " + total;
+    pips.innerHTML = "";
+    if (b) {
+      for (var j = 1; j <= b.steps; j++) {
+        var p = document.createElement("span");
+        p.className = "pip" + (j <= step ? " on" : "");
+        pips.appendChild(p);
+      }
+    }
+    btnPrev.disabled = current === 0 && step === 0;
+    btnNext.disabled = current === total - 1 && (!b || step === b.steps);
+    var stepTxt = b ? ", step " + step + " of " + b.steps : "";
+    live.textContent = newSlide ? "Slide " + (current + 1) + " of " + total + ": " + title + stepTxt : "Step " + step + " of " + (b ? b.steps : 0);
+    if (newSlide) {
+      var n = s.querySelector(".speaker-notes");
+      notesHead.textContent = "Speaker notes, slide " + (current + 1);
+      notesBody.innerHTML = n ? n.innerHTML : "<p>No notes for this slide.</p>";
+      try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) { /* ignore */ }
+    }
+  }
+  btnPrev.addEventListener("click", prevSlide);
+  btnNext.addEventListener("click", nextSlide);
+
+  /* ---------------- notes ---------------- */
+  function toggleNotes() {
+    var on = !document.body.classList.contains("notes-open");
+    document.body.classList.toggle("notes-open", on);
+    btnNotes.setAttribute("aria-pressed", on ? "true" : "false");
+    fit();
+  }
+  btnNotes.addEventListener("click", toggleNotes);
+
+  /* ---------------- fullscreen ---------------- */
+  var root = document.documentElement;
+  var fsEnabled = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  if (!fsEnabled) btnFs.hidden = true;
+  function toggleFullscreen() {
+    if (!fsEnabled) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      if (fsEl) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else {
+        var pr = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+        if (pr && pr.catch) pr.catch(function () {});
+      }
+    } catch (e) { /* refused */ }
+  }
+  btnFs.addEventListener("click", toggleFullscreen);
+  document.addEventListener("fullscreenchange", fit);
+  document.addEventListener("webkitfullscreenchange", fit);
+
+  /* ---------------- thumbnails (always final state) ---------------- */
+  function buildThumbs() {
+    thumbGrid.innerHTML = "";
+    slides.forEach(function (s, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "thumb" + (i === current ? " current" : "");
+      btn.setAttribute("aria-label", "Go to slide " + (i + 1) + ": " + (s.getAttribute("data-title") || ""));
+      if (i === current) btn.setAttribute("aria-current", "true");
+      var inner = document.createElement("div");
+      inner.className = "thumb-inner";
+      inner.setAttribute("aria-hidden", "true");
+      var clone = s.cloneNode(true);
+      clone.classList.remove("is-active");
+      Array.prototype.forEach.call(clone.querySelectorAll("[id]"), function (n) { n.removeAttribute("id"); });
+      var sn = clone.querySelector(".speaker-notes");
+      if (sn) sn.remove();
+      inner.appendChild(clone);
+      var num = document.createElement("span");
+      num.className = "thumb-num";
+      num.textContent = String(i + 1);
+      btn.appendChild(inner);
+      btn.appendChild(num);
+      btn.addEventListener("click", function () { closeThumbs(true); go(i, false, true); });
+      thumbGrid.appendChild(btn);
+      var cb = clone.querySelector("[data-build]");
+      if (cb) renderBuild(cb, 99, false);
+    });
+    scaleThumbs();
+  }
+  function scaleThumbs() {
+    Array.prototype.forEach.call(thumbGrid.querySelectorAll(".thumb"), function (b) {
+      b.querySelector(".thumb-inner").style.transform = "scale(" + (b.clientWidth / 1920) + ")";
+    });
+  }
+  function openThumbs() {
+    lastFocus = document.activeElement;
+    thumbs.classList.add("open");
+    buildThumbs();
+    var cur = thumbGrid.querySelector(".thumb.current");
+    if (cur) { cur.focus(); cur.scrollIntoView({ block: "nearest" }); }
+  }
+  function closeThumbs(navigating) {
+    thumbs.classList.remove("open");
+    thumbGrid.innerHTML = "";
+    if (!navigating && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  btnThumbs.addEventListener("click", openThumbs);
+  thumbs.querySelector(".close").addEventListener("click", function () { closeThumbs(false); });
+  window.addEventListener("resize", function () { if (thumbs.classList.contains("open")) scaleThumbs(); });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (thumbs.classList.contains("open")) {
+      if (e.key === "Escape" || e.key === "g" || e.key === "G") { e.preventDefault(); closeThumbs(false); }
+      return;
+    }
+    var onButton = e.target && e.target.closest && e.target.closest("button");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": e.preventDefault(); nextSlide(); break;
+      case " ": if (onButton) return; e.preventDefault(); nextSlide(); break;
+      case "ArrowLeft": case "PageUp": e.preventDefault(); prevSlide(); break;
+      case "Home": e.preventDefault(); go(0, false, true); break;
+      case "End": e.preventDefault(); go(total - 1, true, false); break;
+      case "f": case "F": e.preventDefault(); toggleFullscreen(); break;
+      case "n": case "N": e.preventDefault(); toggleNotes(); break;
+      case "g": case "G": e.preventDefault(); openThumbs(); break;
+    }
+  });
+
+  /* ---------------- touch swipe ---------------- */
+  var tx = null, ty = null;
+  stage.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) return;
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (tx === null || thumbs.classList.contains("open")) { tx = null; return; }
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) { if (dx < 0) nextSlide(); else prevSlide(); }
+    tx = null;
+  }, { passive: true });
+
+  /* ---------------- quiet controls ---------------- */
+  var idle = null;
+  document.addEventListener("mousemove", function () {
+    document.body.classList.add("show-controls");
+    clearTimeout(idle);
+    idle = setTimeout(function () { document.body.classList.remove("show-controls"); }, 2200);
+  });
+
+  /* ---------------- print: every slide in its final state ---------------- */
+  window.addEventListener("beforeprint", function () {
+    slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  });
+  window.addEventListener("afterprint", function () {
+    slides.forEach(function (s, i) { var el = buildEl(s); if (el && i !== current) renderBuild(el, 99, false); });
+    var el = buildEl(slides[current]);
+    if (el) renderBuild(el, step, false);
+  });
+
+  /* ---------------- start ---------------- */
+  slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  fit();
+  var hm = /^#(\d+)$/.exec(location.hash);
+  go(hm ? parseInt(hm[1], 10) - 1 : 0, false, true);
+  window.addEventListener("hashchange", function () {
+    var m = /^#(\d+)$/.exec(location.hash);
+    if (m && parseInt(m[1], 10) - 1 !== current) go(parseInt(m[1], 10) - 1, false, true);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

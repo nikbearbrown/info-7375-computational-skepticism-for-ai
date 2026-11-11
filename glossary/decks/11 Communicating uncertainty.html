@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Communicating uncertainty | INFO 7375 Computational Skepticism terminology deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --nu-red:#C8102E; --nu-black:#000000; --nu-white:#FFFFFF; --nu-gold:#A4804A;
+  --nu-red-hover:#A50C25; --nu-red-press:#870A1F; --nu-red-tint:#FBE7EA;
+  --nu-neutral-1:#E3E3E3; --nu-neutral-2:#C4C4C4; --nu-neutral-3:#909090; --nu-neutral-4:#787878;
+  --nu-neutral-5:#545454; --nu-neutral-6:#404040; --nu-neutral-7:#2D2926; --nu-neutral-8:#1A1A1A;
+  --diagram-ink:#2A1A0E; --panel-subtle:#F6F6F6;
+  --font:"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --mono:ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(0.4, 0, 0.2, 1);
+  /* viewer chrome (theme-aware; slides themselves keep fixed brand colors) */
+  --stage-bg:#E9E9E9; --chrome-bg:rgba(255,255,255,0.94); --chrome-fg:#1A1A1A;
+  --chrome-line:#C4C4C4; --chrome-muted:#545454; --chrome-hover:rgba(0,0,0,0.07);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+    --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+  }
+}
+:root[data-theme="dark"]{
+  --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+  --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top, 0px)}
+body{
+  height:100%; margin:0; overflow:hidden; display:flex; flex-direction:column;
+  background:var(--stage-bg); color:var(--chrome-fg); font-family:var(--font);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+:fullscreen body, body:fullscreen{background:#000}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------- stage & scaling ---------- */
+#stage{position:relative; flex:1 1 auto; min-height:0; overflow:hidden; touch-action:pan-y}
+#deck{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0}
+
+/* ---------- slide base ---------- */
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column; overflow:hidden;
+  background:var(--nu-white); color:var(--nu-black); font-family:var(--font);
+  padding-left:120px; padding-right:120px;
+}
+.slide.is-active{display:flex}
+:where(.slide) :where(h1,h2,p,ul){margin:0}
+.s-dark{background:var(--nu-black); color:var(--nu-white)}
+.s-red{background:var(--nu-red); color:var(--nu-white)}
+.rule{position:absolute; top:0; left:0; right:0; height:8px; background:var(--nu-red)}
+.rule.r10{height:10px}
+
+.s-opening,.s-closing{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-intro{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-section{padding-top:110px; padding-bottom:110px; justify-content:center}
+.s-text{padding-top:96px; padding-bottom:96px}
+.s-diagram{padding-top:72px; padding-bottom:56px}
+.s-chart{padding-top:64px; padding-bottom:56px}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-size:22px; font-weight:700; line-height:1.2; text-transform:uppercase;
+  letter-spacing:0.16em; color:var(--nu-red); margin-bottom:28px;
+}
+.s-intro .eyebrow{font-size:24px; letter-spacing:0.18em; margin-bottom:40px}
+.s-section .eyebrow{font-size:26px; letter-spacing:0.20em; color:rgba(255,255,255,0.78); margin-bottom:36px}
+.s-chart .eyebrow,.s-diagram .eyebrow{margin-bottom:18px}
+
+.t-opening{font-size:104px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-section{font-size:108px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-closing{font-size:84px; font-weight:400; line-height:1.04; letter-spacing:-0.02em; max-width:1560px}
+.t-intro{font-size:72px; font-weight:400; line-height:1.1; letter-spacing:-0.01em; max-width:1500px}
+.t-text{font-size:66px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1500px}
+.t-chart{font-size:50px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1560px}
+.s-chart .t-chart{margin-bottom:30px}
+.s-diagram .t-chart{margin-bottom:40px}
+
+.sub-opening{font-size:38px; font-weight:400; line-height:1.3; color:var(--nu-neutral-2); max-width:1300px}
+.sub-section{font-size:34px; font-weight:400; line-height:1.3; color:rgba(255,255,255,0.92); margin-top:40px; max-width:1300px}
+.para{font-size:30px; line-height:1.4; color:var(--nu-neutral-7); max-width:1300px}
+.caption{font-size:24px; line-height:1.36; color:var(--nu-neutral-5); max-width:1400px; margin-top:22px}
+.t-opening,.t-section,.t-closing,.t-intro,.t-text,.t-chart,.sub-opening,.sub-section,.caption{text-wrap:pretty}
+.source{font-size:19px; line-height:1.4; color:var(--nu-neutral-5); margin-top:12px}
+
+.bar-120{width:120px; height:8px; background:var(--nu-red); margin:52px 0 44px}
+.bar-88{width:88px; height:6px; background:var(--nu-red); margin:40px 0 60px}
+
+.bullets{list-style:none; padding:0; max-width:1480px; display:flex; flex-direction:column; gap:26px}
+.bullets li{
+  display:grid; grid-template-columns:14px 1fr; column-gap:22px;
+  font-size:31px; line-height:1.42; color:var(--nu-neutral-7);
+}
+.bullets li::before{
+  content:""; width:14px; height:14px; background:var(--nu-red);
+  margin-top:calc((31px * 1.42 - 14px) / 2);
+}
+.bullets strong{font-weight:700; color:var(--nu-black)}
+
+/* ---------- charts ---------- */
+.chart{width:1480px; height:600px; flex:none}
+.chart svg{display:block; width:1480px; height:600px; overflow:visible}
+.chart-fallback{
+  width:100%; height:100%; display:grid; place-items:center; border:1px solid var(--nu-neutral-1);
+  font-size:24px; color:var(--nu-neutral-5); background:var(--panel-subtle)
+}
+
+/* ---------- diagram ---------- */
+.diagram{flex:0 1 auto; min-height:0; width:100%; max-width:1400px; max-height:720px}
+.diagram svg{display:block}
+
+/* ---------- evidence status: conceptual vs. illustrative vs. observed ---------- */
+.evidence{
+  position:absolute; right:120px; font-size:18px; font-weight:700; line-height:1;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--nu-neutral-5);
+  border:1px solid var(--nu-neutral-2); padding:9px 12px 8px;
+}
+.s-chart .evidence{top:58px}
+.s-diagram .evidence{top:66px}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)}}
+.slide.is-active .rise{animation:rise 550ms var(--ease) both}
+.slide.is-active .g2{animation-delay:120ms}
+.slide.is-active .g3{animation-delay:240ms}
+@media (prefers-reduced-motion: reduce){
+  .slide.is-active .rise{animation:none}
+}
+
+/* ---------- viewer chrome ---------- */
+#controls{
+  position:absolute; right:14px; bottom:14px; z-index:10;
+  display:flex; align-items:center; gap:2px; padding:4px;
+  background:var(--chrome-bg); border:1px solid var(--chrome-line); color:var(--chrome-fg);
+  opacity:0.38; transition:opacity 200ms var(--ease);
+}
+#controls:hover,#controls:focus-within,body.show-controls #controls{opacity:1}
+#controls button,#thumbs .close{
+  appearance:none; border:0; background:transparent; color:inherit; cursor:pointer;
+  width:34px; height:34px; display:grid; place-items:center; padding:0;
+}
+#controls button:hover,#thumbs .close:hover{background:var(--chrome-hover)}
+#controls button[disabled]{opacity:0.35; cursor:default}
+#controls button[aria-pressed="true"]{background:var(--chrome-hover)}
+#controls svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:square}
+#counter{
+  min-width:66px; text-align:center; font-family:var(--mono); font-size:13px;
+  font-variant-numeric:tabular-nums; color:var(--chrome-fg)
+}
+#pips{display:flex; gap:4px; padding:0 6px 0 2px}
+#pips:empty{display:none}
+.pip{width:6px; height:6px; background:var(--chrome-line)}
+.pip.on{background:var(--nu-red)}
+.sep{width:1px; height:20px; background:var(--chrome-line); margin:0 4px}
+button:focus-visible,.thumb:focus-visible{outline:3px solid var(--nu-red); outline-offset:2px}
+
+#notes{
+  display:none; flex:none; height:min(30vh, 260px); overflow:auto;
+  padding:18px 28px 20px; background:var(--chrome-bg); border-top:1px solid var(--chrome-line);
+  color:var(--chrome-fg); font-size:17px; line-height:1.55;
+}
+body.notes-open #notes{display:block}
+#notes h2{margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-muted)}
+#notes p{margin:0 0 10px; max-width:78ch}
+
+#thumbs{position:absolute; inset:0; z-index:20; display:none; overflow:auto; background:var(--stage-bg); padding:24px}
+#thumbs.open{display:block}
+#thumbs .bar{display:flex; align-items:center; justify-content:space-between; max-width:1400px; margin:0 auto 18px}
+#thumbs .bar h2{margin:0; font-size:15px; font-weight:700; color:var(--chrome-fg)}
+#thumbs .close svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75}
+#thumbs .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:18px; max-width:1400px; margin:0 auto}
+.thumb{
+  appearance:none; padding:0; margin:0; border:1px solid var(--chrome-line); background:#fff;
+  cursor:pointer; position:relative; overflow:hidden; aspect-ratio:16 / 9; width:100%; display:block
+}
+.thumb.current{outline:3px solid var(--nu-red); outline-offset:2px}
+.thumb-inner{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0; pointer-events:none; text-align:left; font:400 16px/1.2 var(--font); white-space:normal}
+.thumb-inner .slide{display:flex}
+.thumb-num{
+  position:absolute; left:0; bottom:0; padding:3px 7px; background:rgba(0,0,0,0.72); color:#fff;
+  font-family:var(--mono); font-size:12px; line-height:1.2
+}
+
+/* ---------- print: every slide, final state ---------- */
+@media print{
+  @page{size:1920px 1080px; margin:0}
+  :root{padding:0}
+  html,body{height:auto; overflow:visible; display:block; background:#fff}
+  #stage{overflow:visible; height:auto}
+  #deck{position:static; transform:none !important; width:1920px; height:auto}
+  .slide{position:relative; display:flex !important; width:1920px; height:1080px; break-after:page; page-break-after:always}
+  .slide .rise{animation:none !important; opacity:1 !important; transform:none !important}
+  #controls,#notes,#thumbs{display:none !important}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+/* ---------- review-deck additions (small; typography classes above are untouched) ---------- */
+.slide .source{font-size:24px; margin-top:10px}
+.evidence{font-size:24px; letter-spacing:0.1em}
+.diagram svg text{font-kerning:normal}
+.diagram{cursor:pointer}
+</style>
+</head>
+<body>
+
+<main id="stage" aria-roledescription="slide deck" aria-label="INFO 7375 Computational Skepticism terminology: Communicating uncertainty">
+  <div id="deck">
+
+    <section class="slide s-dark s-opening" aria-roledescription="slide" data-title="Communicating uncertainty">
+      <div class="rule r10"></div>
+      <p class="eyebrow rise">INFO 7375 · Terminology · Chapter 11</p>
+      <h1 class="t-opening rise g2">Communicating uncertainty</h1>
+      <div class="bar-120 rise g2"></div>
+      <p class="sub-opening rise g3">Terms for matching a claim’s verb and numbers to the evidence behind it</p>
+      <div class="speaker-notes" hidden><p>Chapter 11, Communicating Uncertainty: Calibrating Claims to Evidence. 34 terms. Tags: in the book text means the chapter uses and explains the term. Left out: hypothesize, suggest, show, demonstrate, prove, action-warrant, MCE-style companions such as Platt scaling and isotonic regression, exchangeability and marginal coverage as separate entries, sigmoidal pattern, construct validity.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Thirty-four terms in four groups">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Map</p>
+      <h2 class="t-chart">Thirty-four terms in four groups</h2>
+      <div class="diagram build" data-build="map" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, all sections; docs/Exam terms - compact list.md.</p>
+      <div class="speaker-notes" hidden><p>Four groups, one per click.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Warranted assertion and the verb ladder">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">The verb ladder</p>
+      <h2 class="t-chart">Warranted assertion and the verb ladder</h2>
+      <div class="diagram build" data-build="verbs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “The verb taxonomy”.</p>
+      <div class="speaker-notes" hidden><p>The same 87% result written with three verbs, then the frozen ladder, then observe and find with the chapter’s own examples.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Conclude, fluency traps and the audit">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">The verb ladder</p>
+      <h2 class="t-chart">Conclude, fluency traps and the audit</h2>
+      <div class="diagram build" data-build="audit" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “The verb taxonomy applied to AI output”; Exercise A1.</p>
+      <div class="speaker-notes" hidden><p>The AI sentence is the Exercise A1 quote. Five evidence items are checked against it; none appears in the paragraph.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="One document in three layers">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Writing it down</p>
+      <h2 class="t-chart">One document in three layers</h2>
+      <div class="diagram build" data-build="layers" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “Two readers, one document”; Exercise A2.</p>
+      <div class="speaker-notes" hidden><p>The 89% and 81% sensitivity figures are from Exercise A2; the gap of 0.08 is computed.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Saying what you do not know">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Writing it down</p>
+      <h2 class="t-chart">Saying what you do not know</h2>
+      <div class="diagram build" data-build="unk" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “Saying you do not know in writing”; “Why solitary review does not work”.</p>
+      <div class="speaker-notes" hidden><p>Interval widths use a normal approximation for an accuracy of 0.87. The Brier floor is 0.7 × 0.3 = 0.21 for a true chance of 0.7; samples are seeded.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Calibration and the reliability diagram">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Scoring calibration</p>
+      <h2 class="t-chart">Calibration and the reliability diagram</h2>
+      <div class="diagram build" data-build="calib" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “The reliability diagram”; exam-term list.</p>
+      <div class="speaker-notes" hidden><p>Ten bins of 150 seeded cases each. Over- and underconfident curves are built from stated formulas.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="The Brier score and its parts">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Scoring calibration</p>
+      <h2 class="t-chart">The Brier score and its parts</h2>
+      <div class="diagram build" data-build="brier" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “The Brier score: a proper scoring rule”; Exercise W4.</p>
+      <div class="speaker-notes" hidden><p>Five predictions, an expected-score curve for a true chance of 0.7, and the decomposition 0.160 − 0.045 + 0.028 = 0.143 from Exercise W4.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="ECE, bins and the worst bin">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Where scores fail</p>
+      <h2 class="t-chart">ECE, bins and the worst bin</h2>
+      <div class="diagram build" data-build="ece" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “Expected Calibration Error: binning the predictions”.</p>
+      <div class="speaker-notes" hidden><p>250 seeded predictions between 0.5 and 1.0, with outcomes drawn from a slightly lower true chance. ECE and MCE are computed from them.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Subgroups, Epic and the evidence ladder">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Where scores fail</p>
+      <h2 class="t-chart">Subgroups, Epic and the evidence ladder</h2>
+      <div class="diagram build" data-build="sub" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “Subgroup calibration”; “From calibration metrics to trust claims”.</p>
+      <div class="speaker-notes" hidden><p>Subgroup ECE values are from the chapter table; ratios are computed. The Epic figures are from Wong et al. (2021) as given in the chapter. Level names are from the chapter evidence-level table.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Temperature scaling and conformal prediction">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Where scores fail</p>
+      <h2 class="t-chart">Temperature scaling and conformal prediction</h2>
+      <div class="diagram build" data-build="temp" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “Temperature scaling: the fix and its limits”; “The conformal prediction guarantee”.</p>
+      <div class="speaker-notes" hidden><p>Logits are simulated 1.8 times too large for one hospital, so the best T is near 1.8. Curves use 6,000 further cases. At a second hospital the raw logits were already nearly right (1.1 times), so the fitted T overshoots. The conformal check draws 4,000 new scores.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Look-alike pairs">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Tell them apart</p>
+      <h2 class="t-chart">Look-alike pairs</h2>
+      <div class="diagram build" data-build="pairs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11; docs/Exam terms - compact list.md, row “temperature (sampling)”.</p>
+      <div class="speaker-notes" hidden><p>Accurate and calibrated, epistemic and aleatoric, ECE and MCE, temperature scaling and sampling temperature.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Say it exactly">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Vague claim, exact claim</p>
+      <h2 class="t-chart">Say it exactly</h2>
+      <div class="diagram build" data-build="say" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, all sections; Exercise W4.</p>
+      <div class="speaker-notes" hidden><p>Five vague claims and exact versions.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Before you trust a claim about uncertainty">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Checklist</p>
+      <h2 class="t-chart">Before you trust a claim about uncertainty</h2>
+      <div class="diagram build" data-build="closing" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 11, “What survives review”.</p>
+      <div class="speaker-notes" hidden><p>Six checks.</p></div>
+    </section>
+
+  </div>
+
+  <nav id="controls" aria-label="Slide controls">
+    <button type="button" id="btn-prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="counter" aria-hidden="true">1 / 1</span>
+    <span id="pips" aria-hidden="true"></span>
+    <button type="button" id="btn-next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <span class="sep" aria-hidden="true"></span>
+    <button type="button" id="btn-thumbs" aria-label="Show all slides (G)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="7" height="5"/><rect x="13" y="5" width="7" height="5"/><rect x="4" y="14" width="7" height="5"/><rect x="13" y="14" width="7" height="5"/></svg></button>
+    <button type="button" id="btn-notes" aria-label="Speaker notes (N)" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 11h14M5 16h9"/></svg></button>
+    <button type="button" id="btn-fs" aria-label="Fullscreen (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+  </nav>
+
+  <div id="thumbs" role="dialog" aria-modal="true" aria-label="All slides">
+    <div class="bar">
+      <h2>All slides</h2>
+      <button type="button" class="close" aria-label="Close slide overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="grid"></div>
+  </div>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+</main>
+
+<aside id="notes" aria-label="Speaker notes">
+  <h2 id="notes-head">Speaker notes</h2>
+  <div id="notes-body"></div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var stage = document.getElementById("stage");
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(".slide"));
+  var total = slides.length;
+  var counter = document.getElementById("counter");
+  var pips = document.getElementById("pips");
+  var live = document.getElementById("live");
+  var notesHead = document.getElementById("notes-head");
+  var notesBody = document.getElementById("notes-body");
+  var btnPrev = document.getElementById("btn-prev");
+  var btnNext = document.getElementById("btn-next");
+  var btnNotes = document.getElementById("btn-notes");
+  var btnThumbs = document.getElementById("btn-thumbs");
+  var btnFs = document.getElementById("btn-fs");
+  var thumbs = document.getElementById("thumbs");
+  var thumbGrid = thumbs.querySelector(".grid");
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hasD3 = typeof window.d3 !== "undefined";
+  var current = -1, step = 0, lastFocus = null;
+
+  /* Recurring visual vocabulary
+     ink   = confidence / belief        red  = failure, consequence, causal break
+     gray  = familiar data, same source tint = what an inspection or failure exposes */
+  var INK = "#2A1A0E", RED = "#C8102E", TINT = "#FBE7EA", GRID = "#E3E3E3", MUTED = "#545454",
+      BASE = "#909090", FAMILIAR = "#C4C4C4", SUBTLE = "#F6F6F6", BODY = "#2D2926";
+  var MONO = 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace';
+  var SANS = '"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+
+  /* ---------------- scaling ---------------- */
+  function fit() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    var s = Math.min(w / 1920, h / 1080);
+    deck.style.transform = "translate(" + (w - 1920 * s) / 2 + "px," + (h - 1080 * s) / 2 + "px) scale(" + s + ")";
+  }
+  if ("ResizeObserver" in window) new ResizeObserver(fit).observe(stage);
+  window.addEventListener("resize", fit);
+
+  /* ---------------- drawing helpers ---------------- */
+  function svgFor(el, w, h, label, desc, fixed) {
+    el.innerHTML = "";
+    var svg = d3.select(el).append("svg").attr("viewBox", "0 0 " + w + " " + h)
+      .attr("role", "img").attr("aria-label", label);
+    if (fixed) svg.attr("width", w).attr("height", h).style("overflow", "visible");
+    else svg.attr("width", "100%").attr("height", "100%").attr("preserveAspectRatio", "xMinYMin meet");
+    svg.append("title").text(label);
+    svg.append("desc").text(desc);
+    return svg;
+  }
+  function txt(g, x, y, s, o) {
+    o = o || {};
+    var t = g.append("text").attr("x", x).attr("y", y)
+      .attr("font-family", o.family || SANS).attr("font-size", o.size || 22)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || INK);
+    if (o.anchor) t.attr("text-anchor", o.anchor);
+    if (o.ls) t.attr("letter-spacing", o.ls);
+    if (o.dy) t.attr("dy", o.dy);
+    return t.text(s);
+  }
+  function fadeIn(sel, delay, dur) {
+    sel.attr("opacity", 0).transition().delay(delay || 0).duration(dur || 400).ease(d3.easeCubicOut).attr("opacity", 1);
+    return sel;
+  }
+  function rng(seed) {
+    var s = seed >>> 0;
+    return function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  /* ================= review-deck helpers ================= */
+  var W = 1400, H = 700;
+  function A(anim, k, n) { return anim && k === n; }
+  function shuffle(a, r) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function drawIn(path, delay, dur) {
+    var L = path.node().getTotalLength();
+    if (!(L > 0)) return path;
+    path.attr("stroke-dasharray", L + " " + L).attr("stroke-dashoffset", L)
+      .transition().delay(delay || 0).duration(dur || 500).ease(d3.easeCubicOut).attr("stroke-dashoffset", 0)
+      .on("end", function () { d3.select(this).attr("stroke-dasharray", null).attr("stroke-dashoffset", null); });
+    return path;
+  }
+  function tweenNum(sel, from, to, fmt, delay, dur) {
+    sel.text(fmt(from)).transition().delay(delay || 0).duration(dur || 1000).ease(d3.easeCubicOut)
+      .tween("text", function () { var it = d3.interpolate(from, to), node = this; return function (t) { node.textContent = fmt(it(t)); }; });
+  }
+  var pct1 = function (v) { return v.toFixed(1) + "%"; };
+  function lab(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: 700, fill: o.fill || MUTED, ls: 1.2, anchor: o.anchor }); }
+  /* wrap a string into tspans; n = characters per line (estimate) */
+  function wrap(g, x, y, s, n, o) {
+    o = o || {};
+    var size = o.size || 26, lh = o.lh || Math.round(size * 1.34), words = s.split(" "), lines = [], cur = "";
+    words.forEach(function (w) { var t = (cur ? cur + " " : "") + w; if (t.length > n && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur);
+    var t = g.append("text").attr("x", x).attr("y", y).attr("font-family", SANS).attr("font-size", size)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || BODY);
+    lines.forEach(function (l, i) { t.append("tspan").attr("x", x).attr("dy", i ? lh : 0).text(l); });
+    t.node().__h = lines.length * lh;
+    return t;
+  }
+  function box(g, x, y, w, h, o) {
+    o = o || {};
+    return g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", w).attr("height", h)
+      .attr("fill", o.fill || "#FFFFFF").attr("stroke", o.stroke || FAMILIAR).attr("stroke-width", o.sw || 1.5);
+  }
+  function ppvOf(p, sens, spec) { return p * sens / (p * sens + (1 - p) * (1 - spec)); }
+  function sigmoid(z) { return 1 / (1 + Math.exp(-z)); }
+  function logit(c) { return Math.log(c / (1 - c)); }
+  function fmtInt(v) { return d3.format(",")(Math.round(v)); }
+  function check(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + y + " L" + (x - s / 3) + "," + (y + s * 0.7) + " L" + (x + s) + "," + (y - s * 0.8)).attr("fill", "none").attr("stroke", color || INK).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+  function cross(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + (y - s) + " L" + (x + s) + "," + (y + s) + " M" + (x + s) + "," + (y - s) + " L" + (x - s) + "," + (y + s)).attr("stroke", color || RED).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+
+  /* ---------- small drawing helpers ---------- */
+  function run(g, dur, fn, anim, ease) {
+    if (!anim) { fn(1); return; }
+    fn(0);
+    d3.select(g.node()).transition().duration(dur).ease(ease || d3.easeLinear)
+      .tween("run", function () { return function (t) { fn(t); }; });
+  }
+  /* keyframes through the values in a, smooth between them, t in 0..1 */
+  function kf(t, a) {
+    var n = a.length - 1, s = Math.min(n - 1e-9, Math.max(0, t) * n), i = Math.floor(s);
+    return a[i] + (a[i + 1] - a[i]) * d3.easeCubicInOut(s - i);
+  }
+  function hint(svg) { wrap(svg.append("g"), 800, 44, "Click or press → to start the animation. Each click adds one idea.", 46, { size: 28, fill: MUTED }); }
+  function cap(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 26, weight: o.weight || 400, fill: o.fill || BODY, anchor: o.anchor, family: o.family }); }
+  function sgn(v, d) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d || 0); }
+
+  /* right-hand column: one glossary entry per step, with its tag; returns the y below the last entry */
+  function entries(svg, list, k, anim) {
+    var g = svg.append("g"), y = 4;
+    list.forEach(function (it) {
+      if (it.s > k) return;
+      var t = T[it.id], cur = it.s === k, e = g.append("g");
+      txt(e, 800, y + 26, t.n, { size: 26, weight: 700, fill: cur ? RED : INK });
+      var TG = { book: ["in the book text", 212], gloss: ["in the glossary", 200], video: ["video only", 150], editor: ["editor or docs", 190], web: ["outside source", 200] }[t.tag || "video"], tg = TG[0], tw_ = TG[1], fill_ = t.tag === "book";
+      e.append("rect").attr("x", 1400 - tw_ + 0.5).attr("y", y + 3.5).attr("width", tw_ - 1).attr("height", 34)
+        .attr("fill", fill_ ? INK : "none").attr("stroke", fill_ ? INK : GREY).attr("stroke-width", 1.5);
+      txt(e, 1400 - tw_ / 2, y + 28, tg, { size: 24, anchor: "middle", fill: fill_ ? "#FFFFFF" : MUTED });
+      var yy = y + 58;
+      if (t.alias) { txt(e, 800, yy, t.alias, { size: 24, fill: MUTED }); yy += 30; }
+      var w = wrap(e, 800, yy, t.m + ".", 50, { size: 24, lh: 30, fill: BODY });
+      y = yy + w.node().__h + 6;
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    return y;
+  }
+  function pairStrip(svg, a, b) {
+    var g = svg.append("g");
+    lab(g, 0, 598, "TELL THESE APART");
+    [[0, a], [740, b]].forEach(function (p, i) {
+      box(g, p[0], 612, 660, 88, { stroke: i ? RED : INK, sw: 2 });
+      txt(g, p[0] + 20, 646, p[1][0], { size: 26, weight: 700, fill: i ? RED : INK });
+      txt(g, p[0] + 20, 682, p[1][1], { size: 24, fill: BODY });
+    });
+    txt(g, 700, 664, "≠", { size: 44, weight: 700, anchor: "middle", fill: RED });
+  }
+  function base(svg, list, k, anim, a, b) { var y = entries(svg, list, k, anim); pairStrip(svg, a, b); if (k === 0) hint(svg); return y; }
+
+  /* top-down / side-view camera pieces. ang: radians, 0 = +x, y grows downward */
+  function conePath(x, y, ang, fov, len) {
+    var h = fov * DEG / 2;
+    return "M" + x + "," + y + "L" + (x + len * Math.cos(ang - h)) + "," + (y + len * Math.sin(ang - h)) +
+      "A" + len + "," + len + " 0 0 1 " + (x + len * Math.cos(ang + h)) + "," + (y + len * Math.sin(ang + h)) + "Z";
+  }
+  function cone(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", TINT).attr("fill-opacity", 0.9).attr("stroke", RED).attr("stroke-width", 2);
+  }
+  function ghost(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 1.5).attr("stroke-dasharray", "6 6");
+  }
+  function camBody(g, x, y, ang) {
+    var c = g.append("g").attr("transform", "translate(" + x + "," + y + ") rotate(" + (ang / DEG) + ")");
+    c.append("rect").attr("x", -16).attr("y", -11).attr("width", 24).attr("height", 22).attr("fill", INK);
+    c.append("path").attr("d", "M8,-7 L22,-14 L22,14 L8,7Z").attr("fill", INK);
+  }
+  function inView(px, py, x, y, ang, fov, len) {
+    var dx = px - x, dy = py - y;
+    if (Math.hypot(dx, dy) > len) return false;
+    var da = Math.atan2(dy, dx) - ang; da = Math.atan2(Math.sin(da), Math.cos(da));
+    return Math.abs(da) <= fov * DEG / 2;
+  }
+  function post(g, x, y, on, r) {
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", r || 11).attr("fill", on ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+  }
+  function ptsInView(g, pts, cx, cy, ang, fov, len) {
+    var n = 0;
+    pts.forEach(function (p) { var on = inView(p[0], p[1], cx, cy, ang, fov, len); if (on) n++; post(g, p[0], p[1], on); });
+    return n;
+  }
+
+
+  /* ================= Communicating uncertainty (Chapter 11) ================= */
+  var GREY = "#909090";
+  /* tag: book = Chapter 11 uses and explains it */
+  var T = {
+    warrant: { n: "Warranted assertion", tag: "book", m: "Being entitled to claim something only in proportion to the evidence for it" },
+    taxo: { n: "Verb taxonomy", tag: "book", alias: "the frozen ladder", m: "Eight claim verbs in one fixed order, hypothesize weakest to prove strongest" },
+    observe: { n: "Observe", tag: "book", m: "What the data show under stated conditions, with no claim beyond them" },
+    find: { n: "Find", tag: "book", m: "Across the evidence examined, the result holds; needs replication" },
+    concl: { n: "Conclude", tag: "book", m: "The motivating question is settled; strongest verb short of proof, rarely warranted" },
+    flu: { n: "Fluency-trap detector", tag: "book", m: "Treating a strong verb in AI output as a flag, then asking what evidence stands behind it" },
+    down: { n: "Verb downgrade", tag: "book", m: "Swapping in the weaker verb the evidence supports; the facts stay, the posture drops" },
+    ba: { n: "Build and audit", tag: "book", alias: "build/audit pairing", m: "Calibrate verbs in a report you write, then downgrade them in an AI claim handed to you" },
+    l1: { n: "Layer 1 summary", tag: "book", m: "Plain-English paragraph opening each section: what was found and why it matters" },
+    l2: { n: "Layer 2 technical detail", tag: "book", m: "Methods, equations, tables and references for the reader who must evaluate" },
+    l3: { n: "Layer 3 appendix", tag: "book", m: "Reproducibility detail: code, hyperparameters, data documentation, full sensitivity analyses" },
+    epi: { n: "Epistemic uncertainty", tag: "book", m: "Uncertainty in what is known; more evidence would shrink it" },
+    ale: { n: "Aleatoric uncertainty", tag: "book", m: "Uncertainty in the system itself; more data does not remove it" },
+    hedge: { n: "Throat-clearing hedge", tag: "book", m: "A qualifier that names no specific gap, such as “further work is needed”, so it carries no information" },
+    peer: { n: "Peer critique protocol", tag: "book", m: "Six steps for specific review: strengths, verb mismatches, evasive hedges, structure, one question" },
+    cal: { n: "Calibration", tag: "book", m: "When the model says 80%, it is right about 80% of the time" },
+    rel: { n: "Reliability diagram", tag: "book", alias: "calibration curve", m: "Mean confidence against actual accuracy, one point per bin; perfect is the diagonal" },
+    over: { n: "Overconfidence", tag: "book", m: "Stated probability above what is warranted: the curve falls below the diagonal" },
+    under: { n: "Underconfidence", tag: "book", m: "Stated probability below what is warranted: the curve rises above the diagonal" },
+    brier: { n: "Brier score", tag: "book", m: "Mean squared gap between predicted probability and the 0 or 1 outcome" },
+    proper: { n: "Proper scoring rule", tag: "book", m: "A score that is best, in expectation, only when the model reports the true probability" },
+    decomp: { n: "Brier decomposition", tag: "book", alias: "Murphy, 1973", m: "Uncertainty, minus resolution, plus calibration error" },
+    res: { n: "Resolution", tag: "book", alias: "discrimination", m: "How far predictions vary around the base rate, so how well cases are told apart" },
+    ece: { n: "ECE", tag: "book", alias: "Expected Calibration Error", m: "Bin the predictions, then average the gap between confidence and accuracy, weighted by bin size" },
+    bind: { n: "Bin dependence", tag: "book", m: "ECE changes with the number and width of bins, so the binning must be reported" },
+    mce: { n: "MCE", tag: "book", alias: "Maximum Calibration Error", m: "The largest bin gap instead of the average: the worst confidence range" },
+    subg: { n: "Subgroup ECE", tag: "book", m: "ECE computed per named subgroup, then compared with the global ECE" },
+    epic: { n: "Epic Sepsis Model", tag: "book", m: "A sepsis alert used in hundreds of hospitals; Wong et al. (2021) tested it outside its developer" },
+    ext: { n: "External validation", tag: "book", m: "Testing at an outside site with its own patients, where the model was never validated" },
+    ladd: { n: "Evidence ladder", tag: "book", alias: "calibration evidence ladder", m: "Six levels, L0 to L5, of calibration evidence, each licensing one verb" },
+    temp: { n: "Temperature scaling", tag: "book", m: "Divide the logits by one learned T before the softmax: softer confidence, same predicted class" },
+    cset: { n: "Calibration set", tag: "book", m: "Held-out data used only to fit T, after the model's weights are fixed" },
+    shift: { n: "Distribution shift", tag: "book", m: "The deployment population differs from the calibration population, so the fix no longer holds" },
+    conf: { n: "Conformal prediction", tag: "book", m: "Returns a set of labels covering the truth at least 1 − α of the time, if the data are exchangeable" }
+  };
+  function note(svg, ey, text) { wrap(svg.append("g"), 800, ey + 28, text, 54, { size: 24, lh: 30, weight: 700, fill: INK }); }
+  function fade(sel, anim, delay) { if (anim) sel.attr("opacity", 0).transition().delay(delay || 0).duration(450).attr("opacity", 1); return sel; }
+  function bar(g, x, y, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("width", 0).transition().delay(delay || 0).duration(700).attr("width", w); return b; }
+  function mono(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: o.weight || 400, fill: o.fill || INK, family: MONO, anchor: o.anchor }); }
+  var f1 = d3.format(".1f"), f2 = d3.format(".2f"), f3 = d3.format(".3f");
+  function gauss(r) { var u = r() || 1e-9, v = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function binStats(conf, y, M) {
+    var bins = d3.range(M).map(function () { return { n: 0, sc: 0, sy: 0 }; }), o = [];
+    conf.forEach(function (c, i) { var b = Math.min(M - 1, Math.floor(c * M)); bins[b].n++; bins[b].sc += c; bins[b].sy += y[i]; });
+    bins.forEach(function (b, j) { if (b.n) o.push({ j: j, n: b.n, conf: b.sc / b.n, acc: b.sy / b.n, gap: Math.abs(b.sy / b.n - b.sc / b.n) }); });
+    return o;
+  }
+  function eceOf(bs, N) { return d3.sum(bs, function (b) { return b.n / N * b.gap; }); }
+  function mceOf(bs) { return d3.max(bs, function (b) { return b.gap; }); }
+
+  /* ---------- computed data used by several slides ---------- */
+  var ECEN = 250, ECEC = [], ECEY = [];
+  (function () { var r = rng(17); for (var i = 0; i < ECEN; i++) { var c = 0.5 + 0.5 * Math.sqrt(r()), p = 0.5 + 0.72 * (c - 0.5); ECEC.push(c); ECEY.push(r() < p ? 1 : 0); } })();
+  var ECE10 = binStats(ECEC, ECEY, 10);
+  var ECEBINS = [5, 10, 15, 20].map(function (M) { var bs = binStats(ECEC, ECEY, M); return { M: M, ece: eceOf(bs, ECEN), mce: mceOf(bs) }; });
+  var SUBG = [["Adult 18–64", 8420, 0.019], ["Pediatric 0–17", 1210, 0.029], ["Elderly 65+", 2850, 0.044], ["Pregnancy-related", 380, 0.071], ["Rare-disease cases", 95, 0.103]], GLOB = 0.018;
+
+  var MAPROWS = [
+    ["The verb ladder", "warranted assertion, verb taxonomy, observe, find, conclude, fluency-trap detector, verb downgrade, build and audit", "Matching the verb of a claim to its evidence"],
+    ["Writing it down", "Layer 1 summary, Layer 2 technical detail, Layer 3 appendix, epistemic uncertainty, aleatoric uncertainty, throat-clearing hedge, peer critique protocol", "Layers, named uncertainty, review"],
+    ["Scoring calibration", "calibration, reliability diagram, overconfidence, underconfidence, Brier score, proper scoring rule, Brier decomposition, resolution", "Numbers behind a stated probability"],
+    ["Where scores fail", "ECE, bin dependence, MCE, subgroup ECE, Epic Sepsis Model, external validation, evidence ladder, temperature scaling, calibration set, distribution shift, conformal prediction", "Blind spots, fixes and guarantees"]
+  ];
+  function renderMap(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four groups of communicating-uncertainty terms", "A table with four rows: group, terms, what the group is about.");
+    var g = svg.append("g");
+    wrap(g, 0, 36, "34 terms from Chapter 11. Every one is about matching what is claimed to the evidence, in words and in numbers.", 96, { size: 28, lh: 38, fill: INK });
+    var cx = [0, 300, 1060];
+    ["GROUP", "TERMS", "WHAT IT IS ABOUT"].forEach(function (h, i) { lab(g, cx[i] + 18, 152, h); });
+    g.append("path").attr("d", "M0,168 H1400").attr("stroke", INK).attr("stroke-width", 2);
+    MAPROWS.forEach(function (r, i) {
+      if (i + 1 > k) return;
+      var y = 184 + i * 118, row = g.append("g");
+      box(row, 0, y, 1400, 106, { stroke: FAMILIAR });
+      row.append("rect").attr("x", 0).attr("y", y).attr("width", 10).attr("height", 107).attr("fill", RED);
+      wrap(row, cx[0] + 28, y + 44, r[0], 16, { size: 26, lh: 30, weight: 700, fill: RED });
+      wrap(row, cx[1] + 18, y + 34, r[1], 58, { size: 24, lh: 30, fill: INK });
+      wrap(row, cx[2] + 18, y + 34, r[2], 26, { size: 24, lh: 30 });
+      if (A(anim, k, i + 1)) row.attr("opacity", 0).attr("transform", "translate(0,18)").transition().duration(450).ease(d3.easeCubicOut).attr("opacity", 1).attr("transform", "translate(0,0)");
+    });
+    if (k === 0) cap(g, 0, 430, "Click or press → to add the four groups, one at a time.", { fill: MUTED });
+  }
+
+  /* ---------- 1. warranted assertion, taxonomy, observe, find ---------- */
+  var VERBS = ["hypothesize", "suggest", "observe", "find", "show", "demonstrate", "conclude", "prove"];
+  var NEED = ["a reason to investigate", "consistent, rivals open", "a clean measurement", "replication, some robustness", "rivals ruled out", "a test built for the claim", "question settled by analysis", "mathematics or formal proof"];
+  function ladder(d, lit, hot, caps, anim) {
+    VERBS.forEach(function (v, i) {
+      var y = 52 + (7 - i) * 62, on = lit.indexOf(i) >= 0, h = hot.indexOf(i) >= 0, g = d.append("g");
+      box(g, 0, y, 290, 50, { stroke: h ? RED : on ? INK : FAMILIAR, sw: on || h ? 3 : 1.5, fill: h ? TINT : "#FFFFFF" });
+      cap(g, 145, y + 34, v, { size: 26, anchor: "middle", weight: on || h ? 700 : 400, fill: h ? RED : on ? INK : MUTED });
+      if (caps) { cap(g, 312, y + 33, NEED[i], { size: 24, fill: BODY }); fade(g, anim, (7 - i) * 120); }
+    });
+  }
+  function renderVerbs(el, k, anim) {
+    var svg = svgFor(el, W, H, "The verb of a claim is calibrated to its evidence", "A ladder of eight verbs from hypothesize to prove. Three sentences about the same 87 percent result use three different verbs and only the weakest is supported. Then observe and find with their examples.");
+    var ey = base(svg, [{ id: "warrant", s: 1 }, { id: "taxo", s: 2 }, { id: "observe", s: 3 }, { id: "find", s: 4 }], k, anim, ["Observe", "one set of conditions, stated"], ["Find", "holds across what was examined"]);
+    var d = svg.append("g");
+    lab(d, 0, 30, "STRONGEST AT TOP");
+    if (k <= 1) {
+      ladder(d, k === 1 ? [2, 3, 6] : [], k === 1 ? [6] : [], false, false);
+      if (k === 1) {
+        wrap(d, 330, 38, "Evidence: 87% on one held-out set, no significance test, no interval.", 36, { size: 24, lh: 30, fill: MUTED });
+        var CD = [["conclude", "the new model is more accurate", "settled judgment: not supported", RED], ["find", "87% against 84%, same set", "implied reach: not yet earned", INK], ["observe", "87% on this single evaluation", "supported by the evidence", INK]];
+        CD.forEach(function (c, i) {
+          var y = 108 + i * 150, g = d.append("g");
+          box(g, 330, y, 430, 130, { stroke: c[3], sw: 3, fill: i === 0 ? TINT : "#FFFFFF" });
+          cap(g, 346, y + 34, c[0], { size: 28, weight: 700, fill: c[3] });
+          cap(g, 346, y + 66, c[1], { size: 24 });
+          cap(g, 346, y + 104, c[2], { size: 24, weight: 700, fill: c[3] });
+          fade(g, A(anim, k, 1), i * 300);
+        });
+      }
+    } else if (k === 2) {
+      ladder(d, d3.range(8), [], true, anim);
+    } else {
+      var hot = k === 3 ? 2 : 3;
+      ladder(d, [hot], [hot], false, false);
+      var ex = k === 3 ? ["“We observe ECE = 0.04 on the global test set”", "needs: a measurement and its stated procedure", "does not claim: anything beyond these conditions"] : ["“We find subgroup ECE exceeds global ECE by 2.3× on the elderly cohort”", "needs: the result, the comparison, the n, at least replication", "misuse: a one-shot anecdote"];
+      var g2 = d.append("g"), yy = 60;
+      var w1 = wrap(g2, 330, yy + 30, ex[0], 34, { size: 28, lh: 36, weight: 700, fill: RED }); yy += w1.node().__h + 40;
+      var w2 = wrap(g2, 330, yy, ex[1], 34, { size: 24, lh: 30, fill: INK }); yy += w2.node().__h + 20;
+      wrap(g2, 330, yy, ex[2], 34, { size: 24, lh: 30, fill: MUTED });
+      fade(g2, A(anim, k, k), 0);
+    }
+    note(svg, ey, ["", "Same 87%. Each verb claims a different amount of evidence.", "One frozen order: a ladder that contradicts itself gives false confidence.", "Observe is the safest verb for a single experiment.", "Find asks for replication, ideally some sensitivity analysis."][k]);
+  }
+
+  /* ---------- 2. conclude, fluency trap, downgrade, build and audit ---------- */
+  var CONC = ["full analysis", "alternatives named and rejected", "sensitivity analysis", "a finding that survives it"];
+  function renderAudit(el, k, anim) {
+    var svg = svgFor(el, W, H, "Conclude needs four things; strong verbs in AI output are flags to downgrade", "A checklist of what conclude requires, an AI sentence with none of it, a verb moving down the ladder, and the build and audit pairing.");
+    var ey = base(svg, [{ id: "concl", s: 1 }, { id: "flu", s: 2 }, { id: "down", s: 3 }, { id: "ba", s: 4 }], k, anim, ["Conclude", "settled by full analysis"], ["Suggest", "consistent, rivals open"]);
+    var d = svg.append("g");
+    if (k <= 1) {
+      lab(d, 0, 30, "WHAT “CONCLUDE” NEEDS");
+      CONC.forEach(function (c, i) {
+        var y = 70 + i * 100, g = d.append("g");
+        g.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 56).attr("height", 56).attr("fill", "#FFFFFF").attr("stroke", INK).attr("stroke-width", 3);
+        cap(g, 84, y + 40, c, { size: 30, weight: 700 });
+        if (k === 1) fade(g, anim, i * 250);
+      });
+      if (k === 1) cap(d, 0, 520, "Very few claims warrant it.", { size: 28, weight: 700, fill: RED });
+    } else if (k === 2) {
+      lab(d, 0, 30, "AN AI-WRITTEN PARAGRAPH");
+      box(d, 0, 50, 740, 150, { stroke: INK, sw: 3 });
+      wrap(d, 20, 92, "“Our analysis conclusively demonstrates that the model achieves state-of-the-art performance across all evaluated domains.”", 52, { size: 28, lh: 36, fill: INK });
+      lab(d, 0, 246, "IS THE EVIDENCE IN THE PARAGRAPH?", { fill: RED });
+      CONC.concat(["replication"]).forEach(function (c, i) {
+        var y = 270 + i * 56, g = d.append("g");
+        cap(g, 20, y + 34, c, { size: 26 });
+        var x = cross(g, 700, y + 24, 12, RED);
+        fade(g, anim, i * 300);
+      });
+      cap(d, 0, 570, "0 of 5 present: treat the verb as a flag.", { size: 26, weight: 700, fill: RED });
+    } else if (k === 3) {
+      lab(d, 0, 30, "THE VERB MOVES DOWN");
+      ladder(d, [6, 1], [1], false, false);
+      var y6 = 52 + 62, y1 = 52 + 6 * 62, mk = d.append("path").attr("d", "M296,0 l22,-13 v26 z").attr("fill", RED);
+      run(d, 1800, function (t) { mk.attr("transform", "translate(0," + (y6 + 25 + (y1 - y6) * d3.easeCubicInOut(t)) + ")"); }, A(anim, k, 3));
+      var g3 = d.append("g"), yy = 110;
+      cap(g3, 350, yy, "before: “conclusively demonstrates”", { size: 24, fill: RED, weight: 700 });
+      cap(g3, 350, yy + 44, "after: “suggests”", { size: 24, weight: 700 });
+      var w = wrap(g3, 350, yy + 110, "The factual claim stays. Only the posture drops.", 34, { size: 24, lh: 30, fill: INK });
+      wrap(g3, 350, yy + 110 + w.node().__h + 24, "A reader of “conclude” ships. A reader of “suggest” asks for another study.", 34, { size: 24, lh: 30, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "SAME INSTRUMENT, TWO HANDS");
+      [["BUILD", "a report you write", "map every claim to its proof"], ["AUDIT", "an AI claim handed to you", "downgrade the verb"]].forEach(function (c, i) {
+        var x = i * 400, g = d.append("g");
+        box(g, x, 70, 340, 220, { stroke: i ? RED : INK, sw: 3 });
+        cap(g, x + 20, 118, c[0], { size: 30, weight: 700, fill: i ? RED : INK });
+        wrap(g, x + 20, 164, c[1], 28, { size: 24, lh: 30, fill: BODY });
+        wrap(g, x + 20, 230, c[2], 24, { size: 24, lh: 30, fill: INK, weight: 700 });
+        g.append("path").attr("d", "M" + (x + 170) + ",290 V350").attr("stroke", INK).attr("stroke-width", 3);
+        fade(g, anim, i * 300);
+      });
+      var g4 = d.append("g"); box(g4, 0, 350, 740, 100, { stroke: INK, sw: 3, fill: SUBTLE });
+      cap(g4, 370, 410, "the verb ladder: hypothesize → … → prove", { size: 28, weight: 700, anchor: "middle" });
+      fade(g4, anim, 600);
+      cap(d, 0, 520, "Doing both is one supervisory skill, not two.", { size: 26, weight: 700, fill: MUTED });
+    }
+    note(svg, ey, ["", "Conclude settles the question, which needs analysis few reports contain.", "AI trained on strong-verb text: fluency and over-claim arrive together.", "A downgrade can change a decision. That is the check earning its keep.", "Build calibrates your verbs. Audit calibrates the ones you are handed."][k]);
+  }
+
+  /* ---------- 3. three layers ---------- */
+  var READS = [["Non-technical", [1, 0, 0]], ["Technical", [1, 1, 0]], ["Auditor", [1, 1, 1]]];
+  function renderLayers(el, k, anim) {
+    var svg = svgFor(el, W, H, "One document in three layers for three readers", "A page split into plain summary, technical detail and appendix, with the same finding written for each layer and a table of who reads which layer.");
+    var ey = base(svg, [{ id: "l1", s: 1 }, { id: "l2", s: 2 }, { id: "l3", s: 3 }], k, anim, ["Layer 1", "plain English for the decision"], ["Layer 2", "technical detail to evaluate"]);
+    var d = svg.append("g");
+    lab(d, 0, 30, "ONE DOCUMENT");
+    var BANDS = [[52, 110, "Layer 1", 3], [162, 240, "Layer 2", 8], [402, 130, "Layer 3", 4]];
+    BANDS.forEach(function (b, i) {
+      var cur = k === i + 1, g = d.append("g");
+      box(g, 0, b[0], 300, b[1], { stroke: cur ? RED : FAMILIAR, sw: cur ? 4 : 2, fill: cur ? TINT : "#FFFFFF" });
+      cap(g, 14, b[0] + 30, b[2], { size: 24, weight: 700, fill: cur ? RED : MUTED });
+      d3.range(b[3]).forEach(function (j) { g.append("rect").attr("x", 14).attr("y", b[0] + 46 + j * 22).attr("width", j % 3 === 2 ? 180 : 270).attr("height", 10).attr("fill", cur ? "#E5A0AB" : "#DADADA"); });
+    });
+    if (k >= 1) {
+      var TX = [["LAYER 1, PLAIN ENGLISH", "About 89 in 100 patients who have the condition are flagged. For patients over 75, about 81 in 100."], ["LAYER 2, TECHNICAL DETAIL", "Sensitivity 0.89 on the held-out test set and 0.81 for patients over 75: a gap of " + f2(0.89 - 0.81) + ". Report n, interval and conditions."], ["LAYER 3, REPRODUCIBILITY", "Code, hyperparameters, data documentation and full sensitivity analyses, so another team can rerun it."]][k - 1];
+      var g2 = d.append("g"); lab(g2, 340, 30, TX[0], { fill: RED }); wrap(g2, 340, 76, TX[1], 34, { size: 24, lh: 30, fill: INK }); fade(g2, A(anim, k, k), 0);
+      lab(d, 340, 300, "WHO READS WHICH LAYER");
+      ["L1", "L2", "L3"].forEach(function (s, i) { cap(d, 598 + i * 66, 340, s, { size: 24, weight: 700, anchor: "middle", fill: k === i + 1 ? RED : MUTED }); });
+      READS.forEach(function (r, i) {
+        var y = 360 + i * 66; cap(d, 340, y + 38, r[0], { size: 24 });
+        r[1].forEach(function (v, j) { d.append("rect").attr("x", 598 + j * 66 - 22).attr("y", y + 8).attr("width", 44).attr("height", 44).attr("fill", v ? (k === j + 1 ? RED : INK) : "#FFFFFF").attr("stroke", v ? (k === j + 1 ? RED : INK) : FAMILIAR).attr("stroke-width", 2); });
+      });
+    } else cap(d, 340, 120, "Click or press → to add the three layers.", { size: 24, fill: MUTED });
+    note(svg, ey, ["", "Plain is not dumbed down: jargon hides an uncalibrated verb.", "Specific where Layer 1 is general, rigorous where it is plain.", "One document beats two, because two drift apart."][k]);
+  }
+
+  /* ---------- 4. saying what you do not know ---------- */
+  function renderUnknown(el, k, anim) {
+    var svg = svgFor(el, W, H, "Uncertainty in prose: reducible, irreducible, empty and specific", "A confidence interval that narrows with more data, a Brier floor that stays, a hedge struck out and replaced by four required parts, and the six-step peer critique.");
+    var ey = base(svg, [{ id: "epi", s: 1 }, { id: "ale", s: 2 }, { id: "hedge", s: 3 }, { id: "peer", s: 4 }], k, anim, ["Epistemic", "more evidence would shrink it"], ["Aleatoric", "irreducible noise in the system"]);
+    var d = svg.append("g"), NS = [50, 200, 800, 3200];
+    if (k <= 1) {
+      lab(d, 0, 30, "95% INTERVAL FOR AN ACCURACY OF 0.87");
+      var sx = function (v) { return 160 + (v - 0.7) / 0.3 * 560; };
+      d.append("path").attr("d", "M" + sx(0.7) + ",70 V470").attr("stroke", FAMILIAR); d.append("path").attr("d", "M" + sx(1) + ",70 V470").attr("stroke", FAMILIAR);
+      cap(d, sx(0.7), 520, "0.70", { size: 24, anchor: "middle", fill: MUTED }); cap(d, sx(1), 520, "1.00", { size: 24, anchor: "middle", fill: MUTED });
+      if (k === 0) { cap(d, 0, 250, "More evidence narrows an epistemic interval.", { fill: MUTED }); }
+      else {
+        var rects = [];
+        NS.forEach(function (n, i) {
+          var y = 90 + i * 100, hw = 1.96 * Math.sqrt(0.87 * 0.13 / n); cap(d, 0, y + 28, "n = " + n, { size: 24, weight: 700 });
+          var r = d.append("rect").attr("y", y + 4).attr("height", 30).attr("fill", RED); rects.push([r, hw]);
+          cap(d, 160, y + 66, "0.87 ± " + f3(hw) + ": " + f2(0.87 - hw) + " to " + f2(0.87 + hw), { size: 24, fill: MUTED });
+        });
+        run(d, 1800, function (t) { rects.forEach(function (q, i) { var hw0 = rects[0][1], hw = q[1] + (hw0 - q[1]) * (1 - d3.easeCubicOut(t)); q[0].attr("x", sx(0.87 - hw)).attr("width", sx(0.87 + hw) - sx(0.87 - hw)); }); }, A(anim, k, 1));
+      }
+    } else if (k === 2) {
+      lab(d, 0, 30, "BEST POSSIBLE BRIER SCORE, TRUE CHANCE 0.7");
+      var r2 = rng(5), ys = d3.range(3200).map(function () { return r2() < 0.7 ? 1 : 0; }), sx2 = function (v) { return 160 + v / 0.35 * 560; };
+      d.append("path").attr("d", "M160,70 V470").attr("stroke", INK).attr("stroke-width", 2);
+      d.append("path").attr("d", "M" + sx2(0.21) + ",70 V470").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6");
+      cap(d, 160, 520, "0", { size: 24, anchor: "middle", fill: MUTED }); cap(d, sx2(0.21), 520, "floor 0.21", { size: 24, anchor: "middle", fill: RED, weight: 700 });
+      NS.forEach(function (n, i) {
+        var y = 90 + i * 100, b = d3.mean(ys.slice(0, n), function (v) { return Math.pow(0.7 - v, 2); });
+        cap(d, 0, y + 28, "n = " + n, { size: 24, weight: 700 }); bar(d, 160, y + 4, sx2(b) - 160, 30, INK, A(anim, k, 2), i * 250);
+        cap(d, 160, y + 66, "Brier " + f3(b) + " (seeded sample)", { size: 24, fill: MUTED });
+      });
+    } else if (k === 3) {
+      lab(d, 0, 30, "A SENTENCE THAT CARRIES NO INFORMATION");
+      box(d, 0, 50, 740, 120, { stroke: INK, sw: 3 });
+      wrap(d, 20, 92, "“We note that further work is needed to assess performance on underrepresented populations.”", 52, { size: 28, lh: 36, fill: INK });
+      var sl = d.append("path").attr("d", "M14,86 H726").attr("stroke", RED).attr("stroke-width", 5); if (A(anim, k, 3)) drawIn(sl, 200, 700);
+      lab(d, 0, 226, "A REPLACEMENT HAS FOUR PARTS", { fill: RED });
+      ["name the uncertainty", "epistemic or aleatoric", "quantify, or say why not", "what would change this"].forEach(function (c, i) {
+        var x = (i % 2) * 380, y = 250 + Math.floor(i / 2) * 100, g = d.append("g");
+        g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", 360).attr("height", 76).attr("fill", "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2).attr("stroke-dasharray", "8 6");
+        cap(g, x + 180, y + 48, c, { size: 24, anchor: "middle", weight: 700 }); fade(g, A(anim, k, 3), 800 + i * 200);
+      });
+      cap(d, 0, 520, "Parts present in the hedge: 0 of 4.", { size: 26, weight: 700, fill: RED });
+    } else {
+      lab(d, 0, 30, "THE SIX-STEP PEER CRITIQUE");
+      var ST = [["1. Read: content, then structure", 0], ["2. Things that work", 3], ["3. Verb mismatches, named", 3], ["4. Missing or evasive uncertainty", 3], ["5. One structural concern", 1], ["6. One question left open", 1]];
+      ST.forEach(function (s, i) {
+        var y = 60 + i * 62, g = d.append("g"); cap(g, 0, y + 34, s[0], { size: 24 });
+        if (i === 0) d3.range(2).forEach(function (j) { g.append("circle").attr("cx", 560 + j * 40).attr("cy", y + 26).attr("r", 11).attr("fill", "#FFFFFF").attr("stroke", INK).attr("stroke-width", 3); });
+        d3.range(s[1]).forEach(function (j) { g.append("circle").attr("cx", 560 + j * 40).attr("cy", y + 26).attr("r", 12).attr("fill", i === 2 ? RED : INK); });
+        fade(g, anim, i * 200);
+      });
+      cap(d, 0, 480, "Specific comments per critique: " + d3.sum(ST, function (s) { return s[1]; }) + " (3 + 3 + 3 + 1 + 1).", { size: 26, weight: 700 });
+      cap(d, 0, 530, "Hollow dots: two reading passes.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "The interval narrows as n grows; naming the cause says how to shrink it.", "The floor stays at 0.21 however much data arrives.", "Strike the hedge. Name the gap, or make no gap claim.", "Peers see the mismatches the writer chose and cannot see."][k]);
+  }
+
+  /* ---------- 5. calibration and the reliability diagram ---------- */
+  var CAL = (function () {
+    var out = {}, defs = { cal: function (c) { return c; }, over: function (c) { return c * (1 - 0.3 * c); }, under: function (c) { return 1 - (1 - c) * (1 - 0.3 * (1 - c)); } }, seed = 21;
+    Object.keys(defs).forEach(function (key) {
+      var r = rng(seed++), pts = [];
+      d3.range(10).forEach(function (j) { var c = 0.05 + j * 0.1, n = 150, s = 0, p = defs[key](c); for (var i = 0; i < n; i++) if (r() < p) s++; pts.push({ c: c, a: s / n }); });
+      out[key] = pts;
+    });
+    var r8 = rng(8), s8 = 0, DOTS = d3.range(100).map(function () { var v = r8() < 0.8; if (v) s8++; return v; });
+    out.dots = DOTS; out.right = s8; return out;
+  })();
+  function renderCalib(el, k, anim) {
+    var svg = svgFor(el, W, H, "A reliability diagram plots actual accuracy against stated confidence", "A hundred cases where the model says 80 percent, then a ten-point reliability diagram that is on the diagonal, below it, and above it.");
+    var ey = base(svg, [{ id: "cal", s: 1 }, { id: "rel", s: 2 }, { id: "over", s: 3 }, { id: "under", s: 4 }], k, anim, ["Overconfidence", "curve below the diagonal"], ["Underconfidence", "curve above the diagonal"]);
+    var d = svg.append("g");
+    if (k <= 1) {
+      lab(d, 0, 30, "100 CASES WHERE THE MODEL SAYS 80%");
+      CAL.dots.forEach(function (v, i) {
+        var c = d.append("circle").attr("cx", 24 + (i % 10) * 42).attr("cy", 76 + Math.floor(i / 10) * 42).attr("r", 15).attr("fill", v ? INK : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+        if (A(anim, k, 1)) c.attr("opacity", 0).transition().delay(i * 12).duration(200).attr("opacity", 1);
+      });
+      if (k === 1) { cap(d, 450, 130, CAL.right + " right", { size: 44, weight: 700, fill: RED }); wrap(d, 450, 180, "of 100: close to the 80 the model claims. Calibrated means this holds across many cases.", 26, { size: 24, lh: 30, fill: INK }); }
+      else cap(d, 450, 130, "Filled = right.", { size: 24, fill: MUTED });
+    } else {
+      var key = ["", "", "cal", "over", "under"][k], pts = CAL[key], px = function (c) { return 70 + c * 440; }, py = function (a) { return 510 - a * 440; };
+      lab(d, 0, 30, "ACCURACY (UP) VS STATED CONFIDENCE (RIGHT)");
+      box(d, px(0), py(1), 440, 440, { stroke: FAMILIAR, sw: 2 });
+      d.append("path").attr("d", "M" + px(0) + "," + py(0) + "L" + px(1) + "," + py(1)).attr("stroke", GREY).attr("stroke-width", 2).attr("stroke-dasharray", "8 6");
+      [0, 0.5, 1].forEach(function (v) { cap(d, px(v), 548, v === 0 ? "0" : v === 1 ? "1" : "0.5", { size: 24, anchor: "middle", fill: MUTED }); cap(d, px(0) - 12, py(v) + 8, v === 0 ? "0" : v === 1 ? "1" : "0.5", { size: 24, anchor: "end", fill: MUTED }); });
+      var line = d.append("path").attr("fill", "none").attr("stroke", k === 2 ? INK : RED).attr("stroke-width", 3), gaps = d.append("g"), dots = d.append("g");
+      function draw(t) {
+        var cur = pts.map(function (p) { return { c: p.c, a: p.c + (p.a - p.c) * t }; });
+        line.attr("d", d3.line().x(function (p) { return px(p.c); }).y(function (p) { return py(p.a); })(cur));
+        gaps.selectAll("*").remove(); dots.selectAll("*").remove();
+        cur.forEach(function (p) { if (k > 2) gaps.append("path").attr("d", "M" + px(p.c) + "," + py(p.c) + "V" + py(p.a)).attr("stroke", RED).attr("stroke-width", 2); dots.append("circle").attr("cx", px(p.c)).attr("cy", py(p.a)).attr("r", 8).attr("fill", k === 2 ? INK : RED); });
+      }
+      draw(1); run(d, 1500, draw, A(anim, k, k));
+      var j = k === 4 ? 7 : 8, p = pts[j];
+      var TX = ["", "", "10 bins of stated confidence. Each point is one bin, 150 cases each (seeded).", "Bin " + f2(p.c) + ": says " + Math.round(p.c * 100) + "%, right " + Math.round(p.a * 100) + "%. Below the diagonal.", "Bin " + f2(pts[7].c) + ": says " + Math.round(pts[7].c * 100) + "%, right " + Math.round(pts[7].a * 100) + "%. Above the diagonal."];
+      wrap(d, 540, 110, TX[k], 20, { size: 24, lh: 30, fill: INK });
+    }
+    note(svg, ey, ["", "Calibration matches a stated chance to a frequency; it is not accuracy.", "Perfect sits on the diagonal. The shape of a miss is diagnostic.", "Common in deep networks (Guo et al., 2017), not universal.", "Seen with heavy regularization or label smoothing."][k]);
+  }
+
+  /* ---------- 6. Brier score, proper rule, decomposition, resolution ---------- */
+  var BR5 = [[0.9, 1], [0.8, 1], [0.7, 0], [0.3, 0], [0.6, 1]];
+  function renderBrier(el, k, anim) {
+    var svg = svgFor(el, W, H, "The Brier score is a mean squared gap, minimized by honesty, split into three parts", "Five squared errors and their mean, a curve of expected Brier score against reported probability, a waterfall of the decomposition, and a constant predictor for comparison.");
+    var ey = base(svg, [{ id: "brier", s: 1 }, { id: "proper", s: 2 }, { id: "decomp", s: 3 }, { id: "res", s: 4 }], k, anim, ["Brier score", "one number, three parts"], ["Resolution", "how well cases are told apart"]);
+    var d = svg.append("g");
+    if (k <= 1) {
+      lab(d, 0, 30, "SQUARED GAP FOR EACH OF FIVE PREDICTIONS");
+      var sq = BR5.map(function (c) { return Math.pow(c[0] - c[1], 2); }), bs = d3.mean(sq), by = function (v) { return 360 - v * 300; };
+      if (k === 1) {
+        sq.forEach(function (v, i) {
+          var x = 40 + i * 140, g = d.append("g"); bar(g, x, by(v), 90, 360 - by(v), i === 2 ? RED : INK, A(anim, k, 1), i * 200);
+          cap(g, x + 45, 396, "said " + BR5[i][0], { size: 24, anchor: "middle" }); cap(g, x + 45, 424, "was " + BR5[i][1], { size: 24, anchor: "middle", fill: MUTED }); cap(g, x + 45, 456, f3(v), { size: 24, anchor: "middle", weight: 700, fill: i === 2 ? RED : INK });
+        });
+        d.append("path").attr("d", "M0," + by(bs) + " H740").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "10 6");
+        d.append("path").attr("d", "M0," + by(0.25) + " H740").attr("stroke", GREY).attr("stroke-width", 2).attr("stroke-dasharray", "4 6");
+        cap(d, 0, 508, "red dashed: mean of the five = " + f3(bs) + " (the Brier score)", { size: 24, weight: 700, fill: RED });
+        cap(d, 0, 544, "grey dotted: always saying 0.5 = 0.250", { size: 24, fill: MUTED });
+      } else cap(d, 0, 250, "Click or press → to score five predictions.", { fill: MUTED });
+    } else if (k === 2) {
+      var q = 0.7, E = function (p) { return q * Math.pow(1 - p, 2) + (1 - q) * p * p; }, gx = function (p) { return 70 + p * 640; }, gy = function (e) { return 440 - (e - 0.2) / 0.5 * 360; };
+      lab(d, 0, 30, "EXPECTED BRIER, TRUE CHANCE 0.7");
+      d.append("path").attr("d", d3.line()(d3.range(0, 1.001, 0.02).map(function (p) { return [gx(p), gy(E(p))]; }))).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 3);
+      [0, 0.5, 1].forEach(function (v) { cap(d, gx(v), 480, v === 0 ? "0" : v === 1 ? "1" : "0.5", { size: 24, anchor: "middle", fill: MUTED }); });
+      cap(d, 390, 516, "probability the model reports", { size: 24, anchor: "middle", fill: MUTED });
+      var mk = d.append("circle").attr("r", 11).attr("fill", RED), rd = cap(d, 560, 120, "", { size: 26, weight: 700, fill: RED });
+      function mv(t) { var p = 0.95 + (0.7 - 0.95) * d3.easeCubicInOut(t); mk.attr("cx", gx(p)).attr("cy", gy(E(p))); rd.text("report " + f2(p) + ": " + f3(E(p))); }
+      mv(1); run(d, 2200, mv, A(anim, k, 2));
+      cap(d, 0, 556, "0.5 and 0.9 both give " + f3(E(0.5)) + "; 0.7, the truth, gives " + f3(E(0.7)) + ".", { size: 24, weight: 700 });
+    } else {
+      lab(d, 0, 30, k === 3 ? "UNCERTAINTY − RESOLUTION + CALIBRATION" : "THE SAME MODEL AGAINST A CONSTANT 0.20");
+      var UNC = 0.2 * 0.8, RES = 0.045, CAL_ = 0.028, TOT = UNC - RES + CAL_, sx = function (v) { return 220 + v * 2400; };
+      var rows = [["uncertainty", 0, UNC, INK, f3(UNC)], ["− resolution", UNC - RES, UNC, GREY, "−" + f3(RES)], ["+ calibration", UNC - RES, TOT, RED, "+" + f3(CAL_)], ["Brier score", 0, TOT, INK, f3(TOT)]];
+      rows.forEach(function (r, i) {
+        var y = 70 + i * 84, g = d.append("g"); cap(g, 0, y + 32, r[0], { size: 24, weight: 700 });
+        bar(g, sx(r[1]), y + 6, sx(r[2]) - sx(r[1]), 40, r[3], A(anim, k, 3), i * 350); cap(g, sx(r[2]) + 14, y + 36, r[4], { size: 26, weight: 700, fill: r[3] === GREY ? MUTED : r[3] });
+      });
+      cap(d, 0, 420, "uncertainty = base rate × (1 − base rate) = 0.20 × 0.80", { size: 24, fill: MUTED });
+      if (k === 4) {
+        var g4 = d.append("g"); cap(g4, 0, 484, "always 0.20", { size: 24, weight: 700 }); bar(g4, sx(0), 458, sx(UNC) - sx(0), 36, GREY, anim, 0); cap(g4, sx(UNC) + 14, 488, f3(UNC), { size: 26, weight: 700, fill: MUTED });
+        cap(g4, 0, 548, "Model gains " + f3(UNC - TOT) + ": resolution " + f3(RES) + " outweighs calibration error " + f3(CAL_) + ".", { size: 24, weight: 700, fill: RED });
+      }
+    }
+    note(svg, ey, ["", "A confident miss costs most: said 0.7, was 0 = 0.490.", "Accuracy ignores a confident miss. This score does not.", "One number hides which part drives it. Decompose.", "Calibrated with zero resolution: honest but useless for triage."][k]);
+  }
+
+  /* ---------- 7. ECE, bin dependence, MCE ---------- */
+  function renderEce(el, k, anim) {
+    var svg = svgFor(el, W, H, "ECE averages bin gaps, depends on the bins, and MCE reports the worst bin", "Ten-bin gaps for 250 simulated predictions with their weights, the ECE at 5, 10, 15 and 20 bins, and the largest gap.");
+    var ey = base(svg, [{ id: "ece", s: 1 }, { id: "bind", s: 2 }, { id: "mce", s: 3 }], k, anim, ["ECE", "weighted average of bin gaps"], ["MCE", "the single worst bin gap"]);
+    var d = svg.append("g");
+    if (k === 0) { lab(d, 0, 30, "250 SIMULATED PREDICTIONS, CONFIDENCE 0.5 TO 1.0"); cap(d, 0, 250, "Each bin has a gap between confidence and accuracy.", { fill: MUTED }); }
+    else if (k === 1 || k === 3) {
+      lab(d, 0, 30, "BIN GAP, CONFIDENCE VS ACCURACY, 10 BINS");
+      var mx = mceOf(ECE10), sx = function (v) { return 280 + v / 0.25 * 400; };
+      ECE10.forEach(function (b, i) {
+        var y = 56 + i * 66, g = d.append("g"), worst = k === 3 && b.gap === mx;
+        cap(g, 0, y + 34, f1(b.j / 10) + "–" + f1((b.j + 1) / 10), { size: 24 }); cap(g, 140, y + 34, "n = " + b.n, { size: 24, fill: MUTED });
+        bar(g, 280, y + 8, sx(b.gap) - 280, 36, worst ? RED : INK, A(anim, k, k), i * 150); cap(g, sx(b.gap) + 12, y + 36, f3(b.gap), { size: 24, weight: 700, fill: worst ? RED : INK });
+      });
+      cap(d, 0, 540, k === 1 ? "ECE = sum of (n / 250) × gap = " + f3(eceOf(ECE10, ECEN)) : "MCE = " + f3(mx) + ", ECE = " + f3(eceOf(ECE10, ECEN)) + ": the worst bin is " + f1(mx / eceOf(ECE10, ECEN)) + " times the average.", { size: 26, weight: 700, fill: RED });
+    } else {
+      lab(d, 0, 30, "SAME 250 PREDICTIONS, DIFFERENT BIN COUNTS");
+      var sx2 = function (v) { return 230 + v / 0.14 * 400; };
+      ECEBINS.forEach(function (b, i) {
+        var y = 70 + i * 100, g = d.append("g"); cap(g, 0, y + 34, b.M + " bins", { size: 26, weight: 700 }); bar(g, 230, y + 6, sx2(b.ece) - 230, 42, b.ece > 0.1 ? RED : INK, A(anim, k, 2), i * 250); cap(g, 585, y + 38, f3(b.ece), { size: 26, weight: 700, fill: b.ece > 0.1 ? RED : INK });
+      });
+      d.append("path").attr("d", "M" + sx2(0.1) + ",64 V470").attr("stroke", RED).attr("stroke-width", 2).attr("stroke-dasharray", "8 6"); cap(d, sx2(0.1), 506, "0.10: the popular “bad” line", { size: 24, anchor: "middle", fill: RED });
+    }
+    note(svg, ey, ["", "Busy bins count more, so the average follows the predictions.", "An ECE without its bin count is not reproducible.", "A low ECE can hide one badly off confidence range."][k]);
+  }
+
+  /* ---------- 8. subgroups, Epic, external validation, evidence ladder ---------- */
+  var LADD = [["L0", "internal-only ECE", "hypothesize"], ["L1", "held-out test ECE", "observe"], ["L2", "subgroup ECE", "find"], ["L3", "replicated subgroup ECE", "show"], ["L4", "replicated under stress", "demonstrate"], ["L5", "validated in deployment", "conclude"]];
+  function renderSub(el, k, anim) {
+    var svg = svgFor(el, W, H, "A good global ECE can hide failing subgroups; the evidence level picks the verb", "Subgroup ECE bars against the global value with a 2 times line, the Epic Sepsis Model's external AUC and missed cases, and the six-level evidence ladder.");
+    var ey = base(svg, [{ id: "subg", s: 1 }, { id: "epic", s: 3 }, { id: "ext", s: 3 }, { id: "ladd", s: 4 }], k, anim, ["Subgroup ECE", "calibrated for this group?"], ["Global ECE", "calibrated on average?"]);
+    var d = svg.append("g");
+    if (k <= 2) {
+      lab(d, 0, 30, "ECE BY GROUP, GLOBAL 0.018");
+      var sx = function (v) { return 250 + v / 0.11 * 330; }, rows = [["Global", 12955, GLOB]].concat(SUBG);
+      rows.forEach(function (r, i) {
+        var y = 48 + i * 76, g = d.append("g"), ratio = r[2] / GLOB, over = k === 2 && i > 0 && ratio > 2;
+        cap(g, 0, y + 32, r[0], { size: 24, weight: 700 }); cap(g, 0, y + 58, "N = " + fmtInt(r[1]), { size: 24, fill: MUTED });
+        if (k >= 1) { bar(g, 250, y + 8, sx(r[2]) - 250, 42, i === 0 ? INK : over ? RED : "#C4C4C4", A(anim, k, 1), i * 200); cap(g, 600, y + 38, f3(r[2]) + (i > 0 && k === 2 ? " · " + f1(ratio) + "×" : ""), { size: 24, weight: 700, fill: over ? RED : INK }); }
+      });
+      if (k === 2) { d.append("path").attr("d", "M" + sx(2 * GLOB) + ",44 V508").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6"); cap(d, 0, 556, "dashed: 2 × global = " + f3(2 * GLOB) + ". " + SUBG.filter(function (r) { return r[2] > 2 * GLOB; }).length + " of 5 groups above it.", { size: 24, weight: 700, fill: RED }); }
+      if (k === 0) cap(d, 250, 250, "Global ECE looks excellent.", { size: 24, fill: MUTED });
+    } else if (k === 3) {
+      var ax = function (v) { return 130 + (v - 0.5) / 0.4 * 600; };
+      lab(d, 0, 30, "EXTERNAL VALIDATION, MICHIGAN MEDICINE");
+      cap(d, 0, 72, "AUC reported by the developer: 0.76 to 0.83", { size: 24 }); bar(d, ax(0.76), 86, ax(0.83) - ax(0.76), 30, INK, A(anim, k, 3), 0);
+      cap(d, 0, 170, "AUC measured externally: 0.63", { size: 24, weight: 700, fill: RED }); bar(d, ax(0.5), 184, ax(0.63) - ax(0.5), 30, RED, A(anim, k, 3), 300);
+      [0.5, 0.7, 0.9].forEach(function (v) { cap(d, ax(v), 256, f1(v), { size: 24, anchor: "middle", fill: MUTED }); });
+      var miss = 1709 / 2552, FA = 0.88, bx = function (v) { return 20 + v * 700; };
+      cap(d, 0, 330, "sepsis cases missed: 1,709 of 2,552 = " + Math.round(miss * 100) + "%", { size: 24 }); box(d, bx(0), 344, 700, 40, { stroke: FAMILIAR }); bar(d, bx(0), 344, bx(miss) - bx(0), 40, RED, A(anim, k, 3), 600);
+      cap(d, 0, 444, "alerts that were false alarms: 88% (PPV 12%)", { size: 24 }); box(d, bx(0), 458, 700, 40, { stroke: FAMILIAR }); bar(d, bx(0), 458, bx(FA) - bx(0), 40, RED, A(anim, k, 3), 900);
+      cap(d, 0, 556, "27,697 patients, 38,455 hospitalizations (Wong et al., 2021).", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "EACH LEVEL OF EVIDENCE LICENSES ONE VERB");
+      LADD.forEach(function (r, i) {
+        var y = 56 + i * 84, g = d.append("g");
+        box(g, 0, y, 740, 68, { stroke: i === 5 ? RED : INK, sw: 1.5 + i * 0.5 });
+        g.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 70).attr("height", 68).attr("fill", INK); cap(g, 35, y + 44, r[0], { size: 28, anchor: "middle", weight: 700, fill: "#FFFFFF" });
+        cap(g, 90, y + 44, r[1], { size: 26 }); cap(g, 724, y + 44, r[2], { size: 26, anchor: "end", weight: 700, fill: RED });
+        fade(g, A(anim, k, 4), i * 150);
+      });
+    }
+    note(svg, ey, ["", "Global ECE shows average calibration, not calibration for this patient.", "Whether 2× halts a deployment is a values question.", "Aggregate looked fine; outside validation at one site exposed it.", "Trace each claim to one row; the verb must match it."][k]);
+  }
+
+  /* ---------- 9. temperature scaling, calibration set, shift, conformal ---------- */
+  var TEMP = (function () {
+    var r = rng(3), z = [], y = [], Ts = d3.range(1, 3.001, 0.05), NE = 6000, ze = [], ye = [], y2 = [];
+    for (var i = 0; i < 800; i++) { var s = 1.5 * gauss(r); z.push(1.8 * s); y.push(r() < sigmoid(s) ? 1 : 0); }
+    var r3 = rng(77); for (var j = 0; j < NE; j++) { var s2 = 1.5 * gauss(r3), zz = 1.8 * s2; ze.push(zz); ye.push(r3() < sigmoid(s2) ? 1 : 0); y2.push(r3() < sigmoid(zz / 1.1) ? 1 : 0); }
+    function nll(T) { return d3.mean(z, function (zz, i) { var p = sigmoid(zz / T); return -(y[i] ? Math.log(p) : Math.log(1 - p)); }); }
+    var curve = Ts.map(function (T) { return [T, nll(T)]; }), best = curve.reduce(function (a, b) { return b[1] < a[1] ? b : a; });
+    function rel(conf, yy) { var bs = binStats(conf, yy, 10); return { pts: bs, ece: eceOf(bs, NE) }; }
+    var Tb = best[0];
+    return { curve: curve, T: Tb, before: rel(ze.map(sigmoid), ye), after: rel(ze.map(function (v) { return sigmoid(v / Tb); }), ye), dep: rel(ze.map(function (v) { return sigmoid(v / Tb); }), y2) };
+  })();
+  var CONF = (function () {
+    var r = rng(9), cal = d3.range(19).map(function () { return Math.abs(gauss(r)); }).sort(d3.ascending), alpha = 0.1, kk = Math.ceil(20 * (1 - alpha)), q = cal[kk - 1];
+    function cover(scale) { var rr = rng(31), c = 0, n = 4000; for (var i = 0; i < n; i++) if (Math.abs(gauss(rr)) * scale <= q) c++; return c / n; }
+    return { cal: cal, q: q, kk: kk, ok: cover(1), shifted: cover(1.8) };
+  })();
+  function renderTemp(el, k, anim) {
+    var svg = svgFor(el, W, H, "Temperature scaling fixes the numbers on one set; conformal sets cover the truth only under exchangeability", "Softmax bars flattening as T rises, a loss curve with its minimum, reliability points before and after scaling and under shift, and calibration scores with a coverage check.");
+    var ey = base(svg, [{ id: "temp", s: 1 }, { id: "cset", s: 2 }, { id: "shift", s: 3 }, { id: "conf", s: 4 }], k, anim, ["Temperature scaling", "one correction for all inputs"], ["Conformal prediction", "covers truth if exchangeable"]);
+    var d = svg.append("g");
+    if (k <= 1) {
+      lab(d, 0, 30, "SOFTMAX OF LOGITS 2.5, 1.0, 0.0 DIVIDED BY T");
+      var Z = [2.5, 1.0, 0], sm = function (T) { var e = Z.map(function (v) { return Math.exp(v / T); }), s = d3.sum(e); return e.map(function (v) { return v / s; }); };
+      var bars = [], vals = [];
+      ["A", "B", "C"].forEach(function (c, i) { cap(d, 130 + i * 200, 470, "class " + c, { size: 26, anchor: "middle", weight: 700 }); bars.push(d.append("rect").attr("x", 70 + i * 200).attr("width", 120).attr("fill", i === 0 ? INK : "#C4C4C4")); vals.push(cap(d, 130 + i * 200, 0, "", { size: 24, anchor: "middle", weight: 700 })); });
+      var tl = cap(d, 0, 76, "", { size: 30, weight: 700, fill: RED });
+      function dr(t) { var T = k === 1 ? 1 + 0.8 * d3.easeCubicInOut(t) : 1, p = sm(T); tl.text("T = " + f2(T)); p.forEach(function (v, i) { bars[i].attr("y", 430 - v * 320).attr("height", v * 320); vals[i].attr("y", 430 - v * 320 - 10).text(f2(v)); }); }
+      dr(k === 1 ? 1 : 0); run(d, 2000, dr, A(anim, k, 1));
+      cap(d, 0, 540, k === 1 ? "Top class stays A. Its probability falls 0.77 → 0.59." : "Click or press → to raise T.", { size: 24, weight: 700, fill: k === 1 ? RED : MUTED });
+    } else if (k === 2) {
+      lab(d, 0, 30, "LOSS ON 800 SEEDED CASES, BY T");
+      var cx = function (T) { return 70 + (T - 1) / 2 * 620; }, lo = d3.min(TEMP.curve, function (c) { return c[1]; }), hi = d3.max(TEMP.curve, function (c) { return c[1]; }), cy = function (v) { return 440 - (v - lo) / (hi - lo + 1e-9) * 330; };
+      box(d, cx(1), cy(hi) - 6, 620, 440 - cy(hi) + 6, { stroke: FAMILIAR, sw: 2 });
+      var path = d.append("path").attr("d", d3.line()(TEMP.curve.map(function (c) { return [cx(c[0]), cy(c[1])]; }))).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 3); if (A(anim, k, 2)) drawIn(path, 0, 1200);
+      var mk = d.append("circle").attr("cx", cx(TEMP.T)).attr("cy", cy(lo)).attr("r", 11).attr("fill", RED); fade(mk, A(anim, k, 2), 1200);
+      [1, 2, 3].forEach(function (T) { cap(d, cx(T), 480, "T = " + T, { size: 24, anchor: "middle", fill: MUTED }); });
+      cap(d, 0, 530, "lowest loss at T = " + f2(TEMP.T) + ". Weights stay fixed; only T is learned.", { size: 24, weight: 700, fill: RED });
+    } else if (k === 3) {
+      var px = function (c) { return 70 + c * 400; }, py = function (a) { return 480 - a * 400; };
+      lab(d, 0, 30, "ACCURACY (UP) VS STATED CONFIDENCE (RIGHT)");
+      box(d, px(0), py(1), 400, 400, { stroke: FAMILIAR, sw: 2 });
+      d.append("path").attr("d", "M" + px(0) + "," + py(0) + "L" + px(1) + "," + py(1)).attr("stroke", GREY).attr("stroke-width", 2).attr("stroke-dasharray", "8 6");
+      [0, 1].forEach(function (v) { cap(d, px(v), 516, "" + v, { size: 24, anchor: "middle", fill: MUTED }); cap(d, px(0) - 12, py(v) + 8, "" + v, { size: 24, anchor: "end", fill: MUTED }); });
+      [[TEMP.before, GREY, 0], [TEMP.after, INK, 600], [TEMP.dep, RED, 1200]].forEach(function (s) {
+        var g = d.append("g"), pts = s[0].pts;
+        g.append("path").attr("d", d3.line()(pts.map(function (p) { return [px(p.conf), py(p.acc)]; }))).attr("fill", "none").attr("stroke", s[1]).attr("stroke-width", 3);
+        pts.forEach(function (p) { g.append("circle").attr("cx", px(p.conf)).attr("cy", py(p.acc)).attr("r", 7).attr("fill", s[1]); });
+        fade(g, A(anim, k, 3), s[2]);
+      });
+      [["before T:", TEMP.before, GREY], ["after T, same hospital:", TEMP.after, INK], ["after T, new hospital:", TEMP.dep, RED]].forEach(function (s, i) {
+        var g = d.append("g"); wrap(g, 520, 90 + i * 110, s[0] + " ECE " + f3(s[1].ece), 18, { size: 24, lh: 30, weight: 700, fill: s[2] === GREY ? MUTED : s[2] }); fade(g, A(anim, k, 3), i * 600);
+      });
+    } else {
+      lab(d, 0, 30, "19 CALIBRATION SCORES, α = 0.1 (SEEDED)");
+      var qx = function (v) { return 40 + v / 3 * 680; };
+      d.append("path").attr("d", "M40,150 H720").attr("stroke", INK).attr("stroke-width", 2);
+      CONF.cal.forEach(function (v, i) { d.append("circle").attr("cx", qx(v)).attr("cy", 150).attr("r", 9).attr("fill", i < CONF.kk ? INK : "#C4C4C4"); });
+      d.append("path").attr("d", "M" + qx(CONF.q) + ",100 V200").attr("stroke", RED).attr("stroke-width", 4); cap(d, qx(CONF.q), 88, "cutoff " + f2(CONF.q), { size: 24, anchor: "middle", weight: 700, fill: RED });
+      cap(d, 0, 250, "Keep every label scoring at or below the cutoff (18th of 19).", { size: 24 });
+      lab(d, 0, 320, "NEW CASES WHOSE SET HOLDS THE TRUTH");
+      [["exchangeable", CONF.ok, INK], ["after a shift", CONF.shifted, RED]].forEach(function (c, i) {
+        var y = 350 + i * 80, g = d.append("g"); cap(g, 0, y + 32, c[0], { size: 24, weight: 700 }); box(g, 220, y + 4, 400, 40, { stroke: FAMILIAR }); bar(g, 220, y + 4, c[1] * 400, 40, c[2], A(anim, k, 4), i * 300); cap(g, 640, y + 34, f2(c[1]), { size: 24, weight: 700, fill: c[2] });
+      });
+      d.append("path").attr("d", "M" + (220 + 0.9 * 400) + ",340 V520").attr("stroke", RED).attr("stroke-width", 2).attr("stroke-dasharray", "8 6"); cap(d, 220 + 0.9 * 400, 552, "target 0.90", { size: 24, anchor: "middle", fill: RED });
+    }
+    note(svg, ey, ["", "Accuracy is untouched: the same class is still on top.", "One number is fitted on held-out data after training.", "At a hospital where raw logits were nearly right, the fix overshoots.", "Marginal guarantee: on average, not per subgroup; breaks under shift."][k]);
+  }
+
+  /* ---------- look-alike pairs ---------- */
+  function renderPairs(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four look-alike pairs from Chapter 11", "Each step shows two ideas people mix up, side by side with a small animation.");
+    var d = svg.append("g");
+    var PAIRS = [
+      [["Accurate", "How often it is right"], ["Calibrated", "Stated chance matches how often it is right"]],
+      [["Epistemic", "More data would shrink it"], ["Aleatoric", "More data leaves it where it is"]],
+      [["ECE", "Weighted average of the bin gaps"], ["MCE", "The single largest bin gap"]],
+      [["Temperature scaling", "Fits T to held-out data to calibrate"], ["Sampling temperature", "Set by the user to vary generated text"]]
+    ];
+    var L = d.append("g"), R = d.append("g").attr("transform", "translate(740,0)");
+    function head(g, i, j) { lab(g, 0, 24, "PAIR " + Math.max(1, k) + " · " + (j ? "RIGHT" : "LEFT"), { fill: MUTED }); txt(g, 0, 66, PAIRS[i][j][0], { size: 32, weight: 700, fill: j ? RED : INK }); wrap(g, 0, 500, PAIRS[i][j][1] + ".", 44, { size: 26, lh: 32, fill: BODY }); }
+    function draw(i, t) {
+      L.selectAll("*").remove(); R.selectAll("*").remove(); head(L, i, 0); head(R, i, 1);
+      var LG = L.append("g").attr("transform", "translate(30,0)"), RG = R.append("g").attr("transform", "translate(30,0)");
+      if (i === 0) {
+        [[LG, 0.99, 0], [RG, 0.9, 1]].forEach(function (c) {
+          d3.range(10).forEach(function (j) { c[0].append("circle").attr("cx", 24 + (j % 5) * 56).attr("cy", 150 + Math.floor(j / 5) * 56).attr("r", 20).attr("fill", j < 9 ? INK : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 3).attr("opacity", j / 10 < t ? 1 : 0.15); });
+          var bs = (9 * Math.pow(c[1] - 1, 2) + Math.pow(c[1], 2)) / 10;
+          cap(c[0], 0, 300, "says " + Math.round(c[1] * 100) + "%, right 9 of 10", { size: 24 }); cap(c[0], 0, 340, "Brier " + f3(bs), { size: 24, weight: 700, fill: c[2] ? INK : RED });
+        });
+      } else if (i === 1) {
+        [10, 11, 12, 13].forEach(function (_, j) {
+          var n = 50 * Math.pow(4, j), hw = 1.96 * Math.sqrt(0.87 * 0.13 / n), v = Math.min(1, Math.max(0, t * 4 - j));
+          LG.append("rect").attr("x", j * 100).attr("width", 70).attr("y", 380 - hw * 1700 * v).attr("height", hw * 1700 * v).attr("fill", INK);
+          RG.append("rect").attr("x", j * 100).attr("width", 70).attr("y", 380 - 0.21 * 1200 * v).attr("height", 0.21 * 1200 * v).attr("fill", RED);
+          cap(LG, j * 100 + 35, 416, "" + n, { size: 24, anchor: "middle", fill: MUTED }); cap(RG, j * 100 + 35, 416, "" + n, { size: 24, anchor: "middle", fill: MUTED });
+        });
+        cap(LG, 0, 130, "interval width, shrinking", { size: 24, weight: 700 }); cap(RG, 0, 130, "Brier floor, staying", { size: 24, weight: 700, fill: RED }); cap(LG, 0, 456, "cases n: 50 to 3,200", { size: 24, fill: MUTED });
+      } else if (i === 2) {
+        var mx = mceOf(ECE10), ec = eceOf(ECE10, ECEN);
+        ECE10.forEach(function (b, j) {
+          var h = b.gap * 1500 * Math.min(1, t * 1.5);
+          LG.append("rect").attr("x", j * 94).attr("width", 70).attr("y", 380 - h).attr("height", h).attr("fill", "#C4C4C4");
+          RG.append("rect").attr("x", j * 94).attr("width", 70).attr("y", 380 - h).attr("height", h).attr("fill", b.gap === mx ? RED : "#C4C4C4");
+        });
+        LG.append("path").attr("d", "M0," + (380 - ec * 1500) + " H564").attr("stroke", INK).attr("stroke-width", 4); cap(LG, 0, 130, "average (weighted): " + f3(ec), { size: 24, weight: 700 }); cap(RG, 0, 130, "worst bin: " + f3(mx), { size: 24, weight: 700, fill: RED });
+        cap(LG, 0, 430, "the same ten bin gaps on both sides", { size: 24, fill: MUTED });
+      } else {
+        var Z = [2.5, 1, 0], T = 1 + 0.8 * t, e = Z.map(function (v) { return Math.exp(v / T); }), s = d3.sum(e), p = e.map(function (v) { return v / s; });
+        p.forEach(function (v, j) { LG.append("rect").attr("x", j * 100).attr("width", 70).attr("y", 330 - v * 220).attr("height", v * 220).attr("fill", j === 0 ? INK : "#C4C4C4"); });
+        cap(LG, 0, 130, "T chosen to fit: T = " + f2(T), { size: 24, weight: 700 }); ["A", "B", "C"].forEach(function (c, j) { cap(LG, j * 100 + 35, 364, c, { size: 24, anchor: "middle", weight: 700 }); }); cap(LG, 0, 410, "class A stays on top", { size: 24, fill: MUTED });
+        var r = rng(41), toks = d3.range(15).map(function () { var u = r(), c = 0; for (var j = 0; j < 3; j++) { c += p[j]; if (u < c) return j; } return 2; });
+        cap(RG, 0, 130, "T set by user: T = " + f2(T), { size: 24, weight: 700, fill: RED });
+        toks.forEach(function (v, j) { if (j / 15 < t) RG.append("rect").attr("x", (j % 5) * 56).attr("y", 170 + Math.floor(j / 5) * 56).attr("width", 44).attr("height", 44).attr("fill", v === 0 ? INK : v === 1 ? RED : "#C4C4C4"); });
+        cap(RG, 0, 410, "15 sampled tokens: the mix varies", { size: 24, fill: MUTED });
+      }
+    }
+    if (k === 0) { draw(0, 0.99); cap(svg.append("g"), 0, 640, "Click or press → to see four pairs, one at a time.", { size: 24, fill: MUTED }); return; }
+    draw(k - 1, 0.99); run(d, 3000, function (t) { draw(k - 1, t); }, anim);
+  }
+
+  /* ---------- say it exactly ---------- */
+  var SAY = [
+    { v: "we conclude the new model is more accurate", x: "Observe 87% on one held-out set; significance against the prior 84% is not yet tested" },
+    { v: "the model is overconfident", x: "At a stated 90% it is right 70% of the time: 0.20 below the diagonal" },
+    { v: "the Brier score looks fine", x: "Brier 0.143 = 0.160 − 0.045 + 0.028; always saying 0.20 scores 0.160" },
+    { v: "the ECE is low", x: "ECE " + f3(ECEBINS[1].ece) + " at 10 equal-width bins; " + f3(ECEBINS[0].ece) + " at 5 and " + f3(ECEBINS[3].ece) + " at 20" },
+    { v: "performance is fine for everyone", x: "Rare-disease ECE 0.103 against global 0.018: " + f1(0.103 / GLOB) + " times" }
+  ];
+  function renderSay(el, k, anim) {
+    var svg = svgFor(el, W, H, "Say it exactly: five vague claims about uncertainty turned into precise ones", "Five rows with a vague claim and an exact one. On the right, a chart computed from the exact claim.");
+    var g = svg.append("g");
+    SAY.forEach(function (r, i) {
+      if (i + 1 > k) return; var y = 6 + i * 128, cur = i + 1 === k, e = g.append("g");
+      e.append("rect").attr("x", 0).attr("y", y).attr("width", 8).attr("height", 114).attr("fill", cur ? RED : FAMILIAR);
+      wrap(e, 24, y + 30, "“" + r.v + "”", 54, { size: 26, lh: 30, fill: RED, weight: 700 });
+      wrap(e, 24, y + 70, "→ " + r.x, 50, { size: 24, lh: 30, fill: INK, weight: 700 });
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    if (k === 0) { cap(g, 0, 60, "A vague claim gets a verdict. An exact one gets checked.", { fill: INK }); cap(g, 0, 110, "Click or press → to turn five claims into exact ones.", { fill: MUTED }); return; }
+    var p = g.append("g").attr("transform", "translate(760,60)"), pw = 600, ph = 300, nt = "";
+    lab(p, 0, -14, "WHAT THE EXACT CLAIM RESTS ON", { fill: RED });
+    p.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", pw).attr("height", ph).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+    if (k === 1) {
+      var sx = function (v) { return 40 + (v - 0.78) / 0.14 * 520; }, h1 = 1.96 * Math.sqrt(0.87 * 0.13 / 1000), h2 = 1.96 * Math.sqrt(0.84 * 0.16 / 1000);
+      [["new 0.87", 0.87, h1, RED, 70], ["prior 0.84", 0.84, h2, INK, 170]].forEach(function (r, i) { cap(p, 14, r[4] - 12, r[0] + " ± " + f3(r[2]), { size: 24 }); bar(p, sx(r[1] - r[2]), r[4], sx(r[1] + r[2]) - sx(r[1] - r[2]), 34, r[3], anim, i * 400); });
+      cap(p, 14, 260, "95% intervals, n = 1,000 each (illustrative): they overlap", { size: 24, fill: MUTED }); nt = "overlapping intervals: observe, not conclude";
+    } else if (k === 2) {
+      [["stated", 0.9, "#C4C4C4"], ["actual", 0.7, RED]].forEach(function (r, i) { cap(p, 14, 70 + i * 110, r[0] + " " + Math.round(r[1] * 100) + "%", { size: 24 }); bar(p, 14, 84 + i * 110, 560 * r[1], 40, r[2], anim, i * 400); });
+      nt = "gap = " + f2(0.9 - 0.7) + ": a curve below the diagonal";
+    } else if (k === 3) {
+      var u = 0.2 * 0.8, t3 = u - 0.045 + 0.028;
+      [["model " + f3(t3), t3, INK], ["always 0.20 " + f3(u), u, "#C4C4C4"]].forEach(function (r, i) { cap(p, 14, 70 + i * 110, r[0], { size: 24 }); bar(p, 14, 84 + i * 110, 560 * r[1] / 0.2, 40, r[2], anim, i * 400); });
+      nt = "model beats the constant by " + f3(u - t3);
+    } else if (k === 4) {
+      var mxE = ECEBINS[3].ece;
+      ECEBINS.forEach(function (b, i) { cap(p, 14, 54 + i * 62, b.M + " bins: " + f3(b.ece), { size: 24 }); bar(p, 220, 30 + i * 62, 340 * b.ece / mxE, 34, b.ece > 0.1 ? RED : INK, anim, i * 250); });
+      nt = "the bin count moves the number";
+    } else {
+      SUBG.forEach(function (s, i) { cap(p, 14, 52 + i * 52, s[0], { size: 24 }); bar(p, 250, 30 + i * 52, 320 * s[2] / 0.103, 32, s[2] > 2 * GLOB ? RED : "#C4C4C4", anim, i * 200); });
+      d3.select(p.node()).append("path").attr("d", "M" + (250 + 320 * GLOB / 0.103) + ",20 V" + (ph - 10)).attr("stroke", INK).attr("stroke-width", 3);
+      nt = "black line: global 0.018";
+    }
+    cap(p, 0, ph + 40, nt, { size: 24, weight: 700 });
+  }
+
+  var CHECKS = [
+    "Does the verb match the evidence level, or is it one notch too strong?",
+    "For AI-written text, has every strong verb been checked and downgraded?",
+    "Is the ECE reported with its bin count, with MCE for the worst bin?",
+    "Is calibration split by named subgroup and set against the global value?",
+    "Is the uncertainty named, epistemic or aleatoric, with what would change it?",
+    "Was the fix checked on the deployment population, not only the calibration set?"
+  ];
+  function renderClosing(el, k, anim) {
+    var svg = svgFor(el, W, H, "Six checks before you trust a claim about uncertainty", "A checklist of six items drawn one at a time.");
+    var g = svg.append("g");
+    CHECKS.forEach(function (c, i) {
+      var y = 20 + i * 100, on = i + 1 <= k, row = g.append("g");
+      row.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 64).attr("height", 64).attr("fill", on ? "#FFFFFF" : "none").attr("stroke", on ? INK : FAMILIAR).attr("stroke-width", 3);
+      wrap(row, 100, y + 42, c, 78, { size: 32, lh: 36, fill: on ? INK : MUTED });
+      if (on) { var ck = check(row, 32, y + 36, 20, RED); if (A(anim, k, i + 1)) drawIn(ck, 0, 450); }
+    });
+    cap(g, 0, 660, "Then say it exactly: not “conclude”, but “observe ECE 0.04, 10 bins, one test set”.", { size: 28, weight: 700 });
+  }
+
+  var BUILDS = {
+    map: { steps: 4, render: renderMap }, verbs: { steps: 4, render: renderVerbs }, audit: { steps: 4, render: renderAudit },
+    layers: { steps: 3, render: renderLayers }, unk: { steps: 4, render: renderUnknown }, calib: { steps: 4, render: renderCalib },
+    brier: { steps: 4, render: renderBrier }, ece: { steps: 3, render: renderEce }, sub: { steps: 4, render: renderSub },
+    temp: { steps: 4, render: renderTemp }, pairs: { steps: 4, render: renderPairs }, say: { steps: 5, render: renderSay },
+    closing: { steps: 6, render: renderClosing }
+  };
+
+  /* click on the stage advances one fragment (the original deck had keys and buttons only) */
+  stage.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest("#controls, #thumbs")) return;
+    nextSlide();
+  });
+  function buildEl(slide) { return slide ? slide.querySelector("[data-build]") : null; }
+  function buildOf(slide) { var el = buildEl(slide); return el ? BUILDS[el.getAttribute("data-build")] : null; }
+  function stopBuild(el) { if (hasD3 && el) d3.select(el).selectAll("*").interrupt(); }
+  function renderBuild(el, k, animate) {
+    var b = BUILDS[el.getAttribute("data-build")];
+    if (!b) return;
+    if (!hasD3) {
+      el.innerHTML = '<div class="chart-fallback">This graphic needs D3, which did not load. Check the network connection and reload.</div>';
+      return;
+    }
+    stopBuild(el);
+    b.render(el, Math.max(0, Math.min(b.steps, k)), animate && !reduceMQ.matches);
+  }
+
+  /* ---------------- navigation ---------------- */
+  function go(i, atEnd, animate) {
+    i = Math.max(0, Math.min(total - 1, i));
+    var prev = slides[current];
+    if (prev && i !== current) { stopBuild(buildEl(prev)); prev.classList.remove("is-active"); }
+    current = i;
+    var s = slides[i], b = buildOf(s);
+    step = b && atEnd ? b.steps : 0;
+    s.classList.add("is-active");
+    var el = buildEl(s);
+    if (el) renderBuild(el, step, animate);
+    updateUI(true);
+  }
+  function setStep(k, animate) {
+    step = k;
+    renderBuild(buildEl(slides[current]), step, animate);
+    updateUI(false);
+  }
+  function nextSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step < b.steps) setStep(step + 1, true);
+    else if (current < total - 1) go(current + 1, false, true);
+  }
+  function prevSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step > 0) setStep(step - 1, false);
+    else if (current > 0) go(current - 1, true, false);
+  }
+  function updateUI(newSlide) {
+    var s = slides[current], b = buildOf(s);
+    var title = s.getAttribute("data-title") || "";
+    counter.textContent = (current + 1) + " / " + total;
+    pips.innerHTML = "";
+    if (b) {
+      for (var j = 1; j <= b.steps; j++) {
+        var p = document.createElement("span");
+        p.className = "pip" + (j <= step ? " on" : "");
+        pips.appendChild(p);
+      }
+    }
+    btnPrev.disabled = current === 0 && step === 0;
+    btnNext.disabled = current === total - 1 && (!b || step === b.steps);
+    var stepTxt = b ? ", step " + step + " of " + b.steps : "";
+    live.textContent = newSlide ? "Slide " + (current + 1) + " of " + total + ": " + title + stepTxt : "Step " + step + " of " + (b ? b.steps : 0);
+    if (newSlide) {
+      var n = s.querySelector(".speaker-notes");
+      notesHead.textContent = "Speaker notes, slide " + (current + 1);
+      notesBody.innerHTML = n ? n.innerHTML : "<p>No notes for this slide.</p>";
+      try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) { /* ignore */ }
+    }
+  }
+  btnPrev.addEventListener("click", prevSlide);
+  btnNext.addEventListener("click", nextSlide);
+
+  /* ---------------- notes ---------------- */
+  function toggleNotes() {
+    var on = !document.body.classList.contains("notes-open");
+    document.body.classList.toggle("notes-open", on);
+    btnNotes.setAttribute("aria-pressed", on ? "true" : "false");
+    fit();
+  }
+  btnNotes.addEventListener("click", toggleNotes);
+
+  /* ---------------- fullscreen ---------------- */
+  var root = document.documentElement;
+  var fsEnabled = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  if (!fsEnabled) btnFs.hidden = true;
+  function toggleFullscreen() {
+    if (!fsEnabled) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      if (fsEl) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else {
+        var pr = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+        if (pr && pr.catch) pr.catch(function () {});
+      }
+    } catch (e) { /* refused */ }
+  }
+  btnFs.addEventListener("click", toggleFullscreen);
+  document.addEventListener("fullscreenchange", fit);
+  document.addEventListener("webkitfullscreenchange", fit);
+
+  /* ---------------- thumbnails (always final state) ---------------- */
+  function buildThumbs() {
+    thumbGrid.innerHTML = "";
+    slides.forEach(function (s, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "thumb" + (i === current ? " current" : "");
+      btn.setAttribute("aria-label", "Go to slide " + (i + 1) + ": " + (s.getAttribute("data-title") || ""));
+      if (i === current) btn.setAttribute("aria-current", "true");
+      var inner = document.createElement("div");
+      inner.className = "thumb-inner";
+      inner.setAttribute("aria-hidden", "true");
+      var clone = s.cloneNode(true);
+      clone.classList.remove("is-active");
+      Array.prototype.forEach.call(clone.querySelectorAll("[id]"), function (n) { n.removeAttribute("id"); });
+      var sn = clone.querySelector(".speaker-notes");
+      if (sn) sn.remove();
+      inner.appendChild(clone);
+      var num = document.createElement("span");
+      num.className = "thumb-num";
+      num.textContent = String(i + 1);
+      btn.appendChild(inner);
+      btn.appendChild(num);
+      btn.addEventListener("click", function () { closeThumbs(true); go(i, false, true); });
+      thumbGrid.appendChild(btn);
+      var cb = clone.querySelector("[data-build]");
+      if (cb) renderBuild(cb, 99, false);
+    });
+    scaleThumbs();
+  }
+  function scaleThumbs() {
+    Array.prototype.forEach.call(thumbGrid.querySelectorAll(".thumb"), function (b) {
+      b.querySelector(".thumb-inner").style.transform = "scale(" + (b.clientWidth / 1920) + ")";
+    });
+  }
+  function openThumbs() {
+    lastFocus = document.activeElement;
+    thumbs.classList.add("open");
+    buildThumbs();
+    var cur = thumbGrid.querySelector(".thumb.current");
+    if (cur) { cur.focus(); cur.scrollIntoView({ block: "nearest" }); }
+  }
+  function closeThumbs(navigating) {
+    thumbs.classList.remove("open");
+    thumbGrid.innerHTML = "";
+    if (!navigating && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  btnThumbs.addEventListener("click", openThumbs);
+  thumbs.querySelector(".close").addEventListener("click", function () { closeThumbs(false); });
+  window.addEventListener("resize", function () { if (thumbs.classList.contains("open")) scaleThumbs(); });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (thumbs.classList.contains("open")) {
+      if (e.key === "Escape" || e.key === "g" || e.key === "G") { e.preventDefault(); closeThumbs(false); }
+      return;
+    }
+    var onButton = e.target && e.target.closest && e.target.closest("button");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": e.preventDefault(); nextSlide(); break;
+      case " ": if (onButton) return; e.preventDefault(); nextSlide(); break;
+      case "ArrowLeft": case "PageUp": e.preventDefault(); prevSlide(); break;
+      case "Home": e.preventDefault(); go(0, false, true); break;
+      case "End": e.preventDefault(); go(total - 1, true, false); break;
+      case "f": case "F": e.preventDefault(); toggleFullscreen(); break;
+      case "n": case "N": e.preventDefault(); toggleNotes(); break;
+      case "g": case "G": e.preventDefault(); openThumbs(); break;
+    }
+  });
+
+  /* ---------------- touch swipe ---------------- */
+  var tx = null, ty = null;
+  stage.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) return;
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (tx === null || thumbs.classList.contains("open")) { tx = null; return; }
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) { if (dx < 0) nextSlide(); else prevSlide(); }
+    tx = null;
+  }, { passive: true });
+
+  /* ---------------- quiet controls ---------------- */
+  var idle = null;
+  document.addEventListener("mousemove", function () {
+    document.body.classList.add("show-controls");
+    clearTimeout(idle);
+    idle = setTimeout(function () { document.body.classList.remove("show-controls"); }, 2200);
+  });
+
+  /* ---------------- print: every slide in its final state ---------------- */
+  window.addEventListener("beforeprint", function () {
+    slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  });
+  window.addEventListener("afterprint", function () {
+    slides.forEach(function (s, i) { var el = buildEl(s); if (el && i !== current) renderBuild(el, 99, false); });
+    var el = buildEl(slides[current]);
+    if (el) renderBuild(el, step, false);
+  });
+
+  /* ---------------- start ---------------- */
+  slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  fit();
+  var hm = /^#(\d+)$/.exec(location.hash);
+  go(hm ? parseInt(hm[1], 10) - 1 : 0, false, true);
+  window.addEventListener("hashchange", function () {
+    var m = /^#(\d+)$/.exec(location.hash);
+    if (m && parseInt(m[1], 10) - 1 !== current) go(parseInt(m[1], 10) - 1, false, true);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

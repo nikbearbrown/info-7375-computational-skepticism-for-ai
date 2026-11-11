@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Delegation and trust | INFO 7375 Computational Skepticism terminology deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --nu-red:#C8102E; --nu-black:#000000; --nu-white:#FFFFFF; --nu-gold:#A4804A;
+  --nu-red-hover:#A50C25; --nu-red-press:#870A1F; --nu-red-tint:#FBE7EA;
+  --nu-neutral-1:#E3E3E3; --nu-neutral-2:#C4C4C4; --nu-neutral-3:#909090; --nu-neutral-4:#787878;
+  --nu-neutral-5:#545454; --nu-neutral-6:#404040; --nu-neutral-7:#2D2926; --nu-neutral-8:#1A1A1A;
+  --diagram-ink:#2A1A0E; --panel-subtle:#F6F6F6;
+  --font:"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --mono:ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(0.4, 0, 0.2, 1);
+  /* viewer chrome (theme-aware; slides themselves keep fixed brand colors) */
+  --stage-bg:#E9E9E9; --chrome-bg:rgba(255,255,255,0.94); --chrome-fg:#1A1A1A;
+  --chrome-line:#C4C4C4; --chrome-muted:#545454; --chrome-hover:rgba(0,0,0,0.07);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+    --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+  }
+}
+:root[data-theme="dark"]{
+  --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+  --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top, 0px)}
+body{
+  height:100%; margin:0; overflow:hidden; display:flex; flex-direction:column;
+  background:var(--stage-bg); color:var(--chrome-fg); font-family:var(--font);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+:fullscreen body, body:fullscreen{background:#000}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------- stage & scaling ---------- */
+#stage{position:relative; flex:1 1 auto; min-height:0; overflow:hidden; touch-action:pan-y}
+#deck{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0}
+
+/* ---------- slide base ---------- */
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column; overflow:hidden;
+  background:var(--nu-white); color:var(--nu-black); font-family:var(--font);
+  padding-left:120px; padding-right:120px;
+}
+.slide.is-active{display:flex}
+:where(.slide) :where(h1,h2,p,ul){margin:0}
+.s-dark{background:var(--nu-black); color:var(--nu-white)}
+.s-red{background:var(--nu-red); color:var(--nu-white)}
+.rule{position:absolute; top:0; left:0; right:0; height:8px; background:var(--nu-red)}
+.rule.r10{height:10px}
+
+.s-opening,.s-closing{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-intro{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-section{padding-top:110px; padding-bottom:110px; justify-content:center}
+.s-text{padding-top:96px; padding-bottom:96px}
+.s-diagram{padding-top:72px; padding-bottom:56px}
+.s-chart{padding-top:64px; padding-bottom:56px}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-size:22px; font-weight:700; line-height:1.2; text-transform:uppercase;
+  letter-spacing:0.16em; color:var(--nu-red); margin-bottom:28px;
+}
+.s-intro .eyebrow{font-size:24px; letter-spacing:0.18em; margin-bottom:40px}
+.s-section .eyebrow{font-size:26px; letter-spacing:0.20em; color:rgba(255,255,255,0.78); margin-bottom:36px}
+.s-chart .eyebrow,.s-diagram .eyebrow{margin-bottom:18px}
+
+.t-opening{font-size:104px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-section{font-size:108px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-closing{font-size:84px; font-weight:400; line-height:1.04; letter-spacing:-0.02em; max-width:1560px}
+.t-intro{font-size:72px; font-weight:400; line-height:1.1; letter-spacing:-0.01em; max-width:1500px}
+.t-text{font-size:66px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1500px}
+.t-chart{font-size:50px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1560px}
+.s-chart .t-chart{margin-bottom:30px}
+.s-diagram .t-chart{margin-bottom:40px}
+
+.sub-opening{font-size:38px; font-weight:400; line-height:1.3; color:var(--nu-neutral-2); max-width:1300px}
+.sub-section{font-size:34px; font-weight:400; line-height:1.3; color:rgba(255,255,255,0.92); margin-top:40px; max-width:1300px}
+.para{font-size:30px; line-height:1.4; color:var(--nu-neutral-7); max-width:1300px}
+.caption{font-size:24px; line-height:1.36; color:var(--nu-neutral-5); max-width:1400px; margin-top:22px}
+.t-opening,.t-section,.t-closing,.t-intro,.t-text,.t-chart,.sub-opening,.sub-section,.caption{text-wrap:pretty}
+.source{font-size:19px; line-height:1.4; color:var(--nu-neutral-5); margin-top:12px}
+
+.bar-120{width:120px; height:8px; background:var(--nu-red); margin:52px 0 44px}
+.bar-88{width:88px; height:6px; background:var(--nu-red); margin:40px 0 60px}
+
+.bullets{list-style:none; padding:0; max-width:1480px; display:flex; flex-direction:column; gap:26px}
+.bullets li{
+  display:grid; grid-template-columns:14px 1fr; column-gap:22px;
+  font-size:31px; line-height:1.42; color:var(--nu-neutral-7);
+}
+.bullets li::before{
+  content:""; width:14px; height:14px; background:var(--nu-red);
+  margin-top:calc((31px * 1.42 - 14px) / 2);
+}
+.bullets strong{font-weight:700; color:var(--nu-black)}
+
+/* ---------- charts ---------- */
+.chart{width:1480px; height:600px; flex:none}
+.chart svg{display:block; width:1480px; height:600px; overflow:visible}
+.chart-fallback{
+  width:100%; height:100%; display:grid; place-items:center; border:1px solid var(--nu-neutral-1);
+  font-size:24px; color:var(--nu-neutral-5); background:var(--panel-subtle)
+}
+
+/* ---------- diagram ---------- */
+.diagram{flex:0 1 auto; min-height:0; width:100%; max-width:1400px; max-height:720px}
+.diagram svg{display:block}
+
+/* ---------- evidence status: conceptual vs. illustrative vs. observed ---------- */
+.evidence{
+  position:absolute; right:120px; font-size:18px; font-weight:700; line-height:1;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--nu-neutral-5);
+  border:1px solid var(--nu-neutral-2); padding:9px 12px 8px;
+}
+.s-chart .evidence{top:58px}
+.s-diagram .evidence{top:66px}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)}}
+.slide.is-active .rise{animation:rise 550ms var(--ease) both}
+.slide.is-active .g2{animation-delay:120ms}
+.slide.is-active .g3{animation-delay:240ms}
+@media (prefers-reduced-motion: reduce){
+  .slide.is-active .rise{animation:none}
+}
+
+/* ---------- viewer chrome ---------- */
+#controls{
+  position:absolute; right:14px; bottom:14px; z-index:10;
+  display:flex; align-items:center; gap:2px; padding:4px;
+  background:var(--chrome-bg); border:1px solid var(--chrome-line); color:var(--chrome-fg);
+  opacity:0.38; transition:opacity 200ms var(--ease);
+}
+#controls:hover,#controls:focus-within,body.show-controls #controls{opacity:1}
+#controls button,#thumbs .close{
+  appearance:none; border:0; background:transparent; color:inherit; cursor:pointer;
+  width:34px; height:34px; display:grid; place-items:center; padding:0;
+}
+#controls button:hover,#thumbs .close:hover{background:var(--chrome-hover)}
+#controls button[disabled]{opacity:0.35; cursor:default}
+#controls button[aria-pressed="true"]{background:var(--chrome-hover)}
+#controls svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:square}
+#counter{
+  min-width:66px; text-align:center; font-family:var(--mono); font-size:13px;
+  font-variant-numeric:tabular-nums; color:var(--chrome-fg)
+}
+#pips{display:flex; gap:4px; padding:0 6px 0 2px}
+#pips:empty{display:none}
+.pip{width:6px; height:6px; background:var(--chrome-line)}
+.pip.on{background:var(--nu-red)}
+.sep{width:1px; height:20px; background:var(--chrome-line); margin:0 4px}
+button:focus-visible,.thumb:focus-visible{outline:3px solid var(--nu-red); outline-offset:2px}
+
+#notes{
+  display:none; flex:none; height:min(30vh, 260px); overflow:auto;
+  padding:18px 28px 20px; background:var(--chrome-bg); border-top:1px solid var(--chrome-line);
+  color:var(--chrome-fg); font-size:17px; line-height:1.55;
+}
+body.notes-open #notes{display:block}
+#notes h2{margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-muted)}
+#notes p{margin:0 0 10px; max-width:78ch}
+
+#thumbs{position:absolute; inset:0; z-index:20; display:none; overflow:auto; background:var(--stage-bg); padding:24px}
+#thumbs.open{display:block}
+#thumbs .bar{display:flex; align-items:center; justify-content:space-between; max-width:1400px; margin:0 auto 18px}
+#thumbs .bar h2{margin:0; font-size:15px; font-weight:700; color:var(--chrome-fg)}
+#thumbs .close svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75}
+#thumbs .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:18px; max-width:1400px; margin:0 auto}
+.thumb{
+  appearance:none; padding:0; margin:0; border:1px solid var(--chrome-line); background:#fff;
+  cursor:pointer; position:relative; overflow:hidden; aspect-ratio:16 / 9; width:100%; display:block
+}
+.thumb.current{outline:3px solid var(--nu-red); outline-offset:2px}
+.thumb-inner{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0; pointer-events:none; text-align:left; font:400 16px/1.2 var(--font); white-space:normal}
+.thumb-inner .slide{display:flex}
+.thumb-num{
+  position:absolute; left:0; bottom:0; padding:3px 7px; background:rgba(0,0,0,0.72); color:#fff;
+  font-family:var(--mono); font-size:12px; line-height:1.2
+}
+
+/* ---------- print: every slide, final state ---------- */
+@media print{
+  @page{size:1920px 1080px; margin:0}
+  :root{padding:0}
+  html,body{height:auto; overflow:visible; display:block; background:#fff}
+  #stage{overflow:visible; height:auto}
+  #deck{position:static; transform:none !important; width:1920px; height:auto}
+  .slide{position:relative; display:flex !important; width:1920px; height:1080px; break-after:page; page-break-after:always}
+  .slide .rise{animation:none !important; opacity:1 !important; transform:none !important}
+  #controls,#notes,#thumbs{display:none !important}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+/* ---------- review-deck additions (small; typography classes above are untouched) ---------- */
+.slide .source{font-size:24px; margin-top:10px}
+.evidence{font-size:24px; letter-spacing:0.1em}
+.diagram svg text{font-kerning:normal}
+.diagram{cursor:pointer}
+</style>
+</head>
+<body>
+
+<main id="stage" aria-roledescription="slide deck" aria-label="INFO 7375 Computational Skepticism terminology: Delegation and trust">
+  <div id="deck">
+
+    <section class="slide s-dark s-opening" aria-roledescription="slide" data-title="Delegation and trust">
+      <div class="rule r10"></div>
+      <p class="eyebrow rise">INFO 7375 · Terminology · Chapter 9</p>
+      <h1 class="t-opening rise g2">Delegation and trust</h1>
+      <div class="bar-120 rise g2"></div>
+      <p class="sub-opening rise g3">Terms for writing the contract before you trust the handoff</p>
+      <div class="speaker-notes" hidden><p>33 terms from Chapter 9, Delegation, Trust, and the Supervisory Role. Tags: in the book text means the chapter uses and explains the term (31 terms); in the glossary means a row in the course exam-term list that the chapter does not explain (irreducibly human, solve-verify asymmetry). Left out: automation complacency, fluency trap, the machine's speed and your doubt, provenance, cost versus risk, point of failure, Gru and the exercise vocabulary.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Thirty-three terms in four groups">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Map</p>
+      <h2 class="t-chart">Thirty-three terms in four groups</h2>
+      <div class="diagram build" data-build="map" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9; docs/Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Four groups, one per click. Counts: 10, 8, 8 and 7.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="A delegation is a contract">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">The contract</p>
+      <h2 class="t-chart">A delegation is a contract</h2>
+      <div class="diagram build" data-build="contract" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9, “The handoff condition: the contract, not the partition”; “The full delegation map structure”.</p>
+      <div class="speaker-notes" hidden><p>The three steps are the second team loan pipeline from the chapter opening: the AI computes a score and a brief explanation, the loan officer verifies and checks three edge patterns, then records one of four justification codes. The handoff wording is shortened from the chapter. The chapter claim is limited: a good map survives review; it does not show better decisions.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="A handoff condition has to be testable">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">The contract</p>
+      <h2 class="t-chart">A handoff condition has to be testable</h2>
+      <div class="diagram build" data-build="testable" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9, “The handoff condition: the contract, not the partition”; “The full delegation map structure” (failure routing).</p>
+      <div class="speaker-notes" hidden><p>Step 1: five officers and their checks are drawn from a seeded generator; the point is the spread, not the numbers. The four checks are the explanation check and three edge patterns. Step 2: 40 scores are the mean of two seeded uniform draws, so they are illustrative; the 0.3 and 0.7 bands and the second review are from the chapter. Step 3: the tiers follow the chapter's graded testability; the first two examples are from its passing condition and its citation example.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Missing items: broken or unsupervised">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">The contract</p>
+      <h2 class="t-chart">Missing items: broken or unsupervised</h2>
+      <div class="diagram build" data-build="items" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9, “The full delegation map structure”.</p>
+      <div class="speaker-notes" hidden><p>Items 1 to 4 and 5 to 8 are the chapter's eight-item structure. The run of 120 cases and the 7 errors are illustrative (seeded). The chapter says the second kind of gap runs beautifully until an uncaught error surfaces downstream, usually discovered by the person it harmed.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Operational form: no artifact, no capacity">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Capacities as jobs</p>
+      <h2 class="t-chart">Operational form: no artifact, no capacity</h2>
+      <div class="diagram build" data-build="caps" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9, “The Five Supervisory Capacities as pipeline jobs”.</p>
+      <div class="speaker-notes" hidden><p>Artifacts are from the chapter capacity table. Plausibility auditing, problem formulation and tool orchestration are shown here; interpretive judgment and executive integration follow on the next slide. The chapter says the first team had no documented operational forms and the second team had all of them; the counts shown (0 and 3 of 3) restate that for the three rows drawn.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Six steps, three human">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Capacities as jobs</p>
+      <h2 class="t-chart">Six steps, three human</h2>
+      <div class="diagram build" data-build="sum" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9, “A worked walkthrough: the Research Paper Summarizer”; “The AI Use Disclosure as supervisory log”; docs/Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>The six steps and the capacity labels on human steps are from the Boondoggle Score in the chapter. Irreducibly human is a phrase used in Exercise 13; the chapter body gives the reason for each human step (cannot be delegated because it needs domain knowledge, domain judgment or interpretive responsibility). Spot-check: one in five HIGH entries; the chapter disclosure shows 4 of 20.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Five questions, then buckets">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Before you delegate</p>
+      <h2 class="t-chart">Five questions, then buckets</h2>
+      <div class="diagram build" data-build="cost" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9, “The Boondoggle questions”; docs/Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Marks in the grid are illustrative. The sorting rule shown (0, 1 to 2, 3 or more red) is invented for the picture; the chapter gives the five questions and three buckets but no formula, and says its Boondoggle Score has no external validation. Minutes are illustrative; the chapter says a high-risk check takes a domain expert and at least 30 minutes per item. Step 4 is computed: n = 7,907 times 7,919 = 62,615,533 and the trial divisions are counted in code.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Stakes, fit, reversal and trail">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Before you delegate</p>
+      <h2 class="t-chart">Stakes, fit, reversal and trail</h2>
+      <div class="diagram build" data-build="reach" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9, “The Boondoggle questions”.</p>
+      <div class="speaker-notes" hidden><p>Step 1: 2% error, costs 1 and 500 are illustrative. Step 2: the fit is a least-squares line computed from 20 training points on 0 to 1 against y = x squared; the errors are computed. Step 3 and 4: examples are illustrative.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Reliance should match reliability">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Trust and the record</p>
+      <h2 class="t-chart">Reliance should match reliability</h2>
+      <div class="diagram build" data-build="trust" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9, “Trust calibration”; Exercise 7.</p>
+      <div class="speaker-notes" hidden><p>Steps 1, 2 and 4 are illustrative. Step 3 uses the chapter exercise 7 numbers: 186 accepted, 14 overridden of 200; 6 errors in a 40-case audit. The 95% Wilson interval for 6 of 40 is computed here, not in the chapter, and is wide: the 7% override rate sits at its lower edge. An override is not always a correct catch, so the comparison is a signal, not proof.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="A disclosure is a log, not a checkbox">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Trust and the record</p>
+      <h2 class="t-chart">A disclosure is a log, not a checkbox</h2>
+      <div class="diagram build" data-build="disc" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9, “The AI Use Disclosure as supervisory log”; “Where the map scales — and where it does not”.</p>
+      <div class="speaker-notes" hidden><p>Field names are the chapter disclosure table. The log properties are granular, honest, time-stamped and tied to evidence. The six components, 20 steps each, and the choice of two high-stakes ones are illustrative.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Look-alike pairs">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Tell them apart</p>
+      <h2 class="t-chart">Look-alike pairs</h2>
+      <div class="diagram build" data-build="pairs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9.</p>
+      <div class="speaker-notes" hidden><p>Broken and unsupervised, undertrust and overtrust, delegation map and audit trail, verification cost and stakes.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Say it exactly">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Vague request, exact instruction</p>
+      <h2 class="t-chart">Say it exactly</h2>
+      <div class="diagram build" data-build="say" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9.</p>
+      <div class="speaker-notes" hidden><p>Five requests and exact versions. Counts are computed from the same seeded scores and marks used earlier in the deck.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Before you trust a handoff">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Checklist</p>
+      <h2 class="t-chart">Before you trust a handoff</h2>
+      <div class="diagram build" data-build="closing" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 9.</p>
+      <div class="speaker-notes" hidden><p>Six checks.</p></div>
+    </section>
+
+  </div>
+
+  <nav id="controls" aria-label="Slide controls">
+    <button type="button" id="btn-prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="counter" aria-hidden="true">1 / 1</span>
+    <span id="pips" aria-hidden="true"></span>
+    <button type="button" id="btn-next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <span class="sep" aria-hidden="true"></span>
+    <button type="button" id="btn-thumbs" aria-label="Show all slides (G)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="7" height="5"/><rect x="13" y="5" width="7" height="5"/><rect x="4" y="14" width="7" height="5"/><rect x="13" y="14" width="7" height="5"/></svg></button>
+    <button type="button" id="btn-notes" aria-label="Speaker notes (N)" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 11h14M5 16h9"/></svg></button>
+    <button type="button" id="btn-fs" aria-label="Fullscreen (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+  </nav>
+
+  <div id="thumbs" role="dialog" aria-modal="true" aria-label="All slides">
+    <div class="bar">
+      <h2>All slides</h2>
+      <button type="button" class="close" aria-label="Close slide overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="grid"></div>
+  </div>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+</main>
+
+<aside id="notes" aria-label="Speaker notes">
+  <h2 id="notes-head">Speaker notes</h2>
+  <div id="notes-body"></div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var stage = document.getElementById("stage");
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(".slide"));
+  var total = slides.length;
+  var counter = document.getElementById("counter");
+  var pips = document.getElementById("pips");
+  var live = document.getElementById("live");
+  var notesHead = document.getElementById("notes-head");
+  var notesBody = document.getElementById("notes-body");
+  var btnPrev = document.getElementById("btn-prev");
+  var btnNext = document.getElementById("btn-next");
+  var btnNotes = document.getElementById("btn-notes");
+  var btnThumbs = document.getElementById("btn-thumbs");
+  var btnFs = document.getElementById("btn-fs");
+  var thumbs = document.getElementById("thumbs");
+  var thumbGrid = thumbs.querySelector(".grid");
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hasD3 = typeof window.d3 !== "undefined";
+  var current = -1, step = 0, lastFocus = null;
+
+  /* Recurring visual vocabulary
+     ink   = confidence / belief        red  = failure, consequence, causal break
+     gray  = familiar data, same source tint = what an inspection or failure exposes */
+  var INK = "#2A1A0E", RED = "#C8102E", TINT = "#FBE7EA", GRID = "#E3E3E3", MUTED = "#545454",
+      BASE = "#909090", FAMILIAR = "#C4C4C4", SUBTLE = "#F6F6F6", BODY = "#2D2926";
+  var MONO = 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace';
+  var SANS = '"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+
+  /* ---------------- scaling ---------------- */
+  function fit() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    var s = Math.min(w / 1920, h / 1080);
+    deck.style.transform = "translate(" + (w - 1920 * s) / 2 + "px," + (h - 1080 * s) / 2 + "px) scale(" + s + ")";
+  }
+  if ("ResizeObserver" in window) new ResizeObserver(fit).observe(stage);
+  window.addEventListener("resize", fit);
+
+  /* ---------------- drawing helpers ---------------- */
+  function svgFor(el, w, h, label, desc, fixed) {
+    el.innerHTML = "";
+    var svg = d3.select(el).append("svg").attr("viewBox", "0 0 " + w + " " + h)
+      .attr("role", "img").attr("aria-label", label);
+    if (fixed) svg.attr("width", w).attr("height", h).style("overflow", "visible");
+    else svg.attr("width", "100%").attr("height", "100%").attr("preserveAspectRatio", "xMinYMin meet");
+    svg.append("title").text(label);
+    svg.append("desc").text(desc);
+    return svg;
+  }
+  function txt(g, x, y, s, o) {
+    o = o || {};
+    var t = g.append("text").attr("x", x).attr("y", y)
+      .attr("font-family", o.family || SANS).attr("font-size", o.size || 22)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || INK);
+    if (o.anchor) t.attr("text-anchor", o.anchor);
+    if (o.ls) t.attr("letter-spacing", o.ls);
+    if (o.dy) t.attr("dy", o.dy);
+    return t.text(s);
+  }
+  function fadeIn(sel, delay, dur) {
+    sel.attr("opacity", 0).transition().delay(delay || 0).duration(dur || 400).ease(d3.easeCubicOut).attr("opacity", 1);
+    return sel;
+  }
+  function rng(seed) {
+    var s = seed >>> 0;
+    return function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  /* ================= review-deck helpers ================= */
+  var W = 1400, H = 700;
+  function A(anim, k, n) { return anim && k === n; }
+  function shuffle(a, r) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function drawIn(path, delay, dur) {
+    var L = path.node().getTotalLength();
+    if (!(L > 0)) return path;
+    path.attr("stroke-dasharray", L + " " + L).attr("stroke-dashoffset", L)
+      .transition().delay(delay || 0).duration(dur || 500).ease(d3.easeCubicOut).attr("stroke-dashoffset", 0)
+      .on("end", function () { d3.select(this).attr("stroke-dasharray", null).attr("stroke-dashoffset", null); });
+    return path;
+  }
+  function tweenNum(sel, from, to, fmt, delay, dur) {
+    sel.text(fmt(from)).transition().delay(delay || 0).duration(dur || 1000).ease(d3.easeCubicOut)
+      .tween("text", function () { var it = d3.interpolate(from, to), node = this; return function (t) { node.textContent = fmt(it(t)); }; });
+  }
+  var pct1 = function (v) { return v.toFixed(1) + "%"; };
+  function lab(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: 700, fill: o.fill || MUTED, ls: 1.2, anchor: o.anchor }); }
+  /* wrap a string into tspans; n = characters per line (estimate) */
+  function wrap(g, x, y, s, n, o) {
+    o = o || {};
+    var size = o.size || 26, lh = o.lh || Math.round(size * 1.34), words = s.split(" "), lines = [], cur = "";
+    words.forEach(function (w) { var t = (cur ? cur + " " : "") + w; if (t.length > n && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur);
+    var t = g.append("text").attr("x", x).attr("y", y).attr("font-family", SANS).attr("font-size", size)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || BODY);
+    lines.forEach(function (l, i) { t.append("tspan").attr("x", x).attr("dy", i ? lh : 0).text(l); });
+    t.node().__h = lines.length * lh;
+    return t;
+  }
+  function box(g, x, y, w, h, o) {
+    o = o || {};
+    return g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", w).attr("height", h)
+      .attr("fill", o.fill || "#FFFFFF").attr("stroke", o.stroke || FAMILIAR).attr("stroke-width", o.sw || 1.5);
+  }
+  function ppvOf(p, sens, spec) { return p * sens / (p * sens + (1 - p) * (1 - spec)); }
+  function sigmoid(z) { return 1 / (1 + Math.exp(-z)); }
+  function logit(c) { return Math.log(c / (1 - c)); }
+  function fmtInt(v) { return d3.format(",")(Math.round(v)); }
+  function check(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + y + " L" + (x - s / 3) + "," + (y + s * 0.7) + " L" + (x + s) + "," + (y - s * 0.8)).attr("fill", "none").attr("stroke", color || INK).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+  function cross(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + (y - s) + " L" + (x + s) + "," + (y + s) + " M" + (x + s) + "," + (y - s) + " L" + (x - s) + "," + (y + s)).attr("stroke", color || RED).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+
+  /* ---------- small drawing helpers ---------- */
+  function run(g, dur, fn, anim, ease) {
+    if (!anim) { fn(1); return; }
+    fn(0);
+    d3.select(g.node()).transition().duration(dur).ease(ease || d3.easeLinear)
+      .tween("run", function () { return function (t) { fn(t); }; });
+  }
+  /* keyframes through the values in a, smooth between them, t in 0..1 */
+  function kf(t, a) {
+    var n = a.length - 1, s = Math.min(n - 1e-9, Math.max(0, t) * n), i = Math.floor(s);
+    return a[i] + (a[i + 1] - a[i]) * d3.easeCubicInOut(s - i);
+  }
+  function hint(svg) { wrap(svg.append("g"), 800, 44, "Click or press → to start the animation. Each click adds one idea.", 46, { size: 28, fill: MUTED }); }
+  function cap(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 26, weight: o.weight || 400, fill: o.fill || BODY, anchor: o.anchor, family: o.family }); }
+  function sgn(v, d) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d || 0); }
+
+  /* right-hand column: one glossary entry per step, with its tag; returns the y below the last entry */
+  function entries(svg, list, k, anim) {
+    var g = svg.append("g"), y = 4;
+    list.forEach(function (it) {
+      if (it.s > k) return;
+      var t = T[it.id], cur = it.s === k, e = g.append("g");
+      txt(e, 800, y + 26, t.n, { size: 26, weight: 700, fill: cur ? RED : INK });
+      var TG = { book: ["in the book text", 212], gloss: ["in the glossary", 200], video: ["video only", 150], editor: ["editor or docs", 190], web: ["outside source", 200] }[t.tag || "video"], tg = TG[0], tw_ = TG[1], fill_ = t.tag === "book";
+      e.append("rect").attr("x", 1400 - tw_ + 0.5).attr("y", y + 3.5).attr("width", tw_ - 1).attr("height", 34)
+        .attr("fill", fill_ ? INK : "none").attr("stroke", fill_ ? INK : GREY).attr("stroke-width", 1.5);
+      txt(e, 1400 - tw_ / 2, y + 28, tg, { size: 24, anchor: "middle", fill: fill_ ? "#FFFFFF" : MUTED });
+      var yy = y + 58;
+      if (t.alias) { txt(e, 800, yy, t.alias, { size: 24, fill: MUTED }); yy += 30; }
+      var w = wrap(e, 800, yy, t.m + ".", 50, { size: 24, lh: 30, fill: BODY });
+      y = yy + w.node().__h + 6;
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    return y;
+  }
+  function pairStrip(svg, a, b) {
+    var g = svg.append("g");
+    lab(g, 0, 598, "TELL THESE APART");
+    [[0, a], [740, b]].forEach(function (p, i) {
+      box(g, p[0], 612, 660, 88, { stroke: i ? RED : INK, sw: 2 });
+      txt(g, p[0] + 20, 646, p[1][0], { size: 26, weight: 700, fill: i ? RED : INK });
+      txt(g, p[0] + 20, 682, p[1][1], { size: 24, fill: BODY });
+    });
+    txt(g, 700, 664, "≠", { size: 44, weight: 700, anchor: "middle", fill: RED });
+  }
+  function base(svg, list, k, anim, a, b) { var y = entries(svg, list, k, anim); pairStrip(svg, a, b); if (k === 0) hint(svg); return y; }
+
+  /* top-down / side-view camera pieces. ang: radians, 0 = +x, y grows downward */
+  function conePath(x, y, ang, fov, len) {
+    var h = fov * DEG / 2;
+    return "M" + x + "," + y + "L" + (x + len * Math.cos(ang - h)) + "," + (y + len * Math.sin(ang - h)) +
+      "A" + len + "," + len + " 0 0 1 " + (x + len * Math.cos(ang + h)) + "," + (y + len * Math.sin(ang + h)) + "Z";
+  }
+  function cone(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", TINT).attr("fill-opacity", 0.9).attr("stroke", RED).attr("stroke-width", 2);
+  }
+  function ghost(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 1.5).attr("stroke-dasharray", "6 6");
+  }
+  function camBody(g, x, y, ang) {
+    var c = g.append("g").attr("transform", "translate(" + x + "," + y + ") rotate(" + (ang / DEG) + ")");
+    c.append("rect").attr("x", -16).attr("y", -11).attr("width", 24).attr("height", 22).attr("fill", INK);
+    c.append("path").attr("d", "M8,-7 L22,-14 L22,14 L8,7Z").attr("fill", INK);
+  }
+  function inView(px, py, x, y, ang, fov, len) {
+    var dx = px - x, dy = py - y;
+    if (Math.hypot(dx, dy) > len) return false;
+    var da = Math.atan2(dy, dx) - ang; da = Math.atan2(Math.sin(da), Math.cos(da));
+    return Math.abs(da) <= fov * DEG / 2;
+  }
+  function post(g, x, y, on, r) {
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", r || 11).attr("fill", on ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+  }
+  function ptsInView(g, pts, cx, cy, ang, fov, len) {
+    var n = 0;
+    pts.forEach(function (p) { var on = inView(p[0], p[1], cx, cy, ang, fov, len); if (on) n++; post(g, p[0], p[1], on); });
+    return n;
+  }
+
+
+  /* ================= Delegation and trust (Chapter 9) ================= */
+  var GREY = "#909090";
+  /* tag: book = Chapter 9 uses and explains it; gloss = exam-term row only */
+  var T = {
+    contract: { n: "Contract, not partition", tag: "book", m: "A delegation sets out what the AI does, what the human does, the checkable handoff and what happens on failure" },
+    dmap: { n: "Delegation map", tag: "book", m: "A written document giving each pipeline step an owner, inputs, outputs and a signal that it finished correctly" },
+    handoff: { n: "Handoff condition", tag: "book", m: "The signal that a step finished correctly so the next can start; the load-bearing part of the map" },
+    testable: { n: "Testable", tag: "book", m: "A stranger who did not build the pipeline can read the condition, look at the system and tell if it was met" },
+    graded: { n: "Graded testability", tag: "book", m: "Testability has tiers: some conditions any outsider can check, some only a qualified reviewer" },
+    failrout: { n: "Failure routing", tag: "book", m: "A declared escalation path for when a step fails, so someone is accountable" },
+    broken: { n: "Broken pipeline", tag: "book", m: "Missing items 1 to 4 of the map: it cannot run, so the gap shows at once" },
+    unsup: { n: "Unsupervised pipeline", tag: "book", m: "Missing items 5 to 8: it runs fine until an uncaught error surfaces downstream" },
+    audit: { n: "Audit trail", tag: "book", m: "The record of inputs, decisions and outputs that lets a case be reconstructed afterwards" },
+    signoff: { n: "Sign-off authority", tag: "book", m: "A named human who is the accountable decision-maker for the pipeline's outputs" },
+    opform: { n: "Operational form", tag: "book", m: "The concrete, documented version of a capacity that a pipeline contains: no artifact, no capacity" },
+    pa: { n: "Plausibility auditing", tag: "book", m: "Checking whether an output could be true of the world it describes, with a recorded checklist" },
+    pf: { n: "Problem formulation", tag: "book", m: "Writing down the question, the criteria and when AI is the right tool, before the AI is invoked" },
+    to: { n: "Tool orchestration", tag: "book", m: "Deciding which tool owns each step and the handoff between tools; made concrete, it is the map" },
+    ij: { n: "Interpretive judgment", tag: "book", m: "Reading the output in its deployment context and recording what it means for the decision" },
+    ei: { n: "Executive integration", tag: "book", m: "Combining outputs from several tools and people into one decision with named authority" },
+    irr: { n: "Irreducibly human", tag: "gloss", m: "A step the AI cannot take because it needs domain knowledge, domain judgment or responsibility" },
+    fv: { n: "Failure visibility", tag: "book", m: "When something cannot be done, say so with a flag instead of inventing a plausible substitute" },
+    bs: { n: "Boondoggle Score", tag: "book", m: "The course author's five-question heuristic for sorting sub-tasks; not validated outside the course" },
+    bucket: { n: "Delegation buckets", tag: "book", m: "The three outcomes of the sort: AI executes, human only, or hybrid with human checks" },
+    vc: { n: "Verification cost", tag: "book", m: "How costly a human check is; near-redo checks quietly push people to accept the output" },
+    sva: { n: "Solve-verify asymmetry", tag: "gloss", m: "Checking an answer is easier than finding it; that gap is why AI help is worth having" },
+    stakes: { n: "Stakes", tag: "book", m: "The cost of being wrong on a step; when one error is catastrophic, the average is the wrong statistic" },
+    dm: { n: "Distribution match", tag: "book", m: "Whether an input resembles what the AI was trained on or falls where it is undertrained" },
+    rev: { n: "Reversibility", tag: "book", m: "Whether an action can be undone; irreversible ones need a human approval gate" },
+    atc: { n: "Audit trail clarity", tag: "book", m: "Whether the AI's actions leave a trail that can be reviewed after the fact" },
+    cal: { n: "Calibrated trust", tag: "book", m: "Reliance on the AI that matches its actual reliability for this kind of case" },
+    under: { n: "Undertrust", tag: "book", m: "Systematically discounting AI output even when it is reliable, so the value is lost" },
+    over: { n: "Overtrust", tag: "book", m: "Accepting AI output that should be checked, so errors surface later and quietly" },
+    mgap: { n: "Monitoring gap", tag: "book", m: "The distance between the monitoring data a deployment holds and the data anyone reviews" },
+    disc: { n: "AI Use Disclosure", tag: "book", m: "A per-step record of how AI was used: the tool, the request, the output, what was checked, what changed" },
+    slog: { n: "Supervisory log", tag: "book", m: "A disclosure read as a whole: where the person used each capacity, with evidence behind it" },
+    hmap: { n: "Hierarchical mapping", tag: "book", m: "Mapping by component, in step-by-step detail only at high-stakes interfaces and seams" }
+  };
+  function note(svg, ey, text) { if (!text || ey > 470) return; wrap(svg.append("g"), 800, ey + 36, text, 46, { size: 28, lh: 36, fill: INK }); }
+  function fade(sel, anim, delay) { if (anim) sel.attr("opacity", 0).transition().delay(delay || 0).duration(450).attr("opacity", 1); return sel; }
+  function bar(g, x, y, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("width", 0).transition().delay(delay || 0).duration(700).attr("width", w); return b; }
+  function mono(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: o.weight || 400, fill: o.fill || INK, family: MONO, anchor: o.anchor }); }
+  function sq(g, x, y, s, fill, stroke, sw) { return g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", s).attr("height", s).attr("fill", fill).attr("stroke", stroke || INK).attr("stroke-width", sw || 2); }
+  function line(g, x1, y1, x2, y2, col, sw, dash) { var p = g.append("path").attr("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2).attr("stroke", col || INK).attr("stroke-width", sw || 2).attr("fill", "none"); if (dash) p.attr("stroke-dasharray", dash); return p; }
+  function f0(v) { return d3.format(",")(Math.round(v)); }
+
+  /* shared data */
+  function scores40() { var r = rng(9), a = []; for (var i = 0; i < 40; i++) a.push((r() + r()) / 2); return a; }
+  function twoReview(s) { return s >= 0.3 && s <= 0.7; }
+  function wilson(x, n) { var z = 1.96, p = x / n, dd = 1 + z * z / n, c = (p + z * z / (2 * n)) / dd, h = z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / dd; return [c - h, c + h]; }
+  var QS = ["check", "stakes", "fit", "undo", "trail"];
+  var SUBT = [["Proofread a summary", [0, 0, 0, 0, 0]], ["Rank 20 of 200 CVs", [0, 1, 1, 0, 0]], ["Wire a payment", [0, 1, 0, 1, 1]], ["Rare-case triage", [1, 1, 1, 0, 0]]];
+  function bucketOf(n) { return n === 0 ? "AI" : n <= 2 ? "hybrid" : "human only"; }
+  
+  var MAPROWS = [
+    ["The contract", "contract not partition, delegation map, handoff condition, testable, graded testability, failure routing, broken, unsupervised, audit trail, sign-off", "What a delegation must say, and how to tell it is complete"],
+    ["Capacities as jobs", "operational form, plausibility auditing, problem formulation, tool orchestration, interpretive judgment, executive integration, irreducibly human, failure visibility", "Each capacity becomes an artifact the pipeline holds"],
+    ["Before you delegate", "Boondoggle Score, delegation buckets, verification cost, solve-verify asymmetry, stakes, distribution match, reversibility, audit trail clarity", "Which sub-tasks the AI should take at all"],
+    ["Trust and the record", "calibrated trust, undertrust, overtrust, monitoring gap, AI Use Disclosure, supervisory log, hierarchical mapping", "Watching reliance, and writing down what was done"]
+  ];
+  function renderMap(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four groups of delegation and trust terms", "A table with four rows: group, terms, what the group is about.");
+    var g = svg.append("g");
+    wrap(g, 0, 36, "33 terms from Chapter 9. Every one is about writing the contract for a handoff, and checking that people rely on the AI as much as it deserves.", 96, { size: 28, lh: 38, fill: INK });
+    var cx = [0, 330, 1058];
+    ["GROUP", "TERMS", "WHAT IT IS ABOUT"].forEach(function (h, i) { lab(g, cx[i] + 18, 140, h); });
+    g.append("path").attr("d", "M0,152 H1400").attr("stroke", INK).attr("stroke-width", 2);
+    MAPROWS.forEach(function (r, i) {
+      if (i + 1 > k) return;
+      var y = 162 + i * 133, row = g.append("g");
+      box(row, 0, y, 1400, 124, { stroke: FAMILIAR });
+      row.append("rect").attr("x", 0).attr("y", y).attr("width", 10).attr("height", 125).attr("fill", RED);
+      wrap(row, cx[0] + 28, y + 48, r[0], 20, { size: 26, lh: 30, weight: 700, fill: RED });
+      wrap(row, cx[1] + 18, y + 36, r[1], 62, { size: 24, lh: 30, fill: INK });
+      wrap(row, cx[2] + 18, y + 36, r[2], 27, { size: 24, lh: 30 });
+      if (A(anim, k, i + 1)) row.attr("opacity", 0).attr("transform", "translate(0,18)").transition().duration(450).ease(d3.easeCubicOut).attr("opacity", 1).attr("transform", "translate(0,0)");
+    });
+    if (k === 0) cap(g, 0, 440, "Click or press → to add the four groups, one at a time.", { fill: MUTED });
+  }
+
+  /* ---------- 1. contract, delegation map, handoff condition ---------- */
+  var DR = [["Score", "AI", "application", "score, reason", "handoff: score is 0 to 1"], ["Verify", "human", "score, reason", "checklist done", "handoff: 3 edge patterns ticked"], ["Decide", "human", "checklist done", "decision + code", "handoff: 1 of 4 codes recorded"]];
+  function renderContract(el, k, anim) {
+    var svg = svgFor(el, W, H, "A delegation is a contract: owners, inputs, outputs and a testable handoff between steps", "A three-step loan pipeline. First only who owns each step, then inputs and outputs, then a testable handoff condition between steps.");
+    var ey = base(svg, [{ id: "contract", s: 1 }, { id: "dmap", s: 2 }, { id: "handoff", s: 3 }], k, anim, ["Partition", "who touches what"], ["Contract", "who, what, handoff, failure"]);
+    var d = svg.append("g"), kk = Math.max(1, k), an = anim && k >= 1;
+    lab(d, 0, 30, kk === 1 ? "A PARTITION: WHO TOUCHES WHAT" : kk === 2 ? "A DELEGATION MAP: OWNER, IN, OUT" : "A CONTRACT: PLUS THE HANDOFF");
+    var cxs = [14, 150, 272, 520];
+    if (kk >= 2) ["STEP", "OWNER", "IN", "OUT"].forEach(function (h, i) { lab(d, cxs[i], 62, h, { size: 24 }); });
+    DR.forEach(function (r, i) {
+      var y = 84 + i * 128, g = d.append("g");
+      box(g, 0, y, 760, 60, { stroke: i ? INK : INK, sw: 2.5 });
+      cap(g, cxs[0], y + 40, r[0], { size: 26, weight: 700 });
+      cap(g, cxs[1], y + 40, r[1], { size: 24, weight: 700, fill: r[1] === "AI" ? RED : INK });
+      if (kk >= 2) { var gi = g.append("g"); cap(gi, cxs[2], y + 40, r[2], { size: 24 }); cap(gi, cxs[3], y + 40, r[3], { size: 24 }); fade(gi, an && kk === 2, i * 250); }
+      if (kk >= 3) {
+        var gh = d.append("g"); line(gh, 40, y + 62, 40, y + 120, RED, 3);         cap(gh, 60, y + 100, r[4], { size: 24, weight: 700, fill: RED }); fade(gh, an && kk === 3, 300 + i * 300);
+      }
+    });
+    if (kk >= 3) { var gf = d.append("g"); cap(gf, 60, 84 + 3 * 128 - 6 + 18, "if a condition fails: stop and escalate", { size: 24, fill: MUTED }); fade(gf, an && kk === 3, 1300); }
+    note(svg, ey, ["", "Naming who touches what does not say what \"reviews\" means. Nothing can be checked.", "Owner, inputs and outputs are ordinary engineering documentation. They still leave the handoff open.", "Each gap now holds a condition and a failure clause. That is what turns a split into a contract."][k]);
+  }
+
+  /* ---------- 2. testable, failure routing, graded testability ---------- */
+  function renderTestable(el, k, anim) {
+    var svg = svgFor(el, W, H, "A testable condition lets a stranger decide; a failure route sends mid-score cases to a second reviewer", "Five officers review one case with different depth, then a rule that is met or not. Then forty scores routed by bands. Then three tiers of who can check a condition.");
+    var ey = base(svg, [{ id: "testable", s: 1 }, { id: "failrout", s: 2 }, { id: "graded", s: 3 }], k, anim, ["Testable", "a stranger can tell if it was met"], ["Interpretive", "five readers, five outcomes"]);
+    var d = svg.append("g"), kk = Math.max(1, k), an = anim && k >= 1;
+    if (kk === 1) {
+      lab(d, 0, 30, "FIVE OFFICERS, ONE CASE: CHECKS DONE");
+      var r = rng(3), ch = d3.range(5).map(function () { return Math.floor(r() * 5); });
+      ch.forEach(function (c, i) {
+        var y = 64 + i * 72, g = d.append("g"), met = c === 4;
+        cap(g, 0, y + 30, "officer " + (i + 1), { size: 24, weight: 700 });
+        d3.range(4).forEach(function (j) { sq(g, 160 + j * 104, y + 4, 36, j < c ? INK : "#FFFFFF", j < c ? INK : FAMILIAR, 2); });
+        var t1 = cap(g, 600, y + 30, "reviews", { size: 24, fill: MUTED });
+        var t2 = cap(g, 600, y + 30, met ? "met" : "not met", { size: 24, weight: 700, fill: met ? INK : RED });
+        if (an) { t1.transition().delay(1500).duration(300).attr("opacity", 0); t2.attr("opacity", 0).transition().delay(1500).duration(400).attr("opacity", 1); } else t1.remove();
+        fade(g, an, i * 200);
+      });
+      var mn = d3.min(ch), mx = d3.max(ch);
+      cap(d, 0, 450, "Checks done range from " + mn + " to " + mx + " of 4. All five logged \"reviews\".", { size: 24, weight: 700 });
+      cap(d, 0, 486, "Rule: all 4 checks ticked. Now each officer is met or not met.", { size: 24, fill: RED, weight: 700 });
+      cap(d, 0, 522, "The rule is checkable; \"reasonable\" and \"reviews\" are not.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "40 CASES BY AI SCORE (ILLUSTRATIVE SCORES)");
+      var S = scores40(), X = function (s) { return 30 + s * 700; }, base0 = 380;
+      [[0, 0.3, "one officer"], [0.3, 0.7, "second review"], [0.7, 1, "one officer"]].forEach(function (z, i) {
+        d.append("rect").attr("x", X(z[0])).attr("y", 70).attr("width", X(z[1]) - X(z[0])).attr("height", base0 - 70 + 6).attr("fill", i === 1 ? TINT : "#F6F6F6");
+        cap(d, (X(z[0]) + X(z[1])) / 2, 100, z[2], { size: 24, anchor: "middle", weight: 700, fill: i === 1 ? RED : INK });
+      });
+      line(d, 30, base0 + 6, 730, base0 + 6, INK, 2);
+      [0, 0.3, 0.7, 1].forEach(function (v) { cap(d, X(v), base0 + 40, String(v).replace(/^0$/, "0").replace(/^1$/, "1"), { size: 24, anchor: "middle" }); });
+      cap(d, 380, base0 + 76, "AI score", { size: 24, anchor: "middle", fill: MUTED });
+      var cnt = {}, ord = S.map(function (s, i) { return i; }).sort(function (a, b) { return S[a] - S[b]; });
+      ord.forEach(function (i, n) {
+        var b = Math.floor(S[i] / 0.03); cnt[b] = (cnt[b] || 0) + 1;
+        var c = d.append("circle").attr("cx", X(S[i])).attr("cy", base0 - 12 - (cnt[b] - 1) * 23).attr("r", 10).attr("fill", twoReview(S[i]) ? RED : INK);
+        if (an) c.attr("opacity", 0).transition().delay(n * 40).duration(250).attr("opacity", 1);
+      });
+      var two = S.filter(twoReview).length;
+      cap(d, 0, 500, "Second review: " + two + " of 40. One officer: " + (40 - two) + " of 40.", { size: 24, weight: 700, fill: RED });
+      cap(d, 0, 536, "A stranger can recompute the route from the log.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "WHO CAN SAY THE CONDITION WAS MET");
+      [["Any non-author", "score is between 0 and 1", "one of the 4 codes is recorded", INK, 0], ["Qualified reviewer only", "the citation is accurate in the", "domain-specific sense", INK, 420], ["Nobody yet", "\"the AI produces a reasonable result\"", "reasonable is not specified", RED, 90]].forEach(function (t, i) {
+        var y = 64 + i * 150, g = d.append("g");
+        box(g, 0, y, 760, 130, { stroke: t[3], sw: 3 }); cap(g, 18, y + 38, t[0], { size: 26, weight: 700, fill: t[3] });
+        cap(g, 18, y + 76, t[1], { size: 24 }); cap(g, 18, y + 108, t[2], { size: 24, fill: MUTED });
+        cap(g, 742, y + 38, ["anyone", "an expert", "nobody"][i], { size: 24, weight: 700, anchor: "end", fill: t[3] });
+        fade(g, an, i * 300);
+      });
+      cap(d, 0, 540, "The line is graded. Honest documentation names the tier.", { size: 24, weight: 700 });
+    }
+    note(svg, ey, ["", "\"Reviews\" is not checkable. A rule with ticks is. Anyone can then say who met it.", "Mid scores take a failure route: a second officer reviews before either records a decision.", "Some conditions need a qualified reviewer. Say which tier each handoff sits in."][k]);
+  }
+
+  /* ---------- 3. eight items: broken, unsupervised, audit trail, sign-off ---------- */
+  var ITEMS = [["Task", "defined · 1"], ["Input", "contract · 2"], ["Output", "contract · 3"], ["Tools", "listed · 4"], ["Plausibility", "check · 5"], ["Failure", "routing · 6"], ["Audit", "trail · 7"], ["Sign-off", "authority · 8"]];
+  function renderItems(el, k, anim) {
+    var svg = svgFor(el, W, H, "Missing items 1 to 4 stops a pipeline; missing items 5 to 8 leaves it running unsupervised", "Eight map items in two rows. Dropping item 3 halts the run at once. Dropping item 6 lets 120 cases run with seven errors nobody sees. Items 7 and 8 let a case be traced and owned.");
+    var ey = base(svg, [{ id: "broken", s: 1 }, { id: "unsup", s: 2 }, { id: "audit", s: 3 }, { id: "signoff", s: 4 }], k, anim, ["Audit trail", "what happened, step by step"], ["Sign-off", "who answers for the outcome"]);
+    var d = svg.append("g"), kk = Math.max(1, k), an = anim && k >= 1;
+    var focus = [0, 3, 6, 7, 8][kk]; /* item number in focus (1-based) */
+    lab(d, 0, 28, "ITEMS 1 TO 4: STANDARD DOCUMENTATION"); lab(d, 0, 152, "ITEMS 5 TO 8: THE SUPERVISORY ADDITIONS", { fill: RED });
+    ITEMS.forEach(function (it, i) {
+      var x = (i % 4) * 193, y = i < 4 ? 40 : 164, g = d.append("g"), on = focus === i + 1, struck = (kk === 1 && i === 2) || (kk === 2 && i === 5);
+      box(g, x, y, 180, 74, { stroke: i < 4 ? INK : RED, sw: on ? 4 : 2, fill: on ? TINT : "#FFFFFF" });
+      cap(g, x + 90, y + 32, it[0], { size: 24, weight: 700, anchor: "middle" }); cap(g, x + 90, y + 62, it[1], { size: 24, anchor: "middle", fill: MUTED });
+      if (struck) { cross(g, x + 156, y + 20, 10, RED); if (an) fade(g.select("path:last-child"), true, 200); }
+    });
+    var by = 284, gx = function (i) { return (i % 20) * 37; }, gy = function (i) { return by + Math.floor(i / 20) * 37; };
+    lab(d, 0, 272, kk === 1 ? "RUN OF 120 CASES WITH ITEM 3 MISSING" : kk === 2 ? "RUN OF 120 CASES WITH ITEM 6 MISSING" : "THE SAME RUN, WITH ITEMS " + (kk === 3 ? "7" : "7 AND 8") + " IN PLACE");
+    var sh = shuffle(d3.range(120), rng(5)), bad = {}; sh.slice(0, 7).forEach(function (i) { bad[i] = 1; });
+    d3.range(120).forEach(function (i) {
+      var fill = kk === 1 ? "#FFFFFF" : bad[i] ? RED : INK, s = sq(d, gx(i), gy(i), 28, fill, kk === 1 ? FAMILIAR : fill, 1.5);
+      if (an && kk === 2) s.attr("opacity", 0).transition().delay((i % 20) * 45).duration(150).attr("opacity", 1);
+    });
+    var cs = sh[0], sel = d.append("rect").attr("x", gx(cs) - 3.5).attr("y", gy(cs) - 3.5).attr("width", 35).attr("height", 35).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 3);
+    if (kk < 3) sel.remove();
+    var l1 = ["", "Stopped at item 3: no output contract. 0 of 120 cases processed.", "All 120 processed, 0 errors raised. 7 wrong, found later downstream (illustrative).", "Item 7: the outlined case traces from input to score to officer to code. Without it: no way back.", "Item 8: a named officer signed the outlined case. Without it, nobody answers for the 7."][kk];
+    wrap(d, 0, 534, l1, 58, { size: 24, lh: 28, weight: 700, fill: kk === 1 ? INK : RED });
+  }
+
+  /* ---------- 4. capacities as jobs ---------- */
+  var CAPR = [["Plausibility auditing", "plausibility audit log"], ["Problem formulation", "scoping doc + deviation log"], ["Tool orchestration", "tool inventory + per-action log"]];
+  function renderCaps(el, k, anim) {
+    var svg = svgFor(el, W, H, "A capacity counts only if the pipeline holds its artifact", "Three supervisory capacities, each with the artifact that documents it. Team one has none of them, team two has all of them.");
+    var ey = base(svg, [{ id: "opform", s: 1 }, { id: "pa", s: 1 }, { id: "pf", s: 2 }, { id: "to", s: 3 }], k, anim, ["Operational form", "an artifact the pipeline holds"], ["Trait", "a feeling of being careful"]);
+    var d = svg.append("g"), kk = Math.max(1, k), an = anim && k >= 1;
+    lab(d, 0, 30, "DOCUMENTATION HOLDS");
+    lab(d, 540, 30, "TEAM 1", { anchor: "middle" }); lab(d, 680, 30, "TEAM 2", { anchor: "middle" });
+    CAPR.forEach(function (r, i) {
+      if (i + 1 > kk) return;
+      var y = 52 + i * 92, g = d.append("g"), cur = i + 1 === kk;
+      box(g, 0, y, 760, 80, { stroke: cur ? RED : FAMILIAR, sw: cur ? 3 : 1.5 });
+      cap(g, 16, y + 34, r[0], { size: 26, weight: 700, fill: cur ? RED : INK }); cap(g, 16, y + 66, r[1], { size: 24, fill: MUTED });
+      cross(g, 540, y + 40, 12, RED); check(g, 680, y + 42, 14, INK);
+      fade(g, an && cur, 0);
+    });
+    cap(d, 0, 470, "Capacities that happened: Team 1 0 of " + kk + ", Team 2 " + kk + " of " + kk + ".", { size: 24, weight: 700 });
+    wrap(d, 0, 506, ["", "No audit log: confidently wrong outputs ship.", "No scoping document: the pipeline solves the wrong problem fluently.", "The delegation map is tool orchestration made concrete."][kk], 60, { size: 24, lh: 28, fill: MUTED });
+  }
+
+  /* ---------- 5. six steps: irreducibly human, interpretive judgment, executive integration, failure visibility ---------- */
+  var SUMR = [["human", "section taxonomy", "problem formulation"], ["AI", "parse into sections", ""], ["AI", "claim + citation per section", ""], ["human", "audit LOW and flagged", "plausibility auditing"], ["AI", "format the summary", ""], ["human", "read as the user, sign", "interpretive judgment"]];
+  function renderSum(el, k, anim) {
+    var svg = svgFor(el, W, H, "In the Paper Summarizer, three of six steps are human; no step integrates across people", "Six steps coloured by owner with their capacity labels, then the sign-off step in focus, then a dashed seventh step for executive integration, then the flags that make failures visible.");
+    var ey = base(svg, [{ id: "irr", s: 1 }, { id: "ij", s: 2 }, { id: "ei", s: 3 }, { id: "fv", s: 4 }], k, anim, ["Failure visibility", "say it cannot be done"], ["Fluent fill-in", "invent a plausible answer"]);
+    var d = svg.append("g"), kk = Math.max(1, k), an = anim && k >= 1;
+    lab(d, 0, 30, "RESEARCH PAPER SUMMARIZER: SIX STEPS");
+    SUMR.forEach(function (r, i) {
+      var y = 44 + i * 58, g = d.append("g"), hum = r[0] === "human", cur = (kk === 2 && i === 5);
+      box(g, 0, y, 760, 48, { stroke: cur ? RED : hum ? INK : FAMILIAR, sw: cur ? 4 : hum ? 2.5 : 1.5, fill: cur ? TINT : "#FFFFFF" });
+      g.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 112).attr("height", 48).attr("fill", hum ? INK : "#EDEDED");
+      cap(g, 56, y + 33, (i + 1) + " " + (hum ? "human" : "AI"), { size: 24, weight: 700, anchor: "middle", fill: hum ? "#FFFFFF" : INK });
+      cap(g, 126, y + 33, r[1], { size: 24 });
+      if (r[2]) cap(g, 748, y + 33, r[2], { size: 24, anchor: "end", fill: RED, weight: 700 });
+      if (kk === 4 && i === 1) cap(g, 748, y + 33, "UNMAPPED, SUSPECT", { size: 24, anchor: "end", fill: RED, weight: 700 });
+      if (kk === 4 && i === 2) cap(g, 748, y + 33, "NO_CITATION", { size: 24, anchor: "end", fill: RED, weight: 700 });
+      if (kk === 1 && an) fade(g, true, i * 150);
+    });
+    if (kk >= 3) {
+      var g7 = d.append("g"); g7.append("rect").attr("x", 0.5).attr("y", 392.5).attr("width", 760).attr("height", 48).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6");
+      cap(g7, 16, 425, "7 ? executive integration", { size: 24, weight: 700, fill: RED }); cap(g7, 748, 425, "no step", { size: 24, anchor: "end", fill: RED });
+      fade(g7, an && kk === 3, 0);
+    }
+    if (kk === 4) {
+      var g8 = d.append("g"), n = 20, ck = shuffle(d3.range(n), rng(2)).slice(0, n / 5), ckm = {}; ck.forEach(function (i) { ckm[i] = 1; });
+      lab(g8, 0, 474, "20 HIGH-CONFIDENCE ENTRIES");
+      d3.range(n).forEach(function (i) { sq(g8, i * 37, 488, 28, ckm[i] ? RED : "#FFFFFF", ckm[i] ? RED : INK, 2); });
+      cap(g8, 0, 550, "Spot-check: " + (n / 5) + " of " + n + " entries re-checked (1 in 5).", { size: 24, weight: 700 }); fade(g8, an, 0);
+    } else {
+      var hc = SUMR.filter(function (r) { return r[0] === "human"; }).length;
+      cap(d, 0, 500, ["", "Human: steps 1, 4 and 6 (" + hc + " of 6). AI: steps 2, 3 and 5.", "Step 6 is read the way the user will read it, then signed. It is not a QA pass.", "One researcher runs it, another relies on it: that handoff is undocumented."][kk], { size: 24, weight: 700, fill: kk === 1 ? INK : RED });
+    }
+  }
+
+  /* ---------- 6. Boondoggle score, buckets, verification cost, solve-verify ---------- */
+  function renderCost(el, k, anim) {
+    var svg = svgFor(el, W, H, "Five questions sort sub-tasks into buckets; cheap checks are what make AI worth using", "A grid of four sub-tasks by five questions with a bucket for each. Then minutes to produce versus to check. Then the trial divisions needed to find a factor against one multiplication to check it.");
+    var ey = base(svg, [{ id: "bs", s: 1 }, { id: "bucket", s: 2 }, { id: "vc", s: 3 }, { id: "sva", s: 4 }], k, anim, ["Verification cost", "effort to check an output"], ["Stakes", "cost of a wrong output"]);
+    var d = svg.append("g"), kk = Math.max(1, k), an = anim && k >= 1;
+    if (kk <= 2) {
+      lab(d, 0, 30, "SUB-TASKS BY THE FIVE QUESTIONS (ILLUSTRATIVE MARKS)");
+      QS.forEach(function (q, i) { cap(d, 330 + i * 92, 68, q, { size: 24, weight: 700, anchor: "middle" }); });
+      SUBT.forEach(function (s, i) {
+        var y = 84 + i * 100, g = d.append("g"), n = d3.sum(s[1]);
+        cap(g, 0, y + 34, s[0], { size: 24, weight: 700 });
+        if (kk >= 2) cap(g, 0, y + 68, "→ " + bucketOf(n) + " (" + n + " red)", { size: 24, weight: 700, fill: RED });
+        s[1].forEach(function (v, j) { sq(g, 330 + j * 92 - 20, y + 14, 40, v ? RED : "#FFFFFF", v ? RED : INK, 2); });
+        fade(g, an && kk === 1, i * 250);
+      });
+      wrap(d, 0, 506, kk === 1 ? "Red square = high risk on that question. The questions matter more than any score." : "Rule used here: 0 red = AI, 1 to 2 = hybrid, 3 or more = human only. Illustrative: the chapter gives no formula.", 58, { size: 24, lh: 28, fill: MUTED });
+    } else if (kk === 3) {
+      lab(d, 0, 30, "MINUTES TO PRODUCE AND TO CHECK (ILLUSTRATIVE)");
+      [["Proofread a summary", 40, 4], ["Check a domain citation", 25, 30]].forEach(function (t, i) {
+        var y = 60 + i * 200, g = d.append("g"), sc = 560 / 40;
+        cap(g, 0, y + 24, t[0], { size: 24, weight: 700 });
+        bar(g, 0, y + 40, t[1] * sc, 34, "#C4C4C4", an, i * 300); cap(g, t[1] * sc + 10, y + 66, "produce " + t[1] + " min", { size: 24 });
+        bar(g, 0, y + 84, t[2] * sc, 34, RED, an, 300 + i * 300); cap(g, Math.min(t[2] * sc, 520) + 10, y + 110, "check " + t[2] + " min", { size: 24, weight: 700, fill: RED });
+        cap(g, 0, y + 150, "check / produce = " + (t[2] / t[1]).toFixed(2) + (t[2] / t[1] < 0.5 ? ": cheap to check" : ": close to a redo"), { size: 24, weight: 700, fill: t[2] / t[1] < 0.5 ? INK : RED });
+      });
+      cap(d, 0, 500, "Expensive checks push people to accept. Economics, not a flaw.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "FIND A FACTOR OR CHECK ONE");
+      var p = 7907, q = 7919, n = p * q, tr = 0, dv = 3; for (; dv * dv <= n; dv += 2) { tr++; if (n % dv === 0) break; }
+      cap(d, 0, 80, "n = " + f0(n), { size: 26, weight: 700 });
+      cap(d, 0, 150, "find a factor", { size: 24, weight: 700 }); bar(d, 0, 164, 500, 40, "#C4C4C4", an, 0); cap(d, 512, 194, f0(tr) + " divisions", { size: 24, weight: 700 });
+      cap(d, 0, 270, "check " + f0(dv) + " × " + f0(n / dv), { size: 24, weight: 700 }); bar(d, 0, 284, Math.max(500 * 1 / tr, 4), 40, RED, an, 500); cap(d, 24, 354, "1 multiplication", { size: 24, weight: 700, fill: RED });
+      wrap(d, 0, 430, "Trial division by odd numbers until a factor appears: " + f0(tr) + " tries. Checking a claimed answer: one.", 56, { size: 24, lh: 28, fill: MUTED });
+    }
+    note(svg, ey, ["", "Five questions go to every sub-task. The marks matter less than the written reasons.", "The sort ends in a bucket, with the justification written into the pipeline documentation.", "A check that costs about as much as the work pushes the supervisor toward accepting.", "Checking is easier than finding. That gap is what makes delegating worthwhile."][k]);
+  }
+
+  /* ---------- 7. stakes, distribution match, reversibility, audit trail clarity ---------- */
+  var ACTS = [["Draft a reply", "discard it", false], ["Edit a record", "undo the edit", false], ["Delete a record", "cannot undo", true], ["Send an email", "cannot unsend", true], ["Wire a payment", "cannot recall", true]];
+  function renderReach(el, k, anim) {
+    var svg = svgFor(el, W, H, "Stakes, distribution match, reversibility and an audit trail decide where AI may act", "Two tasks with equal accuracy but different cost of one error. A fitted line that is accurate where it was trained and wrong outside. A table of actions with human gates on the irreversible ones. Two logs, one clear and one entangled.");
+    var ey = base(svg, [{ id: "stakes", s: 1 }, { id: "dm", s: 2 }, { id: "rev", s: 3 }, { id: "atc", s: 4 }], k, anim, ["Reversibility", "can the action be undone"], ["Audit trail clarity", "can you tell what was done"]);
+    var d = svg.append("g"), kk = Math.max(1, k), an = anim && k >= 1;
+    if (kk === 1) {
+      lab(d, 0, 30, "SAME ACCURACY, DIFFERENT STAKES (ILLUSTRATIVE)");
+      cap(d, 0, 74, "Accuracy over 1,000 uses", { size: 24, weight: 700 });
+      ["A", "B"].forEach(function (t, i) { cap(d, 0, 118 + i * 46, "Task " + t, { size: 24 }); bar(d, 100, 98 + i * 46, 0.98 * 560, 30, "#C4C4C4", an, i * 200); cap(d, 100 + 0.98 * 560 + 10, 122 + i * 46, "98%", { size: 24, weight: 700 }); });
+      cap(d, 0, 250, "Cost of one wrong answer", { size: 24, weight: 700 });
+      [1, 500].forEach(function (c, i) { cap(d, 0, 294 + i * 46, "Task " + "AB"[i], { size: 24 }); bar(d, 100, 274 + i * 46, Math.max(c / 500 * 560, 4), 30, RED, an, 300 + i * 200); cap(d, 100 + Math.max(c / 500 * 560, 4) + 10, 298 + i * 46, String(c), { size: 24, weight: 700, fill: RED }); });
+      var wrongs = 1000 * 0.02;
+      cap(d, 0, 420, "Wrong answers in 1,000 uses: " + wrongs + " for each task.", { size: 24, weight: 700 });
+      cap(d, 0, 456, "Total cost of the wrong ones: A " + f0(wrongs * 1) + ", B " + f0(wrongs * 500) + ".", { size: 24, weight: 700, fill: RED });
+      cap(d, 0, 500, "One bad outcome can matter more than the average.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "TRAINED ON X FROM 0 TO 1 (TRUE CURVE: Y = X²)");
+      var tx = d3.range(20).map(function (i) { return 0.05 + i * 0.05; }), mx = d3.mean(tx), my = d3.mean(tx.map(function (x) { return x * x; }));
+      var sl = d3.sum(tx.map(function (x) { return (x - mx) * (x * x - my); })) / d3.sum(tx.map(function (x) { return (x - mx) * (x - mx); })), ic = my - sl * mx;
+      var X = function (x) { return 50 + x / 3.5 * 680; }, Y = function (y) { return 420 - y / 12 * 360; };
+      d.append("rect").attr("x", X(0)).attr("y", 60).attr("width", X(1) - X(0)).attr("height", 362).attr("fill", TINT);
+      cap(d, X(1) + 8, 90, "trained here", { size: 24, weight: 700, fill: RED });
+      line(d, 50, 422, 740, 422, INK, 2); line(d, 50, 60, 50, 422, INK, 2);
+      [0, 1, 2, 3].forEach(function (v) { cap(d, X(v), 456, String(v), { size: 24, anchor: "middle" }); }); cap(d, 740, 456, "x", { size: 24, anchor: "end", fill: MUTED });
+      var cv = d.append("path").attr("d", d3.line()(d3.range(0, 3.51, 0.05).map(function (x) { return [X(x), Y(x * x)]; }))).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 4);
+      var ln = d.append("path").attr("d", d3.line()([[X(0), Y(ic)], [X(3.5), Y(ic + sl * 3.5)]])).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 4);
+      if (an) { drawIn(cv, 0, 900); drawIn(ln, 600, 900); }
+      tx.forEach(function (x) { d.append("circle").attr("cx", X(x)).attr("cy", Y(x * x)).attr("r", 5).attr("fill", INK); });
+      var e1 = Math.abs(ic + sl * 0.5 - 0.25), e3 = Math.abs(ic + sl * 3 - 9);
+      var er = d.append("g"); line(er, X(3), Y(9), X(3), Y(ic + sl * 3), RED, 5); cap(er, X(3) - 12, (Y(9) + Y(ic + sl * 3)) / 2 + 8, "error " + e3.toFixed(1), { size: 24, weight: 700, fill: RED, anchor: "end" });
+      line(er, X(0.5), Y(0.25), X(0.5), Y(ic + sl * 0.5), RED, 5); cap(er, X(0.5) + 12, Y(3.4), "error " + e1.toFixed(1), { size: 24, weight: 700, fill: RED });
+      fade(er, an, 1500);
+      cap(d, 0, 500, "Line: grey is the truth, black is the fit. Accurate where it was trained.", { size: 24, fill: MUTED });
+      cap(d, 0, 536, "The average was computed where the data lived.", { size: 24, weight: 700 });
+    } else if (kk === 3) {
+      lab(d, 0, 30, "WHICH ACTIONS GET A HUMAN GATE");
+      lab(d, 270, 62, "CAN BE UNDONE?"); lab(d, 740, 62, "GATE", { anchor: "end" });
+      ACTS.forEach(function (a, i) {
+        var y = 76 + i * 64, g = d.append("g"); box(g, 0, y, 760, 54, { stroke: a[2] ? RED : FAMILIAR, sw: a[2] ? 2.5 : 1.5 });
+        cap(g, 12, y + 36, a[0], { size: 24, weight: 700 }); cap(g, 270, y + 36, a[1], { size: 24 });
+        cap(g, 748, y + 36, a[2] ? "human approval" : "none needed", { size: 24, weight: a[2] ? 700 : 400, anchor: "end", fill: a[2] ? RED : MUTED });
+        fade(g, an, i * 200);
+      });
+      cap(d, 0, 450, "Gated: " + ACTS.filter(function (a) { return a[2]; }).length + " of " + ACTS.length + ". Every irreversible action.", { size: 24, weight: 700, fill: RED });
+      cap(d, 0, 486, "Drafts and edits can be undone, so they need no gate.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "CAN YOU SEE WHAT THE AI DID?");
+      var LA = [["09:14 AI: score 0.62", "AI"], ["09:15 officer B: ok", "human"], ["09:16 batch: write rec", "batch"]], LB = ["record 57 changed", "AI? officer? batch?", "cannot tell"];
+      box(d, 0, 56, 360, 190, { stroke: INK, sw: 3 }); box(d, 400, 56, 360, 190, { stroke: RED, sw: 3 });
+      LA.forEach(function (l, i) { var g = d.append("g"); mono(g, 14, 108 + i * 52, l[0], { size: 24 }); fade(g, an, i * 400); });
+      LB.forEach(function (l, i) { var g = d.append("g"); mono(g, 414, 108 + i * 52, l, { size: 24, fill: i === 2 ? RED : INK, weight: i === 2 ? 700 : 400 }); fade(g, an, i * 400); });
+      cap(d, 0, 284, "clear trail", { size: 24, weight: 700 }); cap(d, 400, 284, "entangled", { size: 24, weight: 700, fill: RED });
+      cap(d, 0, 322, "attributed " + LA.length + " of " + LA.length + " actions", { size: 24 }); cap(d, 400, 322, "attributed 0 of " + LA.length + " actions", { size: 24, fill: RED });
+      cap(d, 0, 400, "If you cannot tell afterwards what the AI did, do not delegate it.", { size: 24, weight: 700 });
+    }
+  }
+
+  /* ---------- 8. calibrated trust, undertrust, overtrust, monitoring gap ---------- */
+  function renderTrust(el, k, anim) {
+    var svg = svgFor(el, W, H, "Reliance should match reliability: override rate against audited error rate", "A plot of override rate against AI error rate with a diagonal for calibrated trust. A point above it is undertrust. The medical-imaging point below it is overtrust. Then two logs of step-4 corrections.");
+    var ey = base(svg, [{ id: "cal", s: 1 }, { id: "under", s: 2 }, { id: "over", s: 3 }, { id: "mgap", s: 4 }], k, anim, ["Override rate", "how often humans disagree"], ["Error rate", "how often the AI is wrong"]);
+    var d = svg.append("g"), kk = Math.max(1, k), an = anim && k >= 1;
+    if (kk <= 3) {
+      var X = function (e) { return 80 + e / 30 * 640; }, Y = function (o) { return 440 - o / 30 * 380; };
+      lab(d, 80, 30, "OVERRIDE RATE (HUMANS DISAGREE)");
+      line(d, 80, 440, 730, 440, INK, 2); line(d, 80, 50, 80, 440, INK, 2);
+      [0, 10, 20, 30].forEach(function (v) { cap(d, X(v), 474, v + "%", { size: 24, anchor: "middle" }); if (v) cap(d, 68, Y(v) + 8, v + "%", { size: 24, anchor: "end" }); });
+      cap(d, 400, 510, "AI error rate (audited)", { size: 24, anchor: "middle", fill: MUTED });
+      line(d, X(0), Y(0), X(30), Y(30), GREY, 3, "8 6"); cap(d, 600, 190, "calibrated", { size: 24, fill: MUTED });
+      lab(d, 100, 80, "UNDERTRUST", { fill: kk === 2 ? RED : MUTED }); lab(d, 730, 430, "OVERTRUST", { anchor: "end", fill: kk === 3 ? RED : MUTED });
+      [[4, 4], [11, 11], [19, 19]].forEach(function (p, i) { var c = d.append("circle").attr("cx", X(p[0])).attr("cy", Y(p[1])).attr("r", 10).attr("fill", INK); if (an && kk === 1) c.attr("opacity", 0).transition().delay(i * 350).duration(300).attr("opacity", 1); });
+      if (kk === 2) { var g2 = d.append("g"); g2.append("circle").attr("cx", X(4)).attr("cy", Y(24)).attr("r", 12).attr("fill", RED); cap(g2, X(4) + 22, Y(24) + 8, "reliable AI, 24% overridden", { size: 24, weight: 700, fill: RED }); fade(g2, an, 0); }
+      if (kk === 3) {
+        var ci = wilson(6, 40), g3 = d.append("g"), ex = 6 / 40 * 100, oy = 14 / 200 * 100;
+        line(g3, X(ci[0] * 100), Y(oy), X(ci[1] * 100), Y(oy), RED, 4); line(g3, X(ci[0] * 100), Y(oy) - 10, X(ci[0] * 100), Y(oy) + 10, RED, 4); line(g3, X(ci[1] * 100), Y(oy) - 10, X(ci[1] * 100), Y(oy) + 10, RED, 4);
+        g3.append("circle").attr("cx", X(ex)).attr("cy", Y(oy)).attr("r", 12).attr("fill", RED);
+        cap(g3, 100, 128, "14 of 200 overridden = " + oy.toFixed(0) + "%", { size: 24, weight: 700, fill: RED }); cap(g3, 100, 162, "6 of 40 audited wrong = " + ex.toFixed(0) + "%", { size: 24, weight: 700, fill: RED });
+        cap(g3, 100, 196, "95% interval, errors: " + (ci[0] * 100).toFixed(0) + "% to " + (ci[1] * 100).toFixed(0) + "%", { size: 24, fill: MUTED });
+        fade(g3, an, 0);
+      }
+    } else {
+      lab(d, 0, 30, "STEP-4 DISPOSITIONS, LAST 50 PAPERS (ILLUSTRATIVE)");
+      var SC = [["A", [47, 1, 2], "corrections rare: threshold looks well tuned"], ["B", [30, 14, 6], "corrections frequent: threshold looks miscalibrated"]], COL = [INK, RED, "#C4C4C4"];
+      SC.forEach(function (s, i) {
+        var y = 70 + i * 140, g = d.append("g"), x0 = 40;
+        cap(g, 0, y + 30, s[0], { size: 26, weight: 700 });
+        s[1].forEach(function (v, j) { var w = v / 50 * 700; bar(g, x0, y, w, 44, COL[j], an, i * 300); x0 += w; });
+        wrap(g, 40, y + 76, s[2] + ": " + s[1][1] + " of 50 corrected", 56, { size: 24, lh: 28, fill: i ? RED : INK });
+      });
+      [["confirmed", 0], ["corrected", 1], ["unverifiable", 2]].forEach(function (l, i) { sq(d, 0 + i * 250, 372, 24, COL[l[1]], l[1] === 2 ? GREY : COL[l[1]], 2); cap(d, 34 + i * 250, 392, l[0], { size: 24 }); });
+      cap(d, 0, 470, "The data is already in the audit trail. Reading it is the cheap fix.", { size: 24, weight: 700 });
+    }
+  }
+
+  /* ---------- 9. disclosure, supervisory log, hierarchical mapping ---------- */
+  function renderDisc(el, k, anim) {
+    var svg = svgFor(el, W, H, "A disclosure is a supervisory log when it is granular, honest, time-stamped and tied to evidence", "A six-field disclosure with vague and complete entries. Then a checkbox and a log scored on four properties. Then six components of a system with detail only at two high-stakes ones.");
+    var ey = base(svg, [{ id: "disc", s: 1 }, { id: "slog", s: 2 }, { id: "hmap", s: 3 }], k, anim, ["Checkbox", "says AI was used"], ["Supervisory log", "says what was checked"]);
+    var d = svg.append("g"), kk = Math.max(1, k), an = anim && k >= 1;
+    if (kk === 1) {
+      lab(d, 0, 30, "FIELD"); lab(d, 200, 30, "VAGUE"); lab(d, 410, 30, "COMPLETE", { fill: RED });
+      [["Step name", "AI helped", "Step 3: extract claims"], ["Tool used", "An LLM", "model + version + settings"], ["Input", "some text", "exact input + source link"], ["Output", "polished text", "exact output received"], ["Verification", "Reviewed", "4 of 20 HIGH checked"], ["Correction", "(omitted)", "Methods qualifier restored"]].forEach(function (r, i) {
+        var y = 52 + i * 70, g = d.append("g"); box(g, 0, y, 760, 58, { stroke: FAMILIAR });
+        cap(g, 12, y + 38, r[0], { size: 24, weight: 700 }); cap(g, 200, y + 38, r[1], { size: 24, fill: MUTED }); cap(g, 410, y + 38, r[2], { size: 24, weight: 700 });
+        fade(g, an, i * 200);
+      });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "FOUR PROPERTIES OF A LOG"); lab(d, 540, 60, "CHECKBOX", { anchor: "middle" }); lab(d, 690, 60, "LOG", { anchor: "middle", fill: RED });
+      var P = ["granular: one entry per step", "honest: corrections included", "time-stamped", "tied to evidence"];
+      P.forEach(function (p, i) {
+        var y = 84 + i * 80, g = d.append("g"); box(g, 0, y, 760, 66, { stroke: FAMILIAR });
+        cap(g, 14, y + 42, p, { size: 24, weight: 700 }); cross(g, 540, y + 33, 12, RED); check(g, 690, y + 36, 14, INK);
+        fade(g, an, i * 250);
+      });
+      cap(d, 0, 450, "Passes: checkbox 0 of " + P.length + ", log " + P.length + " of " + P.length + ".", { size: 24, weight: 700 });
+      cap(d, 0, 486, "A correction is not embarrassing: it shows the pipeline caught something.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "SIX COMPONENTS, 20 STEPS EACH (ILLUSTRATIVE)");
+      var HS = { 1: 1, 3: 1 }, steps = 0, ent = 0;
+      d3.range(6).forEach(function (c) {
+        var cx = (c % 3) * 255, cy = c < 3 ? 56 : 290, g = d.append("g"), hs = HS[c];
+        cap(g, cx, cy + 22, "component " + (c + 1), { size: 24, weight: 700, fill: hs ? RED : INK });
+        d3.range(20).forEach(function (i) { g.append("circle").attr("cx", cx + 10 + (i % 5) * 26).attr("cy", cy + 46 + Math.floor(i / 5) * 26).attr("r", 9).attr("fill", hs ? RED : "#C4C4C4"); });
+        cap(g, cx, cy + 170, hs ? "all steps mapped" : "one policy line", { size: 24, fill: hs ? RED : MUTED, weight: hs ? 700 : 400 });
+        steps += 20; ent += hs ? 20 : 1; fade(g, an, c * 200);
+      });
+      cap(d, 0, 520, ent + " entries instead of " + steps + ": tight at the seams, lighter inside.", { size: 24, weight: 700 });
+    }
+    note(svg, ey, ["", "Vague fields cannot be checked. Each field has a specific, complete form.", "A checkbox says AI was used. A log says what was checked and what was corrected.", "Detail goes where authority changes hands; settled components get a policy line."][k]);
+  }
+
+  /* ---------- pairs ---------- */
+  function renderPairs(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four look-alike pairs from the chapter", "Each step shows two ideas people mix up, side by side with a small animation.");
+    var d = svg.append("g");
+    var PAIRS = [
+      [["Broken pipeline", "Missing items 1 to 4: it stops"], ["Unsupervised pipeline", "Missing items 5 to 8: it runs on"]],
+      [["Undertrust", "Reliable AI, discounted"], ["Overtrust", "Unreliable AI, accepted unchecked"]],
+      [["Delegation map", "Specifies what should happen"], ["Audit trail", "Records what did happen"]],
+      [["Verification cost", "Effort to check the output"], ["Stakes", "Cost if the output is wrong"]]
+    ];
+    var L = d.append("g"), R = d.append("g").attr("transform", "translate(740,0)");
+    function head(g, i, j) { lab(g, 0, 24, "PAIR " + Math.max(1, k) + " · " + (j ? "RIGHT" : "LEFT"), { fill: MUTED }); txt(g, 0, 66, PAIRS[i][j][0], { size: 32, weight: 700, fill: j ? RED : INK }); wrap(g, 0, 500, PAIRS[i][j][1] + ".", 44, { size: 26, lh: 32, fill: BODY }); }
+    function draw(i, t) {
+      L.selectAll("*").remove(); R.selectAll("*").remove(); head(L, i, 0); head(R, i, 1);
+      var LG = L.append("g").attr("transform", "translate(30,0)"), RG = R.append("g").attr("transform", "translate(30,0)");
+      if (i === 0) {
+        LG.append("rect").attr("x", 0).attr("y", 200).attr("width", 600).attr("height", 40).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 3);
+        LG.append("rect").attr("x", 0).attr("y", 200).attr("width", 240 * Math.min(1, t / 0.5)).attr("height", 40).attr("fill", INK);
+        if (t > 0.5) { cap(LG, 250, 264, "halts at item 3", { size: 24, weight: 700, fill: RED }); cross(LG, 262, 220, 12, RED); }
+        RG.append("rect").attr("x", 0).attr("y", 200).attr("width", 600).attr("height", 40).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 3);
+        RG.append("rect").attr("x", 0).attr("y", 200).attr("width", 600 * t).attr("height", 40).attr("fill", INK);
+        if (t > 0.9) cap(RG, 0, 264, "runs to the end; errors unseen", { size: 24, weight: 700, fill: RED });
+        cap(LG, 0, 330, "the gap announces itself", { size: 24, fill: MUTED }); cap(RG, 0, 330, "the gap stays hidden", { size: 24, fill: MUTED });
+      } else if (i === 1) {
+        var n = 10;
+        d3.range(n).forEach(function (j) {
+          var shown = j / n < t, wrongR = j < 3, x = (j % 5) * 120, y = 180 + Math.floor(j / 5) * 80;
+          var rejL = j % 5 < 3 && j < 8; /* left rejects 6 of 10 good outputs */
+          sq(LG, x, y, 50, shown ? (j < 6 && rejL ? "#FFFFFF" : INK) : "#FFFFFF", shown ? INK : FAMILIAR, 3);
+          if (shown && j < 6 && rejL) cross(LG, x + 25, y + 25, 14, RED);
+          sq(RG, x, y, 50, shown ? (wrongR ? RED : INK) : "#FFFFFF", shown ? (wrongR ? RED : INK) : FAMILIAR, 3);
+        });
+        cap(LG, 0, 370, "good outputs rejected: " + d3.range(n).filter(function (j) { return j < 6 && (j % 5 < 3 && j < 8); }).length + " of " + n, { size: 24, fill: MUTED }); cap(RG, 0, 370, "wrong outputs accepted: 3 of " + n, { size: 24, fill: MUTED });
+      } else if (i === 2) {
+        var ST = ["score", "verify", "decide", "sign off"], did = [1, 1, 0, 1];
+        ST.forEach(function (s, j) {
+          var y = 130 + j * 70, shown = (j + 0.5) / 4 < t + 0.05;
+          LG.append("rect").attr("x", 0).attr("y", y).attr("width", 300).attr("height", 54).attr("fill", "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5); cap(LG, 14, y + 36, (j + 1) + " " + s, { size: 24, weight: 700 });
+          RG.append("rect").attr("x", 0).attr("y", y).attr("width", 300).attr("height", 54).attr("fill", "#FFFFFF").attr("stroke", did[j] ? INK : RED).attr("stroke-width", 2.5).attr("stroke-dasharray", did[j] ? null : "8 6");
+          if (shown) { cap(RG, 14, y + 36, did[j] ? (j + 1) + " " + s : (j + 1) + " missing", { size: 24, weight: 700, fill: did[j] ? INK : RED }); if (did[j]) check(RG, 270, y + 24, 12, INK); }
+        });
+        cap(LG, 0, 440, "4 steps expected", { size: 24, fill: MUTED }); cap(RG, 0, 440, "3 of 4 happened: a deviation", { size: 24, fill: MUTED });
+      } else {
+        var sc = 560 / 40;
+        cap(LG, 0, 200, "check: 4 min, produce: 40 min", { size: 24, fill: MUTED }); bar(LG, 0, 214, 40 * sc * t, 30, "#C4C4C4", false); bar(LG, 0, 254, 4 * sc * t, 30, RED, false); cap(LG, 40 * sc * t + 10, 238, "produce 40", { size: 24 }); cap(LG, 4 * sc * t + 10, 278, "check 4", { size: 24, weight: 700, fill: RED });
+        cap(RG, 0, 200, "cost of a wrong answer: 1 or 500", { size: 24, fill: MUTED }); bar(RG, 0, 214, Math.max(1 / 500 * 560 * t, 3), 30, "#C4C4C4", false); bar(RG, 0, 254, 560 * t, 30, RED, false); cap(RG, Math.max(1 / 500 * 560 * t, 3) + 10, 238, "1", { size: 24 }); cap(RG, 560 * t + 10, 278, "500", { size: 24, weight: 700, fill: RED });
+        cap(LG, 0, 330, "high only if checking is close to a redo", { size: 24, fill: MUTED }); cap(RG, 0, 330, "high only if one error is costly", { size: 24, fill: MUTED });
+      }
+    }
+    if (k === 0) { draw(0, 0.5); cap(svg.append("g"), 0, 612, "Click or press → to see four pairs, one at a time.", { size: 24, fill: MUTED }); return; }
+    draw(k - 1, 0.99); run(d, 3000, function (t) { draw(k - 1, t); }, anim);
+  }
+
+  /* ---------- say it exactly ---------- */
+  var SAY = [
+    { v: "a human reviews it", x: "Tick 3 edge-pattern checks, pick 1 of 4 codes; scores 0.3 to 0.7 get a second officer" },
+    { v: "is the AI trustworthy here", x: "Compare the override rate with an audited error rate drawn from the same stream" },
+    { v: "should the AI do this step", x: "Answer the five Boondoggle questions for the sub-task and write the sorting down" },
+    { v: "the pipeline is documented", x: "All eight map items per step, including the four supervisory ones" },
+    { v: "say that AI was used", x: "Per step: the tool, the request, the output, what was checked, what changed" }
+  ];
+  function renderSay(el, k, anim) {
+    var svg = svgFor(el, W, H, "Say it exactly: five vague requests about delegation turned into precise ones", "Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction does.");
+    var g = svg.append("g");
+    SAY.forEach(function (r, i) {
+      if (i + 1 > k) return; var y = 6 + i * 128, cur = i + 1 === k, e = g.append("g");
+      e.append("rect").attr("x", 0).attr("y", y).attr("width", 8).attr("height", 114).attr("fill", cur ? RED : FAMILIAR);
+      txt(e, 24, y + 30, "“" + r.v + "”", { size: 26, fill: RED, weight: 700 });
+      wrap(e, 24, y + 64, "→ " + r.x, 50, { size: 24, lh: 30, fill: INK, weight: 700 });
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    if (k === 0) { cap(g, 0, 60, "A vague request gets a guess. An exact one gets what you meant.", { fill: INK }); cap(g, 0, 110, "Click or press → to turn five requests into instructions.", { fill: MUTED }); return; }
+    var p = g.append("g").attr("transform", "translate(700,60)"), pw = 640, ph = 300, nt = "";
+    lab(p, 0, -14, "WHAT THE INSTRUCTION DOES", { fill: RED });
+    p.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", pw).attr("height", ph).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+    if (k === 1) { var S = scores40(), two = S.filter(twoReview).length; [["one officer + checklist", 40 - two, INK], ["second officer reviews", two, RED]].forEach(function (r, i) { cap(p, 14, 70 + i * 110, r[0] + ": " + r[1], { size: 24 }); bar(p, 14, 84 + i * 110, 560 * r[1] / 40, 40, r[2], anim, i * 400); }); nt = two + " of 40 scores need a second review"; }
+    else if (k === 2) { var oy = 14 / 200, ex = 6 / 40; [["overrides: 14 of 200 = " + (oy * 100).toFixed(0) + "%", oy, "#C4C4C4"], ["audited errors: 6 of 40 = " + (ex * 100).toFixed(0) + "%", ex, RED]].forEach(function (r, i) { cap(p, 14, 70 + i * 110, r[0], { size: 24 }); bar(p, 14, 84 + i * 110, 560 * r[1] / 0.3, 40, r[2], anim, i * 400); }); nt = "overrides run at " + (oy / ex).toFixed(2) + " times the error rate"; }
+    else if (k === 3) { var rs = SUBT[2], n3 = d3.sum(rs[1]); QS.forEach(function (q, i) { var x = 24 + i * 120, v = rs[1][i], s = sq(p, x, 80, 56, v ? RED : "#FFFFFF", v ? RED : INK, 3); cap(p, x + 28, 170, q, { size: 24, anchor: "middle" }); if (anim) s.attr("opacity", 0).transition().delay(i * 250).duration(250).attr("opacity", 1); }); cap(p, 24, 240, rs[0] + ": " + n3 + " of 5 red", { size: 24, weight: 700, fill: RED }); nt = bucketOf(n3) + " (illustrative rule)"; }
+    else if (k === 4) { d3.range(8).forEach(function (i) { var miss = i === 5, s = sq(p, 24 + i * 72, 80, 56, miss ? "#FFFFFF" : i < 4 ? INK : RED, miss ? RED : i < 4 ? INK : RED, 3); if (miss) cross(p, 24 + i * 72 + 28, 108, 14, RED); cap(p, 24 + i * 72 + 28, 170, String(i + 1), { size: 24, anchor: "middle" }); if (anim) s.attr("opacity", 0).transition().delay(i * 150).duration(200).attr("opacity", 1); }); cap(p, 24, 240, "item 6 missing: 7 of 8 present", { size: 24, weight: 700, fill: RED }); nt = "it runs, but it is unsupervised"; }
+    else { var ck = shuffle(d3.range(20), rng(2)).slice(0, 4), cm = {}; ck.forEach(function (i) { cm[i] = 1; }); d3.range(20).forEach(function (j) { var c = sq(p, 14 + (j % 10) * 60, 70 + Math.floor(j / 10) * 80, 46, cm[j] ? RED : "#FFFFFF", cm[j] ? RED : INK, 2.5); if (anim) c.attr("opacity", 0).transition().delay(j * 50).duration(200).attr("opacity", 1); }); cap(p, 14, 250, ck.length + " of 20 HIGH entries re-checked", { size: 24, weight: 700, fill: RED }); nt = "one in five"; }
+    cap(p, 0, ph + 40, nt, { size: 24, weight: 700 });
+  }
+
+  var CHECKS = [
+    "Could a stranger tell, from the log, whether each handoff condition was met?",
+    "Are all eight map items present, especially items 5 to 8?",
+    "Does each supervisory capacity leave an artifact?",
+    "Which Boondoggle questions push this step toward a human?",
+    "Does the override rate match the audited error rate?",
+    "Does the disclosure show what was checked and what was corrected?"
+  ];
+  function renderClosing(el, k, anim) {
+    var svg = svgFor(el, W, H, "Six checks before you trust a handoff", "A checklist of six items drawn one at a time.");
+    var g = svg.append("g");
+    CHECKS.forEach(function (c, i) {
+      var y = 20 + i * 100, on = i + 1 <= k, row = g.append("g");
+      row.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 64).attr("height", 64).attr("fill", on ? "#FFFFFF" : "none").attr("stroke", on ? INK : FAMILIAR).attr("stroke-width", 3);
+      wrap(row, 100, y + 42, c, 78, { size: 32, lh: 36, fill: on ? INK : MUTED });
+      if (on) { var ck = check(row, 32, y + 36, 20, RED); if (A(anim, k, i + 1)) drawIn(ck, 0, 450); }
+    });
+    cap(g, 0, 660, "Then say it exactly: not “a human reviews it”, but “three ticks and one of four codes”.", { size: 28, weight: 700 });
+  }
+
+  var BUILDS = {
+    map: { steps: 4, render: renderMap }, contract: { steps: 3, render: renderContract }, testable: { steps: 3, render: renderTestable },
+    items: { steps: 4, render: renderItems }, caps: { steps: 3, render: renderCaps }, sum: { steps: 4, render: renderSum },
+    cost: { steps: 4, render: renderCost }, reach: { steps: 4, render: renderReach }, trust: { steps: 4, render: renderTrust },
+    disc: { steps: 3, render: renderDisc }, pairs: { steps: 4, render: renderPairs }, say: { steps: 5, render: renderSay },
+    closing: { steps: 6, render: renderClosing }
+  };
+
+
+  /* click on the stage advances one fragment (the original deck had keys and buttons only) */
+  stage.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest("#controls, #thumbs")) return;
+    nextSlide();
+  });
+  function buildEl(slide) { return slide ? slide.querySelector("[data-build]") : null; }
+  function buildOf(slide) { var el = buildEl(slide); return el ? BUILDS[el.getAttribute("data-build")] : null; }
+  function stopBuild(el) { if (hasD3 && el) d3.select(el).selectAll("*").interrupt(); }
+  function renderBuild(el, k, animate) {
+    var b = BUILDS[el.getAttribute("data-build")];
+    if (!b) return;
+    if (!hasD3) {
+      el.innerHTML = '<div class="chart-fallback">This graphic needs D3, which did not load. Check the network connection and reload.</div>';
+      return;
+    }
+    stopBuild(el);
+    b.render(el, Math.max(0, Math.min(b.steps, k)), animate && !reduceMQ.matches);
+  }
+
+  /* ---------------- navigation ---------------- */
+  function go(i, atEnd, animate) {
+    i = Math.max(0, Math.min(total - 1, i));
+    var prev = slides[current];
+    if (prev && i !== current) { stopBuild(buildEl(prev)); prev.classList.remove("is-active"); }
+    current = i;
+    var s = slides[i], b = buildOf(s);
+    step = b && atEnd ? b.steps : 0;
+    s.classList.add("is-active");
+    var el = buildEl(s);
+    if (el) renderBuild(el, step, animate);
+    updateUI(true);
+  }
+  function setStep(k, animate) {
+    step = k;
+    renderBuild(buildEl(slides[current]), step, animate);
+    updateUI(false);
+  }
+  function nextSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step < b.steps) setStep(step + 1, true);
+    else if (current < total - 1) go(current + 1, false, true);
+  }
+  function prevSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step > 0) setStep(step - 1, false);
+    else if (current > 0) go(current - 1, true, false);
+  }
+  function updateUI(newSlide) {
+    var s = slides[current], b = buildOf(s);
+    var title = s.getAttribute("data-title") || "";
+    counter.textContent = (current + 1) + " / " + total;
+    pips.innerHTML = "";
+    if (b) {
+      for (var j = 1; j <= b.steps; j++) {
+        var p = document.createElement("span");
+        p.className = "pip" + (j <= step ? " on" : "");
+        pips.appendChild(p);
+      }
+    }
+    btnPrev.disabled = current === 0 && step === 0;
+    btnNext.disabled = current === total - 1 && (!b || step === b.steps);
+    var stepTxt = b ? ", step " + step + " of " + b.steps : "";
+    live.textContent = newSlide ? "Slide " + (current + 1) + " of " + total + ": " + title + stepTxt : "Step " + step + " of " + (b ? b.steps : 0);
+    if (newSlide) {
+      var n = s.querySelector(".speaker-notes");
+      notesHead.textContent = "Speaker notes, slide " + (current + 1);
+      notesBody.innerHTML = n ? n.innerHTML : "<p>No notes for this slide.</p>";
+      try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) { /* ignore */ }
+    }
+  }
+  btnPrev.addEventListener("click", prevSlide);
+  btnNext.addEventListener("click", nextSlide);
+
+  /* ---------------- notes ---------------- */
+  function toggleNotes() {
+    var on = !document.body.classList.contains("notes-open");
+    document.body.classList.toggle("notes-open", on);
+    btnNotes.setAttribute("aria-pressed", on ? "true" : "false");
+    fit();
+  }
+  btnNotes.addEventListener("click", toggleNotes);
+
+  /* ---------------- fullscreen ---------------- */
+  var root = document.documentElement;
+  var fsEnabled = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  if (!fsEnabled) btnFs.hidden = true;
+  function toggleFullscreen() {
+    if (!fsEnabled) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      if (fsEl) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else {
+        var pr = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+        if (pr && pr.catch) pr.catch(function () {});
+      }
+    } catch (e) { /* refused */ }
+  }
+  btnFs.addEventListener("click", toggleFullscreen);
+  document.addEventListener("fullscreenchange", fit);
+  document.addEventListener("webkitfullscreenchange", fit);
+
+  /* ---------------- thumbnails (always final state) ---------------- */
+  function buildThumbs() {
+    thumbGrid.innerHTML = "";
+    slides.forEach(function (s, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "thumb" + (i === current ? " current" : "");
+      btn.setAttribute("aria-label", "Go to slide " + (i + 1) + ": " + (s.getAttribute("data-title") || ""));
+      if (i === current) btn.setAttribute("aria-current", "true");
+      var inner = document.createElement("div");
+      inner.className = "thumb-inner";
+      inner.setAttribute("aria-hidden", "true");
+      var clone = s.cloneNode(true);
+      clone.classList.remove("is-active");
+      Array.prototype.forEach.call(clone.querySelectorAll("[id]"), function (n) { n.removeAttribute("id"); });
+      var sn = clone.querySelector(".speaker-notes");
+      if (sn) sn.remove();
+      inner.appendChild(clone);
+      var num = document.createElement("span");
+      num.className = "thumb-num";
+      num.textContent = String(i + 1);
+      btn.appendChild(inner);
+      btn.appendChild(num);
+      btn.addEventListener("click", function () { closeThumbs(true); go(i, false, true); });
+      thumbGrid.appendChild(btn);
+      var cb = clone.querySelector("[data-build]");
+      if (cb) renderBuild(cb, 99, false);
+    });
+    scaleThumbs();
+  }
+  function scaleThumbs() {
+    Array.prototype.forEach.call(thumbGrid.querySelectorAll(".thumb"), function (b) {
+      b.querySelector(".thumb-inner").style.transform = "scale(" + (b.clientWidth / 1920) + ")";
+    });
+  }
+  function openThumbs() {
+    lastFocus = document.activeElement;
+    thumbs.classList.add("open");
+    buildThumbs();
+    var cur = thumbGrid.querySelector(".thumb.current");
+    if (cur) { cur.focus(); cur.scrollIntoView({ block: "nearest" }); }
+  }
+  function closeThumbs(navigating) {
+    thumbs.classList.remove("open");
+    thumbGrid.innerHTML = "";
+    if (!navigating && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  btnThumbs.addEventListener("click", openThumbs);
+  thumbs.querySelector(".close").addEventListener("click", function () { closeThumbs(false); });
+  window.addEventListener("resize", function () { if (thumbs.classList.contains("open")) scaleThumbs(); });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (thumbs.classList.contains("open")) {
+      if (e.key === "Escape" || e.key === "g" || e.key === "G") { e.preventDefault(); closeThumbs(false); }
+      return;
+    }
+    var onButton = e.target && e.target.closest && e.target.closest("button");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": e.preventDefault(); nextSlide(); break;
+      case " ": if (onButton) return; e.preventDefault(); nextSlide(); break;
+      case "ArrowLeft": case "PageUp": e.preventDefault(); prevSlide(); break;
+      case "Home": e.preventDefault(); go(0, false, true); break;
+      case "End": e.preventDefault(); go(total - 1, true, false); break;
+      case "f": case "F": e.preventDefault(); toggleFullscreen(); break;
+      case "n": case "N": e.preventDefault(); toggleNotes(); break;
+      case "g": case "G": e.preventDefault(); openThumbs(); break;
+    }
+  });
+
+  /* ---------------- touch swipe ---------------- */
+  var tx = null, ty = null;
+  stage.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) return;
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (tx === null || thumbs.classList.contains("open")) { tx = null; return; }
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) { if (dx < 0) nextSlide(); else prevSlide(); }
+    tx = null;
+  }, { passive: true });
+
+  /* ---------------- quiet controls ---------------- */
+  var idle = null;
+  document.addEventListener("mousemove", function () {
+    document.body.classList.add("show-controls");
+    clearTimeout(idle);
+    idle = setTimeout(function () { document.body.classList.remove("show-controls"); }, 2200);
+  });
+
+  /* ---------------- print: every slide in its final state ---------------- */
+  window.addEventListener("beforeprint", function () {
+    slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  });
+  window.addEventListener("afterprint", function () {
+    slides.forEach(function (s, i) { var el = buildEl(s); if (el && i !== current) renderBuild(el, 99, false); });
+    var el = buildEl(slides[current]);
+    if (el) renderBuild(el, step, false);
+  });
+
+  /* ---------------- start ---------------- */
+  slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  fit();
+  var hm = /^#(\d+)$/.exec(location.hash);
+  go(hm ? parseInt(hm[1], 10) - 1 : 0, false, true);
+  window.addEventListener("hashchange", function () {
+    var m = /^#(\d+)$/.exec(location.hash);
+    if (m && parseInt(m[1], 10) - 1 !== current) go(parseInt(m[1], 10) - 1, false, true);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>
