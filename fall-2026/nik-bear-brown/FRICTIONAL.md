@@ -1220,6 +1220,20 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `lectern/notes/fellowships-research-2026-11-05.md`, `lectern/HISTORY.md` (2026-11-05), `lectern/publish/fellowships_feed.py`, `lectern/collect/fellowships_collect.py`, `lectern/tests/test_fellowships.py`, `lectern/runs/2026-11-05/fellowships-2026-11-05.json` (local, not committed). Next step: my word on pushing; more programs are added by hand; no daily run is wired.
 
+### 2026-11-16 — Exam notes: a case-study checklist, exam-writing rules, robustness scope, film fixes
+
+- **Date and what I was working on:** 2026-11-16. Setting what the Computational Skepticism exam covers, and starting a checklist of what to look for in a case study, built over this class and maybe the next.
+- **I tried / expected:** I said *"what we're going to be building over this class and maybe two classes is sort of a checklist style list ... things you should be looking at in these case studies, which is also the things you should be looking at in a real job."* I gave three checklist items (what are we measuring and what do we want; what are the checks and who does them, AI or human; for an accuracy claim, how did you calculate that), two exam-writing rules (probability questions use both probability and likelihood, with dice, cards or coins; no EDA case, but why EDA matters is fair for multiple-answer), the robustness scope (robustness, adversarial, perturbation, prompt injection and natural adversarial are in; the other attack types are for later), and four film fixes. Then: *"put all those checklists in order, chapter 1, chapter 2, chapter 3, in the checklist document"*, and *"write up those notes as today's notes and push them."*
+- **What happened:**
+  - The checklist document collects the six end-of-film checks from every chapter's terminology deck, 1 to 13 in order (78 checks), behind my three cross-chapter items. Each chapter is marked with how much of it is on the exam.
+  - My first robustness message was read as putting all six attack types in; when I pointed to the Robustness film at about 13 minutes, the slide showed "are there" meant the six were listed on it, and the notes were corrected.
+  - Of the seven films that mention the panda case, one (Key Terms: Robustness) uses it without saying what it is.
+  - The one-word short commands were added to all three courses' practice-exam prompts and pushed earlier the same day.
+- **What I did:** Dictated the calls, the rules and the fixes. I have not read the checklist document or the film notes.
+- **What Claude or another person contributed:** Claude Code took the notes, found the slide behind each call, pulled the checklists from the deck code, wrote the notes and the checklist document, and wrote this entry.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `glossary/notes/2026-11-16-exam-notes.md`, `glossary/CASE-CHECKLIST.md`, and `REVISION-NOTES.md` in `youtube/claude-liam-lecture-key-terms-the-skeptics-toolkit/` and `youtube/claude-liam-lecture-key-terms-robustness/`. Next: the Pangram details; whether "the rest of them" covers the whole robustness deck; the practice prompt updated once the scope is final; the four film fixes. Pushed, with the log row below.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1286,3 +1300,5 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-05 | feat(fall-2026): SAM.gov set-aside filter for VA, DoD and FAA (research for a founder; nothing found, nothing posted) |
 | 2026-11-05 | feat(fall-2026): consulting channel live: Oracle HCM reader, ABS Group and Hexaware boards, tax and audit out, Audit Remediation in, five more countries, daily run, baseline |
 | 2026-11-05 | docs(fall-2026): GitHub pushes rows for the 14 commits of 2026-11-05: consulting channel live, the federal 508 readers and lead lists |
+| 2026-11-16 | Exam practice prompt: add one-word short commands (help, question, exam, drill, topics, hint, another) |
+| 2026-11-16 | docs(exam): 2026-11-16 exam notes, the case-study checklist (chapters 1 to 13), and film revision notes for Key Terms: The Skeptic's Toolkit and Robustness |
