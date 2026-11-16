@@ -1,0 +1,94 @@
+1
+00:00:00,000 --> 00:00:16,210
+Liam here. On the eleventh of August,
+2026, someone pushed the first commit to a
+new repo: remove AI watermarks from text
+
+2
+00:00:16,260 --> 00:00:19,640
+Four days. No dependencies. That is the
+thesis.
+
+3
+00:00:19,690 --> 00:00:20,920
+What are the files?
+
+4
+00:00:20,970 --> 00:00:22,840
+How do the scripts connect?
+
+5
+00:00:22,890 --> 00:00:24,180
+When was it built?
+
+6
+00:00:24,230 --> 00:00:40,370
+The cumulative curve: zero before August
+11. Eleven commits by end of day one.
+Thirty-one by end of day two. Forty-eight
+
+7
+00:00:40,420 --> 00:00:55,090
+The first eleven commits land on 11 August
+2026, the day Anthropic announced global
+text watermarking. Standing start to
+
+8
+00:00:55,140 --> 00:00:56,990
+The scope document.
+
+9
+00:00:57,040 --> 00:01:08,320
+The file we want to read is not a strip
+implementation. It is ethics.md — the
+scope document the agent loads before
+
+10
+00:01:08,370 --> 00:01:22,420
+A removal tool that ships a document
+telling you removal proves nothing is
+making the same argument this channel has
+
+11
+00:01:22,470 --> 00:01:38,590
+Lines 5 to 10. Appropriate: privacy —
+strip provenance from your own files
+before sharing. Engineering hygiene —
+
+12
+00:01:38,640 --> 00:01:52,050
+Line 18. Verbatim: 'A removed mark does
+not mean the content was never AI-
+assisted. Use this toolkit honestly.' That
+
+13
+00:01:52,100 --> 00:02:07,320
+Line 28: 'Do not imply that a successful
+C2PA/metadata strip means no AI provenance
+left. Soft-bound and SynthID-class media
+
+14
+00:02:07,370 --> 00:02:08,690
+The binary guard.
+
+15
+00:02:08,740 --> 00:02:09,950
+What does it need?
+
+16
+00:02:09,1000 --> 00:02:26,080
+requirements-dev.txt: pytest equals 9.1.1
+and pip-audit equals 2.10.1. Both are test
+tooling. pip-audit is the supply-chain
+
+17
+00:02:26,130 --> 00:02:37,390
+Every import across all sixteen scripts is
+standard library. The only pinned
+dependencies are pytest and pip-audit. The
+
+18
+00:02:37,440 --> 00:02:51,490
+That's the short version. The full video
+also covers guillaumemeyer / watermarks-
+remover. Agent skill…, Three layers. Layer

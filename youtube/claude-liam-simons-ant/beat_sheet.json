@@ -1,0 +1,823 @@
+{
+  "metadata": {
+    "slug": "claude-liam-simons-ant",
+    "title": "The Parable of the Ant",
+    "kicker": "Why the complexity was the beach, not the ant — and what that means for AI",
+    "book": "computational-skepticism-for-ai",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Professor Bear)",
+    "voice": "kokoro:am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "register": "ai-explainer",
+    "brand": "CLAUDE (cream #FAF9F5 / #F2F0E9 stage, warm ink #3D3929, terracotta #D97757 spark)",
+    "est_runtime_s": 580,
+    "est_note": "estimate at ~2.9 wps for narration beats; measured audio is the only clock",
+    "render": {
+      "resolution": "3840x2160",
+      "fps": 30,
+      "rule": "BASE RULE — EVERY beat native 4K. Author ALL Manim compositions at 1920x1080 (-qh -r 1920,1080); compile.py scales 2× to 3840x2160. No 1280x720 comps. No ffmpeg bicubic upscaling.",
+      "qc": "ffprobe every beat clip: reject any beat whose native stream is not 3840x2160 (or 1920x1080 pre-scale)."
+    },
+    "content_rules": {
+      "no_pantry": "HARD RULE — zero pantry stills, zero gen-AI, zero screengrabs. Every visual is Manim or Remotion (code-generated). No exceptions.",
+      "no_placeholder_text": "HARD RULE — no beat may ship with placeholder text ('⚠ SET IN BEAT SHEET', 'Manim', default slate titles). Any such text in a compiled frame is a build failure.",
+      "manim_scope": "MANIM for all body content beats — animations, diagrams, simulations, equations, path traces. Every Manim beat has an authored scene_class in scenes.py.",
+      "remotion_scope": "REMOTION for bookends (B00, act-title FormACard cards, BVDT, BHTF, BOUT) only.",
+      "no_external_names_exception": "Scholarly attribution exception: Simon, Wehner, Brooks, Cataglyphis are named where required for academic attribution. This overrides the tool-author no-names rule, which applies to software tools. See BUILD-LOG.md.",
+      "factcheck": "All narration claims are from the VERIFIED column of FACTCHECK.md or stated at appropriate generality. Chapter numbers and specific numbers from Wehner are omitted."
+    },
+    "gate_state": "PLAN — beat sheet written 2026-08-12. Awaiting Bear review before audio generation.",
+    "build": {
+      "at": "2026-08-28T02:04:09",
+      "cut": "master",
+      "filled": 28,
+      "of": 28,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "bookends": {
+    "cold_open": "B00",
+    "closing": [
+      "BVDT",
+      "BHTF",
+      "BOUT"
+    ]
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "OPEN",
+      "lane": "REMOTION",
+      "exempt": true,
+      "estimated_duration_s": 20,
+      "narration_text": "An ant walking across a beach traces a path so jagged, so full of detours and backtracks, that anyone watching from above might conclude: that animal is solving a complex problem. That inference is exactly wrong. Liam here, in for Professor Bear — and that one inference error is the diagnostic at the center of this reel.",
+      "shot": {
+        "type": "UI",
+        "source": "own",
+        "lane": "bookend",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM · AI",
+            "segment": "The Parable of the Ant",
+            "command": "Explain Simon's ant parable — then tell me how much of AI's apparent intelligence belongs to the terrain, not the machine.",
+            "greeting": "Hey Liam",
+            "runningText": "tracing the ant…",
+            "output": [
+              "The complexity was the beach.",
+              "The ant was simple the whole time.",
+              "So — which half of a system's behavior is terrain?"
+            ],
+            "sparkLine": "The parable of the ant — and the diagnostic for locating complexity in an AI system.",
+            "modelLabel": "Claude",
+            "effortLabel": "Deep"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 16.85,
+      "audio_file": "mp3/beat-B00.mp3"
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — The Beach",
+      "lane": "REMOTION",
+      "estimated_duration_s": 3,
+      "narration_text": "Act one. The beach.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Beach"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 1.71,
+      "audio_file": "mp3/beat-B01.mp3"
+    },
+    {
+      "beat_id": "B02",
+      "act": "I — The Beach",
+      "lane": "MANIM",
+      "scene_class": "B02_AntBeachPath",
+      "estimated_duration_s": 22,
+      "narration_text": "Watch the path from above. The ant turns here, doubles back there, detours around obstacles, resumes toward something. If you saw this pattern written on paper — without knowing what produced it — you would reach for a complex explanation. Planning. Memory. A map of the terrain. The path looks like evidence of all three.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B02_AntBeachPath"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:B02_AntBeachPath",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 16.43,
+      "audio_file": "mp3/beat-B02.mp3"
+    },
+    {
+      "beat_id": "B03",
+      "act": "I — The Beach",
+      "lane": "MANIM",
+      "scene_class": "B03_AntFlatTable",
+      "estimated_duration_s": 14,
+      "narration_text": "Same ant, flat table. No obstacles. It walks in a straight line. The path is trivially simple. Nothing changed inside the ant. The decision rule is identical: move forward, turn when blocked. What changed is the terrain.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B03_AntFlatTable"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:B03_AntFlatTable",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 12.16,
+      "audio_file": "mp3/beat-B03.mp3"
+    },
+    {
+      "beat_id": "B04",
+      "act": "I — The Beach",
+      "lane": "MANIM",
+      "scene_class": "B04_PathCutaway",
+      "estimated_duration_s": 16,
+      "narration_text": "Hold both paths on screen. That jagged, purposeful-looking path on the left was the beach. This straight line on the right is the table. The mechanism is identical. The complexity was the terrain, not the ant. That cut is the entire parable.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B04_PathCutaway"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim:B04_PathCutaway",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 13.46,
+      "audio_file": "mp3/beat-B04.mp3"
+    },
+    {
+      "beat_id": "B05",
+      "act": "II — The Thesis",
+      "lane": "REMOTION",
+      "estimated_duration_s": 3,
+      "narration_text": "Act two. The thesis.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Thesis"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 1.88,
+      "audio_file": "mp3/beat-B05.mp3"
+    },
+    {
+      "beat_id": "B06",
+      "act": "II — The Thesis",
+      "lane": "MANIM",
+      "scene_class": "B06_ThesisSubstitution",
+      "estimated_duration_s": 26,
+      "narration_text": "Simon performs the substitution himself, in the text. Swap 'ant' for 'man.' A human being, viewed as a behaving system, is quite simple. The apparent complexity of behavior over time largely reflects the complexity of the environment. Pause there. The ant is an illustration. The thesis is a free-standing empirical hypothesis about the partition between mechanism and environment — and Simon intends it to apply to people.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B06_ThesisSubstitution"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim:B06_ThesisSubstitution",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 22.4,
+      "audio_file": "mp3/beat-B06.mp3"
+    },
+    {
+      "beat_id": "B07",
+      "act": "II — The Thesis",
+      "lane": "MANIM",
+      "scene_class": "B07_InnerOuterInterface",
+      "estimated_duration_s": 28,
+      "narration_text": "The conceptual framework behind the parable is what Simon calls the interface between inner and outer environments. Two examples from the text. A sundial works differently in Phoenix than in Boston — same mechanism, different latitude, different shadow angle, different output. A ship's chronometer must survive pitching seas that a mantelpiece clock never faces — same goal, but the outer environment forces different demands on the inner mechanism. The outer environment shapes what the inner mechanism must do.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B07_InnerOuterInterface"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim:B07_InnerOuterInterface",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 26.73,
+      "audio_file": "mp3/beat-B07.mp3"
+    },
+    {
+      "beat_id": "B08",
+      "act": "III — The Formalism",
+      "lane": "REMOTION",
+      "estimated_duration_s": 3,
+      "narration_text": "Act three. The formalism.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Formalism"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 2.2,
+      "audio_file": "mp3/beat-B08.mp3"
+    },
+    {
+      "beat_id": "B09",
+      "act": "III — The Formalism",
+      "lane": "MANIM",
+      "scene_class": "B09_BehaviorEquation",
+      "estimated_duration_s": 20,
+      "narration_text": "The formal statement. Behavior at time t is a function of three things: the mechanism, the environment at t, and the goal. This is not controversial as a definition. But it carries a partition question: how much of the observed behavior is attributable to which term? Simon's hypothesis is that for most organisms, at most levels of description, the environment term dominates.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B09_BehaviorEquation"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim:B09_BehaviorEquation",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 20.2,
+      "audio_file": "mp3/beat-B09.mp3"
+    },
+    {
+      "beat_id": "B10",
+      "act": "III — The Formalism",
+      "lane": "MANIM",
+      "scene_class": "B10_EntropyPartition",
+      "estimated_duration_s": 25,
+      "narration_text": "The information-theoretic version. Measure the entropy of the behavior. Then condition on the environment — knowing what obstacles are where — and measure what remains. If conditioning collapses the apparent complexity, the environment was carrying it. If conditioning leaves high complexity behind, the mechanism is doing real work the environment alone cannot explain. The question is empirical: measure the collapse.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B10_EntropyPartition"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim:B10_EntropyPartition",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 21.06,
+      "audio_file": "mp3/beat-B10.mp3"
+    },
+    {
+      "beat_id": "B11",
+      "act": "IV — The Simulation",
+      "lane": "REMOTION",
+      "estimated_duration_s": 3,
+      "narration_text": "Act four. The simulation.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Simulation"
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 2.26,
+      "audio_file": "mp3/beat-B11.mp3"
+    },
+    {
+      "beat_id": "B12",
+      "act": "IV — The Simulation",
+      "lane": "MANIM",
+      "scene_class": "B12_ReactiveAgentSim",
+      "estimated_duration_s": 32,
+      "narration_text": "One rule: if clear ahead, move forward. If blocked, turn by a random angle. No memory. No planning. No internal model of the terrain. Run this at obstacle density zero: the agent walks a straight line. Run it at obstacle density zero-point-four: the agent traces a path that looks, from above, like purposeful navigation around a complex terrain. Identical decision rule. Two paths. The apparent intelligence appeared with the terrain.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B12_ReactiveAgentSim"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim:B12_ReactiveAgentSim",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 22.7,
+      "audio_file": "mp3/beat-B12.mp3"
+    },
+    {
+      "beat_id": "B13",
+      "act": "IV — The Simulation",
+      "lane": "MANIM",
+      "scene_class": "B13_DensitySweep",
+      "estimated_duration_s": 20,
+      "narration_text": "Now sweep the density parameter continuously. Watch the behavior complexity appear and dissolve with the terrain. Nothing in the agent changed — at any point in the sweep. The variance in the behavior lives almost entirely in the environment term. The mechanism does almost nothing except convert obstacles into turns.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B13_DensitySweep"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim:B13_DensitySweep",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 17.32,
+      "audio_file": "mp3/beat-B13.mp3"
+    },
+    {
+      "beat_id": "B14",
+      "act": "V — The Fallacy",
+      "lane": "REMOTION",
+      "estimated_duration_s": 3,
+      "narration_text": "Act five. The fallacy.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Fallacy"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 2.13,
+      "audio_file": "mp3/beat-B14.mp3"
+    },
+    {
+      "beat_id": "B15",
+      "act": "V — The Fallacy",
+      "lane": "MANIM",
+      "scene_class": "B15_AntFallacyHeuristic",
+      "estimated_duration_s": 20,
+      "narration_text": "Name the error. The ant fallacy: crediting the actor with sophistication that belongs to the terrain. The one-line checkable heuristic: before you credit the mechanism, have you subtracted the environment? Not asserted that the environment explains it. Subtracted it. Measured the residual complexity that remains.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B15_AntFallacyHeuristic"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim:B15_AntFallacyHeuristic",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 16.87,
+      "audio_file": "mp3/beat-B15.mp3"
+    },
+    {
+      "beat_id": "B16",
+      "act": "V — The Fallacy",
+      "lane": "MANIM",
+      "scene_class": "B16_AttributionTwoByTwo",
+      "estimated_duration_s": 32,
+      "narration_text": "The diagnostic for AI systems. Two axes. Hold scaffolding constant and vary the model — record what changes. Hold the model constant and gut the scaffolding: strip the system prompt, remove retrieval, minimize context — record what survives. Behavior that moves with scaffolding changes is ant behavior: the terrain was doing the work. Behavior that survives scaffolding changes is closer to internal capability. Note the structural identity with critiques of apparent emergent abilities: if the evaluation setup is part of the performance, the measurement is partly about the evaluation.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B16_AttributionTwoByTwo"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B16.mp4",
+        "filled_by": "manim:B16_AttributionTwoByTwo",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 32.45,
+      "audio_file": "mp3/beat-B16.mp3"
+    },
+    {
+      "beat_id": "B17",
+      "act": "V — The Fallacy",
+      "lane": "MANIM",
+      "scene_class": "B17_TrapToAvoid",
+      "estimated_duration_s": 32,
+      "note": "MANDATORY BEAT — do not soften, do not cut.",
+      "narration_text": "The trap — mandatory. Do not soften it. 'Next-token prediction is a simple mechanism, therefore all downstream capability is environment-explained.' That inference skips exactly the empirical step the parable is famous for demanding. Simon did not assert his partition by analogy. He required that conditioning on the environment actually collapse the apparent complexity. LLM-as-ant is a hypothesis to test with those diagnostics — not a conclusion the analogy hands you for free. The parable is a demand for measurement, not a license to skip it.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B17_TrapToAvoid"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim:B17_TrapToAvoid",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 29.61,
+      "audio_file": "mp3/beat-B17.mp3"
+    },
+    {
+      "beat_id": "B18",
+      "act": "VI — Build Like Hora",
+      "lane": "REMOTION",
+      "estimated_duration_s": 3,
+      "narration_text": "Act six. Build like Hora.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Build Like Hora"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B18.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B18.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 2.3,
+      "audio_file": "mp3/beat-B18.mp3"
+    },
+    {
+      "beat_id": "B19",
+      "act": "VI — Build Like Hora",
+      "lane": "MANIM",
+      "scene_class": "B19_DesignInversion",
+      "estimated_duration_s": 30,
+      "narration_text": "The design consequence: invert the parable deliberately. Push complexity into the environment — explicit schemas, phase gates, contracts between pipeline stages, validators that fail the build. Keep each agent's decision rule minimal and legible. The payoff is inspectability: when something goes wrong, the failure localizes to the environment specification instead of smearing through opaque internal logic. Name the failure mode: compensating for an under-specified environment by making the agent's internal logic more elaborate. That is assuming the ant is a brilliant navigator, instead of fixing the beach.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B19_DesignInversion"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B19.mp4",
+        "filled_by": "manim:B19_DesignInversion",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 33.81,
+      "audio_file": "mp3/beat-B19.mp3"
+    },
+    {
+      "beat_id": "B20",
+      "act": "VI — Build Like Hora",
+      "lane": "MANIM",
+      "scene_class": "B20_TempusHora",
+      "estimated_duration_s": 32,
+      "narration_text": "The companion parable. Two watchmakers, each assembling a mechanism of roughly a thousand parts. Tempus builds in one uninterrupted sequence. Any interruption forces him to restart from nothing: the assembly collapses. Hora builds sub-assemblies of ten parts first — they hold together when put down. Then assemblies of ten sub-assemblies. An interruption costs Hora only the current piece, not everything. The structure of the process is what makes robust completion possible — not the skill of the assembler.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B20_TempusHora"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B20.mp4",
+        "filled_by": "manim:B20_TempusHora",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 25.77,
+      "audio_file": "mp3/beat-B20.mp3"
+    },
+    {
+      "beat_id": "B21",
+      "act": "VI — Build Like Hora",
+      "lane": "MANIM",
+      "scene_class": "B21_HoraInterruptionCost",
+      "estimated_duration_s": 22,
+      "narration_text": "Animate the interruption cost. Tempus's expected loss grows with assembly size — every interruption risks total restart. Hora's expected loss is bounded by the sub-assembly floor, regardless of total size. A phase-gated pipeline is Hora's method. Each gate is a stable sub-assembly. The ant parable is about observing complexity correctly. Tempus and Hora is about building it robustly. Both are load-bearing.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B21_HoraInterruptionCost"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B21.mp4",
+        "filled_by": "manim:B21_HoraInterruptionCost",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 22.63,
+      "audio_file": "mp3/beat-B21.mp3"
+    },
+    {
+      "beat_id": "B22",
+      "act": "VII — The Limits",
+      "lane": "REMOTION",
+      "estimated_duration_s": 3,
+      "narration_text": "Act seven. The limits.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Limits"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B22.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B22.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 1.92,
+      "audio_file": "mp3/beat-B22.mp3"
+    },
+    {
+      "beat_id": "B23",
+      "act": "VII — The Limits",
+      "lane": "MANIM",
+      "scene_class": "B23_CataglyphisOdometer",
+      "estimated_duration_s": 44,
+      "narration_text": "Two limits — both mandatory. First: desert ants of the genus Cataglyphis really do path-integrate. They maintain a running home vector using a sky-polarization compass and an internal odometer that accumulates stride-by-stride distance traveled. When experimentally displaced to an unfamiliar location, they head in the direction their home vector predicts — then execute a systematic search when they don't find the nest. That is real internal computation, not reducible to the terrain alone. Simon pre-empted this in the text: his hypothesis concerns which level of description explains the path, not a claim that ants have zero internal machinery. A mechanically different system could produce the same path-level behavior. Cite the parable for its epistemic claim about description levels — never for a zoology Simon never asserted.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B23_CataglyphisOdometer"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B23.mp4",
+        "filled_by": "manim:B23_CataglyphisOdometer",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 43.61,
+      "audio_file": "mp3/beat-B23.mp3"
+    },
+    {
+      "beat_id": "B24",
+      "act": "VII — The Limits",
+      "lane": "MANIM",
+      "scene_class": "B24_BeachExcuse",
+      "estimated_duration_s": 26,
+      "narration_text": "Second limit: ants cannot redesign the beach. People and institutions can. 'The complexity is in the environment' slides easily from a descriptive observation into an excuse — naturalizing a terrain that somebody deliberately engineered. Watch for this the moment the frame touches user experience, platforms, or institutions. Users are not simple agents responding rationally to a complex environment that just happened to develop. Someone built the obstacles. The ant frame must not launder deliberate design as discovered nature.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene_class": "B24_BeachExcuse"
+        }
+      },
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B24.mp4",
+        "filled_by": "manim:B24_BeachExcuse",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 28.03,
+      "audio_file": "mp3/beat-B24.mp3"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "estimated_duration_s": 52,
+      "lead_silence_s": 0.5,
+      "narration_text": "The ant fallacy is not just a diagnostic for judging machines. It is a design instruction for building them. Before crediting the mechanism, subtract the environment. Measure the residual. If you want your system to be inspectable, push complexity into the environment — schemas, gates, contracts — and keep the decision rule minimal. Every gate is a stable sub-assembly. And if you want to make a claim about what a model can or cannot do, run the diagnostic first. The parable demands measurement, not analogy. And here, now — this reel was built by a pipeline that has been failing in precisely the way Simon predicts: quality rules kept as remembered instructions inside the agent, rather than enforced structure in the environment. Behavior degraded across long unattended runs. The fixes now underway — schema constraints, locked components, phase gates, validators that fail the build — are Simon's prescription. And Hora's method.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "bookend",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Ant and the Terrain",
+            "artifactHeading": "Before crediting the mechanism",
+            "artifactLines": [
+              "Subtract the environment first — measure the residual complexity that remains.",
+              "The ant substitutes for the person: apparent behavioral complexity reflects terrain, not mechanism.",
+              "Diagnostic: hold scaffolding constant / vary model; then hold model / gut scaffolding.",
+              "LLM-as-ant is a hypothesis requiring measurement — not a conclusion the analogy provides.",
+              "Push complexity into the environment; keep agent logic minimal, legible, and inspectable."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 46.81,
+      "audio_file": "mp3/beat-BVDT.mp3"
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "estimated_duration_s": 40,
+      "narration_text": "Your turn. Take one AI system you use. First pass: hold the scaffolding constant and swap in a substantially weaker model. Record what changes. Second pass: hold the model constant and gut the scaffolding — strip or minimize the system prompt, remove retrieval, simplify the context. Record what survives. Report which half the behavior lives in. If the behavior is mostly scaffolding-driven, ask: is that a beach the system happened to operate in, or a beach somebody deliberately engineered? That gap — between discovered environment and designed environment — is the limit the parable runs into. That's where the diagnostic hands off to the designer.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "bookend",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "runningText": "paste this into your session…",
+            "command": "Take an AI system I use regularly. First pass: hold the scaffolding constant, swap in a substantially weaker model. Record exactly what changes. Second pass: hold the model constant, gut the scaffolding — strip or minimize the system prompt, remove retrieval, simplify context to the minimum. Record what survives. Tell me: which half does the behavior live in? If it's mostly scaffolding-driven, is that a beach the system found itself in — or a beach someone deliberately engineered?",
+            "segment": "Your Turn",
+            "topic": "YOUR TURN — THE PARABLE OF THE ANT",
+            "sparkLine": "Which half of the behavior is terrain — and who designed the terrain?"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 33.9,
+      "audio_file": "mp3/beat-BHTF.mp3"
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "estimated_duration_s": 6,
+      "narration_text": "The Parable of the Ant. Liam, in for Bear.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "bookend",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Parable of the Ant",
+            "handle": "@NikBearBrown",
+            "subline": "",
+            "slug": "claude-liam-simons-ant"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-28T02:04:09"
+      },
+      "actual_duration_s": 3.03,
+      "audio_file": "mp3/beat-BOUT.mp3"
+    }
+  ]
+}

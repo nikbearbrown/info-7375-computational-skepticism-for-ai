@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-03-three-way-split",
+    "title": "Why No Algorithm Can Be Fair Three Ways at Once",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show the fairness impossibility theorem: when two groups have different base rates, satisfying all three common fairness definitions simultaneously is algebraically impossible. Source: books/computational-skepticism-for-ai/chapters/07-fairness-metrics-choosing-a-definition-and-defending-it.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = Group A / the larger group; CRIMSON = Group B / the minority group; GOLD = the decision threshold / the moving lever; SLATE = score distributions",
+    "note": "EXCLUSIONS: no Chouldechova algebra derivation, no COMPAS litigation history, no individual/counterfactual fairness, no GE index, no debiasing toolkit",
+    "total_estimated_duration_seconds": 191,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 3,
+    "build": {
+      "at": "2026-07-19T02:24:20",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why No Algorithm Can Be Fair Three Ways at Once",
+            "greeting": "Привет, Liam.",
+            "command": "Three definitions of fairness — one algorithm — and math says you can't have all three.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "Three definitions of fairness — one algorithm — and math says you can't have all three.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why No Algorithm Can Be Fair Three Ways at Once",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why No Algorithm Can Be\nFair Three Ways at Once"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 5.08,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A hiring algorithm scores applicants and recommends who to interview. The company says it's fair. The regulator says: prove it. Three different lawyers walk in with three different fairness definitions, each one obviously reasonable. The first says scores must mean the same thing in both groups. The second says equally qualified people must get the same false rejection rate. The third says equally unqualified people must get the same false approval rate. The algorithm cannot satisfy all three at once. A theorem proves it. That's the paradox.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B02_ThreeLawyersParadox",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 28.18,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:20",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: A hiring algorithm scores applicants and recommends who to interview. The company says it's fair. The regulator says: prove it. Three different lawyers walk in "
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When two groups have different base rates, can a single decision threshold satisfy all three standard definitions of fairness simultaneously?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Can one threshold satisfy all three fairness",
+              "definitions at once?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "Can one threshold satisfy\nall three fairness definitions?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.38,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:20"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The three fairness definitions have names. Calibration: when the model says sixty percent risk, sixty percent of those people — in both groups — should actually be high risk. Equal false negative rate: qualified people in Group A and Group B should get rejected at equal rates. Equal false positive rate: unqualified people in both groups should get accepted at equal rates. Each one is defensible. Each one sounds like basic fairness. The problem only emerges when you try to satisfy all three simultaneously with a single threshold.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B04_ThreeDefinitionsLayout",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 28.18,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:20",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: The three fairness definitions have names. Calibration: when the model says sixty percent risk, sixty percent of those people — in both groups — should actually"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Suppose Group B has a lower base rate of the positive outcome — say fewer are hired in historical data. If the model is calibrated, a score of sixty means sixty percent hire-rate in both groups — fine. But because Group B's overall rate is lower, their score distribution sits to the left of Group A's. A single threshold cuts across both distributions. Move it left to equalize false rejections for Group B — now more unqualified Group B applicants get through, breaking equal false positive rate. Move it back — qualified Group B applicants get rejected at a higher rate. The threshold is one lever and it's pulling three ropes in three directions.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B05_ThresholdSlidingTension",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 34.62,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:20",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: Suppose Group B has a lower base rate of the positive outcome — say fewer are hired in historical data. If the model is calibrated, a score of sixty means sixty"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Different base rates mean different score distributions — and a single threshold cannot cut two different distributions at the same relative position.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "One threshold cuts two distributions",
+              "it cannot spare both."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "Two overlapping bell curves — a wide teal one on the right, a narrower crimson one shifted left — with a single vertical gold line cutting through both, the teal area to the right of the cut obviously larger than the crimson area, illustrating the asymmetric cut, dramatic white background with stark geometric clarity",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 8.28,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:20"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Watch the two score distributions — teal for Group A, crimson for Group B, Group B's curve sitting left. The gold vertical threshold sits in the middle. The dials show three live metrics: calibration in green, false negative rate gap in orange, false positive rate gap in orange. Slide the threshold right — the false negative rate gap for Group B spikes. Slide it left — the false positive rate gap spikes. There is no position where all three dials are simultaneously green. The math does not bend.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B07_ThresholdDialAnimation",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 27.09,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:20",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Watch the two score distributions — teal for Group A, crimson for Group B, Group B's curve sitting left. The gold vertical threshold sits in the middle. The dia"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "This is a theorem, not a design flaw. Mathematician Alexandra Chouldechova proved in 2017 that when two groups have different base rates, satisfying calibration plus equal false positive rate plus equal false negative rate is algebraically impossible — except in the trivial case where the model is perfectly accurate on both groups. In the real world, no model is perfect. So you must choose which definition to violate. That is a values decision, not a technical one.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B08_ImpossibilityTheoremCard",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 26.24,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:20",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: This is a theorem, not a design flaw. Mathematician Alexandra Chouldechova proved in 2017 that when two groups have different base rates, satisfying calibration"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For AI practitioners, this means fairness is not a checkbox. When a vendor says their model is fair, the first question is: fair by which definition? Because the choice of definition encodes a values judgment about who bears the cost of errors. Equalizing false negative rates means more false positives for some group. Equalizing false positive rates means more false negatives for another. There is no free fairness. Someone pays.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B09_FairnessCheckboxTrap",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 22.4,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:20",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: For AI practitioners, this means fairness is not a checkbox. When a vendor says their model is fair, the first question is: fair by which definition? Because th"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The decision about which definition to optimize is a policy decision that should be made explicitly — by humans with accountability — before the model is trained. Instead it is usually made implicitly: whoever writes the loss function chooses without naming the choice. The theorem forces that choice into the open. That is actually useful. A theorem that proves impossibility is a tool for honest conversation.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B10_PolicyDecisionHighlight",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 21.01,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:20",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The decision about which definition to optimize is a policy decision that should be made explicitly — by humans with accountability — before the model is traine"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The fix is not a better algorithm — it's a prior conversation. Ask: which group faces the higher cost from false positives? Which group faces the higher cost from false negatives? Who has the power to appeal an error? That conversation determines which fairness criterion should be prioritized. Then build the model to that specification and document which tradeoff was deliberately accepted.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_PriorConversationFramework",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 20.03,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:20",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The fix is not a better algorithm — it's a prior conversation. Ask: which group faces the higher cost from false positives? Which group faces the higher cost fr"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A pretrial risk assessment tool predicts whether a defendant will fail to appear in court. Group A has a higher historical failure-to-appear rate in the training data. Group B has a lower rate. The model is calibrated — scores mean the same thing in both groups. But because the base rates differ, a single threshold produces more false high-risk flags for Group B defendants — people who would have appeared, flagged as likely to flee. To equalize that false positive rate, the threshold must move — and now more Group A defendants who genuinely are high-risk get released with low-risk scores. The tool cannot be simultaneously fair by both standards. The jurisdiction must choose — and that choice is a question about who bears the cost of errors in the criminal justice system.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B12_PretrialRiskToolExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 39.47,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:20",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A pretrial risk assessment tool predicts whether a defendant will fail to appear in court. Group A has a higher historical failure-to-appear rate in the trainin"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "When two groups have different base rates, a single decision threshold cannot simultaneously satisfy calibration, equal false negative rate, and equal false positive rate — this is a mathematical theorem, not a fixable engineering problem. For anyone building or auditing AI systems, the implication is that 'fair' is not a property a model has — it's a choice about which error costs which group bears, and that choice must be made explicitly before the model is built.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Fairness is a choice about error costs",
+              "not a model property."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Fairness is a choice\nabout error costs.",
+        "sub": "Make it explicitly — before the model is trained.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 25.64,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:20"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why No Algorithm Can Be Fair Three Ways at Once",
+            "artifactHeading": "Key findings — Why No Algorithm Can Be Fair Three Ways at Once",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A pretrial risk assessment tool predicts whether a defendant will fail to appear in court."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:20"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY NO ALGORITHM CAN BE FAIR THREE WAYS AT ONCE",
+            "segment": "Why No Algorithm Can Be Fair Three Ways at Once",
+            "greeting": "Ni hao, Liam.",
+            "command": "Ask Claude: Why No Algorithm Can Be Fair Three Ways at Once",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:20"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why No Algorithm Can Be Fair Three Ways at Once",
+            "slug": "claude-liam-cs-03-three-way-split",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+# FACTCHECK — tldr-the-99-percent-test
+
+Status: **GATE F verified 2026-09-23 by Claude (Opus 5.5) — every number is the chapter's own or recomputed from the chapter's inputs with exact fractions in `make_sheet.py` (asserted at import) and re-asserted in `scenes.py`. Human sign-off pending.**
+
+Source: `chapters/02-probability-uncertainty-and-the-confidence-illusion.md` — §"The test that is 99% accurate, and the patient it kills" (HEAD side of the line-258 merge block for the sensitivity/specificity precision note), §"Bayes' theorem — the bookkeeping made explicit" (disease line + term table), §"The false-positive structure is everywhere" (Epic Sepsis paragraph), Figures 2.5 / 2.6, Glimmer 2.3. Section S1 of `youtube/tldr-sections-02-probability-confidence.md`.
+
+| # | Beat | Claim (as spoken / shown) | Verdict | Source / derivation | Fix |
+|---|---|---|---|---|---|
+| 1 | B00, B01 | Course credit: chapter two of INFO 7375, Computational Skepticism for AI, Northeastern | ✓ PASS | course-film convention (spoken + on the cards' course line) | — |
+| 2 | B00, B03, B10, B14, B19 | Disease base rate: about 1 in 10,000 | ✓ PASS | Chapter: "About one person in ten thousand has it." | — |
+| 3 | B00, B10, B11 | The test is "99% accurate" | ✓ PASS | Chapter: "The test is, the company says, ninety-nine percent accurate." | — |
+| 4 | B11 | 100 sick people → 99 test positive, 1 missed | ✓ PASS | 0.99 × 100 = 99 (asserted); chapter reads 99% as "correctly identifies people who are sick" | — |
+| 5 | B12 | 100 healthy people → 99 cleared, 1 false positive | ✓ PASS | 0.01 × 100 = 1 (asserted); chapter: "correctly returns negative on 99% of healthy people" | — |
+| 6 | B12 | "99% accurate" is one number doing two jobs (sensitivity and specificity); a real test has two | ✓ PASS | HEAD side of the line-258 merge block: "I used it as both the true-positive rate and the true-negative rate … a real test has two, not one" | shown once as a dim caption "one number, two jobs — simplified" |
+| 7 | B13 | Most engineers answer above 90% | ✓ PASS | Chapter: "almost everybody answers somewhere above ninety percent" (the author's classroom report) | spoken as "most engineers say above ninety" |
+| 8 | B13 | Casscells, Schoenberger & Graboys 1978: sixty Harvard physicians and students, 1-in-1,000 version, most answered about 95% | ✓ PASS | Chapter cites NEJM 299(18), 1978: "sixty Harvard house officers, students, and attendings, and most answered around 95%"; consistent with the published abstract (11 of 60 gave 2%; the most common answer was 95%) | "house officers and attendings" condensed to "physicians" |
+| 9 | B13, BVDT | 99% is P(positive given sick); the question asks P(sick given positive) | ✓ PASS | Chapter: "You were computing *given the disease, how often does the test get it right?* … the question you needed was *given a positive test, how often is the disease there?*" | — |
+| 10 | B14 | 10,000 people: 1 sick, 9,999 healthy | ✓ PASS | 10,000 × 1/10,000 = 1 (chapter: "One of them, on average, actually has the disease") | — |
+| 11 | B16, B00, BVDT | About 100 false positives: 0.01 × 9,999 | ✓ PASS | 0.01 × 9,999 = 99.99 ≈ 100 (asserted, exact Fraction); the film lights exactly 100 squares, spoken as "about a hundred" | — |
+| 12 | B16, B18 | The positive is one of 101 → about 1% (1/101 ≈ 0.0099) | ✓ PASS | 1 / (1 + 100) = 0.00990 (asserted); chapter: "1/101, about one percent"; term table ≈ 0.0099 | — |
+| 13 | B17, B18 | Bayes' theorem (disease form): P(D given +) = P(D)P(+ given D) / [P(D)P(+ given D) + P(H)P(+ given H)] | ✓ PASS | Chapter's partition form with A1 = disease present, A2 = disease absent (shown as H, "healthy"); denominator = total probability | — |
+| 14 | B18 | 0.0001 × 0.99 / (0.0001 × 0.99 + 0.9999 × 0.01) = 0.000099 / 0.010098 ≈ 0.0098 | ✓ PASS | Exact: 99/10,098 = 0.0098039 (asserted); chapter prose ≈ 0.0098 | — |
+| 15 | B18 | P(+) ≈ 0.0101 | ✓ PASS | 0.010098 (asserted); chapter term table ≈ 0.0101 | — |
+| 16 | B18 | Count (≈ 0.0099) vs formula (≈ 0.0098) differ because the count lets the test catch the sick person for certain | CORRECTED | The chapter prints both values (prose 0.0098, term table 0.0099) without reconciling. Derivation: the count uses 1 true positive (sensitivity 1.0), the formula uses 0.99 → 0.99/(0.99+99.99) = 0.0098 vs 1/(1+100) = 0.0099 | The film shows both and says why, once, in B18; both "about one percent" |
+| 17 | B17, BVDT | The base rate sits in the numerator with the same weight as the test's hit rate; posterior ∝ prior × likelihood | ✓ PASS | Chapter: "The prior sits in the numerator with the same weight as the test's sensitivity" | — |
+| 18 | B19 | The positive raised the chance almost a hundredfold (1 in 10,000 → about 1 in 100) | ✓ PASS | 0.0098039 / 0.0001 = 98.04× (asserted); odds rise exactly 99× (0.99/0.01, asserted); Figure 2.6 caption: "raises the probability of disease a hundredfold" | spoken as "almost a hundredfold" (98×) |
+| 19 | B19 | A widely used hospital sepsis model, externally validated, alerted on 18% of all hospitalized patients and still missed about two thirds of sepsis cases | ✓ PASS | Chapter, citing Wong et al., "External Validation of a Widely Implemented Proprietary Sepsis Prediction Model in Hospitalized Patients," JAMA Internal Medicine 181(8), 2021: alerts on 18% of hospitalized patients; sensitivity 33%, 67% of sepsis missed | product name (Epic) kept off screen and out of narration; SOURCES.md names it |
+| 20 | B01 | When the target is rare, even an excellent detector fires mostly on the innocent; alarm fatigue follows | ✓ PASS | Chapter: "Whenever the positive class is rare, even an excellent detector produces mostly false alarms"; "They start ignoring them. They miss the real one when it comes." | — |
+| 21 | BHTF | At 99% / 99% the positive becomes a coin flip at a base rate of 1 in 100 (the exercise's answer, NOT shown) | EXEMPT | Recomputed: 0.01×0.99 / (0.01×0.99 + 0.99×0.01) = 1/2 exactly (asserted); 1 in 1,000 → 0.090; 1 in 100,000 → 0.00099. The viewer's exercise; Glimmer 2.3 of the chapter | — |
+| 22 | all | Nothing datable on screen: no AI model names, versions, product UIs, or "as of" claims | ✓ PASS | Sweep of the sheet; the two dates are publication years of cited studies (1978, 2021 in SOURCES only) | — |
+
+Deferred (density rule): the base-rate-by-domain table (fraud, security, moderation, jailbreaks — ranges the chapter gives without sources); total probability as its own tool and the fleet example (S3); the Casscells numbers beyond "most ≈ 95%".

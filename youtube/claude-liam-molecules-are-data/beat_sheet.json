@@ -1,0 +1,466 @@
+{
+ "metadata": {
+  "title": "Molecules Are Data.",
+  "slug": "claude-liam-molecules-are-data",
+  "topic": "COMPUTATIONAL SKEPTICISM · DATA CORRECTNESS",
+  "register": "Teardown",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "greeting": "Hallo, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "playlist": "Claude for Computational Skepticism",
+  "series": "claude-liam-cs",
+  "source": "Computational Skepticism for AI — Molecules Are Data (proof-of-concept reel)",
+  "thesis": "A small molecule is fully specified by its canonical SMILES. An image generator samples pixels and can fabricate bonds. Render from the data — PubChem CID → 2D SDF → Manim geometry — and correctness is upstream: guaranteed by the source, not checked after the fact.",
+  "build": {
+   "at": "",
+   "cut": "slate",
+   "filled": 0,
+   "of": 12,
+   "slates": [
+    "B00",
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "B06",
+    "B07",
+    "B08",
+    "B09"
+   ],
+   "skin_warnings": []
+  },
+  "verdict_stripped": "BVDT removed: all 3 lines are placeholders; placeholder heading. A placeholder verdict is worse than none."
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "narration_text": "Hallo — this is Liam, in for Bear. Here is the rule: a small molecule has a canonical SMILES string. That string pins every atom and every bond. An image generator samples pixels — it can hallucinate bonds because it never parses the SMILES. The canonical SMILES does. Render from the data and correctness is upstream: baked in before any pixel exists. Today we prove it: twenty molecules, each one rendered from PubChem's own 2D coordinates. Nothing generated. Nothing fabricated. Let's go.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Hallo, Liam",
+      "topic": "COMPUTATIONAL SKEPTICISM · DATA CORRECTNESS",
+      "segment": "Molecules Are Data.",
+      "command": "Draw twenty small molecules. Source: PubChem canonical SMILES. No image library, no generator — render each structure from its 2D SDF atom table.",
+      "runningText": "correctness is upstream in the SMILES, not downstream in the pixels…",
+      "output": [
+       "20 skeletal formulas — rendered from PubChem 2D SDF data",
+       "Each structure correct by construction: CID → SMILES → atom table → Manim",
+       "Fabrication impossible when the data IS the structure"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "the fabrication problem — why gen-AI cannot draw exact structures",
+   "narration_text": "When you ask an image generator to draw fluorouracil, it does pattern completion over pixels labelled 'fluorouracil' in training data. It does not parse a SMILES string. It does not know the fluorine is at carbon five. It knows what fluorouracil looks like in certain angles. That's enough to pass a visual test and fail a chemistry one. The canonical SMILES is exact: every atom named, every bond typed, the ring explicit. There is nothing to hallucinate — the structure is in the string.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "gen-AI: pattern completion over pixels labelled 'molecule' — bonds are plausible, not proven",
+       "canonical SMILES: every atom named, every bond typed, the ring explicit — nothing to hallucinate",
+       "Rule: when the data IS the structure, generate nothing — render from it"
+      ],
+      "dark": false,
+      "sparkLine": "FABRICATION VS CONSTRUCTION"
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "ASK — fetch and render fluorouracil from CID",
+   "narration_text": "First molecule: fluorouracil — the antimetabolite from the illustrae pipeline. CID 3385. Watch the structure come from the data.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 8,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "",
+      "topic": "ASK → RESULT",
+      "segment": "Fluorouracil  ·  CID 3385",
+      "command": "Fetch PubChem CID 3385. Parse 2D SDF → atom coordinates + bond table. Render skeletal formula in Manim (Brutalist/Claude palette).",
+      "runningText": "fetching PubChem 2D SDF for CID 3385…",
+      "output": [
+       "12 atoms, 12 bonds  ·  parsed from SDF V2000",
+       "Rendering: bonds → double bonds → heteroatom labels",
+       "F at C5 in terracotta — exactly where the SMILES says it is"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low",
+      "sparkLine": "FLUOROURACIL · CID 3385"
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "RESULT — 5-FU skeletal formula rendered from PubChem SDF",
+   "narration_text": "There it is: the six-membered ring, nitrogens at one and three, two carbonyl oxygens, the fluorine at carbon five. All of it in the SMILES string. The SDF gives 2D coordinates — x and y per atom, bond type per pair. Manim draws bonds at those positions and labels the heteroatoms in terracotta. No model in the drawing step. The pixels are a consequence of the data.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 22,
+   "shot": {
+    "type": "MANIM",
+    "manim": {
+     "scene_file": "manim/molecule_scene.py",
+     "scene_class": "MoleculeScene",
+     "env": {
+      "MOLECULE_NAME": "fluorouracil"
+     },
+     "render_cmd": "MOLECULE_NAME=fluorouracil manim -qk --fps 24 manim/molecule_scene.py MoleculeScene",
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "the pipeline — how the data chain works",
+   "narration_text": "The chain is four steps. A name resolves to a PubChem CID. The CID retrieves a canonical SMILES — the authoritative atom-and-bond string for that structure. A second call returns the 2D SDF: atom positions in Ångströms, one bond per line with its type. Manim reads the table and draws. The image generator was never in the loop. No sampling, no hallucination, and no downstream structure check needed — because the check was done upstream, in the database.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeCodeBeat",
+     "props": {
+      "title": "molecule_scene.py  —  the four-step chain",
+      "code": "# Step 1: name → CID\ncid = resolve_cid(\"fluorouracil\")   # → 3385\n\n# Step 2: CID → isomeric SMILES + title (PubChem REST)\ninfo = fetch_info(cid)\n# { 'smiles': 'C1=C(C(=O)NC(=O)N1)F',\n#   'formula': 'C4H3FN2O2',  'weight': '130.1' }\n\n# Step 3: CID → 2D SDF (atom x/y + bond table, V2000)\nsdf          = fetch_sdf(cid)\natoms, bonds = parse_sdf(sdf)\n# atoms[0] = { 'symbol': 'F', 'x': 2.0, 'y': 1.31 }\n# bonds[0] = { 'a1': 0, 'a2': 7, 'order': 1 }\n\n# Step 4: Manim draws bonds + labels from coordinates\nmol = build_molecule_vgroup(atoms, bonds)",
+      "sparkLine": "NAME → CID → SMILES → SDF → MANIM"
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "ASK — render the full gallery of twenty molecules",
+   "narration_text": "The same four steps, twenty times. Five columns, four rows. Each molecule resolved from its name, fetched from PubChem, drawn from its coordinates.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 9,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "",
+      "topic": "ASK → RESULT",
+      "segment": "Twenty-Molecule Gallery",
+      "command": "Run MoleculeGallery: 20 molecules, 4×5 grid, each rendered from PubChem 2D SDF. Drugs, metabolites, neurotransmitters, nucleobases.",
+      "runningText": "resolving 20 CIDs → fetching 2D SDF → rendering 4×5 grid…",
+      "output": [
+       "20 skeletal formulas in a 4×5 grid — all from PubChem data",
+       "Row 1: 5-FU · Imatinib · Caffeine · Aspirin · Dopamine",
+       "Row 2–4: serotonin through methotrexate — same pipeline, same guarantee"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low",
+      "sparkLine": "TWENTY MOLECULES · ZERO GENERATED"
+     },
+     "rendered": {
+      "out": "media/B05.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B05.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "RESULT — twenty-molecule gallery (MoleculeGallery Manim scene)",
+   "narration_text": "Twenty molecules. Drugs, metabolites, neurotransmitters, nucleobases. Fluorouracil to methotrexate. Each one correct by construction — the 2D layout is PubChem's own, the bond orders come from the Kekulé SDF, the heteroatom colours are in the data. This took one generic function, not twenty hand-drawn scenes. And none of it required a model at the drawing step.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "MANIM",
+    "manim": {
+     "scene_file": "manim/molecule_scene.py",
+     "scene_class": "MoleculeGallery",
+     "env": {},
+     "render_cmd": "manim -qk --fps 24 manim/molecule_scene.py MoleculeGallery",
+     "rendered": {
+      "out": "media/B06.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B06.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "the correctness argument — where the guarantee lives",
+   "narration_text": "Here is the argument. Image quality is a downstream property: the pixels might look right or wrong. Structural correctness is an upstream property: the canonical SMILES is right by definition — it's the authoritative record. When you render from the SDF, you inherit that upstream guarantee. No model check needed at the output stage because the check was already done at the source. That's the asymmetry gen-AI can't close: it generates the output; the SDF table was already there.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "image quality: DOWNSTREAM — pixels may look right and be wrong (hallucinates bonds)",
+       "structural correctness: UPSTREAM — canonical SMILES is the authoritative record (PubChem)",
+       "render from SDF → inherit the upstream guarantee; no output-stage check needed"
+      ],
+      "dark": false,
+      "sparkLine": "UPSTREAM vs DOWNSTREAM CORRECTNESS"
+     },
+     "rendered": {
+      "out": "media/B07.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B07.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "B08",
+   "act": "HANDOFF — Your Turn prompt",
+   "narration_text": "Your turn. This is the prompt: 'Take any drug name — use imatinib, aspirin, or one you know. Ask Claude to fetch its PubChem CID, retrieve the 2D SDF, extract the atom coordinate table and the bond list, and write a Manim scene that draws the skeletal formula from those coordinates alone. No image generation, no RDKit. Check the canonical SMILES first — count the heteroatoms, verify the ring count, then watch the Manim scene draw each one in order.' What you're actually testing is whether Claude can trace the data provenance chain without reaching for a generator. It usually can — and the result is verifiable at the source, not just plausible-looking.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "HANDOFF",
+      "segment": "Molecules Are Data.",
+      "command": "Take any drug name. Fetch its PubChem CID. Retrieve the 2D SDF. Extract atom coordinates + bond list. Write a Manim scene that draws it from those coordinates alone. No image generation, no RDKit. Check the canonical SMILES first — count heteroatoms, verify ring count, then watch the scene draw each one.",
+      "runningText": "paste this into Claude — trace the data provenance chain…",
+      "output": [
+       "A molecule scene that renders from data, not from pixels",
+       "Verifiable at the source — structure correct by construction",
+       "The test: does Claude reach for a generator, or read the SDF?"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B08.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B08.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "B09",
+   "act": "outro — title restate",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Molecules Are Data.",
+      "handle": "@NikBearBrown",
+      "subline": "",
+      "mascotSeed": 35
+     },
+     "rendered": {
+      "out": "media/B09.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B09.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "",
+    "filled_by": "",
+    "at": ""
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN · COMPUTATIONAL SKEPTICISM · DATA CORRECTNESS",
+      "segment": "Molecules Are Data.",
+      "command": "Take what you learned from [Molecules Are Data.] and apply it to your own work. What's one thing you'll try first?",
+      "runningText": "paste this into Claude and run it on your own work…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 8,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Molecules Are Data.",
+      "slug": "claude-liam-molecules-are-data"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  }
+ ]
+}

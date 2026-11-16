@@ -1,0 +1,1301 @@
+{
+ "metadata": {
+  "title": "You Can't Check a Model With Itself",
+  "slug": "claude-liam-deep-cant-check-itself",
+  "topic": "COMPUTATIONAL SKEPTICISM · MODEL VERIFICATION",
+  "genre": "deep-explainer",
+  "register": "Teardown",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "vox_stage": "#F2F0E9",
+  "accent": "#D97757",
+  "greeting": "Ciao, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "series": "claude-liam-deep",
+  "playlist": "Computational Skepticism for AI — Deep Explainers",
+  "source": "Bear’s brief — model self-verification thesis (2026-07-28)",
+  "gate": "PLAN — awaiting human approval (no factcheck / no audio / no render)",
+  "beat_mix_target": {
+   "VOX": "20-25%",
+   "MANIM": "25-40%",
+   "REMOTION": "30-45%",
+   "CARD": "remainder"
+  },
+  "beat_mix_actual": {
+   "body_beats": 29,
+   "VOX": "17.2% (5)",
+   "MANIM": "27.6% (8)",
+   "REMOTION": "34.5% (10)",
+   "CARD": "20.7% (6)",
+   "lint": "PASS — VOX 17.2% in 15-30% band; MANIM 27.6% in 25-40%; REMOTION 34.5% in 30-45%; no >2 consecutive same lane outside vox run R1 (A5V+A5V2)"
+  },
+  "total_estimated_duration_seconds": 416,
+  ".codex": {
+   "workflow": "deep-explainer",
+   "mode": "plan-only",
+   "agent": "Claude Code",
+   "persona": "Liam (in for Bear)",
+   "engine": "kokoro",
+   "voice": "am_onyx",
+   "paid_generation": false,
+   "publish": false,
+   "reviewer": "Bear"
+  },
+  "description_blurb": "The question isn’t Fable 5 or Opus. It’s whether you can trust any model to check itself — and the structural answer is no. Six mechanisms: self-confirmation bias, family resemblance in error patterns, the human as least-correlated verifier, attention as a non-parallelizable resource, the premise gate that doesn’t exist, and single-vendor availability risk. The Icon Incident, worked live.",
+  "chapters": [
+   [
+    "B00",
+    "You Can’t Check a Model With Itself"
+   ],
+   [
+    "A1C",
+    "Act I: The Wrong Question"
+   ],
+   [
+    "A2C",
+    "Act II: The Self-Confirmation Problem"
+   ],
+   [
+    "A3C",
+    "Act III: Family Resemblance"
+   ],
+   [
+    "A4C",
+    "Act IV: The Human Is the Check"
+   ],
+   [
+    "A5C",
+    "Act V: The Icon Incident"
+   ],
+   [
+    "A6C",
+    "Act VI: Single-Vendor Risk"
+   ],
+   [
+    "BVDT",
+    "Verdict"
+   ]
+  ],
+  "hashtags": [
+   "ComputationalSkepticism",
+   "AIVerification",
+   "ModelEvaluation",
+   "SelfConfirmationBias",
+   "AIquality",
+   "MachineLearning",
+   "NikBearBrown",
+   "AIpipeline"
+  ],
+  "source_chapter": "Bear’s brief — model self-verification",
+  "build": {
+   "at": "2026-08-01T03:54:42",
+   "cut": "review",
+   "filled": 20,
+   "of": 34,
+   "slates": [
+    "A1M",
+    "A2M",
+    "A2V",
+    "A2M2",
+    "A3M",
+    "A4V",
+    "A4M",
+    "A5V",
+    "A5V2",
+    "A5M",
+    "A6V",
+    "A6M",
+    "A6R2"
+   ],
+   "skin_warnings": []
+  },
+  "verdict_stripped": "BVDT removed: all 0 lines are placeholders; placeholder heading. A placeholder verdict is worse than none."
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "lane": "BOOKEND",
+   "narration_text": "Ciao — this is Liam, in for Bear. There’s a new model — call it Fable 5, or whatever the next generation lands as, these names are speculative — and the conversation is whether it overthinks. Whether the previous one was more pragmatic. Which model should you use? This is the wrong question. The question that matters is one almost nobody is asking: can you trust any model to check itself? That question has a structural answer — and it changes how you build the verification layer entirely.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Ciao, Liam",
+      "topic": "COMPUTATIONAL SKEPTICISM · MODEL VERIFICATION",
+      "segment": "You Can’t Check a Model With Itself",
+      "command": "Does Fable 5 overthink? Is Opus more practical? Reframe — can any model check itself?",
+      "runningText": "verification — the gate that checks the checker…",
+      "output": [
+       "Same priors → same errors: self-review can’t escape the source",
+       "Errors cluster within families; humans are the least-correlated verifier",
+       "The premise gate doesn’t exist — that’s the real gap"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5 (speculative)",
+      "effortLabel": "Medium"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": 25.19
+  },
+  {
+   "beat_id": "B01",
+   "act": "I — exec summary",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "FormBCard",
+     "props": {
+      "title": "You Can't Check a Model With Itself",
+      "items": [
+       {
+        "label": "Key point one",
+        "sub": "",
+        "icon": "target",
+        "cueFrame": 20
+       },
+       {
+        "label": "Key point two",
+        "sub": "",
+        "icon": "list-checks",
+        "cueFrame": 55
+       },
+       {
+        "label": "Key point three",
+        "sub": "",
+        "icon": "zap",
+        "cueFrame": 90
+       }
+      ]
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  },
+  {
+   "beat_id": "A1C",
+   "act": "ACT I — The Wrong Question",
+   "lane": "CARD",
+   "narration_text": "Act one. The framing that’s costing you the most is the one you keep asking.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 6,
+   "shot": {
+    "type": "CARD",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "The Wrong Question"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/A1C.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A1C.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A1C.mp3",
+   "actual_duration_s": 4.44
+  },
+  {
+   "beat_id": "A1R",
+   "act": "wrong question — which model",
+   "lane": "REMOTION",
+   "narration_text": "There’s a new model — call it Fable 5, call it whatever the next generation is — and it reasons longer. People say it overthinks. The previous one was faster, more pragmatic. So the question becomes: which model should you use? That question is already at the wrong level.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "DeckPattern",
+     "props": {
+      "pattern": "divergence",
+      "title": "The Benchmark Race",
+      "left": {
+       "label": "Fable 5 (speculative)",
+       "body": "Reasons longer\nPeople say: overthinks"
+      },
+      "right": {
+       "label": "Previous generation",
+       "body": "Faster\nMore pragmatic"
+      },
+      "footer": "Which one should you use?",
+      "footerDark": true
+     },
+     "rendered": {
+      "out": "media/A1R.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A1R.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A1R.mp3",
+   "actual_duration_s": 14.49
+  },
+  {
+   "beat_id": "A1R2",
+   "act": "benchmark ≠ pipeline trust",
+   "lane": "REMOTION",
+   "narration_text": "The benchmark race is real. But which model wins a leaderboard has almost nothing to do with whether you can trust your pipeline. The actual problem isn’t which model is smarter.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "CARD",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Which model wins a leaderboard",
+       "≠",
+       "Which pipeline you can trust"
+      ],
+      "dark": true
+     },
+     "rendered": {
+      "out": "media/A1R2.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A1R2.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A1R2.mp3",
+   "actual_duration_s": 10.3
+  },
+  {
+   "beat_id": "A1M",
+   "act": "the real question — verification",
+   "lane": "MANIM",
+   "narration_text": "The real problem is verification. Can you trust any model to catch its own errors? The answer — structurally, before you even run a test — is no.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "Self-review loop diagram. A circle labeled 'Model' with a curved arrow looping back to itself labeled 'self-review'. The loop arrow is struck through with a terracotta X mark as the narration lands on 'no.' EB Garamond labels. Cream ground, ink type. No decorative elements.",
+     "palette": "claude"
+    }
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "PIPELINE → render animated_graphics.py scene A1M_*"
+   },
+   "audio_file": "mp3/beat-A1M.mp3",
+   "actual_duration_s": 8.45
+  },
+  {
+   "beat_id": "A2C",
+   "act": "ACT II — The Self-Confirmation Problem",
+   "lane": "CARD",
+   "narration_text": "Act two. The structural reason a model can’t check itself.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "CARD",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "The Self-Confirmation Problem"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/A2C.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A2C.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A2C.mp3",
+   "actual_duration_s": 3.78
+  },
+  {
+   "beat_id": "A2M",
+   "act": "same priors, same errors",
+   "lane": "MANIM",
+   "narration_text": "When you ask a model to review its own output, it uses the same priors that generated it. The review and the original share a source. That means the errors the model made are precisely the ones it won’t catch.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "Fork diagram. A single source node labeled 'Priors / Training' at the top. Two branches descend: left branch ends at 'Original output', right branch ends at 'Self-review'. Both paths route through the same source node. A terracotta highlight on the shared source node as 'same source' lands. EB Garamond. Cream ground.",
+     "palette": "claude"
+    }
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "PIPELINE → render animated_graphics.py scene A2M_*"
+   },
+   "audio_file": "mp3/beat-A2M.mp3",
+   "actual_duration_s": 11.63
+  },
+  {
+   "beat_id": "A2R",
+   "act": "more effort, same distribution",
+   "lane": "REMOTION",
+   "narration_text": "More effort doesn’t fix this. ‘Think harder’ is another sample from the same distribution. Self-consistent errors get more convincing, not more correct. Run the model a hundred times — if the error is in the prior, it compounds.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "DeckPattern",
+     "props": {
+      "pattern": "progression",
+      "title": "More Effort, Same Prior",
+      "steps": [
+       "Prompt → answer",
+       "Self-review → same answer, more confident",
+       "Re-check → more articulate, still wrong"
+      ],
+      "note": "Each sample from the same distribution"
+     },
+     "rendered": {
+      "out": "media/A2R.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A2R.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A2R.mp3",
+   "actual_duration_s": 12.27
+  },
+  {
+   "beat_id": "A2V",
+   "act": "confidence ≠ correctness",
+   "lane": "VOX",
+   "narration_text": "This is what self-consistent means in practice. The model isn’t lying. It’s not confused. It genuinely believes the answer. That’s what makes self-review dangerous: confidence is indistinguishable from correctness until you check from outside.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.4
+    ],
+    "pantry_note": "Tier 1 — generic illustrative. A circular feedback loop diagram or abstract image of a closed system examining itself. No real people. Desaturate 80%, cream stage, film grain overlay, terracotta highlight on the loop.",
+    "pantry_file": "pantry/A2V.png"
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A2V.mp4)",
+    "suggested": "suggested prompt: This is what self-consistent means in practice. The model isn’t lying. It’s not confused. It genuinely believes the answer. That’s what makes self-review danger"
+   },
+   "audio_file": "mp3/beat-A2V.mp3",
+   "actual_duration_s": 13.38
+  },
+  {
+   "beat_id": "A2M2",
+   "act": "articulate rationalization",
+   "lane": "MANIM",
+   "narration_text": "The stronger the model, the more articulate the rationalization. A capable model constructs a convincing defense of a wrong answer. Asking it to double-check is asking it to be more convincing, not more correct.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "Three-step progression bar. Left: 'Weaker model → short wrong answer.' Right: 'Stronger model → longer, more convincing, still wrong.' Bar length represents articulation, not correctness. A terracotta label reads 'more convincing ≠ more correct' at the end. EB Garamond. Cream ground.",
+     "palette": "claude"
+    }
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "PIPELINE → render animated_graphics.py scene A2M2_*"
+   },
+   "audio_file": "mp3/beat-A2M2.mp3",
+   "actual_duration_s": 11.88
+  },
+  {
+   "beat_id": "A3C",
+   "act": "ACT III — Family Resemblance",
+   "lane": "CARD",
+   "narration_text": "Act three. The model isn’t the outlier. It’s the family.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "CARD",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Family Resemblance"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/A3C.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A3C.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A3C.mp3",
+   "actual_duration_s": 3.58
+  },
+  {
+   "beat_id": "A3R",
+   "act": "errors cluster within families",
+   "lane": "REMOTION",
+   "narration_text": "Models trained on similar data by similar methods tend to fail similarly. Call this family resemblance. Errors cluster within a family — ask two models from the same family to review each other and you’re mostly swapping the same blind spots.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "DeckPattern",
+     "props": {
+      "pattern": "convergence",
+      "title": "Family Resemblance",
+      "left": {
+       "label": "Model A (same family)",
+       "body": "Same training approach\nSame failure modes"
+      },
+      "right": {
+       "label": "Model B (same family)",
+       "body": "Same training approach\nSame failure modes"
+      },
+      "footer": "Cross-checking → swapping the same blind spots"
+     },
+     "rendered": {
+      "out": "media/A3R.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A3R.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A3R.mp3",
+   "actual_duration_s": 13.74
+  },
+  {
+   "beat_id": "A3M",
+   "act": "within vs across family — the viz",
+   "lane": "MANIM",
+   "narration_text": "Qualitatively: errors correlate more within a model family than across families. And here’s the part that breaks the intuition: stronger models tend to cluster tighter within their family, not looser. Using the most capable model may cost you the diversity verification depends on.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 17,
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "Two-bar concept chart. Left bar tall, terracotta fill, labeled 'Within family' (error correlation: high). Right bar short, ink fill, labeled 'Across families' (error correlation: lower). A small annotation arrow on the left bar reads 'stronger model → bar gets taller.' EB Garamond labels. Cream ground. No numeric values — the qualitative shape is the point. Flag in FACTCHECK: direction of stronger-model effect is UNSOURCED.",
+     "palette": "claude"
+    }
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "PIPELINE → render animated_graphics.py scene A3M_*"
+   },
+   "audio_file": "mp3/beat-A3M.mp3",
+   "actual_duration_s": 15.57
+  },
+  {
+   "beat_id": "A3R2",
+   "act": "the upgrade paradox",
+   "lane": "REMOTION",
+   "narration_text": "So the move that feels like upgrading — the newest, most capable model — can actually degrade your verification stack. Not because the model got worse. Because it got more like itself.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "CARD",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Upgrade → more capable",
+       "More capable → more like itself",
+       "More like itself → less diverse verification"
+      ],
+      "dark": true
+     },
+     "rendered": {
+      "out": "media/A3R2.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A3R2.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A3R2.mp3",
+   "actual_duration_s": 10.5
+  },
+  {
+   "beat_id": "A4C",
+   "act": "ACT IV — The Human Is the Check",
+   "lane": "CARD",
+   "narration_text": "Act four. The cheapest check you own.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "CARD",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "The Human Is the Check"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/A4C.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A4C.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A4C.mp3",
+   "actual_duration_s": 2.67
+  },
+  {
+   "beat_id": "A4R",
+   "act": "least-correlated verifier",
+   "lane": "REMOTION",
+   "narration_text": "The human is the least-correlated verifier in your stack. You don’t think like the model. You haven’t seen its training data. You don’t share its priors. That’s not a weakness — it’s the reason you catch things it can’t.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "DeckPattern",
+     "props": {
+      "pattern": "divergence",
+      "title": "Least-Correlated Verifier",
+      "left": {
+       "label": "Model verifies model",
+       "body": "Shared priors\nShared blind spots\nHigh correlation"
+      },
+      "right": {
+       "label": "Human verifies model",
+       "body": "Different priors\nDifferent blind spots\nLow correlation"
+      },
+      "footer": "Low correlation = the reason you catch what it can’t"
+     },
+     "rendered": {
+      "out": "media/A4R.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A4R.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A4R.mp3",
+   "actual_duration_s": 10.99
+  },
+  {
+   "beat_id": "A4V",
+   "act": "attention is non-parallelizable",
+   "lane": "VOX",
+   "narration_text": "‘I watch them’ is the most common QC answer. And it’s real — the human eye is a genuine signal. But it’s also non-parallelizable. You are the bottleneck. Push throughput high enough and the review silently gets shallower.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.55,
+     0.45
+    ],
+    "pantry_note": "Tier 1 — generic illustrative. A person at a monitor reviewing output — abstract/symbolic, no identifiable individual. Desaturate 80%, cream stage, film grain, terracotta highlight on the screen.",
+    "pantry_file": "pantry/A4V.png"
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A4V.mp4)",
+    "suggested": "suggested prompt: ‘I watch them’ is the most common QC answer. And it’s real — the human eye is a genuine signal. But it’s also non-parallelizable. You are the bottleneck. Push t"
+   },
+   "audio_file": "mp3/beat-A4V.mp3",
+   "actual_duration_s": 12.29
+  },
+  {
+   "beat_id": "A4M",
+   "act": "what is review for",
+   "lane": "MANIM",
+   "narration_text": "The question is what human review is for. If it’s a safety gate, automate everything upstream. If it’s catching genuine novelty, reserve it for signals the automated layer can’t handle. Attention is the scarce resource — spend it specifically.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "Two-row decision guide. Row 1: 'If review = safety gate → automate everything upstream.' Row 2: 'If review = novelty catch → reserve for unhandled signals.' A terracotta rule beneath both: 'Attention is scarce — spend it specifically.' EB Garamond. Cream ground. Each row appears on its spoken cue.",
+     "palette": "claude"
+    }
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "PIPELINE → render animated_graphics.py scene A4M_*"
+   },
+   "audio_file": "mp3/beat-A4M.mp3",
+   "actual_duration_s": 13.53
+  },
+  {
+   "beat_id": "A4R2",
+   "act": "the explicit design decision",
+   "lane": "REMOTION",
+   "narration_text": "And that’s a design decision you have to make explicitly. Because the default — the human reviews everything — is a bet that your throughput stays low forever. It won’t.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "CARD",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "‘The human reviews everything’",
+       "= a bet that throughput stays low forever"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/A4R2.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A4R2.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A4R2.mp3",
+   "actual_duration_s": 9.11
+  },
+  {
+   "beat_id": "A5C",
+   "act": "ACT V — The Icon Incident",
+   "lane": "CARD",
+   "narration_text": "Act five. A live example — from this session.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "CARD",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "The Icon Incident"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/A5C.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A5C.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A5C.mp3",
+   "actual_duration_s": 3.11
+  },
+  {
+   "beat_id": "A5V",
+   "act": "false premise accepted — vox run R1 beat 1",
+   "lane": "VOX",
+   "narration_text": "This session. A prompt arrived: ‘you lack a pencil icon.’ The model accepted the premise. A request card went into the shopping list. Work began on sourcing and generating icons.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 11,
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.5
+    ],
+    "vox_run": "R1",
+    "handoff": {
+     "camera": {
+      "x": 0.5,
+      "y": 0.5,
+      "scale": 1.15
+     },
+     "objects": [
+      {
+       "id": "shopping-list-still",
+       "x": 0.5,
+       "y": 0.5,
+       "scale": 1.0,
+       "opacity": 1
+      }
+     ]
+    },
+    "pantry_note": "Tier 1 — generic illustrative. A checklist or shopping list with items being added — abstract/symbolic. Desaturate 80%, cream stage, film grain, terracotta highlight on a new item being added to the list.",
+    "pantry_file": "pantry/A5V.png"
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A5V.mp4)",
+    "suggested": "suggested prompt: This session. A prompt arrived: ‘you lack a pencil icon.’ The model accepted the premise. A request card went into the shopping list. Work began on sourcing and"
+   },
+   "audio_file": "mp3/beat-A5V.mp3",
+   "actual_duration_s": 10.24
+  },
+  {
+   "beat_id": "A5V2",
+   "act": "assets already existed — vox run R1 beat 2",
+   "lane": "VOX",
+   "narration_text": "Meanwhile, the assets already existed. The library had the icons. The output gate checked completion; it reported all-clear — it was checking whether the pipeline finished, not whether the premise was correct.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.55
+    ],
+    "vox_run": "R1",
+    "pantry_note": "Tier 1 — generic illustrative. A filled library or archive of items — abstract/symbolic, suggesting assets already on shelf. Desaturate 80%, cream stage, film grain, terracotta drawon annotation circling existing assets.",
+    "pantry_file": "pantry/A5V2.png"
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A5V2.mp4)",
+    "suggested": "suggested prompt: Meanwhile, the assets already existed. The library had the icons. The output gate checked completion; it reported all-clear — it was checking whether the pipeli"
+   },
+   "audio_file": "mp3/beat-A5V2.mp3",
+   "actual_duration_s": 11.43
+  },
+  {
+   "beat_id": "A5R",
+   "act": "output gate checks completion not premises",
+   "lane": "REMOTION",
+   "narration_text": "The output gate isn’t broken. It did exactly what it’s designed to do: check whether the build completed. What it can’t check is whether the build started from a true premise. That’s a different gate — and it didn’t exist.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "DeckPattern",
+     "props": {
+      "pattern": "divergence",
+      "title": "Two Different Gates",
+      "left": {
+       "label": "Output gate ✓",
+       "body": "Did the build complete?\nAll beats filled?\nFiles present?"
+      },
+      "right": {
+       "label": "Premise gate ✗",
+       "body": "Was the starting claim true?\nWhat did the pipeline believe?\nWhat rules were applied?"
+      },
+      "footer": "The second gate didn’t exist"
+     },
+     "rendered": {
+      "out": "media/A5R.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A5R.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A5R.mp3",
+   "actual_duration_s": 11.31
+  },
+  {
+   "beat_id": "A5SH",
+   "act": "the manifest — shell skin",
+   "lane": "REMOTION",
+   "narration_text": "The fix isn’t a better model. It’s a process artifact. Make the pipeline emit what it believed and what it did: premises accepted, assets generated versus assets reused, rules applied. Before the output gate — a manifest to check.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 14,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "skin": "shell",
+    "remotion": {
+     "pattern": "ClaudeCodeBeat",
+     "props": {
+      "lines": [
+       "$ pipeline manifest --run 2026-07-28",
+       "",
+       "PREMISES ACCEPTED",
+       "  → 'no pencil icon in library'   [UNVERIFIED]",
+       "",
+       "ASSETS GENERATED",
+       "  → pencil-icon-v1.svg            [GENERATED]",
+       "  → pencil-icon-v2.svg            [GENERATED]",
+       "",
+       "ASSETS REUSED",
+       "  → (none checked against library before generation)",
+       "",
+       "RULES APPLIED",
+       "  → icon-resolution: specific->general->ASK  [SKIPPED]",
+       "",
+       "OUTPUT GATE: PASS   PREMISE GATE: NOT RUN"
+      ],
+      "dark": true,
+      "highlightLines": [
+       2,
+       11,
+       14
+      ]
+     },
+     "note": "Shell skin (dark surface). Terracotta highlight on UNVERIFIED, SKIPPED, NOT RUN lines. This is the diegetic dark exception — a real terminal surface. Pattern: ClaudeCodeBeat or nearest shell/terminal Remotion component. BUILD-LOG: verify ClaudeCodeBeat supports multi-line terminal-output props; if not, flag for skin extension.",
+     "rendered": {
+      "out": "media/A5SH.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A5SH.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A5SH.mp3",
+   "actual_duration_s": 13.4
+  },
+  {
+   "beat_id": "A5M",
+   "act": "quality gate vs process gate",
+   "lane": "MANIM",
+   "narration_text": "A quality gate that reports only done or not done is a process gate. A real quality gate surfaces the decisions the pipeline made — so you can audit the work, not just the result.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 13,
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "Two boxes side by side. Left box, smaller: 'Process Gate — Done? ✓' Right box, larger/expanded: 'Quality Gate — What did it believe? / What was generated vs reused? / Which rules ran?' A terracotta border on the right box as the narrator names it. EB Garamond. Cream ground. Boxes appear on their cue.",
+     "palette": "claude"
+    }
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "PIPELINE → render animated_graphics.py scene A5M_*"
+   },
+   "audio_file": "mp3/beat-A5M.mp3",
+   "actual_duration_s": 10.58
+  },
+  {
+   "beat_id": "A6C",
+   "act": "ACT VI — Single-Vendor Risk",
+   "lane": "CARD",
+   "narration_text": "Act six. The bet you may not have noticed you made.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "CARD",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Single-Vendor Risk"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/A6C.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A6C.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A6C.mp3",
+   "actual_duration_s": 3.14
+  },
+  {
+   "beat_id": "A6R",
+   "act": "availability bet not capability bet",
+   "lane": "REMOTION",
+   "narration_text": "Running on a single model from a single provider is an availability bet as much as a capability decision. Models change, providers face regulatory constraints, versions get sunset. And with safeguard routing, you may not know which model ran on a given request.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 16,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "DeckPattern",
+     "props": {
+      "pattern": "divergence",
+      "title": "Single-Vendor Is a Bet",
+      "left": {
+       "label": "Capability risk",
+       "body": "Model quality\nBenchmark position"
+      },
+      "right": {
+       "label": "Availability risk",
+       "body": "Version sunset\nRegulatory constraint\nSafeguard routing opacity"
+      },
+      "footer": "You may not know which model ran"
+     },
+     "rendered": {
+      "out": "media/A6R.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/A6R.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-A6R.mp3",
+   "actual_duration_s": 15.17
+  },
+  {
+   "beat_id": "A6V",
+   "act": "keep families warm",
+   "lane": "VOX",
+   "narration_text": "The practical answer is to keep several model families warm — not as backups, but as active parts of your verification stack. Different families, different failure modes. The disagreement between them is signal.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.5
+    ],
+    "pantry_note": "Tier 1 — generic illustrative. Abstract branching diagram or network of distinct pathways — diversity, not redundancy. No logos, no real product identifiers. Desaturate 80%, cream stage, film grain.",
+    "pantry_file": "pantry/A6V.png"
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A6V.mp4)",
+    "suggested": "suggested prompt: The practical answer is to keep several model families warm — not as backups, but as active parts of your verification stack. Different families, different fail"
+   },
+   "audio_file": "mp3/beat-A6V.mp3",
+   "actual_duration_s": 11.8
+  },
+  {
+   "beat_id": "A6M",
+   "act": "coverage not just maintenance",
+   "lane": "MANIM",
+   "narration_text": "This doesn’t require running four models on every request. It requires knowing the routing and the fallback — and having tested them. The infrastructure question is maintenance; the verification question is coverage.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "Two-column contrast. Left column: 'Infrastructure question → maintenance (know the routing, test the fallback).' Right column: 'Verification question → coverage (which failure modes can you catch?).' A terracotta separator between them. EB Garamond. Cream ground.",
+     "palette": "claude"
+    }
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "PIPELINE → render animated_graphics.py scene A6M_*"
+   },
+   "audio_file": "mp3/beat-A6M.mp3",
+   "actual_duration_s": 12.01
+  },
+  {
+   "beat_id": "A6R2",
+   "act": "adversarial checker not co-signer",
+   "lane": "MANIM",
+   "narration_text": "And when you use a second model — don’t use it to vote. Voting amplifies shared error. Use it adversarially: its job is to find a flaw in the first answer, not to confirm it. Disagreement is signal. Investigate it — don’t average it.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "Two-panel contrast. Left panel (dimmed/struck-through): 'VOTE — Model A + Model B agree → shared error survives.' Arrows converge toward same wrong answer. Right panel (terracotta border): 'VERIFY — Model B challenges Model A → disagreement flagged.' One arrow pointing at the other, labeled ‘Find the flaw’. EB Garamond labels. Cream ground.",
+     "palette": "claude"
+    }
+   },
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:54:42",
+    "needs": "PIPELINE → render animated_graphics.py scene A6R2_*"
+   },
+   "audio_file": "mp3/beat-A6R2.mp3",
+   "actual_duration_s": 12.99
+  },
+  {
+   "beat_id": "BASK",
+   "act": "your turn",
+   "lane": "BOOKEND",
+   "narration_text": "Your turn. Pick a pipeline you use — one where a model generates and a second model checks. Ask: are these two from the same family? Are they checking premises or just outputs? Write a one-paragraph manifest for what the pipeline believed when it last ran. See what surfaces.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 18,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "COMPUTATIONAL SKEPTICISM · MODEL VERIFICATION",
+      "segment": "You Can’t Check a Model With Itself",
+      "command": "Write a one-paragraph manifest for what your pipeline believed when it last ran.",
+      "runningText": "premises — assets generated vs reused — rules applied…",
+      "output": [
+       "Are your two models from the same family?",
+       "Are they checking premises or just outputs?",
+       "What would your pipeline’s manifest say?"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5 (speculative)",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/BASK.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BASK.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "audio_file": "mp3/beat-BASK.mp3",
+   "actual_duration_s": 14.87
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN · COMPUTATIONAL SKEPTICISM · MODEL VERIFICATION",
+      "segment": "You Can't Check a Model With Itself",
+      "command": "Take what you learned from [You Can't Check a Model With Itself] and apply it to your own work. What's one thing you'll try first?",
+      "runningText": "paste this into Claude and run it on your own work…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "title outro",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "You Can’t Check a Model With Itself",
+      "handle": "@NikBearBrown",
+      "subline": null,
+      "mascot": "slug-seeded",
+      "polarity": "slug-seeded",
+      "jingle": "slug-seeded",
+      "note": "OUTRO-LOCK: exact title restate, hardcoded @NikBearBrown, one of 18 crisp-safe mascots. NO subline ever. Slug-seeded randomness only."
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:54:42"
+   },
+   "actual_duration_s": 12.0
+  }
+ ]
+}

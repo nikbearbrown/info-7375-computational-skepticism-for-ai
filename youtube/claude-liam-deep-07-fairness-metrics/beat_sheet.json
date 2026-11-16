@@ -1,0 +1,1312 @@
+{
+  "metadata": {
+    "title": "Pick One. Then Defend It.",
+    "slug": "claude-liam-deep-07-fairness-metrics",
+    "topic": "COMPUTATIONAL SKEPTICISM · FAIRNESS METRICS",
+    "genre": "deep-explainer",
+    "register": "Teardown",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "vox_stage": "#F2F0E9",
+    "accent": "#D97757",
+    "greeting": "Yassou, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "series": "claude-liam-deep",
+    "episode": 7,
+    "playlist": "Computational Skepticism for AI — Deep Explainers",
+    "source": "books/computational-skepticism-for-ai/chapters/07-fairness-metrics-choosing-a-definition-and-defending-it.md",
+    "gate": "PLAN — awaiting human approval (no factcheck / no audio / no render)",
+    "beat_mix_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "beat_mix_actual": {
+      "body_beats": 25,
+      "VOX": "24.0% (6)",
+      "MANIM": "28.0% (7)",
+      "REMOTION": "32.0% (8)",
+      "CARD": "16.0% (4)",
+      "lint": "PASS — vox in 15-30% band, spine OK, no >2 same-lane run outside the R1 vox run"
+    },
+    "total_estimated_duration_seconds": 489,
+    ".codex": {
+      "workflow": "deep-explainer",
+      "mode": "unattended-then-human-review",
+      "agent": "Claude Code",
+      "persona": "Liam (in for Bear)",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "paid_generation": false,
+      "publish": false,
+      "reviewer": "Bear"
+    },
+    "build": {
+      "at": "2026-07-28T01:26:07",
+      "cut": "master",
+      "filled": 30,
+      "of": 31,
+      "slates": [
+        "A5R"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "Yassou — this is Liam, in for Bear. Here's the whole chapter in one problem. You build a classifier — a loan, a bail decision, a hiring screen — and you want it to be fair. So you write three reasonable requirements. Equal rates of yes. Equal rates of error. And a score that means the same thing for everyone. Each one, on its own, is exactly what fairness sounds like. And when the base rates differ between two groups — which, in the real world, they almost always do — you cannot have all three. Not because your tools are weak. Because it's a theorem. So which one gives?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 30,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Yassou, Liam",
+            "topic": "COMPUTATIONAL SKEPTICISM , FAIRNESS METRICS",
+            "segment": "Pick One. Then Defend It.",
+            "command": "Three reasonable definitions of fairness. One dataset. Which do you satisfy?",
+            "runningText": "impossibility theorem — not a tooling gap…",
+            "output": [
+              "You cannot satisfy all three at once — it's a theorem, not a tooling gap",
+              "Which one gives is a values claim, not an optimization",
+              "The deliverable isn't a metric — it's a defended choice"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Pick One. Then Defend It.",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A1C",
+      "act": "ACT I — Three Reasonable Definitions",
+      "lane": "CARD",
+      "narration_text": "Act one. Three definitions. Each one captures something fairness obviously requires — and that's exactly the trap.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Three Reasonable Definitions"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A1R",
+      "act": "the three requirements",
+      "lane": "REMOTION",
+      "narration_text": "Demographic parity: the model says yes at the same rate in both groups. Equalized odds: it makes its mistakes evenly — same false-positive rate, same true-positive rate. Calibration parity: when it says seventy percent, it means seventy percent for everyone. Three sentences. Each one is a theory of fairness wearing a formula.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "Three Definitions of Fairness",
+            "chips": [
+              "Demographic parity — equal rate of 'yes' across groups",
+              "Equalized odds — equal true- and false-positive rates",
+              "Calibration parity — a score means the same thing for everyone",
+              "About the outputs",
+              "About the errors",
+              "About the meaning of the score"
+            ],
+            "sparkLine": "Each is a theory of fairness in a formula."
+          },
+          "rendered": {
+            "out": "media/A1R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A1M",
+      "act": "same matrix, three readings",
+      "lane": "MANIM",
+      "narration_text": "They're not the same measurement. Draw the confusion matrix for each group. Demographic parity reads one column — how often the model says yes. Equalized odds reads down the rows, conditioned on the truth. Calibration reads back the other way — given a score, how often it was right. Three different cells of the same table. That's your first clue they can pull apart.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A1M_ThreeReadings",
+          "spec": "two 2x2 confusion matrices side by side (group A, group B); demographic parity highlights the predicted-positive column; equalized odds highlights the truth-conditioned rows (TPR, FPR); calibration highlights the precision read-back (PPV); terracotta cycles cell groups as each metric names them",
+          "out": "manim/A1M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Same matrix — three different cells"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A1V",
+      "act": "each sounds like fairness",
+      "lane": "VOX",
+      "narration_text": "Sit with how reasonable each one feels. Equal treatment. Equal errors. Honest numbers. If you had to defend any single one to a room, you could. That's not a weakness in the definitions. It's the setup for the ambush.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "pantry": "pantry/A1V.png",
+        "pantry_brief": "an old brass balance scale on a plain table, one pan per side, warm ink on cream, editorial still life — Tier 1 generic/illustrative",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Each one is defensible — alone"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A2C",
+      "act": "ACT II — The Four Lines",
+      "lane": "CARD",
+      "narration_text": "Act two. I owe you the proof — not a gesture at it, the four lines of algebra that make the impossibility obvious.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Four Lines"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A2K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , FAIRNESS METRICS",
+            "segment": "The impossibility, from Bayes",
+            "command": "render a Manim scene: derive PPV in odds form v/(1-v) = p/(1-p),t/f, then show the two-group ratio is forced away from 1 whenever base rates differ",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A2K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A2M",
+      "act": "the Bayes identity (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "Here it is. Precision — the chance someone flagged is truly positive — is Bayes' rule on the base rate, the true-positive rate, and the false-positive rate. Rearrange into odds and you get one clean identity: the precision odds equal the base-rate odds times t over f. Put two groups side by side and take the ratio. Calibration forces the precisions equal — so the left side is one. Which forces the right side to one. And the base-rate term only equals one when the base rates are equal. When they're not, t over f is forced to differ. Equalized odds just demanded it not. Contradiction.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A2M_BayesIdentity",
+          "spec": "write-on v = p·t / (p·t + (1-p)·f); transform to odds form v/(1-v) = [p/(1-p)]·[t/f]; stack two groups a,b and take the ratio; calibration sets the PPV ratio to 1; the base-rate coefficient p_b(1-p_a)/p_a(1-p_b) glows terracotta, equals 1 only when p_a=p_b; t/f forced apart otherwise",
+          "out": "manim/A2M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "v/(1−v) = p/(1−p) · t/f — base rate does all the work."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A2M2",
+      "act": "one model, two threshold choices",
+      "lane": "MANIM",
+      "narration_text": "Watch it in numbers. Take base rates of sixty percent and thirty percent. Choose thresholds one way and precision comes out equal in both groups — calibration holds — but the error rates split apart. Choose thresholds the other way and the error rates line up — equalized odds holds — but now the same score means two different things. One model. You get to pick which fairness to keep. You do not get to keep both.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A2M2_TwoTables",
+          "spec": "two side-by-side subgroup-rate tables sharing base rates 0.6/0.3; LEFT calibration-satisfying: PPV 0.75/0.75 equal (terracotta), TPR/FPR differ; RIGHT equalized-odds-satisfying: TPR 0.70/0.70 and FPR 0.15/0.15 equal (terracotta), PPV 0.88/0.67 diverge; label numbers as illustrative",
+          "out": "manim/A2M2.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Keep calibration OR equalized odds — never both"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2M2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2M2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2M2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A2R",
+      "act": "any two, the third breaks",
+      "lane": "REMOTION",
+      "narration_text": "So the picture is a triangle. Pick any two corners and you can hit them. The third one breaks — not sometimes, structurally, the moment base rates diverge. Proved in twenty-sixteen, independently, by two teams. This isn't a disagreement more data could settle. It's a wall that arithmetic put there on purpose.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "branch",
+            "title": "You Can Satisfy Any Two",
+            "left": {
+              "label": "CALIBRATION + EQUALIZED ODDS",
+              "note": "/ demographic parity breaks"
+            },
+            "right": {
+              "label": "EQUALIZED ODDS + DEM. PARITY",
+              "note": "/ calibration breaks"
+            },
+            "sparkLine": "The third corner always breaks."
+          },
+          "rendered": {
+            "out": "media/A2R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A3V1",
+      "act": "ACT III — The Theorem in Public",
+      "lane": "VOX",
+      "narration_text": "Act three. Watch the theorem play out where it cost real people. Twenty-sixteen, Broward County, Florida. A commercial tool scores defendants for the risk of re-arrest, and a court reads the score.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "pantry": "pantry/A3V1.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.45,
+            "scale": 1.5
+          },
+          "objects": [
+            {
+              "id": "score-slip",
+              "x": 0.5,
+              "y": 0.44,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "exterior of a generic American county courthouse, overcast, documentary still, no identifying signage — Tier 3 (COMPAS is a real case; use a generic non-identifying courthouse; flag rights) — start of a 2-beat vox run pulling back",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A risk score walks into a courtroom"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3V1.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3V1.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3V1.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A3V2",
+      "act": "both sides were right",
+      "lane": "VOX",
+      "narration_text": "Journalists showed the false-positive rate was far higher for Black defendants — non-reoffenders wrongly flagged high-risk. The maker answered: the tool is calibrated, a score of seven means the same risk for everyone. Both claims were true. They were measuring different corners of the triangle.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "pantry": "pantry/A3V2.png",
+        "vox_run": "R1",
+        "pantry_brief": "two plain press-statement documents side by side on a desk, each with a small terracotta 'correct' stamp, duotone — Tier 3 continuity from A3V1 (generic pages, no real logos or mastheads; flag rights) — end of the vox run",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Both were right about the numbers"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3V2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3V2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3V2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A3R",
+      "act": "a values fight in a lab coat",
+      "lane": "REMOTION",
+      "narration_text": "So the famous fight was never a factual one. One side said the cost of being wrongly flagged should fall equally. The other said a score should read the same for everyone. Given the base-rate gap, the theorem says you can't honor both. They were having a values disagreement — dressed as a dispute about numbers, and nobody signed it as a values call.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A values fight dressed as a factual one.",
+              "Side A: equalized odds — the FPR gap was real",
+              "Side B: calibration — the score meant the same thing across groups"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A3M",
+      "act": "the disparity was real",
+      "lane": "MANIM",
+      "narration_text": "And to be clear, the disparity the journalists measured was real. Line the false-positive rates up by group and one bar stands well above the other. That number was not in dispute. What was in dispute was whether that was the number that should govern the decision. The confusion matrix can't answer that. Only a person can.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A3M_FPRGap",
+          "spec": "two false-positive-rate bars grouped by demographic; one visibly higher than the other (illustrative, ~2x per the reported analysis); terracotta on the gap; caption 'real number — not the disputed part'; label figures illustrative/VERIFY",
+          "out": "manim/A3M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The FPR disparity was true",
+              "and still not the whole question"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A4C",
+      "act": "ACT IV — Each Metric Is a Values Claim",
+      "lane": "CARD",
+      "narration_text": "Act four. Say the quiet part out loud. Every one of these metrics is a moral position with a formula stapled to it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Each Metric Is a Values Claim"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A4R",
+      "act": "the three claims, named",
+      "lane": "REMOTION",
+      "narration_text": "Demographic parity claims: outcomes should be allocated equally even when base rates differ — structural redress over conditional accuracy. Equalized odds claims: the harm of being wrongly flagged should fall equally on both groups. Calibration claims: the score should read the same for everyone, so a decision-maker can act on it uniformly. Each is coherent. None is the obvious winner. The deployment picks.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Three coherent values. No default winner.",
+              "Demographic parity — equal allocation over conditional accuracy (redress)",
+              "Equalized odds — the cost of a wrong flag borne equally"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A4V",
+      "act": "Mill saw it first",
+      "lane": "VOX",
+      "narration_text": "This tension is old. John Stuart Mill spent the eighteen-hundreds arguing that fairness is not one quantity — aggregate welfare in one book, the individual claim that no majority can override in another, and he never pretended a single metric reconciled them. The move this chapter asks of you is Mill's move: choose the definition that fits the harm in front of you, and defend it against the ones you ruled out.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.4
+        ],
+        "pantry": "pantry/A4V.png",
+        "pantry_brief": "John Stuart Mill, c. 1860s, AI-generated portrait based on a public-domain photograph (Wikimedia Commons), warm duotone on cream — Tier 3 real person (PD-based; AI-generation disclosure sidecar required)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Fairness was never one quantity"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A5C",
+      "act": "ACT V — The Three Exits",
+      "lane": "CARD",
+      "narration_text": "Act five. Three clever escapes from the impossibility. Watch each one — because each one doesn't remove the price. It just moves where you pay it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Three Exits"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A5M",
+      "act": "individual fairness — the Lipschitz condition (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "Exit one: stop auditing groups, audit individuals. Similar people should be treated similarly. Make it a condition — the difference in how two people are treated is bounded by how different the two people are. Clean machinery. But the whole guarantee hinges on one symbol: the distance function that decides who counts as similar. Define it on income and credit, two applicants match. Fold in zip code, the same equation now permits treating them differently. The impossibility didn't dissolve. It relocated into the choice of that metric.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A5M_Lipschitz",
+          "spec": "write-on D(M(x),M(y)) ≤ d(x,y); two applicant nodes x,y; when d ignores zip code the bound pulls M(x),M(y) together (treat alike); when d encodes zip code the bound loosens (different treatment permitted); terracotta ring on the symbol d — 'the whole guarantee lives here'",
+          "out": "manim/A5M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "D(M(x),M(y)) ≤ d(x,y) — everything hinges on d"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A5V",
+      "act": "two applicants, one zip code",
+      "lane": "VOX",
+      "narration_text": "Make it concrete. Two loan applicants — identical credit, identical income, identical debt — and different zip codes. Pick a similarity metric that calls them the same, and you must treat them alike. Pick one that weighs the zip code, and you're allowed to split them. Same people. The judgment lives entirely in what you decided counts as different.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "pantry": "pantry/A5V.png",
+        "pantry_brief": "two loan-application folders side by side on a desk, identical figures visible, different zip codes circled in terracotta, warm ink on cream — Tier 1 generic/illustrative",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Same applicants — the metric decides"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A5K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , FAIRNESS METRICS",
+            "segment": "Causal fairness — three paths from A to the prediction",
+            "command": "render a Manim scene: the direct, indirect (mediator), and spurious (confounder) paths from sensitive attribute A to the prediction, and the abduction–action–prediction counterfactual on one individual",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A5K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A5M2",
+      "act": "causal fairness — target the path",
+      "lane": "MANIM",
+      "narration_text": "Exit two: climb Pearl's ladder. Correlation can't tell a wrongful path from a legitimate one — three different graphs give the same statistic. So model the world. The direct path, the attribute straight into the prediction. The indirect path, through a mediator like education. The spurious path, a shared confounder. Counterfactual fairness asks: had this person's group been different, everything else held fixed, would the decision move? Powerful. And it only works if you first commit to which paths are illegitimate — and to a full causal graph the data will never hand you.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A5M2_CausalPaths",
+          "spec": "SCM graph: A (sensitive) with three routes to Ŷ — direct A→Ŷ, indirect A→M→Ŷ, spurious A←C→Ŷ; each highlighted in turn; then the 3-step counterfactual: abduction (infer U from x,a), action (set A←a'), prediction (propagate to Ŷ); terracotta on 'which paths are illegitimate = a values call'",
+          "out": "manim/A5M2.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Direct, indirect, spurious",
+              "you must declare which is wrong"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5M2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5M2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5M2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A5R",
+      "act": "each exit relocates the price",
+      "lane": "REMOTION",
+      "narration_text": "See the pattern in the exits. Group fairness charged you a values choice about which rate gives. Individual fairness moved that choice into the similarity metric. Causal fairness moved it into a graph of the world — a values choice plus a theory of reality. Nobody escaped the bill. They just kept relocating the counter.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "SourceFlow",
+          "props": {
+            "title": "Every Exit Relocates the Price",
+            "stages": [
+              "group metrics / which rate gives",
+              "individual / the similarity metric d",
+              "causal / a full graph of the world",
+              "GE Index / the parameter α and the benefit b"
+            ],
+            "sparkLine": "Not a way out — a way to move the counter."
+          },
+          "rendered": {
+            "out": "media/A5R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T01:26:07",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A5R"
+      }
+    },
+    {
+      "beat_id": "A5M3",
+      "act": "the GE Index — a scoreboard, not an escape",
+      "lane": "MANIM",
+      "narration_text": "Exit three: quit choosing, just measure. Borrow the math economists use for income inequality and put all the unfairness on one scale. Its best trick is an exact split — total unfairness equals the part within each group plus the part between groups. A group audit sees only one term; an individual audit only the other; this sees both, and tells you which dominates. But it needs a number for each person's benefit — that's a values choice — and it never tells you why. The scoreboard measures the trade-off with more resolution. It does not dissolve it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A5M3_GEDecomp",
+          "spec": "GE(alpha) formula appears, then a stacked bar splitting total unfairness into within-group + between-group components; the ratio slider shifts remedy label (within → individual treatment; between → reweighting/threshold); footnote: needs cardinal benefit b_i (a values choice), not causal",
+          "out": "manim/A5M3.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "GE = within-group + between-group",
+              "measured, not resolved"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5M3.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5M3.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5M3.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A6R",
+      "act": "ACT VI — The Defense Is the Deliverable",
+      "lane": "REMOTION",
+      "narration_text": "Act six, the one that matters. There's a real toolkit — pre-processing the data, in-processing the loss, post-processing the thresholds. Every one works. And not one of them resolves the impossibility. They let you implement a choice among the metrics; they can't make the choice for you, and none of them reaches the structural bias sitting upstream in the data.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Three families. Each implements a choice — none resolves the theorem.",
+              "Pre-processing — reweight/resample the data (upstream, model-agnostic)",
+              "In-processing — a fairness penalty in the loss (trades against accuracy)"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A6R2",
+      "act": "the defended choice",
+      "lane": "REMOTION",
+      "narration_text": "So the deliverable is not a number. It's a defended choice, and it has a shape. Specify the deployment and who bears the cost of error. Compute the candidate metrics and show the trade-offs. Name the conflict and the values claim inside each side. State which metric you're prioritizing. Defend it in writing, connecting it to the cost-bearers and the construct. And name what would change your mind. That structure — not the model — is the work.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Six boxes. The model alone doesn't show the work.",
+              "1 — Specify the deployment & who bears the cost of error",
+              "2 — Compute the candidate metrics; show the trade-offs"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A6V",
+      "act": "who should have decided",
+      "lane": "VOX",
+      "narration_text": "And the sharp audit question isn't did they choose right. It's who should have decided — and did they sign it. For a sentencing tool, that's not the engineers who fit the model. It's the party accountable for the policy: the court, the jurisdiction, the body that owns the trade between a wrongly-flagged person's liberty and public safety. The engineers' failure was choosing silently, letting a loss function stand in for a signature.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.55
+        ],
+        "pantry": "pantry/A6V.png",
+        "pantry_brief": "an unsigned decision memo on a wooden desk, signature line blank, a single pen resting beside it, warm ink on cream, editorial still — Tier 1 generic/illustrative",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Someone always decides",
+              "the question is whether they signed"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "A6R3",
+      "act": "the construct sits upstream of every metric",
+      "lane": "REMOTION",
+      "narration_text": "One last honesty. None of these metrics asks whether the task was fair to pose. A model can nail re-arrest and score clean on every fairness test on this page — but re-arrest is not the thing society actually cares about, and the gap between re-arrest and future behavior sits upstream of every number you can compute. The math is downstream of a choice about what to predict at all.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "The Construct Sits Upstream",
+            "note": "a perfect re-arrest predictor is still measuring the wrong thing",
+            "sparkLine": "Fair by the numbers ≠ fair to have asked."
+          },
+          "rendered": {
+            "out": "media/A6R3.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6R3.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6R3.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lane": "CLOSING",
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude. The verdict on fairness metrics. Three reasonable definitions — equal outputs, equal errors, equal meaning — cannot all hold on the same data when base rates differ. That's a theorem, proved twice in twenty-sixteen, not a gap in your tools. Which definition gives is a values claim, not an optimization — the COMPAS fight was two true numbers and an unsigned choice about which one should govern. The clever exits — individual, causal, the entropy scoreboard — don't remove the price; they relocate it, into a similarity metric, a graph of the world, a parameter. The toolkit implements a choice; it never makes it. So the deliverable is a defended choice, and the last question is always the same: someone decided — did they do it on the record?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 42,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Pick One. Then Defend It.",
+            "artifactHeading": "Core rules",
+            "artifactLines": [
+              "Three fairness definitions can't coexist when base rates differ — a theorem.",
+              "Which one gives is a values claim, not an optimization.",
+              "COMPAS: two true numbers, one unsigned choice about which should govern.",
+              "Every 'exit' relocates the price — into d, a causal graph, or α.",
+              "The toolkit implements a choice; it never makes it.",
+              "The deliverable is a defended choice — and someone must sign it."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "lane": "CLOSING",
+      "narration_text": "Your turn. Here's the prompt — paste it into Claude. It reads: Take a decision system I actually rely on. Before we compute anything, make me lock a prediction — which two of the three fairness definitions, demographic parity, equalized odds, or calibration parity, will conflict most sharply on my data, and which one I intend to prioritize. Then walk the impossibility on my numbers, and hold me to writing the six-step defense: the deployment, the metrics, the conflict, my choice, the written defense, and what would change my mind. End quote. That's the whole chapter compressed. The metrics are easy — the machine computes all three in a blink. The prediction you lock before you look, and the defense you sign after, are the part that's yours.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 46,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — PICK ONE. THEN DEFEND IT.",
+            "segment": "Pick One. Then Defend It.",
+            "command": "Take a decision system I rely on. Make me lock a prediction — which two of demographic parity, equalized odds, calibration parity conflict most on my data, and which I'll prioritize — before we compute. Then walk the impossibility on my numbers, and hold me to the six-step defense.",
+            "runningText": "lock the prediction — prove the impossibility on your data — then sign the defense…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "CLOSING",
+      "narration_text": "Pick One. Then Defend It. Fairness metrics, from Computational Skepticism for AI. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Pick One. Then Defend It.",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-deep-07-fairness-metrics"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:26:07"
+      }
+    }
+  ]
+}

@@ -8,6 +8,10 @@ Fall 2026 course adaptation. Claude Code and Python are the working tools. Stude
 
 Start with the [syllabus](SYLLABUS.md), [five-stage template](NEU-COURSE-TEMPLATE.md), [Fall 2026 assignments](assignments/fall-2026/README.md), and [reading map](docs/reading-map.md). The reading map explains companion books and competing chapter versions. The existing [chapters](chapters/) remain the narrative reading edition.
 
+### New introductory readings
+
+Before the existing Chapter 1, read [Agents: Understanding Before Delegating](chapters/00a-agents-understanding-before-delegating.md), then [Agentic Loops](chapters/00b-agentic-loops.md). These introductory chapters are additions to the reading sequence; the historical Fall 2026 lesson numbering below is unchanged. See the [reading map](docs/reading-map.md#introductory-chapters-before-the-skeptics-toolkit) for source and synchronization details.
+
 | Lesson | Practice | Book reading |
 |---|---|---|
 | 1 | [A claim you can try to break](lessons/01-skeptics-toolkit/README.md) | [01: the skeptics toolkit](chapters/01-the-skeptics-toolkit.md) |

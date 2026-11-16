@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-05-million-pixel-flip",
+    "title": "Why an Invisible Change Can Flip a Million-Pixel Answer",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show how high-dimensional accumulation of imperceptible per-pixel perturbations produces a decisive activation shift — illustrating adversarial vulnerability as a geometry-of-scale problem. Source: books/computational-skepticism-for-ai/chapters/08-robustness-what-understanding-means-when-a-pixel-can-break-the-model.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = correct activation / panda confidence; CRIMSON = adversarial push / gibbon activation; GOLD = the decision threshold / the tipping point; SLATE = pixel values / the input grid",
+    "note": "EXCLUSIONS: no FGSM/PGD equations beyond the sign-of-the-gradient intuition, no L∞/L1 norm formalism, no boundary-tilting second account, no defense toolkit survey",
+    "total_estimated_duration_seconds": 190,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 5,
+    "build": {
+      "at": "2026-07-19T02:24:36",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why an Invisible Change Can Flip a Million-Pixel Answer",
+            "greeting": "Bonjour, Liam.",
+            "command": "You can't see what changed — but the model saw it everywhere, and flipped.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "You can't see what changed — but the model saw it everywhere, and flipped.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why an Invisible Change Can Flip a Million-Pixel Answer",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why an Invisible Change\nCan Flip a Million-Pixel Answer"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 4.16,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "Researchers at Google Brain took a photo of a panda. Their vision model identified it correctly as a panda, with very high confidence. Then they made a change to the image — every pixel nudged by a tiny amount, aligned with the model's own weights. The change was completely invisible to human eyes. The image still looked exactly like a panda to everyone who saw it. The model now called it a gibbon. With higher confidence than before. Nothing visible changed. Everything the model cared about changed.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B02_PandaGibbonParadox",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 25.49,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:36",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: Researchers at Google Brain took a photo of a panda. Their vision model identified it correctly as a panda, with very high confidence. Then they made a change t"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "How can a change too small for any human to see produce a definitive flip in a neural network's classification — with even higher confidence?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "How can invisible per-pixel noise flip a confident",
+              "classification?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "How does invisible noise\nflip a confident classifier?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.43,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:36"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The answer is dimensionality. A typical image has hundreds of thousands of pixels — sometimes millions. Each pixel is one dimension. In that space, the model has learned a surface — a boundary — between 'panda' and 'everything else.' A small push on a single pixel barely moves the input in that huge space. But if you push every pixel in the same direction — the direction the model's weights say matters most — each tiny push contributes a tiny vote for 'gibbon.' There are a million tiny votes. They add up.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B04_DimensionalityAccumulation",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 25.6,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:36",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: The answer is dimensionality. A typical image has hundreds of thousands of pixels — sometimes millions. Each pixel is one dimension. In that space, the model ha"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Each individual pixel nudge is epsilon — a sliver of intensity shift you could not detect if you were staring at it. But the model doesn't look at pixels individually. It runs a calculation across all of them simultaneously, multiplied by learned weights. If every nudge is aligned with the direction those weights care about, the cumulative effect on the final activation is not epsilon. It is epsilon times one million. That is not small. That crosses the decision boundary and lands on the wrong side with authority.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B05_EpsilonAccumulationMath",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 27.09,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:36",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: Each individual pixel nudge is epsilon — a sliver of intensity shift you could not detect if you were staring at it. But the model doesn't look at pixels indivi"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "In high dimensions, a push small enough to be invisible per coordinate accumulates across thousands of coordinates into a decisive shift in activation — imperceptible to humans, overwhelming to the model.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Invisible per pixel. Overwhelming in sum. The math of",
+              "high dimensions."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A vast grid of tiny pixel squares, each one containing a barely-visible crimson arrow nudging rightward — from above the grid looks uniform and calm, but a glowing gold activation bar on the right side of the frame climbs steadily as the arrows accumulate, crossing a teal threshold line and spiking into a red GIBBON verdict at the top — the visual tension between the invisibly small per-pixel change and the overwhelming final result",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 11.99,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:36"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here is the pixel grid. Each slate square is one pixel coordinate. Watch the crimson nudge arrows appear — each one a sliver, barely a change. On the right, a gold activation bar labeled GIBBON starts at zero. As the nudges accumulate across pixels, the bar climbs. One hundred pixels — barely a blip. Ten thousand — the bar is rising. One hundred thousand — it approaches the teal decision threshold. One million — it crosses. The verdict card flips from PANDA to GIBBON. The pixel grid looks identical to where it started.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B07_PixelGridActivationBar",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 27.46,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:36",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Here is the pixel grid. Each slate square is one pixel coordinate. Watch the crimson nudge arrows appear — each one a sliver, barely a change. On the right, a g"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The direction of the nudge matters. It is the direction that increases the model's score for the wrong class — the sign of the gradient of the loss with respect to the input. That direction is something the model itself provides. An attacker who knows the model's architecture can compute it. The attack requires one forward pass, one backward pass, and then — nudge every pixel in that direction by epsilon. The computation is cheap. The effect is large. That asymmetry is the security problem.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B08_GradientDirectionMechanism",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 23.74,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:36",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The direction of the nudge matters. It is the direction that increases the model's score for the wrong class — the sign of the gradient of the loss with respect"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For AI deployed in any adversarial environment — content moderation, autonomous vehicles, medical imaging, security screening — robustness to imperceptible perturbations is not an academic concern. An attacker can modify a stop sign in ways invisible to the human eye and cause a car's vision system to classify it as a speed-limit sign. The image looks unchanged. The car behaves differently. The attack is not hypothetical. It has been demonstrated on production vision systems.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B09_AdversarialEnvironmentImplication",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 26.71,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:36",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: For AI deployed in any adversarial environment — content moderation, autonomous vehicles, medical imaging, security screening — robustness to imperceptible pert"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The deeper implication is about what 'understanding' means for a neural network. A model that classifies pandas correctly under normal conditions but misclassifies the same image under an imperceptible aligned perturbation is not recognizing the concept of 'panda' the way a human does. It has learned a statistical surface in pixel space that happens to work well for the distribution of images it was trained on. That surface is fragile in ways human perception is not.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B10_UnderstandingVsStatisticalSurface",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 23.96,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:36",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The deeper implication is about what 'understanding' means for a neural network. A model that classifies pandas correctly under normal conditions but misclassif"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Before deploying a vision model in an environment where inputs can be manipulated — even subtly — test it under perturbation. Add small amounts of noise aligned with the gradient direction and observe whether predictions flip. If the model is highly sensitive to imperceptible changes, that sensitivity is a reliability property to document, not just an academic curiosity. High accuracy on clean data and robustness to perturbation are two separate properties and must be measured separately.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_PerturbationTestingRequirement",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 27.35,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:36",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: Before deploying a vision model in an environment where inputs can be manipulated — even subtly — test it under perturbation. Add small amounts of noise aligned"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 13.0,
+      "narration_text": "A bank deploys a check-fraud detection system that reads handwritten check images. It achieves ninety-seven percent accuracy on the test set. Six months after deployment, a fraud ring discovers that adding a faint texture pattern to the paper — invisible to tellers and scanners at human-inspection resolution — shifts the model's classification from FRAUD to LEGITIMATE across a wide range of forged checks. The pattern is aligned with the model's weights. Each pixel shift is below the detection threshold of the imaging hardware. But across the full check image — roughly two million pixels at scanning resolution — the cumulative activation shift is decisive. The bank's model is not broken. It is exactly as accurate as its test set claimed. The test set didn't include adversarially textured paper.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B12_BankCheckFraudExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 42.54,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:36",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A bank deploys a check-fraud detection system that reads handwritten check images. It achieves ninety-seven percent accuracy on the test set. Six months after d"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "In high dimensions, a nudge too small to see per pixel accumulates across millions of coordinates into a decisive activation shift — crossing the model's decision boundary and flipping the answer with higher confidence, while the image remains visually identical to any human. This is not a corner case — it is a structural property of how neural networks encode decision boundaries in high-dimensional input spaces. Accuracy on clean data and robustness to perturbation are two separate properties, and both must be measured.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Invisible per pixel. Decisive in sum. Measure",
+              "robustness separately."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Invisible per pixel.\nDecisive in sum.",
+        "sub": "Accuracy and robustness are two separate properties.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 28.2,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:36"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why an Invisible Change Can Flip a Million-Pixel Answer",
+            "artifactHeading": "Key findings — Why an Invisible Change Can Flip a Million-Pixel Answer",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A bank deploys a check-fraud detection system that reads handwritten check images."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:36"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY AN INVISIBLE CHANGE CAN FLIP A MILLION-PIXEL ANSWER",
+            "segment": "Why an Invisible Change Can Flip a Million-Pixel Answer",
+            "greeting": "Hola, Liam.",
+            "command": "Ask Claude: Why an Invisible Change Can Flip a Million-Pixel Answer",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:36"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why an Invisible Change Can Flip a Million-Pixel Answer",
+            "slug": "claude-liam-cs-05-million-pixel-flip",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

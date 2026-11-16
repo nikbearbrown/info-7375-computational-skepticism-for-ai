@@ -1,0 +1,215 @@
+1
+00:00:00,000 --> 00:00:04,817
+Ciao. This is Liam, in for Bear, with a short film for INFO 7375, Computational
+
+2
+00:00:04,837 --> 00:00:09,654
+Skepticism for AI. You might ask what kind of person should supervise an AI. The
+
+3
+00:00:09,674 --> 00:00:13,846
+chapter says that is the wrong question. Not personality traits, not vibes. The
+
+4
+00:00:13,866 --> 00:00:18,360
+question is what a supervisor can do that the system cannot do for itself.
+
+5
+00:00:18,430 --> 00:00:22,915
+Four terms. Capacity: something the supervisor can do that the system cannot do for
+
+6
+00:00:22,935 --> 00:00:28,064
+itself. Prior: the sense, built over years, of what kinds of cases tend to be what
+
+7
+00:00:28,084 --> 00:00:32,569
+kinds of cases. Formulation: the exact question the system is being asked to answer.
+
+8
+00:00:32,589 --> 00:00:36,430
+And integration: many outputs made into one decision that someone stands behind.
+
+9
+00:00:36,500 --> 00:00:41,172
+Verification is the problem. A model makes an output, and someone has to check it
+
+10
+00:00:41,192 --> 00:00:45,239
+against the world. That someone is the supervisor, standing between the model and
+
+11
+00:00:45,259 --> 00:00:49,619
+the world. The chapter counts five things the supervisor does there that the model
+
+12
+00:00:49,639 --> 00:00:50,870
+cannot do for itself.
+
+13
+00:00:50,940 --> 00:00:54,717
+One. Plausibility auditing. The chapter's case: a low triage score for a
+
+14
+00:00:54,737 --> 00:00:58,514
+forty-nine-year-old with a swollen leg. An experienced clinician looks at it, and
+
+15
+00:00:58,534 --> 00:01:02,943
+something twitches. The twitch is the audit: a check against a prior, the sense
+
+16
+00:01:02,963 --> 00:01:06,740
+built over years of what kinds of cases tend to be what.
+
+17
+00:01:06,810 --> 00:01:11,276
+The model cannot do this for itself. It has its training data. The supervisor has
+
+18
+00:01:11,296 --> 00:01:15,763
+the world. When nobody audits, the failure is quiet: the score arrives in a credible
+
+19
+00:01:15,783 --> 00:01:19,950
+format, nobody asks whether it makes sense on its face, and it goes through.
+
+20
+00:01:20,020 --> 00:01:24,533
+Two. Problem formulation. The chapter says most AI failures are failures of
+
+21
+00:01:24,553 --> 00:01:28,311
+formulation, not performance. The triage system answered: what statistical category
+
+22
+00:01:28,331 --> 00:01:32,844
+is this presentation? The clinical question was: how likely is a life-threatening
+
+23
+00:01:32,864 --> 00:01:37,000
+condition? The first was answered well. The second was never asked.
+
+24
+00:01:37,070 --> 00:01:41,156
+Three. Tool orchestration. AI is one tool among many. For each sub-problem, the
+
+25
+00:01:41,176 --> 00:01:45,261
+supervisor picks the tool: the AI, human judgment, a different model, or, the
+
+26
+00:01:45,281 --> 00:01:50,630
+hardest call, no tool yet: we do not know how to do this well enough to deploy.
+
+27
+00:01:50,700 --> 00:01:54,954
+Saying we should not deploy this here is supervisory work, and often the most
+
+28
+00:01:54,974 --> 00:01:59,229
+valuable work the supervisor does. The failure runs the other way: AI used because
+
+29
+00:01:59,249 --> 00:02:03,809
+it is available, not because it is right for the task, because nobody has the
+
+30
+00:02:03,829 --> 00:02:05,030
+mandate to say no.
+
+31
+00:02:05,100 --> 00:02:09,082
+Four. Interpretive judgment. The chapter's example: a 5% false-positive rate is fine
+
+32
+00:02:09,102 --> 00:02:13,750
+for a spam filter, and catastrophic for a cancer screen. The same number, two
+
+33
+00:02:13,770 --> 00:02:18,752
+meanings. The number is not the meaning; the meaning is the number in the domain.
+
+34
+00:02:18,772 --> 00:02:22,420
+The failure: numbers read off a dashboard with no domain translation.
+
+35
+00:02:22,490 --> 00:02:26,850
+Five. Executive integration. Outputs from many tools, many models and many people,
+
+36
+00:02:26,870 --> 00:02:30,865
+synthesized into one decision that someone stands behind. Somewhere in the
+
+37
+00:02:30,885 --> 00:02:36,705
+organization, the buck has to stop. If there is no such place, the system has no
+
+38
+00:02:36,725 --> 00:02:37,800
+decision-maker, only outputs.
+
+39
+00:02:37,870 --> 00:02:43,228
+The chapter calls this the rarest capacity, and the one most often missing from AI
+
+40
+00:02:43,248 --> 00:02:48,247
+deployments, because no model produces it and most pipelines have no place for it.
+
+41
+00:02:48,267 --> 00:02:52,549
+The failure: the pipeline produces decisions nobody owns, and when something goes
+
+42
+00:02:52,569 --> 00:02:54,700
+wrong, accountability dissolves into the architecture.
+
+43
+00:02:54,770 --> 00:02:59,270
+These five are vocabulary for now. By the end of the book, you can look at any
+
+44
+00:02:59,290 --> 00:03:02,992
+deployment and name, for each step, which capacity is exercised and by whom. Where
+
+45
+00:03:03,012 --> 00:03:07,512
+you cannot name it, you have found a gap. And in the chapter's words: gaps are where
+
+46
+00:03:07,532 --> 00:03:08,310
+the patients die.
+
+47
+00:03:08,380 --> 00:03:13,485
+Your turn. Pick one AI deployment you know, or one step of one, and paste this into
+
+48
+00:03:13,505 --> 00:03:18,610
+Claude: Here is one AI deployment I know, or one step of it: describe it. For each
+
+49
+00:03:18,630 --> 00:03:21,624
+of the five supervisory capacities, plausibility auditing, problem formulation, tool
+
+50
+00:03:21,644 --> 00:03:24,337
+orchestration, interpretive judgment and executive integration, write who exercises
+
+51
+00:03:24,357 --> 00:03:29,462
+it, in one line each, or write nobody. Then tell me which line you are least sure
+
+52
+00:03:29,482 --> 00:03:34,285
+of, and why. Then check two things yourself. Is every who a named role, not the
+
+53
+00:03:34,305 --> 00:03:37,300
+team? And did you write nobody at least once, honestly?
+
+54
+00:03:37,370 --> 00:03:42,420
+Five Things the Model Can't Do for Itself. At Nik Bear Brown.

@@ -1,0 +1,285 @@
+{
+  "metadata": {
+    "title": "Bonus: The Recipe Pipeline (/recipe and /snickerdoodle)",
+    "slug": "claude-liam-gru-06-recipe-pipeline",
+    "topic": "WHAT IS GRU? \u2014 E6/6: THE RECIPE PIPELINE (/recipe \u00b7 /snickerdoodle)",
+    "register": "Pragmatist",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Ciao, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "What Is Gru? \u2014 Computational Skepticism for AI",
+    "series": "claude-liam-gru",
+    "episode": 6,
+    "source": "INFO 7375 (Computational Skepticism for AI) \u2014 Gru Helper Series"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Ciao \u2014 this is Liam. Episode 6 of 6 \u2014 the bonus episode. This one is for students building runnable pipelines: n8n workflows, data-processing scripts, anything that runs automatically on a trigger. If your Boondoggle app is a pipeline, there is a specific Gru command that handles it \u2014 /recipe. /recipe generates a Claude Code agent that audits your pipeline recipes until they are provably runnable. Then, and only then, you bring them back to Gru for a Boondoggle Score. Six minutes. This episode also ties the recipe taxonomy to the same framework you used in the branding course's A5B \u2014 one system, two contexts.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 30,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E6/6: THE RECIPE PIPELINE (/recipe , /snickerdoodle)",
+            "segment": "Bonus: The Recipe Pipeline (/recipe and /snickerdoodle)",
+            "command": "/recipe",
+            "runningText": "generates a Claude Code agent that hardens your recipes to RUNNABLE \u2014 then you bring them back for /claude\u2026",
+            "output": [
+              "Four intake questions answered",
+              "Claude Code agent prompt generated \u2014 customized to your pipeline",
+              "Agent audits recipes one at a time: DATA SOURCE / DEFINE / DEV / APPROVE / REPORT FIELD TODOs surfaced"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "B01",
+      "act": "what /recipe produces \u2014 and when to use it",
+      "narration_text": "Here is the distinction that matters. /recipe does not produce a score. It produces a customized Claude Code agent prompt \u2014 a complete specification you paste into Claude Code to create an agent that audits your pipeline recipes one at a time and assigns TODOs until they reach RUNNABLE status. The score comes later, from /claude, and only after the recipes are RUNNABLE. If you try to run /claude on a pipeline that has open recipe TODOs, Gru will stop you. This matters because the Boondoggle Score measures what-is-Claude's versus what-is-yours in a build that is already specified. A pipeline with unresolved data-source questions or missing report-field definitions is not yet specified \u2014 the score would be measuring a half-built thing. /recipe forces the specification to close before the scoring begins. Use /recipe if your Boondoggle app: runs on a trigger rather than a user request; processes data from an external source; or produces a structured report with required fields for a specific audience. If your app is interactive and user-facing, /recipe is not the right path \u2014 use the standard /v0 through /claude sequence.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 62,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A Claude Code agent prompt, not a score",
+              "/recipe produces a customized Claude Code agent prompt",
+              "The agent audits recipes one at a time / assigns TODOs"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "the four intake questions",
+      "narration_text": "When you run /recipe, Gru asks four questions. First: the pipeline name and one-sentence purpose \u2014 written for a domain expert, not a developer. This is the same constraint as /v0: you are describing what the pipeline produces and for whom, not how it is implemented. If you write 'an n8n workflow that processes data' \u2014 that is for a developer. A domain-expert sentence reads: 'the Invoice Anomaly Scanner processes submitted invoices nightly and produces a prioritized flag report for the accounts-payable manager.' Second: the origin \u2014 did this pipeline start from an n8n template, a written specification, or is the origin unknown? This determines how the agent will audit it. Third: which governing files already exist \u2014 the spec document, any existing recipes, any data-schema definitions. The agent needs to know what to read before it starts auditing. Fourth: the known gaps \u2014 the open questions you already know the pipeline has. This is not optional. If you answer 'none,' Gru will ask the question again, because every pipeline has at least one open question about a data source or a report field. If you genuinely cannot name a gap, that is evidence you have not thought about the pipeline carefully enough to audit it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 67,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Answer all four before the agent prompt is generated",
+              "Q1: Pipeline name + one-sentence purpose",
+              "Q2: Origin \u2014 n8n template , spec-first , unknown. Determines audit approach."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "the five TODO types \u2014 and the A5B connection",
+      "narration_text": "The Claude Code agent that /recipe generates audits each recipe and assigns TODOs from a taxonomy of five types. DATA SOURCE: the recipe references a data source that is not yet confirmed \u2014 the URL, credentials, schema, or access method is unspecified. DEFINE: a term or entity used in the recipe has not been defined precisely enough to implement. DEV: a development task is needed \u2014 the recipe describes a transformation or logic step that has not been implemented. APPROVE: a decision is needed from a human \u2014 the recipe contains an assumption that requires sign-off before the step can run. REPORT FIELD: a field in the report output is missing one of its three required elements: the source of the data, the transformation applied to it, and the audience-facing label. Every recipe starts as DRAFT. A recipe with open DATA SOURCE or DEFINE TODOs cannot run even in sample mode. A recipe with all TODOs closed on sample data has reached RUNNABLE IN SAMPLE MODE. A recipe with all TODOs closed on live data is RUNNABLE LIVE \u2014 and the graduation to RUNNABLE LIVE is the handoff condition for returning to Gru and running /claude. Here is the A5B connection: this five-type taxonomy \u2014 data source, define, dev, approve, report field \u2014 is the same taxonomy the branding course used in Assignment 5B. The names may differ slightly, but the structure is identical: you cannot cook a recipe whose ingredients are unspecified. One system, two contexts.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 72,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Every open TODO blocks RUNNABLE status \u2014 close them before /claude",
+              "DATA SOURCE: data source unconfirmed \u2014 URL, credentials, schema, access method unspecified.",
+              "DEFINE: a term or entity not defined precisely enough to implement."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "the graduation ladder + the full flow + live demo",
+      "narration_text": "The graduation ladder in full. DRAFT is the starting state \u2014 the recipe exists on paper but has open TODOs of any type. RUNNABLE IN SAMPLE MODE means all TODOs are closed against a sample dataset \u2014 the pipeline can execute end to end with synthetic or historical data; the outputs are correct in structure and format but not verified against live data. RUNNABLE LIVE means all TODOs are closed against live data and the pipeline has executed at least once successfully against real inputs. RUNNABLE LIVE is the handoff condition for /claude. The full flow: run /recipe \u2014 answer the four questions \u2014 receive the agent prompt \u2014 paste the agent prompt into Claude Code \u2014 the agent audits your recipes one at a time \u2014 you close the TODOs \u2014 when all TODOs are closed, return to Gru and run /claude. Live demo. I run /recipe on a nightly invoice-anomaly scanner pipeline. Gru asks the four questions. One-sentence purpose: 'the Invoice Anomaly Scanner processes submitted invoices every night at 11 PM and produces a prioritized flag report with violation reasons for the accounts-payable manager.' Origin: n8n template. Governing files: the SDD from Episodes 3 and 4, plus three existing recipe files. Known gaps: the violation-category taxonomy is not yet defined, and the Accounts Payable API credentials are unconfirmed. Gru generates the agent prompt. The agent will assign a DEFINE TODO for the violation taxonomy and a DATA SOURCE TODO for the API credentials \u2014 and it will not mark the pipeline RUNNABLE IN SAMPLE MODE until both are closed.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 72,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E6/6: THE RECIPE PIPELINE (/recipe , /snickerdoodle)",
+            "segment": "Demo: /recipe on Invoice Anomaly Scanner \u2014 four questions / agent prompt generated",
+            "command": "/recipe\nPipeline name: Invoice Anomaly Scanner\nPurpose: processes submitted invoices every night at 11 PM and produces a prioritized flag report with violation reasons for the accounts-payable manager.\nOrigin: n8n template\nGoverning files: SDD (Episodes 3-4), three existing recipe files\nKnown gaps: violation-category taxonomy undefined , Accounts Payable API credentials unconfirmed",
+            "runningText": "agent prompt generated \u2014 two TODOs pre-seeded: DEFINE (violation taxonomy) + DATA SOURCE (AP API credentials)\u2026",
+            "output": [
+              "Agent prompt generated \u2014 paste into Claude Code to begin recipe audit",
+              "DEFINE TODO: violation-category taxonomy must be defined before RUNNABLE IN SAMPLE MODE",
+              "DATA SOURCE TODO: AP API credentials must be confirmed before RUNNABLE IN SAMPLE MODE",
+              "Graduation path: close both TODOs / RUNNABLE IN SAMPLE MODE / test on live data / return to Gru for /claude"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lead_silence_s": 0.5,
+      "narration_text": "Verdict for The Recipe Pipeline. /recipe generates a Claude Code agent prompt \u2014 not a score. The agent audits your pipeline recipes one at a time and assigns TODOs from five types: Data Source, Define, Dev, Approve, Report Field. Graduation ladder: Draft to Runnable in Sample Mode to Runnable Live. Runnable Live is the handoff condition for /claude \u2014 Gru will not score a pipeline with open TODOs. The four intake questions: name and domain-expert purpose, origin, governing files, known gaps. The five-type taxonomy is the same structure as A5B: you cannot cook a recipe whose ingredients are unspecified. The whole series in one line: you are Gru, Claude is the minions \u2014 Gru's job is to help you decide more precisely before the minions start executing.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 42,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Bonus: The Recipe Pipeline (/recipe and /snickerdoodle)",
+            "artifactHeading": "Core rules",
+            "artifactLines": [
+              "/recipe: Claude Code agent prompt, not a score. Agent audits recipes / TODO types / RUNNABLE.",
+              "Five TODO types: DATA SOURCE , DEFINE , DEV , APPROVE , REPORT FIELD.",
+              "Graduation: DRAFT / RUNNABLE IN SAMPLE MODE / RUNNABLE LIVE / /claude.",
+              "Gru won't score a pipeline with open TODOs. Close them first.",
+              "Same taxonomy as A5B: can't cook a recipe whose ingredients are unspecified.",
+              "Series in one line: you are Gru, Claude is the minions \u2014 decide more precisely before they execute."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "narration_text": "Your turn \u2014 for pipeline students. Here is the prompt \u2014 paste it into your Gru session. The prompt reads: I am building a pipeline-based Boondoggle app. Run /recipe. My pipeline name is [name]. Its purpose \u2014 written for the domain expert who will read the output, not a developer \u2014 is: [one sentence describing what it processes, when, and what it produces for whom]. The origin is [n8n template / spec-first / unknown]. The governing files I have are [list them]. The gaps I already know about are [list at least one]. End quote. Fill every bracket before sending. The purpose sentence is the one most students get wrong \u2014 test it by asking: could a non-technical domain expert read this and know exactly what they will receive and when? If the answer is no, rewrite it. When you receive the agent prompt, paste it into Claude Code. Run the agent on your first recipe. Close every TODO it returns before asking for a Boondoggle Score. The score is the reward for a fully specified pipeline \u2014 not a shortcut to one.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 62,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 BONUS: THE RECIPE PIPELINE (/RECIPE AND /SNICKERDOODLE)",
+            "segment": "Bonus: The Recipe Pipeline (/recipe and /snickerdoodle)",
+            "command": "I am building a pipeline-based Boondoggle app. Run /recipe. Pipeline name: [name]. Purpose (for the domain expert, not a developer): [what it processes , when , what it produces , for whom]. Origin: [n8n template / spec-first / unknown]. Governing files: [list]. Known gaps: [at least one \u2014 data source, definition, or report field].",
+            "runningText": "purpose sentence test: could a non-technical domain expert read it and know exactly what they'll receive? if no, rewrite\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "Bonus: The Recipe Pipeline, slash recipe and slash snickerdoodle. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Bonus: The Recipe Pipeline (/recipe and /snickerdoodle)",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-gru-06-recipe-pipeline"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

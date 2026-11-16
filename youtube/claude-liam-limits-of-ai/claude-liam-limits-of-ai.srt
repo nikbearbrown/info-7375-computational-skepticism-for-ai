@@ -1,0 +1,627 @@
+1
+00:00:00,000 --> 00:00:05,466
+Jambo — this is Liam, in for Bear. Today's
+ask is the claim that's easy to state and
+
+2
+00:00:05,466 --> 00:00:09,717
+hard to sit with: some limits on AI aren't
+engineering problems waiting on scale.
+
+3
+00:00:09,717 --> 00:00:13,665
+They're constitutive — part of what these
+systems are. A system that manipulates
+
+4
+00:00:13,665 --> 00:00:17,613
+symbols without a model of their referents
+doesn't get one by manipulating more
+
+5
+00:00:17,613 --> 00:00:18,220
+symbols, faster.
+
+6
+00:00:18,220 --> 00:00:22,591
+Act one. Three limits — and why the reflex
+objection, 'but it'll improve,' doesn't
+
+7
+00:00:22,591 --> 00:00:23,840
+touch any of them.
+
+8
+00:00:23,840 --> 00:00:27,832
+Meaning. Intentionality. The gap between
+data and world. The claim isn't that these
+
+9
+00:00:27,832 --> 00:00:32,132
+are hard — they're constitutive:
+properties of what the system is, not
+defects in
+
+10
+00:00:32,132 --> 00:00:37,046
+its size. Watch the scale lever pull —
+more data, more compute — and watch what
+
+11
+00:00:37,046 --> 00:00:37,660
+doesn't move.
+
+12
+00:00:37,660 --> 00:00:43,094
+Act two. Meaning — or in cognitive
+science's precise vocabulary, the symbol
+
+13
+00:00:43,094 --> 00:00:44,000
+grounding problem.
+
+14
+00:00:44,000 --> 00:00:49,261
+Stevan Harnad, nineteen ninety, posed it
+with a dictionary. Every word in here is
+
+15
+00:00:49,261 --> 00:00:53,770
+defined using other words in the same
+book. Perfectly consistent. Completely
+sealed.
+
+16
+00:00:53,770 --> 00:00:59,303
+Hand it to a reader who knows no language
+at all, and they get nothing — no matter
+
+17
+00:00:59,303 --> 00:01:02,991
+how large the dictionary. Symbols defined
+by symbols never bootstrap their own
+
+18
+00:01:02,991 --> 00:01:06,680
+connection to the world. Scale the book a
+millionfold. The seal holds.
+
+19
+00:01:06,680 --> 00:01:10,980
+That's the clinical case in one picture:
+outputs correctly related to every symbol
+
+20
+00:01:10,980 --> 00:01:16,273
+in the corpus — whether they relate to
+this patient's actual body is a question
+the
+
+21
+00:01:16,273 --> 00:01:20,243
+symbol-web can't answer from inside.
+Bender and Koller made it formal: text
+
+22
+00:01:20,243 --> 00:01:23,220
+prediction trains on form. Form alone
+doesn't yield meaning.
+
+23
+00:01:23,220 --> 00:01:27,184
+Now the distinction that catches the
+overclaiming: document grounding versus
+world
+
+24
+00:01:27,184 --> 00:01:31,869
+grounding. A pipeline citing a real
+clinical guideline is grounded in the
+document
+
+25
+00:01:31,869 --> 00:01:36,555
+sense. Whether that guideline still
+describes this patient, right now — that's
+world
+
+26
+00:01:36,555 --> 00:01:40,879
+grounding, and the citation doesn't answer
+it. In fast settings, one impersonates
+
+27
+00:01:40,879 --> 00:01:41,600
+the other.
+
+28
+00:01:41,600 --> 00:01:46,766
+The engineering discipline that falls out:
+never let fluency-confidence stand in for
+
+29
+00:01:46,766 --> 00:01:49,780
+grounding-confidence. We asked Claude for
+the flag.
+
+30
+00:01:49,780 --> 00:01:54,553
+Two separate checks. Entity resolution —
+is the claim tied to a real record? That's
+
+31
+00:01:54,553 --> 00:01:58,690
+document grounding. Freshness — is the
+record still an accurate description of
+the
+
+32
+00:01:58,690 --> 00:02:03,463
+case? That's the world check the citation
+misses. And even both passing ends in the
+
+33
+00:02:03,463 --> 00:02:05,690
+same line: still requires human semantic
+sign-off.
+
+34
+00:02:05,690 --> 00:02:10,309
+Act three. Intentionality — and Searle's
+own name for the distinction this limit
+
+35
+00:02:10,309 --> 00:02:11,020
+rides on.
+
+36
+00:02:11,020 --> 00:02:14,665
+Original intentionality: when you think
+about your kettle, the aboutness is
+
+37
+00:02:14,665 --> 00:02:18,641
+intrinsic to the thought. Derived
+intentionality is borrowed — symbols stand
+for
+
+38
+00:02:18,641 --> 00:02:22,617
+things because minds lend them the
+standing. Searle's claim, applied: a
+system's
+
+39
+00:02:22,617 --> 00:02:27,256
+outputs carry derived aboutness at best —
+on loan from whoever built it and
+
+40
+00:02:27,256 --> 00:02:28,250
+whoever's reading it.
+
+41
+00:02:28,250 --> 00:02:32,542
+There's a test a reviewer can actually
+run. Remove the human reader and operator
+
+42
+00:02:32,542 --> 00:02:36,527
+entirely — what intentional content
+survives? If the honest answer is none
+beyond
+
+43
+00:02:36,527 --> 00:02:41,431
+the patterns humans read in, the aboutness
+was derived all the way down — and the
+
+44
+00:02:41,431 --> 00:02:44,190
+product should stop being sold as if it
+understands.
+
+45
+00:02:44,190 --> 00:02:48,938
+Honest caveat — the debate isn't closed.
+Dennett rejects the whole framework: no
+
+46
+00:02:48,938 --> 00:02:52,955
+intrinsic aboutness anywhere, just
+attributions that earn their keep by
+predicting
+
+47
+00:02:52,955 --> 00:02:57,702
+behavior. Fine. That lowers the bar; it
+doesn't grant understanding. Either way
+the
+
+48
+00:02:57,702 --> 00:03:01,720
+deployment question sharpens: is
+predictive usefulness enough here, or is
+someone
+
+49
+00:03:01,720 --> 00:03:02,450
+selling understanding?
+
+50
+00:03:02,450 --> 00:03:07,456
+Act four. The most measurable limit of the
+three — the data is always less than the
+
+51
+00:03:07,456 --> 00:03:07,750
+world.
+
+52
+00:03:07,750 --> 00:03:11,315
+The technical vocabulary is mature:
+distributional shift, three flavors.
+Covariate
+
+53
+00:03:11,315 --> 00:03:16,663
+shift — the inputs change. Label shift —
+the outcomes change. Concept drift — the
+
+54
+00:03:16,663 --> 00:03:21,298
+relationship between them changes. Three
+ways the world walks away from the
+training
+
+55
+00:03:21,298 --> 00:03:25,220
+data, all wearing the same disguise: a
+model that keeps answering.
+
+56
+00:03:25,220 --> 00:03:30,204
+And it's measured, not intuited. The WILDS
+benchmark was built from real deployment
+
+57
+00:03:30,204 --> 00:03:35,189
+shifts — across hospitals, camera traps,
+time, geography — and its sobering result:
+
+58
+00:03:35,189 --> 00:03:38,639
+performance degrades materially out-of-
+distribution, and the gap survives the
+
+59
+00:03:38,639 --> 00:03:42,857
+robustness methods aimed at closing it.
+Same model, different hospital, different
+
+60
+00:03:42,857 --> 00:03:43,240
+truth.
+
+61
+00:03:43,240 --> 00:03:48,640
+The trap inside the trap: the model's own
+confidence is not a safeguard. Guo and
+
+62
+00:03:48,640 --> 00:03:52,240
+colleagues showed modern networks are
+routinely miscalibrated — and softmax
+
+63
+00:03:52,240 --> 00:03:56,560
+confidence can be arbitrarily high far
+outside the training distribution. The
+signal
+
+64
+00:03:56,560 --> 00:04:00,520
+you'd want as a warning fails silently at
+exactly the boundary.
+
+65
+00:04:00,520 --> 00:04:05,533
+So honest tooling doesn't repair the gap —
+nothing does; that's what constitutive
+
+66
+00:04:05,533 --> 00:04:10,160
+means. It makes the gap LOUD. Shift
+detectors, widening conformal sets, out-
+of-
+
+67
+00:04:10,160 --> 00:04:13,630
+distribution scores: fail loudly, not
+silently. Instrumentation, not
+reassurance.
+
+68
+00:04:13,630 --> 00:04:17,100
+Which raises the real question: is the
+override real?
+
+69
+00:04:17,100 --> 00:04:21,309
+Act five. Because every one of these
+limits ends at the same sentence in the
+
+70
+00:04:21,309 --> 00:04:25,799
+deployment plan — 'a human can override' —
+and that sentence has a failure mode with
+
+71
+00:04:25,799 --> 00:04:26,360
+a name.
+
+72
+00:04:26,360 --> 00:04:31,216
+Madeleine Clare Elish named it the moral
+crumple zone. A car's crumple zone absorbs
+
+73
+00:04:31,216 --> 00:04:35,725
+the crash to protect the driver. In
+automated systems it inverts: the
+structure
+
+74
+00:04:35,725 --> 00:04:40,235
+protects the system, and the nearest human
+absorbs the blame — accountable for
+
+75
+00:04:40,235 --> 00:04:44,050
+outcomes they never controlled. Law
+expects one person. The person crumples.
+
+76
+00:04:44,050 --> 00:04:48,160
+And 'a human is watching' has been tested.
+Experimental work on human-in-the-loop
+
+77
+00:04:48,160 --> 00:04:52,270
+oversight found it doesn't reliably
+correct algorithmic errors — and can
+worsen
+
+78
+00:04:52,270 --> 00:04:56,038
+them, the overseer's own preferences
+shaping which errors slip through. The
+
+79
+00:04:56,038 --> 00:05:00,490
+supervisor on the org chart can be the
+fictional override in the room.
+
+80
+00:05:00,490 --> 00:05:05,148
+The night of January twenty-seventh,
+nineteen eighty-six. Ice on the launch
+tower at
+
+81
+00:05:05,148 --> 00:05:09,806
+Cape Canaveral. Morton Thiokol's engineers
+— Roger Boisjoly among them — have the
+
+82
+00:05:09,806 --> 00:05:14,463
+O-ring cold-temperature data on the table,
+and they are arguing to delay the
+
+83
+00:05:14,463 --> 00:05:15,180
+Challenger launch.
+
+84
+00:05:15,180 --> 00:05:19,559
+Per the Rogers Commission testimony, the
+sentence that ended the argument came from
+
+85
+00:05:19,559 --> 00:05:24,275
+inside Thiokol — executive Jerry Mason to
+his own head of engineering, Bob Lund:
+
+86
+00:05:24,275 --> 00:05:28,991
+take off your engineering hat, and put on
+your management hat. The call reconnected.
+
+87
+00:05:28,991 --> 00:05:32,360
+Thiokol told NASA: go. Detection survived
+the night. Authority didn't.
+
+88
+00:05:32,360 --> 00:05:37,109
+So: an override is real only when three
+things hold at once. An independent limit
+
+89
+00:05:37,109 --> 00:05:41,225
+signal — not the system's own confidence.
+Organizationally binding — it doesn't have
+
+90
+00:05:41,225 --> 00:05:45,657
+to win a midnight argument. And no career
+cost that silence doesn't carry. Boisjoly
+
+91
+00:05:45,657 --> 00:05:49,140
+had the first. History records what
+happened to the other two.
+
+92
+00:05:49,140 --> 00:05:53,680
+Act six. What an honest deployment does
+with a limit it cannot remove.
+
+93
+00:05:53,680 --> 00:05:57,941
+First, calibrate the humans. The gap
+between stated confidence and scored
+accuracy
+
+94
+00:05:57,941 --> 00:06:02,558
+is expected calibration error — and it
+applies to the engineer signing the
+
+95
+00:06:02,558 --> 00:06:06,819
+deployment. The forecasting fix: lock the
+prediction before the outcome, score it,
+
+96
+00:06:06,819 --> 00:06:11,080
+repeat until the gap is data.
+Understanding calibration is not being
+calibrated.
+
+97
+00:06:11,080 --> 00:06:15,606
+Second, name the limit in the shipping
+documentation — model-card style, a
+primary
+
+98
+00:06:15,606 --> 00:06:20,132
+artifact, not a footer disclaimer. This
+system is limited by: meaning, aboutness,
+or
+
+99
+00:06:20,132 --> 00:06:25,007
+shift. Performance claims don't imply the
+limit is solved. Cases that trip the named
+
+100
+00:06:25,007 --> 00:06:28,140
+signal route to a human with binding stop
+authority.
+
+101
+00:06:28,140 --> 00:06:32,662
+Third — the no-deploy list, because
+sometimes the honest answer is no.
+Irreversible
+
+102
+00:06:32,662 --> 00:06:36,140
+faster than a human can intervene. World-
+grounding assumed, unverifiable. Drift
+
+103
+00:06:36,140 --> 00:06:39,967
+undetectable in time. Calibration
+unscoreable. An override that can't be
+made
+
+104
+00:06:39,967 --> 00:06:45,532
+binding and career-safe. Any one of those
+— and the limit isn't a caveat. It's the
+
+105
+00:06:45,532 --> 00:06:45,880
+verdict.
+
+106
+00:06:45,880 --> 00:06:50,393
+Let's recap with Claude. Symbols don't
+ground themselves — and a citation is not
+a
+
+107
+00:06:50,393 --> 00:06:54,003
+current world. Aboutness is borrowed, on
+every theory that matters for deployment.
+
+108
+00:06:54,003 --> 00:06:58,215
+The data is always less than the world,
+and the model's confidence fails silently
+
+109
+00:06:58,215 --> 00:07:02,126
+exactly at the edge. An override is real
+only if it's independently informed,
+
+110
+00:07:02,126 --> 00:07:06,037
+organizationally binding, and career-safe.
+And when those can't be made true — the
+
+111
+00:07:06,037 --> 00:07:07,240
+limit is the verdict.
+
+112
+00:07:07,240 --> 00:07:11,329
+Your turn. Here's the prompt: I'm
+evaluating a specific AI deployment. Walk
+the
+
+113
+00:07:11,329 --> 00:07:14,160
+three structural limits — symbol
+grounding, derived intentionality,
+distributional
+
+114
+00:07:14,160 --> 00:07:19,508
+shift — and tell me which one is most
+exposed in my context: does failure come
+from
+
+115
+00:07:19,508 --> 00:07:23,282
+misreference, from pretended
+understanding, or from the world moving
+out from under
+
+116
+00:07:23,282 --> 00:07:27,057
+the training data? Then design the
+documentation block that names that limit
+
+117
+00:07:27,057 --> 00:07:30,831
+explicitly, specify what a real override
+requires here against the three conditions
+
+118
+00:07:30,831 --> 00:07:35,235
+— independent signal, binding authority,
+no career cost — and be honest about the
+
+119
+00:07:35,235 --> 00:07:39,953
+last question: is this a deployment where
+the limits, given the stakes, are a reason
+
+120
+00:07:39,953 --> 00:07:45,301
+not to deploy at all? Run it on the system
+your own team is closest to shipping.
+
+121
+00:07:45,301 --> 00:07:45,930
+Especially then.
+
+122
+00:07:45,930 --> 00:07:49,340
+What the Tools Cannot Do. Liam, in for
+Bear.
+

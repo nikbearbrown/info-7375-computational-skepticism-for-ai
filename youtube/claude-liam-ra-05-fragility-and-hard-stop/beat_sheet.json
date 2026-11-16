@@ -1,0 +1,283 @@
+{
+  "metadata": {
+    "title": "Break It on Purpose + the Hard-Stop Gate",
+    "slug": "claude-liam-ra-05-fragility-and-hard-stop",
+    "topic": "INFO 7375 REALLOCATION ENGINE, AUDITED \u2014 FRAGILITY & HARD STOP (E5/6)",
+    "register": "Pragmatist",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Ahoj, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "The Tool That Doubts Itself \u2014 The Reallocation Engine, Audited",
+    "series": "claude-liam-ra",
+    "episode": 5,
+    "source": "INFO 7375 (Computational Skepticism for AI) \u2014 The Reallocation Engine, Audited: Build a Useful Tool That Doubts Itself (100 pts)",
+    "build": {
+      "at": "2026-07-24T06:29:30",
+      "cut": "master",
+      "filled": 7,
+      "of": 7,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Ahoj \u2014 Liam, in for Bear. Episode 5 of 6. Today you attack your own engine, and then you chain it up. Two components, eighteen points. First, adversarial fragility: design one small, realistic perturbation \u2014 a distribution shift, a plausible data error, a gamed input \u2014 and find the conditions under which your engine flips its recommendation. The standard is blunt: a resource-moving tool that flips under a perturbation a human wouldn't notice is not understanding anything. Second, the delegation map and the hard-stop gate: for every component, what the tool decides, what you decide, and the named handoff where your judgment overrides the output \u2014 then the non-negotiable rule that the engine stops and asks a human before any move that spends money, commits a resource, or changes a person's access. Skip that gate without justification and it is minus fifteen, on top of whatever the missing points cost you. This is the episode where the tool learns its place. Let's break it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 62,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ahoj, Liam",
+            "topic": "INFO 7375 REALLOCATION ENGINE, AUDITED \u2014 FRAGILITY & HARD STOP (E5/6)",
+            "segment": "Break It on Purpose + the Hard-Stop Gate",
+            "command": "Design one realistic perturbation and find where the recommendation flips. Draw the delegation map with a named override point. Bolt a hard stop onto every action that spends, commits, or changes access.",
+            "runningText": "a tool that flips under a perturbation a human wouldn't notice is not understanding anything\u2026",
+            "output": [
+              "Fragility (8 pts): specific perturbation, documented flip condition, honest limits",
+              "Delegation + hard stop (10 pts): tool decides / you decide / named override",
+              "No gate, no justification: \u221215 \u2014 the tool learns its place today"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:29:30"
+      },
+      "actual_duration_s": 50.73
+    },
+    {
+      "beat_id": "B01",
+      "act": "the perturbation that flips the move",
+      "narration_text": "The fragility test has a shape: small, realistic, and aimed at the decision \u2014 not the metric. Not 'accuracy dropped two points under noise.' The question is: under what perturbation does the MOVE change? Three families to pick from. Family one, distribution shift: replay your engine on the data as it looked one quarter earlier, or with the seasonality inverted. If the recommended move reverses across a boundary the model has no feature for, you have found the fragility. Family two, the plausible data error: one warehouse reports inventory in cases instead of units. One timestamp lands in the wrong timezone. A duplicate row from a retried upload. These are Tuesday-level errors \u2014 the kind your GIGO gate from episode 2 should catch, and now you get to test whether it actually does. Run the error through: does the gate stop it, or does the engine cheerfully reallocate on a typo? Family three, the gamed input \u2014 and for reallocation engines this is the sharpest one: the units being scored have an incentive to look needy or look deserving. A site that learns slightly inflating its demand forecast attracts more stock WILL inflate its demand forecast. Simulate the smallest gaming that captures the resource. Then document the flip condition precisely: this input, changed this much, flips the move from A-to-B to A-to-C. That number \u2014 how little it takes \u2014 is the finding.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 80,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Aim at the decision, not the metric",
+              "Shift: replay last quarter / invert the seasonality",
+              "Plausible error: cases vs units , timezone slip , duplicate row"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:29:30"
+      },
+      "actual_duration_s": 68.27
+    },
+    {
+      "beat_id": "B02",
+      "act": "the delegation map",
+      "narration_text": "Now the delegation map. For every component of your system, three columns: what does the tool decide, what do you decide, and where exactly is the handoff \u2014 the point where your judgment overrides the output. Walk the pipeline. Data cleaning: the tool applies the gate; you decided what the gate is, and you personally review anything quarantined. Scoring: the tool computes; nobody overrides arithmetic. Ranking: the tool orders the options; you own the objective it ranks by \u2014 you wrote that sentence in episode 2, including what it leaves out. The recommendation: the tool proposes the move. The execution: stop. That line does not belong to the tool, and the map has to say so in writing. The named override point is not a platitude \u2014 it is a location. 'Human judgment matters' is not an override point. 'Before any transfer above two hundred units, the regional manager reviews the uncertainty interval, and if the interval includes zero benefit, the move does not execute' \u2014 that is an override point. Name whose judgment, at which step, empowered to do what. The map is also where you catch scope creep in your own build: if you find a component where the tool decides and no human is anywhere in the column, that is either a component that needs a human or a decision you have quietly abdicated. The map makes the abdication visible. That is its whole job.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 78,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Tool decides , you decide , the named handoff",
+              "Cleaning: tool applies the gate \u2014 you wrote it, you review quarantine.",
+              "Scoring: tool computes. Nobody overrides arithmetic."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:29:30"
+      },
+      "actual_duration_s": 64.7
+    },
+    {
+      "beat_id": "B03",
+      "act": "the hard stop",
+      "narration_text": "The hard stop. The rule is one sentence long: the engine may recommend a reallocation, but it must stop and require explicit human approval before executing any move that spends money, commits a resource, or changes a person's access. Implement it if it is in scope; if not, specify it precisely \u2014 but either way, name which of the three your engine would do, and why the gate is non-negotiable exactly there. The design has three parts. Part one, the trigger: which actions are gated. Be concrete \u2014 'transfers over threshold T,' 'any change to an applicant's eligibility status,' 'any spend.' Part two, the response: when the gate trips, what happens \u2014 approve, flag, or block \u2014 and this is a policy you write per action class, not one global setting. Part three, the resolver: WHO approves. A name, a role, an accountability. 'A human reviews it' without a who is how review queues become rubber stamps. And understand why the assignment prices this at minus fifteen if absent: reallocation without a hard stop is how an accountable tool becomes an unaccountable one. 'It ran unattended and moved the budget' is not a bug report \u2014 it is the exact failure this entire course exists to prevent, reached one lazy default at a time. The gate is the difference between a tool that advises and a system that acts with nobody signing. Your engine advises. A person signs. Every time.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 78,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Spends money , commits a resource , changes access / STOP",
+              "Trigger: which actions are gated \u2014 concrete thresholds, named action classes.",
+              "Response: approve / flag / block"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:29:30"
+      },
+      "actual_duration_s": 68.71
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lead_silence_s": 0.5,
+      "narration_text": "Verdict for Break It on Purpose and the Hard-Stop Gate. Fragility is tested at the decision, not the metric: one small, realistic perturbation \u2014 a shift, a Tuesday-level data error, a gamed forecast \u2014 and the documented condition under which the move flips. How little it takes is the finding, and whether your GIGO gate catches the error is the free second finding. The delegation map has three columns \u2014 tool decides, you decide, named handoff \u2014 and its job is to make abdication visible: any component with no human in the column is a decision you gave away without noticing. And the hard stop is non-negotiable wherever the engine would spend, commit, or change access: a concrete trigger, a per-class response \u2014 approve, flag, or block \u2014 and a named resolver who signs. The engine advises; a person signs. Final episode next: saying what the tool cannot know, the disclosure only you can write, and shipping the whole thing.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 55,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Break It on Purpose + the Hard-Stop Gate",
+            "artifactHeading": "Episode 5 key rules",
+            "artifactLines": [
+              "Perturb the DECISION: find where the move flips \u2014 how little it takes is the finding.",
+              "Three families: distribution shift , plausible error , gamed input.",
+              "Delegation map: tool decides / you decide / named handoff \u2014 abdication made visible.",
+              "Hard stop on spend, commit, access-change: trigger + approve/flag/block + named resolver.",
+              "No gate, no justification: \u221215. The engine advises; a person signs."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:29:30"
+      },
+      "actual_duration_s": 47.55
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "narration_text": "Your turn. The prompt to paste into Claude reads: Here is my engine's recommendation logic and its input schema: paste them. Design the smallest realistic perturbation \u2014 a plausible data error, a distribution shift, or a gamed input from a unit that wants the resource \u2014 that would flip my engine's recommended move. Then draft my delegation map: for each pipeline component, what the tool decides and what a human must decide. Mark every action that spends money, commits a resource, or changes a person's access, and propose a hard-stop policy for each: approve, flag, or block \u2014 and what information the approver needs on screen to decide well. Why run it: Claude is a genuinely good adversary \u2014 it will find gaming strategies you are too close to the build to see, and asking for the SMALLEST flip forces precision instead of catastrophizing. But notice the two fields it cannot fill. It can propose that someone approves the transfer; it cannot know that in your org, that someone is a shift supervisor with ninety seconds and no context \u2014 which is a rubber stamp, not a gate. And it cannot decide what the approver needs to see, because that is a claim about what a specific human can absorb under time pressure. Fill in the resolver and the review screen yourself. Those two decisions are the difference between a gate that exists and a gate that works.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 78,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 BREAK IT ON PURPOSE + THE HARD-STOP GATE",
+            "segment": "Break It on Purpose + the Hard-Stop Gate",
+            "command": "Here is my engine's recommendation logic + input schema: [paste]. Design the smallest realistic perturbation \u2014 plausible error, shift, or gamed input \u2014 that flips my recommended move. Then draft my delegation map, mark every action that spends/commits/changes access, and propose a hard-stop policy for each: approve, flag, or block \u2014 and what the approver needs on screen.",
+            "runningText": "Claude finds the flip \u2014 you name the resolver and the review screen. That's the difference between a gate that exists and one that works\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:29:30"
+      },
+      "actual_duration_s": 66.47
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "Break It on Purpose + the Hard-Stop Gate. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Break It on Purpose + the Hard-Stop Gate",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-ra-05-fragility-and-hard-stop"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:29:30"
+      },
+      "actual_duration_s": 4.35
+    }
+  ]
+}

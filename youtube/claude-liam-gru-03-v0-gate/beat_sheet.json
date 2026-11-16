@@ -1,0 +1,284 @@
+{
+  "metadata": {
+    "title": "Start Here: The /v0 Problem-Formulation Gate",
+    "slug": "claude-liam-gru-03-v0-gate",
+    "topic": "WHAT IS GRU? \u2014 E3/6: THE /v0 PROBLEM-FORMULATION GATE",
+    "register": "Pragmatist",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Ciao, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "What Is Gru? \u2014 Computational Skepticism for AI",
+    "series": "claude-liam-gru",
+    "episode": 3,
+    "source": "INFO 7375 (Computational Skepticism for AI) \u2014 Gru Helper Series"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Ciao \u2014 this is Liam. Episode 3 of 6. The /v0 gate is the first command you run in Gru and the one most students get wrong. Not because it is hard. Because it asks for something precise \u2014 the name of the thing being built \u2014 and most of us have been trained by chatbots to describe a problem and wait for the AI to name the thing for us. Gru will not do that. This episode teaches the gate, the three questions behind it, the naming format, and what to do when the gate stops you. If you typed /v0 at the end of Episode 1, you already saw the first question. This episode explains why it asks exactly that.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 32,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E3/6: THE /v0 PROBLEM-FORMULATION GATE",
+            "segment": "Start Here: The /v0 Problem-Formulation Gate",
+            "command": "/v0",
+            "runningText": "the gate asks for the thing, not the problem \u2014 and it will hold the line until you name it precisely\u2026",
+            "output": [
+              "Gru: In two sentences, describe the ecosystem your system lives in.",
+              "Gru: Which existing components does it touch?",
+              "Gru: In one sentence \u2014 what are you ADDING?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "B01",
+      "act": "why the gate exists",
+      "narration_text": "Here is the premise /v0 is built on. Most weak input is not laziness. It is a problem-formulation gap \u2014 you have not yet separated the problem from the thing from the ecosystem. These are three different things, and chatbots never force you to separate them, because a chatbot's job is to generate something from whatever you give it. Gru's job is the opposite. A sophisticated document built on an unformulated problem is worse than no document. It looks like rigor. It teaches that rigor is a format, not a practice. The /v0 gate holds the line at exactly this point. It won't write a word of your SDD until you can name the thing being built. That refusal is not friction. It is the highest-value feature in the system. Students who route around it \u2014 who paste vague input and accept whatever the gate returns \u2014 are building the wrong muscle. They are training themselves to treat specification as a Claude task. It isn't. The thing must be named by you, not inferred by the model.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 60,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Sophisticated document + unformulated problem = worse than nothing",
+              "Weak input is usually a problem-formulation gap, not laziness.",
+              "You haven't separated: the problem , the thing , the ecosystem"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "the three questions",
+      "narration_text": "The /v0 gate asks three questions in sequence. The first: describe the ecosystem your system lives in, in two sentences. The ecosystem is the existing technical and domain context \u2014 the systems that will be running when your component shows up, the data flows it will touch, the users who are already there. Two sentences forces you to be specific about the context without describing the component itself. The second question: which existing components does your system touch? This forces you to locate the insertion point \u2014 where, specifically, does your component connect to what already exists? If you cannot name the existing components, you are still describing a problem, not a thing. The third question is the gate itself: in one sentence, what are you adding? Not the problem you are solving. Not the user you are helping. The thing. The artifact or system that will exist after you build it, that did not exist before. That one sentence is the gate. If Gru is still asking clarifying questions after your answer, the naming is not yet specific enough to pass.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 60,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "In sequence",
+              "Q1: Describe the ecosystem in two sentences",
+              "Q2: Which existing components does your system touch?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "the naming format \u2014 the template",
+      "narration_text": "The naming format that consistently passes /v0 follows this structure: the thing is a what, inserted where, that produces output. Break it down. The thing is a noun phrase \u2014 a proper name for the component you are building. The what describes its category: a stateless audit component, a routing layer, a flagging service, a scoring engine. The inserted where is the insertion point \u2014 between two existing systems, upstream of a specific queue, inside a specific pipeline stage. The produces output names the artifact the thing writes to the world \u2014 not a recommendation, not a result, but a specific typed artifact: a binary flag with a reason field, a scored list with confidence levels, a structured JSON report, a gated pass or fail. Example that passes: 'the Coherence Layer is a stateless audit component inserted between the model output and the downstream formatter that produces a structured mismatch report with field-level annotations.' Example that fails: 'improve signal reliability' \u2014 that is a goal, not a thing. 'An AI assistant for compliance teams' \u2014 that names a problem domain, not an insertion point. 'A tool that helps users make better decisions' \u2014 the word 'help' is a guarantee of failure.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 65,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "[THING] is a [WHAT] inserted [WHERE] that produces [OUTPUT]",
+              "THING: proper noun \u2014 a name for the component.",
+              "WHAT: category"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "live demo \u2014 pushback and passing the gate",
+      "narration_text": "Live demo. I run /v0 with a weak attempt first, then a strong one. Weak attempt: 'I want to build something that helps finance teams catch errors in invoice processing.' Watch what Gru does. Gru does not generate a document. It asks: what is the system \u2014 an audit layer, a notification service, a rerouting queue? What existing systems does it touch \u2014 the invoice intake form, the payment queue, the ERP system? What is the output \u2014 a flag, a report, a rejected-and-rerouted invoice? Gru is not being difficult. It is doing exactly what the gate is designed to do: it is naming the three missing pieces. Now the strong attempt: 'The Invoice Integrity Checker is a stateless flagging component inserted between the invoice intake form and the payment authorization queue that produces a binary pass-or-flag decision with a structured violation reason for every submitted invoice.' That passes. The gate closes and Gru is ready for /v1. Note what changed: we named the thing, its category, its insertion point, and its output. The problem \u2014 invoice errors in finance \u2014 did not change. The specification did. That is what the gate teaches.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 65,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E3/6: THE /v0 PROBLEM-FORMULATION GATE",
+            "segment": "Demo: weak attempt / Gru pushback / strong attempt / gate passes",
+            "command": "/v0\nWeak: 'I want to build something that helps finance teams catch errors in invoice processing.'\n\u2014 Gru asks: what is the system? what does it touch? what is the output?\nStrong: 'The Invoice Integrity Checker is a stateless flagging component inserted between the invoice intake form and payment authorization queue that produces a binary pass-or-flag with a structured violation reason.'",
+            "runningText": "weak attempt triggers three clarifying questions \u2014 strong attempt passes the gate \u2014 /v1 unlocked\u2026",
+            "output": [
+              "Weak attempt: Gru asks what, where, and output \u2014 gate holds",
+              "Strong attempt: gate passes \u2014 thing named, category set, insertion point clear, output typed",
+              "/v1 now available \u2014 SDD construction begins"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lead_silence_s": 0.5,
+      "narration_text": "Verdict for Start Here: The /v0 Gate. The gate holds the line because a sophisticated document on an unformulated problem is worse than nothing. The three questions in sequence: the ecosystem in two sentences, the existing components your system touches, and in one sentence \u2014 what you are adding. The naming format: the thing is a what, inserted where, that produces output. Pushback from /v0 is not friction \u2014 it is the gate working. Rewrite the one-sentence naming. Do not argue. Do not accept vague output from Gru. The problem does not change when you pass the gate. Your specification of the thing does.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 38,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Start Here: The /v0 Problem-Formulation Gate",
+            "artifactHeading": "Core rules",
+            "artifactLines": [
+              "Polished SDD + unformulated problem = worse than nothing. The gate prevents this.",
+              "Three questions: ecosystem (2 sentences) , existing components touched , what you're adding (1 sentence).",
+              "Format: [THING] is a [WHAT] inserted [WHERE] that produces [OUTPUT].",
+              "Pushback = the gate working. Rewrite the naming. Don't argue or route around.",
+              "Problem doesn't change when you pass. Your specification of the thing does.",
+              "'Helps' = guaranteed fail. 'Improves' = a goal, not a thing."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "narration_text": "Your turn. Paste this prompt into Gru with your own app filled in. The prompt reads: I am running /v0 for my Boondoggle app. The app is for [domain]. The user is [role]. The system takes [input] and produces [output]. Run /v0. End quote. When Gru responds, if you get clarifying questions \u2014 good. That means the gate is doing its job. Answer each question specifically. If you are stuck on the output field: the output is never 'a recommendation' or 'a result' \u2014 it is the typed artifact the system writes to the world: a binary flag with a reason field, a ranked list with confidence scores, a structured JSON report with field-level annotations, a pass-or-reject decision with an audit trail. Stay with it until the gate passes. Then take a screenshot of the passed /v0 exchange. That screenshot is evidence of a named thing \u2014 not a problem, not a goal, a specific thing that did not exist before you named it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 60,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 START HERE: THE /V0 PROBLEM-FORMULATION GATE",
+            "segment": "Start Here: The /v0 Problem-Formulation Gate",
+            "command": "I am running /v0 for my Boondoggle app. The app is for [domain]. The user is [role]. The system takes [input] and produces [output \u2014 not a recommendation: a binary flag / ranked list / JSON report / pass-reject with audit trail]. Run /v0.",
+            "runningText": "output = the typed artifact the system writes to the world \u2014 stay with it until the gate passes\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "Start Here: The /v0 Problem-Formulation Gate. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Start Here: The /v0 Problem-Formulation Gate",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-gru-03-v0-gate"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

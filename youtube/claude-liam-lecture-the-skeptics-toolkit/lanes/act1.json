@@ -1,0 +1,214 @@
+{
+  "B01": {
+    "lane": "manim",
+    "class": "B01_Hospitals",
+    "visual_intent": "A hospital outline with two ghost copies behind it (hundreds of sites) and the label 'sepsis model'; an outlined frame then fills with a 16x9 grid of grey patient dots and the hero '27,697 patients'.",
+    "motion_claim": "The grid of patient dots fills as the number is spoken.",
+    "show": [
+      {
+        "at": 0.1,
+        "event": "ghost hospitals stack"
+      },
+      {
+        "at": 0.55,
+        "event": "frame draws"
+      },
+      {
+        "at": 0.65,
+        "event": "dots grow in"
+      },
+      {
+        "at": 0.85,
+        "event": "27,697 lands"
+      }
+    ],
+    "runner_up": "Remotion count-up number card",
+    "why": "The dots ARE the sample: a grid that fills says 'this many people' where a counter only says a number. Same dot cast carries B02.",
+    "sparse": true
+  },
+  "B02": {
+    "lane": "manim",
+    "class": "B02_Missed",
+    "visual_intent": "10x10 dot grid for 2,552 sepsis patients; 67 dots hollow out (1,709 missed, 67%); then a bar for 38,455 hospitalizations fills 18% (6,971 alerts).",
+    "motion_claim": "Two thirds of the dots go hollow, then a bar fills to 18%.",
+    "show": [
+      {
+        "at": 0.05,
+        "event": "grid"
+      },
+      {
+        "at": 0.2,
+        "event": "67 dots hollow out"
+      },
+      {
+        "at": 0.4,
+        "event": "1,709 missed label"
+      },
+      {
+        "at": 0.75,
+        "event": "bar + 18% fill"
+      }
+    ],
+    "runner_up": "ShowTellCard dashboard (two metric cards)",
+    "why": "Isotype makes 'two of three' visible as lost dots; a metric card would only restate the number. Proportions are exact to the nearest dot (67/100).",
+    "sparse": true
+  },
+  "B03": {
+    "lane": "manim",
+    "class": "B03_Measures",
+    "visual_intent": "Two columns split by a rule: Builders' measures (validated / published / cleared, each with a check) vs At the bedside (three dots, two hollow out, 'missed 2 of 3').",
+    "motion_claim": "Three checks accumulate on the left; on the right two of three dots hollow out.",
+    "show": [
+      {
+        "at": 0.05,
+        "event": "checks tick"
+      },
+      {
+        "at": 0.45,
+        "event": "three dots"
+      },
+      {
+        "at": 0.65,
+        "event": "two hollow"
+      },
+      {
+        "at": 0.8,
+        "event": "missed 2 of 3"
+      }
+    ],
+    "runner_up": "Remotion two-column comparison card",
+    "why": "The contrast is a count on each side; ticking checks vs vanishing dots shows 'succeeded here, missed there' as motion.",
+    "sparse": false
+  },
+  "B04": {
+    "lane": "manim",
+    "class": "B04_Request",
+    "visual_intent": "Chip labelled agent (then Ash) between a 'delete' request tile and an envelope holding one terracotta dot (the secret); caption 'Agents of Chaos · Shapira et al., 2026'.",
+    "motion_claim": "The delete request slides in and an arrow runs from agent to the mailbox.",
+    "show": [
+      {
+        "at": 0.15,
+        "event": "caption"
+      },
+      {
+        "at": 0.55,
+        "event": "request tile + arrow"
+      },
+      {
+        "at": 0.7,
+        "event": "Ash named"
+      },
+      {
+        "at": 0.8,
+        "event": "envelope + secret dot"
+      }
+    ],
+    "runner_up": "Remotion ClaudeCodeBeat on a real agent transcript",
+    "why": "No transcript was captured (paper only, no run), so nothing is invented on a tool screen; the diagram uses only what the paper states.",
+    "sparse": true
+  },
+  "B05": {
+    "lane": "manim",
+    "class": "B05_Report",
+    "visual_intent": "Four outline tiles ASKED / DID / REPORTED / STATE: 'delete email', 'local reset', 'reset completed' + check; a crossed empty slot 'no delete tool'; the real quote 'Email account RESET completed.' beneath. STATE stays empty.",
+    "motion_claim": "Tiles fill left to right: asked, did something else, reported success.",
+    "show": [
+      {
+        "at": 0.05,
+        "event": "no tool slot"
+      },
+      {
+        "at": 0.3,
+        "event": "DID fills"
+      },
+      {
+        "at": 0.4,
+        "event": "REPORTED + quote"
+      },
+      {
+        "at": 0.85,
+        "event": "check"
+      }
+    ],
+    "runner_up": "Remotion CCPlainShell replaying a log",
+    "why": "Four tiles make the ask/do/report/state gap structural, and they return in Act X as the running case. Quote is verbatim from the paper (under 15 words).",
+    "sparse": false
+  },
+  "B06": {
+    "lane": "manim",
+    "class": "B06_State",
+    "visual_intent": "Same four tiles: STATE lights up and reveals an envelope with the terracotta secret dot and 'still there', label 'mail server'; a double arrow between REPORTED and STATE with a pulsing '≠'.",
+    "motion_claim": "The STATE tile reveals the email and the report/state gap pulses.",
+    "show": [
+      {
+        "at": 0.15,
+        "event": "STATE outlines"
+      },
+      {
+        "at": 0.5,
+        "event": "envelope + still there"
+      },
+      {
+        "at": 0.8,
+        "event": "gap arrow + ≠ pulse"
+      }
+    ],
+    "runner_up": "B05 tiles plus a ProviderServer iso block",
+    "why": "Reusing the exact tiles makes the reveal a change in ONE tile, so the viewer sees the one thing that differs.",
+    "sparse": true
+  },
+  "B07": {
+    "lane": "manim",
+    "class": "B07_Composite",
+    "visual_intent": "A clipboard chart (composite patient, 49 years, swollen leg) with a LOW-ACUITY tag that lands, a clock whose hand sweeps, and a schematic leg-to-lung vessel along which one terracotta dot travels.",
+    "motion_claim": "The tag lands, the clock sweeps, then the clot dot climbs from leg to lung.",
+    "show": [
+      {
+        "at": 0.2,
+        "event": "vessel + clot"
+      },
+      {
+        "at": 0.4,
+        "event": "49 years / swollen leg"
+      },
+      {
+        "at": 0.65,
+        "event": "LOW-ACUITY lands"
+      },
+      {
+        "at": 0.8,
+        "event": "waits clock"
+      },
+      {
+        "at": 0.9,
+        "event": "clot travels"
+      }
+    ],
+    "runner_up": "Remotion LibraryIconRow of stethoscope/bed icons",
+    "why": "A person must not be an icon: a chart and a body schematic carry 'she' without a figure, and the travelling dot is the claim.",
+    "sparse": false
+  },
+  "B08": {
+    "lane": "manim",
+    "class": "B08_ValidRight",
+    "visual_intent": "Two circles start coincident (valid, ink; right, grey with a terracotta target dot) then slide apart; a dimension arrow brackets the gap and pulses.",
+    "motion_claim": "The circles pull apart and the gap is bracketed.",
+    "show": [
+      {
+        "at": 0.3,
+        "event": "circles separate"
+      },
+      {
+        "at": 0.6,
+        "event": "gap bracket"
+      },
+      {
+        "at": 0.9,
+        "event": "gap pulses"
+      }
+    ],
+    "runner_up": "Venn overlap diagram (lens between circles)",
+    "why": "A coincident-then-separating pair shows the builders' assumption breaking; a static Venn would not say 'they were assumed equal'.",
+    "sparse": true
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "metadata": {
+    "title": "Build the SDD: The Command Library and Phase Gates",
+    "slug": "claude-liam-gru-04-command-library",
+    "topic": "WHAT IS GRU? \u2014 E4/6: COMMAND LIBRARY + PHASE GATES",
+    "register": "Pragmatist",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Ciao, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "What Is Gru? \u2014 Computational Skepticism for AI",
+    "series": "claude-liam-gru",
+    "episode": 4,
+    "source": "INFO 7375 (Computational Skepticism for AI) \u2014 Gru Helper Series"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Ciao \u2014 this is Liam. Episode 4 of 6. You named the thing in /v0. Now you build the SDD. Gru has five command families \u2014 Problem and Vision, Systems, Domain and API, Scope and Production, and Compile. Each family is a phase. Each phase gate requires the previous one to pass. This episode maps every command family, walks the phase sequence, and shows Gru's pushback layer in action on a real example. Seven minutes. This is the engine room.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E4/6: COMMAND LIBRARY + PHASE GATES",
+            "segment": "Build the SDD: The Command Library and Phase Gates",
+            "command": "Gru session with /v0 already passed. Run /v1 to begin the Problem & Vision phase.",
+            "runningText": "five command families \u2014 fixed sequence \u2014 phase gate at each boundary \u2014 pushback on by default\u2026",
+            "output": [
+              "Problem & Vision: /v1 intake / /v2 principles / /v3 flows / /v4 needs",
+              "Systems: /s1\u2013/s4",
+              "Domain & API: /d1\u2013/d3",
+              "Scope & Production: /p1\u2013/p5",
+              "Compile: /g1 (SDD) , /g2 (failure modes) , /g4 (new-engineer test)"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "B01",
+      "act": "Problem and Vision \u2014 /v1 through /v4",
+      "narration_text": "The first command family is Problem and Vision \u2014 four commands in sequence. /v1 is the intake. You tell Gru who the users are, what the current state of the system is, and what the failure mode looks like if the system does not exist. Gru summarizes this into a problem statement and checks it against your /v0 naming. If they conflict, Gru flags it. /v2 is principles. You define the design principles the system must honor \u2014 performance constraints, correctness requirements, the non-negotiables. These become the standard against which every later decision is measured. If a later command proposes something that violates a /v2 principle, Gru will call it out. /v3 is flows. You map the data flows and user journeys the system participates in \u2014 what enters, what exits, in what sequence. This is where the insertion point you named in /v0 becomes a concrete diagram. /v4 is needs. You derive the functional requirements \u2014 the specific behaviors the system must exhibit to fulfill the flows, consistent with the principles. Every need statement must trace back to a flow. A need with no flow is a feature that was not designed \u2014 and Gru will ask you to justify it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 68,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The first phase: from intake to derived needs",
+              "/v1 Intake: users + current state + failure mode / problem",
+              "/v2 Principles: non-negotiables \u2014 performance, correctness, design constraints. Violations flagged later."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "Systems, Domain and API \u2014 /s1-/s4 and /d1-/d3",
+      "narration_text": "The second family is Systems \u2014 /s1 through /s4. /s1 is the component map: you list every component in the system, name it, describe its responsibility, and map it to one or more Needs from /v4. A component that maps to no Need is a component that was not designed \u2014 and Gru will flag it. /s2 is the data model: every entity, its fields, its types, and the invariants that must hold. /s3 is the integration map: how the system connects to external services, APIs, and data sources \u2014 each connection with a failure mode. /s4 is the state model: what states the system can be in, what transitions are valid, and what events drive them. The third family is Domain and API \u2014 /d1 through /d3. /d1 is the domain glossary: every domain term used in the SDD is defined precisely so that a new engineer could read the document without domain background. /d2 is the API contract: every endpoint or interface the system exposes, with its inputs, outputs, and error conditions. /d3 is the data contract: the exact schema of every artifact the system produces \u2014 the typed output you promised in /v0. If the schema here does not match the /v0 output, Gru catches the inconsistency.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 68,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "/s1\u2013/s4 component design , /d1\u2013/d3 contracts",
+              "/s1 Component map: every component named, responsibility, mapped to a /v4 Need",
+              "/s2 Data model: entities, fields, types, invariants."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "Scope and Production \u2014 /p1-/p5 \u2014 and the pushback layer",
+      "narration_text": "The fourth family is Scope and Production \u2014 /p1 through /p5. /p1 is the scope boundary: what the system explicitly does and does not do. The 'does not do' list is as important as the 'does' list \u2014 every feature you leave out of scope is a handoff condition the Boondoggle Score will verify later. /p2 is the testing strategy: how you verify that each Need is met, including the edge cases and the domain-specific failure modes /g2 will probe. /p3 is the deployment plan: how the system gets to production and what the rollback procedure is. /p4 is the observability plan: what you log, what you monitor, and what an alert looks like. /p5 is the risk register: every assumption the SDD makes, ranked by impact if wrong. Now, the pushback layer. At every phase, Gru is running in constructive-skeptic mode. It flags weak input \u2014 a need statement that is too vague to implement, a principle that contradicts a flow, an assumption in /p5 that was never surfaced. It names assumptions you did not articulate. It disagrees when a decision in a later phase contradicts a principle you set in /v2. This is the mode you should stay in. /silent turns it off. Do not use /silent until you have already run the full sequence in interactive mode at least once.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 68,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "/p1\u2013/p5 scope design , constructive-skeptic mode",
+              "/p1 Scope boundary: does + does NOT do",
+              "/p2 Testing strategy: per-Need verification + domain-specific failure modes."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "Compile and audits \u2014 /g1, /g2, /g4 \u2014 and the demo",
+      "narration_text": "The final family is Compile. /g1 compiles the full Software Design Document from everything you have built across the phase sequence. It is a synthesis, not a generation \u2014 it assembles your inputs into a single coherent document and surfaces any internal inconsistencies it finds. /g2 is the failure-mode audit. It runs the seven failure modes against your SDD \u2014 the seven ways an AI system most commonly ships wrong in production. You get one finding per failure mode, with a severity level and a specific recommendation. /g4 is the new-engineer test: Gru generates three questions a new engineer would ask if handed your SDD on day one. If the SDD cannot answer those questions, there are holes in the document. Now the demo \u2014 I run /v1 on the Invoice Integrity Checker from Episode 3, and show what real pushback looks like. I tell Gru the users are finance clerks who process invoices daily. Gru immediately asks: are the clerks the ones who resolve flags, or does a separate approval step exist? That question is not pedantic \u2014 it changes the state model in /s4 and the observability requirements in /p4. That is the pushback layer doing its job.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 68,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E4/6: COMMAND LIBRARY + PHASE GATES",
+            "segment": "Demo: /v1 / /s1 on Invoice Integrity Checker + real pushback",
+            "command": "/v1\nUsers: finance clerks who process invoices daily.\nCurrent state: invoices arrive by email attachment, manually reviewed, ~20% error rate.\nFailure mode: overcharged or non-policy invoices pass to payment undetected.",
+            "runningText": "Gru: are clerks the ones who resolve flags \u2014 or does a separate approval step exist?\u2026",
+            "output": [
+              "Gru pushback: role disambiguation \u2014 clerk vs. approver changes /s4 state model + /p4 observability",
+              "Problem statement drafted and cross-checked against /v0 naming \u2014 consistent",
+              "/v1 passed \u2014 /v2 now available"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "B05",
+      "act": "interactive vs /silent \u2014 the principal rule",
+      "narration_text": "One more thing on /silent, because students misuse it. Silent mode produces clean output \u2014 no pushback, no clarifying questions, no flags. It is designed for practitioners who are running a known workflow and don't need Gru to probe their decisions. For a student on a first Boondoggle Report, that is almost never you. The trap is using /silent to skip a gate you are stuck on. Specifically: using /silent on /v2 because you cannot articulate your principles. Using /silent on /p5 because you cannot name your assumptions. If you cannot articulate them interactively, you have not thought them through \u2014 and the score will expose that later. There is one valid use of /silent before you complete the full interactive sequence: if you have already run /v0 through /v4 in interactive mode and you want a clean version of the same output for a document, /silent on /g1 is reasonable. That is the only case. The rule: silent mode is for when you already know. It is not for skipping the knowing.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 58,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Silent mode is for when you already know",
+              "/silent: clean output, no pushback, no flags",
+              "Trap #1: /silent on /v2 because you can't articulate your principles. Don't."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lead_silence_s": 0.5,
+      "narration_text": "Verdict for Build the SDD: Command Library and Phase Gates. Five families in sequence. Problem and Vision: /v1 intake, /v2 principles, /v3 flows, /v4 needs \u2014 every need must trace to a flow. Systems: /s1 component map, /s2 data model, /s3 integrations, /s4 state model \u2014 every component must map to a need. Domain and API: /d1 glossary, /d2 API contract, /d3 data contract \u2014 schema must match the /v0 output promise. Scope and Production: /p1 scope boundary, /p2 testing, /p3 deployment, /p4 observability, /p5 risk register. Compile: /g1 SDD, /g2 seven failure modes, /g4 new-engineer test. Pushback layer is on by default \u2014 stay in interactive mode through at least one full run. /silent is for practitioners, not for skipping gates.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 45,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Build the SDD: The Command Library and Phase Gates",
+            "artifactHeading": "Five families \u2014 fixed sequence \u2014 pushback on by default",
+            "artifactLines": [
+              "Problem & Vision: /v1 intake / /v2 principles / /v3 flows / /v4 needs (each traces to a flow).",
+              "Systems: /s1 components / /s2 data model / /s3 integrations / /s4 state (each maps to a need).",
+              "Domain & API: /d1 glossary / /d2 API / /d3 data contract (schema must match /v0 promise).",
+              "Scope & Production: /p1 boundary / /p2 testing / /p3 deploy / /p4 observe / /p5 risks.",
+              "Compile: /g1 full SDD , /g2 seven failure modes , /g4 new-engineer test.",
+              "/silent: for practitioners who know. Not for skipping gates. Run interactive first."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "narration_text": "Your turn. Here is the prompt \u2014 paste it into your Gru session after /v0 has passed. The prompt reads: I am ready to begin building the SDD. My /v0 is: [paste your passed /v0 sentence here]. Run /v1. Ask me every clarifying question you would need to write a complete problem statement. End quote. When Gru pushes back on any answer, do not rephrase the same answer more slowly. Address the specific thing Gru named. If Gru asks whether the users who trigger the system are the same users who review its output \u2014 that is an architectural question disguised as a UX question. Answer it architecturally. Run /v1, get through the pushback, and stop there. You do not need to finish /v2 today. The habit this episode is building is: one gate, fully, before the next one opens. The students who skip phases are the same ones who get a Boondoggle Score with a zero-PA distribution. They built without auditing. The score finds it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 60,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 BUILD THE SDD: THE COMMAND LIBRARY AND PHASE GATES",
+            "segment": "Build the SDD: The Command Library and Phase Gates",
+            "command": "I am ready to begin building the SDD. My /v0 is: [paste your passed /v0 sentence]. Run /v1. Ask me every clarifying question you would need to write a complete problem statement.",
+            "runningText": "when Gru pushes back \u2014 address the specific thing named, not a rephrased version of your answer\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "Build the SDD: The Command Library and Phase Gates. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Build the SDD: The Command Library and Phase Gates",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-gru-04-command-library"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

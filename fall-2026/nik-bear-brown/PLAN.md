@@ -1,3 +1,4 @@
+
 # Plan: every assignment in INFO 7375 Computational Skepticism, Fall 2026
 
 Written 2026-10-18 from the Canvas export and this folder's own log.

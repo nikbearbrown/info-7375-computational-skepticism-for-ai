@@ -1,0 +1,41 @@
+# SHOW-TELL KANT — brief for one film
+
+## Executive summary
+**What this is.** The brief for a show-tell film on Immanuel Kant, ordered by Bear on 2026-09-27 as a companion to the three "moves" films (Descartes, Hume, Popper) built the same day. **Why.** The three moves are things you do to a claim; this one is about humility: we only ever see a slice of the world, and we should know both what we can't see and that there are things we can't see. **Result.** A gated 4K master in the reel folder. Nothing staged or published.
+
+## Bear's words (2026-09-27, dictated; lightly cleaned)
+> Show and tell video, Liam persona, on Immanuel Kant, and how we need some humility in our perspective.
+>
+> Immanuel Kant is the closest single match, and it's not close. Phenomena (the world as it appears to a mind structured by space, time, and causal categories) vs. noumena (the thing-in-itself, forever inaccessible). Gravity as something inferred from effects rather than directly seen is almost a textbook Kantian example: you never perceive causality itself, you infer it, because causality is a category your mind imposes on experience rather than a feature you're reading off the world. Kant's response to "will tools ever close the gap" is a flat no — not because instruments are too weak, but because the very form of any possible experience (space, time) is mind-supplied. That's a stronger claim than mine; I think the gap is contingent-but-permanent (finite minds, expanding tools, asymptotic), not structurally guaranteed shut like Kant does.
+>
+> The idea is that we only see a slice of the universe. And we should be aware not only of what we can't see, but that there are things we can't see.
+
+## Read first, in full
+1. `brutalist.art/skills/make/show-tell/SKILL.md` — the doctrine. Read ALL of it.
+2. `anthropics/youtube/SHOW-TELL-BATCH.md` — the standing builder brief (spine, rules, batch-2 extras: whisper-check the greeting, fact-check against RAW primary sources, scratch discipline).
+3. `info-7375-computational-skepticism-for-ai/youtube/SHOW-TELL-THREE-MOVES.md` and the three sibling reels it produced (`show-tell-doubt-what-matters/`, `show-tell-induction-until-it-changes/`, `show-tell-a-test-that-cant-fail/`) — copy their shape, course-credit placement, pronunciation fixes, and the BUILD-LOG traps (24 fps end slack in `done()`; GATE T reads titles ending in "On" as cut off; dark shapes on kraft fail per-blob contrast). Don't reuse their pictures.
+
+## Spec
+- **Reel:** `info-7375-computational-skepticism-for-ai/youtube/show-tell-the-slice-you-can-see/` · **Title:** "You Only See a Slice" (improve only if it fails the title rules; log any change) · **Greeting:** Hallo · **Scratch:** `<scratchpad>/st-cs-kant/`
+- **Course film, same as the siblings.** Liam in BIDEA: "…with a short film for INFO seventy-three seventy-five, Computational Skepticism for AI." (captions map it back to INFO 7375). BDEFS title "INFO 7375 · Terms In This Film"; BHTF topic "INFO 7375 COMPUTATIONAL SKEPTICISM · YOUR TURN". Outro is OUTRO-LOCK (exact title, @NikBearBrown, no subline). No "Lecture N". Bookloop law does not apply to course films.
+- **Spine:** BIDEA hesitant writer (greeting + naive question corrected: e.g. naive "Will better instruments eventually show us everything?" → "Will better instruments ever show us more than a slice?") → BDEFS (2–4 terms: phenomena, noumena, category, and perhaps "the slice") → 6–9 drawn isometric Manim beats (ShowTellCard only if it passes the card test) → BHTF Your Turn (a concrete prompt read in full, then two checks) → BOUT spoken outro. As long as the idea needs, no longer.
+- **Name Kant** aloud once with the work and date — the *Critique of Pure Reason* (1781; second edition 1787) — and once on screen ("Kant, 1781"). No portrait; draw objects.
+
+## The content (Bear's arc, with the accuracy lines that keep it honest)
+1. **Phenomena vs noumena.** What appears to a mind vs the thing in itself. Kant: we know appearances; the thing in itself we can think but never know. (Critique, e.g. B xxvi–xxvii on things in themselves being thinkable but not knowable; the Transcendental Aesthetic on space and time as forms of intuition.) State it as Kant states it; quote only verbatim from a public-domain translation (Meiklejohn 1855 or Kemp Smith is NOT public domain — use Meiklejohn or the Guyer/Wood only for page refs, never quote it) and cite the B-edition page.
+2. **Space, time and causality are mind-supplied.** Space and time are the forms of our sensibility; causality is one of the categories of the understanding, imposed on experience, not read off the world. Draw it as a lens or frame the mind brings to everything it sees.
+3. **Gravity, the worked example.** You never see gravity; you see the apple fall, the orbit bend, and infer the cause. Bear calls this "almost a textbook Kantian example." Historically it's Hume's problem (we never perceive the causal connection, only constant conjunction) that Kant answers — the *Prolegomena* (1783) preface says Hume woke him from his "dogmatic slumber." Use that line if it can be quoted verbatim from a public-domain translation (Carus 1902 / Mahaffy); otherwise report it. Say it briefly: Hume raised the doubt, Kant's answer is that causality comes from us.
+4. **Will better tools close the gap? Kant says no**, and not because instruments are weak: any possible experience must come through space, time and the categories, so the thing in itself stays out of reach in principle. A better telescope gives a sharper slice, not a bigger one.
+5. **Bear's own position, stated as his.** He does NOT go as far as Kant. His view: the gap is permanent but contingent — finite minds, ever-better tools, approaching without arriving. Attribute this clearly to Bear ("Bear's view", spoken and, if drawn, labelled). Never present it as Kant's or as settled. The film can hold both: Kant's "shut in principle" and Bear's "asymptotic," side by side.
+6. **The humility.** We see a slice. Two kinds of not-seeing: what's outside the slice, and the fact that there is an outside at all. The second is the harder one to keep in mind. A good picture: a lantern in a large dark room; the lit patch is the slice; the walls you can't see are still there. Tie it to AI in one beat without a lecture: a model's confidence is about its slice (echoes the induction film — don't repeat its pictures).
+7. **Your Turn idea:** take one thing you or a model is confident about; write what you can actually observe, what you're inferring, and one thing that lies outside the slice you have no way to observe at all. Two checks: is every "observed" item really observed? Did you name something genuinely unobservable, not merely unchecked?
+
+## Fact-check (FACTCHECK.md rows PASS / CORRECTED / EXEMPT, primaries fetched raw into `sources/`)
+- Kant's positions: from the *Critique of Pure Reason* and the *Prolegomena*, with edition/page refs; quotes verbatim only from public-domain translations. The film never says Kant claimed we "see" noumena, and never says "noumena don't exist."
+- Hume/dogmatic-slumber line: verbatim only if fetched; otherwise reported.
+- Gravity: EXEMPT as illustration, but if any physics is stated (apple, orbit) keep it to what's plainly true and add no numbers.
+- Bear's asymptotic view: EXEMPT, attributed to Bear.
+- All drawings, the greeting, the Your Turn prompt: EXEMPT.
+
+## Rules, gates, paperwork — as the sibling brief
+Never stage, post, publish, commit or push; don't edit anything under `brutalist.art/`; touch no other reel; delete nothing (`_superseded/`); scratch only under your own subfolder or the reel folder, each manim render with its own `--media_dir`; heavy renders in the background, polled. Gates A, B, W, V, GATE T, F, bookend all PASS; pre-audit every scene from a scratch copy holding only `scenes.py`; look at the frames yourself. Paperwork: SOURCE.md (Bear's words above, verbatim), FACTCHECK.md, SOURCES.md, SHOTLIST.md, PROMPTS.md, README.md (executive summary first), BUILD-PROMPT.md, BUILD-LOG.md, build_srt.py (map any respellings back: whisper-check "Kant", "noumena", "phenomena", "Hallo"). Stop at `./brutalist.art/art final <reel> --height 2160 --out <reel>/exports/landscape`.

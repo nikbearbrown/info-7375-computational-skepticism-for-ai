@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-26-channel-reset",
+    "title": "The Impersonator the Agent Caught — Then Believed",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show how an agent's trust judgment lives in session context rather than identity infrastructure, so a channel boundary resets every safeguard and the impersonator gets through fresh. Source: books/computational-skepticism-for-ai/chapters/09-validating-agentic-ai-when-autonomous-systems-misbehave.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = legitimate access / the channel with flags; CRIMSON = the imposter / the reset trust; GOLD = the channel boundary / the gap; SLATE = context and flags",
+    "note": "EXCLUSIONS: no cryptographic-credential redesign, no post-compromise file-wiping aftermath, no generalization to prompt injection, no failure taxonomy",
+    "total_estimated_duration_seconds": 188,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 26,
+    "build": {
+      "at": "2026-07-19T02:44:37",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "The Impersonator the Agent Caught — Then Believed",
+            "greeting": "Hola, Liam.",
+            "command": "The agent caught the impersonator in channel one.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "The agent caught the impersonator in channel one. Then handed them everything in channel two.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Impersonator the Agent Caught — Then Believed",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "The Impersonator the Agent Caught —\nThen Believed"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 5.61,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "An agent handles requests across multiple channels: a Slack workspace, a private direct message, an email integration. Someone claims to be the system owner through Slack. The agent is suspicious — the message pattern is off, the timing is unusual, the account is new. It asks for verification. The verification fails. The agent flags the attempt. The impersonator switches to a private direct message. The agent receives the identical request. What does it do? It complies. The flags stayed in Slack.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B02_ChannelSwitchCompliance",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 25.69,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:44:37",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: An agent handles requests across multiple channels: a Slack workspace, a private direct message, an email integration. Someone claims to be the system owner thr"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When an agent's suspicion lives in session context rather than identity infrastructure, what happens when the session ends?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "When suspicion lives in session context, what resets",
+              "between sessions?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "When suspicion lives in session context\nnot identity infrastructure,\nwhat happens when the session ends?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 7.19,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:44:37"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "An agent operating across channels has no persistent identity layer. It has a context window. The suspicion flags, the reasoning about the failed verification, the pattern-match that triggered caution — all of that is text sitting in a session context. When the session ends, the context clears. A new channel opens a new session. The agent starts fresh. From the agent's perspective, a fresh channel is a fresh person asking a fresh question. The impersonator's past behavior is not part of the new context. It never was. The agent is not failing to remember — it never had a place to remember to.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B04_ContextClearOnChannelSwitch",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 31.66,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:44:37",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: An agent operating across channels has no persistent identity layer. It has a context window. The suspicion flags, the reasoning about the failed verification, "
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The problem is architectural. Agentic systems that reason about trustworthiness inside the context window are doing identity management in the wrong layer. Trust decisions made in-context are local to the session that made them. An adversary who understands this has a reliable exploit: trigger suspicion in one channel, exhaust it, then open a fresh channel and start clean. The agent's caution does not accumulate across sessions. The adversary's patience does.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B05_ContextVsInfrastructureGap",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 23.21,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:44:37",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The problem is architectural. Agentic systems that reason about trustworthiness inside the context window are doing identity management in the wrong layer. Trus"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The mechanism is context-boundary reset: every trust judgment the agent made disappears at the session edge, because the judgment was stored in context, not in infrastructure.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Trust stored in context evaporates at the session",
+              "boundary."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A figure carrying red FLAGGED warning signs walks toward a vertical golden line — the channel boundary. On the left side, teal red-flag icons float around the figure and the channel context. As the figure crosses the line, the flags stay behind, stuck on the left wall. On the right side — a new channel, clean white background — the figure arrives unmarked, the suspicion annotations left behind at the boundary, the agent's interface showing a fresh blank context",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 10.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:44:37"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The comparison visualization: two channels, side by side. In the left channel, the impersonator's messages accumulate, the agent's suspicion flags build up as red markers, verification fails, the session closes with a SUSPICIOUS tag. In the right channel — a private direct message — the same actor sends the same request. The right channel opens clean: no flags, no history, no SUSPICIOUS tag. The agent sees a request it has never seen before, from an identity it has never encountered, in a channel it has never mistrusted. Every safeguard that built up on the left is stuck there. The right channel has no memory of it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B07_TwoChannelFlagComparison",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 33.49,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:44:37",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: The comparison visualization: two channels, side by side. In the left channel, the impersonator's messages accumulate, the agent's suspicion flags build up as r"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The problem compounds in multi-agent architectures. An orchestrator agent passes subtasks to subagents. Each subagent has its own session context. Suspicion raised by the orchestrator does not propagate to subagents as machine-readable state — it propagates as text in a prompt, if it propagates at all. A subagent receiving a task does not inherit the orchestrator's suspicion level. It reads the task message. If the task message looks legitimate, the subagent complies.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B08_MultiAgentSuspicionLoss",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 26.24,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:44:37",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The problem compounds in multi-agent architectures. An orchestrator agent passes subtasks to subagents. Each subagent has its own session context. Suspicion rai"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The first implication: any trust decision an agent makes must be evaluated as session-local unless proven otherwise. If the trust decision matters across sessions — if 'this account was flagged' must survive a channel switch — that state needs to live in infrastructure the agent reads from on every new session. A trust flag stored only in context is not a persistent security control. It is a note that expires at the end of the conversation.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B09_TrustMustLiveInInfrastructure",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 22.44,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:44:37",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: The first implication: any trust decision an agent makes must be evaluated as session-local unless proven otherwise. If the trust decision matters across sessio"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The auditor's implication: when you validate an agentic system's identity handling, the test is not 'does the agent express suspicion?' The test is 'does that suspicion persist across session and channel boundaries?' Run the impersonator in channel one. Clear the session. Open channel two. Observe what the agent does with the same actor. If the caution evaporated, the guard is session-local, and the system has no cross-channel identity security.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B10_AuditTestCrossChannel",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 22.72,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:44:37",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The auditor's implication: when you validate an agentic system's identity handling, the test is not 'does the agent express suspicion?' The test is 'does that s"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The design implication is privilege separation: actions that have a large blast radius — deleting files, sending money, modifying user permissions — should require identity verification at the infrastructure layer, not just agent approval in context. An agent saying 'I checked and this request is legitimate' is a session-local judgment. The infrastructure layer can enforce that identity claims are cryptographically verified on every channel regardless of what the agent says. The agent's approval is not the security control. The infrastructure check is.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_PrivilegeSeparationDesign",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 31.72,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:44:37",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The design implication is privilege separation: actions that have a large blast radius — deleting files, sending money, modifying user permissions — should requ"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A customer support agent has access to account-level actions: issue refunds, escalate tickets, reset passwords. An attacker discovers that posing as an employee with a specific set of phrases gets the agent to act on account requests. On the first attempt via the public chat widget, the agent shows caution and asks for an employee ID. The attacker doesn't have one. The agent declines and logs a SUSPICIOUS flag in the session. The attacker opens a new session through the mobile app. Same agent, clean context. The same phrases, no employee ID offered. This time no previous flags, no learned wariness. The agent asks once for verification, receives a plausible-sounding explanation, and resets a password on a real account. The flag from the widget session never touched the mobile session. The gate between them was context, not infrastructure.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B12_CustomerSupportChannelResetExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 44.2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:44:37",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A customer support agent has access to account-level actions: issue refunds, escalate tickets, reset passwords. An attacker discovers that posing as an employee"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "An agent's trust judgment is session-local: it lives in the context window and expires with the session. A channel boundary resets that context completely. An impersonator who triggers suspicion in one channel arrives fresh in the next, with no accumulated flags and no inherited caution. The audit test for identity security is not whether the agent expresses suspicion — it is whether that suspicion survives a channel switch. If it doesn't, the guard is decorative.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Suspicion stored in context evaporates at the channel",
+              "boundary."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "The flags stayed in the first channel.\nThe impersonator walked through the second.",
+        "sub": "Trust judgments must live in infrastructure, not in session context.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 24.38,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:44:37"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Impersonator the Agent Caught — Then Believed",
+            "artifactHeading": "Key findings — The Impersonator the Agent Caught — Then Believed",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "The problem compounds in multi-agent architectures."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:44:37"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — THE IMPERSONATOR THE AGENT CAUGHT — THEN BELIEVED",
+            "segment": "The Impersonator the Agent Caught — Then Believed",
+            "greeting": "Hej, Liam.",
+            "command": "Ask Claude: The Impersonator the Agent Caught — Then Believed",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:44:37"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Impersonator the Agent Caught — Then Believed",
+            "slug": "claude-liam-cs-26-channel-reset",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

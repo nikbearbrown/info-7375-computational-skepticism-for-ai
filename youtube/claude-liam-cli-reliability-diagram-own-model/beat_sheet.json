@@ -1,0 +1,461 @@
+{
+  "metadata": {
+    "title": "Reliability Diagram: Your Model's Confidence on Trial",
+    "slug": "claude-liam-cli-reliability-diagram-own-model",
+    "topic": "COMPUTATIONAL SKEPTICISM \u2014 CALIBRATION",
+    "register": "Teardown",
+    "voice": "kokoro:am_onyx",
+    "voice_id": "${ELEVENLABS_VOICE_NIKBEARBROWN}",
+    "palette": "claude",
+    "style_preset": "claude",
+    "style": "cli",
+    "note": "CLI video: B00 intro \u00b7 B01 PROBLEM \u00b7 B02 ASK \u00b7 B03 CODE \u00b7 B04 OUTPUT(manim:B04_ReliabilityDiagram) \u00b7 B05 CHANGE \u00b7 B06 SUMMARY \u00b7 B07 NEXT STEPS \u00b7 B08 extra-slate \u00b7 B09 outro",
+    "total_estimated_duration_seconds": 125,
+    "audience": "Claude",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "channel": "NikBearBrown",
+    "assignment_tieins": [
+      "A2 \u2014 this IS the Calibration instrument (25 pts): reliability diagram + ECE + Brier + temperature scaling + shifted-distribution re-plot on the student's own model",
+      "Candidate 01 teaches the concept on synthetic data; this one produces the graded deliverable on a real build"
+    ],
+    "build": {
+      "at": "2026-07-24T04:49:41",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": []
+    },
+    "clifix_at": "2026-07-19T21:48:38"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "Salaam \u2014 this is Liam, in for Bear. When your model says 94 percent confidence \u2014 does that mean 94 of 100 predictions at that level are right?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "When your model says 94 percent confidence \u2014 does that mean 94 of 100 predictions at that level are right?",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Reliability Diagram on Your Own Model, taken apart.",
+            "greeting": "Salaam, Liam",
+            "runningText": "plotting the reliability diagram\u2026",
+            "output": [
+              "In-distribution: calibration curve tracks the diagonal",
+              "Shifted data: confidence 85% \u2192 true rate 53%",
+              "Temperature scaling closes the ECE gap",
+              "ECE measures miscalibration where it hurts most"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      },
+      "actual_duration_s": 0
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM \u2014 why care",
+      "role_note": "the stakes BEFORE the build begins \u2014 no terminal yet",
+      "narration_text": "You trained a classifier this week. It prints confidence scores. You have never checked whether those confidence scores mean anything. A model that says ninety-four percent and is right fifty-six percent of the time is not a reliable model \u2014 it's a confident wrong one. The reliability diagram makes your own overconfidence visible. And the shifted slice \u2014 the high-value subgroup the model matters most for \u2014 is where the decorative number gets caught.",
+      "visual_intent": "title card: 'your model says 94% \u2014 does it mean 94%?'; PROBLEM beat, no terminal yet",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "your model says 94% \u2014 does it mean 94%?",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Reliability Diagram on Your Own Model, taken apart.",
+            "greeting": "The ask,",
+            "runningText": "framing the problem\u2026",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 20,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) \u2014 the command typed",
+      "narration_text": "In the terminal: ask Claude to write a script that loads your held-out predictions CSV \u2014 two columns, predicted probability and true label \u2014 bins into ten confidence bins, plots the reliability diagram against the perfect-calibration diagonal, computes ECE and Brier score, fits temperature scaling on a validation split, and re-plots. Then takes the subset of rows where feature X is above its median as a shifted slice and recomputes ECE on that slice. Print both ECE values.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Write a Python script that:\n1. loads predictions.csv (predicted_prob, true_label)\n2. bins into 10 confidence bins\n3. plots reliability diagram vs diagonal\n4. computes ECE and Brier score\n5. fits temperature scaling on a val split, re-plots\n6. takes rows where feature_x > median as\n   'shifted slice', recomputes ECE\nPrint both ECE values: in-dist and shifted.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM \u2014 CALIBRATION",
+            "segment": "RELIABILITY DIAGRAM \u2014 OWN MODEL",
+            "greeting": "The ask,",
+            "runningText": "generating reliability diagram script\u2026",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) \u2014 read the output before running",
+      "narration_text": "Read the three key operations before running. Calibration underscore curve from sklearn returns, per bin, the fraction of positives \u2014 the empirical positive rate \u2014 and the mean predicted probability. ECE is the mean absolute difference between those two. Temperature scaling fits a single scalar T on a validation split: T greater than one softens overconfident probabilities. And the shifted slice is the fairness-calibration intersection: does the model's overconfidence concentrate in the subgroup that matters most?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "reliability_diagram.py",
+            "code": "# reliability_diagram.py \u2014 Claude Code output\nfrom sklearn.calibration import calibration_curve\nimport numpy as np\n\n# ECE: mean absolute gap between predicted and empirical\nppv, mean_pred = calibration_curve(\n    df[\"true_label\"], df[\"predicted_prob\"], n_bins=10\n)\nece = float(np.mean(np.abs(ppv - mean_pred)))\n\n# temperature scaling: T > 1 softens overconfidence\n# optimized on held-out validation split\nT = optimize_temperature(val_probs, val_labels)\nscaled = sigmoid(logit(probs) / T)\n\n# shifted slice: high-value subgroup\nshifted = df[df[\"feature_x\"] > df[\"feature_x\"].median()]\nece_shifted = compute_ece(shifted)",
+            "sparkLine": "RELIABILITY DIAGRAM \u2014 OWN MODEL"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT \u2014 run",
+      "role_note": "Manim animation: B04_ReliabilityDiagram \u2014 two panels side by side",
+      "narration_text": "Run it. Left panel: in-distribution reliability diagram. The curve tracks the diagonal reasonably well \u2014 ECE is point-zero-eight. Right panel: shifted slice, the high feature-X subgroup. The curve bends away from the diagonal at high confidence. ECE jumps to point-nineteen. The model that looks calibrated on its training distribution is systematically overconfident in the deployment regime it matters most for. That gap does not appear until you plot the shifted slice.",
+      "visual_intent": "Manim B04_ReliabilityDiagram: two reliability diagrams side by side \u2014 left (in-distribution, ECE=0.08, curve near diagonal) and right (shifted slice, ECE=0.19, overconfidence zone highlighted); ECE values animate in; a 'gap' arrow in the right panel",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B04_ReliabilityDiagram",
+          "file": "vox_scenes.py"
+        }
+      },
+      "estimated_duration_s": 19,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim:B04_ReliabilityDiagram",
+        "at": "2026-07-24T04:49:41"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE \u2014 check and revise",
+      "role_note": "terminal (Onda) \u2014 lock the prediction first, then apply temperature scaling",
+      "narration_text": "Before re-running with temperature scaling, lock a prediction. Ask Claude to add a step at the top of the script: prompt the user for their guessed ECE on the shifted slice, hash it, write it to predlock.log. Then run temperature scaling. After, resolve: print the guessed ECE, the actual ECE, and whether the hash still verifies. Calibration on training distribution does not survive a distribution shift \u2014 and the locked prediction is the only way to know whether you knew that.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Update reliability_diagram.py:\nADD at top: prompt user for guessed ECE on\nshifted slice, hash+timestamp to predlock.log.\nApply temperature scaling, recompute shifted ECE.\nAT END: print guessed ECE, actual ECE, the gap,\nHASH VERIFIED / HASH MISMATCH.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM \u2014 CALIBRATION",
+            "segment": "RELIABILITY DIAGRAM \u2014 OWN MODEL",
+            "greeting": "The ask,",
+            "runningText": "adding prediction lock + temperature scaling\u2026",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "SUMMARY",
+      "role_note": "the lesson \u2014 one beat",
+      "narration_text": "Temperature scaling closes the in-distribution ECE gap \u2014 the curve moves to the diagonal. But on the shifted slice, ECE barely moves. Calibration on your training distribution does not survive a distribution shift. The reliability diagram is the instrument that makes your own overconfidence visible; the shifted slice is the test that exposes where it hides; and the prediction lock is the tool that prevents you from editing the guess after you see the result.",
+      "visual_intent": "recap card: 'temperature scaling: ECE in-dist closes; ECE shifted barely moves'; two ECE numbers side by side",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "lesson.md",
+            "code": "# KEY LESSON\n#\n# Temperature scaling closes the in-distribution ECE gap \u2014 the curve\n# moves to the diagonal. But on the shifted slice, ECE barely moves.\n# Calibration on your training distribution does not survive a\n# distribution shift.\n#\n# \u2192 two ECE numbers side by side",
+            "sparkLine": "Reliability Diagram on Your Own Model, taken apart."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 15,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Your move: take any model you shipped last week. Pull the held-out predictions \u2014 predicted probability and true label. Lock a guessed ECE before you run the script. Run the reliability diagram, then the shifted slice. If ECE rises on the shifted slice, you have a calibration problem in the regime that matters most \u2014 and you now have the number to report.",
+      "visual_intent": "next-steps card: 1) pull held-out predictions, 2) lock guessed ECE, 3) run reliability diagram + shifted slice, 4) report the gap",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "next_steps.md",
+            "code": "# YOUR MOVE\n#\n# 1. pull held-out predictions\n# 2. lock guessed ECE\n# 3. run reliability diagram + shifted slice\n# 4. report the gap\n#\n# \u2192 run it  \u2192  audit the gap  \u2192  report what you find",
+            "sparkLine": "YOUR MOVE"
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 13,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "EXTRA",
+      "role_note": "slate \u2014 optional b-roll",
+      "narration_text": "The complete source is in the video description. Fork it, swap in your own data, and see what you find. If your numbers break the pattern, that is the interesting result.",
+      "visual_intent": "slate placeholder",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "fork_it.md",
+            "code": "# FORK IT\n#\n# \u2192 clone the source (link in description)\n# \u2192 swap in your own data\n# \u2192 run it\n# \u2192 the interesting result is when your numbers break the pattern",
+            "sparkLine": "Reliability Diagram on Your Own Model, taken apart."
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 9.09
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "narration_text": "Let's recap with Claude. You trained a classifier this week. It prints confidence scores. You have never checked whether those confidence scores mean anything.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "actual_duration_s": 0,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Reliability Diagram: Your Model's Confid",
+            "artifactHeading": "CLAUDE LIAM CLI RELIABILITY DI: WHAT IT BUILDS",
+            "artifactLines": [
+              "You trained a classifier this week.",
+              "Read the three key operations before running.",
+              "Before re-running with temperature scaling, lock a prediction.",
+              "Your move: take any model you shipped last week."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "narration_text": "Your turn. I'm studying Reliability Diagram: Your Model's Confidence on Trial using Claude CLI. I understand You trained a classifier this week.. Paste this into Claude: 'I want to your model says 94% \u2014 does it mean 94%?. Walk me through (1) how to set up the script, (2) how to run it and verify the output, (3) how to interpret the result.'",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 20,
+      "actual_duration_s": 0,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 RELIABILITY DIAGRAM: YOUR MODEL'S CONFIDENCE ON TRIAL",
+            "segment": "Reliability Diagram: Your Model's Confidence on Trial",
+            "command": "I'm studying Reliability Diagram: Your Model's Confidence on Trial using Claude CLI. I understand You trained a classifier this week.. Paste this into Claude: 'I want to your model says 94% \u2014 does it ",
+            "runningText": "thinking\u2026",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Reliability Diagram: Your Model's Confidence on Trial. I'm Liam, in for Bear.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Reliability Diagram: Your Model's Confidence on Trial",
+            "handle": "@NikBearBrown",
+            "subline": "calibration on training doesn't survive a shift",
+            "slug": "claude-liam-cli-reliability-diagram-own-model"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:49:41"
+      },
+      "actual_duration_s": 0
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Reliability Diagram: Your Model's Confidence on Trial",
+            "slug": "claude-liam-cli-reliability-diagram-own-model",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

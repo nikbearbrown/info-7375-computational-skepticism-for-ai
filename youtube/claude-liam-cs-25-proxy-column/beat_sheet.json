@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-25-proxy-column",
+    "title": "Why Deleting the Race Column Doesn't Delete Race",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show how correlated proxy columns jointly reconstruct a deleted sensitive attribute so that fairness-through-unawareness only guarantees you didn't look directly. Source: books/computational-skepticism-for-ai/chapters/07-fairness-metrics-choosing-a-definition-and-defending-it.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = visible proxy columns / the data that remains; CRIMSON = the deleted column / the ghost reconstruction; GOLD = the correlation / key insight; SLATE = the full dataset",
+    "note": "EXCLUSIONS: no Lipschitz formalism, no impossibility theorem (separate video), no causal-path taxonomy, no legal disparate-treatment/impact framing",
+    "total_estimated_duration_seconds": 190,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 25,
+    "build": {
+      "at": "2026-07-19T02:43:01",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why Deleting the Race Column Doesn't Delete Race",
+            "greeting": "Merhaba, Liam.",
+            "command": "You deleted the race column.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "You deleted the race column. The model still knows.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why Deleting the Race Column Doesn't Delete Race",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why Deleting the Race Column\nDoesn't Delete Race"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 3.39,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "You have a dataset. You find the race column, you select it, you delete it — gone. Your model now trains without ever seeing the protected attribute. You declare your system fairness-through-unawareness. But the zip code column is still there. The school district column is still there. The surname frequency column is still there. Each one whispers. Together they shout. Watch the deleted column reassemble itself out of the columns you kept.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "morph"
+      },
+      "scene_class": "B02_ColumnDeleteAndGhost",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 20.42,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:43:01",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: You have a dataset. You find the race column, you select it, you delete it — gone. Your model now trains without ever seeing the protected attribute. You declar"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "If you remove a sensitive column but leave in every column it correlates with, what did you actually remove?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Remove the sensitive column, leave correlated columns:",
+              "does bias stay?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "If you remove a sensitive column but leave\nevery column it correlates with,\nwhat did you actually remove?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 6.29,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:43:01"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Fairness-through-unawareness is the intuition that a model cannot discriminate on a feature it cannot see. The intuition is correct. The implementation fails because the model does not need the column — it needs information, and information is carried by correlations. Zip code in the United States correlates with race at extraordinarily high levels. Surname frequency correlates with ethnicity. Occupation history correlates with gender. When you delete one column and keep its correlated neighbors, the model learns the information anyway. You guaranteed only that you did not look directly.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B04_CorrelationWebRemainder",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 30.81,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:43:01",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: Fairness-through-unawareness is the intuition that a model cannot discriminate on a feature it cannot see. The intuition is correct. The implementation fails be"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The proxy reconstruction is not a theoretical corner case. It is the default outcome whenever the sensitive attribute is not randomly distributed across the population — which is almost always. A model trained on lending data without the race column can recover it with modest accuracy from zip, income bracket, and loan history alone. The deletion created paperwork. It did not create fairness. And the adversarial version of this problem is worse: an attacker who wants to discriminate does not need the column either.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "morph"
+      },
+      "scene_class": "B05_ProxyReconstructionAccuracy",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 28.16,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:43:01",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The proxy reconstruction is not a theoretical corner case. It is the default outcome whenever the sensitive attribute is not randomly distributed across the pop"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The mechanism is proxy leakage: correlated columns jointly reconstruct the deleted one. The ghost column was never gone — it was distributed across the columns you kept.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Proxy leakage: the deleted column was never gone",
+              "it was distributed."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A dataset table viewed from above: one column has been struck through in crimson (DELETED), while fine gold threads stretch from the remaining teal columns — zip code, surname, occupation — and converge on the right margin where the deleted column's ghost shape reassembles, glowing faintly, reconstructed from nothing but what was kept",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 10.22,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:43:01"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Watch the column graph. We start with five columns: zip code, surname frequency, occupation code, credit history, and race. Correlation strength shown by edge thickness. Race has heavy edges to all four neighbors. We delete the race node — the column disappears. But the four edges become a ghost outline at the right margin. Each remaining column is a strand. When the model trains, it receives the information carried by those strands. The morph shows the four columns pooling their correlations into a reconstructed signal that behaves like the deleted column. The ghost fills in. The model did not need the label.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "morph"
+      },
+      "scene_class": "B07_ColumnGraphMorphReconstruction",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 32.53,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:43:01",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Watch the column graph. We start with five columns: zip code, surname frequency, occupation code, credit history, and race. Correlation strength shown by edge t"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The formal name for this is redundant encoding. The sensitive attribute is not stored in one column — it is stored in the mutual information across multiple columns simultaneously. Deleting one column while keeping its correlates does not reduce the mutual information in the dataset by much. The attribute is still recoverable, at predictive power close to the original. Fairness-through-unawareness is a documentation strategy, not a technical one.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B08_RedundantEncodingHighlight",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 23.1,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:43:01",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The formal name for this is redundant encoding. The sensitive attribute is not stored in one column — it is stored in the mutual information across multiple col"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The practical implication is audit — not deletion. When you want to measure whether your model's outputs vary by race, you need to track that variation in your evaluation pipeline, not in your training pipeline. You run the model on labeled subgroups. You measure the disparity in outcomes. You do that even — especially — when the column is absent from the feature set. The question 'is this model discriminating on race' cannot be answered by checking whether the column is present. It can only be answered by measuring outcomes.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B09_AuditVsDeletion",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 26.11,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:43:01",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: The practical implication is audit — not deletion. When you want to measure whether your model's outputs vary by race, you need to track that variation in your "
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "A second implication: the correlated proxy problem means you cannot achieve fairness by removing columns. You achieve it by defining what 'fair outcome' means across groups, measuring whether your model produces it, and intervening when it does not — either in the training objective, in the output, or in the deployment policy. Fairness is a measurement problem before it is an intervention problem.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B10_FairnessAsMeasurement",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 20.39,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:43:01",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: A second implication: the correlated proxy problem means you cannot achieve fairness by removing columns. You achieve it by defining what 'fair outcome' means a"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The broader design lesson is that protected attributes have semantic identity separate from their column header. Removing the label does not remove the information. Any system architecture that tries to achieve fairness by column deletion has misunderstood where the discrimination lives. It lives in the correlation structure of the data, not in the field name of any single column.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "morph"
+      },
+      "scene_class": "B11_SemanticIdentityPersistence",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 19.88,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:43:01",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The broader design lesson is that protected attributes have semantic identity separate from their column header. Removing the label does not remove the informat"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 15.0,
+      "narration_text": "A hiring platform removes the gender field from candidate profiles before feeding them to a screening model. The model still has: job title history, employment gap durations, university attended, and part-time work flags. Gender correlates with each of those, because the labor market is not gender-neutral. The model trains. The model ranks candidates. An audit shows the top quintile is eighty-two percent male. The engineering team points to the missing gender column as proof the model is unbiased. The audit team measures the disparity, traces it to employment gap duration — which proxies career interruptions which correlate with childbirth — and the model is not unbiased. It is unbiased by paperwork. The fix is not to delete one more column. The fix is to define what equitable ranking looks like and measure whether the model achieves it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "morph"
+      },
+      "scene_class": "B12_HiringPlatformProxyExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 43.78,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:43:01",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A hiring platform removes the gender field from candidate profiles before feeding them to a screening model. The model still has: job title history, employment "
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A sensitive attribute is encoded in the mutual information across correlated columns, not in any single column header. Deleting the column removes the label and nothing else. Fairness-through-unawareness guarantees only that you did not look directly — the model recovers the attribute from whatever proxies remain. The test of fairness is measured disparity in outputs across groups, not the presence or absence of a field name in the training schema.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Deleting the column removes the label. The information",
+              "stays."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Fairness-through-unawareness\nguarantees only that you didn't look.",
+        "sub": "Measure disparate outcomes. Deletion is not a fairness strategy.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 22.53,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:43:01"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why Deleting the Race Column Doesn't Delete Race",
+            "artifactHeading": "Key findings — Why Deleting the Race Column Doesn't Delete Race",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "The practical implication is audit — not deletion."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:43:01"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY DELETING THE RACE COLUMN DOESN'T DELETE RACE",
+            "segment": "Why Deleting the Race Column Doesn't Delete Race",
+            "greeting": "Olá, Liam.",
+            "command": "Ask Claude: Why Deleting the Race Column Doesn't Delete Race",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:43:01"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why Deleting the Race Column Doesn't Delete Race",
+            "slug": "claude-liam-cs-25-proxy-column",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

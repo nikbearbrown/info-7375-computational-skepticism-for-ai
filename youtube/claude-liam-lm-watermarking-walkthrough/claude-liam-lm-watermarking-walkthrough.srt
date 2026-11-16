@@ -1,0 +1,232 @@
+1
+00:00:00,000 --> 00:00:11,430
+Hola — this is Liam, in for Bear.
+Anthropic says Claude's text carries a
+watermark. I cloned the reference
+
+2
+00:00:11,480 --> 00:00:34,000
+The watermark is a statistical bias, not
+an inscription. At generation, half the
+vocabulary gets a two-logit boost at every
+
+3
+00:00:34,050 --> 00:00:42,300
+The word watermark comes from images,
+where there is a thing in the file you
+could point at. There is no such thing in
+
+4
+00:00:42,350 --> 00:01:01,310
+The repository: jwkirchenbauer/lm-
+watermarking. Official implementation of
+the 2023 ICML paper by Kirchenbauer and
+
+5
+00:01:01,360 --> 00:01:16,370
+LogitsProcessor matters. It doesn't reach
+inside the model. It sits between the
+model's output distribution and the
+
+6
+00:01:16,420 --> 00:01:18,550
+Now: the shape of the code.
+
+7
+00:01:18,600 --> 00:01:36,750
+Seven Python files at the root.
+demo_watermark.py is the CLI runner at 701
+lines. watermark_processor.py is 282 lines
+
+8
+00:01:36,800 --> 00:01:56,550
+Four subdirectories.
+watermark_reliability_release has 252,512
+lines of file — experiment pipelines,
+
+9
+00:01:56,600 --> 00:01:57,600
+The ratio.
+
+10
+00:01:57,650 --> 00:02:18,950
+Two thousand three hundred seventeen root
+source lines. Three hundred forty-four
+thousand lines of file across the four
+
+11
+00:02:19,000 --> 00:02:20,870
+Now: what calls what.
+
+12
+00:02:20,920 --> 00:02:39,430
+The import graph. app.py imports
+demo_watermark. demo_watermark imports
+watermark_processor — the mechanism.
+
+13
+00:02:39,480 --> 00:02:50,290
+watermark_processor.py: 282 lines, four
+importers. Every call that matters routes
+through this file. If you want to
+
+14
+00:02:50,340 --> 00:02:54,090
+And then there is
+extended_watermark_processor.py.
+
+15
+00:02:54,140 --> 00:03:01,190
+625 lines, the README calls it
+'recommended,' and not one file in this
+repository imports it.
+
+16
+00:03:01,240 --> 00:03:18,880
+One more finding: three copies of
+watermark_processor.py in the tree. Root:
+282 lines. HuggingFace demo copy: 280
+
+17
+00:03:18,930 --> 00:03:20,010
+The git log.
+
+18
+00:03:20,060 --> 00:03:38,140
+Sixteen commits across three years. 2023:
+twelve — the initial push, the paper
+release, the extended implementation, a
+
+19
+00:03:38,190 --> 00:03:52,280
+Sixteen commits is a paper artifact being
+maintained. This family of techniques is
+deployed at production scale. The
+
+20
+00:03:52,330 --> 00:03:54,330
+Time to read the code.
+
+21
+00:03:54,380 --> 00:04:16,820
+Five parameters. gamma: 0.5 — half the
+vocabulary is green at each position.
+delta: 2.0 — the logit boost applied to
+
+22
+00:04:16,870 --> 00:04:24,350
+Three functions. First: how the key and
+the previous token seed a fresh random
+partition of the vocabulary at every
+
+23
+00:04:24,400 --> 00:04:27,910
+Animate how the green list is built at
+each token.
+
+24
+00:04:27,960 --> 00:04:45,870
+At every token position, the mechanism
+draws a fresh random permutation of the
+full vocabulary — seeded by the secret key
+
+25
+00:04:45,920 --> 00:05:07,800
+The seeding and partitioning code. Line
+63: the previous token times hash_key
+seeds the RNG — that is the entire secret.
+
+26
+00:05:07,850 --> 00:05:17,980
+The green list is not stored anywhere.
+It's regenerated from scratch at every
+token, from the secret key times the
+
+27
+00:05:18,030 --> 00:05:21,930
+Now show the bias — high entropy versus
+low entropy.
+
+28
+00:05:21,980 --> 00:05:40,600
+When the model is uncertain — high
+entropy, multiple near-equal options —
+adding 2.0 to the green logits shifts
+
+29
+00:05:40,650 --> 00:05:54,890
+Line 95: scores on the green list get plus
+greenlist_bias — which is delta, which is
+2.0. That is the entire marking mechanism.
+
+30
+00:05:54,940 --> 00:06:03,340
+scores[greenlist_mask] =
+scores[greenlist_mask] + greenlist_bias.
+That is the watermark. One line. Add two
+
+31
+00:06:03,390 --> 00:06:06,990
+Now the test. 200 tokens versus 40.
+
+32
+00:06:07,040 --> 00:06:31,220
+Detection is a hypothesis test. Under the
+null — no watermark — approximately gamma
+times T tokens fall green by chance. The
+
+33
+00:06:31,270 --> 00:06:49,480
+Lines 153–163. The z-score: observed green
+count minus expected, divided by the
+binomial standard deviation. The p-value:
+
+34
+00:06:49,530 --> 00:07:00,450
+Detection is scipy.stats.norm.sf(z). It
+returns a p-value. A p-value is not a
+verdict, and asking to see the watermark
+
+35
+00:07:00,500 --> 00:07:01,540
+One commit.
+
+36
+00:07:01,590 --> 00:07:18,370
+Commit bbe1fb8. August 2023. Message:
+'Documentation Updates.' The stat for
+watermark_processor.py: seventeen lines
+
+37
+00:07:18,420 --> 00:07:27,500
+Buried in the WatermarkDetector __init__
+signature: the default value of
+ignore_repeated_bigrams changed from False
+
+38
+00:07:27,550 --> 00:07:37,590
+Seventeen lines added, fifteen removed,
+message 'Documentation Updates.' One of
+them flipped a detector default from False
+
+39
+00:07:37,640 --> 00:07:57,260
+ignore_repeated_bigrams changes how
+observed_count is computed — whether
+repeated token bigrams get counted once or
+
+40
+00:07:57,310 --> 00:08:18,660
+The verdict: the algorithm is honest. The
+mechanism is 282 lines and it does exactly
+what the paper says. But the mismatch
+
+41
+00:08:18,710 --> 00:08:40,680
+Your turn. Take this into your own
+session: clone jwkirchenbauer/lm-
+watermarking, open watermark_processor.py,
+
+42
+00:08:40,730 --> 00:08:43,300
+The Watermark Is One Line of Code.

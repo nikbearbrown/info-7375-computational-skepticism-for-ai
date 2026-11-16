@@ -1,0 +1,1495 @@
+{
+  "metadata": {
+    "title": "A Confident Number Is Not a Correct Number.",
+    "slug": "claude-liam-deep-02-probability-confidence",
+    "topic": "COMPUTATIONAL SKEPTICISM · PROBABILITY & CONFIDENCE",
+    "genre": "deep-explainer",
+    "register": "Teardown",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "vox_stage": "#F2F0E9",
+    "accent": "#D97757",
+    "greeting": "Bonjour, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "series": "claude-liam-deep",
+    "episode": 2,
+    "playlist": "Computational Skepticism for AI — Deep Explainers",
+    "source": "books/computational-skepticism-for-ai/chapters/02-probability-uncertainty-and-the-confidence-illusion.md",
+    "gate": "PLAN — awaiting human approval (no factcheck / no audio / no render)",
+    "beat_mix_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "beat_mix_actual": {
+      "body_beats": 29,
+      "VOX": "24.1% (7)",
+      "MANIM": "31.0% (9)",
+      "REMOTION": "34.5% (10)",
+      "CARD": "10.3% (3)",
+      "lint": "PASS — vox in 15-30% band, spine OK, no >2 same-lane run outside the R1 vox run"
+    },
+    "total_estimated_duration_seconds": 574,
+    ".codex": {
+      "workflow": "deep-explainer",
+      "mode": "unattended-then-human-review",
+      "agent": "Claude Code",
+      "persona": "Liam (in for Bear)",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "paid_generation": false,
+      "publish": false,
+      "reviewer": "Bear"
+    },
+    "build": {
+      "at": "2026-07-27T23:45:05",
+      "cut": "master",
+      "filled": 34,
+      "of": 35,
+      "slates": [
+        "A5R2"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "Bonjour — this is Liam, in for Bear. Here's the whole chapter in one question. A test for a rare disease — one person in ten thousand carries it — is ninety-nine percent accurate. A patient tests positive. How sure are you they're sick? Almost every engineer says ninety-something. The real answer is about one percent. The test isn't broken. The number on the box is honest. So what failed — the test, or the story you told yourself about the number?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 30,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Bonjour, Liam",
+            "topic": "COMPUTATIONAL SKEPTICISM , PROBABILITY & CONFIDENCE",
+            "segment": "A Confident Number Is Not a Correct Number.",
+            "command": "Why is a 99%-accurate positive test still only about 1% likely to be right?",
+            "runningText": "probability — degrees of belief, not facts about the world…",
+            "output": [
+              "The number was honest — the reading forgot the prior",
+              "A confident number is not a correct number",
+              "Confidence is a profile you audit — not a fact you trust"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "A Confident Number Is Not a Correct Number.",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A1C",
+      "act": "ACT I — Degrees of Belief",
+      "lane": "CARD",
+      "narration_text": "Act one. Before any arithmetic, a shift in what a number even is — and why two engineers can disagree without either being wrong.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Degrees of Belief"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A1R",
+      "act": "a fact, or a degree of belief",
+      "lane": "REMOTION",
+      "narration_text": "You came up Boolean. A bit is one or zero. A test passes or fails. Probability is a different animal — its output isn't true or false. It's a degree of belief: a number saying how confident you should be, given only what you know right now.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A fact, or a degree of belief.",
+              "Boolean: 0 or 1 — passes or fails, proved or not",
+              "Probabilistic: a number in [0,1] — a degree of belief"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A1V",
+      "act": "two engineers, two priors",
+      "lane": "VOX",
+      "narration_text": "Here's the part that takes adjustment. Two engineers can read the exact same evidence, land on different probabilities, and both be reasoning correctly. Not correct in some mushy relativist way — correctly. They walked in with different priors. Probability is always conditional on your information state.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "pantry": "pantry/A1V.png",
+        "pantry_brief": "two engineers at a whiteboard reaching different conclusions from the same chart, warm documentary still, soft light — Tier 1 generic/illustrative",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Different priors — both correct"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A1M",
+      "act": "the three axioms (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "And the whole edifice rests on three rules. Probabilities are never negative. Everything that can happen sums to one. Disjoint outcomes add. Nonnegativity, normalization, additivity — that's the entire foundation. Bayes, calibration, the central limit theorem: every one of them is just these three rules, pushed.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A1M_ThreeAxioms",
+          "spec": "sample space Ω drawn as a box; an event A as a shaded subset; three axioms write on — P(A)≥0, P(Ω)=1, P(A∪B)=P(A)+P(B) for disjoint A,B; everything downstream (Bayes, CLT) branches from the three",
+          "out": "manim/A1M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Three axioms — everything else is derived"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A2M",
+      "act": "ACT II — Conditioning, the engine (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "Act two — the engine. Almost every audit in this book is one calculation wearing a costume: conditional probability. P of A given B. You already know B happened, so you shrink the world down to just B — and ask what fraction of that smaller world is also A.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A2M_Conditioning",
+          "spec": "full sample space; conditioning on B shrinks the space to B; write-on P(A|B)=P(A∩B)/P(B); highlight the fraction of B that also lies in A; terracotta on the shrunken world",
+          "out": "manim/A2M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Given what I already know"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A2R",
+      "act": "the flag that lowers the odds",
+      "lane": "REMOTION",
+      "narration_text": "Watch it bite. A triage model: three-quarters of cases arrive with an abnormal lab flag; just under half turn out serious. A flagged case walks in — your gut says worse. Condition on the flag and the odds of serious fall below forty percent. Most flagged cases aren't the emergency.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "The Flag That Lowers the Odds",
+            "left": {
+              "label": "Intuition — a flag is bad news",
+              "note": "the salient signal read at face value"
+            },
+            "right": {
+              "label": "Conditioning — 45% / under 40%",
+              "note": "most flagged cases aren't the emergency"
+            },
+            "sparkLine": "P(A|B) can be lower than P(A)."
+          },
+          "rendered": {
+            "out": "media/A2R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A3M",
+      "act": "ACT III — Chains (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "Act three — chains. An agent that reports task complete almost never did one thing. It chained calls: read, fetch, write, verify. The claim is about the whole chain surviving. Multiply the conditionals — each step built on the shakier state the last one left — and the honest odds the task finished sit around sixty percent.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A3M_ChainRule",
+          "spec": "probability tree; three edges P(A1)=0.9, P(A2|A1)=0.85, P(A3|A1∩A2)=0.8; multiply along the path to the leaf 0.612; the chain-rule identity writes on; terracotta on the 61% leaf against a single clean 'task complete' token",
+          "out": "manim/A3M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "One report, a product of shrinking conditionals"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A3R",
+      "act": "the independence trap",
+      "lane": "REMOTION",
+      "narration_text": "Now the mistake everyone makes. Assume those steps are independent — nine-tenths each, cubed — and the number jumps to seventy-three. Twelve points of confidence, unearned, bought entirely by assuming away the dependence. In real agent runs independence fails quietly, in the optimistic direction. That's the direction that gets you hurt.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Twelve Points of Unearned Confidence",
+            "left": {
+              "label": "Honest — chained conditionals",
+              "note": "≈ 61%  (0.9 , 0.85 , 0.8)"
+            },
+            "right": {
+              "label": "Assumed independent",
+              "note": "≈ 73%  (0.9³) — fails in the optimistic direction"
+            },
+            "sparkLine": "Independence lies upward."
+          },
+          "rendered": {
+            "out": "media/A3R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A3M2",
+      "act": "total probability — the fleet's error rate",
+      "lane": "MANIM",
+      "narration_text": "One more gear. When you can't measure a system rate directly, partition. A fraud pipeline splits traffic across three model versions, each with its own error rate. Weight each by the share it handles, sum, and out falls an overall error just above three percent — a number that lives in none of the three models.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A3M2_TotalProbability",
+          "spec": "three partition slices A,B,C with traffic weights 0.4/0.3/0.3 and error rates 0.02/0.03/0.05; weighted sum P(D)=Σ P(Ai)·P(D|Ai)=0.032 assembles piece by piece; the 3.2% floats free above all three slices",
+          "out": "manim/A3M2.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "3.2% — a rate no single model reports"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3M2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3M2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3M2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A4C",
+      "act": "ACT IV — The Test That's 99% Accurate",
+      "lane": "CARD",
+      "narration_text": "Act four — the one everybody quotes and almost everybody reads wrong. Back to that test.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Test That's 99% Accurate"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A4K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , PROBABILITY & CONFIDENCE",
+            "segment": "The 99% test — count the bodies",
+            "command": "render a Manim scene: 10,000 people, 1 truly sick, a 99%-accurate test — count the one true positive against the ~100 false positives, ratio 1/101",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A4K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A4M",
+      "act": "count the bodies",
+      "lane": "MANIM",
+      "narration_text": "Count bodies before any formula. Ten thousand people. One is genuinely sick — the base rate — and the test catches them: one true positive. The other nine-thousand-plus are healthy, and one percent test positive anyway — about a hundred false alarms. So a positive result is one real case buried in a hundred. One in a hundred and one — about one percent.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 19,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A4M_CountBodies",
+          "spec": "grid of 10,000 dots; 1 dot lit terracotta as the true positive; ~100 dots from the healthy pool flip to false-positive; pull the 101 positives out into a cluster; ratio 1/101 ≈ 1% written large",
+          "out": "manim/A4M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "1 true positive, ~100 false — 1 in 101"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A4R",
+      "act": "where the prior lives",
+      "lane": "REMOTION",
+      "narration_text": "The formula just makes the bookkeeping explicit. Bayes: posterior equals prior times likelihood, over the total. See where the prior sits — in the numerator, weighted exactly like the test's accuracy. Drop it and you've thrown out half the equation. Intuition answered a different question: given the disease, how good is the test — never, given a positive, how rare is the disease. Trained clinicians make the same slip.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Posterior ∝ prior × likelihood.",
+              "Prior P(disease) — the base rate, sitting in the numerator",
+              "Likelihood P(+|disease) — the test's sensitivity, 0.99"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A4V1",
+      "act": "alert fatigue — the flood",
+      "lane": "VOX",
+      "narration_text": "Now watch what this does to a human. Build a rare-event detector and deploy it, and the on-call engineer gets a flood of alarms — because when the positive class is rare, even an excellent detector fires mostly false.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.4
+        ],
+        "pantry": "pantry/A4V1.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.4,
+            "scale": 1.6
+          },
+          "objects": [
+            {
+              "id": "alert-stack",
+              "x": 0.5,
+              "y": 0.4,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "an on-call engineer at a desk at night, screen full of red alerts, warm ink duotone — Tier 1; start of a 3-beat vox run zooming out",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A rare-event detector fires mostly false"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4V1.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4V1.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4V1.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A4V2",
+      "act": "alert fatigue — the learned dismissal",
+      "lane": "VOX",
+      "narration_text": "They check the first few. False. The next few. False again. Within a week they've learned, in their bones, that the alarms mean nothing. Not carelessness — a structural fact about the signal-to-noise that nobody warned them about at design time.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.45,
+          0.5
+        ],
+        "pantry": "pantry/A4V2.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.45,
+            "y": 0.5,
+            "scale": 1.0
+          },
+          "objects": [
+            {
+              "id": "alert-stack",
+              "x": 0.35,
+              "y": 0.35,
+              "scale": 0.7,
+              "opacity": 0.6
+            },
+            {
+              "id": "dismiss",
+              "x": 0.5,
+              "y": 0.55,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "same scene, the engineer waving off a growing stack of dismissed false alarms — continuity from A4V1 (same desk, zoomed out)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Within a week, the alarms mean nothing"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4V2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4V2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4V2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A4V3",
+      "act": "alert fatigue — the missed real one",
+      "lane": "VOX",
+      "narration_text": "So they stop looking. And the one real alert — the true positive the whole system existed to catch — scrolls past unread. The math didn't fail. It did exactly what its spec promised. The interpretation is what broke.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.55
+        ],
+        "pantry": "pantry/A4V3.png",
+        "vox_run": "R1",
+        "pantry_brief": "wide final frame: one real alert glowing unread in a sea of dismissed false alarms — end of the vox run; terracotta ring on the missed true positive",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The real one scrolls past, unread"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4V3.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4V3.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4V3.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A4R2",
+      "act": "the false-positive structure is everywhere",
+      "lane": "REMOTION",
+      "narration_text": "This structure is everywhere the target is rare — fraud, security logins, medical screening, moderation, jailbreak detection. When the positive class is rare, even an excellent detector drowns you in false alarms. It isn't hypothetical: a widely deployed hospital sepsis model alerted on nearly a fifth of all patients while missing most of the sepsis it existed to catch.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "Rare Class, Mostly False Alarms",
+            "chips": [
+              "Fraud — legit dwarfs fraud",
+              "Security — most logins aren't attackers",
+              "Screening — the disease is rare",
+              "Moderation — most posts are fine",
+              "Jailbreaks — most prompts are benign",
+              "Sepsis model — alerted on ~⅕, missed most cases"
+            ],
+            "sparkLine": "The math doesn't care about the domain."
+          },
+          "rendered": {
+            "out": "media/A4R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A5R",
+      "act": "ACT V — what an output really is",
+      "lane": "REMOTION",
+      "narration_text": "Act five — when the world moves. First, absorb what a model output really is. Not a fact. A probabilistic claim, true only conditional on three quiet assumptions: that training looked like now, that the model is calibrated, that nothing has shifted. Pull any one and the number means something else — or nothing.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A claim, conditional on three assumptions.",
+              "…IF training resembled this deployment",
+              "…IF the model is calibrated"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A5M",
+      "act": "Hume as distribution shift",
+      "lane": "MANIM",
+      "narration_text": "Now Hume, in engineering clothes. Your training set is the past; your deployment is the future; nothing in logic forces the future to match. Distribution shift is just the world declining to cooperate — the inputs drift, the base rates move — and the model keeps emitting confident numbers that have quietly come unstuck from reality.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A5M_Shift",
+          "spec": "two distributions on a shared x-axis labeled 'train' and 'deploy'; deploy curve slides away from train over time; a confidence readout stays pinned high while the truth moves out from under it; terracotta shades the widening gap",
+          "out": "manim/A5M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Training is the past. Deployment is the future."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A5V",
+      "act": "the imaging that came unstuck",
+      "lane": "VOX",
+      "narration_text": "A documented case. Models trained before a pandemic, deployed during it. The disease had changed the lungs and changed who ended up in the scanner — so the imaging signatures shifted underneath the model. It kept predicting, fluent and confident, into a world that no longer matched what it learned.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "pantry": "pantry/A5V.png",
+        "pantry_brief": "a wall of chest X-ray films on a radiology lightbox, clinical, desaturated — Tier 1 illustrative (generic scans, no real patient or location)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Confident into a world that had moved"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A5R2",
+      "act": "you can't see drift in the outputs",
+      "lane": "REMOTION",
+      "narration_text": "And here's the cruelty: you usually can't see it from the outputs. The confidence scores don't move when the world moves. The dashboards stay green. Detecting drift means watching the actual outcomes the model was supposed to predict — which most deployments never budget for. So most find out through the harm.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "SourceFlow",
+          "props": {
+            "title": "You Can't See Drift in the Outputs",
+            "stages": [
+              "model outputs — stay confident",
+              "dashboards — stay green",
+              "actual outcomes — where drift shows",
+              "most teams never watch this"
+            ],
+            "sparkLine": "Most find out through the harm."
+          },
+          "rendered": {
+            "out": "media/A5R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-27T23:45:05",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A5R2"
+      }
+    },
+    {
+      "beat_id": "A6C",
+      "act": "ACT VI — Calibration",
+      "lane": "CARD",
+      "narration_text": "Act six — the single most operational idea in the chapter. Whether the number on the screen means what it says.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Calibration"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A6K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , PROBABILITY & CONFIDENCE",
+            "segment": "Calibration — stated vs. actual",
+            "command": "render a Manim scene: a calibration curve — stated confidence on x, actual frequency on y, the diagonal of honesty, and an overconfident tail peeling below it at the high end",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A6K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A6M",
+      "act": "the calibration curve",
+      "lane": "MANIM",
+      "narration_text": "A model is calibrated when its stated probabilities come true. Say seventy percent on a thousand cases, you want about seven hundred to land positive. Plot stated against actual — a perfect model traces the diagonal. And here's the pattern that haunts deep nets: fine in the middle, badly overconfident at the top. It says ninety-nine when it should say eighty-five, and it says it fluently.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A6M_CalibrationCurve",
+          "spec": "axes: stated confidence (x) vs actual frequency (y); the diagonal drawn as 'perfect calibration'; the model curve tracks mid-range then peels below the diagonal at the high end; annotate the gap 'says 99, means 85' in terracotta",
+          "out": "manim/A6M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Calibrated = stated probabilities come true"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A6M2",
+      "act": "temperature scaling (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "The fix is almost insultingly cheap. Temperature scaling: take one learned number, divide the logits by it before the softmax, and the inflated confidence softens toward honesty. One parameter. And here's the tell — it fixes the number without touching the ranking. Which proves confidence and correctness were separable all along. The number was decorative; this un-decorates it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 19,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A6M2_TemperatureScaling",
+          "spec": "write-on softmax(z/T); a slider raises T above 1 and a spiky over-confident bar softens toward the diagonal; the argmax / ranking arrow stays fixed throughout; caption 'ranking unchanged, confidence corrected'",
+          "out": "manim/A6M2.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "softmax(z / T) — one parameter, honesty restored"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6M2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6M2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6M2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A6V",
+      "act": "calibrate yourself",
+      "lane": "VOX",
+      "narration_text": "And calibration isn't only a property of models — it's a property of you. Write ninety-percent confidence intervals for a stack of questions, then check. Most people — smart ones — contain the truth about half the time, not nine in ten. You're walking around far surer than you've earned, and nobody told you, because nobody ran the experiment.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "pantry": "pantry/A6V.png",
+        "pantry_brief": "a person at a desk writing rows of forecast estimates in a notebook, contemplative, warm ink on cream — Tier 1 illustrative",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Your 90% intervals hold about half the time"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A6R",
+      "act": "name the rejection condition first",
+      "lane": "REMOTION",
+      "narration_text": "So make it a rule — a Popperian one. Never trust a stated probability without its calibration curve on data from the real deployment. Name the condition under which you'd reject the number, then go look. Skip that, and you're judging the score by how confident it sounds — which is the fluency trap, now wearing a number.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "Name the Rejection Condition First",
+            "note": "trust a stated probability only against its calibration curve on deployment data",
+            "sparkLine": "Decorative until checked."
+          },
+          "rendered": {
+            "out": "media/A6R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A7M",
+      "act": "ACT VII — when the bell curve declines to help",
+      "lane": "MANIM",
+      "narration_text": "Act seven — where standard stats betrays you. The central limit theorem, the reason averages and confidence intervals work, hides two requirements: independence, and finite variance. Break either — heavy tails, autocorrelation — and it fails silently. In a heavy-tailed world the sample mean never settles: you average a thousand points, and the next one yanks it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 19,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A7M_HeavyTail",
+          "spec": "a running sample-mean line converging smoothly under a Gaussian draw; switch the generator to a heavy-tailed distribution; a single extreme sample yanks the running mean off; caption 'CLT needs: independence + finite variance'",
+          "out": "manim/A7M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "When the average never settles"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A7R",
+      "act": "the cost of being wrong",
+      "lane": "REMOTION",
+      "narration_text": "The distribution that matters most is the cost of being wrong. If most errors are minor but one in a thousand kills someone or wipes a database, your loss is heavy-tailed — and average loss is a number that never converges. You need tail-aware metrics and worst-case analysis, so the rare catastrophe shows up in testing, not in production.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "scale",
+            "title": "Average Loss Hides the Catastrophe",
+            "note": "one-in-a-thousand catastrophic error dominates a heavy-tailed cost distribution",
+            "sparkLine": "Average the wrong quantity, ship the disaster."
+          },
+          "rendered": {
+            "out": "media/A7R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A7V",
+      "act": "Ramsey — confidence as a property of belief",
+      "lane": "VOX",
+      "narration_text": "One name to close on. Frank Ramsey worked out — before he died at twenty-six — that probability isn't a property of the world. It's a property of a person's belief: a number you can elicit, score against outcomes, and improve. This whole chapter is his discipline, turned on machines whose confidence we mistook for a fact about the world.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.4
+        ],
+        "pantry": "pantry/A7V.png",
+        "pantry_brief": "portrait of Frank Ramsey, 1920s, sepia — AI-generated from a public-domain photograph — Tier 3 real named person; RIGHTS: confirm PD source (Wikimedia) + attach AI-generated disclosure sidecar",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Probability is a property of belief"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "A7R2",
+      "act": "four questions before you trust a number",
+      "lane": "REMOTION",
+      "narration_text": "So carry four questions into every system. What's the base rate — how likely was the positive class before the model saw anything? Is it calibrated — on this deployment's data? What's the cost distribution — uniform, or heavy-tailed? And what changed since training — what must stay true for the old track record to still mean anything? Ask them in order; you'll dodge most disasters.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Ask them in order.",
+              "1 — Base rate: how rare is the positive class here?",
+              "2 — Calibration: does stated match actual on THIS data?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lane": "CLOSING",
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude. The verdict on probability and confidence. A confident number is not a correct number — the point-nine-four a model hands you is a degree of belief, formatted to look like a fact about the world. Almost every failure here is one slip: the prior got forgotten. Conditioning, the chain rule, Bayes — that's the apparatus for putting the prior back and reading a number for what it actually claims. Calibration tells you whether the number is earned, on the data you'll actually deploy on; heavy tails tell you when the average is the wrong thing to measure. So confidence is a profile you audit, not a fact you trust — and four questions, asked in order, catch most disasters before they ship.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 40,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "A Confident Number Is Not a Correct Number.",
+            "artifactHeading": "Core rules",
+            "artifactLines": [
+              "A stated probability is a degree of belief — not a fact about the world.",
+              "Almost every failure is one slip: the forgotten prior.",
+              "When the positive class is rare, even a great detector fires mostly false.",
+              "Calibration is whether the number is earned — check it on deployment data.",
+              "Heavy-tailed cost means the average is the wrong thing to measure.",
+              "Confidence is a profile you audit — base rate, calibration, cost, drift."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "lane": "CLOSING",
+      "narration_text": "Your turn. Here's the prompt — paste it into Claude. It reads: I rely on a model or an agent that reports a confidence — a probability, or a task-complete. Help me run the base-rate audit on it. First, before any arithmetic, make me lock a prediction: what fraction of everything it flags do I think is genuinely positive? Then find the real base rate, run Bayes, and show me how far my locked guess was off — and which of the four questions best explains the gap. End quote. That's the whole chapter, compressed. The point isn't the calculation — the calculation is easy. The point is the number you lock before you look, and the structural reason you were wrong. Run it on a system you actually trust.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 46,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — A CONFIDENT NUMBER IS NOT A CORRECT NUMBER.",
+            "segment": "A Confident Number Is Not a Correct Number.",
+            "command": "I rely on a model or agent that reports a confidence — a probability or a 'task complete.' Run the base-rate audit with me. First make me lock a prediction — what fraction of what it flags is genuinely positive — then find the real base rate, run Bayes, and show how far my guess was off and which of the four questions explains the gap.",
+            "runningText": "lock the prediction — find the base rate — run Bayes — name the question you missed…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "CLOSING",
+      "narration_text": "A Confident Number Is Not a Correct Number. Probability and confidence, from Computational Skepticism for AI. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "A Confident Number Is Not a Correct Number.",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-deep-02-probability-confidence"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T23:45:05"
+      }
+    }
+  ]
+}

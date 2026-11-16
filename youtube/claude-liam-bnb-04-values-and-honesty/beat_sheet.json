@@ -1,0 +1,317 @@
+{
+ "metadata": {
+  "title": "Values & Honesty: Bias, Misleading Charts, Over-Reaching Verbs",
+  "slug": "claude-liam-bnb-04-values-and-honesty",
+  "topic": "INFO 7375 SKEPTIC'S PORTFOLIO — VALUES & HONESTY (E4/6)",
+  "register": "Pragmatist",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "greeting": "Ciao, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "playlist": "Break Your Own Build — A Skeptic's Portfolio",
+  "series": "claude-liam-bnb",
+  "episode": 4,
+  "source": "INFO 7375 (Computational Skepticism for AI) — Build It Then Break It: A Skeptic's Portfolio (100 pts)",
+  "build": {
+   "at": "2026-08-01T04:18:50",
+   "cut": "review",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "narration_text": "Ciao — Liam. Episode 4 of 6. Three instruments in this episode, and they find the mistakes that do not show up in accuracy. Where bias enters — and it rarely enters in the model. How a chart flatters a result — using only design choices, never by changing the numbers. And how a verb outruns its evidence — the one you chose because you were tired and 'shows' felt stronger than 'suggests.' All three instruments run on your own work. These are the instruments most students skip, because they feel like ethics instead of engineering. They are engineering. A build that has good accuracy numbers and bad fairness parity is not a well-evaluated build. A visualization that hides the distribution is not an honest one. A result section with over-reaching verbs is not a trustworthy one. The instruments in this episode are the ones that distinguish a portfolio from a homework submission.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 56,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Ciao, Liam",
+      "topic": "INFO 7375 SKEPTIC'S PORTFOLIO — VALUES & HONESTY (E4/6)",
+      "segment": "Values & Honesty: Bias, Misleading Charts, Over-Reaching Verbs",
+      "command": "Three instruments: bias/fairness (causal graph + ≥2 metrics + impossibility) , honest vs. misleading chart from same data , verb audit + Popper condition.",
+      "runningText": "the mistakes that don't show up in accuracy — bias, chart design, and verbs that outrun their evidence…",
+      "output": [
+       "Bias: causal graph + leverage analysis + ≥2 fairness metrics + impossibility on your numbers",
+       "Visualization: honest + misleading chart from same data, encoding choices only",
+       "Verbs: three-layer document + verb audit + Popper falsification condition"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": 42.47,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:18:50"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "bias and fairness — causal graph, leverage, impossibility",
+   "narration_text": "Bias in a build is not usually in the model. It is in the causal graph from the world to your output. Draw it. Where do labels come from? Who collected the data? What human decisions are embedded in what you called the ground truth? Then run a leverage analysis: identify the three or four points in the pipeline where a discriminatory input could enter — the labeling process, the feature selection, the training data source, the threshold applied at output. Mark where you think the dominant bias enters. Then compute at least two fairness metrics across one group you can identify in your data. Demographic parity: the fraction of positive predictions is equal across groups. Equalized odds: true positive rate and false positive rate are equal across groups. Calibration parity: predicted probabilities are equally accurate across groups. Then show that they cannot all hold simultaneously on your actual numbers — not as a theorem, but on your specific numbers. This is the fairness impossibility made concrete. If your build has no group-level data: write a defended 'not applicable, here is why' — and name the proxy-discrimination risk. A model without demographic features can still discriminate through proxies. Naming that risk is what 'not applicable' requires.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 74,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Causal graph , leverage , impossibility on your numbers",
+       "Draw the causal graph: labels, collection, features, threshold",
+       "Leverage analysis: 3–4 pipeline points where discriminatory input could enter"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": 63.04,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:18:50"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "honest visualization — two charts from the same data",
+   "narration_text": "Build two versions of your central finding from the same underlying data. Version one: the honest encoding. Every design choice in service of accurate perception — zero baseline on the axis, full distribution shown, representative time window, symmetric color scale. Version two: the deliberately misleading encoding. The deception comes only from design choices, never from changing the numbers. A truncated axis that makes a small difference look large. An aggregated mean that hides a bimodal distribution. A cherry-picked time window that captures an anomalous spike. An asymmetric color scale that makes one side of the comparison look warmer. Put them side by side and write a one-sentence annotation for each design choice in version two: what the choice does to perception, and what an honest reader would see instead. The misleading chart is for-your-eyes-only during the exercise — you are making it to understand your own power to deceive, not to deceive anyone. The report ships the comparison and the annotations. The honesty floor is this: the deception in version two comes only from encoding. If you find yourself changing numbers to make version two more dramatic, you have crossed from the visualization instrument into fabrication. Do not cross that line. The power of the exercise is that encoding choices alone are enough to mislead a reader — you do not need to touch the data.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 74,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Same data , two encodings , annotation for each deceptive choice",
+       "Version 1 (honest): zero baseline , full distribution , representative window",
+       "Version 2 (misleading): truncated axis , distribution-hiding aggregation , cherry-picked window"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": 71.3,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:18:50"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "uncertainty and verbs — three-layer document + verb audit",
+   "narration_text": "Write your central finding in the three-layer document. Layer one: a plain sentence for a non-expert — no jargon, no statistical qualifications, one sentence. Layer two: the technical sentence — method, confidence interval or score, what comparison was made. Layer three: the reproducibility appendix — enough detail for a reader who has your data to rerun the core result. Then run the verb audit on your own result section against the skeptical taxonomy. The taxonomy runs from weakest to strongest: hypothesize, suggest, observe, find, show, demonstrate, conclude, prove. Mark every verb you used and map it to the taxonomy level. Then ask: does my evidence license that level? 'Proves' requires a deductive argument from premises that cannot be challenged. 'Demonstrates' requires a replication or controlled experiment. 'Shows' requires a statistically grounded comparison with a clear baseline. 'Finds' requires at minimum a systematic analysis that can be critiqued. For every over-reach: rewrite at the licensed verb. State what additional evidence would license the stronger verb — that is not pessimism, it is a research agenda. Then close with Popper inward: I decided in advance, before running any instrument, that my build would fail if [specific falsifiable condition]. Write that condition. Then write whether it was met.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 76,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Taxonomy , licensed verb , Popper condition",
+       "Three-layer: plain sentence , technical sentence (method + confidence) , repro appendix.",
+       "Verb taxonomy: hypothesize / suggest / observe / find / show"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "actual_duration_s": 68.5,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:18:50"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "the loop report for values and honesty",
+   "narration_text": "The loop report for this episode follows the same four-field structure as Episode 2. One instrument, fully run. Field one: the dated prediction-lock, written before running, included verbatim. Field two: the method — for bias, which fairness metrics were computed and how; for visualization, what design choices were tested; for the verb audit, which verbs were examined and what taxonomy was used. Field three: the result, including the unwelcome finding. For the bias instrument, the unwelcome finding is usually the impossibility: you cannot satisfy all fairness criteria simultaneously on your numbers. For the visualization instrument, the unwelcome finding is that a specific encoding choice — one you might have used without thinking — meaningfully misleads the reader. For the verb audit, the unwelcome finding is the over-reach you made and did not notice. Field four: fix applied and residual risk. For the verb audit specifically, the residual risk is the claim you could not fully license but could not fully remove — the finding that needs more data, or more replication, or a stronger study design. Name it and say why it remains. That honesty is the whole point of the exercise.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 68,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "One instrument, four fields, all required",
+       "Field 1: dated prediction-lock verbatim.",
+       "Field 2: method — which metrics/design choices/verbs examined and how."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "actual_duration_s": 60.5,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B04.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:18:50"
+   }
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict",
+   "lead_silence_s": 0.5,
+   "narration_text": "Verdict for Values and Honesty: Bias, Misleading Charts, Over-Reaching Verbs. Causal graph drawn, leverage analysis run, at least two fairness metrics computed, and the fairness impossibility shown on your actual numbers, not as a theorem. Honest and misleading chart built from the same data, using encoding choices only — deception from design, never from changing numbers. Three-layer document written: plain, technical, reproducibility appendix. Verb audit against the skeptical taxonomy: hypothesize through prove. Over-reaches rewritten at the licensed verb, with what evidence would license the stronger claim. Popper condition stated and evaluated. Loop report has four fields. Residual risk for the verb audit is the claim you could not license and could not remove — named and explained.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 52,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact",
+     "props": {
+      "artifactTitle": "Values & Honesty: Bias, Charts, Verbs",
+      "artifactHeading": "Episode 4 key rules",
+      "artifactLines": [
+       "Causal graph + leverage + ≥2 fairness metrics + impossibility on your numbers.",
+       "Honest + misleading chart from same data — encoding only, never change numbers.",
+       "Three-layer document: plain , technical , repro appendix.",
+       "Verb audit: taxonomy level + licensed? + over-reaches rewritten + Popper condition.",
+       "Loop report: prediction-lock , method , unwelcome finding , fix + residual (what you can't license and can't remove)."
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BVDT.mp3",
+   "actual_duration_s": 41.77,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:18:50"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Here is the prompt. The prompt reads: Here is my central finding sentence: [paste your one-sentence central finding exactly as you wrote it]. Here is my draft result section: [paste two to three sentences from your results]. Run a verb audit against the skeptical taxonomy: hypothesize, suggest, observe, find, show, demonstrate, conclude, prove. For each verb I used, tell me four things: one, which level of the taxonomy it is; two, whether my evidence licenses it — and if not, what specifically about my evidence falls short of that level; three, if the verb is not licensed, what the licensed verb is; four, what additional evidence would license the stronger verb I used. Then tell me: what is the single claim in my result section most likely to be wrong — from the perspective of a hostile but fair reader — and what would that reader look for specifically to try to refute it? After Claude responds, rewrite every over-reach yourself. The hostile-reader answer is your Popper condition: the specific falsifiable claim a critic would target. Write it before you run any additional analysis. That is the condition against which you evaluate whether your build held up.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 76,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN — VALUES & HONESTY: BIAS, MISLEADING CHARTS, OVER-REACHIN",
+      "segment": "Values & Honesty: Bias, Misleading Charts, Over-Reaching Verbs",
+      "command": "Central finding: [paste]. Draft result section: [paste 2–3 sentences]. Verb audit: for each verb — (1) taxonomy level (2) licensed? (3) licensed verb if not (4) what evidence would license the stronger verb. Then: what claim is most likely wrong to a hostile-but-fair reader, and what would they look for?",
+      "runningText": "rewrite the over-reaches yourself — the hostile-reader answer is your Popper condition, written before any additional analysis…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "actual_duration_s": 58.07,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:18:50"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Values & Honesty: Bias, Misleading Charts, Over-Reaching Verbs. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Values & Honesty: Bias, Misleading Charts, Over-Reaching Verbs",
+      "handle": "@NikBearBrown",
+      "subline": "Liam, in for Bear.",
+      "slug": "claude-liam-bnb-04-values-and-honesty"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "actual_duration_s": 5.53,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:18:50"
+   }
+  }
+ ]
+}

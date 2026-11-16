@@ -1,0 +1,1505 @@
+{
+  "metadata": {
+    "title": "The Model Isn't Broken. It's Honest.",
+    "slug": "claude-liam-deep-04-robustness",
+    "topic": "COMPUTATIONAL SKEPTICISM · ROBUSTNESS",
+    "genre": "deep-explainer",
+    "register": "Teardown",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "vox_stage": "#F2F0E9",
+    "accent": "#D97757",
+    "greeting": "Namaste, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "series": "claude-liam-deep",
+    "episode": 4,
+    "playlist": "Computational Skepticism for AI — Deep Explainers",
+    "source": "books/computational-skepticism-for-ai/chapters/04-robustness-what-understanding-means-when-a-pixel-can-break-the-model.md",
+    "gate": "PLAN — awaiting human approval (no factcheck / no audio / no render)",
+    "beat_mix_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "beat_mix_actual": {
+      "body_beats": 30,
+      "VOX": "20.0% (6)",
+      "MANIM": "26.7% (8)",
+      "REMOTION": "30.0% (9)",
+      "CARD": "23.3% (7)",
+      "lint": "PASS — vox in 15-30% band, spine OK, no >2 same-lane run outside the R1 vox run"
+    },
+    "total_estimated_duration_seconds": 528,
+    ".codex": {
+      "workflow": "deep-explainer",
+      "mode": "unattended-then-human-review",
+      "agent": "Claude Code",
+      "persona": "Liam (in for Bear)",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "paid_generation": false,
+      "publish": false,
+      "reviewer": "Bear"
+    },
+    "build": {
+      "at": "2026-07-28T00:27:38",
+      "cut": "master",
+      "filled": 35,
+      "of": 36,
+      "slates": [
+        "A7R"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "Namaste — this is Liam, in for Bear. Here's the whole chapter in one question. An image classifier looks at a panda and says panda, ninety-four percent. I add a layer of noise you cannot see — the panda does not move — and it says gibbon, ninety-nine. Nothing about the picture changed to your eye. Everything changed to the model. So who was wrong: the model, or the story you were telling about it?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 26,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Namaste, Liam",
+            "topic": "COMPUTATIONAL SKEPTICISM , ROBUSTNESS",
+            "segment": "The Model Isn't Broken. It's Honest.",
+            "command": "Why does a model flip a panda to a gibbon without touching its shape?",
+            "runningText": "robustness — proxy features, not fragility…",
+            "output": [
+              "Perturbation is invisible per-pixel — decisive in aggregate",
+              "The model never classified the shape — it classified a proxy",
+              "Robustness is a profile, not a number"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Model Isn't Broken. It's Honest.",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A1C",
+      "act": "ACT I — The Panda That Became a Gibbon",
+      "lane": "CARD",
+      "narration_text": "Act one. The demonstration everyone quotes, and the reading almost everyone gets wrong.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Panda That Became a Gibbon"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A1K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , ROBUSTNESS",
+            "segment": "The Panda That Became a Gibbon",
+            "command": "render a Manim scene: a classifier reads 'panda 94%', an invisible L∞ perturbation is added, output flips to 'gibbon 99.3%' — the image visibly unchanged",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A1K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A1M",
+      "act": "the flip",
+      "lane": "MANIM",
+      "narration_text": "Here it is. Same panda, twice. Between them, a perturbation tuned to the model's own gradient — imperceptible per pixel, decisive in aggregate. The label crosses from panda to gibbon at full confidence. The picture did not change. The model's mind did.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A1M_PandaFlip",
+          "spec": "two identical panda plates side by side; noise field fades in on the right at epsilon=0.03; confidence bars: panda 94 -> gibbon 99.3; terracotta marks the flip moment",
+          "out": "manim/A1M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Panda 94% → Gibbon 99.3% — the image never moved"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A1V",
+      "act": "sit with it",
+      "lane": "VOX",
+      "narration_text": "Sit with this, because the reflex is the wrong reaction. The reflex is: the model is broken, add more data, harden it. But a system the engineers thought was seeing pandas turned out to be reading something else entirely — something that only looked like seeing.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "pantry": "pantry/A1V.png",
+        "pantry_brief": "a giant panda sitting in bamboo, documentary wildlife still, soft natural light — Tier 1 generic/illustrative",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "It only looked like seeing…"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A1R",
+      "act": "same image, different judgment",
+      "lane": "REMOTION",
+      "narration_text": "The two of you were never making the same judgment. You read shape, posture, bamboo. The model read a high-frequency statistical signature that, on its training set, happened to travel with the word panda. Same input. Two different worlds behind the same word.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "You read the shape. It read the signature.",
+              "Human: shape, posture, coloring, bamboo — the object",
+              "Model: high-frequency pixel statistics that co-occurred with 'panda'"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A2C",
+      "act": "ACT II — Fragile, or Honest?",
+      "lane": "CARD",
+      "narration_text": "Act two. Two words for the same event — and the word you choose decides the whole toolkit.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Fragile, or Honest?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A2R",
+      "act": "two diagnoses",
+      "lane": "REMOTION",
+      "narration_text": "Call it fragile and you reach for hardening — patch the surface, smooth the outputs, train on noise. Call it a proxy and you reach for something else entirely: interrogate what the representation actually is. Same failure, two diagnoses, two toolkits. Only one of them can close the gap.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Two Diagnoses of One Failure",
+            "left": {
+              "label": "FRAGILE / surface hardening",
+              "note": "patch, smooth, add noisy data — moves the attack surface"
+            },
+            "right": {
+              "label": "PROXY / representation interrogation",
+              "note": "ask what the model actually learned"
+            },
+            "sparkLine": "The word decides the toolkit."
+          },
+          "rendered": {
+            "out": "media/A2R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A2M",
+      "act": "proxy vs human-relevant",
+      "lane": "MANIM",
+      "narration_text": "Harden it against this perturbation and a slightly different one finds a new proxy. The gain is real but local. Underneath, the distance between what the model bet on and what you wanted it to bet on has not moved an inch.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A2M_ProxyGap",
+          "spec": "left node 'human-relevant feature (shape)', right node 'proxy (pixel signature)'; a hardening pass nudges the boundary, the gap between the two nodes is invariant; terracotta on the gap",
+          "out": "manim/A2M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Hardening moves the surface — not the gap"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A2V",
+      "act": "features not bugs",
+      "lane": "VOX",
+      "narration_text": "In twenty-nineteen a group of researchers said the strange, honest thing. These perturbations aren't bugs. They're features — genuinely predictive patterns, real in the data, invisible to us. The model bet on them because, on the training set, betting on them wins.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.4
+        ],
+        "pantry": "pantry/A2V.png",
+        "pantry_brief": "abstract macro of high-frequency noise texture resolving into faint animal edges, duotone — Tier 1; terracotta underline draws on the phrase 'features, not bugs'",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Real, predictive, invisible — and the model bet on them"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A3C",
+      "act": "ACT III — Why They Exist",
+      "lane": "CARD",
+      "narration_text": "Act three. Two geometric accounts of why this is even possible — you need one of them to reason in a domain you've never seen.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Why They Exist"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A3M",
+      "act": "linearity hypothesis (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "First account: linearity. Push every coordinate the tiny amount the weights prefer. Each nudge is invisible. But sum thousands of them and the activation shifts by epsilon times the L-one norm of the weights — a quantity that grows with the number of dimensions. Small everywhere becomes decisive in aggregate.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A3M_Linearity",
+          "spec": "thousands of coordinate arrows each nudged by epsilon*sign(w); running sum accumulates; write-on equation Δf = wᵀδ = ε‖w‖₁; bar crosses the decision threshold",
+          "out": "manim/A3M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Δf = ε‖w‖₁ — tiny per-coordinate, decisive in sum"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A3M2",
+      "act": "boundary tilting",
+      "lane": "MANIM",
+      "narration_text": "Second account: boundary tilting. The model was trained hard along the directions the data actually varies. But in the low-variance directions — where the training set gave almost no signal — the decision boundary can run right up against the data. The attack steps sideways, into exactly the gap training never forced it to close.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A3M2_BoundaryTilt",
+          "spec": "2D data manifold; boundary well-separated along high-variance axis; nearly tangent along low-variance axis; perturbation arrow crosses in the low-variance direction",
+          "out": "manim/A3M2.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Tangent to the manifold where training gave no signal"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3M2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3M2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3M2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A3R",
+      "act": "the working intuition",
+      "lane": "REMOTION",
+      "narration_text": "Neither account is complete alone. Together they give you the intuition you carry anywhere: an adversarial perturbation is not magic. It's a gradient-guided search for the direction where the model is least stable — which is almost always the direction training supervised least.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A search, not magic.",
+              "Perturbations = gradient-guided search for the least-stable direction",
+              "Least-stable ≈ least-supervised during training"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A4C",
+      "act": "ACT IV — Robust Against What?",
+      "lane": "CARD",
+      "narration_text": "Act four. When someone hands you a model and says it's robust, there is exactly one honest reply.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Robust Against What?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A4R",
+      "act": "taxonomy of attacks",
+      "lane": "REMOTION",
+      "narration_text": "There isn't one attack, there's a family, and each reveals a different gap. White-box reads your gradients. Transfer needs only your training distribution. Patch attacks live in the physical world — a sticker on a sign. Prompt injection hides instructions inside data. Different doors, same house.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "A Taxonomy of Attacks",
+            "chips": [
+              "Gradient / white-box — needs weights",
+              "Query / black-box — needs outputs",
+              "Transfer — needs only your data",
+              "Patch / physical — a sticker in the world",
+              "Natural adversarial — the long tail",
+              "Prompt injection — instructions as data"
+            ],
+            "sparkLine": "Each door reveals a different gap."
+          },
+          "rendered": {
+            "out": "media/A4R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A4V",
+      "act": "the sticker in the world",
+      "lane": "VOX",
+      "narration_text": "This is not a lab curiosity. A small printed patch on a stop sign, a pattern on a pair of glasses — high-magnitude perturbation in a tiny region — and a vision system in a car or a door reads something that isn't there. The attacker never touches your weights. Only your world.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.4,
+          0.55
+        ],
+        "pantry": "pantry/A4V.png",
+        "pantry_brief": "a stop sign with a small adversarial sticker patch, street context, overcast — Tier 1 illustrative (generic sign, not a real location)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A sticker the size of a coaster"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A4M",
+      "act": "two axes",
+      "lane": "MANIM",
+      "narration_text": "And adversarial robustness is not the same as surviving a shifting world. They're separate axes. A model can be armored against constructed attacks and still shatter when the distribution drifts on its own — and the reverse. Winning one axis guarantees nothing about the other.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A4M_TwoAxes",
+          "spec": "2D plane: x = adversarial robustness, y = distribution-shift robustness; four quadrants; a point strong on x weak on y and vice-versa",
+          "out": "manim/A4M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Adversarial ≠ distribution shift"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A4R2",
+      "act": "a profile, not a number",
+      "lane": "REMOTION",
+      "narration_text": "So robustness is not a number. It's a profile — robust against this, brittle against that, on this distribution, not that one. The word robust, unqualified, is not a claim. It's decoration on the marketing page. The fluency trap, wearing a lab coat.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "“Robust” Is Not a Claim",
+            "note": "one word standing in for a table of evidence it does",
+            "sparkLine": "Robust against what?"
+          },
+          "rendered": {
+            "out": "media/A4R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A5C",
+      "act": "ACT V — The Toolkit and Its Costs",
+      "lane": "CARD",
+      "narration_text": "Act five. There is a real toolkit. Every tool works. Every tool has a bill.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Toolkit and Its Costs"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A5R",
+      "act": "five tools, five bills",
+      "lane": "REMOTION",
+      "narration_text": "Adversarial training flattens the loss surface — and drops clean accuracy while costing far more to train. Certified smoothing gives a proof — for thousands of forward passes per prediction. Lipschitz nets bound sensitivity by design — and pay in accuracy. Formal verification is absolute — inside a scope that stays narrow.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Every tool has a bounded scope and an honest cost.",
+              "Adversarial training — flattens loss; clean accuracy drops, cost multiplies",
+              "Certified smoothing — provable radius; thousands of samples per prediction"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A5K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , ROBUSTNESS",
+            "segment": "Certified defenses — randomized smoothing",
+            "command": "render a Manim scene: one input, thousands of noisy copies, base classifier votes, majority label wins with a certified radius R",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A5K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A5M",
+      "act": "randomized smoothing",
+      "lane": "MANIM",
+      "narration_text": "This is what a proof costs. Take the input, spray it into thousands of noisy copies, run the classifier on every one, and let them vote. If the top class wins by enough, you get a guarantee — stable within a radius. The guarantee is real. So is the price: thousands of passes for a single answer.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A5M_Smoothing",
+          "spec": "single image explodes into a cloud of noisy copies; each yields a vote; histogram; top class wins; certified radius R = (sigma/2)(Φ⁻¹(pA)-Φ⁻¹(pB)) written small",
+          "out": "manim/A5M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A proof, paid for in thousands of votes"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A5M2",
+      "act": "the scaling plateau",
+      "lane": "MANIM",
+      "narration_text": "Can't we just scale our way out? The scaling laws say no. Robustness climbs, then flattens near ninety percent — and here's the tell: human accuracy on those same perturbed images plateaus in the same place, because at that budget the picture genuinely starts to look like the other class. You've hit a semantic ceiling, and no amount of compute crosses a meaning.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 19,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A5M2_Plateau",
+          "spec": "log-x compute axis; robustness curve rising then flattening ~90%; a second curve 'human accuracy on fooling set' plateauing at the same line; shade the semantic ceiling",
+          "out": "manim/A5M2.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The plateau is semantic, not computational"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5M2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5M2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5M2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A6C",
+      "act": "ACT VI — The Same Shape Everywhere",
+      "lane": "CARD",
+      "narration_text": "Act six. The panda is starting to sound abstract. So watch the exact same shape at a completely different scale.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Same Shape Everywhere"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A6R",
+      "act": "cross-domain table",
+      "lane": "REMOTION",
+      "narration_text": "Text, tables, agents — same diagnostic every time. A model learns a proxy that tracks the label on the training data. The proxy is attackable. And the human-relevant feature it was supposed to stand for is left completely untouched. Different surface, one question.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A learnable proxy. An attackable proxy. A human feature left untouched.",
+              "Image — pixel statistics vs object shape",
+              "NLP / LLM — token surface vs meaning"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A6V1",
+      "act": "owner spoofing — the signal",
+      "lane": "VOX",
+      "narration_text": "Here it is at human scale. An autonomous agent decides who owns a file from what it can read: a display name, a salutation, a conversational style. To the agent, those signals are identity.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.4
+        ],
+        "pantry": "pantry/A6V1.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.4,
+            "scale": 1.6
+          },
+          "objects": [
+            {
+              "id": "chat-name",
+              "x": 0.5,
+              "y": 0.38,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "close crop of a chat interface showing a display name and greeting, warm ink on cream — Tier 1; start of a 3-beat vox run zooming out",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The agent reads identity off a display name"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6V1.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6V1.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6V1.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A6V2",
+      "act": "owner spoofing — the grant",
+      "lane": "VOX",
+      "narration_text": "Now a non-owner arrives wearing the right name, the right tone, the right signals. The proxy matches. The agent hands over the owner's resources — not because it was fooled about the file, but because it was fooled about the person.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "pantry": "pantry/A6V2.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.5,
+            "scale": 1.0
+          },
+          "objects": [
+            {
+              "id": "chat-name",
+              "x": 0.35,
+              "y": 0.3,
+              "scale": 0.7,
+              "opacity": 0.6
+            },
+            {
+              "id": "granted",
+              "x": 0.5,
+              "y": 0.55,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "same scene pulled back to show the agent granting file access to the imposter — continuity from A6V1 (same chat frame, zoomed out)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Right signals → access granted"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6V2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6V2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6V2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A6V3",
+      "act": "owner spoofing — the same flip",
+      "lane": "VOX",
+      "narration_text": "Pixels in one case; display names in the other. The proxy was learned, the proxy was attacked, and social-legal ownership — the thing that actually mattered — was never touched. It is the panda and the gibbon, at the scale of a stolen account.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.55
+        ],
+        "pantry": "pantry/A6V3.png",
+        "vox_run": "R1",
+        "pantry_brief": "wide final frame: the imposter inside the owner's resources, the real owner locked out — end of the vox run; terracotta ring on the untouched 'ownership' token",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The same flip — the real feature untouched"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6V3.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6V3.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6V3.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A7C",
+      "act": "ACT VII — The Question You Can't Close",
+      "lane": "CARD",
+      "narration_text": "Act seven, and the honest one. The deepest question this chapter opens is one the toolkit cannot answer.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Question You Can't Close"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A7M",
+      "act": "Pearl's ladder rung 3",
+      "lane": "MANIM",
+      "narration_text": "Pearl's ladder. Rung one, association — what goes with what. Rung two, intervention — what if I change this. Rung three, counterfactual — what would have happened in this case if things had been different. Adversarial examples ask a rung-three question the lower rungs cannot reach.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A7M_Ladder",
+          "spec": "three-rung ladder; rung 1 association, rung 2 intervention, rung 3 counterfactual lit in terracotta; the engineering toolkit shown operating only on rungs 1-2",
+          "out": "manim/A7M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A counterfactual the toolkit can't reach"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "A7R",
+      "act": "the governance counterfactual",
+      "lane": "REMOTION",
+      "narration_text": "What would the model have classified if it had learned the human-relevant feature instead of the proxy? That model doesn't exist. And building it depends on who trained this one, what they optimized for, who reviewed it. The counterfactual isn't technical. It's a governance question — and the book doesn't close it until accountability.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "SourceFlow",
+          "props": {
+            "title": "The Governance Counterfactual",
+            "stages": [
+              "institutional priorities",
+              "training regime",
+              "learned representation",
+              "the flip you can attack"
+            ],
+            "sparkLine": "Not a bug in the toolkit — a property of the question."
+          },
+          "rendered": {
+            "out": "media/A7R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T00:27:38",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A7R"
+      }
+    },
+    {
+      "beat_id": "A7R2",
+      "act": "honest disclosure",
+      "lane": "REMOTION",
+      "narration_text": "So what does honesty look like on the page? Not the word robust. A profile: which attacks were tested, at what budget, clean accuracy versus robust accuracy. Then the residual risk you did not mitigate, named out loud. Then what you'll monitor in production. A robustness claim without that structure isn't a claim.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A profile, a residual-risk list, a monitoring plan.",
+              "Profile — attack classes, budgets, clean vs robust accuracy (a table)",
+              "Residual risk — the vulnerabilities you did NOT mitigate, named"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lane": "CLOSING",
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude. The verdict on robustness. Adversarial examples are not proof a model is fragile — they're proof it learned a different representation than its engineers thought, and the gap between the proxy and the human-relevant feature is what gets attacked. The toolkit shrinks that gap in named places and bills you honestly for each; it does not close it in general. So robustness is a profile, not a number — and the deepest version of the question, what did this model actually learn, is a governance counterfactual the toolkit alone can't answer.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 40,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Model Isn't Broken. It's Honest.",
+            "artifactHeading": "Core rules",
+            "artifactLines": [
+              "Not fragile — honest about what this training produced.",
+              "The attack targets the proxy; the human-relevant feature stays untouched.",
+              "The toolkit shrinks the gap locally and names its cost — it never closes it.",
+              "Robustness is a profile: robust against what, at what budget.",
+              "Adversarial ≠ distribution shift — separate axes.",
+              "The deepest question is Rung 3 — a governance counterfactual, not a patch."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "lane": "CLOSING",
+      "narration_text": "Your turn. Here's the prompt — paste it into Claude. It reads: I have an image classifier I trust. Help me design one adversarial test for it. First, before we run anything, make me lock a prediction — what perturbation will flip it, and what that flip would reveal about the difference between what the model learned and what I think it learned. End quote. That's the whole exercise from this chapter, compressed. The point isn't the attack — attacks are easy. The point is the prediction you lock before you look, and the structural reason you were wrong. Run it on a model you actually rely on.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 48,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — THE MODEL ISN'T BROKEN. IT'S HONEST.",
+            "segment": "The Model Isn't Broken. It's Honest.",
+            "command": "I have an image classifier I trust. Help me design one adversarial test for it. First, make me lock a prediction — what perturbation will flip it, and what that flip reveals about the gap between what the model learned and what I think it learned — before we run anything.",
+            "runningText": "lock the prediction — then run the attack — then find the structural reason you were wrong…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "CLOSING",
+      "narration_text": "The Model Isn't Broken. It's Honest. Robustness, from Computational Skepticism for AI. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Model Isn't Broken. It's Honest.",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-deep-04-robustness"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:27:38"
+      }
+    }
+  ]
+}

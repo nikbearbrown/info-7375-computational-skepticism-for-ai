@@ -1,0 +1,1064 @@
+{
+  "metadata": {
+    "slug": "tldr-average-hides-the-patient",
+    "title": "Where the Average Hides the Patient",
+    "topic": "INFO 7375 · TL;DR",
+    "skill": "tldr",
+    "style_preset": "tldr",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "learn_canvas": "cream",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "audience": "INFO 7375 students, and anyone handed a single calibration number and asked to sign off on a deployment",
+    "course": "INFO 7375 Computational Skepticism for AI · Nik Bear Brown · Northeastern University",
+    "source_doc": "chapters/11-communicating-uncertainty-calibrating-claims-to-evidence.md, §'Subgroup calibration: where aggregate metrics lie' (the subgroup table, ECE_g, Wong et al. 2021), §'What calibration metrics cannot see', 'Still puzzling', exercise A5; section S2 of youtube/tldr-sections-11-communicating-uncertainty.md",
+    "sections": [
+      {
+        "n": 1,
+        "title": "Where the Average Hides the Patient",
+        "key_case": "global ECE 0.018 on 12,955 patients vs rare-disease ECE 0.103 on 95 (the chapter's illustrative table)"
+      }
+    ],
+    "greeting_language": "Arabic/Farsi (Salaam)",
+    "typography": {
+      "serif": "Tiempos/EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "outro_policy": "OUTRO-LOCK §Voice: spoken title + 'At Nik Bear Brown', 1.0 s silent tail padded into the mp3, no jingle.",
+    "bookloop_policy": "Course film: carries the INFO 7375 course credit (spoken in B00, on the cards' course line).",
+    "tags": [
+      "calibration",
+      "expected calibration error",
+      "subgroup analysis",
+      "aggregate metrics",
+      "medical AI",
+      "INFO 7375",
+      "3Blue1Brown style",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-23T15:08:06",
+      "cut": "master",
+      "filled": 17,
+      "of": 17,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'ClaudeTldrWhat' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "tldr · what",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Salaam. This is Liam, in for Bear, with chapter eleven of INFO 7375, Computational Skepticism for AI, at Northeastern. This film is about a calibration error of zero point zero one eight overall, and zero point one zero three on the rare-disease patients. Same model, both true. You'll see why ninety-five patients out of nearly thirteen thousand cannot move the average. The trap: reading the average as a promise to every patient.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "'TL;DR.' wordmark; 'Salaam, Liam'; the course line; heading"
+          },
+          {
+            "at": 0.06,
+            "event": "the question writes on"
+          },
+          {
+            "at": 0.38,
+            "event": "line 1 lands on 'This film is about'"
+          },
+          {
+            "at": 0.66,
+            "event": "line 2 lands on 'You'll see why'"
+          },
+          {
+            "at": 0.84,
+            "event": "line 3 lands on 'The trap'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTldrWhat",
+          "props": {
+            "eyebrow": "TL;DR",
+            "heading": "What This Film Is About",
+            "greeting": "Salaam, Liam",
+            "topic": "INFO 7375 · Computational Skepticism · Chapter 11",
+            "question": "The model is calibrated overall. Is it calibrated for every patient?",
+            "lines": [
+              "Calibration error 0.018 overall, 0.103 on rare-disease patients: same model, both true.",
+              "You will see why 95 patients out of 12,955 cannot move the average.",
+              "The trap: reading the average as a promise to every patient."
+            ],
+            "cues": [
+              1.5,
+              6.71,
+              16.14,
+              21.62
+            ],
+            "durationSeconds": 25.45,
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": "2026-09-23T18:28:11.975410+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 25.45,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 25.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "remotion:ClaudeTldrWhat",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "tldr · why",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Why should you care? Calibration is a promise: when the model says eighty percent, it is right eight times in ten, for the patient in front of you. Report one global number, and the smallest groups are the ones nobody checks. A widely used sepsis alert looked fine in aggregate; an outside check at one hospital found it missed two thirds of sepsis cases. And one number per group makes the hidden row stand up.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "page turn: same header, heading 'Why You Should Care'"
+          },
+          {
+            "at": 0.04,
+            "event": "the stake writes on"
+          },
+          {
+            "at": 0.38,
+            "event": "dash 1 on 'Report one global number'"
+          },
+          {
+            "at": 0.56,
+            "event": "dash 2 on 'A widely used sepsis alert'"
+          },
+          {
+            "at": 0.86,
+            "event": "dash 3 on 'one number per group'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTldrWhy",
+          "props": {
+            "eyebrow": "TL;DR",
+            "heading": "Why You Should Care",
+            "topic": "INFO 7375 · Computational Skepticism · Chapter 11",
+            "lead": "Calibration is a promise: '80%' should be right 8 times in 10, for the patient in front of you.",
+            "lines": [
+              "Report one global number, and the smallest groups are the ones nobody checks.",
+              "A widely used sepsis alert looked fine in aggregate; an outside check found it missed 67% of sepsis cases.",
+              "One number per group makes the hidden row stand up."
+            ],
+            "cues": [
+              0.8,
+              7.21,
+              11.17,
+              17.77
+            ],
+            "durationSeconds": 20.86,
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": "2026-09-23T18:41:54.879105+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TL;DR card two — text lands on cues by design."
+      },
+      "actual_duration_s": 20.86,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 20.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "remotion:ClaudeTldrWhy",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "The question this film is really asking: is the model calibrated group by group? Not 'for every patient'. One average cannot promise that. Only a number for each group can check it.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'Error 0.018 overall.'"
+          },
+          {
+            "at": 0.3,
+            "event": "types the question; backspaces 'for every patient' → 'group by group' on the spoken correction"
+          },
+          {
+            "at": 0.8,
+            "event": "caret holds on the corrected question"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Error 0.018 overall.\nIs the model calibrated\nfor every patient?",
+            "triggerWords": "for every patient",
+            "replacementWords": "group by group",
+            "fontSize": 72,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "tldr-average-hides-the-patient",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": "2026-09-23T18:43:38.506245+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question and corrects the phrase that makes it the wrong question.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 10.15,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 10.166666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Four terms. Calibration: when the model says eighty percent, it is right about eighty percent of the time. Calibration error, E C E: the weighted average gap between stated confidence and what actually happened. A subgroup: a named slice of patients, like children, or people over sixty-five. And a confidence bin: predictions grouped by the confidence they stated.",
+      "estimated_duration_s": 23.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'calibration' lands, terracotta"
+          },
+          {
+            "at": 0.35,
+            "event": "'calibration error' lands"
+          },
+          {
+            "at": 0.65,
+            "event": "'subgroup' lands"
+          },
+          {
+            "at": 0.85,
+            "event": "'confidence bin' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "calibration",
+                "meaning": "when the model says 80%, it is right about 80% of the time"
+              },
+              {
+                "term": "calibration error",
+                "meaning": "ECE: the weighted average gap between confidence and outcome"
+              },
+              {
+                "term": "subgroup",
+                "meaning": "a named slice of patients: children, people over 65"
+              },
+              {
+                "term": "confidence bin",
+                "meaning": "predictions grouped by the confidence they stated"
+              }
+            ],
+            "durationSeconds": 19.35,
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": "2026-09-23T18:44:46.853850+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: prerequisites only — 'subgroup calibration error' is earned in the section."
+      },
+      "actual_duration_s": 19.35,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 19.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "HOOK",
+      "learn": {
+        "question": "The global calibration error is 0.018; the rare-disease row is 0.103. How can both be true?",
+        "action": "Put the one global number on screen as a bar over all patients, then the one row beside it.",
+        "observation": "The row is almost six times the global, yet the global is small.",
+        "inference": "The global number is some kind of summary that the row did not move.",
+        "next_question": "What happens when we split the global into its rows?"
+      },
+      "narration_text": "Here is a calibration report. One model, twelve thousand nine hundred fifty-five patients, and one number: a calibration error of zero point zero one eight. Small. Now one row from the same report. Rare-disease cases: ninety-five patients, error zero point one zero three. Almost six times bigger. Both numbers describe the same model. How does the big one hide inside the small one?",
+      "estimated_duration_s": 25.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "One wide ink bar spans the whole axis at height 0.018 — the global number over 12,955 patients; the global line and its label land at right; upper-left, the rare-disease row writes on (95 patients, error 0.103) with a terracotta dot; 'both true — how?'; small dim caption 'the chapter's illustrative table'.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "axis; the global bar grows across all 12,955"
+          },
+          {
+            "at": 0.3,
+            "event": "'global 0.018' label"
+          },
+          {
+            "at": 0.55,
+            "event": "rare-disease row: 95 patients, 0.103; dot"
+          },
+          {
+            "at": 0.85,
+            "event": "'both true — how?'"
+          }
+        ],
+        "manim": {
+          "class": "B10_OneNumber"
+        },
+        "motion_claim": "The key case, unsolved: one small number, one big row, same model."
+      },
+      "actual_duration_s": 20.54,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 20.541666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "INSTANCE",
+      "learn": {
+        "question": "Do the rows agree with the global?",
+        "action": "Split the bar into five columns; move two to their row values.",
+        "observation": "Adults 0.019 and children 0.029 sit near 0.018.",
+        "inference": "For these rows the global is a fair summary.",
+        "next_question": "And the other three rows?"
+      },
+      "narration_text": "First move: split the report into its five rows, one column each, and start every column at the global number. Adults, eighteen to sixty-four: zero point zero one nine. Right on the global. Children: zero point zero two nine. A little higher. So far, the global number looks like a fair summary.",
+      "estimated_duration_s": 20.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The wide bar splits into five equal columns, each at the global 0.018; names land under the axis; the adults column settles to 0.019 and the children column climbs to 0.029; value labels ride on each column top.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "the bar splits into five equal columns at 0.018"
+          },
+          {
+            "at": 0.4,
+            "event": "adults settles to 0.019"
+          },
+          {
+            "at": 0.65,
+            "event": "children climbs to 0.029"
+          },
+          {
+            "at": 0.9,
+            "event": "caption: five rows, one column each"
+          }
+        ],
+        "manim": {
+          "class": "B11_SplitRows"
+        },
+        "motion_claim": "First instance: two rows close to the global, shown moving."
+      },
+      "actual_duration_s": 16.6,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 16.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "INSTANCE",
+      "learn": {
+        "question": "What about the other three rows?",
+        "action": "Raise each to its value; draw the twice-global flag line.",
+        "observation": "Three rows exceed twice the global; the global stays at 0.018.",
+        "inference": "The global number is not tracking these rows.",
+        "next_question": "How is the global computed from the rows?"
+      },
+      "narration_text": "Keep going. People over sixty-five: zero point zero four four. Pregnancy-related: zero point zero seven one. Rare disease: zero point one zero three. Now draw the chapter's flag: a line at twice the global. Three of the five rows are above it. And the global number never moved.",
+      "estimated_duration_s": 19.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The three remaining columns climb one per spoken value — 0.044, 0.071, 0.103; a line draws at twice the global (0.036) with its label; three columns stand above it; the global line holds at 0.018; dot at the rare column's top.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "65 and over climbs to 0.044"
+          },
+          {
+            "at": 0.25,
+            "event": "pregnancy-related to 0.071"
+          },
+          {
+            "at": 0.42,
+            "event": "rare disease to 0.103"
+          },
+          {
+            "at": 0.6,
+            "event": "the twice-global line draws"
+          },
+          {
+            "at": 0.85,
+            "event": "caption: three of five above it"
+          }
+        ],
+        "manim": {
+          "class": "B12_ThreeClimb"
+        },
+        "motion_claim": "Second instance: three rows far from the global; the global line never moves."
+      },
+      "actual_duration_s": 16.49,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 16.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "NAIVE",
+      "learn": {
+        "question": "Is the global the average of the rows?",
+        "action": "Average the five column heights and draw that line.",
+        "observation": "0.053, three times the reported 0.018.",
+        "inference": "The global does not weigh rows equally.",
+        "next_question": "What does it weigh?"
+      },
+      "narration_text": "Here's the natural guess: the global is just the average of the rows. Try it. Add the five errors and divide by five: zero point zero five three. The report says zero point zero one eight. Three times smaller. So the global is not listening to rows. What is it listening to?",
+      "estimated_duration_s": 20.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A dim line draws across the columns at the unweighted mean 0.053 with its label; upper-left, 'average of the rows: 0.053' against 'the report: 0.018' with a terracotta X beside the first; caption: not the average of rows.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the row-average line draws at 0.053"
+          },
+          {
+            "at": 0.55,
+            "event": "'the report: 0.018' beside it"
+          },
+          {
+            "at": 0.75,
+            "event": "X beside 'average of the rows'"
+          },
+          {
+            "at": 0.9,
+            "event": "caption"
+          }
+        ],
+        "manim": {
+          "class": "B13_AverageRows"
+        },
+        "motion_claim": "The natural wrong turn walked to where it breaks: 0.053 is not 0.018."
+      },
+      "actual_duration_s": 15.45,
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 15.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "SHIFT",
+      "learn": {
+        "question": "What does the global weigh?",
+        "action": "Resize every column to its patient count, heights fixed.",
+        "observation": "Adults take two thirds of the width; the rare row is a sliver.",
+        "inference": "A row's pull on the global is share times gap: its area.",
+        "next_question": "How much could the sliver ever pull?"
+      },
+      "narration_text": "Here's the reframe. The global counts patients, not rows. So make each column as wide as its row is big. Adults swell to two thirds of the axis. The rare-disease column shrinks to a sliver: ninety-five of twelve thousand nine hundred fifty-five, under one percent. Now read area, not height. Area is how loudly a row speaks in the global. Adults: zero point zero one two. The rare row: zero point zero zero zero eight.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The five equal columns morph in width to their patient counts (65% · 9% · 22% · 3% · 0.7%) with heights unchanged; labels follow their columns; the rare column becomes a sliver; upper-left readouts 'adults: 0.012' and 'rare disease: 0.0008'; caption 'area: patients times gap'.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "widths morph to patient counts"
+          },
+          {
+            "at": 0.45,
+            "event": "the rare column is a sliver; dot beside it"
+          },
+          {
+            "at": 0.7,
+            "event": "readouts: adults 0.012, rare 0.0008"
+          },
+          {
+            "at": 0.9,
+            "event": "caption: area"
+          }
+        ],
+        "manim": {
+          "class": "B14_WeighPatients"
+        },
+        "motion_claim": "The representation: width is patients, height is gap, area is the voice in the global."
+      },
+      "actual_duration_s": 22.21,
+      "audio_file": "mp3/beat-B14.mp3",
+      "render_duration_s": 22.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "INSTANCE",
+      "learn": {
+        "question": "Can any error on 95 of 12,955 move the global by 0.01?",
+        "action": "Draw the target line; hold.",
+        "observation": "The viewer commits.",
+        "inference": "A prediction makes the pour evidence.",
+        "next_question": "Pour it in."
+      },
+      "narration_text": "Before it moves, commit. The rare-disease row holds ninety-five of twelve thousand nine hundred fifty-five patients. Here is a line one hundredth above the global. Is there any error on that row, any error at all, big enough to push the global up to it?",
+      "estimated_duration_s": 18.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The patient-width state holds; a dim target line draws one hundredth above the global with its label; a terracotta dot beside the sliver; everything holds on 'commit'; caption: any error at all?",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the hundredth line draws"
+          },
+          {
+            "at": 0.5,
+            "event": "dot beside the sliver"
+          },
+          {
+            "at": 0.75,
+            "event": "HOLD"
+          }
+        ],
+        "manim": {
+          "class": "B15_Predict"
+        },
+        "motion_claim": "The predict-before-reveal beat."
+      },
+      "predict": true,
+      "actual_duration_s": 13.38,
+      "audio_file": "mp3/beat-B15.mp3",
+      "render_duration_s": 13.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "TRANSFORM",
+      "learn": {
+        "question": "Can the rare row move the global?",
+        "action": "Spread its area over the whole axis; then give it its own denominator.",
+        "observation": "Spread, it is 0.0008 thick and at most 0.0073 even at error 1; on its own, it stands at 0.103.",
+        "inference": "The denominator decides whether the row is heard.",
+        "next_question": "Say it as a formula."
+      },
+      "narration_text": "Pour the sliver across the whole axis. Ninety-five patients' worth of error, spread over everyone: a film zero point zero zero zero eight thick. Push that row's error all the way to one, the worst there is, and the film is still under a hundredth. It never reaches the line. Now lift it out and divide by its own ninety-five. Same patients. Same errors. Zero point one zero three.",
+      "estimated_duration_s": 27.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The sliver tips and spreads (area kept) into a hairline film on top of the global line — 'pull 0.0008'; a readout 'at error 1: 0.0073' stays under the hundredth line; the film gathers back into the sliver; the other columns fade; the sliver widens to the whole axis at height 0.103 — 'divided by its own 95' — against the global line, 'almost six times'.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "the sliver pours into a film across the axis"
+          },
+          {
+            "at": 0.3,
+            "event": "'at error 1: 0.0073' — under the line"
+          },
+          {
+            "at": 0.55,
+            "event": "film gathers back into the sliver"
+          },
+          {
+            "at": 0.7,
+            "event": "the sliver widens to the whole axis at 0.103"
+          },
+          {
+            "at": 0.9,
+            "event": "'almost six times the global'"
+          }
+        ],
+        "manim": {
+          "class": "B16_PourAndLift"
+        },
+        "motion_claim": "The collision: the same 95 patients' errors, divided by 12,955 then by 95 — hairline, then tower. Narration short."
+      },
+      "actual_duration_s": 19.69,
+      "audio_file": "mp3/beat-B16.mp3",
+      "render_duration_s": 19.708333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B16.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "ABSTRACTION",
+      "learn": {
+        "question": "What is the rule?",
+        "action": "Write ECE_g with its denominator marked.",
+        "observation": "The only change from the global formula is N_g.",
+        "inference": "Every named group gets its own number; the global alone is not a report.",
+        "next_question": "What does each symbol mean, exactly?"
+      },
+      "narration_text": "This deserves a name: subgroup calibration error. Same formula as the global, with one change. Sum over the confidence bins; weigh each bin by its share; take the gap between accuracy and confidence. But count the shares inside the group: divide by N sub g, the group's own size, not by everyone. Then report the global and every group's number beside it, and flag any group above twice the global.",
+      "estimated_duration_s": 28.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The sliver shrinks to the lower right; the per-subgroup formula writes on term by term; a brace lands under N_g labelled 'the group's own size' with a terracotta dot; 'subgroup calibration error' lands bold; then the reporting rule in two lines.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the formula writes on"
+          },
+          {
+            "at": 0.45,
+            "event": "brace under N_g on 'the group's own size'"
+          },
+          {
+            "at": 0.6,
+            "event": "'subgroup calibration error'"
+          },
+          {
+            "at": 0.85,
+            "event": "the reporting rule"
+          }
+        ],
+        "manim": {
+          "class": "B17_NameIt"
+        },
+        "motion_claim": "The abstraction arrives as the name for the lift."
+      },
+      "actual_duration_s": 20.78,
+      "audio_file": "mp3/beat-B17.mp3",
+      "render_duration_s": 20.791666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "TANGENT",
+      "learn": {
+        "question": "What does each symbol mean?",
+        "action": "Translate both sides; gloss the symbols; plug in the rare row's weights.",
+        "observation": "0.0073 in the pool, 1 on its own.",
+        "inference": "The notation is the lift we watched.",
+        "next_question": "Back to the report."
+      },
+      "narration_text": "Read the line. Left: the calibration error for group g. Right: a sum over confidence bins. In each bin, the share of the group that landed there, times the gap between how often it was right and how sure it said it was. The only new symbol is N sub g, the group's own size. For the rare row: in the global, its ninety-five patients carry a weight of zero point zero zero seven three. In its own number, they carry all of it. One more thing: the pooled number can sit even below the rows' patient-weighted average, zero point zero two eight, because inside a shared bin, over- and under-confident groups cancel.",
+      "estimated_duration_s": 45.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The formula persists at the top; below, the zones write one per sentence: left side, right side, the glossary (bins · share of the group · the gap · N_g), the two worked weights 95/12,955 = 0.0073 and 95/95 = 1, and the cancellation line 0.018 ≤ 0.028.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "left / right sentences"
+          },
+          {
+            "at": 0.3,
+            "event": "glossary rows"
+          },
+          {
+            "at": 0.55,
+            "event": "95/12,955 = 0.0073 and 95/95 = 1"
+          },
+          {
+            "at": 0.85,
+            "event": "0.018 ≤ 0.028: gaps cancel"
+          }
+        ],
+        "manim": {
+          "class": "B18_Tangent"
+        },
+        "motion_claim": "The equation tangent: formula, sentences, glossary, worked weights."
+      },
+      "actual_duration_s": 32.28,
+      "audio_file": "mp3/beat-B18.mp3",
+      "render_duration_s": 32.291666666666664,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B18.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "PAYOFF",
+      "learn": {
+        "question": "So how can 0.018 and 0.103 both be true?",
+        "action": "Split the hook's bar by patient share and let each row stand.",
+        "observation": "The rare row is a sliver of the global and a tower on its own.",
+        "inference": "Report the global and every group.",
+        "next_question": ""
+      },
+      "narration_text": "Back to the report. Zero point zero one eight overall. Zero point one zero three on the rare-disease row. Both true. The global weighs patients, and ninety-five patients are under one percent of the weight. Split it by group and the row stands up. Not taught here: what ratio should halt a deployment. The chapter calls that a values question. And a model calibrated on the wrong label passes every check in this film.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The HOOK state returns (the one wide bar at 0.018 and the rare-disease row); the bar splits straight into patient-width columns that rise to their values; dot beside 'rare disease 0.103'; 'both true' and 'report every group' land; dim boundary caption 'not taught here: when to halt'.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "the HOOK state returns"
+          },
+          {
+            "at": 0.35,
+            "event": "the bar splits into patient-width columns that rise"
+          },
+          {
+            "at": 0.6,
+            "event": "'both true · report every group'"
+          },
+          {
+            "at": 0.85,
+            "event": "boundary caption"
+          }
+        ],
+        "manim": {
+          "class": "B19_BothTrue"
+        },
+        "motion_claim": "The HOOK's objects resolve; the boundary names what was not taught."
+      },
+      "actual_duration_s": 21.03,
+      "audio_file": "mp3/beat-B19.mp3",
+      "render_duration_s": 21.041666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B19.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Let's recap with Claude. A global calibration error weighs patients, not groups: ninety-five of twelve thousand nine hundred fifty-five carry under one percent of the weight. Even at the worst possible error, that row could move the global by less than a hundredth. Give each group its own denominator and the hidden row stands at zero point one zero three. Report the global and every group, and flag any group above twice the global.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact page opens"
+          },
+          {
+            "at": 0.2,
+            "event": "four verdict lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "Where the Average Hides the Patient",
+            "artifactLines": [
+              "A global calibration error weighs patients: 95 of 12,955 carry under 1% of the weight.",
+              "Even at the worst possible error, that row moves the global by less than 0.01.",
+              "Give each group its own denominator and the hidden row stands at 0.103.",
+              "Report the global and every group; flag any group above twice the global."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": "2026-09-23T18:46:26.221162+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.5,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Mandated ClaudeVerdictArtifact bookend."
+      },
+      "actual_duration_s": 20.91,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "render_duration_s": 20.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "remotion:ClaudeVerdictArtifact",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude: A model reports a global calibration error (ECE) of 0.035 with 10 bins. Three groups: the primary group (80% of patients) at 0.030, a secondary group (15%) at 0.092, and a tertiary group (5%) at 0.141. Before computing anything, predict: which groups does the 'more than twice the global' flag catch, and could the tertiary group, at any error at all, move the global by a hundredth? Then compute each group's pull (share times ECE) and the patient-weighted average, and explain why the global 0.035 can sit below it. Finally, write one plain-English summary sentence that does not hide the tertiary group. Two things to look for. Did it predict before it computed? If it jumped to numbers, send it back. And does its summary sentence name the tertiary group's number, not just the global?",
+      "estimated_duration_s": 56.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two rubric lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "INFO 7375 · YOUR TURN",
+            "segment": "Split It Yourself",
+            "command": "A model reports a global calibration error (ECE) of 0.035 with 10 bins. Three groups: the primary group (80% of patients) at 0.030, a secondary group (15%) at 0.092, and a tertiary group (5%) at 0.141. Before computing anything, predict: which groups does the 'more than twice the global' flag catch, and could the tertiary group, at any error at all, move the global by a hundredth? Then compute each group's pull (share times ECE) and the patient-weighted average, and explain why the global 0.035 can sit below it. Finally, write one plain-English summary sentence that does not hide the tertiary group.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: the prediction came before the arithmetic.",
+              "Check: the summary names 0.141, not just 0.035."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-23T18:48:52.290183+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 47.89,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 47.916666666666664,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-23T15:08:06"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Where the Average Hides the Patient. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; slug-seeded mascot. Liam reads the title, then 'At Nik Bear Brown'. No jingle."
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Where the Average Hides the Patient",
+            "slug": "tldr-average-hides-the-patient",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-23T18:49:23.833245+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "hold_note": "spoken outro + 1.0 s silent tail (apad into the mp3); no jingle (OUTRO-LOCK §Voice)",
+      "actual_duration_s": 4.58,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.583333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-23T15:08:06"
+      }
+    }
+  ]
+}

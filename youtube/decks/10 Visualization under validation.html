@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Visualization under validation | INFO 7375 Computational Skepticism terminology deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --nu-red:#C8102E; --nu-black:#000000; --nu-white:#FFFFFF; --nu-gold:#A4804A;
+  --nu-red-hover:#A50C25; --nu-red-press:#870A1F; --nu-red-tint:#FBE7EA;
+  --nu-neutral-1:#E3E3E3; --nu-neutral-2:#C4C4C4; --nu-neutral-3:#909090; --nu-neutral-4:#787878;
+  --nu-neutral-5:#545454; --nu-neutral-6:#404040; --nu-neutral-7:#2D2926; --nu-neutral-8:#1A1A1A;
+  --diagram-ink:#2A1A0E; --panel-subtle:#F6F6F6;
+  --font:"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --mono:ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(0.4, 0, 0.2, 1);
+  /* viewer chrome (theme-aware; slides themselves keep fixed brand colors) */
+  --stage-bg:#E9E9E9; --chrome-bg:rgba(255,255,255,0.94); --chrome-fg:#1A1A1A;
+  --chrome-line:#C4C4C4; --chrome-muted:#545454; --chrome-hover:rgba(0,0,0,0.07);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+    --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+  }
+}
+:root[data-theme="dark"]{
+  --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+  --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top, 0px)}
+body{
+  height:100%; margin:0; overflow:hidden; display:flex; flex-direction:column;
+  background:var(--stage-bg); color:var(--chrome-fg); font-family:var(--font);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+:fullscreen body, body:fullscreen{background:#000}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------- stage & scaling ---------- */
+#stage{position:relative; flex:1 1 auto; min-height:0; overflow:hidden; touch-action:pan-y}
+#deck{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0}
+
+/* ---------- slide base ---------- */
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column; overflow:hidden;
+  background:var(--nu-white); color:var(--nu-black); font-family:var(--font);
+  padding-left:120px; padding-right:120px;
+}
+.slide.is-active{display:flex}
+:where(.slide) :where(h1,h2,p,ul){margin:0}
+.s-dark{background:var(--nu-black); color:var(--nu-white)}
+.s-red{background:var(--nu-red); color:var(--nu-white)}
+.rule{position:absolute; top:0; left:0; right:0; height:8px; background:var(--nu-red)}
+.rule.r10{height:10px}
+
+.s-opening,.s-closing{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-intro{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-section{padding-top:110px; padding-bottom:110px; justify-content:center}
+.s-text{padding-top:96px; padding-bottom:96px}
+.s-diagram{padding-top:72px; padding-bottom:56px}
+.s-chart{padding-top:64px; padding-bottom:56px}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-size:22px; font-weight:700; line-height:1.2; text-transform:uppercase;
+  letter-spacing:0.16em; color:var(--nu-red); margin-bottom:28px;
+}
+.s-intro .eyebrow{font-size:24px; letter-spacing:0.18em; margin-bottom:40px}
+.s-section .eyebrow{font-size:26px; letter-spacing:0.20em; color:rgba(255,255,255,0.78); margin-bottom:36px}
+.s-chart .eyebrow,.s-diagram .eyebrow{margin-bottom:18px}
+
+.t-opening{font-size:104px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-section{font-size:108px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-closing{font-size:84px; font-weight:400; line-height:1.04; letter-spacing:-0.02em; max-width:1560px}
+.t-intro{font-size:72px; font-weight:400; line-height:1.1; letter-spacing:-0.01em; max-width:1500px}
+.t-text{font-size:66px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1500px}
+.t-chart{font-size:50px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1560px}
+.s-chart .t-chart{margin-bottom:30px}
+.s-diagram .t-chart{margin-bottom:40px}
+
+.sub-opening{font-size:38px; font-weight:400; line-height:1.3; color:var(--nu-neutral-2); max-width:1300px}
+.sub-section{font-size:34px; font-weight:400; line-height:1.3; color:rgba(255,255,255,0.92); margin-top:40px; max-width:1300px}
+.para{font-size:30px; line-height:1.4; color:var(--nu-neutral-7); max-width:1300px}
+.caption{font-size:24px; line-height:1.36; color:var(--nu-neutral-5); max-width:1400px; margin-top:22px}
+.t-opening,.t-section,.t-closing,.t-intro,.t-text,.t-chart,.sub-opening,.sub-section,.caption{text-wrap:pretty}
+.source{font-size:19px; line-height:1.4; color:var(--nu-neutral-5); margin-top:12px}
+
+.bar-120{width:120px; height:8px; background:var(--nu-red); margin:52px 0 44px}
+.bar-88{width:88px; height:6px; background:var(--nu-red); margin:40px 0 60px}
+
+.bullets{list-style:none; padding:0; max-width:1480px; display:flex; flex-direction:column; gap:26px}
+.bullets li{
+  display:grid; grid-template-columns:14px 1fr; column-gap:22px;
+  font-size:31px; line-height:1.42; color:var(--nu-neutral-7);
+}
+.bullets li::before{
+  content:""; width:14px; height:14px; background:var(--nu-red);
+  margin-top:calc((31px * 1.42 - 14px) / 2);
+}
+.bullets strong{font-weight:700; color:var(--nu-black)}
+
+/* ---------- charts ---------- */
+.chart{width:1480px; height:600px; flex:none}
+.chart svg{display:block; width:1480px; height:600px; overflow:visible}
+.chart-fallback{
+  width:100%; height:100%; display:grid; place-items:center; border:1px solid var(--nu-neutral-1);
+  font-size:24px; color:var(--nu-neutral-5); background:var(--panel-subtle)
+}
+
+/* ---------- diagram ---------- */
+.diagram{flex:0 1 auto; min-height:0; width:100%; max-width:1400px; max-height:720px}
+.diagram svg{display:block}
+
+/* ---------- evidence status: conceptual vs. illustrative vs. observed ---------- */
+.evidence{
+  position:absolute; right:120px; font-size:18px; font-weight:700; line-height:1;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--nu-neutral-5);
+  border:1px solid var(--nu-neutral-2); padding:9px 12px 8px;
+}
+.s-chart .evidence{top:58px}
+.s-diagram .evidence{top:66px}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)}}
+.slide.is-active .rise{animation:rise 550ms var(--ease) both}
+.slide.is-active .g2{animation-delay:120ms}
+.slide.is-active .g3{animation-delay:240ms}
+@media (prefers-reduced-motion: reduce){
+  .slide.is-active .rise{animation:none}
+}
+
+/* ---------- viewer chrome ---------- */
+#controls{
+  position:absolute; right:14px; bottom:14px; z-index:10;
+  display:flex; align-items:center; gap:2px; padding:4px;
+  background:var(--chrome-bg); border:1px solid var(--chrome-line); color:var(--chrome-fg);
+  opacity:0.38; transition:opacity 200ms var(--ease);
+}
+#controls:hover,#controls:focus-within,body.show-controls #controls{opacity:1}
+#controls button,#thumbs .close{
+  appearance:none; border:0; background:transparent; color:inherit; cursor:pointer;
+  width:34px; height:34px; display:grid; place-items:center; padding:0;
+}
+#controls button:hover,#thumbs .close:hover{background:var(--chrome-hover)}
+#controls button[disabled]{opacity:0.35; cursor:default}
+#controls button[aria-pressed="true"]{background:var(--chrome-hover)}
+#controls svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:square}
+#counter{
+  min-width:66px; text-align:center; font-family:var(--mono); font-size:13px;
+  font-variant-numeric:tabular-nums; color:var(--chrome-fg)
+}
+#pips{display:flex; gap:4px; padding:0 6px 0 2px}
+#pips:empty{display:none}
+.pip{width:6px; height:6px; background:var(--chrome-line)}
+.pip.on{background:var(--nu-red)}
+.sep{width:1px; height:20px; background:var(--chrome-line); margin:0 4px}
+button:focus-visible,.thumb:focus-visible{outline:3px solid var(--nu-red); outline-offset:2px}
+
+#notes{
+  display:none; flex:none; height:min(30vh, 260px); overflow:auto;
+  padding:18px 28px 20px; background:var(--chrome-bg); border-top:1px solid var(--chrome-line);
+  color:var(--chrome-fg); font-size:17px; line-height:1.55;
+}
+body.notes-open #notes{display:block}
+#notes h2{margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-muted)}
+#notes p{margin:0 0 10px; max-width:78ch}
+
+#thumbs{position:absolute; inset:0; z-index:20; display:none; overflow:auto; background:var(--stage-bg); padding:24px}
+#thumbs.open{display:block}
+#thumbs .bar{display:flex; align-items:center; justify-content:space-between; max-width:1400px; margin:0 auto 18px}
+#thumbs .bar h2{margin:0; font-size:15px; font-weight:700; color:var(--chrome-fg)}
+#thumbs .close svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75}
+#thumbs .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:18px; max-width:1400px; margin:0 auto}
+.thumb{
+  appearance:none; padding:0; margin:0; border:1px solid var(--chrome-line); background:#fff;
+  cursor:pointer; position:relative; overflow:hidden; aspect-ratio:16 / 9; width:100%; display:block
+}
+.thumb.current{outline:3px solid var(--nu-red); outline-offset:2px}
+.thumb-inner{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0; pointer-events:none; text-align:left; font:400 16px/1.2 var(--font); white-space:normal}
+.thumb-inner .slide{display:flex}
+.thumb-num{
+  position:absolute; left:0; bottom:0; padding:3px 7px; background:rgba(0,0,0,0.72); color:#fff;
+  font-family:var(--mono); font-size:12px; line-height:1.2
+}
+
+/* ---------- print: every slide, final state ---------- */
+@media print{
+  @page{size:1920px 1080px; margin:0}
+  :root{padding:0}
+  html,body{height:auto; overflow:visible; display:block; background:#fff}
+  #stage{overflow:visible; height:auto}
+  #deck{position:static; transform:none !important; width:1920px; height:auto}
+  .slide{position:relative; display:flex !important; width:1920px; height:1080px; break-after:page; page-break-after:always}
+  .slide .rise{animation:none !important; opacity:1 !important; transform:none !important}
+  #controls,#notes,#thumbs{display:none !important}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+/* ---------- review-deck additions (small; typography classes above are untouched) ---------- */
+.slide .source{font-size:24px; margin-top:10px}
+.evidence{font-size:24px; letter-spacing:0.1em}
+.diagram svg text{font-kerning:normal}
+.diagram{cursor:pointer}
+</style>
+</head>
+<body>
+
+<main id="stage" aria-roledescription="slide deck" aria-label="INFO 7375 Computational Skepticism terminology: visualization under validation">
+  <div id="deck">
+
+    <section class="slide s-dark s-opening" aria-roledescription="slide" data-title="Visualization under validation">
+      <div class="rule r10"></div>
+      <p class="eyebrow rise">INFO 7375 Computational Skepticism · Terminology · Chapter 10</p>
+      <h1 class="t-opening rise g2">Visualization under validation</h1>
+      <div class="bar-120 rise g2"></div>
+      <p class="sub-opening rise g3">Terms for charts and dashboards that argue, and for checking what they argue</p>
+      <div class="speaker-notes" hidden><p>32 terms. Tags: in the book text means Chapter 10 uses and explains it. Chapter 10 is marked not on the exam in docs/Exam terms - compact list.md; the terms come from the chapter and the shortlist in docs/Exam terms - shortlist.md. Left out: Cairo disclosure hierarchy detail, FT families one by one, box and violin plots, strip plots, HOPs, gradient line plots, dual-axis trick, the four cases as terms, Abela tree.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Thirty-two terms in four groups">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Map</p>
+      <h2 class="t-chart">Thirty-two terms in four groups</h2>
+      <div class="diagram build" data-build="map" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10; docs/Exam terms - shortlist.md.</p>
+      <div class="speaker-notes" hidden><p>Four groups, one per click.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="A dashboard argues before anyone reads a number">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Argument and channel</p>
+      <h2 class="t-chart">A dashboard argues before anyone reads a number</h2>
+      <div class="diagram build" data-build="arg" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “Two dashboards built from one CSV”, “The medium is the message”.</p>
+      <div class="speaker-notes" hidden><p>The two dashboards are the chapter opening example; panel values (94, 90, 88, 76) are illustrative. Findings visible at first read are counted from the lists in the code.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Question family, then channel">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Argument and channel</p>
+      <h2 class="t-chart">Question family, then channel</h2>
+      <div class="diagram build" data-build="chan" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “Step one: the question the chart is answering”; “Step two: the perception hierarchy”.</p>
+      <div class="speaker-notes" hidden><p>Step 3 shares (23, 21, 20, 19, 17) are illustrative and the pie angles are computed. The ranking is Cleveland and McGill 1984 as the chapter gives it; the chapter flags the quoted error percentages as unverified, so none are shown.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Two faces of uncertainty">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Showing uncertainty</p>
+      <h2 class="t-chart">Two faces of uncertainty</h2>
+      <div class="diagram build" data-build="unc" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “Uncertainty has two faces”; “Showing the trust”.</p>
+      <div class="speaker-notes" hidden><p>Step 1 simulates 30 polls with n 1,104 so the 95% margin equals the chapter ±2.95. Step 2 uses the chapter poll values, which the chapter flags as an illustrative construction (source not found). Steps 3 and 4 use invented, seeded data labelled illustrative; the GDELT case is the chapter source.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Error bars, selective intervals, bands and the cone">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Showing uncertainty</p>
+      <h2 class="t-chart">Error bars, selective intervals, bands and the cone</h2>
+      <div class="diagram build" data-build="bars" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “Showing the range”; “The deceptive visualization catalog”.</p>
+      <div class="speaker-notes" hidden><p>Means 72, 76, 80, sd 10, n 25 are illustrative; the CI is computed. The band uses a regression-style width on illustrative data. The cone simulates 400 errors and sizes the cone to the 66th percentile, matching the chapter two-thirds figure.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Making probability countable">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Showing uncertainty</p>
+      <h2 class="t-chart">Making probability countable</h2>
+      <div class="diagram build" data-build="dots" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “Showing the range”; “Gigerenzer natural frequencies”.</p>
+      <div class="speaker-notes" hidden><p>Step 1 uses 20 quantiles of a lognormal. Step 2 uses 10 in 1,000, 9 of 10 positive, 99 of 990 false positives (the chapter quotes 99 out of 1,000; 990 used here) giving 8.3%. Step 4 compares place values with the 0.05 margin.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Axes: start, match, scale, direction">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Axes and summaries</p>
+      <h2 class="t-chart">Axes: start, match, scale, direction</h2>
+      <div class="diagram build" data-build="axes" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “The deceptive visualization catalog”; “Four cases that teach the catalog”; Exercises 1, 3, 4.</p>
+      <div class="speaker-notes" hidden><p>Step 1 values and ratio come from chapter exercise 1; step 2 axes from exercise 3 with group values from exercise 12; step 3 from exercise 4 (curve illustrative); step 4 uses the three Florida counts the chapter quotes.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="What a summary, a window or a missing comparison hides">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Axes and summaries</p>
+      <h2 class="t-chart">What a summary, a window or a missing comparison hides</h2>
+      <div class="diagram build" data-build="hide" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “The deceptive visualization catalog”; Exercises 2 and 9.</p>
+      <div class="speaker-notes" hidden><p>Latencies are simulated (3% tail from exercise 2). Monthly accuracy is illustrative, built from exercise 9. The 93% majority share is illustrative.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Look and label">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Axes and summaries</p>
+      <h2 class="t-chart">Look and label</h2>
+      <div class="diagram build" data-build="look" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “The deceptive visualization catalog”.</p>
+      <div class="speaker-notes" hidden><p>Subgroup values are illustrative; contrast ratios are computed with the WCAG formula. The 3D perspective scale 0.72 is illustrative. The claim-word list is a small illustrative detector.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Versions, comparisons and a stranger">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Building honestly</p>
+      <h2 class="t-chart">Versions, comparisons and a stranger</h2>
+      <div class="diagram build" data-build="live" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “The Living Deck”; “Snow’s cholera map”; “A working sequence for picking and showing”.</p>
+      <div class="speaker-notes" hidden><p>Version entries and reader guesses are illustrative. The pump map is a seeded simulation, not Snow data. The chapter notes the real map was drawn by Cheffins after Snow reached his conclusion.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Look-alike pairs">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Tell them apart</p>
+      <h2 class="t-chart">Look-alike pairs</h2>
+      <div class="diagram build" data-build="pairs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10.</p>
+      <div class="speaker-notes" hidden><p>Aleatoric and epistemic; truncated and inverted axes; sd bar and CI bar (sd 10, n 25); illustration and evidence-grade chart.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Say it exactly">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Vague request, exact instruction</p>
+      <h2 class="t-chart">Say it exactly</h2>
+      <div class="diagram build" data-build="say" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, Exercises 1, 2, 3, 9.</p>
+      <div class="speaker-notes" hidden><p>Five requests and exact versions, each with a number computed from stated inputs.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Before a chart ships">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Checklist</p>
+      <h2 class="t-chart">Before a chart ships</h2>
+      <div class="diagram build" data-build="closing" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 10, “A working sequence for picking and showing”.</p>
+      <div class="speaker-notes" hidden><p>Six checks.</p></div>
+    </section>
+
+  </div>
+
+  <nav id="controls" aria-label="Slide controls">
+    <button type="button" id="btn-prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="counter" aria-hidden="true">1 / 1</span>
+    <span id="pips" aria-hidden="true"></span>
+    <button type="button" id="btn-next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <span class="sep" aria-hidden="true"></span>
+    <button type="button" id="btn-thumbs" aria-label="Show all slides (G)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="7" height="5"/><rect x="13" y="5" width="7" height="5"/><rect x="4" y="14" width="7" height="5"/><rect x="13" y="14" width="7" height="5"/></svg></button>
+    <button type="button" id="btn-notes" aria-label="Speaker notes (N)" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 11h14M5 16h9"/></svg></button>
+    <button type="button" id="btn-fs" aria-label="Fullscreen (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+  </nav>
+
+  <div id="thumbs" role="dialog" aria-modal="true" aria-label="All slides">
+    <div class="bar">
+      <h2>All slides</h2>
+      <button type="button" class="close" aria-label="Close slide overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="grid"></div>
+  </div>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+</main>
+
+<aside id="notes" aria-label="Speaker notes">
+  <h2 id="notes-head">Speaker notes</h2>
+  <div id="notes-body"></div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var stage = document.getElementById("stage");
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(".slide"));
+  var total = slides.length;
+  var counter = document.getElementById("counter");
+  var pips = document.getElementById("pips");
+  var live = document.getElementById("live");
+  var notesHead = document.getElementById("notes-head");
+  var notesBody = document.getElementById("notes-body");
+  var btnPrev = document.getElementById("btn-prev");
+  var btnNext = document.getElementById("btn-next");
+  var btnNotes = document.getElementById("btn-notes");
+  var btnThumbs = document.getElementById("btn-thumbs");
+  var btnFs = document.getElementById("btn-fs");
+  var thumbs = document.getElementById("thumbs");
+  var thumbGrid = thumbs.querySelector(".grid");
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hasD3 = typeof window.d3 !== "undefined";
+  var current = -1, step = 0, lastFocus = null;
+
+  /* Recurring visual vocabulary
+     ink   = confidence / belief        red  = failure, consequence, causal break
+     gray  = familiar data, same source tint = what an inspection or failure exposes */
+  var INK = "#2A1A0E", RED = "#C8102E", TINT = "#FBE7EA", GRID = "#E3E3E3", MUTED = "#545454",
+      BASE = "#909090", FAMILIAR = "#C4C4C4", SUBTLE = "#F6F6F6", BODY = "#2D2926";
+  var MONO = 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace';
+  var SANS = '"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+
+  /* ---------------- scaling ---------------- */
+  function fit() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    var s = Math.min(w / 1920, h / 1080);
+    deck.style.transform = "translate(" + (w - 1920 * s) / 2 + "px," + (h - 1080 * s) / 2 + "px) scale(" + s + ")";
+  }
+  if ("ResizeObserver" in window) new ResizeObserver(fit).observe(stage);
+  window.addEventListener("resize", fit);
+
+  /* ---------------- drawing helpers ---------------- */
+  function svgFor(el, w, h, label, desc, fixed) {
+    el.innerHTML = "";
+    var svg = d3.select(el).append("svg").attr("viewBox", "0 0 " + w + " " + h)
+      .attr("role", "img").attr("aria-label", label);
+    if (fixed) svg.attr("width", w).attr("height", h).style("overflow", "visible");
+    else svg.attr("width", "100%").attr("height", "100%").attr("preserveAspectRatio", "xMinYMin meet");
+    svg.append("title").text(label);
+    svg.append("desc").text(desc);
+    return svg;
+  }
+  function txt(g, x, y, s, o) {
+    o = o || {};
+    var t = g.append("text").attr("x", x).attr("y", y)
+      .attr("font-family", o.family || SANS).attr("font-size", o.size || 22)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || INK);
+    if (o.anchor) t.attr("text-anchor", o.anchor);
+    if (o.ls) t.attr("letter-spacing", o.ls);
+    if (o.dy) t.attr("dy", o.dy);
+    return t.text(s);
+  }
+  function fadeIn(sel, delay, dur) {
+    sel.attr("opacity", 0).transition().delay(delay || 0).duration(dur || 400).ease(d3.easeCubicOut).attr("opacity", 1);
+    return sel;
+  }
+  function rng(seed) {
+    var s = seed >>> 0;
+    return function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  /* ================= review-deck helpers ================= */
+  var W = 1400, H = 700;
+  function A(anim, k, n) { return anim && k === n; }
+  function shuffle(a, r) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function drawIn(path, delay, dur) {
+    var L = path.node().getTotalLength();
+    if (!(L > 0)) return path;
+    path.attr("stroke-dasharray", L + " " + L).attr("stroke-dashoffset", L)
+      .transition().delay(delay || 0).duration(dur || 500).ease(d3.easeCubicOut).attr("stroke-dashoffset", 0)
+      .on("end", function () { d3.select(this).attr("stroke-dasharray", null).attr("stroke-dashoffset", null); });
+    return path;
+  }
+  function tweenNum(sel, from, to, fmt, delay, dur) {
+    sel.text(fmt(from)).transition().delay(delay || 0).duration(dur || 1000).ease(d3.easeCubicOut)
+      .tween("text", function () { var it = d3.interpolate(from, to), node = this; return function (t) { node.textContent = fmt(it(t)); }; });
+  }
+  var pct1 = function (v) { return v.toFixed(1) + "%"; };
+  function lab(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: 700, fill: o.fill || MUTED, ls: 1.2, anchor: o.anchor }); }
+  /* wrap a string into tspans; n = characters per line (estimate) */
+  function wrap(g, x, y, s, n, o) {
+    o = o || {};
+    var size = o.size || 26, lh = o.lh || Math.round(size * 1.34), words = s.split(" "), lines = [], cur = "";
+    words.forEach(function (w) { var t = (cur ? cur + " " : "") + w; if (t.length > n && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur);
+    var t = g.append("text").attr("x", x).attr("y", y).attr("font-family", SANS).attr("font-size", size)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || BODY);
+    lines.forEach(function (l, i) { t.append("tspan").attr("x", x).attr("dy", i ? lh : 0).text(l); });
+    t.node().__h = lines.length * lh;
+    return t;
+  }
+  function box(g, x, y, w, h, o) {
+    o = o || {};
+    return g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", w).attr("height", h)
+      .attr("fill", o.fill || "#FFFFFF").attr("stroke", o.stroke || FAMILIAR).attr("stroke-width", o.sw || 1.5);
+  }
+  function ppvOf(p, sens, spec) { return p * sens / (p * sens + (1 - p) * (1 - spec)); }
+  function sigmoid(z) { return 1 / (1 + Math.exp(-z)); }
+  function logit(c) { return Math.log(c / (1 - c)); }
+  function fmtInt(v) { return d3.format(",")(Math.round(v)); }
+  function check(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + y + " L" + (x - s / 3) + "," + (y + s * 0.7) + " L" + (x + s) + "," + (y - s * 0.8)).attr("fill", "none").attr("stroke", color || INK).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+  function cross(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + (y - s) + " L" + (x + s) + "," + (y + s) + " M" + (x + s) + "," + (y - s) + " L" + (x - s) + "," + (y + s)).attr("stroke", color || RED).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+
+  /* ---------- small drawing helpers ---------- */
+  function run(g, dur, fn, anim, ease) {
+    if (!anim) { fn(1); return; }
+    fn(0);
+    d3.select(g.node()).transition().duration(dur).ease(ease || d3.easeLinear)
+      .tween("run", function () { return function (t) { fn(t); }; });
+  }
+  /* keyframes through the values in a, smooth between them, t in 0..1 */
+  function kf(t, a) {
+    var n = a.length - 1, s = Math.min(n - 1e-9, Math.max(0, t) * n), i = Math.floor(s);
+    return a[i] + (a[i + 1] - a[i]) * d3.easeCubicInOut(s - i);
+  }
+  function hint(svg) { wrap(svg.append("g"), 800, 44, "Click or press → to start the animation. Each click adds one idea.", 46, { size: 28, fill: MUTED }); }
+  function cap(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 26, weight: o.weight || 400, fill: o.fill || BODY, anchor: o.anchor, family: o.family }); }
+  function sgn(v, d) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d || 0); }
+
+  /* right-hand column: one glossary entry per step, with its tag; returns the y below the last entry */
+  function entries(svg, list, k, anim) {
+    var g = svg.append("g"), y = 4;
+    list.forEach(function (it) {
+      if (it.s > k) return;
+      var t = T[it.id], cur = it.s === k, e = g.append("g");
+      txt(e, 800, y + 26, t.n, { size: 26, weight: 700, fill: cur ? RED : INK });
+      var TG = { book: ["in the book text", 212], gloss: ["in the glossary", 200], video: ["video only", 150], editor: ["editor or docs", 190], web: ["outside source", 200] }[t.tag || "video"], tg = TG[0], tw_ = TG[1], fill_ = t.tag === "book";
+      e.append("rect").attr("x", 1400 - tw_ + 0.5).attr("y", y + 3.5).attr("width", tw_ - 1).attr("height", 34)
+        .attr("fill", fill_ ? INK : "none").attr("stroke", fill_ ? INK : GREY).attr("stroke-width", 1.5);
+      txt(e, 1400 - tw_ / 2, y + 28, tg, { size: 24, anchor: "middle", fill: fill_ ? "#FFFFFF" : MUTED });
+      var yy = y + 58;
+      if (t.alias) { txt(e, 800, yy, t.alias, { size: 24, fill: MUTED }); yy += 30; }
+      var w = wrap(e, 800, yy, t.m + ".", 50, { size: 24, lh: 30, fill: BODY });
+      y = yy + w.node().__h + 6;
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    return y;
+  }
+  function pairStrip(svg, a, b) {
+    var g = svg.append("g");
+    lab(g, 0, 598, "TELL THESE APART");
+    [[0, a], [740, b]].forEach(function (p, i) {
+      box(g, p[0], 612, 660, 88, { stroke: i ? RED : INK, sw: 2 });
+      txt(g, p[0] + 20, 646, p[1][0], { size: 26, weight: 700, fill: i ? RED : INK });
+      txt(g, p[0] + 20, 682, p[1][1], { size: 24, fill: BODY });
+    });
+    txt(g, 700, 664, "≠", { size: 44, weight: 700, anchor: "middle", fill: RED });
+  }
+  function base(svg, list, k, anim, a, b) { var y = entries(svg, list, k, anim); pairStrip(svg, a, b); if (k === 0) hint(svg); return y; }
+
+  /* top-down / side-view camera pieces. ang: radians, 0 = +x, y grows downward */
+  function conePath(x, y, ang, fov, len) {
+    var h = fov * DEG / 2;
+    return "M" + x + "," + y + "L" + (x + len * Math.cos(ang - h)) + "," + (y + len * Math.sin(ang - h)) +
+      "A" + len + "," + len + " 0 0 1 " + (x + len * Math.cos(ang + h)) + "," + (y + len * Math.sin(ang + h)) + "Z";
+  }
+  function cone(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", TINT).attr("fill-opacity", 0.9).attr("stroke", RED).attr("stroke-width", 2);
+  }
+  function ghost(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 1.5).attr("stroke-dasharray", "6 6");
+  }
+  function camBody(g, x, y, ang) {
+    var c = g.append("g").attr("transform", "translate(" + x + "," + y + ") rotate(" + (ang / DEG) + ")");
+    c.append("rect").attr("x", -16).attr("y", -11).attr("width", 24).attr("height", 22).attr("fill", INK);
+    c.append("path").attr("d", "M8,-7 L22,-14 L22,14 L8,7Z").attr("fill", INK);
+  }
+  function inView(px, py, x, y, ang, fov, len) {
+    var dx = px - x, dy = py - y;
+    if (Math.hypot(dx, dy) > len) return false;
+    var da = Math.atan2(dy, dx) - ang; da = Math.atan2(Math.sin(da), Math.cos(da));
+    return Math.abs(da) <= fov * DEG / 2;
+  }
+  function post(g, x, y, on, r) {
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", r || 11).attr("fill", on ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+  }
+  function ptsInView(g, pts, cx, cy, ang, fov, len) {
+    var n = 0;
+    pts.forEach(function (p) { var on = inView(p[0], p[1], cx, cy, ang, fov, len); if (on) n++; post(g, p[0], p[1], on); });
+    return n;
+  }
+
+
+  /* ================= Visualization under validation (Chapter 10) ================= */
+  var GREY = "#909090", DIM = "#C4C4C4";
+  var T = {
+    arg: { n: "Dashboard as argument", tag: "book", m: "A dashboard's layout and defaults make a case before any number is read" },
+    medium: { n: "Medium is the message", tag: "book", m: "The form of a communication shapes its meaning before the content arrives (McLuhan)" },
+    outlayer: { n: "Output-layer failure", tag: "book", m: "A chart that misstates sound findings is a validation failure, not a later communication problem" },
+    ftq: { n: "FT question taxonomy", tag: "book", m: "Nine question families; state the question, find its family, then pick the chart" },
+    percep: { n: "Perception hierarchy", tag: "book", m: "Readers judge some channels more accurately than others: position, length, angle, area, volume, color" },
+    common: { n: "Common-scale position", tag: "book", m: "Values shown by where points sit on one shared axis, the most accurately read channel" },
+    alea: { n: "Aleatoric uncertainty", tag: "book", m: "Variability from sampling and chance that cannot be removed; intervals and error bars show it" },
+    exceed: { n: "Uncertainty over effect", tag: "book", m: "The margin of error is bigger than the difference reported, so the honest reading is a tie" },
+    epis: { n: "Epistemic uncertainty", tag: "book", m: "The gap between what is known and what is true, from limits of data, instruments and proxies" },
+    validate: { n: "Validate first", tag: "book", m: "Check that the data measures what the question asks before drawing anything from it" },
+    errbars: { n: "Error bars", tag: "book", m: "A point estimate with its spread; the chart must say what the bar is, such as a 95% CI" },
+    selective: { n: "Selective uncertainty", tag: "book", m: "Showing intervals where they help the argument and leaving them off where they would hurt" },
+    bands: { n: "Interval bands", tag: "book", m: "A shaded region behind a line for uncertainty; the width is carried by weak shading" },
+    cone: { n: "Cone of uncertainty", tag: "book", m: "A forecast region sized to hold about two thirds of past track errors; it is not the storm's size" },
+    qdot: { n: "Quantile dotplot", tag: "book", m: "Twenty dots, a few filled, showing a probability as a count of cases the reader can see" },
+    natfreq: { n: "Natural frequencies", tag: "book", m: "Probabilities stated as counts out of a number of cases, which readers reason with more correctly" },
+    eqweight: { n: "Equal visual weight", tag: "book", m: "The uncertainty drawn as prominently as the estimate, so it reads as part of the finding" },
+    falseprec: { n: "False precision", tag: "book", m: "More digits than the uncertainty supports, implying a certainty that is not there" },
+    trunc: { n: "Truncated axes", tag: "book", m: "A value axis that starts above zero, so a small difference looks large" },
+    inconsist: { n: "Inconsistent axes", tag: "book", m: "Side-by-side panels with different axis ranges, so the visual comparison is invalid" },
+    scale: { n: "Scale trickery", tag: "book", m: "A linear axis for data that is naturally logarithmic, or the reverse, changing which region looks big" },
+    invert: { n: "Axis inversion", tag: "book", m: "An axis run against convention (zero at the top), so a rise can look like a fall" },
+    aggr: { n: "Hiding the distribution", tag: "book", m: "A mean or median that conceals a long tail or several clusters in the data" },
+    cherry: { n: "Cherry-picked window", tag: "book", m: "A time window that starts at a low and ends at a high to exaggerate a trend" },
+    baseline: { n: "Missing baseline", tag: "book", m: "A metric shown without the comparison that gives it meaning, such as a random guess or the old system" },
+    colorasym: { n: "Color asymmetry", tag: "book", m: "Colors of unequal salience that steer the eye toward some categories and away from others" },
+    junk: { n: "Chartjunk and 3D", tag: "book", m: "Decoration and 3D effects that carry no data and distort how big values look (Tufte)" },
+    labels: { n: "Labels that prejudge", tag: "book", m: "Titles and legend entries that state a conclusion before the reader sees the data" },
+    living: { n: "Living deck", tag: "book", m: "A deck that shows its own dated version history instead of posing as finished" },
+    changelog: { n: "Changelog slide", tag: "book", m: "The slide listing what changed since the last version and why; second to last in the deck" },
+    evidence: { n: "Evidence-grade chart", tag: "book", m: "A chart that shows what would make the conclusion wrong, such as comparison cases, not only support" },
+    nonauth: { n: "Non-author reader test", tag: "book", m: "Ask someone who did not make the chart what it says; a mismatch means the chart is not working" }
+  };
+  function note(svg, ey, text) { if (!text || ey > 440) return; wrap(svg.append("g"), 800, ey + 36, text, 46, { size: 28, lh: 36, fill: INK }); }
+  function fade(sel, anim, delay) { if (anim) sel.attr("opacity", 0).transition().delay(delay || 0).duration(450).attr("opacity", 1); return sel; }
+  function bar(g, x, y, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("width", 0).transition().delay(delay || 0).duration(700).attr("width", w); return b; }
+  function vbar(g, x, yb, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", yb - h).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("y", yb).attr("height", 0).transition().delay(delay || 0).duration(700).attr("y", yb - h).attr("height", h); return b; }
+  function mono(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: o.weight || 400, fill: o.fill || INK, family: MONO, anchor: o.anchor }); }
+  function ln(g, x1, y1, x2, y2, col, sw, dash) { return g.append("path").attr("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2).attr("stroke", col || INK).attr("stroke-width", sw || 2).attr("fill", "none").attr("stroke-dasharray", dash || null); }
+  function dot(g, x, y, r, fill, stroke) { return g.append("circle").attr("cx", x).attr("cy", y).attr("r", r).attr("fill", fill).attr("stroke", stroke || "none").attr("stroke-width", stroke ? 3 : 0); }
+  function xax(g, sc, y, ticks, fmt) { var r = sc.range(); ln(g, r[0], y, r[1], y, INK, 2); ticks.forEach(function (t) { ln(g, sc(t), y, sc(t), y + 8, INK, 2); cap(g, sc(t), y + 34, fmt ? fmt(t) : t, { size: 24, anchor: "middle", fill: MUTED }); }); }
+  function yax(g, sc, x, ticks, fmt) { var r = sc.range(); ln(g, x, r[0], x, r[1], INK, 2); ticks.forEach(function (t) { ln(g, x - 8, sc(t), x, sc(t), INK, 2); cap(g, x - 12, sc(t) + 8, fmt ? fmt(t) : t, { size: 24, anchor: "end", fill: MUTED }); }); }
+  function ncdf(z) { var t = 1 / (1 + 0.2316419 * Math.abs(z)), d = 0.3989423 * Math.exp(-z * z / 2), p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return z > 0 ? 1 - p : p; }
+  function nq(p) { var lo = -8, hi = 8; for (var i = 0; i < 60; i++) { var m = (lo + hi) / 2; if (ncdf(m) < p) lo = m; else hi = m; } return (lo + hi) / 2; }
+  function nrm(r) { return Math.sqrt(-2 * Math.log(1 - r())) * Math.cos(2 * Math.PI * r()); }
+  function lum(hex) { var c = [1, 3, 5].map(function (i) { var v = parseInt(hex.substr(i, 2), 16) / 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; }
+  function contrast(h1, h2) { var a = lum(h1), b = lum(h2); return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05); }
+  /* shared data for several slides */
+  var LAT = (function () { var r = rng(11), a = []; for (var i = 0; i < 1000; i++) a.push(i < 30 ? 4 + 4 * r() : Math.exp(Math.log(0.5) + 0.35 * nrm(r))); a.sort(d3.ascending); return { v: a, med: d3.quantile(a, 0.5), p97: d3.quantile(a, 0.97), max: a[a.length - 1], tail: a.filter(function (x) { return x >= 4; }) }; })();
+  var MON = [91, 90, 78, 80, 83, 86, 88, 89, 90, 91];
+  function slope(arr, i0, i1) { var xs = d3.range(i0, i1 + 1), ys = arr.slice(i0, i1 + 1), mx = d3.mean(xs), my = d3.mean(ys); return d3.sum(xs.map(function (x, i) { return (x - mx) * (ys[i] - my); })) / d3.sum(xs.map(function (x) { return (x - mx) * (x - mx); })); }
+  var GA = [89, 90, 78], GR = [[70, 100], [85, 100], [60, 100]];
+
+  var MAPROWS = [
+    ["Argument and channel", "dashboard as argument, medium is the message, output-layer failure, FT question taxonomy, perception hierarchy, common-scale position", "Why a chart is a claim, and how to pick one"],
+    ["Showing uncertainty", "aleatoric, uncertainty over effect, epistemic, validate first, error bars, selective, interval bands, cone, quantile dotplot, natural frequencies, equal weight, false precision", "What the spread and the doubt look like"],
+    ["Axes and summaries", "truncated, inconsistent, scale trickery, inversion, hiding the distribution, cherry-picked window, missing baseline, color asymmetry, chartjunk, prejudging labels", "Ten moves that mislead"],
+    ["Building honestly", "living deck, changelog slide, evidence-grade chart, non-author reader test", "Practices that keep a chart accountable"]
+  ];
+  function renderMap(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four groups of visualization terms", "A table with four rows: group, terms, what the group is about.");
+    var g = svg.append("g");
+    wrap(g, 0, 36, "32 terms from Chapter 10. A chart is an argument; every term is a choice that moves the reader's conclusion.", 96, { size: 28, lh: 38, fill: INK });
+    var cx = [0, 330, 1060];
+    ["GROUP", "TERMS", "WHAT IT IS ABOUT"].forEach(function (h, i) { lab(g, cx[i] + 18, 152, h); });
+    g.append("path").attr("d", "M0,168 H1400").attr("stroke", INK).attr("stroke-width", 2);
+    MAPROWS.forEach(function (r, i) {
+      if (i + 1 > k) return;
+      var y = 178 + i * 130, row = g.append("g");
+      box(row, 0, y, 1400, 124, { stroke: FAMILIAR });
+      row.append("rect").attr("x", 0).attr("y", y).attr("width", 10).attr("height", 125).attr("fill", RED);
+      wrap(row, cx[0] + 28, y + 40, r[0], 20, { size: 26, lh: 30, weight: 700, fill: RED });
+      wrap(row, cx[1] + 18, y + 32, r[1], 60, { size: 24, lh: 29, fill: INK });
+      wrap(row, cx[2] + 18, y + 32, r[2], 26, { size: 24, lh: 29 });
+      if (A(anim, k, i + 1)) row.attr("opacity", 0).attr("transform", "translate(0,18)").transition().duration(450).ease(d3.easeCubicOut).attr("opacity", 1).attr("transform", "translate(0,0)");
+    });
+    if (k === 0) cap(g, 0, 430, "Click or press → to add the four groups, one at a time.", { fill: MUTED });
+  }
+
+  /* ---------- 1. dashboard as argument ---------- */
+  var FINDS = ["typical user does well", "three subgroups do poorly", "calibration overconfident at the top"];
+  function renderArg(el, k, anim) {
+    var svg = svgFor(el, W, H, "A dashboard argues before any number is read", "Two dashboards built from one CSV: a headline-first layout that shows one of three findings at first read, and an equal-panels layout that shows all three.");
+    var ey = base(svg, [{ id: "arg", s: 1 }, { id: "medium", s: 2 }, { id: "outlayer", s: 3 }], k, anim, ["Honest dashboard", "shows what the analysis found"], ["Output-layer failure", "findings lost at the chart"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = A(anim, k, kk);
+    var VIS = [[true, false, false], [true, true, true]];
+    function checklist(g, x, y, vis) {
+      FINDS.forEach(function (f, i) {
+        cap(g, x + 44, y + i * 40, f, { size: 24, fill: vis[i] ? INK : MUTED });
+        if (vis[i]) check(g, x + 14, y - 8 + i * 40, 11, RED); else cross(g, x + 14, y - 8 + i * 40, 9, GREY);
+      });
+      var n = d3.sum(vis, function (v) { return v ? 1 : 0; });
+      cap(g, x, y + 3 * 40 + 6, n + " of 3 findings visible at first read", { size: 26, weight: 700, fill: n === 3 ? INK : RED });
+    }
+    if (kk === 1) {
+      lab(d, 0, 30, "DASHBOARD 1: HEADLINE FIRST");
+      box(d, 0, 46, 740, 330, { stroke: INK, sw: 2 });
+      var h1 = d.append("g"); h1.append("rect").attr("x", 1).attr("y", 47).attr("width", 738).attr("height", 150).attr("fill", "#F6F6F6");
+      txt(h1, 370, 150, "94% accuracy", { size: 64, weight: 700, anchor: "middle" });
+      [0.62, 0.6, 0.64].forEach(function (h, i) {
+        var x = 12 + i * 243; box(d, x, 210, 226, 106, { stroke: DIM }); d.append("rect").attr("x", x + 70).attr("y", 300 - h * 70).attr("width", 86).attr("height", h * 70).attr("fill", DIM);
+        cap(d, x + 10, 236, "group " + (i + 1), { size: 24, fill: MUTED });
+      });
+      box(d, 12, 326, 716, 40, { stroke: DIM }); cap(d, 24, 354, "advanced metrics ▸ calibration", { size: 24, fill: MUTED });
+      checklist(d, 0, 424, VIS[0]);
+      fade(d, an, 0);
+    } else if (kk === 2) {
+      lab(d, 0, 30, "DASHBOARD 2: EQUAL PANELS");
+      box(d, 0, 46, 740, 330, { stroke: INK, sw: 2 });
+      var P = [["overall and groups, one axis", 0], ["calibration: banner says overconfident at the top", 1], ["gap to overall by group", 2], ["limits of this analysis", 3]];
+      var sub = [94, 90, 88, 76];
+      P.forEach(function (p, i) {
+        var x = 8 + (i % 2) * 366, y = 54 + Math.floor(i / 2) * 160, g = d.append("g");
+        box(g, x, y, 358, 150, { stroke: DIM });
+        wrap(g, x + 10, y + 28, p[0], 34, { size: 24, lh: 28, fill: INK, weight: 700 });
+        if (i === 0) sub.forEach(function (v, j) { g.append("rect").attr("x", x + 20 + j * 80).attr("y", y + 142 - v * 0.7).attr("width", 56).attr("height", v * 0.7).attr("fill", j ? DIM : INK); });
+        if (i === 1) { ln(g, x + 90, y + 138, x + 280, y + 70, DIM, 3, "6 6"); g.append("path").attr("d", "M" + (x + 90) + "," + (y + 138) + " C" + (x + 150) + "," + (y + 112) + " " + (x + 220) + "," + (y + 112) + " " + (x + 280) + "," + (y + 108)).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 4); }
+        if (i === 2) sub.slice(1).forEach(function (v, j) { cap(g, x + 20, y + 84 + j * 28, "group " + (j + 1) + ": " + sgn(v - sub[0]), { size: 24 }); });
+        if (i === 3) wrap(g, x + 10, y + 84, "subgroup sizes, proxy choices, data window", 34, { size: 24, lh: 28, fill: BODY });
+        fade(g, an, i * 200);
+      });
+      checklist(d, 0, 424, VIS[1]);
+    } else {
+      lab(d, 0, 30, "SAME CSV, TWO READERS");
+      [0, 1].forEach(function (i) {
+        var x = i * 390, g = d.append("g"), n = d3.sum(VIS[i], function (v) { return v ? 1 : 0; });
+        box(g, x, 56, 360, 400, { stroke: i ? RED : INK, sw: 2 });
+        txt(g, x + 18, 100, "Dashboard " + (i + 1), { size: 26, weight: 700, fill: i ? RED : INK });
+        FINDS.forEach(function (f, j) {
+          wrap(g, x + 56, 154 + j * 74, f, 24, { size: 24, lh: 28 });
+          if (VIS[i][j]) check(g, x + 28, 146 + j * 74, 12, RED); else cross(g, x + 28, 146 + j * 74, 10, GREY);
+        });
+        bar(g, x + 18, 376, 324 * n / 3, 26, i ? RED : INK, an, 300);
+        cap(g, x + 18, 440, Math.round(100 * n / 3) + "% reach the reader", { size: 24, weight: 700 });
+        fade(g, an, i * 300);
+      });
+      cap(d, 0, 520, "Every number is true. Two of three findings never reach", { size: 26, weight: 700 });
+      cap(d, 0, 556, "the reader of dashboard 1: a failure at the output layer.", { size: 26, weight: 700 });
+    }
+    note(svg, ey, ["", "Layout and defaults argue before any number is read. Headline first says: this is the answer.", "Equal panels say: integrate. The form is a claim, whatever the numbers are.", "If sound findings do not reach the reader, validation failed at the output layer."][k]);
+  }
+
+  /* ---------- 2. question taxonomy, perception hierarchy ---------- */
+  function renderChan(el, k, anim) {
+    var svg = svgFor(el, W, H, "Pick the question family first, then the channel that carries the number", "A grid of nine question families with one highlighted, a ranked list of six visual channels, and the same five shares as a pie and as dots on one scale.");
+    var ey = base(svg, [{ id: "ftq", s: 1 }, { id: "percep", s: 2 }, { id: "common", s: 3 }], k, anim, ["Perception hierarchy", "which channel carries the number"], ["Color", "good for category, weak for quantity"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = A(anim, k, kk);
+    if (kk === 1) {
+      lab(d, 0, 30, "NINE QUESTION FAMILIES");
+      var F = [["Deviation", "diverging bar"], ["Correlation", "scatterplot"], ["Ranking", "ordered bar"], ["Distribution", "histogram"], ["Change over time", "line"], ["Part-to-whole", "stacked bar"], ["Magnitude", "zero-based bar"], ["Spatial", "map"], ["Flow", "alluvial"]];
+      F.forEach(function (f, i) {
+        var x = (i % 3) * 252, y = 50 + Math.floor(i / 3) * 112, hit = i === 4, g = d.append("g");
+        box(g, x, y, 236, 100, { stroke: hit ? RED : DIM, sw: hit ? 3 : 1.5, fill: hit ? TINT : "#FFFFFF" });
+        wrap(g, x + 12, y + 36, f[0], 18, { size: 26, lh: 28, weight: 700, fill: hit ? RED : INK });
+        cap(g, x + 12, y + 84, f[1], { size: 24, fill: MUTED });
+        fade(g, an, i * 80);
+      });
+      wrap(d, 0, 420, "Question: how has calibration changed over six months of deployment? That is change over time, so draw a line.", 56, { size: 26, lh: 32, fill: INK, weight: 700 });
+      cap(d, 0, 520, "Starting from the data's shape picks the default chart.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "MOST ACCURATE FIRST (RANK ONLY)");
+      var CH = ["Position on a common scale", "Length", "Angle and slope", "Area", "Volume", "Color saturation and hue"];
+      CH.forEach(function (c, i) {
+        var y = 56 + i * 76, g = d.append("g"), w = 740 - i * 70;
+        g.append("rect").attr("x", 0).attr("y", y).attr("width", w).attr("height", 60).attr("fill", i === 0 ? INK : i === 5 ? DIM : "#E3E3E3");
+        txt(g, 16, y + 40, (i + 1) + "  " + c, { size: 26, weight: 700, fill: i === 0 ? "#FFFFFF" : INK });
+        fade(g, an, i * 150);
+      });
+      cap(d, 0, 540, "Color is fine for category. For how much, use position or length.", { size: 24, fill: MUTED });
+    } else {
+      var sh = [23, 21, 20, 19, 17], tot = d3.sum(sh), a0 = 0;
+      lab(d, 0, 30, "FIVE SHARES AS A PIE");
+      var pie = d.append("g").attr("transform", "translate(180,250)");
+      sh.forEach(function (v, i) { var a1 = a0 + v / tot * 2 * Math.PI, path = d3.arc().innerRadius(0).outerRadius(150).startAngle(a0).endAngle(a1)(); pie.append("path").attr("d", path).attr("fill", i === 0 ? INK : ["#FFFFFF", "#E3E3E3", "#FFFFFF", "#E3E3E3"][i - 1]).attr("stroke", INK).attr("stroke-width", 2); var am = (a0 + a1) / 2; txt(pie, 98 * Math.sin(am), -98 * Math.cos(am) + 8, String.fromCharCode(65 + i), { size: 24, weight: 700, anchor: "middle", fill: i === 0 ? "#FFFFFF" : INK }); a0 = a1; });
+      lab(d, 400, 30, "SAME SHARES AS POSITION");
+      var sc = d3.scaleLinear().domain([0, 25]).range([440, 740]);
+      var gp = d.append("g");
+      sh.forEach(function (v, i) { var y = 110 + i * 72; cap(gp, 400, y + 8, String.fromCharCode(65 + i), { size: 24, weight: 700 }); ln(gp, 440, y, 740, y, "#E3E3E3", 1.5); dot(gp, sc(v), y, 15, i === 0 ? RED : INK); cap(gp, sc(v), y - 24, v + "%", { size: 24, anchor: "middle", fill: MUTED }); });
+      gp.attr("opacity", 1); fade(gp, an, 400);
+      cap(d, 0, 470, "Which is largest? On the dots it is immediate (A, 23%).", { size: 24, weight: 700 });
+      cap(d, 0, 506, "On the pie, B, C, D and E are hard to rank by angle.", { size: 24, fill: MUTED });
+      cap(d, 0, 552, "Shares are illustrative; angles are computed from them.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "State the question in a sentence, find its family, then choose from the charts in it.", "Position and length carry quantity best. Angle, area and volume are less precise.", "On one shared scale the ranking is read at a glance; as angles it is not."][k]);
+  }
+
+  /* ---------- 3. aleatoric, effect size, epistemic, validate first ---------- */
+  function renderUnc(el, k, anim) {
+    var svg = svgFor(el, W, H, "Two faces of uncertainty: spread in the data and doubt about the data", "Thirty simulated polls, a poll difference smaller than its margin, a proxy that tracks coverage instead of events, and a failed proxy check.");
+    var ey = base(svg, [{ id: "alea", s: 1 }, { id: "exceed", s: 2 }, { id: "epis", s: 3 }, { id: "validate", s: 4 }], k, anim, ["Aleatoric", "chance variation in the data"], ["Epistemic", "the proxy may not measure the thing"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = A(anim, k, kk);
+    var n = 1104, marg = 1.96 * Math.sqrt(0.25 / n) * 100;
+    if (kk === 1) {
+      lab(d, 0, 30, "30 POLLS, SAME POPULATION");
+      var r = rng(5), sd = Math.sqrt(0.45 * 0.55 / n) * 100, pts = d3.range(30).map(function () { return 45 + sd * nrm(r); });
+      var sc = d3.scaleLinear().domain([38, 52]).range([30, 730]);
+      d.append("rect").attr("x", sc(45 - marg)).attr("y", 60).attr("width", sc(45 + marg) - sc(45 - marg)).attr("height", 300).attr("fill", TINT);
+      ln(d, sc(45), 60, sc(45), 360, RED, 3, "8 6");
+      pts.forEach(function (v, i) { var y = 90 + (i % 10) * 26; var c = dot(d, sc(v), y, 9, INK); if (an) c.attr("opacity", 0).transition().delay(i * 70).duration(250).attr("opacity", 1); });
+      xax(d, sc, 380, [40, 45, 50], function (t) { return t + "%"; });
+      cap(d, 0, 470, "Margin = 1.96 × " + (sd).toFixed(2) + " = ±" + marg.toFixed(2) + " points (shaded).", { size: 26, weight: 700 });
+      cap(d, 0, 510, "Same population, different samples, different answers.", { size: 24, fill: MUTED });
+      cap(d, 0, 546, "n chosen so the margin matches the chapter's ±2.95.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "NO 45.3%, YES 44.5%, ±" + marg.toFixed(2));
+      var sy = d3.scaleLinear().domain([0, 60]).range([380, 60]);
+      yax(d, sy, 70, [0, 20, 40, 60], function (t) { return t + "%"; });
+      ln(d, 70, 380, 700, 380, INK, 2);
+      [["no", 45.3, 170], ["yes", 44.5, 460]].forEach(function (v, i) {
+        var g = d.append("g"); vbar(g, v[2] - 60, 380, 120, 380 - sy(v[1]), i ? DIM : INK, an, 0);
+        var lo = v[1] - marg, hi = v[1] + marg; ln(g, v[2], sy(hi), v[2], sy(lo), RED, 5); ln(g, v[2] - 20, sy(hi), v[2] + 20, sy(hi), RED, 5); ln(g, v[2] - 20, sy(lo), v[2] + 20, sy(lo), RED, 5);
+        cap(g, v[2], 414, v[0], { size: 24, anchor: "middle", weight: 700 });
+        fade(g, an, 400);
+      });
+      cap(d, 0, 470, "Difference 0.8 points. Margin ±" + marg.toFixed(2) + ". The whiskers swallow the gap.", { size: 26, weight: 700 });
+      cap(d, 0, 510, "Honest reading: a tie. Show it as text, or draw the intervals.", { size: 24, fill: MUTED });
+      cap(d, 0, 546, "Poll values are the chapter's; its El País source is unverified.", { size: 24, fill: MUTED });
+    } else {
+      var r2 = rng(2), mult = [1, 1, 1.1, 1, 1.2, 2.5, 4, 5.5, 5, 4.5], ev = d3.range(10).map(function () { return 50 + 6 * (r2() - 0.5) * 2; });
+      var st = ev.map(function (e, i) { return 50 * mult[i] * (0.9 + 0.2 * r2()); });
+      var ie = ev.map(function (v) { return v / ev[0] * 100; }), is_ = st.map(function (v) { return v / st[0] * 100; });
+      if (kk === 3) {
+        lab(d, 0, 30, "INDEX, YEAR 1 = 100 (ILLUSTRATIVE)");
+        var sx = d3.scaleLinear().domain([1, 10]).range([70, 640]), sy2 = d3.scaleLinear().domain([0, 700]).range([400, 80]);
+        yax(d, sy2, 60, [0, 300, 600]); xax(d, sx, 400, [1, 5, 10], function (t) { return "yr " + t; });
+        var L = d3.line().x(function (v, i) { return sx(i + 1); }).y(function (v) { return sy2(v); });
+        var p1 = d.append("path").attr("d", L(is_)).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 5), p2 = d.append("path").attr("d", L(ie)).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 5);
+        if (an) { drawIn(p1, 0, 900); drawIn(p2, 300, 900); }
+        cap(d, 660, sy2(is_[9]) + 8, "news", { size: 24, fill: RED, weight: 700 }); cap(d, 660, sy2(ie[9]) + 8, "events", { size: 24, weight: 700 });
+        cap(d, 0, 470, "The proxy (news stories) climbs; the thing it names does not.", { size: 26, weight: 700 });
+        cap(d, 0, 510, "The chart would carry the full authority of a chart of events.", { size: 24, fill: MUTED });
+      } else {
+        var rr = d3.sum(ie.map(function (v, i) { return (v - d3.mean(ie)) * (is_[i] - d3.mean(is_)); })) / Math.sqrt(d3.sum(ie.map(function (v) { return Math.pow(v - d3.mean(ie), 2); })) * d3.sum(is_.map(function (v) { return Math.pow(v - d3.mean(is_), 2); })));
+        lab(d, 0, 30, "NEWS INDEX (UP) AGAINST EVENTS INDEX");
+        var sx2 = d3.scaleLinear().domain([60, 160]).range([100, 700]), sy3 = d3.scaleLinear().domain([0, 700]).range([400, 80]);
+        yax(d, sy3, 90, [0, 300, 600]); xax(d, sx2, 400, [60, 110, 160]);
+        ie.forEach(function (v, i) { var c = dot(d, sx2(v), sy3(is_[i]), 12, INK); if (an) c.attr("opacity", 0).transition().delay(i * 90).duration(250).attr("opacity", 1); });
+        cap(d, 0, 500, "Correlation r = " + rr.toFixed(2) + (Math.abs(rr) < 0.5 ? ": the proxy fails the check." : ": passes."), { size: 26, weight: 700, fill: RED });
+        cap(d, 0, 540, "Do not draw the map until it passes; name the proxy in the title.", { size: 24, fill: MUTED });
+      }
+    }
+    note(svg, ey, ["", "Aleatoric: chance variation. Many samples give many answers; the spread is real and shown.", "When the margin exceeds the difference, the story is noise.", "Epistemic: the data may not be what the title says.", "Validate first. Check that the proxy tracks the thing before charting it."][k]);
+  }
+
+  /* ---------- 4. error bars, selective, bands, cone ---------- */
+  function renderBars(el, k, anim) {
+    var svg = svgFor(el, W, H, "Error bars, selective intervals, bands and the cone", "Three estimates with 95% intervals, the same estimates with intervals shown only where flattering, a trend with a widening band, and a forecast cone with simulated storm positions.");
+    var ey = base(svg, [{ id: "errbars", s: 1 }, { id: "selective", s: 2 }, { id: "bands", s: 3 }, { id: "cone", s: 4 }], k, anim, ["Error bar", "label what the bar is"], ["Cone", "not the storm's size"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = A(anim, k, kk);
+    var G = [["A", 72], ["B", 76], ["C", 80]], sdv = 10, nn = 25, ci = 1.96 * sdv / Math.sqrt(nn);
+    function ov(a, b) { return Math.abs(a - b) < 2 * ci; }
+    function panel(g, x0, x1, showIdx, title) {
+      var sc = d3.scaleLinear().domain([60, 90]).range([x0, x1]);
+      lab(g, x0 - 40, 30, title);
+      xax(g, sc, 330, [60, 75, 90]);
+      G.forEach(function (v, i) {
+        var y = 90 + i * 80; cap(g, x0 - 40, y + 8, v[0], { size: 26, weight: 700 }); ln(g, x0, y, x1, y, "#E3E3E3", 1.5);
+        if (showIdx.indexOf(i) >= 0) { ln(g, sc(v[1] - ci), y, sc(v[1] + ci), y, RED, 5); ln(g, sc(v[1] - ci), y - 12, sc(v[1] - ci), y + 12, RED, 5); ln(g, sc(v[1] + ci), y - 12, sc(v[1] + ci), y + 12, RED, 5); }
+        dot(g, sc(v[1]), y, 12, INK);
+      });
+    }
+    if (kk === 1) {
+      panel(d, 80, 700, [0, 1, 2], "ESTIMATE ± 95% CI (±" + ci.toFixed(2) + ")");
+      cap(d, 0, 400, "Error bar = 95% CI", { size: 28, weight: 700, fill: RED });
+      cap(d, 0, 450, "A and B overlap: " + (ov(72, 76) ? "yes" : "no") + ". B and C overlap: " + (ov(76, 80) ? "yes" : "no") + ". A and C overlap: " + (ov(72, 80) ? "yes" : "no") + ".", { size: 24, weight: 700 });
+      cap(d, 0, 490, "The bar is not a uniform spread of where the truth lies.", { size: 24, fill: MUTED });
+      fade(d, an, 0);
+    } else if (kk === 2) {
+      var l = d.append("g"), r = d.append("g");
+      panel(l, 70, 340, [0, 1, 2], "ALL INTERVALS"); panel(r, 440, 710, [0, 2], "ONLY WHERE IT HELPS");
+      fade(r, an, 200);
+      cap(d, 0, 400, "Right: B has no interval, so B looks clearly above A.", { size: 26, weight: 700 });
+      cap(d, 0, 440, "Left: A and B overlap, so the claim is unsupported.", { size: 24, fill: MUTED });
+      cap(d, 0, 480, "The intervals exist. Leaving one off is the rhetorical move.", { size: 24, fill: MUTED });
+    } else if (kk === 3) {
+      lab(d, 0, 30, "TREND WITH 95% BAND (ILLUSTRATIVE)");
+      var xs = d3.range(1, 21), mx = d3.mean(xs), sxx = d3.sum(xs.map(function (x) { return (x - mx) * (x - mx); }));
+      var hw = function (x) { return 1.96 * 3 * Math.sqrt(1 / 20 + (x - mx) * (x - mx) / sxx); };
+      var sx = d3.scaleLinear().domain([1, 20]).range([90, 700]), sy = d3.scaleLinear().domain([40, 100]).range([400, 60]);
+      yax(d, sy, 80, [40, 70, 100]); xax(d, sx, 400, [1, 10, 20], function (t) { return "wk " + t; });
+      var mid = function (x) { return 60 + 1.5 * x; };
+      var ar = d3.area().x(function (x) { return sx(x); }).y0(function (x) { return sy(mid(x) - hw(x)); }).y1(function (x) { return sy(mid(x) + hw(x)); });
+      d.append("path").attr("d", ar(xs)).attr("fill", TINT);
+      var p = d.append("path").attr("d", d3.line().x(function (x) { return sx(x); }).y(function (x) { return sy(mid(x)); })(xs)).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 5);
+      if (an) drawIn(p, 0, 900);
+      [1, 10, 20].forEach(function (x) { cap(d, sx(x) + (x === 1 ? 14 : 0), sy(mid(x) + hw(x)) - 14, "±" + hw(x).toFixed(1), { size: 24, anchor: x === 1 ? "start" : "middle", weight: 700 }); });
+      cap(d, 0, 470, "Width is carried by pale shading, so readers misjudge it.", { size: 26, weight: 700 });
+      cap(d, 0, 510, "Label the width at the points where it matters.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "CONE FROM 400 SIMULATED ERRORS");
+      var rg = rng(9), s5 = function (h) { return 20 + 12 * h; };
+      var errs = d3.range(400).map(function () { return s5(5) * nrm(rg); });
+      var q66 = d3.quantile(errs.map(Math.abs).sort(d3.ascending), 0.66);
+      var rad = function (h) { return q66 * (s5(h) / s5(5)); };
+      var x0 = 60, x1 = 700, cy = 250, px = function (h) { return x0 + (x1 - x0) * h / 5; };
+      var cone = d3.range(0, 5.01, 0.25), up = cone.map(function (h) { return [px(h), cy - rad(h)]; }), dn = cone.map(function (h) { return [px(h), cy + rad(h)]; }).reverse();
+      d.append("path").attr("d", d3.line()(up.concat(dn)) + "Z").attr("fill", TINT).attr("stroke", RED).attr("stroke-width", 3);
+      ln(d, x0, cy, x1, cy, INK, 3, "8 6");
+      var inside = errs.filter(function (e) { return Math.abs(e) <= q66; }).length;
+      var srt = errs.slice().sort(d3.ascending); d3.range(40).map(function (i) { return srt[Math.floor((i + 0.5) * 10)]; }).forEach(function (e, i) { var ins = Math.abs(e) <= q66, c = dot(d, x1 + 20 - (i % 2) * 0, cy + e, 8, ins ? INK : "#FFFFFF", ins ? null : RED); if (an) c.attr("opacity", 0).transition().delay(i * 40).duration(200).attr("opacity", 1); });
+      xax(d, d3.scaleLinear().domain([0, 5]).range([x0, x1]), 450, [0, 5], function (t) { return "day " + t; });
+      cap(d, 0, 528, inside + " of 400 simulated errors fall inside the cone: " + Math.round(inside / 4) + "%.", { size: 26, weight: 700 });
+      cap(d, 0, 562, "About a third land outside. It is not the storm's size.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "An error bar is a claim about spread. Say what it is every time.", "", "", ""][k]);
+  }
+
+  /* ---------- 5. quantile dotplot, natural frequencies, equal weight, false precision ---------- */
+  function renderDots(el, k, anim) {
+    var svg = svgFor(el, W, H, "Make probability countable and make uncertainty as big as the estimate", "Twenty quantile dots with four beyond a line, a grid of 1,000 people with 9 true and 99 false positives, a big number beside a thin bar versus an equal-weight range, and digits against a margin.");
+    var ey = base(svg, [{ id: "qdot", s: 1 }, { id: "natfreq", s: 2 }, { id: "eqweight", s: 3 }, { id: "falseprec", s: 4 }], k, anim, ["Percentage", "a number to convert"], ["Natural frequency", "cases you can count"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = A(anim, k, kk);
+    if (kk === 1) {
+      lab(d, 0, 30, "20 QUANTILES, DELAY IN MINUTES");
+      var q = d3.range(20).map(function (i) { return 30 * Math.exp(0.5 * nq((i + 0.5) / 20)); }), thr = 45;
+      var sc = d3.scaleLinear().domain([0, 90]).range([40, 720]), stack = {};
+      xax(d, sc, 400, [0, 30, 60, 90], function (t) { return t; });
+      ln(d, sc(thr), 70, sc(thr), 400, RED, 3, "8 6"); cap(d, sc(thr) + 10, 94, thr + " min", { size: 24, fill: RED, weight: 700 });
+      var over = 0;
+      q.forEach(function (v, i) { var b = Math.round(v / 4); stack[b] = (stack[b] || 0) + 1; var y = 380 - stack[b] * 34, hit = v > thr; if (hit) over++; var c = dot(d, sc(b * 4), y, 15, hit ? RED : INK); if (an) c.attr("opacity", 0).transition().delay(i * 90).duration(250).attr("opacity", 1); });
+      cap(d, 0, 470, over + " of 20 dots lie beyond " + thr + " min: a " + Math.round(over / 20 * 100) + "% chance, as a count.", { size: 26, weight: 700 });
+      cap(d, 0, 510, "Position carries the number; counting carries the meaning.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "1,000 PEOPLE (STATED INPUTS)");
+      var sick = 10, tp = 9, fp = 99, N = 1000, cols = 40, cs = 14;
+      d3.range(N).forEach(function (i) {
+        var cl = i < tp ? "tp" : i < sick ? "fn" : i < sick + fp ? "fp" : "ok", x = 20 + (i % cols) * cs, y = 56 + Math.floor(i / cols) * cs;
+        var r_ = d.append("rect").attr("x", x).attr("y", y).attr("width", cs - 3).attr("height", cs - 3).attr("fill", cl === "tp" ? RED : cl === "fp" ? INK : cl === "fn" ? "#FFFFFF" : "#E3E3E3").attr("stroke", cl === "fn" ? RED : "none").attr("stroke-width", 2);
+        if (an && cl !== "ok") r_.attr("opacity", 0).transition().delay(300 + i * 4).duration(200).attr("opacity", 1);
+      });
+      cap(d, 0, 450, "10 have it; 9 of those test positive (red).", { size: 24 });
+      cap(d, 0, 486, "99 of the 990 others also test positive (black).", { size: 24 });
+      cap(d, 0, 530, "Real among positives: " + tp + " of " + (tp + fp) + " = " + (tp / (tp + fp) * 100).toFixed(1) + "%.", { size: 28, weight: 700, fill: RED });
+    } else if (kk === 3) {
+      lab(d, 0, 30, "ONE ESTIMATE: 94.3%, CI 91 TO 97");
+      var gl = d.append("g");
+      box(gl, 0, 50, 360, 360, { stroke: DIM });
+      txt(gl, 180, 200, "94.3%", { size: 84, weight: 700, anchor: "middle" });
+      var sc2 = d3.scaleLinear().domain([88, 100]).range([30, 330]); ln(gl, sc2(91), 280, sc2(97), 280, MUTED, 3); dot(gl, sc2(94.3), 280, 5, MUTED);
+      cap(gl, 180, 330, "CI as a thin line", { size: 24, anchor: "middle", fill: MUTED });
+      var gr = d.append("g").attr("transform", "translate(390,0)");
+      box(gr, 0, 50, 350, 360, { stroke: RED, sw: 2 });
+      var sc3 = d3.scaleLinear().domain([88, 100]).range([30, 320]);
+      gr.append("rect").attr("x", sc3(91)).attr("y", 150).attr("width", sc3(97) - sc3(91)).attr("height", 90).attr("fill", TINT).attr("stroke", RED).attr("stroke-width", 2);
+      gr.append("rect").attr("x", sc3(94.3) - 5).attr("y", 150).attr("width", 10).attr("height", 90).attr("fill", RED);
+      txt(gr, 175, 300, "91 to 97%", { size: 40, weight: 700, anchor: "middle" }); cap(gr, 175, 340, "(95% CI)", { size: 24, anchor: "middle", fill: MUTED });
+      fade(gr, an, 300);
+      cap(d, 0, 470, "Weight of number : range, by height: " + (84 / 3).toFixed(0) + " : 1 (left), 90 : 90 = 1 : 1 (right).", { size: 24, weight: 700 });
+      cap(d, 0, 510, "A thin bar on a bold number says: the answer, with a quibble.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "EACH DECIMAL PLACE AGAINST ±0.05");
+      txt(d, 0, 100, "0.847291", { size: 56, weight: 700, fill: MUTED }); ln(d, 0, 78, 250, 78, RED, 4);
+      cap(d, 290, 100, "→", { size: 56, weight: 700 }); txt(d, 360, 100, "0.85", { size: 56, weight: 700, fill: RED });
+      var marg2 = 0.05, PL = [["tenths", 0.1], ["hundredths", 0.01], ["thousandths", 0.001], ["ten-thousandths", 0.0001]];
+      PL.forEach(function (p, i) {
+        var y = 190 + i * 80, g = d.append("g"), rat = p[1] / marg2;
+        cap(g, 0, y + 8, p[0], { size: 24 });
+        bar(g, 240, y - 16, Math.max(rat * 140, 3), 32, i === 1 ? RED : INK, an, i * 200);
+        cap(g, 240 + Math.max(rat * 140, 3) + 12, y + 8, (rat * 100 >= 10 ? Math.round(rat * 100) : (rat * 100).toFixed(1)) + "% of the margin", { size: 24, fill: i === 1 ? RED : MUTED, weight: i === 1 ? 700 : 400 });
+      });
+      cap(d, 0, 540, "The margin is 0.05. Digits finer than the hundredths imply certainty.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "Twenty dots beat \"20%\": the reader counts four.", "Counts out of a number of cases are reasoned with better than percentages.", "A small bar on a big number demotes the uncertainty. Draw both at one weight.", "Round to what the uncertainty supports: 0.85, not 0.847291."][k]);
+  }
+
+  /* ---------- 6. axes ---------- */
+  function renderAxes(el, k, anim) {
+    var svg = svgFor(el, W, H, "Axes: where they start, whether panels match, how they scale, which way they run", "Two bars on a truncated and a zero axis, three panels with different axes, linear versus log, and a normal versus inverted axis.");
+    var ey = base(svg, [{ id: "trunc", s: 1 }, { id: "inconsist", s: 2 }, { id: "scale", s: 3 }, { id: "invert", s: 4 }], k, anim, ["Truncated axis", "starts above zero"], ["Axis inversion", "runs against convention"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = A(anim, k, kk);
+    if (kk === 1) {
+      var V = [92.1, 94.3], H1 = 300, yb = 360;
+      [[0, 91, 96, "AXIS 91 TO 96"], [1, 0, 100, "AXIS 0 TO 100"]].forEach(function (p) {
+        var x0 = p[0] * 390, g = d.append("g"), sc = d3.scaleLinear().domain([p[1], p[2]]).range([0, H1]);
+        lab(g, x0, 30, p[3]);
+        ln(g, x0 + 70, yb - H1, x0 + 70, yb, INK, 2); cap(g, x0 + 58, yb - H1 + 8, p[2], { size: 24, anchor: "end", fill: MUTED }); cap(g, x0 + 58, yb + 8, p[1], { size: 24, anchor: "end", fill: MUTED });
+        ln(g, x0 + 70, yb, x0 + 350, yb, INK, 2);
+        V.forEach(function (v, i) { vbar(g, x0 + 100 + i * 130, yb, 90, sc(v), i ? RED : INK, an, i * 250); cap(g, x0 + 145 + i * 130, yb + 36, i ? "B" : "A", { size: 24, anchor: "middle", weight: 700 }); cap(g, x0 + 145 + i * 130, yb - sc(v) - 10, v.toFixed(1), { size: 24, anchor: "middle", weight: 700 }); });
+      });
+      var vr = (94.3 - 91) / (92.1 - 91), dr = 94.3 / 92.1;
+      cap(d, 0, 450, "Bar ratio " + vr.toFixed(1) + " × on the left; data ratio " + dr.toFixed(2) + " × .", { size: 26, weight: 700 });
+      cap(d, 0, 490, "Same chart, same data. Whether the cut is honest depends on", { size: 24, fill: MUTED });
+      cap(d, 0, 522, "whether zero is meaningful here and what the cut implies.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      var rows = [["EACH PANEL ITS OWN AXIS", 60, 0, false], ["ONE SHARED 0 TO 100 AXIS", 290, 0, true]];
+      rows.forEach(function (rw, ri) {
+        var g = d.append("g"); lab(g, 0, rw[1] - 28, rw[0]);
+        GA.forEach(function (v, i) {
+          var x0 = i * 250, lo = rw[3] ? 0 : GR[i][0], hi = rw[3] ? 100 : GR[i][1], hh = 110, sc = d3.scaleLinear().domain([lo, hi]).range([0, hh]), yb = rw[1] + hh;
+          ln(g, x0 + 60, yb - hh, x0 + 60, yb, INK, 2); cap(g, x0 + 52, yb - hh + 8, hi, { size: 24, anchor: "end", fill: MUTED }); cap(g, x0 + 52, yb + 8, lo, { size: 24, anchor: "end", fill: MUTED });
+          ln(g, x0 + 60, yb, x0 + 230, yb, INK, 2);
+          vbar(g, x0 + 100, yb, 90, sc(v), i === 1 ? RED : INK, an, ri * 400);
+          cap(g, x0 + 145, yb + 36, "group " + "ABC"[i], { size: 24, anchor: "middle", fill: MUTED });
+        });
+        fade(g, an && ri === 1, 500);
+      });
+      var ap = GA.map(function (v, i) { return Math.round((v - GR[i][0]) / (GR[i][1] - GR[i][0]) * 100); });
+      cap(d, 0, 486, "Values 89, 90, 78. Own-axis bar heights: " + ap.join("%, ") + "%.", { size: 24, weight: 700 });
+      cap(d, 0, 524, "Group B is the highest but looks the lowest.", { size: 24, fill: RED, weight: 700 });
+      cap(d, 0, 560, "Fix: one range for every panel being compared.", { size: 24, fill: MUTED });
+    } else if (kk === 3) {
+      var ts = d3.range(0, 25), av = ts.map(function (t) { return Math.max(0.001, 78 * (1 - Math.exp(-t / 4))); });
+      [[0, "LINEAR"], [1, "LOG"]].forEach(function (p) {
+        var x0 = p[0] * 390, g = d.append("g"), sx = d3.scaleLinear().domain([0, 24]).range([x0 + 70, x0 + 340]);
+        var sy = p[0] ? d3.scaleLog().domain([0.001, 100]).range([380, 70]) : d3.scaleLinear().domain([0, 100]).range([380, 70]);
+        lab(g, x0, 30, p[1] + " Y AXIS");
+        yax(g, sy, x0 + 60, p[0] ? [0.001, 1, 100] : [0, 50, 100], function (t) { return t; });
+        xax(g, sx, 380, [0, 12, 24], function (t) { return "wk " + t; });
+        var pth = g.append("path").attr("d", d3.line().x(function (t) { return sx(t); }).y(function (t, i) { return sy(av[i]); })(ts)).attr("fill", "none").attr("stroke", p[0] ? RED : INK).attr("stroke-width", 5);
+        if (an) drawIn(pth, p[0] * 300, 900);
+      });
+      cap(d, 0, 470, "Week 0 to 1: +" + (av[1] - av[0]).toFixed(1) + " points, or × " + d3.format(",")(Math.round(av[1] / av[0])) + ".", { size: 26, weight: 700 });
+      cap(d, 0, 510, "Linear shows the size of gains; log shows ratios, and gives", { size: 24, fill: MUTED });
+      cap(d, 0, 542, "the tiny early values room. Pick by what the data is.", { size: 24, fill: MUTED });
+    } else {
+      var Y = [[2005, 521], [2006, 740], [2007, 825]];
+      [[0, "ZERO AT THE BOTTOM", false], [1, "ZERO AT THE TOP", true]].forEach(function (p) {
+        var x0 = p[0] * 390, g = d.append("g"), sx = d3.scaleLinear().domain([2005, 2007]).range([x0 + 90, x0 + 320]);
+        var sy = d3.scaleLinear().domain([0, 900]).range(p[2] ? [70, 380] : [380, 70]);
+        lab(g, x0, 30, p[1]); yax(g, sy, x0 + 70, [0, 450, 900]); xax(g, sx, 400, [2005, 2007], function (t) { return t; });
+        var pth = g.append("path").attr("d", d3.line().x(function (v) { return sx(v[0]); }).y(function (v) { return sy(v[1]); })(Y)).attr("fill", "none").attr("stroke", p[0] ? RED : INK).attr("stroke-width", 5);
+        if (an) drawIn(pth, p[0] * 300, 800);
+        Y.forEach(function (v) { dot(g, sx(v[0]), sy(v[1]), 8, p[0] ? RED : INK); });
+      });
+      cap(d, 0, 480, "Firearm murders, Florida: 521 (2005), 740, 825 (2007).", { size: 24, weight: 700 });
+      cap(d, 0, 520, "Right panel: a 58% rise draws as a fall. Nothing in the data changed.", { size: 24, fill: RED, weight: 700 });
+      cap(d, 0, 556, "Numbers are the chapter's; the 2005-2007 points only.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "A cut axis amplifies a real difference.", "Panels look comparable only if their ranges match.", "Linear and log axes give the same data two stories.", "Truncation amplifies; inversion reverses. State which way is better."][k]);
+  }
+
+  /* ---------- 7. aggregation, window, baseline ---------- */
+  function renderHide(el, k, anim) {
+    var svg = svgFor(el, W, H, "What a summary, a window or a missing comparison can hide", "A latency histogram with a median and a slow tail, a monthly accuracy line with two windows, and a model bar with and without a baseline.");
+    var ey = base(svg, [{ id: "aggr", s: 1 }, { id: "cherry", s: 2 }, { id: "baseline", s: 3 }], k, anim, ["Cherry-picked window", "start low, end high"], ["Missing baseline", "no comparison to judge by"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = A(anim, k, kk);
+    if (kk === 1) {
+      lab(d, 0, 30, "1,000 SIMULATED LATENCIES");
+      var sc = d3.scaleLinear().domain([0, 8.5]).range([40, 720]), bins = d3.bin().domain([0, 8.5]).thresholds(d3.range(0.25, 8.5, 0.25))(LAT.v), mx = d3.max(bins, function (b) { return b.length; }), sy = d3.scaleLinear().domain([0, mx]).range([0, 230]);
+      bins.forEach(function (b, i) { if (b.length) vbar(d, sc(b.x0) + 1, 300, sc(b.x1) - sc(b.x0) - 2, sy(b.length), INK, an, i * 40); });
+      xax(d, sc, 300, [0, 2, 4, 6, 8], function (t) { return t + " s"; });
+      ln(d, sc(LAT.med), 60, sc(LAT.med), 300, RED, 3, "8 6"); cap(d, sc(1.4), 80, "median " + LAT.med.toFixed(2) + " s", { size: 24, fill: RED, weight: 700 });
+      var st = d.append("g"); lab(st, 0, 372, "SLOWEST 3%");
+      LAT.tail.forEach(function (v, i) { dot(st, sc(v), 410 + (i % 3) * 20, 6, RED); });
+      fade(st, an, 600);
+      cap(d, 0, 500, "Median " + LAT.med.toFixed(2) + " s hides " + LAT.tail.length + " requests (" + (LAT.tail.length / 10) + "%) up to " + LAT.max.toFixed(1) + " s.", { size: 24, weight: 700 });
+      cap(d, 0, 540, "If the tail holds the catastrophic cases, the median conceals them.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "MONTHLY ACCURACY, % (ILLUSTRATIVE)");
+      var sx = d3.scaleLinear().domain([0, 9]).range([80, 700]), sy2 = d3.scaleLinear().domain([75, 95]).range([380, 70]);
+      yax(d, sy2, 70, [75, 85, 95]);
+      var MN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
+      [0, 3, 6, 9].forEach(function (i) { ln(d, sx(i), 380, sx(i), 388, INK, 2); cap(d, sx(i), 418, MN[i], { size: 24, anchor: "middle", fill: MUTED }); });
+      ln(d, 70, 380, 700, 380, INK, 2);
+      d.append("rect").attr("x", sx(3)).attr("y", 70).attr("width", sx(9) - sx(3)).attr("height", 310).attr("fill", TINT);
+      var p = d.append("path").attr("d", d3.line().x(function (v, i) { return sx(i); }).y(function (v) { return sy2(v); })(MON)).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 5);
+      if (an) drawIn(p, 0, 900);
+      MON.forEach(function (v, i) { dot(d, sx(i), sy2(v), 7, i === 2 ? RED : INK); });
+      cap(d, sx(2) - 4, sy2(78) + 38, "drop", { size: 24, fill: RED, weight: 700, anchor: "middle" });
+      cap(d, 0, 470, "Apr to Oct (shaded): " + sgn(slope(MON, 3, 9), 1) + " points a month.", { size: 26, weight: 700, fill: RED });
+      cap(d, 0, 510, "Jan to Oct: " + sgn(slope(MON, 0, 9), 1) + " points a month.", { size: 26, weight: 700 });
+      cap(d, 0, 550, "The window decides the story; the changelog should say why.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "94% WITH AND WITHOUT A BASELINE");
+      var maj = 930 / 1000 * 100;
+      var gl = d.append("g"); vbar(gl, 80, 380, 120, 300 * 0.94, INK, an, 0); cap(gl, 140, 380 - 300 * 0.94 - 10, "94%", { size: 28, weight: 700, anchor: "middle" }); cap(gl, 140, 416, "model", { size: 24, anchor: "middle", weight: 700 });
+      ln(d, 60, 380, 340, 380, INK, 2);
+      var gr = d.append("g"); gr.attr("transform", "translate(380,0)");
+      ln(gr, 20, 380, 340, 380, INK, 2);
+      vbar(gr, 40, 380, 100, 300 * 0.94, INK, an, 200); vbar(gr, 190, 380, 100, 300 * maj / 100, DIM, an, 400);
+      ln(gr, 20, 380 - 3 * maj, 340, 380 - 3 * maj, RED, 3, "8 6");
+      cap(gr, 90, 380 - 300 * 0.94 - 10, "94%", { size: 28, weight: 700, anchor: "middle" }); cap(gr, 240, 380 - 3 * maj - 14, maj.toFixed(0) + "%", { size: 28, weight: 700, anchor: "middle", fill: RED });
+      cap(gr, 90, 416, "model", { size: 24, anchor: "middle", weight: 700 }); cap(gr, 240, 416, "majority", { size: 24, anchor: "middle", weight: 700 });
+      fade(gr, an, 300);
+      cap(d, 0, 470, "930 of 1,000 cases are negative, so \"always negative\" scores " + maj.toFixed(0) + "%.", { size: 24, weight: 700 });
+      cap(d, 0, 510, "Lift over the baseline: " + (94 - maj).toFixed(0) + " point. Without it, 94% looks like a finding.", { size: 24, fill: RED, weight: 700 });
+    }
+    note(svg, ey, ["", "A summary can be true and still hide the tail that matters.", "The same data over a different window tells a different story.", "Without the comparison, everything looks like a finding."][k]);
+  }
+
+  /* ---------- 8. color, 3D, labels ---------- */
+  function renderLook(el, k, anim) {
+    var svg = svgFor(el, W, H, "Look and label: salience, decoration and prejudging words", "Five subgroup bars with equal and unequal salience, two equal bars drawn in 3D, and the same chart under two titles.");
+    var ey = base(svg, [{ id: "colorasym", s: 1 }, { id: "junk", s: 2 }, { id: "labels", s: 3 }], k, anim, ["Chartjunk", "data-free decoration"], ["Labels that prejudge", "the title argues first"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = A(anim, k, kk);
+    if (kk === 1) {
+      var vals = [93, 91, 79, 76, 74];
+      [[0, "EQUAL SALIENCE"], [1, "UNEQUAL SALIENCE"]].forEach(function (p) {
+        var x0 = p[0] * 390, g = d.append("g"); lab(g, x0, 30, p[1]);
+        vals.forEach(function (v, i) {
+          var y = 60 + i * 66, poor = v < 80, col = p[0] && poor ? DIM : INK;
+          cap(g, x0, y + 34, "G" + (i + 1), { size: 24, fill: MUTED });
+          bar(g, x0 + 56, y + 8, (v / 100) * 250, 40, col, an, i * 120); cap(g, x0 + 56 + (v / 100) * 250 + 10, y + 38, v, { size: 24, weight: 700 });
+        });
+      });
+      cap(d, 0, 430, "Contrast with the page: dark bars " + contrast("#2A1A0E", "#FFFFFF").toFixed(1) + " : 1, pale bars " + contrast("#C4C4C4", "#FFFFFF").toFixed(1) + " : 1.", { size: 24, weight: 700 });
+      cap(d, 0, 470, "The data is unchanged. The three poor groups just recede.", { size: 24, fill: RED, weight: 700 });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "TWO EQUAL VALUES, FLAT AND 3D");
+      var sFar = 0.72;
+      var fl = d.append("g");
+      vbar(fl, 60, 350, 110, 180, INK, an, 0); vbar(fl, 230, 350, 110, 180, INK, an, 150);
+      ln(fl, 30, 350, 370, 350, INK, 2); cap(fl, 200, 392, "flat: same height", { size: 24, anchor: "middle", fill: MUTED });
+      var g3 = d.append("g").attr("transform", "translate(390,0)");
+      ln(g3, 30, 350, 370, 350, INK, 2);
+      function bar3(x, h, s, col) { var w = 110 * s, dx = 28 * s, dy = 18 * s; g3.append("rect").attr("x", x).attr("y", 350 - h).attr("width", w).attr("height", h).attr("fill", col); g3.append("path").attr("d", "M" + x + "," + (350 - h) + " l" + dx + "," + (-dy) + " h" + w + " l" + (-dx) + "," + dy + "Z").attr("fill", "#E3E3E3").attr("stroke", INK).attr("stroke-width", 1.5); g3.append("path").attr("d", "M" + (x + w) + "," + (350 - h) + " l" + dx + "," + (-dy) + " v" + h + " l" + (-dx) + "," + dy + "Z").attr("fill", GREY); }
+      bar3(60, 180, 1, INK); bar3(230, 180 * sFar, sFar, INK);
+      fade(g3, an, 300); cap(g3, 200, 392, "3D: far bar looks smaller", { size: 24, anchor: "middle", fill: MUTED });
+      cap(d, 0, 450, "Perspective scale " + sFar + ": the near bar draws " + (1 / sFar).toFixed(2) + " × taller.", { size: 24, weight: 700 });
+      cap(d, 0, 490, "Decoration that carries no data can still change the reading.", { size: 24, fill: RED, weight: 700 });
+      cap(d, 0, 530, "Exploded pie slices and busy backgrounds do the same.", { size: 24, fill: MUTED });
+    } else {
+      var LOADED = ["boost", "surge", "jump", "drop", "collapse", "improvement", "gain"];
+      var TT = ["Accuracy boost from new model", "Accuracy: model A vs model B"];
+      TT.forEach(function (t, i) {
+        var x0 = i * 390, g = d.append("g"), n = t.toLowerCase().split(/[^a-z]+/).filter(function (w) { return LOADED.indexOf(w) >= 0; }).length;
+        box(g, x0, 50, 360, 330, { stroke: i ? INK : RED, sw: 2 });
+        wrap(g, x0 + 16, 90, t, 22, { size: 26, lh: 32, weight: 700, fill: i ? INK : RED });
+        [92.1, 94.3].forEach(function (v, j) { vbar(g, x0 + 70 + j * 120, 360, 80, 190 * v / 100, j ? INK : DIM, an, j * 200); cap(g, x0 + 110 + j * 120, 360 - 190 * v / 100 - 8, v.toFixed(1), { size: 24, anchor: "middle", weight: 700 }); });
+        cap(g, x0 + 16, 420, "claim words in the title: " + n, { size: 24, weight: 700, fill: n ? RED : INK });
+      });
+      cap(d, 0, 480, "Same two bars on a zero axis. Only the title differs.", { size: 24, weight: 700 });
+      cap(d, 0, 520, "Name the variables; let the data make the argument.", { size: 24, fill: MUTED });
+      cap(d, 0, 556, "Word list is a small illustrative detector.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "Unequal salience steers the eye. The data has not changed; the attention has.", "Decoration is not neutral: it can change how large values look.", "A title that claims a result prejudges the reading."][k]);
+  }
+
+  /* ---------- 9. living deck, evidence-grade, non-author reader ---------- */
+  function renderLive(el, k, anim) {
+    var svg = svgFor(el, W, H, "Keep the analysis accountable: show versions, show comparisons, test on a stranger", "A strip of slides with the changelog second to last, a map of pumps with all comparisons shown, and five readers' guesses against the data.");
+    var ey = base(svg, [{ id: "living", s: 1 }, { id: "changelog", s: 1 }, { id: "evidence", s: 2 }, { id: "nonauth", s: 3 }], k, anim, ["Illustration", "shows what supports the claim"], ["Evidence-grade chart", "shows what could refute it"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = A(anim, k, kk);
+    if (kk === 1) {
+      var NS = 8, cl = NS - 2;
+      lab(d, 0, 30, "A DECK OF " + NS + " SLIDES");
+      d3.range(NS).forEach(function (i) {
+        var g = d.append("g"), hit = i === cl;
+        box(g, i * 94, 56, 82, 62, { stroke: hit ? RED : DIM, sw: hit ? 3 : 1.5, fill: hit ? TINT : "#FFFFFF" });
+        cap(g, i * 94 + 41, 96, i + 1, { size: 24, anchor: "middle", weight: 700, fill: hit ? RED : MUTED });
+        fade(g, an, i * 80);
+      });
+      cap(d, cl * 94 + 41, 150, "changelog", { size: 24, anchor: "middle", fill: RED, weight: 700 });
+      lab(d, 0, 214, "VERSION LOG (ILLUSTRATIVE ENTRIES)");
+      var LG = [["v1 · first results", "headline and subgroup panels"], ["v2 · subgroup gap added", "reason: the partner asked about them"], ["v3 · window widened", "reason: the March drop was outside it"]];
+      LG.forEach(function (l, i) {
+        var y = 244 + i * 100, g = d.append("g"); box(g, 0, y, 740, 88, { stroke: DIM });
+        cap(g, 16, y + 36, l[0], { size: 26, weight: 700 }); cap(g, 16, y + 72, l[1], { size: 24, fill: MUTED });
+        fade(g, an, 700 + i * 300);
+      });
+      cap(d, 0, 570, "Superseded slides stay in a \"previously\" section.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "SIMULATED: 6 PUMPS, 45 DEATHS");
+      var P = [[120, 120], [330, 100], [520, 160], [150, 300], [380, 320], [610, 330]], r = rng(33), cnt = [0, 0, 0, 0, 0, 0];
+      var home = 2;
+      P.forEach(function (p, i) { d.append("rect").attr("x", p[0] - 11).attr("y", p[1] - 11).attr("width", 22).attr("height", 22).attr("fill", i === home ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 3); cap(d, p[0] + 18, p[1] - 14, "P" + (i + 1), { size: 24, weight: 700 }); });
+      d3.range(45).forEach(function (j) {
+        var h = r() < 0.75 ? home : Math.floor(r() * 6), x = P[h][0] + 55 * nrm(r), y = P[h][1] + 55 * nrm(r); x = Math.max(20, Math.min(720, x)); y = Math.max(60, Math.min(380, y));
+        var nn = d3.range(6).sort(function (a, b) { return Math.hypot(x - P[a][0], y - P[a][1]) - Math.hypot(x - P[b][0], y - P[b][1]); })[0]; cnt[nn]++;
+        var c = dot(d, x, y, 6, INK); if (an) c.attr("opacity", 0).transition().delay(j * 25).duration(200).attr("opacity", 1);
+      });
+      cap(d, 0, 440, "Deaths nearest each pump: " + cnt.map(function (c, i) { return "P" + (i + 1) + " " + c; }).join(", ") + ".", { size: 24, weight: 700 });
+      cap(d, 0, 480, "Showing every pump lets the reader rule out the rest.", { size: 24, fill: RED, weight: 700 });
+      cap(d, 0, 520, "A map of only the suspect pump could not do that.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "FIVE READERS (ILLUSTRATIVE GUESSES)");
+      var vr = (94.3 - 91) / (92.1 - 91), dr = 94.3 / 92.1, r3 = rng(14);
+      var gl = d.append("g"); vbar(gl, 20, 340, 70, 300 * (92.1 - 91) / 5, DIM, an, 0); vbar(gl, 110, 340, 70, 300 * (94.3 - 91) / 5, INK, an, 150); ln(gl, 10, 340, 200, 340, INK, 2);
+      cap(gl, 55, 376, "A", { size: 24, anchor: "middle", weight: 700 }); cap(gl, 145, 376, "B", { size: 24, anchor: "middle", weight: 700 });
+      var sx = d3.scaleLinear().domain([0, 4]).range([330, 720]), bad = 0;
+      cap(d, 300, 64, "\"B is about … × A\"", { size: 24, fill: MUTED });
+      d3.range(5).forEach(function (i) {
+        var gs = vr * (0.8 + 0.4 * r3()), y = 110 + i * 60, g = d.append("g"); if (gs / dr > 1.2) bad++;
+        cap(g, 290, y + 8, "R" + (i + 1), { size: 24, weight: 700, anchor: "end" });
+        ln(g, sx(0), y, sx(4), y, "#E3E3E3", 1.5); dot(g, sx(gs), y, 12, RED); cap(g, sx(gs), y - 20, gs.toFixed(1) + "×", { size: 24, anchor: "middle", weight: 700 });
+        fade(g, an, 300 + i * 200);
+      });
+      ln(d, sx(dr), 90, sx(dr), 380, INK, 3, "8 6"); cap(d, sx(dr) + 8, 410, "data: " + dr.toFixed(2) + "×", { size: 24, weight: 700 });
+      cap(d, 0, 470, bad + " of 5 readings disagree with the data.", { size: 26, weight: 700, fill: RED });
+      cap(d, 0, 510, "Ask someone who did not build the chart what it says.", { size: 24, fill: MUTED });
+    }
+    note(svg, ey, ["", "A living deck exposes its versions. The changelog is the second-to-last slide.", "Evidence-grade charts include the comparisons that could show the claim is wrong.", "If a stranger's reading does not match the data, the chart is not done."][k]);
+  }
+
+  /* ---------- pairs ---------- */
+  function renderPairs(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four look-alike pairs from visualization", "Each step shows two ideas people mix up, side by side with a small animation.");
+    var d = svg.append("g");
+    var PAIRS = [
+      [["Aleatoric", "Variation that is really in the data"], ["Epistemic", "Doubt about whether the data is right"]],
+      [["Truncated axis", "Starts above zero and amplifies a gap"], ["Inverted axis", "Runs backwards and reverses a trend"]],
+      [["Bar = standard deviation", "Spread of the individual values"], ["Bar = 95% CI", "Uncertainty in the estimated mean"]],
+      [["Illustration", "Shows only what supports the claim"], ["Evidence-grade chart", "Also shows what could refute it"]]
+    ];
+    var L = d.append("g"), R = d.append("g").attr("transform", "translate(740,0)");
+    function head(g, i, j) { lab(g, 0, 24, "PAIR " + Math.max(1, k) + " · " + (j ? "RIGHT" : "LEFT"), { fill: MUTED }); txt(g, 0, 66, PAIRS[i][j][0], { size: 32, weight: 700, fill: j ? RED : INK }); wrap(g, 0, 480, PAIRS[i][j][1] + ".", 44, { size: 26, lh: 32, fill: BODY }); }
+    function draw(i, t) {
+      L.selectAll("*").remove(); R.selectAll("*").remove(); head(L, i, 0); head(R, i, 1);
+      var LG = L.append("g").attr("transform", "translate(30,0)"), RG = R.append("g").attr("transform", "translate(30,0)");
+      if (i === 0) {
+        var r = rng(3);
+        d3.range(12).forEach(function (j) { var y = 130 + j * 22, v = 300 + 45 * nrm(r), w = 300 + 8 * nrm(r) + 0; LG.append("circle").attr("cx", v).attr("cy", y).attr("r", 8).attr("fill", INK).attr("opacity", j / 12 < t ? 1 : 0.12); RG.append("circle").attr("cx", 400 + (w - 300)).attr("cy", y).attr("r", 8).attr("fill", RED).attr("opacity", j / 12 < t ? 1 : 0.12); });
+        ln(LG, 300, 110, 300, 410, GREY, 2, "6 6"); ln(RG, 300, 110, 300, 410, GREY, 2, "6 6"); cap(LG, 300, 440, "true value", { size: 24, anchor: "middle", fill: MUTED });
+        cap(RG, 300, 440, "true value; tight, off by 100", { size: 24, anchor: "middle", fill: MUTED });
+      } else if (i === 1) {
+        var h1 = 80 * t, h2 = 85 * t; vbar(LG, 80, 400, 100, (82 - 80) / 6 * 300 * t + 0.001, INK); vbar(LG, 230, 400, 100, (85 - 80) / 6 * 300 * t + 0.001, RED);
+        ln(LG, 60, 400, 360, 400, INK, 2); cap(LG, 220, 440, "axis starts at 80: 82 vs 85 looks 2.5×", { size: 24, anchor: "middle", fill: MUTED });
+        var y0 = 120, vals = [521, 740, 825], pts = vals.map(function (v, j) { return [60 + j * 120, y0 + v / 900 * 280]; });
+        RG.append("path").attr("d", d3.line()(pts.slice(0, Math.max(2, Math.ceil(t * 3))))).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 5);
+        ln(RG, 40, y0, 380, y0, INK, 2); cap(RG, 220, 440, "zero at top: a rise draws as a fall", { size: 24, anchor: "middle", fill: MUTED });
+      } else if (i === 2) {
+        var sd = 10, n = 25, ci = 1.96 * sd / Math.sqrt(n), sc = d3.scaleLinear().domain([-12, 12]).range([40, 360]);
+        [[LG, sd, INK], [RG, ci, RED]].forEach(function (p) { var g = p[0], w = p[1] * t; dot(g, sc(0), 250, 12, INK); ln(g, sc(-w), 250, sc(w), 250, p[2], 6); ln(g, sc(-w), 232, sc(-w), 268, p[2], 6); ln(g, sc(w), 232, sc(w), 268, p[2], 6); });
+        cap(LG, 200, 330, "±" + sd + " (sd 10)", { size: 28, anchor: "middle", weight: 700 }); cap(RG, 200, 330, "±" + ci.toFixed(2) + " (sd 10, n 25)", { size: 28, anchor: "middle", weight: 700, fill: RED });
+      } else {
+        var P = [[80, 150], [250, 130], [330, 270], [130, 300]], rr = rng(8);
+        P.forEach(function (p, j) { LG.append("rect").attr("x", p[0] - 9).attr("y", p[1] - 9).attr("width", 18).attr("height", 18).attr("fill", j === 1 ? RED : "#FFFFFF").attr("stroke", j === 1 ? RED : "none").attr("stroke-width", 2); RG.append("rect").attr("x", p[0] - 9).attr("y", p[1] - 9).attr("width", 18).attr("height", 18).attr("fill", j === 1 ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 3); });
+        d3.range(14).forEach(function (j) { var a = 250 + 28 * nrm(rr), b = 130 + 28 * nrm(rr), op = j / 14 < t ? 1 : 0.1; LG.append("circle").attr("cx", a).attr("cy", b).attr("r", 5).attr("fill", INK).attr("opacity", op); RG.append("circle").attr("cx", a).attr("cy", b).attr("r", 5).attr("fill", INK).attr("opacity", op); });
+        d3.range(5).forEach(function (j) { var a = 130 + 40 * nrm(rr), b = 300 + 30 * nrm(rr), c = RG.append("circle").attr("cx", a).attr("cy", b).attr("r", 5).attr("fill", INK).attr("opacity", t > 0.8 ? 1 : 0.1); });
+        cap(LG, 200, 400, "only the suspect pump drawn", { size: 24, anchor: "middle", fill: MUTED }); cap(RG, 200, 400, "all pumps drawn: others can be ruled out", { size: 24, anchor: "middle", fill: MUTED });
+      }
+    }
+    if (k === 0) { draw(0, 0.5); cap(svg.append("g"), 0, 612, "Click or press → to see four pairs, one at a time.", { size: 24, fill: MUTED }); return; }
+    draw(k - 1, 0.99); run(d, 3000, function (t) { draw(k - 1, t); }, anim);
+  }
+
+  /* ---------- say it exactly ---------- */
+  var SAY = [
+    { v: "make the chart clear", x: "Start bar axes at zero, or mark the cut and say why it is safe" },
+    { v: "show the uncertainty", x: "Draw ±2.95 on both poll shares at equal weight; they overlap" },
+    { v: "median latency is fine", x: "Report the median and the slowest 3%, up to 8 s" },
+    { v: "the groups look the same", x: "Put all three panels on one 0 to 100% axis" },
+    { v: "the trend looks great", x: "Show the full year, including the March drop" }
+  ];
+  function renderSay(el, k, anim) {
+    var svg = svgFor(el, W, H, "Say it exactly: five vague chart requests turned into precise ones", "Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction changes.");
+    var g = svg.append("g");
+    SAY.forEach(function (r, i) {
+      if (i + 1 > k) return; var y = 6 + i * 128, cur = i + 1 === k, e = g.append("g");
+      e.append("rect").attr("x", 0).attr("y", y).attr("width", 8).attr("height", 114).attr("fill", cur ? RED : FAMILIAR);
+      txt(e, 24, y + 30, "“" + r.v + "”", { size: 26, fill: RED, weight: 700 });
+      wrap(e, 24, y + 64, "→ " + r.x, 50, { size: 24, lh: 30, fill: INK, weight: 700 });
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    if (k === 0) { cap(g, 0, 60, "A vague request gets the default chart. An exact one gets what you meant.", { fill: INK }); cap(g, 0, 110, "Click or press → to turn five requests into instructions.", { fill: MUTED }); return; }
+    var p = g.append("g").attr("transform", "translate(700,60)"), pw = 640, ph = 300, nt = "";
+    lab(p, 0, -14, "WHAT THE INSTRUCTION CHANGES", { fill: RED });
+    p.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", pw).attr("height", ph).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+    if (k === 1) {
+      var vr = (94.3 - 91) / (92.1 - 91), dr = 94.3 / 92.1;
+      [["axis 91 to 96: B looks " + vr.toFixed(1) + " × A", vr, "#C4C4C4"], ["axis 0 to 100: B is " + dr.toFixed(2) + " × A", dr, RED]].forEach(function (r, i) { cap(p, 14, 60 + i * 110, r[0], { size: 24 }); bar(p, 14, 76 + i * 110, 180 * r[1], 40, r[2], anim, i * 400); });
+      nt = "a " + vr.toFixed(1) + " × look becomes " + dr.toFixed(2) + " ×";
+    } else if (k === 2) {
+      var m = 1.96 * Math.sqrt(0.25 / 1104) * 100, sc = d3.scaleLinear().domain([40, 50]).range([60, 590]);
+      [["no", 45.3, INK], ["yes", 44.5, RED]].forEach(function (v, i) { var y = 90 + i * 70; cap(p, 14, y - 22, v[0] + " " + v[1] + "%", { size: 24 }); ln(p, sc(v[1] - m), y, sc(v[1] + m), y, v[2], 6); dot(p, sc(v[1]), y, 10, v[2]); });
+      var lo = 44.5 + m, hi = 45.3 - m; p.append("rect").attr("x", sc(Math.max(45.3 - m, 44.5 - m))).attr("y", 60).attr("width", sc(Math.min(45.3 + m, 44.5 + m)) - sc(Math.max(45.3 - m, 44.5 - m))).attr("height", 120).attr("fill", TINT).attr("opacity", 0.7);
+      xax(p, sc, 230, [40, 45, 50], function (t) { return t + "%"; });
+      nt = "overlap " + (Math.min(45.3 + m, 44.5 + m) - Math.max(45.3 - m, 44.5 - m)).toFixed(1) + " points wide: a tie";
+    } else if (k === 3) {
+      var sc2 = d3.scaleLinear().domain([0, 8.5]).range([20, 610]), bins = d3.bin().domain([0, 8.5]).thresholds(d3.range(0.5, 8.5, 0.5))(LAT.v), mx = d3.max(bins, function (b) { return b.length; });
+      bins.forEach(function (b, i) { if (b.length) vbar(p, sc2(b.x0) + 1, 210, sc2(b.x1) - sc2(b.x0) - 2, b.length / mx * 150, INK, anim, i * 30); });
+      LAT.tail.forEach(function (v) { dot(p, sc2(v), 244, 5, RED); }); ln(p, sc2(LAT.med), 40, sc2(LAT.med), 210, RED, 3, "8 6");
+      cap(p, sc2(LAT.med) + 10, 60, "median " + LAT.med.toFixed(2) + " s", { size: 24, fill: RED, weight: 700 });
+      nt = "median " + LAT.med.toFixed(2) + " s; slowest " + LAT.tail.length / 10 + "% reach " + LAT.max.toFixed(1) + " s";
+    } else if (k === 4) {
+      var ap = GA.map(function (v, i) { return (v - GR[i][0]) / (GR[i][1] - GR[i][0]); });
+      [["own axes", ap, "#C4C4C4"], ["one axis", GA.map(function (v) { return v / 100; }), RED]].forEach(function (r, i) { cap(p, 14, 50 + i * 130, r[0], { size: 24, weight: 700 }); r[1].forEach(function (v, j) { bar(p, 150, 38 + i * 130 + j * 32, 460 * v, 24, r[2], anim, i * 300); }); });
+      nt = "bar heights " + ap.map(function (v) { return Math.round(v * 100); }).join(", ") + "% become 89, 90, 78%";
+    } else {
+      var s1 = slope(MON, 3, 9), s2 = slope(MON, 0, 9);
+      [["Apr to Oct", s1, "#C4C4C4"], ["Jan to Oct", s2, RED]].forEach(function (r, i) { cap(p, 14, 70 + i * 110, r[0] + ": " + sgn(r[1], 1) + " points a month", { size: 24 }); bar(p, 14, 86 + i * 110, 200 * r[1], 40, r[2], anim, i * 400); });
+      nt = "the trend shrinks from " + sgn(s1, 1) + " to " + sgn(s2, 1) + " a month";
+    }
+    cap(p, 0, ph + 40, nt, { size: 24, weight: 700 });
+  }
+
+  var CHECKS = [
+    "What one question does this chart answer, and is it in the right family?",
+    "Does the channel match the precision: position or length for numbers?",
+    "Do axes start honestly, run the usual way and match across panels?",
+    "Is the uncertainty on the chart, at weight, and is the bar labeled?",
+    "Does the data measure what the title says, with the source inside the chart?",
+    "Would a reader who did not build it reach a different conclusion?"
+  ];
+  function renderClosing(el, k, anim) {
+    var svg = svgFor(el, W, H, "Six checks before a chart ships", "A checklist of six items drawn one at a time.");
+    var g = svg.append("g");
+    CHECKS.forEach(function (c, i) {
+      var y = 20 + i * 100, on = i + 1 <= k, row = g.append("g");
+      row.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 64).attr("height", 64).attr("fill", on ? "#FFFFFF" : "none").attr("stroke", on ? INK : FAMILIAR).attr("stroke-width", 3);
+      wrap(row, 100, y + 42, c, 78, { size: 32, lh: 36, fill: on ? INK : MUTED });
+      if (on) { var ck = check(row, 32, y + 36, 20, RED); if (A(anim, k, i + 1)) drawIn(ck, 0, 450); }
+    });
+    cap(g, 0, 660, "Then say it exactly: not “make it clear”, but “zero baseline, one axis, label the bar”.", { size: 28, weight: 700 });
+  }
+
+  var BUILDS = {
+    map: { steps: 4, render: renderMap }, arg: { steps: 3, render: renderArg }, chan: { steps: 3, render: renderChan },
+    unc: { steps: 4, render: renderUnc }, bars: { steps: 4, render: renderBars }, dots: { steps: 4, render: renderDots },
+    axes: { steps: 4, render: renderAxes }, hide: { steps: 3, render: renderHide }, look: { steps: 3, render: renderLook },
+    live: { steps: 3, render: renderLive }, pairs: { steps: 4, render: renderPairs }, say: { steps: 5, render: renderSay },
+    closing: { steps: 6, render: renderClosing }
+  };
+
+  /* click on the stage advances one fragment (the original deck had keys and buttons only) */
+  stage.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest("#controls, #thumbs")) return;
+    nextSlide();
+  });
+  function buildEl(slide) { return slide ? slide.querySelector("[data-build]") : null; }
+  function buildOf(slide) { var el = buildEl(slide); return el ? BUILDS[el.getAttribute("data-build")] : null; }
+  function stopBuild(el) { if (hasD3 && el) d3.select(el).selectAll("*").interrupt(); }
+  function renderBuild(el, k, animate) {
+    var b = BUILDS[el.getAttribute("data-build")];
+    if (!b) return;
+    if (!hasD3) {
+      el.innerHTML = '<div class="chart-fallback">This graphic needs D3, which did not load. Check the network connection and reload.</div>';
+      return;
+    }
+    stopBuild(el);
+    b.render(el, Math.max(0, Math.min(b.steps, k)), animate && !reduceMQ.matches);
+  }
+
+  /* ---------------- navigation ---------------- */
+  function go(i, atEnd, animate) {
+    i = Math.max(0, Math.min(total - 1, i));
+    var prev = slides[current];
+    if (prev && i !== current) { stopBuild(buildEl(prev)); prev.classList.remove("is-active"); }
+    current = i;
+    var s = slides[i], b = buildOf(s);
+    step = b && atEnd ? b.steps : 0;
+    s.classList.add("is-active");
+    var el = buildEl(s);
+    if (el) renderBuild(el, step, animate);
+    updateUI(true);
+  }
+  function setStep(k, animate) {
+    step = k;
+    renderBuild(buildEl(slides[current]), step, animate);
+    updateUI(false);
+  }
+  function nextSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step < b.steps) setStep(step + 1, true);
+    else if (current < total - 1) go(current + 1, false, true);
+  }
+  function prevSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step > 0) setStep(step - 1, false);
+    else if (current > 0) go(current - 1, true, false);
+  }
+  function updateUI(newSlide) {
+    var s = slides[current], b = buildOf(s);
+    var title = s.getAttribute("data-title") || "";
+    counter.textContent = (current + 1) + " / " + total;
+    pips.innerHTML = "";
+    if (b) {
+      for (var j = 1; j <= b.steps; j++) {
+        var p = document.createElement("span");
+        p.className = "pip" + (j <= step ? " on" : "");
+        pips.appendChild(p);
+      }
+    }
+    btnPrev.disabled = current === 0 && step === 0;
+    btnNext.disabled = current === total - 1 && (!b || step === b.steps);
+    var stepTxt = b ? ", step " + step + " of " + b.steps : "";
+    live.textContent = newSlide ? "Slide " + (current + 1) + " of " + total + ": " + title + stepTxt : "Step " + step + " of " + (b ? b.steps : 0);
+    if (newSlide) {
+      var n = s.querySelector(".speaker-notes");
+      notesHead.textContent = "Speaker notes, slide " + (current + 1);
+      notesBody.innerHTML = n ? n.innerHTML : "<p>No notes for this slide.</p>";
+      try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) { /* ignore */ }
+    }
+  }
+  btnPrev.addEventListener("click", prevSlide);
+  btnNext.addEventListener("click", nextSlide);
+
+  /* ---------------- notes ---------------- */
+  function toggleNotes() {
+    var on = !document.body.classList.contains("notes-open");
+    document.body.classList.toggle("notes-open", on);
+    btnNotes.setAttribute("aria-pressed", on ? "true" : "false");
+    fit();
+  }
+  btnNotes.addEventListener("click", toggleNotes);
+
+  /* ---------------- fullscreen ---------------- */
+  var root = document.documentElement;
+  var fsEnabled = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  if (!fsEnabled) btnFs.hidden = true;
+  function toggleFullscreen() {
+    if (!fsEnabled) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      if (fsEl) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else {
+        var pr = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+        if (pr && pr.catch) pr.catch(function () {});
+      }
+    } catch (e) { /* refused */ }
+  }
+  btnFs.addEventListener("click", toggleFullscreen);
+  document.addEventListener("fullscreenchange", fit);
+  document.addEventListener("webkitfullscreenchange", fit);
+
+  /* ---------------- thumbnails (always final state) ---------------- */
+  function buildThumbs() {
+    thumbGrid.innerHTML = "";
+    slides.forEach(function (s, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "thumb" + (i === current ? " current" : "");
+      btn.setAttribute("aria-label", "Go to slide " + (i + 1) + ": " + (s.getAttribute("data-title") || ""));
+      if (i === current) btn.setAttribute("aria-current", "true");
+      var inner = document.createElement("div");
+      inner.className = "thumb-inner";
+      inner.setAttribute("aria-hidden", "true");
+      var clone = s.cloneNode(true);
+      clone.classList.remove("is-active");
+      Array.prototype.forEach.call(clone.querySelectorAll("[id]"), function (n) { n.removeAttribute("id"); });
+      var sn = clone.querySelector(".speaker-notes");
+      if (sn) sn.remove();
+      inner.appendChild(clone);
+      var num = document.createElement("span");
+      num.className = "thumb-num";
+      num.textContent = String(i + 1);
+      btn.appendChild(inner);
+      btn.appendChild(num);
+      btn.addEventListener("click", function () { closeThumbs(true); go(i, false, true); });
+      thumbGrid.appendChild(btn);
+      var cb = clone.querySelector("[data-build]");
+      if (cb) renderBuild(cb, 99, false);
+    });
+    scaleThumbs();
+  }
+  function scaleThumbs() {
+    Array.prototype.forEach.call(thumbGrid.querySelectorAll(".thumb"), function (b) {
+      b.querySelector(".thumb-inner").style.transform = "scale(" + (b.clientWidth / 1920) + ")";
+    });
+  }
+  function openThumbs() {
+    lastFocus = document.activeElement;
+    thumbs.classList.add("open");
+    buildThumbs();
+    var cur = thumbGrid.querySelector(".thumb.current");
+    if (cur) { cur.focus(); cur.scrollIntoView({ block: "nearest" }); }
+  }
+  function closeThumbs(navigating) {
+    thumbs.classList.remove("open");
+    thumbGrid.innerHTML = "";
+    if (!navigating && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  btnThumbs.addEventListener("click", openThumbs);
+  thumbs.querySelector(".close").addEventListener("click", function () { closeThumbs(false); });
+  window.addEventListener("resize", function () { if (thumbs.classList.contains("open")) scaleThumbs(); });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (thumbs.classList.contains("open")) {
+      if (e.key === "Escape" || e.key === "g" || e.key === "G") { e.preventDefault(); closeThumbs(false); }
+      return;
+    }
+    var onButton = e.target && e.target.closest && e.target.closest("button");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": e.preventDefault(); nextSlide(); break;
+      case " ": if (onButton) return; e.preventDefault(); nextSlide(); break;
+      case "ArrowLeft": case "PageUp": e.preventDefault(); prevSlide(); break;
+      case "Home": e.preventDefault(); go(0, false, true); break;
+      case "End": e.preventDefault(); go(total - 1, true, false); break;
+      case "f": case "F": e.preventDefault(); toggleFullscreen(); break;
+      case "n": case "N": e.preventDefault(); toggleNotes(); break;
+      case "g": case "G": e.preventDefault(); openThumbs(); break;
+    }
+  });
+
+  /* ---------------- touch swipe ---------------- */
+  var tx = null, ty = null;
+  stage.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) return;
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (tx === null || thumbs.classList.contains("open")) { tx = null; return; }
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) { if (dx < 0) nextSlide(); else prevSlide(); }
+    tx = null;
+  }, { passive: true });
+
+  /* ---------------- quiet controls ---------------- */
+  var idle = null;
+  document.addEventListener("mousemove", function () {
+    document.body.classList.add("show-controls");
+    clearTimeout(idle);
+    idle = setTimeout(function () { document.body.classList.remove("show-controls"); }, 2200);
+  });
+
+  /* ---------------- print: every slide in its final state ---------------- */
+  window.addEventListener("beforeprint", function () {
+    slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  });
+  window.addEventListener("afterprint", function () {
+    slides.forEach(function (s, i) { var el = buildEl(s); if (el && i !== current) renderBuild(el, 99, false); });
+    var el = buildEl(slides[current]);
+    if (el) renderBuild(el, step, false);
+  });
+
+  /* ---------------- start ---------------- */
+  slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  fit();
+  var hm = /^#(\d+)$/.exec(location.hash);
+  go(hm ? parseInt(hm[1], 10) - 1 : 0, false, true);
+  window.addEventListener("hashchange", function () {
+    var m = /^#(\d+)$/.exec(location.hash);
+    if (m && parseInt(m[1], 10) - 1 !== current) go(parseInt(m[1], 10) - 1, false, true);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

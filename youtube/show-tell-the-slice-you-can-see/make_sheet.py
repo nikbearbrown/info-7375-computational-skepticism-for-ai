@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+"""make_sheet.py — beat_sheet.json for show-tell-the-slice-you-can-see.
+
+SHOW-TELL (Bear 2026-09-26): every body beat is ONE drawn isometric illustration in the Claude palette,
+labels only, Liam's voice explains. A COURSE film, ordered by Bear on 2026-09-27 (SHOW-TELL-KANT.md) as a
+companion to the three "moves" films: "Show and tell video, Liam persona, on Immanuel Kant, and how we need
+some humility in our perspective ... we only see a slice of the universe. And we should be aware not only of
+what we can't see, but that there are things we can't see." It carries the INFO 7375 credit (spoken in BIDEA;
+on screen in the BDEFS title and the BHTF composer topic). Not a numbered lecture, so it never says "Lecture N".
+Spine: BIDEA hesitant writer -> BDEFS terms -> B00..B07 drawn -> BHTF composer -> BOUT.
+
+Source: Bear's words (SOURCE.md, verbatim), fact-checked against primaries fetched raw (sources/):
+Kant, Critique of Pure Reason (1781; 2nd ed. 1787), Meiklejohn's 1855 translation (Gutenberg #4280), with
+the A/B pagination in FACTCHECK.md; Kant, Prolegomena to Any Future Metaphysics (1783), Carus's 1902
+translation (Gutenberg #52821). Quotes are verbatim from those two public-domain translations only.
+Kant's claims are stated as Kant states them; Bear's "asymptotic" view is attributed to Bear, spoken
+("This is Bear's view, not Kant's") and labelled on screen ("Bear's view").
+Cast: the MIND (a kraft box with a lens) and the FRAME it looks through (an upright kraft frame that turns
+out to belong to the mind: 'space', 'time', 'cause'); the THING (a dark block, the thing in itself) and its
+APPEARANCE (a kraft copy in front of the frame); an APPLE and an ORBIT (gravity, inferred); a kraft
+TELESCOPE (a sharper slice, not a bigger one); a WALL vs an ASYMPTOTE (Kant's gap vs Bear's); a LANTERN in a
+large dim ROOM (the slice, and the walls you can't see); a dark MODEL block in the lit patch.
+Respellings (audio only; build_srt.py maps them back): "Kahnt" (Kant: plain spelling voices as "can't"),
+"Noomenna" (noumena: plain spelling voices "now-MEE-na", stress on the middle), "Proleg-omena" (Prolegomena),
+"INFO seventy-three seventy-five" (INFO 7375).
+"""
+import json
+from pathlib import Path
+HERE = Path(__file__).resolve().parent
+SLUG = HERE.name
+TITLE = "You Only See a Slice"
+COURSE = "INFO 7375 Computational Skepticism for AI · Nik Bear Brown · Northeastern University"
+
+
+def beat(bid, narration, cls, image, show):
+    return {"beat_id": bid, "act": "show-tell", "lane": "manim", "proof_gate": "SHOW",
+            "narration_text": narration, "estimated_duration_s": round(len(narration.split()) / 2.8, 1),
+            "voice": "am_onyx", "engine": "kokoro",
+            "shot": {"type": "GRAPHIC", "source": "own", "visual_intent": image, "show": show, "manim": {"class": cls},
+                     "motion_claim": image}}
+
+
+B = [
+ beat("B00", "The idea comes from Immanuel Kahnt, in the Critique of Pure Reason, from seventeen eighty-one, "
+      "with a second edition in seventeen eighty-seven. Kahnt split the world in two. "
+      "Phenomena: things as they appear to a mind. Noomenna: things as they are in themselves. "
+      "Everything you have ever seen is on the near side of that line.",
+      "B00_Split", "A kraft mind box with a lens ('Kant, 1781') faces an upright kraft frame; a dark block slides in beyond it "
+      "('thing in itself'); a kraft copy of the block forms in front of the frame, on the mind's side ('appearance').",
+      [{"at": 0.1, "event": "the mind and 'Kant, 1781'"}, {"at": 0.4, "event": "the frame and the dark thing beyond it"},
+       {"at": 0.7, "event": "the appearance forms on the near side"}]),
+ beat("B01", "We know appearances. The thing in itself we can think, but never know. In Kahnt's words: "
+      "while we surrender the power of cognizing, we still reserve the power of thinking objects, as things in themselves. "
+      "And he never said the thing isn't there. An appearance without something that appears, he wrote, would be absurd.",
+      "B01_ThinkNotKnow", "Same cast. A solid sight line from the lens stops at the frame with an ink cross ('know'); "
+      "a dashed thought line arcs over the frame to the dark block and lands with a check ('think'); the dark block pulses: it is there.",
+      [{"at": 0.15, "event": "the sight line stops at the frame: a cross, 'know'"}, {"at": 0.45, "event": "the thought arc reaches the thing: a check, 'think'"},
+       {"at": 0.85, "event": "the thing pulses: it is there"}]),
+ beat("B02", "Where does the frame come from? Not from the world. From us. Space and time, Kahnt said, are the forms of our sensibility: "
+      "the shape every experience must take before we can have it. And cause and effect is one of the categories: "
+      "a concept the understanding brings to experience, not a feature it reads off the world. "
+      "Everything you will ever see arrives already framed.",
+      "B02_Frame", "The frame slides back from mid-stage and docks onto the front of the mind box; three labels land beside it one by one "
+      "('space', 'time', 'cause'); the appearance re-forms through the docked frame.",
+      [{"at": 0.15, "event": "the frame lifts off the world"}, {"at": 0.35, "event": "it docks onto the mind"},
+       {"at": 0.55, "event": "'space', 'time', 'cause' land"}, {"at": 0.85, "event": "the appearance re-forms through it"}]),
+ beat("B03", "Take gravity. You never see it. You see the apple fall. You see the orbit bend. The cause, you infer. "
+      "David Hume had made that a problem: we never perceive the connection, only one thing following another. "
+      "Kahnt wrote of him: the suggestion of David Hume was the very thing, which many years ago first interrupted my dogmatic slumber. "
+      "His answer, in the Proleg-omena of seventeen eighty-three: the connection comes from us. Cause is a rule the mind applies to what it sees. "
+      "That is why Bear calls gravity almost a textbook Kantian example.",
+      "B03_Gravity", "The mind with its docked frame ('cause'); an apple drops from a kraft ledge and lands ('seen'); a dot rides an ink "
+      "ellipse around a kraft sphere ('seen'); a dashed ink link joins the two with a label ('inferred'); the 'cause' label pulses.",
+      [{"at": 0.1, "event": "the apple falls: seen"}, {"at": 0.25, "event": "the orbit bends: seen"},
+       {"at": 0.4, "event": "a dashed link: inferred"}, {"at": 0.85, "event": "'cause' on the frame pulses: the connection comes from us"}]),
+ beat("B04", "So will better instruments close the gap? Kahnt says no. And not because instruments are weak. "
+      "Any possible experience still comes through space, time and the categories. In his words: carry our empirical intuition "
+      "even to the very highest degree of clearness, and we should not thereby advance one step nearer to a knowledge of the "
+      "constitution of objects as things in themselves. A better telescope gives you a sharper slice. Not a bigger one.",
+      "B04_Telescope", "A kraft telescope on a stand between the mind and the dark thing; a pale wedge of view from its lens to the thing; "
+      "a bigger lens swaps in and the wedge's edges turn from ghost to ink while its angle stays ('sharper'); the appearance gains "
+      "detail lines; the thing beyond the wedge stays dark ('not bigger').",
+      [{"at": 0.15, "event": "the telescope and its wedge"}, {"at": 0.55, "event": "a bigger lens: the wedge sharpens"},
+       {"at": 0.85, "event": "same angle: not bigger"}]),
+ beat("B05", "Bear doesn't go that far. This is Bear's view, not Kahnt's. The gap is permanent, but contingent: "
+      "finite minds, ever-better tools, approaching without arriving. Asymptotic. "
+      "Kahnt's gap is shut in principle, by the very form of experience. Bear's is shut in practice, by how far finite minds and their tools can reach. "
+      "This film holds both. Know which one you're holding.",
+      "B05_TwoViews", "Two panels. Left: a small mind and a dark thing with an ink wall between them ('in principle'). "
+      "Right ('Bear's view'): an ink curve climbs toward a dashed limit line and never touches it; small kraft tool boxes step up along it; "
+      "a terracotta end dot ('asymptotic').",
+      [{"at": 0.1, "event": "'Bear's view' lands first"}, {"at": 0.4, "event": "the curve climbs toward the limit: asymptotic"},
+       {"at": 0.65, "event": "left: the wall, in principle"}, {"at": 0.9, "event": "both panels held"}]),
+ beat("B06", "So here is the humility. We only ever see a slice. And there are two kinds of not-seeing. "
+      "The first is what lies outside the slice. The second is harder: forgetting that there is an outside at all. "
+      "Picture a lantern in a large dark room. The lit patch is your slice. The walls you can't see are still there. "
+      "Keep both in mind: what's outside the patch, and that there is an outside.",
+      "B06_Lantern", "A large dim room in isometric (grey floor, grey back walls); a kraft lantern with a terracotta flame lands and a "
+      "pale lit patch grows around it ('the slice'); the walls beyond stay grey; a label lands on the far wall ('outside').",
+      [{"at": 0.1, "event": "the dim room"}, {"at": 0.5, "event": "the lantern and its lit patch: the slice"},
+       {"at": 0.8, "event": "the walls you can't see: outside"}]),
+ beat("B07", "One line about AI. A model's confidence is confidence about its slice: the data it was trained on, the inputs it was given. "
+      "It says nothing about what lies outside the patch. When a model sounds sure, ask what its lantern was lighting.",
+      "B07_Model", "The same room; a dark model block sits in the lit patch with kraft pages inside the light ('model'); a check lands on the pages "
+      "('its slice'); ghost outlines of unlit objects sit on the floor beyond the patch.",
+      [{"at": 0.15, "event": "the model in the lit patch"}, {"at": 0.45, "event": "a check on its data: its slice"},
+       {"at": 0.8, "event": "ghost objects outside the patch"}]),
+]
+
+
+def remotion(bid, act, narration, pattern, props, show, gate="SHOW", **extra):
+    b = {"beat_id": bid, "act": act, "lane": "bookend", "proof_gate": gate,
+         "narration_text": narration, "estimated_duration_s": round(len(narration.split()) / 2.8, 1),
+         "voice": "am_onyx", "engine": "kokoro",
+         "shot": {"type": "REMOTION", "source": "own", "show": show, "remotion": {"pattern": pattern, "props": props}}}
+    b.update(extra)
+    return b
+
+
+OPEN = [
+ remotion("BIDEA", "the question",
+    "Hallo. This is Liam, in for Bear, with a short film for INFO seventy-three seventy-five, Computational Skepticism for AI. "
+    "You might think better instruments will eventually show us everything. They won't. "
+    "Every instrument hands you a sharper slice of the world. The real question is whether you know it's a slice.",
+    "BrutalistHesitantWriter",
+    {"text": "Will better instruments\neventually show us everything?", "triggerWords": "eventually show us everything",
+     "replacementWords": "ever show us more than a slice",
+     "fontSize": 72, "charMs": 110, "hesitateBetween": 6, "hesitateWithin": 1, "mistakeRate": 2, "jitter": 20,
+     "seed": SLUG, "banner": ""},
+    [{"at": 0.0, "event": "types 'Will better instruments eventually show us everything?'"},
+     {"at": 0.6, "event": "backspaces 'eventually show us everything' -> 'ever show us more than a slice' on the spoken correction"}],
+    lead_silence_s=0.8, motion_claim="The writer types the naive question (will better instruments eventually show us everything) and corrects it to the real one (will better instruments ever show us more than a slice).",
+    qc={"sparse_by_design": True, "sparse_reason": "Hesitant-writer bookend: the correction is the motion."}),
+ remotion("BDEFS", "terms",
+    "Four terms. Phenomena: the world as it appears to a mind. Noomenna: things as they are in themselves. "
+    "Category: a concept the mind supplies to every experience, like cause and effect. "
+    "And the slice: the part of the world you can actually observe.",
+    "ClaudeDefinitions",
+    {"title": "INFO 7375 · Terms In This Film",
+     "terms": [{"term": "phenomena", "meaning": "the world as it appears to a mind"},
+               {"term": "noumena", "meaning": "things as they are in themselves"},
+               {"term": "category", "meaning": "a concept the mind supplies, like cause"},
+               {"term": "the slice", "meaning": "the part of the world you can observe"}],
+     "folderLabel": "@NikBearBrown"},
+    [{"at": 0.1, "event": "'phenomena' lands"}, {"at": 0.35, "event": "'noumena' lands"}, {"at": 0.6, "event": "'category' lands"},
+     {"at": 0.85, "event": "'the slice' lands"}], gate="CARD",
+    qc={"sparse_by_design": True, "sparse_reason": "TERMS card: four prerequisites, one line each."}),
+]
+
+YT_PROMPT = ("Here is one thing I, or a model I use, am confident about: [describe it]. Split it into three lists: "
+             "what I can actually observe, what I am inferring from those observations, and one thing that lies outside my slice, "
+             "which I have no way to observe at all. For each observed item, say how it was observed.")
+SPOKEN_PROMPT = YT_PROMPT.replace("[describe it]", "describe it")
+CHECKS = ["Check: is every \"observed\" item really observed?",
+          "Check: is the unobservable truly unobservable, not just unchecked?"]
+YOURTURN = remotion("BHTF", "your turn",
+    "Your turn. Take one thing you, or a model you use, are confident about, and paste this into Claude: " + SPOKEN_PROMPT +
+    " Then check two things yourself. Is every item you called observed really observed? "
+    "And did you name something genuinely unobservable, not merely unchecked?",
+    "ClaudeComposerAsk",
+    {"greeting": "Your turn.", "topic": "INFO 7375 COMPUTATIONAL SKEPTICISM · YOUR TURN", "segment": TITLE, "command": YT_PROMPT,
+     "runningText": "paste this into Claude…",
+     "output": CHECKS,
+     "folderLabel": "@NikBearBrown", "modelLabel": "Opus 5.5", "effortLabel": "High"},
+    [{"at": 0.0, "event": "Composer opens — 'Your turn.'"}, {"at": 0.1, "event": "the prompt types in full"}, {"at": 0.8, "event": "two check lines land"}])
+
+SPARSE_REASON = ("show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, "
+                 "with the voice carrying the explanation. The negative space is the style, so only underfill and clustered "
+                 "are waived; edge-bleed, empty-frame and contrast still apply.")
+FILLS_ON_ITS_OWN = {"B01", "B02", "B03", "B04", "B06", "B07"}   # from the local Gate V pre-check: 0.59-0.78 at 25/50/60% (BUILD-LOG)
+for b in B:
+    if b["beat_id"] not in FILLS_ON_ITS_OWN:
+        b["qc"] = {"sparse_by_design": True, "sparse_reason": SPARSE_REASON}
+B = OPEN + B + [YOURTURN]
+B.append({"beat_id": "BOUT", "act": "outro", "lane": "bookend", "proof_gate": "SHOW",
+          "narration_text": f"{TITLE}. At Nik Bear Brown.", "estimated_duration_s": 4.0, "voice": "am_onyx", "engine": "kokoro",
+          "shot": {"type": "REMOTION", "source": "own", "show": [{"at": 0.0, "event": "title restates; handle; mascot"}],
+                   "remotion": {"pattern": "ClaudeTitleOutro", "props": {"title": TITLE, "slug": SLUG, "handle": "@NikBearBrown", "subline": ""}}},
+          "kind": "outro_voice", "tail_silence_s": 1.0})
+
+sheet = {"metadata": {
+    "slug": SLUG, "title": TITLE, "topic": "INFO 7375 · COMPUTATIONAL SKEPTICISM", "skill": "show-tell", "style_preset": "show-tell",
+    "channel": "claude-liam", "persona": "Liam (in for Bear)", "voice": "am_onyx", "voice_kokoro": "am_onyx", "engine": "kokoro",
+    "clock": "narration", "palette": "claude", "register": "Teardown", "fps": 24, "aspect_ratio": "16:9", "width": 3840, "height": 2160,
+    "caption_policy": "none", "greeting_language": "German / Dutch (Hallo)",
+    "bookend_exempt": ["cold-open", "bvdt"],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "course": COURSE,
+    "audience": "INFO 7375 students (Fall 2026) and anyone who mistakes the slice they can observe for the whole",
+    "bookloop_policy": "Course film (Bear, 2026-09-27, SHOW-TELL-KANT.md): carries the INFO 7375 credit, spoken in BIDEA and on screen in the BDEFS title and the BHTF composer topic; not a numbered lecture. Outro stays OUTRO-LOCK.",
+    "source_doc": "Bear's words of 2026-09-27 in youtube/SHOW-TELL-KANT.md (SOURCE.md, verbatim); Kant, Critique of Pure Reason (Meiklejohn tr., Gutenberg #4280) and Prolegomena (Carus tr., Gutenberg #52821), fetched raw into sources/",
+    "playlist": "Claude & Agentic AI", "chapter_number": 0,
+    "tags": ["computational skepticism", "INFO 7375", "Kant", "Critique of Pure Reason", "phenomena", "noumena", "thing in itself",
+             "categories", "causality", "Hume", "dogmatic slumber", "epistemic humility", "AI confidence", "Claude", "Nik Bear Brown"]},
+    "beats": B}
+
+# keep measured audio fields across re-runs (audio-first: never lose the clock)
+old = {}
+p = HERE / "beat_sheet.json"
+if p.exists():
+    for ob in json.load(open(p))["beats"]:
+        old[ob["beat_id"]] = ob
+for b in B:
+    ob = old.get(b["beat_id"])
+    if ob and ob.get("narration_text") == b["narration_text"]:
+        for k in ("actual_duration_s", "audio_file"):
+            if k in ob:
+                b[k] = ob[k]
+        if b["beat_id"] == "BDEFS" and "actual_duration_s" in ob:
+            b["shot"]["remotion"]["props"]["durationSeconds"] = ob["actual_duration_s"]
+p.write_text(json.dumps(sheet, indent=2, ensure_ascii=False) + "\n")
+print(len(B), "beats; est", round(sum(b.get("actual_duration_s") or b["estimated_duration_s"] for b in B)), "s")

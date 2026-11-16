@@ -1,0 +1,226 @@
+1
+00:00:00,000 --> 00:00:16,210
+Liam here. On the eleventh of August,
+2026, someone pushed the first commit to a
+new repo: remove AI watermarks from text
+
+2
+00:00:16,260 --> 00:00:19,640
+Four days. No dependencies. That is the
+thesis.
+
+3
+00:00:19,690 --> 00:00:37,990
+guillaumemeyer / watermarks-remover. Agent
+skill plus stdlib Python scripts to strip
+multi-vendor AI provenance marks from text
+
+4
+00:00:38,040 --> 00:01:00,180
+Three layers. Layer A: invisible Unicode —
+zero-width characters, soft hyphens,
+unusual whitespace that survives copy-
+
+5
+00:01:00,230 --> 00:01:20,430
+The numbers before we open a single file:
+4,370 lines of scripts across 16 Python
+files, 1,858 lines of tests, 512 lines of
+
+6
+00:01:20,480 --> 00:01:21,710
+What are the files?
+
+7
+00:01:21,760 --> 00:01:42,450
+The structure is sharp. container_meta.py
+at 855 is the heaviest — that is the EXIF,
+XMP, and C2PA strip. image_meta.py at 668
+
+8
+00:01:42,500 --> 00:02:03,830
+The bar chart in LOC order.
+container_meta.py at 855 is not over-
+engineered — it handles ZIP containers,
+
+9
+00:02:03,880 --> 00:02:23,520
+text_unicode.py and rewrite_text.py are
+the text path: Unicode codepoint removal
+and the statistical rewrite. 449 and 436
+
+10
+00:02:23,570 --> 00:02:42,660
+Test-to-script ratio: 1,858 lines of tests
+against 4,370 lines of scripts. That is
+0.43. A token test suite sits between 0.05
+
+11
+00:02:42,710 --> 00:02:44,580
+How do the scripts connect?
+
+12
+00:02:44,630 --> 00:03:04,250
+The import graph is a clean three-tier
+fan. CLI leaves at the top — clean_text,
+inspect_text, clean_file, inspect_file —
+
+13
+00:03:04,300 --> 00:03:20,870
+Imported by: common, 13 scripts.
+text_unicode, 6. image_meta, 6.
+container_meta, 3. audit_lib, 2.
+
+14
+00:03:20,920 --> 00:03:37,360
+Nothing crosses tiers: a CLI leaf does not
+reach image_meta without going through
+common. You can swap a format engine —
+
+15
+00:03:37,410 --> 00:03:58,780
+inspect and clean are paired at every
+layer: inspect_text and clean_text both
+use text_unicode; inspect_image and
+
+16
+00:03:58,830 --> 00:04:00,120
+When was it built?
+
+17
+00:04:00,170 --> 00:04:19,550
+The commit histogram: eleven commits on
+August 11. Twenty on August 12. Seventeen
+on August 13 — including the v0.4.0 tag.
+
+18
+00:04:19,600 --> 00:04:35,740
+The cumulative curve: zero before August
+11. Eleven commits by end of day one.
+Thirty-one by end of day two. Forty-eight
+
+19
+00:04:35,790 --> 00:04:50,460
+The first eleven commits land on 11 August
+2026, the day Anthropic announced global
+text watermarking. Standing start to
+
+20
+00:04:50,510 --> 00:05:11,470
+The date coincidence is verifiable from
+git log — we are stating it as a
+coincidence, not a claim about the
+
+21
+00:05:11,520 --> 00:05:13,370
+The scope document.
+
+22
+00:05:13,420 --> 00:05:24,700
+The file we want to read is not a strip
+implementation. It is ethics.md — the
+scope document the agent loads before
+
+23
+00:05:24,750 --> 00:05:38,800
+A removal tool that ships a document
+telling you removal proves nothing is
+making the same argument this channel has
+
+24
+00:05:38,850 --> 00:05:54,970
+Lines 5 to 10. Appropriate: privacy —
+strip provenance from your own files
+before sharing. Engineering hygiene —
+
+25
+00:05:55,020 --> 00:06:12,480
+Lines 12 to 16. Not appropriate: academic
+fraud or misrepresenting AI assistance
+where disclosure is required.
+
+26
+00:06:12,530 --> 00:06:25,940
+Line 18. Verbatim: 'A removed mark does
+not mean the content was never AI-
+assisted. Use this toolkit honestly.' That
+
+27
+00:06:25,990 --> 00:06:45,740
+Lines 22 to 26. Honesty in reports. Always
+separate: verifiable removals — what you
+can count, Unicode removed, metadata
+
+28
+00:06:45,790 --> 00:07:01,010
+Line 28: 'Do not imply that a successful
+C2PA/metadata strip means no AI provenance
+left. Soft-bound and SynthID-class media
+
+29
+00:07:01,060 --> 00:07:02,380
+The binary guard.
+
+30
+00:07:02,430 --> 00:07:22,390
+The HEAD commit. inspect_text.py picks up
+a new argument: --force-text. The
+read_text_input call gets allow_binary
+
+31
+00:07:22,440 --> 00:07:41,870
+The pre-guard behavior in clean_text.py:
+you point it at a .docx, it decodes
+compressed bytes as text, calls that
+
+32
+00:07:41,920 --> 00:07:59,730
+The HEAD commit adds 253 lines of tests
+for this one change. They cover magic-
+number detection, heuristic detection, the
+
+33
+00:07:59,780 --> 00:08:00,990
+What does it need?
+
+34
+00:08:01,040 --> 00:08:20,230
+The dependency audit. Every import across
+all 16 scripts is standard library:
+argparse, collections, dataclasses, gzip,
+
+35
+00:08:20,280 --> 00:08:40,130
+No model. No GPU. No third-party package
+in the core. The Unicode strip is re and
+unicodedata. The metadata strip is struct,
+
+36
+00:08:40,180 --> 00:08:56,260
+requirements-dev.txt: pytest equals 9.1.1
+and pip-audit equals 2.10.1. Both are test
+tooling. pip-audit is the supply-chain
+
+37
+00:08:56,310 --> 00:09:12,730
+Layer B and CtrlRegen are optional because
+they add weight the core does not need.
+CtrlRegen is external pixel removal —
+
+38
+00:09:12,780 --> 00:09:32,230
+Sources: guillaumemeyer/watermarks-
+remover, cloned 2026-08-14. HEAD commit
+256d90d. All data computed by git log, wc
+
+39
+00:09:32,280 --> 00:09:43,540
+Every import across all sixteen scripts is
+standard library. The only pinned
+dependencies are pytest and pip-audit. The
+
+40
+00:09:43,590 --> 00:10:02,850
+Your turn. Clone the repo. Run
+audit_dir.py on a directory of your own
+text files — documents you wrote, drafts

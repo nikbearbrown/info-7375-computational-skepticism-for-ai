@@ -1,0 +1,221 @@
+{
+  "metadata": {
+    "title": "Reliability Diagram: Your Model's Confidence on Trial",
+    "slug": "claude-liam-cli-reliability-diagram-own-model",
+    "topic": "COMPUTATIONAL SKEPTICISM — CALIBRATION",
+    "register": "Teardown",
+    "voice": "NikBearBrown",
+    "voice_id": "${ELEVENLABS_VOICE_NIKBEARBROWN}",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "style": "cli",
+    "note": "CLI video: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(manim:B04_ReliabilityDiagram) · B05 CHANGE · B06 SUMMARY · B07 NEXT STEPS · B08 extra-slate · B09 outro",
+    "total_estimated_duration_seconds": 125,
+    "audience": "Claude",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "channel": "NikBearBrown",
+    "assignment_tieins": [
+      "A2 — this IS the Calibration instrument (25 pts): reliability diagram + ECE + Brier + temperature scaling + shifted-distribution re-plot on the student's own model",
+      "Candidate 01 teaches the concept on synthetic data; this one produces the graded deliverable on a real build"
+    ]
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI, then take it apart.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "lines": [
+              "Nik Bear Brown",
+              "Reliability Diagram on Your Own Model, taken apart."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 5
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM — why care",
+      "role_note": "the stakes BEFORE the build begins — no terminal yet",
+      "narration_text": "You trained a classifier this week. It prints confidence scores. You have never checked whether those confidence scores mean anything. A model that says ninety-four percent and is right fifty-six percent of the time is not a reliable model — it's a confident wrong one. The reliability diagram makes your own overconfidence visible. And the shifted slice — the high-value subgroup the model matters most for — is where the decorative number gets caught.",
+      "visual_intent": "title card: 'your model says 94% — does it mean 94%?'; PROBLEM beat, no terminal yet",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 20,
+      "build": {
+        "status": "SLATE",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B01.mp4)",
+        "suggested": "suggested prompt: You trained a classifier. It prints confidence scores. You have never checked whether those confidence scores mean anything."
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) — the command typed",
+      "narration_text": "In the terminal: ask Claude to write a script that loads your held-out predictions CSV — two columns, predicted probability and true label — bins into ten confidence bins, plots the reliability diagram against the perfect-calibration diagonal, computes ECE and Brier score, fits temperature scaling on a validation split, and re-plots. Then takes the subset of rows where feature X is above its median as a shifted slice and recomputes ECE on that slice. Print both ECE values.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Write a Python script that:\n1. loads predictions.csv (predicted_prob, true_label)\n2. bins into 10 confidence bins\n3. plots reliability diagram vs diagonal\n4. computes ECE and Brier score\n5. fits temperature scaling on a val split, re-plots\n6. takes rows where feature_x > median as\n   'shifted slice', recomputes ECE\nPrint both ECE values: in-dist and shifted.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — CALIBRATION",
+            "segment": "RELIABILITY DIAGRAM — OWN MODEL",
+            "runningText": "generating reliability diagram script…"
+          }
+        }
+      },
+      "estimated_duration_s": 16
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) — read the output before running",
+      "narration_text": "Read the three key operations before running. Calibration underscore curve from sklearn returns, per bin, the fraction of positives — the empirical positive rate — and the mean predicted probability. ECE is the mean absolute difference between those two. Temperature scaling fits a single scalar T on a validation split: T greater than one softens overconfident probabilities. And the shifted slice is the fairness-calibration intersection: does the model's overconfidence concentrate in the subgroup that matters most?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "reliability_diagram.py",
+            "topic": "COMPUTATIONAL SKEPTICISM — CALIBRATION",
+            "segment": "RELIABILITY DIAGRAM — OWN MODEL",
+            "code": "# reliability_diagram.py — Claude Code output\nfrom sklearn.calibration import calibration_curve\nimport numpy as np\n\n# ECE: mean absolute gap between predicted and empirical\nppv, mean_pred = calibration_curve(\n    df[\"true_label\"], df[\"predicted_prob\"], n_bins=10\n)\nece = float(np.mean(np.abs(ppv - mean_pred)))\n\n# temperature scaling: T > 1 softens overconfidence\n# optimized on held-out validation split\nT = optimize_temperature(val_probs, val_labels)\nscaled = sigmoid(logit(probs) / T)\n\n# shifted slice: high-value subgroup\nshifted = df[df[\"feature_x\"] > df[\"feature_x\"].median()]\nece_shifted = compute_ece(shifted)"
+          }
+        }
+      },
+      "estimated_duration_s": 16
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT — run",
+      "role_note": "Manim animation: B04_ReliabilityDiagram — two panels side by side",
+      "narration_text": "Run it. Left panel: in-distribution reliability diagram. The curve tracks the diagonal reasonably well — ECE is point-zero-eight. Right panel: shifted slice, the high feature-X subgroup. The curve bends away from the diagonal at high confidence. ECE jumps to point-nineteen. The model that looks calibrated on its training distribution is systematically overconfident in the deployment regime it matters most for. That gap does not appear until you plot the shifted slice.",
+      "visual_intent": "Manim B04_ReliabilityDiagram: two reliability diagrams side by side — left (in-distribution, ECE=0.08, curve near diagonal) and right (shifted slice, ECE=0.19, overconfidence zone highlighted); ECE values animate in; a 'gap' arrow in the right panel",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B04_ReliabilityDiagram",
+          "file": "vox_scenes.py"
+        }
+      },
+      "estimated_duration_s": 19,
+      "build": {
+        "status": "SLATE",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE — check and revise",
+      "role_note": "terminal (Onda) — lock the prediction first, then apply temperature scaling",
+      "narration_text": "Before re-running with temperature scaling, lock a prediction. Ask Claude to add a step at the top of the script: prompt the user for their guessed ECE on the shifted slice, hash it, write it to predlock.log. Then run temperature scaling. After, resolve: print the guessed ECE, the actual ECE, and whether the hash still verifies. Calibration on training distribution does not survive a distribution shift — and the locked prediction is the only way to know whether you knew that.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Update reliability_diagram.py:\nADD at top: prompt user for guessed ECE on\nshifted slice, hash+timestamp to predlock.log.\nApply temperature scaling, recompute shifted ECE.\nAT END: print guessed ECE, actual ECE, the gap,\nHASH VERIFIED / HASH MISMATCH.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — CALIBRATION",
+            "segment": "RELIABILITY DIAGRAM — OWN MODEL",
+            "runningText": "adding prediction lock + temperature scaling…"
+          }
+        }
+      },
+      "estimated_duration_s": 14
+    },
+    {
+      "beat_id": "B06",
+      "act": "SUMMARY",
+      "role_note": "the lesson — one beat",
+      "narration_text": "Temperature scaling closes the in-distribution ECE gap — the curve moves to the diagonal. But on the shifted slice, ECE barely moves. Calibration on your training distribution does not survive a distribution shift. The reliability diagram is the instrument that makes your own overconfidence visible; the shifted slice is the test that exposes where it hides; and the prediction lock is the tool that prevents you from editing the guess after you see the result.",
+      "visual_intent": "recap card: 'temperature scaling: ECE in-dist closes; ECE shifted barely moves'; two ECE numbers side by side",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 15,
+      "build": {
+        "status": "SLATE",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B06.mp4)",
+        "suggested": "suggested prompt: Temperature scaling closes the in-distribution ECE gap. On the shifted slice, ECE barely moves. Calibration doesn't survive a distribution shift."
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Your move: take any model you shipped last week. Pull the held-out predictions — predicted probability and true label. Lock a guessed ECE before you run the script. Run the reliability diagram, then the shifted slice. If ECE rises on the shifted slice, you have a calibration problem in the regime that matters most — and you now have the number to report.",
+      "visual_intent": "next-steps card: 1) pull held-out predictions, 2) lock guessed ECE, 3) run reliability diagram + shifted slice, 4) report the gap",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 13,
+      "build": {
+        "status": "SLATE",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Take any model you shipped last week. Lock a guessed ECE. Run the reliability diagram and the shifted slice. Report the gap."
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "EXTRA",
+      "role_note": "slate — optional b-roll",
+      "narration_text": "",
+      "visual_intent": "slate placeholder",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 0,
+      "build": {
+        "status": "SLATE",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOutro",
+          "props": {
+            "brand": "Nik Bear Brown",
+            "tagline": "Brutalist + Educational AI",
+            "handle": "@NikBearBrown",
+            "url": "nikbearbrown.com"
+          }
+        }
+      },
+      "estimated_duration_s": 8
+    }
+  ]
+}

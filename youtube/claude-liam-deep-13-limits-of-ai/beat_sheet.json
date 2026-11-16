@@ -1,0 +1,1382 @@
+{
+  "metadata": {
+    "title": "Scaling Moves the Boundary. It Never Removes It.",
+    "slug": "claude-liam-deep-13-limits-of-ai",
+    "topic": "COMPUTATIONAL SKEPTICISM · THE LIMITS OF AI",
+    "genre": "deep-explainer",
+    "register": "Teardown",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "vox_stage": "#F2F0E9",
+    "accent": "#D97757",
+    "greeting": "Shalom, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "series": "claude-liam-deep",
+    "episode": 13,
+    "playlist": "Computational Skepticism for AI — Deep Explainers",
+    "source": "books/computational-skepticism-for-ai/chapters/13-the-limits-of-ai-what-the-tools-cannot-do.md",
+    "gate": "PLAN — awaiting human approval (no factcheck / no audio / no render)",
+    "series_finale": true,
+    "beat_mix_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "beat_mix_actual": {
+      "body_beats": 31,
+      "VOX": "22.6% (7)",
+      "MANIM": "25.8% (8)",
+      "REMOTION": "35.5% (11)",
+      "CARD": "16.1% (5)",
+      "lint": "PASS — vox in 20-25% band, spine OK, no >2 same-lane run outside the R1 vox run"
+    },
+    "total_estimated_duration_seconds": 572,
+    ".codex": {
+      "workflow": "deep-explainer",
+      "mode": "unattended-then-human-review",
+      "agent": "Claude Code",
+      "persona": "Liam (in for Bear)",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "paid_generation": false,
+      "publish": false,
+      "reviewer": "Bear"
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "Shalom — this is Liam, in for Bear, and this is the closing chapter. Here's the whole book in one case. A clinical decision system passes every test its engineers designed — ninety-four percent on validation, fairness in tolerance, robustness clean, the whole battery green. It ships. Within six months, three patients are harmed by recommendations the clinicians accepted. Nobody made a computation error. So what did every single test miss? The system answered the question its symbols processed. Nobody answered the question about the world it entered — safe for whom, doing what, in which world.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 27,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Shalom, Liam",
+            "topic": "COMPUTATIONAL SKEPTICISM , THE LIMITS OF AI",
+            "segment": "Scaling Moves the Boundary. It Never Removes It.",
+            "command": "A system passed every test and harmed three patients in deployment. What did the tests structurally fail to reach?",
+            "runningText": "the limits of AI — what the tools cannot do…",
+            "output": [
+              "The tests were scoped to the question the data could answer",
+              "The harm lived in the question the data could not",
+              "The gap between them is what no benchmark reaches"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Scaling Moves the Boundary. It Never Removes It.",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A1C",
+      "act": "ACT I — The System That Passed Every Test",
+      "lane": "CARD",
+      "narration_text": "Act one. A system that passed everything, and failed anyway — and why that isn't a bug report.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The System That Passed Every Test"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A1K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , THE LIMITS OF AI",
+            "segment": "The System That Passed Every Test",
+            "command": "render a Manim scene: a validation dashboard reads all-green, the system deploys, then a second question the tests never asked lights up in terracotta — 'what is going on with THIS patient?'",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A1K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1K.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "A1M",
+      "act": "two questions",
+      "lane": "MANIM",
+      "narration_text": "Here are the two questions, side by side. The one the system was built to answer: does this presentation match a category in the training data? And the one that actually harmed the patients: what is going on with this specific person? Related — but not the same question. The validation framework was scoped, top to bottom, to the first. The accuracy on it was real. The silence on the second was structural.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A1M_TwoQuestions",
+          "spec": "two panels: LEFT 'match a training category?' with a green check and 94%; RIGHT 'what is going on with THIS patient?' greyed out, unscored; the validation battery brackets only the left panel; terracotta ring on the untested right",
+          "out": "manim/A1M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Tested on one — harmed by the other"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A1V",
+      "act": "the composite pattern",
+      "lane": "VOX",
+      "narration_text": "Sit with the strangeness, because the strangeness is the lesson. And be honest about the case: this is a composite — the documented pattern of clinical systems that validate clean and fail live, not one sourced incident. The engineers designed the wrong tests. That was not negligence. It was a categorical limit on what the thing could be tested for, given what the thing was.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "pantry": "pantry/A1V.png",
+        "pantry_brief": "a clinician at a workstation reading an AI recommendation on screen, hospital corridor soft-focus behind, warm documentary light — Tier 1 generic/illustrative (no real institution, no real patient)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The engineers designed the wrong tests"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A1R",
+      "act": "the gap named",
+      "lane": "REMOTION",
+      "narration_text": "So computational skepticism, all book long, has been AI's speed married to a doubt that stays irreducibly human. This final chapter bounds that doubt from the other side. The AI answers the question whose symbols it processed. You answer the question about the world the system enters. Those are not the same question — and the gap between them is the whole subject.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The symbols vs the world.",
+              "System answers: the question whose symbols it processed",
+              "You answer: the question about the world it enters"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A2C",
+      "act": "ACT II — Three Categorical Limits",
+      "lane": "CARD",
+      "narration_text": "Act two. Three limits capability scaling does not fix — and the one argument that makes them categorical, not just frequent.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Three Categorical Limits"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A2R",
+      "act": "the three limits",
+      "lane": "REMOTION",
+      "narration_text": "Three structural limits bound what current AI can do, regardless of scale. Meaning: the world its symbols point to isn't in the model. Intentionality: no stable aboutness — the directedness tracks your reading, not the system's. And the data-world gap: the data is always less than the world. Each one demands a specific job from the supervisor. But a determined critic will grant every recommendation and still deny they're categorical. So I owe you an argument.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "The Categories of Limit",
+            "chips": [
+              "Meaning — the world its symbols point to isn't in the model",
+              "Intentionality — no stable aboutness; you supply the directedness",
+              "Data-world gap — the data is always less than the world",
+              "Supervisor's job: semantic work",
+              "Supervisor's job: interpret outputs as evidence",
+              "Supervisor's job: specify the distribution, override at the edge"
+            ],
+            "sparkLine": "Structural, not contingent — the reason the supervisor exists."
+          },
+          "rendered": {
+            "out": "media/A2R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2R.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "A2V",
+      "act": "Hume's induction problem",
+      "lane": "VOX",
+      "narration_text": "David Hume made the underlying point in seventeen forty-eight. Inductive inference — the bet that the unobserved will resemble the observed — has no non-circular justification. You cannot ground it by saying it has worked so far, because that is the very thing in question. Every learning system, however large, is an inductive engine. It generalizes from a sample. And a sample cannot contain the structure of what it excluded — because the exclusion is what made it a sample.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.4
+        ],
+        "pantry": "pantry/A2V.png",
+        "pantry_brief": "portrait of David Hume, 18th-century engraving style, warm duotone on cream — Tier 3 (real named historical person); AI-generated from a public-domain source; disclosure sidecar required; FLAG for rights review",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A sample can't contain what it excluded"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A2M",
+      "act": "the categorical boundary (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "Watch why this is categorical and not merely frequent. Scaling adds data — it widens the sample. But the covered region and the excluded region are complementary by construction: the world is the sample joined with everything the sample left out, and that leftover set is never empty. Every enlargement is still a region with a boundary, and the boundary is where the gap lives. You cannot scale across a boundary defined by what the scaling did not reach. That is Hume's claim, not mine.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A2M_Boundary",
+          "spec": "a disc 'sample / covered' growing inside a larger field 'world'; write-on set identity World = Sample ⊔ (World \\ Sample), with (World \\ Sample) ≠ ∅ highlighted; as the disc grows the boundary moves outward but never vanishes; terracotta traces the boundary",
+          "out": "manim/A2M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "World = Sample ⊔ (World \\ Sample)",
+              "the complement never trains."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A2R2",
+      "act": "meaning and intentionality inherit the bite",
+      "lane": "REMOTION",
+      "narration_text": "That move is what lets the other two limits inherit the bite. I don't need to win the metaphysical fight about whether a grounded multimodal system really has meaning. I need something firmer: whatever meaning it has was learned from the sample. At the boundary — where its picture and yours come apart — you're still reading the output as a claim about the world, and it's still emitting symbols shaped by a sample that excluded that region. Meaning and intentionality are the data-world gap wearing different clothes.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "branch",
+            "title": "One Gap, Three Faces",
+            "note": "the data-world gap is the categorical one; meaning and intentionality branch",
+            "sparkLine": "Different clothes, one boundary."
+          },
+          "rendered": {
+            "out": "media/A2R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2R2.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "A3M",
+      "act": "Mediocristan and Extremistan",
+      "lane": "MANIM",
+      "narration_text": "Act three. Nassim Taleb gave the gap a sharper shape — two kinds of world. Mediocristan: outliers don't dominate the average. Heights, exam scores. Sample one more observation and the running statistics barely move. Extremistan: outliers dominate — wealth, war casualties, the fatalities from a single deployment failure. One observation can outweigh every prior one combined. Averaging rewards you in one world and destroys you in the other.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A3M_TwoWorlds",
+          "spec": "two running-average plots side by side: LEFT 'Mediocristan' — a new sample nudges the mean imperceptibly; RIGHT 'Extremistan' — a single tail sample yanks the mean off the top of the frame; label the tail event in terracotta",
+          "out": "manim/A3M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Two worlds",
+              "averaging saves in one, ruins in the other."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A3V1",
+      "act": "the turkey — the rising curve",
+      "lane": "VOX",
+      "narration_text": "Here's the turkey, and it makes it concrete. It is fed every day for a thousand days. Every day the evidence confirms the model: the human cares about my welfare. By every metric that matters to the turkey — food, shelter, no predators — confidence rises, monotonically, day after day after day.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.45,
+          0.5
+        ],
+        "pantry": "pantry/A3V1.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.45,
+            "y": 0.5,
+            "scale": 1.5
+          },
+          "objects": [
+            {
+              "id": "confidence-line",
+              "x": 0.5,
+              "y": 0.6,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "a well-fed turkey in a calm farmyard, morning light, a faint rising confidence curve overlaid — Tier 1 illustrative; start of a 2-beat vox run pulling out toward day 1001",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "1,000 days of rising confidence"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3V1.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A3V2",
+      "act": "the turkey — day 1001",
+      "lane": "VOX",
+      "narration_text": "Day one thousand and one is Thanksgiving. The model fails catastrophically — and nothing in a thousand days of in-distribution data could have anticipated it. The training distribution was Mediocristan-shaped, a smooth daily routine. The actual world held a Black Swan the data was defined as not containing.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.55
+        ],
+        "pantry": "pantry/A3V2.png",
+        "vox_run": "R1",
+        "pantry_brief": "wide final frame: the same farmyard, the confidence curve falling off a cliff at the last mark, cold overcast light — end of the vox run; terracotta break at the drop; no gore",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Day 1,001 — the curve no data predicted"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3V2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A3R",
+      "act": "which world is your deployment in",
+      "lane": "REMOTION",
+      "narration_text": "So apply it straight to validation. A system tested on ten thousand routine cases at ninety-nine point seven percent may still be a turkey. The relevant question was never the accuracy on the cases it has seen. It's whether the ones it hasn't seen are Mediocristan — where high accuracy transfers — or Extremistan, where the rare event dominates the consequence and the model has no claim on it. Most high-stakes deployments live in Extremistan, even when the routine traffic looks calm.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "Is Your Deployment a Turkey?",
+            "note": "99.7% on seen cases says nothing if the unseen ones are",
+            "sparkLine": "Know which world you're in."
+          },
+          "rendered": {
+            "out": "media/A3R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3R.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "A4C",
+      "act": "ACT IV — Turing and Searle",
+      "lane": "CARD",
+      "narration_text": "Act four. Two famous arguments about AI's limits — both cited constantly, both overclaimed in opposite directions.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Turing and Searle"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A4R",
+      "act": "what each settles",
+      "lane": "REMOTION",
+      "narration_text": "Turing, nineteen fifty: if a machine imitates a human in conversation convincingly, on what principled basis do you deny it intelligence you'd grant a person on the same behavioral evidence? That settles a method — don't demand more than behavior. It does not show behavioral imitation is intelligence. Searle, nineteen eighty: a man in a room follows a rulebook, produces fluent Chinese, understands none of it — so symbol manipulation is not sufficient for understanding. That's a real constraint. It does not show today's systems are only manipulating symbols.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Two Arguments, Two Overclaims",
+            "left": {
+              "label": "TURING (1950) — a method",
+              "note": "behavior warrants attribution , NOT: imitation IS intelligence"
+            },
+            "right": {
+              "label": "SEARLE (1980) — a concept",
+              "note": "syntax isn't sufficient for semantics , NOT: current systems can't understand"
+            },
+            "sparkLine": "Neither settles what stands behind behavior."
+          },
+          "rendered": {
+            "out": "media/A4R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4R.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "A4M",
+      "act": "behind the glass",
+      "lane": "MANIM",
+      "narration_text": "Put it geometrically. The test is a window onto behavior — and behavior is testable evidence you should take seriously. But the three limits live behind the glass: meaning, intentionality, competence over the world. Turing tells you to trust the window. Searle tells you the window is not the room. The validator who only tests behavior misses the limits; the one who only invokes the limits skips the testing. The job is both, at once.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A4M_BehindTheGlass",
+          "spec": "a pane of glass labeled 'behavior — testable'; behind it three shapes 'meaning / intentionality / world-competence' dimmed; Turing arrow points at the glass, Searle arrow points through it; terracotta on the pane edge",
+          "out": "manim/A4M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Behavior is testable — the limits stand behind it"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A4V",
+      "act": "inside the Chinese Room",
+      "lane": "VOX",
+      "narration_text": "Stand in the room. Slips of paper come in through a slot, marked in symbols you cannot read. You follow the rulebook and push slips back out. Outside, a fluent reader swears there's a native speaker in here. There is not. That is the whole argument — and its whole limit. It shows symbol-shuffling isn't enough for understanding. It does not show that today's systems are only shuffling symbols. Overclaim it in either direction and you've stopped doing the work.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "pantry": "pantry/A4V.png",
+        "pantry_brief": "a person seated inside a small closed room at a paper slot, an open rulebook, slips of paper with indistinct non-Latin symbols — Tier 1 illustrative (generic figure, NOT a portrait of Searle)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Fluent output, no understanding",
+              "and no verdict on today"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A5C",
+      "act": "ACT V — When the Limits Bite",
+      "lane": "CARD",
+      "narration_text": "Act five. Where the limits bite hard, skepticism stops being methodology and becomes a safety mechanism — with a real, named case.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "When Skepticism Is the Safety Mechanism"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A5V",
+      "act": "the Epic Sepsis Model",
+      "lane": "VOX",
+      "narration_text": "Here's the real, named case — proof the pattern isn't a composite fear. The Epic Sepsis Model, a proprietary early-warning tool deployed across hundreds of hospitals. External validation found it performed far worse than marketed — missing a large fraction of sepsis cases while flooding clinicians with alerts. The vendor's internal metrics looked fine. The performance report was fluent. That was never the problem.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "pantry": "pantry/A5V.png",
+        "pantry_brief": "a hospital monitor showing a cascade of alert notifications, a clinician's hands at the edge of frame, cool clinical light — Tier 1 illustrative (generic EHR screen, NOT the real product or vendor)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Far worse than marketed",
+              "external validation, Wong et al. 2021"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A5K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , THE LIMITS OF AI",
+            "segment": "The circular signal",
+            "command": "render a Manim scene: an 'early-warning' model that only fires AFTER a clinician orders a blood culture — the arrow of causation runs backward; label it a confirmatory signal dressed as a warning",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A5K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5K.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "A5M",
+      "act": "the circular signal",
+      "lane": "MANIM",
+      "narration_text": "The problem was structural. The model had partly learned to confirm clinical suspicion rather than form it independently — it fired when a clinician had already ordered a blood culture. A confirmatory signal, dressed as an early warning. Catching that meant knowing something outside the model's data in the morally relevant sense: what a blood-culture order means in a real workflow. The model can write a fluent sentence about that problem. It cannot notice, from inside the workflow, that the workflow's premise is wrong.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A5M_CircularSignal",
+          "spec": "a timeline: 'clinician suspects' → 'blood culture ordered' → 'model alerts'; a terracotta arrow loops the alert back onto the suspicion it was supposed to precede; the label 'early warning' crossed out, replaced by 'confirmation'",
+          "out": "manim/A5M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "It confirmed suspicion — it did not form it"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A5R",
+      "act": "the five-component practice",
+      "lane": "REMOTION",
+      "narration_text": "So there's a real engineering practice for where the limits bite. Five parts. Specify what the system can and cannot be tested for — in the documentation, part of the product, not the fine print. Keep human oversight exactly at the limit points. Build the override so it's real — time, authority, legibility, or it's a fiction. Make the limits visible to the people the decision lands on. And have a stop condition.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Five components — each a place the human stays in the loop.",
+              "Specify what CAN and CANNOT be tested for",
+              "Maintain human oversight exactly at the limit points"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A5R2",
+      "act": "the authority to refuse",
+      "lane": "REMOTION",
+      "narration_text": "And that last one is the whole book. The supervisor's authority to refuse deployment is, structurally, the most important authority in the system — and most deployments quietly assume it away. The validator is hired to validate; the validation is expected to clear; refusal is off the table before anyone sits down. A skepticism practice that cannot say no is not the practice this book is teaching. That is the most important thing Bear has to say in the whole book.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "The Option to Say No",
+            "note": "the authority to refuse is the top authority in the system",
+            "sparkLine": "A practice that can't refuse isn't the practice."
+          },
+          "rendered": {
+            "out": "media/A5R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5R2.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "A6M",
+      "act": "ACT VI — the cognitive profile",
+      "lane": "MANIM",
+      "narration_text": "Act six. Map the tool honestly — not what it sounds like it can do, but what it can. Three genuine strengths, tall: retrieval and synthesis across text at scale, generation against well-specified criteria, pattern-recognition on well-defined inputs. Then the valleys, wherever the task means connecting a representation to the world it represents. And one reading flat at zero. Notice every peak is the same shape: high-fidelity pattern-matching inside representations.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A6M_ProfileSpectrum",
+          "spec": "a radar/spectrum with three tall peaks (retrieval-synthesis, generation, pattern-recognition), three deep valleys (problem formulation, plausibility auditing, interpretive judgment), and one axis flat at zero (accountability); terracotta rings the zero axis",
+          "out": "manim/A6M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Tall peaks, deep valleys, one axis at zero"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A6R",
+      "act": "strong, weak, absent",
+      "lane": "REMOTION",
+      "narration_text": "Name the tiers. Strong: retrieval, generation, mechanical pattern-matching — checkable by inspection, failures visible, which is exactly why the checking instruments in this book work. Weak, and structurally so: problem formulation — deciding what the right question even is; plausibility auditing — catching a fluent output that doesn't correspond to the world; interpretive judgment under stakes. And absent — not weak, absent: accountability.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The profile, not the sales pitch.",
+              "GREAT — retrieval/synthesis, generation, pattern-matching on well-defined inputs",
+              "WEAK — problem formulation, plausibility auditing, interpretive judgment under stakes"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A6V",
+      "act": "accountability disappears into no one",
+      "lane": "VOX",
+      "narration_text": "Accountability isn't a skill in the ordinary sense. It's a relationship — between a judgment and the person answerable for being wrong. When a practitioner signs a validation report, they take on the obligation to revise it, to face the people who relied on it if it fails, to reckon with what they knew and when. A model cannot bear that relationship to its own output. So when the sign-off is treated as a checkbox, accountability doesn't move into the AI. It disappears into no one.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.55
+        ],
+        "pantry": "pantry/A6V.png",
+        "pantry_brief": "a hand signing a document at a desk, close crop, warm ink on cream, a pen mid-stroke — Tier 1 illustrative (no legible names)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Treated as a checkbox, accountability disappears into",
+              "no one"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A6R2",
+      "act": "the delegation map",
+      "lane": "REMOTION",
+      "narration_text": "Which gives you the delegation map, cleanly. Delegate freely the mechanical work — EDA steps, first drafts against a template, chart production — checkable by inspection. Delegate with verification the interpretive claims that need domain knowledge — plausible output you confirm against the world you know. And do not delegate problem formulation, plausibility auditing, judgment under stakes, or the sign-off. Not because the model is too weak — because those require being wrong in a way that costs you something.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "scale",
+            "title": "The Delegation Map",
+            "left": {
+              "label": "DELEGATE FREELY",
+              "note": "mechanical execution — checkable by inspection"
+            },
+            "right": {
+              "label": "DO NOT DELEGATE",
+              "note": "formulation , plausibility , judgment , sign-off"
+            },
+            "note": "middle: delegate WITH verification — plausible output confirmed against the world",
+            "sparkLine": "Where you can't delegate, you keep the work."
+          },
+          "rendered": {
+            "out": "media/A6R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6R2.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "A7C",
+      "act": "ACT VII — The Extended Mind Arrives",
+      "lane": "CARD",
+      "narration_text": "Act seven — the closing one. The leitmotif of the whole book, finally named, and the calibration arc closing for the last time.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Extended Mind Arrives"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A7R",
+      "act": "the catalog",
+      "lane": "REMOTION",
+      "narration_text": "Step back to the whole series. The microscope extended what the scientist could see. GPS extended navigation. The printing press extended language across time. Peer review extended metacognitive checking across a community. Not one of them replaced the mind using it — the microscope didn't decide what to look for; GPS didn't decide where to go. AI is the latest and most powerful entry, and the first whose breadth and fluency tempt you to mistake the extension for a replacement.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "SourceFlow",
+          "props": {
+            "title": "The Extended-Mind Catalog",
+            "stages": [
+              "microscope — perception",
+              "GPS — navigation",
+              "printing press — language across time",
+              "peer review — metacognitive checking",
+              "AI — breadth + fluency, all at once"
+            ],
+            "sparkLine": "Every tool extends a capacity; none replaces the mind."
+          },
+          "rendered": {
+            "out": "media/A7R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "A7M",
+      "act": "the cognitive extremophile",
+      "lane": "MANIM",
+      "narration_text": "Return to intelligence itself. Not the production of fluent, valid output against criteria — that's competence. Legg and Hutter, two thousand seven: intelligence is the ability to achieve goals across a wide range of environments. The range is the whole claim. Chart the current profile — superhuman on symbolic pattern-matching over text, near-absent on embodied navigation, causal counterfactual, metacognitive certainty, accountability — and you don't get a universal intelligence. You get a cognitive extremophile: extraordinarily adapted to one narrow environment.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A7M_Extremophile",
+          "spec": "an environment-range axis; a spike of superhuman competence over one narrow band 'symbolic pattern-matching over text' and near-zero across the rest; caption 'range is the claim (Legg-Hutter 2007)'; terracotta labels the single niche 'cognitive extremophile'",
+          "out": "manim/A7M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Superhuman in one niche — a cognitive extremophile"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A7M2",
+      "act": "the third calibration baseline",
+      "lane": "MANIM",
+      "narration_text": "And for the third and final time, you take the calibration baseline — the same forecasting questions, your own ninety-percent intervals, the fraction that actually contain the truth. Watch the shape, not the exact numbers: overconfident at the start, improving with practice, and rarely reaching ninety percent — because overconfidence is sticky. This baseline isn't a grade. It's a diagnostic on the supervisor you're becoming. Most engineers run at half-calibration their whole careers and never know, because nobody runs the experiment on them.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A7M2_ThirdBaseline",
+          "spec": "three points on a calibration axis rising left to right (baseline 1 → 2 → 3), the trajectory improving but flattening below the 0.9 target line; the 0.9 line drawn but not reached; SHAPE emphasized, no exact tick labels (numbers unverified per source)",
+          "out": "manim/A7M2.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Improving, rarely at 0.9 — overconfidence is sticky"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7M2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A7R2",
+      "act": "the closing argument",
+      "lane": "REMOTION",
+      "narration_text": "So here's the closing argument, made so it can be tested. The work will matter more, not less, as systems get more capable — because the capacity for confident wrongness scales with capability, and the supervisory capacities only scale with deliberate practice. The bottleneck was never models. It's supervisors who can do this work. Used well, AI is the most powerful cognitive tool we've built; used as a replacement for the judgment it can't supply, it's how accountability disappears into no one. There is no Chapter fourteen.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Made directly, so it can be tested.",
+              "Confident wrongness scales with capability",
+              "Supervisory capacity scales only with deliberate practice"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lane": "CLOSING",
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude — and this is the last verdict in the series, so it's really the verdict on the whole book. AI has three limits capability scaling does not close: meaning, intentionality, and the data-world gap. The gap is the categorical one — Hume's point, that the parts of the world not in the data are not learnable from the data — and meaning and intentionality inherit their bite from it. Turing and Searle each settle less than they're quoted for. Where the limits bite, the supervisor's skepticism is the safety mechanism, and the authority to refuse is the most important authority in the system. The tool is a cognitive extremophile — superhuman in one niche, absent in others — and the one capacity it cannot hold is accountability. Used well, the most powerful cognitive tool we've built. Used as a replacement for the judgment it can't supply, the mechanism by which accountability disappears into no one.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 42,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Scaling Moves the Boundary. It Never Removes It.",
+            "artifactHeading": "The closing verdict",
+            "artifactLines": [
+              "Three limits scaling can't close: meaning, intentionality, data-world gap.",
+              "The gap is categorical — a sample cannot contain what it excluded (Hume).",
+              "Meaning and intentionality inherit the bite from the gap.",
+              "Turing settles a method, Searle a concept — neither reaches what's behind behavior.",
+              "Where the limits bite, skepticism is the safety mechanism — refusal is the top authority.",
+              "A cognitive extremophile: superhuman in a niche, and cannot hold accountability."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "lane": "CLOSING",
+      "narration_text": "Your turn — and this is the exercise the whole book was built for. Here's the prompt; paste it into Claude. It reads: Pick one AI deployment you actually know — from your work or the news. First, before any analysis, make me lock a prediction — which of the three categorical limits, meaning, intentionality, or the data-world gap, bites hardest here, and the exact failure mode the bite would produce. Then help me design the five-component engineering practice for it, and stake a position — proceed, modify, defer, or refuse — with a verb calibrated to my evidence. End by naming what would change my mind. End quote. The lock before the analysis is the whole point — that discipline is the book. Notice the position has four settings, not two: proceed and refuse are both real, and so are modify and defer. And the verb has to match the evidence — that's Chapter eleven, running one last time. Run it on a deployment you'd actually have to answer for.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 50,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — SCALING MOVES THE BOUNDARY. IT NEVER REMOVES IT.",
+            "segment": "Scaling Moves the Boundary. It Never Removes It.",
+            "command": "Pick one AI deployment I actually know — from my work or the news. First, before any analysis, make me lock a prediction: which of the three categorical limits — meaning, intentionality, or the data-world gap — bites hardest here, and the exact failure mode the bite would produce. Then help me design the five-component engineering practice for it, and stake a position — proceed, modify, defer, or refuse — with a verb calibrated to my evidence. End by naming what would change my mind.",
+            "runningText": "lock the prediction — design the practice — stake proceed / modify / defer / refuse — name what would change your mind…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "CLOSING",
+      "narration_text": "Scaling Moves the Boundary. It Never Removes It. The Limits of AI — the closing chapter of Computational Skepticism for AI. There is no Chapter fourteen. Go do the work. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 9,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Scaling Moves the Boundary. It Never Removes It.",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear. , The closing chapter.",
+            "slug": "claude-liam-deep-13-limits-of-ai"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

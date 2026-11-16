@@ -10,7 +10,7 @@ import lectern_paths as lp
 
 DOC = json.load(open(lp.config("targets.json"), encoding="utf-8"))
 T = DOC["targets"]
-SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research", "games", "consulting", "speakers", "federal508"}
+SECTIONS = {"boards", "bigfour", "unreachable", "schools", "research", "games", "consulting", "speakers", "federal508", "fellowships"}
 STATUSES = {"active", "removed", "no-reader", "unreadable", "unchecked", "partial", "read-by-hand", "dropped"}
 
 
@@ -70,7 +70,7 @@ class Targets(unittest.TestCase):
         watched = {b["company"] for s in sources["sources"] for b in s["boards"]}
         removed = set(k for k in sources["removed"] if k != "_comment")
         unreachable = {u["company"] for u in sources["unreachable"]}
-        for section in ("games", "consulting", "federal508"):
+        for section in ("games", "consulting", "federal508", "fellowships"):
             names = {t["name"] for t in T if t["section"] == section}
             self.assertTrue(names, section)
             for other in (watched, removed, unreachable):
@@ -80,7 +80,7 @@ class Targets(unittest.TestCase):
         # too, so names are not compared. Being on the speakers list changes nothing about the watch list: the generator reads only `boards`.
         # the generator turns only the `boards` section into the watch list: nothing in these sections may carry its other triggers
         for t in T:
-            if t["section"] in ("games", "consulting", "speakers", "federal508"):
+            if t["section"] in ("games", "consulting", "speakers", "federal508", "fellowships"):
                 self.assertNotIn("unreachable", t, t["id"])
                 self.assertNotEqual(t["status"], "removed", t["id"])
 

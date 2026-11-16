@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-22-calibration-useless",
+    "title": "Why a Perfectly Calibrated Model Can Be Perfectly Useless",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that calibration and discrimination are separate axes — a model that predicts the base rate for every case achieves perfect calibration while providing zero information for any decision. Source: books/computational-skepticism-for-ai/chapters/12-communicating-uncertainty-calibrating-claims-to-evidence.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = the diagonal / perfect calibration; CRIMSON = the pile / discrimination failure; GOLD = the two axes / key insight; SLATE = prediction dots",
+    "note": "EXCLUSIONS: no Brier score formula or three-term decomposition algebra, no ECE binning math, no AUROC definition, no temperature scaling — the two dot-patterns carry everything",
+    "total_estimated_duration_seconds": 187,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 22,
+    "build": {
+      "at": "2026-07-19T02:38:52",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why a Perfectly Calibrated Model Can Be Perfectly Useless",
+            "greeting": "Sawubona, Liam.",
+            "command": "There is a model with a flawless calibration score — and it is completely useless for any decision.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "There is a model with a flawless calibration score — and it is completely useless for any decision.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why a Perfectly Calibrated Model Can Be Perfectly Useless",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why a Perfectly Calibrated Model\nCan Be Perfectly Useless"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 5.8,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A fraud detection model gets audited. The calibration report comes back clean: when the model says thirty percent fraud probability, roughly thirty percent of those cases are fraud. When it says seventy percent, seventy percent are fraud. It is perfectly calibrated. Someone presents the model in production. Every single prediction is thirty percent. Every single one. Not thirty percent on some and seventy percent on others — thirty percent on all of them. The fraud rate in the dataset is thirty percent. The model learned the base rate and stopped. It is perfectly calibrated. It tells you nothing.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B02_BaseRateModelReveal",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 29.63,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:38:52",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: A fraud detection model gets audited. The calibration report comes back clean: when the model says thirty percent fraud probability, roughly thirty percent of t"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "If calibration only measures whether stated confidence matches observed frequency, what is the separate property a model needs to be useful for any actual decision?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What separate property does a model need beyond",
+              "calibration to be useful?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "Beyond calibration, what does\na model need to be useful?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 9.66,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:38:52"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Calibration is a single-axis audit. It asks: when you say X percent, does X percent come true? A model can pass this test by always saying the same thing — the base rate. If thirty percent of events are positive, a model that says thirty percent for every single case is perfectly calibrated by this definition. The calibration metric cannot detect this failure because calibration does not measure whether the model says different things for different inputs. That property is called discrimination — and it lives on a completely separate axis.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B04_SingleAxisProblem",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 28.2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:38:52",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: Calibration is a single-axis audit. It asks: when you say X percent, does X percent come true? A model can pass this test by always saying the same thing — the "
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A model with good discrimination spreads its predictions across the range from low to high — high scores predict positives, low scores predict negatives. A model with poor discrimination piles its predictions near the center, giving similar scores to cases that are different. Both can be calibrated. Both can be miscalibrated. These are orthogonal properties, which means a calibration report tells you nothing about discrimination, and a discrimination report tells you nothing about calibration. One number cannot carry both pieces of information.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B05_TwoAxisOrthogonal",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 28.89,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:38:52",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: A model with good discrimination spreads its predictions across the range from low to high — high scores predict positives, low scores predict negatives. A mode"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Calibration measures agreement between stated confidence and observed frequency — a model that says the base rate for every case achieves this trivially, while providing zero information for any decision.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Perfect calibration",
+              "and zero usefulness can coexist. Both at once."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A reliability diagram with two contrasting dot patterns side by side on aged newsprint: left panel shows dots spread along the diagonal from bottom-left to top-right, labeled CALIBRATED AND USEFUL in teal; right panel shows all dots piled onto a single point at the center of the diagonal labeled CALIBRATED AND USELESS in crimson — the diagonal is the same in both panels",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 11.84,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:38:52"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here's the reliability diagram. The teal diagonal is what calibration asks for: predicted probability on the x-axis, actual positive rate on the y-axis, matching at every point. Now watch the two patterns. Pattern one: slate dots scattered from low predicted probability to high predicted probability, all hugging the diagonal. Calibrated. Also useful — the model is assigning different scores to different cases. Pattern two: slate dots piling onto one point at thirty percent predicted probability. Also on the diagonal. Also calibrated. But the pile means every input received the same score. The model is not distinguishing anything.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B07_ReliabilityDiagramTwoPatterns",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 35.43,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:38:52",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Here's the reliability diagram. The teal diagonal is what calibration asks for: predicted probability on the x-axis, actual positive rate on the y-axis, matchin"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The reliability diagram cannot tell these two cases apart if you only look at whether the dots are on the diagonal. Both pass the calibration check. The difference is visible in the spread — one pattern uses the full horizontal range, the other compresses to a single point. The spread is the discrimination signal. A model that uses only one point of the horizontal axis has made the same prediction for every input it has ever seen. It learned the average and stopped learning.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B08_SpreadVsPileVisual",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 23.49,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:38:52",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The reliability diagram cannot tell these two cases apart if you only look at whether the dots are on the diagonal. Both pass the calibration check. The differe"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For AI practitioners reporting model performance, calibration is a necessary condition for a useful model, not a sufficient one. A calibration audit that does not also measure the spread of predicted probabilities across the decision range has not answered the question: does this model distinguish the cases we need it to distinguish? A flat spread means the model's output cannot move a decision. A wide spread with good calibration means the model is both honest and informative.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B09_NecessaryNotSufficient",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 26.45,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:38:52",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: For AI practitioners reporting model performance, calibration is a necessary condition for a useful model, not a sufficient one. A calibration audit that does n"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The practical audit requires two separate checks. First: is the model calibrated — do stated probabilities match observed frequencies across the range it actually uses? Second: is the model discriminating — does it spread its predictions meaningfully across the decision range? A model that passes only the first check is honest but useless. A model that passes only the second check is informative but untrustworthy. You need both — and they must be measured separately.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B10_TwoCheckAudit",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 22.66,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:38:52",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The practical audit requires two separate checks. First: is the model calibrated — do stated probabilities match observed frequencies across the range it actual"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The collapse into a single score is the root failure. When a model evaluation produces one number — accuracy, AUC, calibration error — it is averaging over properties that can move in opposite directions. A model can improve its calibration by learning the base rate while losing its ability to distinguish cases. A single-number evaluation will not catch this. The evaluation protocol must preserve the two-axis structure, because the two axes represent distinct requirements — honesty and usefulness — and a deployment needs both.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_SingleScoreCollapse",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 28.44,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:38:52",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The collapse into a single score is the root failure. When a model evaluation produces one number — accuracy, AUC, calibration error — it is averaging over prop"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 13.0,
+      "narration_text": "A hospital deploys a readmission risk model. The calibration audit shows excellent results — across all risk bins, stated probabilities match observed readmission rates. The vendor presents this as validation. A skeptical analyst plots the distribution of predicted scores in production. Ninety-one percent of patients receive a score between twenty-eight and thirty-two percent. The model has essentially learned that one-third of patients are readmitted. It is predicting the base rate for almost everyone. No patient identified as high-risk is receiving additional follow-up that the medium-risk patients are not. The model is calibrated. It is not changing any decision. It is a very expensive base-rate lookup table.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B12_ReadmissionBaseRateModel",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 37.85,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:38:52",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A hospital deploys a readmission risk model. The calibration audit shows excellent results — across all risk bins, stated probabilities match observed readmissi"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Calibration measures agreement between stated confidence and observed frequency — a model that predicts the base rate for every case passes this test trivially while providing zero decision-relevant information. The missing property is discrimination: does the model spread predictions meaningfully across the decision range? These are separate axes. Calibration reports do not reveal discrimination failures. Audit both: check whether probabilities match outcomes, and check whether the model uses more than one point of the prediction range. A model that only passes the first test is honest and useless.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Calibrated and useless are not contradictions",
+              "audit both axes separately."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Calibration is one axis.\nDiscrimination is the other.",
+        "sub": "A model needs both to be useful — measure them separately.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 31.89,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:38:52"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why a Perfectly Calibrated Model Can Be Perfectly Useless",
+            "artifactHeading": "Key findings — Why a Perfectly Calibrated Model Can Be Perfectly Useless",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A hospital deploys a readmission risk model."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:38:52"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY A PERFECTLY CALIBRATED MODEL CAN BE PERFECTLY USELE",
+            "segment": "Why a Perfectly Calibrated Model Can Be Perfectly Useless",
+            "greeting": "Bonjour, Liam.",
+            "command": "Ask Claude: Why a Perfectly Calibrated Model Can Be Perfectly Useless",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:38:52"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why a Perfectly Calibrated Model Can Be Perfectly Useless",
+            "slug": "claude-liam-cs-22-calibration-useless",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

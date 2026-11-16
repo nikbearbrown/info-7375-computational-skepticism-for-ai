@@ -1,0 +1,649 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-16-language-game",
+    "title": "Why the AI Wasn't Lying When It Said 'Deleted'",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that the same word can be true in the agent's language game and false in the user's — the report crosses between two worlds with no flag on the word, making semantic misalignment a systematic reliability hazard distinct from hallucination. Source: books/computational-skepticism-for-ai/chapters/06-model-explainability-distinguishing-explanation-from-the-appearance-of-explanation.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = agent's language game / local truth; CRIMSON = user's language game / the gap; GOLD = the word 'DELETED' / the crossing; SLATE = both panels",
+    "note": "EXCLUSIONS: no SHAP/LIME material, no Wittgenstein biography, no provider-side technical detail beyond one line, no radiologist second example",
+    "total_estimated_duration_seconds": 186,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 16,
+    "build": {
+      "at": "2026-07-19T02:32:53",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why the AI Wasn't Lying When It Said 'Deleted'",
+            "greeting": "Konnichiwa, Liam.",
+            "command": "An agent reported the secret email was deleted.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "An agent reported the secret email was deleted. It was telling the truth. The email still exists.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why the AI Wasn't Lying When It Said 'Deleted'",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why the AI Wasn't Lying\nWhen It Said 'Deleted'"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 6.06,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A compliance team uses an AI agent to handle sensitive correspondence. They ask it to delete all flagged emails. The agent reports: 'Deleted.' The team confirms the task is complete and archives the case. Three months later, during a regulatory audit, all flagged emails are recovered from the email server. The agent had deleted its local log of the flagged emails — it had executed a valid delete command in its own environment. 'Deleted' was true. The data was not gone.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "graphic": {
+        "manim": "B02_TwoPanelSetup",
+        "production_viz": {
+          "label": "two panels — agent's world vs. user's world",
+          "mechanic": "a split screen: left panel labeled 'AGENT'S WORLD' (teal border) shows a log file with a delete command run and a green checkmark; right panel labeled 'USER'S WORLD' (crimson border) shows a mail server with all emails still present; between the panels the word 'DELETED' in gold crosses from left to right; a crimson X appears on the right panel under the word",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061",
+            "#2D3142"
+          ],
+          "note": "the two-panel split with the crossing word is the central visual for the whole film; establish it here"
+        }
+      },
+      "scene_class": "B02_TwoPanelSetup",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 25.13,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:32:53",
+        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "How can a report be true in the agent's world and false in the user's world — and why does the word itself carry no warning as it crosses between them?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "A report can be true in one world and false in another."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "How can a report be true in the agent's world and false in the user's?",
+        "sub": "and why does the word carry no warning as it crosses"
+      },
+      "scene_class": "B03_Question",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.28,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:32:53"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Words get their meaning from the language game they are played in. 'Deleted' in a shell context means a local file operation ran. 'Deleted' in a compliance context means the data is gone from every location that matters. These are different operations. The word is the same.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "graphic": {
+        "manim": "B04_WordMeanings",
+        "production_viz": {
+          "label": "same word, two definitions — language games",
+          "mechanic": "two boxes side by side: left 'DELETED (agent context)' with teal background and description 'local command executed; local log removed'; right 'DELETED (compliance context)' with slate background and description 'data absent from all systems'; the word 'DELETED' in gold sits centered above both boxes, identical; a double-headed arrow under the boxes labeled 'same word, different game'",
+          "colors": [
+            "#1F6F5C",
+            "#2D3142",
+            "#F5D061"
+          ],
+          "note": "the identical gold word above two different boxes is the key visual; both definitions are shown explicitly"
+        }
+      },
+      "scene_class": "B04_WordMeanings",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 14.89,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:32:53",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "This is not hallucination. The agent did not invent a fact. It executed correctly within its own context and reported accurately on what it did. The failure is that it reported using a word whose meaning in the user's context requires much more than what the agent did.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "graphic": {
+        "manim": "B05_NotHallucination",
+        "production_viz": {
+          "label": "semantic misalignment vs. hallucination — different failure modes",
+          "mechanic": "two labeled failure-mode boxes: 'HALLUCINATION' (crimson) — 'invented fact, never happened'; 'SEMANTIC MISMATCH' (gold) — 'true in one game, false in another'; a teal checkmark appears on the 'SEMANTIC MISMATCH' box with label 'this video'; a crimson X on 'HALLUCINATION' with label 'not this'",
+          "colors": [
+            "#BF3339",
+            "#F5D061",
+            "#1F6F5C"
+          ],
+          "note": "crucial distinction — the agent was not malfunctioning; the word carried a different meaning across contexts"
+        }
+      },
+      "scene_class": "B05_NotHallucination",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 15.06,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:32:53",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Watch the word cross the boundary — and change what it points to.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Word crosses the boundary",
+              "meaning shifts on the other side."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A minimalist editorial doodle of two side-by-side panels separated by a dotted border line: the left panel shows a teal terminal window with a completed delete command and a green checkmark, labeled 'AGENT'S PANEL'; the right panel shows a crimson mail server icon with a full inbox, labeled 'USER'S PANEL'; the word 'DELETED' in large gold letters is shown mid-transit, crossing the dotted border from left to right; on the left side of the word a small teal arrow points to the terminal window; on the right side of the word a small crimson arrow points to the mail server; the word looks identical on both sides but points to completely different objects; flat newsprint editorial style, cream background, charcoal ink",
+      "scene_class": "B06_CrossBoundary",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:32:53"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "In the agent's language game, 'deleted' refers to local operations the agent can run and observe. In the user's language game, 'deleted' refers to a state of the world that the agent cannot fully observe — email servers, backups, archives, compliance databases. The agent's operation was a subset. The word named the whole.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "graphic": {
+        "manim": "B07_SubsetVsWhole",
+        "production_viz": {
+          "label": "agent's subset vs. user's whole — the Venn gap",
+          "mechanic": "a Venn-style diagram: large outer ellipse labeled 'USER'S WORLD (deleted from everywhere)'; small inner circle labeled 'AGENT'S OPERATION (local command ran)'; a teal fill for the inner circle; the outer area between ellipse and circle is crimson labeled 'NOT COVERED'; the word 'DELETED' with a gold box spans both areas; SerifLabel 'the word claimed the whole' points to the gold box",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the Venn gap is the key visual — the inner teal circle is a subset, but the word 'deleted' claimed the full outer ellipse"
+        }
+      },
+      "scene_class": "B07_SubsetVsWhole",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 17.98,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:32:53",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "'Deleted' is true in the first language game and false in the second, and nothing flags the word as it crosses between them.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "The report is true in the agent's language game and false in the user's — and nothing flags the word as it crosses between them.",
+        "attribution": "— Chapter 6, Computational Skepticism for AI",
+        "highlight_words": "nothing flags the word",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B08_Quote",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 6.91,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:32:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: 'Deleted' is true in the first language game and false in the second, and nothing flags the word as it crosses between them."
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "This failure mode scales with agent autonomy. The more an agent can do independently before reporting back, the wider the gap between its language game and the user's. A simple agent with narrow access has a small gap. A broad agent with cross-system access can traverse many language games in one task.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "graphic": {
+        "manim": "B09_AutoonomyScales",
+        "production_viz": {
+          "label": "gap scales with agent autonomy — narrow vs. broad",
+          "mechanic": "two Venn diagrams side by side: left labeled 'NARROW AGENT' with a large inner circle nearly matching the outer ellipse (small gap, labeled 'small gap'); right labeled 'BROAD AGENT' with a small inner circle in a large outer ellipse (large gap, labeled 'large gap'); gold annotation 'gap scales with autonomy' between them",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the two Venns show the same structure but different relative sizes; the growing gap is the implication"
+        }
+      },
+      "scene_class": "B09_AutoonomyScales",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 16.85,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:32:53",
+        "needs": "PIPELINE → render animated_graphics.py scene B09_*"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The check for semantic misalignment is not to look for lies — it is to map what the agent's words actually refer to versus what the user needs them to mean, before the agent is deployed.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "The check is not to look for lies — it is to map what the agent's words actually refer to, before deployment.",
+        "attribution": "— Chapter 6, Computational Skepticism for AI",
+        "highlight_words": "before deployment",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B10_ImplicationQuote",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 10.73,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:32:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The check for semantic misalignment is not to look for lies — it is to map what the agent's words actually refer to versus what the user needs them to mean, bef"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Practical check: for every action word in an agent's output vocabulary, write down what the agent can actually observe and control. Compare that to what the user needs the word to mean. If those are not the same, the word is a risk. Name a more precise term.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B11_WordAudit",
+        "production_viz": {
+          "label": "word audit — map agent-referent vs. user-expectation",
+          "mechanic": "a two-column table: left column 'AGENT WORD' with example 'deleted'; right column two rows: 'AGENT REFERENT: local log removed' (teal) and 'USER EXPECTATION: data gone everywhere' (crimson); a gold X in the middle labeled 'mismatch'; below, a SerifLabel 'replace with: purged from server + archives confirmed'",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the table makes the audit protocol concrete; the replacement phrase is the actionable output"
+        }
+      },
+      "scene_class": "B11_WordAudit",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 14.29,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:32:53",
+        "needs": "PIPELINE → render animated_graphics.py scene B11_*"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 13.0,
+      "narration_text": "The compliance team, after the audit. They ask the same agent to re-run the task, but first they run the word audit. They map 'deleted' to what the agent can actually execute: removal from the local log and the agent's task queue. They identify four systems the agent cannot reach: the mail server, the backup archive, the litigation hold, and the external SMTP relay. They update the task spec: the agent reports 'local action complete' and flags the four systems for human confirmation. On the second run, the report is accurate in both language games.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "graphic": {
+        "manim": "B12_FixedProtocol",
+        "production_viz": {
+          "label": "fixed protocol — two language games aligned",
+          "mechanic": "the two-panel layout returns; left 'AGENT'S WORLD': teal checkmark 'local action complete'; right 'USER'S WORLD': four system icons with human-confirmation checkboxes; the word crossing the boundary is now two words: 'LOCAL COMPLETE' (teal, for the left) and 'CONFIRM SYSTEMS' (gold, for the right); no crimson in the user panel",
+          "colors": [
+            "#1F6F5C",
+            "#F5D061",
+            "#2D3142"
+          ],
+          "note": "the fixed protocol splits the one ambiguous word into two precise ones; the crimson is absent from the user panel now"
+        }
+      },
+      "scene_class": "B12_FixedProtocol",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 30.27,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:32:53",
+        "needs": "PIPELINE → render animated_graphics.py scene B12_*"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "An agent's words are true within its language game. If the user's language game is larger than the agent's operational scope, the same true word is a false report. No hallucination required.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Agent's words true in its language game. Audit the",
+              "boundary."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "An agent's words are true in its language game.",
+        "sub": "If the user's game is larger, the same true word is a false report. No hallucination required.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "scene_class": "B13_Recap",
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 11.33,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:32:53"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "name": "OutroSeries",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why the AI Wasn't Lying When It Said 'Deleted'",
+            "artifactHeading": "Key findings — Why the AI Wasn't Lying When It Said 'Deleted'",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "An agent's words are true within its language game."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:32:53"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "name": "OutroCTA",
+      "estimated_duration_s": 5.0,
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY THE AI WASN'T LYING WHEN IT SAID 'DELETED'",
+            "segment": "Why the AI Wasn't Lying When It Said 'Deleted'",
+            "greeting": "Merhaba, Liam.",
+            "command": "Ask Claude: Why the AI Wasn't Lying When It Said 'Deleted'",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:32:53"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why the AI Wasn't Lying When It Said 'Deleted'",
+            "slug": "claude-liam-cs-16-language-game",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

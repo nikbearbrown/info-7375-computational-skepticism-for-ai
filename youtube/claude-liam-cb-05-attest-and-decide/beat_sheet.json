@@ -1,0 +1,285 @@
+{
+ "metadata": {
+  "title": "Attest and Decide: The Four-Part Attestation and Go/No-Go",
+  "slug": "claude-liam-cb-05-attest-and-decide",
+  "topic": "AGENTIC CASEBOOK — E5/6: ATTEST AND DECIDE",
+  "register": "Pragmatist",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "greeting": "Ciao, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "playlist": "Doubt It When It Looks Right — The Agentic Casebook",
+  "series": "claude-liam-cb",
+  "episode": 5,
+  "source": "Computational Skepticism for AI — Agentic Casebook Assignment (100 pts)",
+  "build": {
+   "at": "2026-07-27T21:25:12",
+   "cut": "master",
+   "filled": 7,
+   "of": 7,
+   "slates": [],
+   "skin_warnings": []
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "narration_text": "Ciao — this is Liam. Episode 5 of 6. You have three or more cases. Now you attest to what you actually tested, and you decide what should happen next. The attestation is Chapter 12. The go/no-go memo is Chapter 13. Together they are 30 of the 100 points. Both require calibrated verbs. A calibrated verb is one that names only what the evidence supports — not stronger, not weaker. Four minutes.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 24,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Ciao, Liam",
+      "topic": "AGENTIC CASEBOOK — E5/6: ATTEST AND DECIDE",
+      "segment": "Attest and Decide: The Four-Part Attestation and Go/No-Go",
+      "command": "I have three completed cases from my Pebble audit. Help me write the four-part attestation (Chapter 12) and the go/no-go memo (Chapter 13). Use calibrated verbs throughout. The attestation must include at least three 'did NOT test' entries — be specific about what was out of scope.",
+      "runningText": "attestation + go/no-go memo — 30 of the 100 points — calibrated verbs only…",
+      "output": [
+       "Four-part attestation: what tested, what NOT tested (≥3), who clears which gate, calibrated verbs",
+       "Go/no-go memo: calibrated verb + named use + named human owner + stop condition",
+       "Named parties for gate clearance — not 'the instructor,' but a named role with a named responsibility",
+       "Severity tally: High severity cases determine the calibrated verb in the memo"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:25:12"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "the four-part attestation — structure and what each part requires",
+   "narration_text": "The attestation is Chapter 12. It has four parts. Part one: what you tested. Name the three lenses you ran, the number of trials per lens, the specific inputs you used, and the conditions under which you ran them. This is not a summary of your findings — it is a precise account of your methodology. 'I ran three lenses' is not adequate. 'I ran Chapter 8 across three independent trials using inputs A, B, and C under conditions X' is. Part two: what you did NOT test. This is the part most students write too briefly. You need at least three specific, named gaps. Not 'I didn't test everything' — that is not a gap, that is a truism. A specific gap names: the failure mode you did not probe, the condition under which it might matter, and why it was out of scope. 'I did not test the system's behavior under concurrent multi-user load because I had access to only a single-user account' is a gap. It names the failure mode — load-dependent behavior — the condition — concurrent users — and the constraint — single-account access. Three or more of these. Part three: who clears which gate. Name a specific human role — not 'the instructor' or 'a reviewer' — a role with a specific accountability: the system owner who can authorize production deployment, the domain expert who can adjudicate whether the actual outcomes you observed are acceptable, the legal or compliance officer who owns the fairness definition the system is required to satisfy. Part four: the calibrated verbs. Every conclusion in your attestation uses a verb that matches only the evidence you have. You did not 'show that the system fails' — you 'observed one instance in which the stop condition fired while the world state was unchanged.'",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 80,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Precision in all four parts",
+       "P1",
+       "P2"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:25:12"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "calibrated verbs — the language of honest attestation",
+   "narration_text": "Calibrated verbs are the single most reliable signal of whether a student understands what they did. Four contrasting pairs. First: 'the system fails' versus 'I observed one instance where the reported outcome did not match the world state.' The first is a claim about all cases. The second is a claim about one case, exactly as observed. Second: 'the system is biased' versus 'I measured a material output delta when I changed variable X while holding everything else constant.' Bias is a loaded term. The measurement is precise. Third: 'the system cannot be trusted' versus 'I identified two cases with High severity findings — agentic false-success and explanation inconsistency — under the specific inputs I tested.' The first is a verdict. The second is a bounded claim grounded in two specific cases. Fourth: 'this is a good system' versus 'I found no High-severity findings across the three lenses I ran — noting that five lenses were not applied and concurrent load conditions were not tested.' The last version includes the attestation of what was not tested. That is what calibration means: your claim is exactly as strong as your evidence and no stronger.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 62,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Claim exactly as strong as the evidence — no stronger",
+       "WRONG: 'The system fails.' RIGHT: 'I observed one instance where reported",
+       "WRONG: 'The system is biased.' RIGHT: 'Output delta measured when X"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:25:12"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "the go/no-go memo — four required elements",
+   "narration_text": "The go/no-go memo is Chapter 13. It is a recommendation about what should happen to the system next. Four required elements. First: the calibrated verb. You choose one of four: deploy, modify, defer, or refuse. Deploy means the system is ready for the named use in the named context — you observed no High-severity findings under the conditions you tested, with the gaps in your testing explicitly named. Modify means the system requires specific changes before deployment — name the changes. Defer means the system needs additional testing beyond what you conducted — name what testing and why it was out of scope for you. Refuse means the system should not be deployed for the named use regardless of modifications — typically because a fundamental architectural issue prevents it from satisfying the use case's requirements. Second: the named use. Be precise. 'Not for general use' is not a named use. 'Not for automated decision-making in cases where the stop condition cannot be independently verified before the action is committed' is a named use. Third: the named human owner. Who is accountable for implementing this recommendation? Not 'the team' — a specific role: the system owner, the product manager, the chief risk officer. Fourth: the stop condition. The observable condition under which the recommendation changes — for 'modify,' when are the modifications complete enough to retest? For 'defer,' what testing would need to be done and by whom before the recommendation changes?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 72,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Four required elements — all four, in every memo",
+       "E1",
+       "deploy: no High-severity findings under tested conditions + named gaps"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:25:12"
+   }
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict",
+   "lead_silence_s": 0.5,
+   "narration_text": "Verdict for Attest and Decide. The attestation is four parts: what you tested — methodology, not summary; what you did not test — three or more specific named gaps, each with a failure mode, a condition, and a constraint; who clears which gate — a named role with a specific accountability; and calibrated verbs throughout — claim exactly as strong as the evidence, no stronger. The go/no-go memo has four elements: the calibrated verb chosen from your severity findings; the named use, specific enough to be falsifiable; the named human owner, a specific role not a group; and the stop condition that defines when the recommendation changes. High-severity findings push you toward modify or refuse. Zero High-severity findings with named gaps allow for a conditional deploy. Both documents together are 30 points. Both are wrong if the verbs are stronger than the evidence.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact",
+     "props": {
+      "artifactTitle": "Attest and Decide: The Four-Part Attestation and Go/No-Go",
+      "artifactHeading": "Core rules — 30 pts (attestation + memo)",
+      "artifactLines": [
+       "Attestation P1: methodology account — lenses + trial count + inputs + conditions.",
+       "Attestation P2: ≥3 named gaps — failure mode + condition + constraint. Not 'didn't test everything.'",
+       "Attestation P3: named roles + named accountabilities. Not 'the instructor.'",
+       "Attestation P4: calibrated verbs — claim = evidence strength only.",
+       "Memo: verb (deploy/modify/defer/refuse) + named use + named owner + stop condition.",
+       "High severity / modify or refuse. Zero High + named gaps / conditional deploy."
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BVDT.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:25:12"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Here is the prompt — run it with your three completed cases in context. The prompt reads: I have three completed case templates from my Pebble audit. My cases are attached. Write my four-part attestation for Chapter 12. For Part 1, name the three lenses, the trial count per lens, and the specific inputs used. For Part 2, name at least three specific gaps — each gap must name the failure mode not probed, the condition under which it might matter, and the constraint that put it out of scope. For Part 3, name a specific human role for each gate — system owner, domain expert, or legal/compliance — with a one-sentence statement of their accountability. For Part 4, audit every verb in the attestation and replace any verb that is stronger than the evidence with a calibrated alternative. Then write the go/no-go memo for Chapter 13: select the calibrated verb from the four options based on my severity tallies, name the specific use case, name the specific human owner role, and state the stop condition under which the recommendation would change. End quote. When the draft comes back, check every verb in the attestation. If any verb claims more than one case supports — 'the system fails,' 'the system cannot be trusted,' 'the system is safe' — flag it and rewrite it before you assemble in Episode 6.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 65,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN — ATTEST AND DECIDE: THE FOUR-PART ATTESTATION AND GO/NO-",
+      "segment": "Attest and Decide: The Four-Part Attestation and Go/No-Go",
+      "command": "Three cases attached. Write: (1) four-part attestation — methodology / ≥3 named gaps / named roles / calibrated verbs; (2) go/no-go memo — verb from severity tally / named use / named owner / stop condition. Audit every verb: if stronger than one case's evidence, flag and rewrite.",
+      "runningText": "check every verb — if any claims more than one case supports, flag and rewrite before Episode 6…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:25:12"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Attest and Decide: The Four-Part Attestation and Go/No-Go. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Attest and Decide: The Four-Part Attestation and Go/No-Go",
+      "handle": "@NikBearBrown",
+      "subline": "Liam, in for Bear.",
+      "slug": "claude-liam-cb-05-attest-and-decide"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:25:12"
+   }
+  }
+ ]
+}

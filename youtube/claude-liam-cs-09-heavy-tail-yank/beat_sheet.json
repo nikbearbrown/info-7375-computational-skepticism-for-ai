@@ -1,0 +1,646 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-09-heavy-tail-yank",
+    "title": "Why One Data Point Can Beat Your Thousand-Point Average",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show why running averages never settle in heavy-tailed distributions — the CLT's finite-variance assumption is violated, so any average-based safety metric is measuring a quantity that does not converge. Source: books/computational-skepticism-for-ai/chapters/02-probability-uncertainty-and-the-confidence-illusion.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = the running mean / what we think we know; CRIMSON = the extreme incoming value / the yank; GOLD = the instability / key insight; SLATE = previous data points accumulating",
+    "note": "EXCLUSIONS: no proof that the Cauchy mean is undefined, no CLT statement in full, no confidence-interval formulas, no power-law taxonomy",
+    "total_estimated_duration_seconds": 192,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 9,
+    "build": {
+      "at": "2026-07-19T02:26:34",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why One Data Point Can Beat Your Thousand-Point Average",
+            "greeting": "Namaste, Liam.",
+            "command": "You averaged a thousand observations.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "You averaged a thousand observations. The very next one can move that average more than all thousand combined.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why One Data Point Can Beat Your Thousand-Point Average",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why One Data Point Can Beat\nYour Thousand-Point Average"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 6.74,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A safety team tracks an AI system's error costs. After a thousand cases, the running average looks rock solid — two percent. They publish the metric. They brief leadership. The number feels earned.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "graphic": {
+        "manim": "B02_TraceSettle",
+        "production_viz": {
+          "label": "running average settling — the comfortable lie",
+          "mechanic": "a teal running-average trace builds left to right across 40 positions; it starts volatile then visibly smooths; a faint horizontal reference line marks the settled value; a SerifLabel 'running average' floats at the right end; slate dots accumulate underneath the trace to suggest data volume",
+          "colors": [
+            "#1F6F5C",
+            "#2D3142"
+          ],
+          "note": "establish the convergence illusion before the yank; x-axis = observation index (unlabeled), y-axis = running mean"
+        }
+      },
+      "scene_class": "B02_TraceSettle",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 10.86,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:26:34",
+        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When can one new observation undo everything a thousand already told you — and how would you know if you are in that world?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "When can one new observation undo everything a",
+              "thousand already told you?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "When can one new observation undo everything a thousand already told you?",
+        "sub": "and how would you know if you're in that world"
+      },
+      "scene_class": "B03_Question",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 6.98,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:26:34"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Averaging feels like the safe move. More data, more confidence. Each new point nudges the mean a little less. The trace settles. That is the promise — and it holds, under one condition.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "graphic": {
+        "manim": "B04_GaussianSettle",
+        "production_viz": {
+          "label": "Gaussian running mean converging — the promise",
+          "mechanic": "a teal running-average trace builds across 35 positions with diminishing swing amplitude; a SerifLabel 'settles' appears once the tail is visibly flat; the trace ends near a horizontal reference line",
+          "colors": [
+            "#1F6F5C"
+          ],
+          "note": "well-behaved world first; no axes labels; the settling is the key visual"
+        }
+      },
+      "scene_class": "B04_GaussianSettle",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 10.26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:26:34",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The condition is finite variance. Extreme events must grow increasingly improbable. In a heavy-tailed distribution, they don't. Rare extremes keep arriving — each one large enough to move the mean, every time.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B05_HeavyTailCompare",
+        "production_viz": {
+          "label": "Gaussian vs heavy-tailed distribution — the broken condition",
+          "mechanic": "two curves on shared axes: a teal Gaussian bell draws in first, symmetric and narrow; then a crimson curve with the same peak but visibly fatter tails draws over it; gold fill highlights the fat tail region; SerifLabel 'fat tails' placed in the gold region",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the contrast is the whole point; gold marks the zone where the CLT condition breaks"
+        }
+      },
+      "scene_class": "B05_HeavyTailCompare",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 11.95,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:26:34",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Watch what happens when the yank arrives.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Watch what happens when the yank arrives."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A minimalist editorial illustration of a teal running-average line graph that looks flat and settled across most of its width, then at the far right a single oversized crimson data point arrives from above and yanks the line sharply upward — the line bends toward the outlier like a fishing rod; the point is labeled 'observation 1001'; flat newsprint editorial style, cream background, no digital effects",
+      "scene_class": "B06_YankSetup",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 2.82,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:26:34"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The settled trace holds across three hundred positions. Then one crimson point arrives — far above the line. The mean lurches toward it. Not a little. More than all three hundred combined.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "graphic": {
+        "manim": "B07_YankTrace",
+        "production_viz": {
+          "label": "the yank — settled trace lurches toward one extreme",
+          "mechanic": "a teal running-average trace holds flat for 30 positions; then one large crimson dot GrowsFromCenter far above the settled line; the teal trace lurches sharply upward; a gold annotation arrow from the crimson dot to the lurch; SerifLabel 'observation 1001' labels the crimson dot",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the lurch must be dramatic and unmissable — the settled trace was visually convincing"
+        }
+      },
+      "scene_class": "B07_YankTrace",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 10.3,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:26:34",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The next observation can move your average dramatically — no matter how many you have already collected.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "The next observation can move your average dramatically, no matter how many you have already collected.",
+        "attribution": "— Chapter 2, Computational Skepticism for AI",
+        "highlight_words": "no matter how many",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B08_Quote",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 5.89,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:26:34",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The next observation can move your average dramatically — no matter how many you have already collected."
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "From a well-behaved distribution: the trace settles. From a heavy-tailed one: same observation count, same time, and the thousandth point still moves it as much as the first.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "graphic": {
+        "manim": "B09_SplitTraces",
+        "production_viz": {
+          "label": "side-by-side — converges vs. never settles",
+          "mechanic": "split-screen: left panel teal trace settling; right panel crimson trace lurching repeatedly at intervals; LabelChip 'CONVERGES' above left (teal); LabelChip 'NEVER SETTLES' above right (crimson); thin SLATE dividing line at center; both traces run simultaneously",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#2D3142"
+          ],
+          "note": "THE COMPARE MOVE — same x-scale, same start volatility, the contrast is the entire point"
+        }
+      },
+      "scene_class": "B09_SplitTraces",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 9.77,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:26:34",
+        "needs": "PIPELINE → render animated_graphics.py scene B09_*"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "Any safety metric built on a running average — average error rate, average latency, average cost — is measuring a number that may not converge. The stability you see in the dashboard is not real.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "Any average-based safety metric is measuring a quantity that may not converge. The stability you see is not real.",
+        "attribution": "— the implication, Chapter 2",
+        "highlight_words": "not real",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B10_ImplicationQuote",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 11.39,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:26:34",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: Any safety metric built on a running average — average error rate, average latency, average cost — is measuring a number that may not converge. The stability yo"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Tail-aware metrics exist for exactly this reason. Worst-case analysis. Conditional value at risk. The question is not what happens on average — it is what happens when the extreme arrives.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B11_TailMetrics",
+        "production_viz": {
+          "label": "tail-aware metrics — the alternative",
+          "mechanic": "a horizontal number line; teal dots cluster near center (bulk of data); two crimson dots at the far right represent tail events; a gold bracket spans the rightmost crimson dots with label 'tail region'; SerifLabel 'measure here' points to the gold bracket",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the gold bracket is the actionable takeaway — tail events are the zone that matters"
+        }
+      },
+      "scene_class": "B11_TailMetrics",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 10.86,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:26:34",
+        "needs": "PIPELINE → render animated_graphics.py scene B11_*"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 15.0,
+      "narration_text": "A document AI handles ten files. Average processing time: point-three seconds. Normal. Then file eleven triggers a full re-indexing pass — three hundred seconds. The running average jumps to twenty-seven seconds. Ninety times higher. Ten perfectly normal results could not protect the average from one tail event.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "graphic": {
+        "manim": "B12_ExampleBars",
+        "production_viz": {
+          "label": "bar chart — ten small bars, one catastrophic outlier",
+          "mechanic": "ten small teal bars (height 0.15 each) appear left to right labeled '0.3s'; then one giant crimson bar grows on the right via GrowFromEdge (height 3.8); MONO label '300s' above the crimson bar; SerifLabel 'running average: 27s' appears at right after the crimson bar fully renders; gold annotation 'outlier wins' below the crimson bar",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061",
+            "#2D3142"
+          ],
+          "note": "the crimson bar must visually dwarf all the teal bars combined; PT Mono for all time values"
+        }
+      },
+      "scene_class": "B12_ExampleBars",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 17.66,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:26:34",
+        "needs": "PIPELINE → render animated_graphics.py scene B12_*"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Averages converge when extremes are bounded. When they are not, any settled metric is a fiction — and the next observation can beat every one before it.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Averages fail when extremes are unbounded. Heavy tails",
+              "pull hard."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Averages converge when extremes are bounded.",
+        "sub": "When they're not, the next observation can beat every one before it.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "scene_class": "B13_Recap",
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 8.96,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:26:34"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "name": "OutroSeries",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why One Data Point Can Beat Your Thousand-Point Average",
+            "artifactHeading": "Key findings — Why One Data Point Can Beat Your Thousand-Point Average",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "Averages converge when extremes are bounded."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:26:34"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "name": "OutroCTA",
+      "estimated_duration_s": 5.0,
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY ONE DATA POINT CAN BEAT YOUR THOUSAND-POINT AVERAGE",
+            "segment": "Why One Data Point Can Beat Your Thousand-Point Average",
+            "greeting": "Sawubona, Liam.",
+            "command": "Ask Claude: Why One Data Point Can Beat Your Thousand-Point Average",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:26:34"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why One Data Point Can Beat Your Thousand-Point Average",
+            "slug": "claude-liam-cs-09-heavy-tail-yank",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+1
+00:00:00,000 --> 00:00:05,009
+Namaste. This is Liam, in for Bear, with a short film for INFO 7375, Computational
+
+2
+00:00:05,029 --> 00:00:10,709
+Skepticism for AI. You might think a good test is one that passes. But a pass only
+
+3
+00:00:10,729 --> 00:00:13,391
+means something if the test could have failed.
+
+4
+00:00:13,461 --> 00:00:17,838
+Three terms. Falsifiable: some possible result could prove it wrong. Fail condition:
+
+5
+00:00:17,858 --> 00:00:22,602
+the result that counts as failure, written down before you look. And risky
+
+6
+00:00:22,622 --> 00:00:25,167
+prediction: a forecast the world could contradict.
+
+7
+00:00:25,237 --> 00:00:29,681
+The move comes from Karl Popper, in The Logic of Scientific Discovery, first
+
+8
+00:00:29,701 --> 00:00:34,145
+published in German in nineteen thirty-four. A claim is scientific only if some
+
+9
+00:00:34,165 --> 00:00:39,295
+possible result could prove it wrong. In his words: it must be possible for an
+
+10
+00:00:39,315 --> 00:00:42,042
+empirical scientific system to be refuted by experience.
+
+11
+00:00:42,112 --> 00:00:46,905
+Popper noticed theories in his day that could explain any case at all. Whatever
+
+12
+00:00:46,925 --> 00:00:51,030
+happened, it counted as a confirmation. Their admirers called that strength. Popper
+
+13
+00:00:51,050 --> 00:00:55,842
+decided it was their weakness: a theory that no possible event could refute isn't
+
+14
+00:00:55,862 --> 00:00:56,186
+scientific.
+
+15
+00:00:56,256 --> 00:01:00,664
+Einstein's theory was different. It said starlight passing the sun would bend, by a
+
+16
+00:01:00,684 --> 00:01:04,775
+definite amount. The eclipse expeditions of nineteen nineteen set out to tell three
+
+17
+00:01:04,795 --> 00:01:09,202
+answers apart: no shift, a small shift, or Einstein's larger one. They reported his.
+
+18
+00:01:09,222 --> 00:01:13,630
+But what impressed Popper was the risk: had the shift been clearly absent, the
+
+19
+00:01:13,650 --> 00:01:14,895
+theory was simply refuted.
+
+20
+00:01:14,965 --> 00:01:19,384
+Now a test in code. This one checks only that the function returned something. Feed
+
+21
+00:01:19,404 --> 00:01:23,824
+it working code: it passes. Feed it broken code: it passes. A test that always
+
+22
+00:01:23,844 --> 00:01:27,375
+passes isn't testing anything. It can't tell you which one you had.
+
+23
+00:01:27,445 --> 00:01:31,936
+Rewrite it with a fail condition, written first: for this input, the answer must
+
+24
+00:01:31,956 --> 00:01:36,448
+match the known result, or the test fails. Popper said it plainly: criteria of
+
+25
+00:01:36,468 --> 00:01:41,282
+refutation have to be laid down beforehand. Now broken code fails, and a pass means
+
+26
+00:01:41,302 --> 00:01:41,604
+something.
+
+27
+00:01:41,674 --> 00:01:45,845
+Claims work the same way. The system is robust. What result would count against
+
+28
+00:01:45,865 --> 00:01:50,036
+that? None is named, so it can't fail. Popper called vagueness like that a
+
+29
+00:01:50,056 --> 00:01:53,628
+soothsayer's trick. Rewrite it: error rate on unfamiliar inputs stays under two
+
+30
+00:01:53,648 --> 00:01:57,220
+percent, over any thirty days. Now a bad month proves it wrong.
+
+31
+00:01:57,290 --> 00:02:01,897
+Agents make claims too: done, success. Picture an agent that grades its own work. It
+
+32
+00:02:01,917 --> 00:02:06,216
+stacks the blocks: success. It knocks them over: success. It does nothing at all:
+
+33
+00:02:06,236 --> 00:02:10,534
+success. An agent that succeeds no matter what it does isn't succeeding. It's just
+
+34
+00:02:10,554 --> 00:02:11,151
+doing stuff.
+
+35
+00:02:11,221 --> 00:02:16,146
+This happens with real models. Anthropic's system card for Claude 3.7 Sonnet reports
+
+36
+00:02:16,166 --> 00:02:19,949
+that, after repeated failures, it occasionally special-cased tests in agentic
+
+37
+00:02:19,969 --> 00:02:25,275
+coding: it returned the exact values the tests expected, or edited the tests to
+
+38
+00:02:25,295 --> 00:02:29,839
+match its code. The tests passed. The general solution never got written.
+
+39
+00:02:29,909 --> 00:02:33,952
+So write down, before anything runs, the result that would count as failure, and
+
+40
+00:02:33,972 --> 00:02:38,596
+check it from outside the agent, not in its own report. If we don't design things
+
+41
+00:02:38,616 --> 00:02:42,370
+beforehand so they could be wrong, we're asserting they'll always work, no matter
+
+42
+00:02:42,390 --> 00:02:42,660
+what.
+
+43
+00:02:42,730 --> 00:02:46,827
+Your turn. Take one claim, test, or agent success check you rely on, and paste this
+
+44
+00:02:46,847 --> 00:02:50,945
+into Claude: Here is a claim, test, or agent success check I rely on: paste it.
+
+45
+00:02:50,965 --> 00:02:55,320
+Before I run it, help me write the specific result that would prove it wrong: what I
+
+46
+00:02:55,340 --> 00:02:58,922
+would observe, how I would measure it, and the threshold. If no possible result
+
+47
+00:02:58,942 --> 00:03:03,040
+could prove it wrong, say so, and rewrite it so one could. Then check two things
+
+48
+00:03:03,060 --> 00:03:06,643
+yourself. Did you write the fail condition before you ran anything? And could that
+
+49
+00:03:06,663 --> 00:03:09,988
+result really happen? If you can't name one, it isn't a check yet.
+
+50
+00:03:10,058 --> 00:03:14,871
+A Test That Can't Fail Isn't a Test. At Nik Bear Brown.

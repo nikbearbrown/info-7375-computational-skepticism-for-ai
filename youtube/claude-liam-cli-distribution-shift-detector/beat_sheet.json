@@ -1,0 +1,475 @@
+{
+  "metadata": {
+    "title": "Distribution Shift Detector: PSI Before Your Model Goes Stale",
+    "slug": "claude-liam-cli-distribution-shift-detector",
+    "topic": "COMPUTATIONAL SKEPTICISM \u2014 DISTRIBUTION SHIFT (PSI)",
+    "register": "Teardown",
+    "voice": "kokoro:am_onyx",
+    "voice_id": "${ELEVENLABS_VOICE_NIKBEARBROWN}",
+    "palette": "claude",
+    "style_preset": "claude",
+    "style": "cli",
+    "note": "CLI video: B00 intro \u00b7 B01 PROBLEM \u00b7 B02 ASK \u00b7 B03 CODE \u00b7 B04 OUTPUT(manim:B04_PSIBars) \u00b7 B05 CHANGE \u00b7 B06 SUMMARY \u00b7 B07 NEXT STEPS \u00b7 B08 extra-slate \u00b7 B09 outro",
+    "total_estimated_duration_seconds": 118,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "channel": "NikBearBrown",
+    "build": {
+      "at": "2026-07-24T04:05:31",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": []
+    },
+    "clifix_at": "2026-07-19T21:48:38"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "Hei \u2014 this is Liam, in for Bear. After 999 days of good predictions, how would you know the world just changed?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "After 999 days of good predictions, how would you know the world just changed?",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Distribution Shift, taken apart.",
+            "greeting": "Hei, Liam",
+            "runningText": "computing population stability index\u2026",
+            "output": [
+              "No shift: PSI=0.001 \u2014 baseline stable",
+              "Moderate drift: PSI=0.12 \u2014 monitor closely",
+              "Major drift: PSI=0.34 \u2014 retrain now",
+              "Features 3, 7, 12 drive the detected shift"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      },
+      "actual_duration_s": 0
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM \u2014 why care",
+      "role_note": "the problem, the stakes \u2014 BEFORE the CLI",
+      "narration_text": "A credit scoring model trained in Q1 is deployed in Q4. The input distribution has shifted \u2014 customer age profiles changed, income distributions moved, a macroeconomic shock altered the feature correlations. The model's accuracy on the new population is down twelve points. No one noticed because no one was monitoring the inputs. Population Stability Index is the standard signal: it measures how much the input distribution has drifted from what the model was trained on, bucket by bucket. A PSI above point-two triggers a retrain. This video builds the monitor.",
+      "visual_intent": "title card: 'input distribution shifted \u2014 model did not know'; PROBLEM beat, no terminal",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "input distribution shifted \u2014 model did not know",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Distribution Shift, taken apart.",
+            "greeting": "The ask,",
+            "runningText": "framing the problem\u2026",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 33.05,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) \u2014 the command typed",
+      "narration_text": "In the terminal: ask Claude to write a PSI function using equal-width bucketing on the training distribution. Then generate a training set from a standard normal and test it against three scenarios: no shift, moderate shift at mean point-five, and a major shift at mean one-point-five with increased variance. Print PSI for each and flag anything above point-two.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Write psi(expected, actual, buckets=10)\ncomputing Population Stability Index.\nPSI = sum((actual_pct - expected_pct) * ln(actual_pct / expected_pct))\nGenerate:\n  training: N(0,1) 5000 samples\n  test: no-shift N(0,1), moderate N(0.5,1), major N(1.5,1.2)\nPrint PSI for each. Flag >0.2 as major drift.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM \u2014 DISTRIBUTION SHIFT (PSI)",
+            "segment": "DISTRIBUTION SHIFT DETECTOR",
+            "greeting": "The ask,",
+            "runningText": "generating PSI distribution monitor\u2026",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 19.46,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) \u2014 read the code before running",
+      "narration_text": "Read the PSI formula. PSI equals the sum over all buckets of actual percent minus expected percent, times the log of actual percent over expected percent. It is a symmetrized KL divergence. The log term penalizes large ratio changes; the difference term penalizes large absolute shifts. Below point-one: stable. Point-one to point-two: monitor. Above point-two: retrain.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "psi_monitor.py",
+            "code": "# psi_monitor.py  \u2014  Claude Code output\nimport numpy as np\n\ndef psi(expected, actual, buckets=10):\n    \"\"\"Population Stability Index \u2014 symmetric KL divergence.\"\"\"\n    # Build bucket edges from TRAINING (expected) distribution\n    lo, hi = expected.min(), expected.max()\n    edges = np.linspace(lo, hi, buckets + 1)\n    \n    e_counts, _ = np.histogram(expected, bins=edges)\n    a_counts, _ = np.histogram(actual,   bins=edges)\n    \n    # Percentages (add epsilon to avoid log(0))\n    e_pct = (e_counts + 1e-6) / len(expected)\n    a_pct = (a_counts + 1e-6) / len(actual)\n    \n    psi_val = np.sum((a_pct - e_pct) * np.log(a_pct / e_pct))\n    return psi_val\n\n# Thresholds: <0.1 stable  |  0.1-0.2 monitor  |  >0.2 RETRAIN",
+            "sparkLine": "DISTRIBUTION SHIFT DETECTOR"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 21.31,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT \u2014 run",
+      "role_note": "Manim animation: B04_PSIBars",
+      "narration_text": "Run it. Three horizontal bars. No shift: PSI point-zero-zero-one, almost invisible \u2014 the training and test distributions are identical. Moderate shift: PSI point-zero-eight, a medium bar, still in the monitoring zone. Major drift: PSI point-three-zero, a long crimson bar crossing the point-two threshold line. Retrain alert. The model cannot see this \u2014 it has no input monitor. You built one.",
+      "visual_intent": "Manim B04_PSIBars: three horizontal bars growing from left \u2014 no-shift green (tiny), moderate gold (medium), major-drift crimson (long) crossing PSI=0.20 threshold dashed line with RETRAIN ALERT annotation",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B04_PSIBars",
+          "file": "vox_scenes.py"
+        }
+      },
+      "estimated_duration_s": 17,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 21.78,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim:B04_PSIBars",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE \u2014 check and revise",
+      "role_note": "terminal (Onda) \u2014 the REQUIRED revision",
+      "narration_text": "Add the feature monitor. Ask Claude to update the script to run PSI across all twenty features of a synthetic dataset, rank features by PSI descending, and flag the top three as priority retrain drivers.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Update psi_monitor.py:\n-> generate synthetic 20-feature dataset\n-> apply N(0.5,1) shift to features 3,7,12\n-> compute PSI for all 20 features\n-> rank by PSI descending\n-> flag top 3 as 'priority retrain drivers'\"",
+            "topic": "COMPUTATIONAL SKEPTICISM \u2014 DISTRIBUTION SHIFT (PSI)",
+            "segment": "DISTRIBUTION SHIFT DETECTOR",
+            "greeting": "The ask,",
+            "runningText": "running per-feature PSI sweep\u2026",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 12.71,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "SUMMARY",
+      "role_note": "the lesson \u2014 one beat",
+      "narration_text": "The per-feature PSI sweep identifies features three, seven, and twelve as the drift drivers \u2014 the ones you artificially shifted. The model degraded on those features and had no way to report it. The lesson: PSI is not a model metric \u2014 it is an input health metric. You run it on the data, not on the predictions. Predictions can look stable while inputs are already broken.",
+      "visual_intent": "recap card: per-feature PSI ranked table; 'monitor inputs, not just predictions'",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "lesson.md",
+            "code": "# KEY LESSON\n#\n# The per-feature PSI sweep identifies features three, seven, and twelve\n# as the drift drivers \u2014 the ones you artificially shifted. The model\n# degraded on those features and had no way to report it. The lesson:\n# PSI is not a model metric \u2014 it is an input health metric.\n#\n# \u2192 monitor inputs, not just predictions",
+            "sparkLine": "Distribution Shift, taken apart."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 19.33,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Your move: add this PSI monitor to your model's production pipeline. Run it daily on a rolling window of live inputs against your training distribution. Set an alert at PSI point-one-five \u2014 before the hard threshold \u2014 so you have time to investigate before retraining is forced. Log which features are driving the drift.",
+      "visual_intent": "next-steps card: 1) add PSI monitor to production pipeline, 2) set PSI=0.15 alert, 3) log per-feature drift drivers",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "next_steps.md",
+            "code": "# YOUR MOVE\n#\n# 1. add PSI monitor to production pipeline\n# 2. set PSI=0.15 alert\n# 3. log per-feature drift drivers\n#\n# \u2192 run it  \u2192  audit the gap  \u2192  report what you find",
+            "sparkLine": "YOUR MOVE"
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 17.51,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "EXTRA",
+      "role_note": "slate \u2014 optional b-roll",
+      "narration_text": "The complete source is in the video description. Fork it, swap in your own data, and see what you find. If your numbers break the pattern, that is the interesting result.",
+      "visual_intent": "slate placeholder",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "fork_it.md",
+            "code": "# FORK IT\n#\n# \u2192 clone the source (link in description)\n# \u2192 swap in your own data\n# \u2192 run it\n# \u2192 the interesting result is when your numbers break the pattern",
+            "sparkLine": "Distribution Shift, taken apart."
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 9.09
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "narration_text": "Let's recap with Claude. A credit scoring model trained in Q1 is deployed in Q4. The model's accuracy on the new population is down twelve points. Population Stability Index is the standard signal: it measures how much the input distribution has drifted from what the model was trained on, bucket by bucket.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "actual_duration_s": 0,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Distribution Shift Detector: PSI Before ",
+            "artifactHeading": "CLAUDE LIAM CLI DISTRIBUTION S: WHAT IT BUILDS",
+            "artifactLines": [
+              "A credit scoring model trained in Q1 is deployed in Q4.",
+              "Read the PSI formula.",
+              "Add the feature monitor.",
+              "Your move: add this PSI monitor to your model's production pipeline."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "narration_text": "Your turn. I'm studying Distribution Shift Detector: PSI Before Your Model Goes Stale using Claude CLI. I understand A credit scoring model trained in Q1 is deployed in Q4.. Paste this into Claude: 'I want to input distribution shifted \u2014 model did not know. Walk me through (1) how to set up the script, (2) how to run it and verify the output, (3) how to interpret the result.'",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 20,
+      "actual_duration_s": 0,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 DISTRIBUTION SHIFT DETECTOR: PSI BEFORE YOUR MODEL GOES",
+            "segment": "Distribution Shift Detector: PSI Before Your Model Goes Stal",
+            "command": "I'm studying Distribution Shift Detector: PSI Before Your Model Goes Stale using Claude CLI. I understand A credit scoring model trained in Q1 is deployed in Q4.. Paste this into Claude: 'I want to in",
+            "runningText": "thinking\u2026",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Distribution Shift Detector: PSI Before Your Model Goes Stale. I'm Liam, in for Bear.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Distribution Shift Detector: PSI Before Your Model Goes Stale",
+            "handle": "@NikBearBrown",
+            "subline": "confidence about the record, not the world",
+            "slug": "claude-liam-cli-distribution-shift-detector"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 0,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T04:05:31"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Distribution Shift Detector: PSI Before Your Model Goes Stale",
+            "slug": "claude-liam-cli-distribution-shift-detector",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

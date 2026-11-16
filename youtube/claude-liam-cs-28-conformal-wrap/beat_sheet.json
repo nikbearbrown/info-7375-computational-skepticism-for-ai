@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-28-conformal-wrap",
+    "title": "The Trick That Gives Any Model a Provable Guarantee",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show how conformal prediction wraps any model in a mathematically guaranteed coverage promise by scoring calibration examples, sweeping to a quantile threshold, and admitting all labels a new case scores under that bar — coverage guaranteed by rank, not model quality. Source: books/computational-skepticism-for-ai/chapters/12-communicating-uncertainty-calibrating-claims-to-evidence.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = admitted labels / inside the prediction set; CRIMSON = rejected labels / outside; GOLD = the quantile threshold / key insight; SLATE = calibration score distribution",
+    "note": "EXCLUSIONS: no exchangeability formalism or proof, no marginal-vs-conditional coverage deep dive (one closing caveat sentence that the guarantee dies under distribution shift, no more), no regression variant, no Mondrian/adaptive conformal",
+    "total_estimated_duration_seconds": 189,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 28,
+    "build": {
+      "at": "2026-07-19T02:47:43",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "The Trick That Gives Any Model a Provable Guarantee",
+            "greeting": "Hej, Liam.",
+            "command": "There is a wrapper that gives any model — good or bad — a mathematically guaranteed 90% coverage promise.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "There is a wrapper that gives any model — good or bad — a mathematically guaranteed 90% coverage promise. The price is letting it say 'both.'",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Trick That Gives Any Model a Provable Guarantee",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "The Trick That Gives Any Model\na Provable Guarantee"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 8.68,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "Your classifier outputs a single prediction and a confidence score. The confidence score is a probability estimate the model made up. It is calibrated only if you were careful about calibration, and probably not even then. You want a guarantee: with 90% coverage, the true label is inside my output set. Conformal prediction gives you that guarantee — on any model you already have, without retraining, using only a held-out calibration set and one sweep of a number line. Watch the threshold find itself.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "scan"
+      },
+      "scene_class": "B02_ThresholdSweepIntro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 27.61,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:47:43",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: Your classifier outputs a single prediction and a confidence score. The confidence score is a probability estimate the model made up. It is calibrated only if y"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "How do you attach a mathematically guaranteed coverage level to a model's output without retraining the model?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "How do you attach a guaranteed coverage level to a",
+              "black-box model?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "How do you attach a mathematically guaranteed\ncoverage level to a model's output\nwithout retraining the model?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 6.66,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:47:43"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Standard classifiers output a single label and a softmax confidence. The softmax confidence is not a probability of being correct. A model that says '92% confident: cat' is not correct 92% of the time it says that. It might be right 70% of the time, or 99% of the time — the softmax number is a function of the model's output layer, not a calibrated frequency. When you need a guarantee — when a radiologist or a hiring system or a clinical trial must know that the true answer is inside the output set at 90% frequency — a single label with an uncalibrated confidence number is not sufficient. You need a different object: a prediction set whose coverage is guaranteed by construction.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B04_SoftmaxNotGuarantee",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 39.51,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:47:43",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: Standard classifiers output a single label and a softmax confidence. The softmax confidence is not a probability of being correct. A model that says '92% confid"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The problem is that model calibration is hard, expensive, and model-specific — and it still does not give you a guarantee, only an estimate. Conformal prediction takes a different approach. Instead of trying to fix the model's probability estimates, it wraps the model in a procedure that produces guaranteed coverage from the rank statistics of a calibration set. The model does not change. Its internals do not change. You only add a post-hoc layer that uses the model's scores as inputs to a threshold procedure. The guarantee comes from the procedure, not from the model.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "scan"
+      },
+      "scene_class": "B05_WrapperNotCalibration",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 30.4,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:47:43",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The problem is that model calibration is hard, expensive, and model-specific — and it still does not give you a guarantee, only an estimate. Conformal predictio"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The mechanism: score every calibration example by how unusual it looks to the model, sweep the score distribution to its 90th-percentile quantile, then admit every label a new case scores under that bar. Coverage is rank, not confidence.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Score calibration examples. Sweep to 90th-percentile",
+              "quantile threshold."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A horizontal number line of non-conformity scores from left to right — small scores (teal, conforming) on the left, large scores (crimson, unusual) on the right. A gold vertical threshold bar sits at the 90th-percentile position, dividing the distribution. Below the line, small label-tagged dots are sorted left or right of the bar: those left of the bar are inside the prediction set (teal background), those right are rejected (crimson background). The threshold bar is labeled 'q-hat' with a small formula note",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 13.87,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:47:43"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The procedure in three steps. Step one: score. For each example in your calibration set, compute a non-conformity score — how strange does this example look to the model? A common choice: one minus the model's softmax confidence for the true label. A high score means the model found the true label surprising. A low score means the model found it expected. Step two: sweep. Sort all the calibration scores. Find the threshold q-hat that sits at the 90th percentile of that distribution. Step three: admit. For a new test point, compute the non-conformity score for every candidate label. Admit every label whose score is at or below q-hat. The result is a prediction set — sometimes one label, sometimes two or three. Guaranteed to contain the true label at 90% frequency.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "scan"
+      },
+      "scene_class": "B07_ThreeStepScanProcedure",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 41.51,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:47:43",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: The procedure in three steps. Step one: score. For each example in your calibration set, compute a non-conformity score — how strange does this example look to "
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Why does coverage hold? The guarantee follows from rank. If the calibration scores and the test score are exchangeable — drawn from the same distribution — then by counting, the test score lands below the 90th-percentile threshold 90% of the time. When it lands below the threshold, the true label is admitted. Coverage holds because rank statistics hold, not because the model is accurate. A bad model produces a bad model — but the conformal wrapper still guarantees that the true label is in the output set 90% of the time. The set just gets wider.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "scan"
+      },
+      "scene_class": "B08_RankGuaranteeExplanation",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 29.99,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:47:43",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: Why does coverage hold? The guarantee follows from rank. If the calibration scores and the test score are exchangeable — drawn from the same distribution — then"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The first implication is interpretive: prediction set size is an honest uncertainty signal. When the model is confident, the non-conformity score for the true label is low, competing labels score high, and the prediction set is small — often one label. When the model is confused, scores are spread across labels, many of them sit below the threshold, and the set admits multiple labels. A large prediction set means: the model cannot distinguish these classes for this input. That is an honest report. A small prediction set means: the model is confident and the calibration data supports that confidence. Size is the signal. A single point output with a confidence score that might be uncalibrated is not.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "scan"
+      },
+      "scene_class": "B09_SetSizeAsUncertaintySignal",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 38.08,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:47:43",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: The first implication is interpretive: prediction set size is an honest uncertainty signal. When the model is confident, the non-conformity score for the true l"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The second implication is deployment: in high-stakes settings, conformal prediction sets can route ambiguous cases to human review. If the prediction set has one label, the automated decision can proceed. If it has two or more, a human reviewer sees the case. The threshold for human escalation is not a fixed confidence cutoff that you set by intuition — it is set by the coverage guarantee you require. You want 95% coverage? You calibrate to the 95th percentile. The escalation policy is statistically grounded.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "scan"
+      },
+      "scene_class": "B10_EscalationPolicyFromCoverage",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 28.44,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:47:43",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The second implication is deployment: in high-stakes settings, conformal prediction sets can route ambiguous cases to human review. If the prediction set has on"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The caveat — and it matters: the guarantee holds only when the test distribution matches the calibration distribution. If the world shifts — new population, new input domain, domain drift — the exchangeability assumption breaks, and coverage is no longer guaranteed. Conformal prediction does not fix distribution shift. It converts a model into an honest uncertainty reporter under the assumption that the distribution is stationary. Monitor calibration coverage over time. When empirical coverage drops below the nominal level, the distribution has shifted and the guarantee has dissolved.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "scan"
+      },
+      "scene_class": "B11_DistributionShiftCaveat",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 31.66,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:47:43",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The caveat — and it matters: the guarantee holds only when the test distribution matches the calibration distribution. If the world shifts — new population, new"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A radiology team deploys a chest X-ray classifier. The model outputs one of four labels: normal, pneumonia, pleural effusion, cardiomegaly. The model was good in the validation set — 88% accuracy. Deployed, the team notices the model sometimes confidently labels a case that turns out wrong. They add conformal prediction with a 95% coverage target. They score five hundred calibration X-rays, sweep to the 95th-percentile threshold. Now each X-ray gets a prediction set. Most cases get a set of one — the model is confident and the calibration data supports it. About twelve percent of cases get a set of two or more. Those cases go to a radiologist for review. The team tracks empirical coverage over six months. Coverage holds at 94.8%. Six months later, a new scanner type is introduced. Coverage drops to 89%. The conformal procedure flagged the distribution shift. The team recalibrates with images from the new scanner. Coverage recovers. The wrapper didn't fix the model. It made the uncertainty honest and caught the shift.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "scan"
+      },
+      "scene_class": "B12_RadiologyConformalExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 58.07,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:47:43",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A radiology team deploys a chest X-ray classifier. The model outputs one of four labels: normal, pneumonia, pleural effusion, cardiomegaly. The model was good i"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Conformal prediction wraps any existing model in a procedure that guarantees the true label is inside the output set at your chosen coverage level — not because the model is good, but because rank statistics hold. Score calibration examples by non-conformity. Sweep to the target quantile. Admit every label that scores under the bar. Ambiguous inputs pay in set size, not in false confidence. Monitor empirical coverage — when it drops, the distribution has shifted and the guarantee has expired.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Coverage guaranteed by rank, not model quality. Ambiguous",
+              "but bounded."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Score. Sweep to the quantile.\nAdmit what's under the bar.",
+        "sub": "The guarantee comes from rank, not from the model. Monitor coverage.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 26.88,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:47:43"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Trick That Gives Any Model a Provable Guarantee",
+            "artifactHeading": "Key findings — The Trick That Gives Any Model a Provable Guarantee",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A radiology team deploys a chest X-ray classifier."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:47:43"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — THE TRICK THAT GIVES ANY MODEL A PROVABLE GUARANTEE",
+            "segment": "The Trick That Gives Any Model a Provable Guarantee",
+            "greeting": "Привет, Liam.",
+            "command": "Ask Claude: The Trick That Gives Any Model a Provable Guarantee",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:47:43"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Trick That Gives Any Model a Provable Guarantee",
+            "slug": "claude-liam-cs-28-conformal-wrap",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

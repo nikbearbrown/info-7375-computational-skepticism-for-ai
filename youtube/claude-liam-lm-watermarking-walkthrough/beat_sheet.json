@@ -1,0 +1,1716 @@
+{
+  "metadata": {
+    "slug": "claude-liam-lm-watermarking-walkthrough",
+    "title": "The Watermark Is One Line of Code",
+    "subtitle": "A git-explainer walkthrough of jwkirchenbauer/lm-watermarking — the KGW reference implementation",
+    "topic": "CLAUDE · CODE",
+    "purpose": "Walk the jwkirchenbauer/lm-watermarking GitHub repo with real git/wc data. Show that the marking mechanism is one line of code, that detection returns a p-value not a verdict, and that a commit labelled 'Documentation Updates' silently changed the detection statistic. Rung 1 throughout — all data from the local clone at books/lm-watermarking HEAD 8292251.",
+    "audience": "Claude",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "voice_id": "ELEVENLABS_VOICE_LIAM",
+    "palette": "claude",
+    "typography": {
+      "serif": "Tiempos/EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "register": "Teardown",
+    "aspect": "16:9",
+    "clock": "narration",
+    "style_preset": "claude",
+    "genre": "git-explainer",
+    "skill": "git-explainer (descends from code-walkthrough; Claude bookends from ai-explainer)",
+    "source": "jwkirchenbauer/lm-watermarking cloned 2026-08-12; HEAD 8292251 (2025-09-17). All data computed via git log, wc -l, git grep, git show. See REPO-VERIFY.md.",
+    "repo_clone": "books/lm-watermarking",
+    "repo_clone_date": "2026-08-12",
+    "notes": "Kokoro am_onyx, free (IN-FOR-BEAR LAW). GATE P before any ElevenLabs swap. Six GitHub skin scenes in fixed order: RepoHero, StructureMap, CallChain, Churn, CodeViewer, CodeDiff. Four Manim beats: B09 LOC hotspot, B23 vocab partition, B27 logit bars, B31 binomial null. Three CodeViewer slices: Slice A L62-80, Slice B L95-117, Slice C L153-164. Slice A range shortened from PLAN L54-80: L61 (assert, 135 chars) overflows the type floor; range starts at L62 to avoid elision. Slice B range shortened from L94-117: L94 (_bias_greenlist_logits def, 128 chars) overflows; range starts at L95. Lines L74, L78 (Slice A), L98, L113, L115 (Slice B) may clip at right edge at 26px mono — bytes in props are verbatim, display clipping is logged. KGW prohibition: no beat states or implies Anthropic's algorithm is this code. Never publish.",
+    "channel_title": "@NikBearBrown",
+    "build": {
+      "at": "2026-08-12T18:03:12",
+      "cut": "master",
+      "filled": 42,
+      "of": 42,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 18,
+      "narration_text": "Hola — this is Liam, in for Bear. Anthropic says Claude's text carries a watermark. I cloned the reference implementation for this whole family of techniques. Can you walk me through what the mark actually is?",
+      "new_visual_element": "Claude composer — ask lands answered: 16 commits, KGW family, the mark is one line of code.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Hola, Liam",
+            "command": "Anthropic says Claude's text carries a watermark. I cloned the reference implementation for this whole family of techniques. Can you walk me through what the mark actually is?",
+            "segment": "The Watermark Is One Line of Code",
+            "topic": "CLAUDE · CODE",
+            "runningText": "cloning jwkirchenbauer/lm-watermarking…",
+            "output": [
+              "16 commits. KGW family. HEAD 8292251.",
+              "The mark is one line of code."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "claude-sonnet-4-6",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 11.48,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B00.mp3"
+    },
+    {
+      "beat_id": "B01",
+      "act": "EXECUTIVE SUMMARY",
+      "estimated_duration_s": 22,
+      "narration_text": "The watermark is a statistical bias, not an inscription. At generation, half the vocabulary gets a two-logit boost at every token position. At detection, a z-test asks whether too many boosted tokens appeared by chance. The algorithm is 282 lines. The surrounding apparatus is 344,000 lines of file. The detection returns a p-value. A p-value is not a verdict.",
+      "new_visual_element": "FormACard — BLUF on cream stage; key numbers on screen",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Statistical bias, not inscription. No token is modified.",
+              "Generation: +2.0 logits on half the vocabulary at every position.",
+              "Detection: z-test on green token count → p-value, not a verdict.",
+              "The algorithm: 282 lines. The apparatus: 344,000 lines of file."
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 22.57,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B01.mp3"
+    },
+    {
+      "beat_id": "B02",
+      "act": "ACT I — WHAT",
+      "estimated_duration_s": 14,
+      "narration_text": "The word watermark comes from images, where there is a thing in the file you could point at. There is no such thing in the text. Nothing here is embedded.",
+      "new_visual_element": "FormACard — conceptual reframe: visible mark vs statistical bias",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Image watermark: a thing in the file you can point at.",
+              "Text watermark: a statistical property of token choices.",
+              "Nothing is embedded. No token is changed.",
+              "The mark is in the distribution, not in the data."
+            ]
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 8.3,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B02.mp3"
+    },
+    {
+      "beat_id": "B03",
+      "act": "ACT I — WHAT",
+      "estimated_duration_s": 16,
+      "narration_text": "The repository: jwkirchenbauer/lm-watermarking. Official implementation of the 2023 ICML paper by Kirchenbauer and colleagues. Sixteen commits since the first push. Built on the HuggingFace transformers LogitsProcessor abstraction — the hook that intercepts probability distributions before sampling.",
+      "new_visual_element": "GitHubRepoHero — repo identity, 16 commits, LogitsProcessor tagline",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubRepoHero",
+          "props": {
+            "name": "lm-watermarking",
+            "kind": "official implementation",
+            "headline": "Official implementation of A Watermark for Large Language Models",
+            "starLabel": "Star",
+            "repo": "jwkirchenbauer/lm-watermarking",
+            "handle": "arXiv:2301.10226 · ICML 2023 · 16 commits",
+            "tagline": "Built on the HuggingFace transformers LogitsProcessor abstraction"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 19.01,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B03.mp3"
+    },
+    {
+      "beat_id": "B04",
+      "act": "ACT I — WHAT",
+      "estimated_duration_s": 14,
+      "narration_text": "LogitsProcessor matters. It doesn't reach inside the model. It sits between the model's output distribution and the sampling step, and it adjusts logits. The model's weights are unchanged. The watermark lives in the selection rule — which token the sampler picks — not in any parameter.",
+      "new_visual_element": "FormACard — LogitsProcessor intercept diagram (text)",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "model output → LogitsProcessor → adjusted logits → sampler",
+              "LogitsProcessor does not touch the model's weights.",
+              "The watermark is in the selection rule, not in a parameter."
+            ]
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 15.06,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B04.mp3"
+    },
+    {
+      "beat_id": "B05",
+      "act": "ACT II — SHAPE",
+      "estimated_duration_s": 6,
+      "narration_text": "Now: the shape of the code.",
+      "new_visual_element": "GitHubSectionRail — kicker: STRUCTURE",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "STRUCTURE",
+            "headline": "Where does the code live?",
+            "body": "7 root files, 2,317 LOC · 4 subdirs, 344K lines of file",
+            "chip": "shape"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 2.18,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B05.mp3"
+    },
+    {
+      "beat_id": "B06",
+      "act": "ACT II — SHAPE",
+      "estimated_duration_s": 18,
+      "narration_text": "Seven Python files at the root. demo_watermark.py is the CLI runner at 701 lines. watermark_processor.py is 282 lines — the mechanism. extended_watermark_processor.py is 625 lines — more on that one shortly. Then normalizers, alternative seeding schemes, the Spaces app.",
+      "new_visual_element": "GitHubStructureMap — root modules: file name + LOC bars, watermark_processor.py highlighted",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubStructureMap",
+          "props": {
+            "rows": [
+              {
+                "name": "demo_watermark.py",
+                "loc": 701
+              },
+              {
+                "name": "extended_watermark_processor.py",
+                "loc": 625
+              },
+              {
+                "name": "watermark_processor.py",
+                "loc": 282,
+                "hi": true
+              },
+              {
+                "name": "homoglyphs.py",
+                "loc": 265
+              },
+              {
+                "name": "normalizers.py",
+                "loc": 208
+              },
+              {
+                "name": "alternative_prf_schemes.py",
+                "loc": 184
+              },
+              {
+                "name": "app.py",
+                "loc": 52
+              }
+            ],
+            "max": 701,
+            "caption": "Root source total: 2,317 LOC · watermark_processor.py is the mechanism"
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 18.2,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B06.mp3"
+    },
+    {
+      "beat_id": "B07",
+      "act": "ACT II — SHAPE",
+      "estimated_duration_s": 16,
+      "narration_text": "Four subdirectories. watermark_reliability_release has 252,512 lines of file — experiment pipelines, evaluation JSON. hf_hub_space_demo has 44,191. homoglyph_data has 42,351 — four Unicode lookup tables. The number is large. The claim is about files, not source.",
+      "new_visual_element": "GitHubStructureMap — subdirectories with 'lines of file' label in caption; watermark_reliability_release highlighted",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubStructureMap",
+          "props": {
+            "rows": [
+              {
+                "name": "watermark_reliability_release/",
+                "loc": 252512,
+                "hi": true
+              },
+              {
+                "name": "hf_hub_space_demo/",
+                "loc": 44191
+              },
+              {
+                "name": "homoglyph_data/",
+                "loc": 42351
+              },
+              {
+                "name": "experiments/",
+                "loc": 5336
+              }
+            ],
+            "max": 252512,
+            "caption": "Lines of file — not lines of code. Unicode tables, JSON, experiment output."
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 19.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B07.mp3"
+    },
+    {
+      "beat_id": "B08",
+      "act": "ACT II — SHAPE",
+      "estimated_duration_s": 7,
+      "narration_text": "The ratio.",
+      "new_visual_element": "ClaudeComposerAsk ASK — ratio visualization before Manim B09",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "command": "Build a bar chart: 2,317 root source lines vs 344,390 subdirectory lines of file. Label the subdirectory bars as 'lines of file, not code.' Highlight watermark_processor.py at 282 LOC as the mechanism.",
+            "segment": "The Watermark Is One Line of Code",
+            "topic": "CLAUDE · CODE",
+            "runningText": "rendering Manim B09_LocHotspot…",
+            "output": [
+              "B09_LocHotspot.mp4 — LOC hotspot map"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "claude-sonnet-4-6",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 1.05,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B08.mp3"
+    },
+    {
+      "beat_id": "B09",
+      "act": "ACT II — SHAPE",
+      "estimated_duration_s": 20,
+      "narration_text": "Two thousand three hundred seventeen root source lines. Three hundred forty-four thousand lines of file across the four subdirectories — but most of that is Unicode lookup tables and experiment JSON, not source. watermark_processor.py is 282 lines. That is twelve percent of the root and less than one tenth of one percent of the tree. The idea is 282 lines. Everything around it is apparatus.",
+      "new_visual_element": "Manim B09_LocHotspot — LOC bar chart: root files stacked, subdirs massed, watermark_processor.py annotated",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B09_LocHotspot",
+        "engine": "manim",
+        "production_viz": {
+          "label": "LOC hotspot map",
+          "mechanic": "Horizontal bar: root 2317 LOC (7 stacked segments, watermark_processor.py annotated) vs subdirs 344390 LOC (grey mass, labelled 'lines of file'). Ratio annotation: 282/2317 = 12% of root; 2317/344390 < 1% of tree.",
+          "colors": [
+            "#3D3929",
+            "#D97757"
+          ],
+          "note": "Teardown palette. watermark_processor.py bar in terracotta #D97757. All others in warm ink #3D3929. No data invented — all numbers from REPO-VERIFY.md."
+        }
+      },
+      "actual_duration_s": 21.35,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B09.mp3"
+    },
+    {
+      "beat_id": "B10",
+      "act": "ACT III — PATH",
+      "estimated_duration_s": 5,
+      "narration_text": "Now: what calls what.",
+      "new_visual_element": "GitHubSectionRail — kicker: ENTRY POINTS",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "ENTRY POINTS",
+            "headline": "What routes through what?",
+            "body": "app.py → demo_watermark → watermark_processor → normalizers → homoglyphs",
+            "chip": "call graph"
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 1.92,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B10.mp3"
+    },
+    {
+      "beat_id": "B11",
+      "act": "ACT III — PATH",
+      "estimated_duration_s": 18,
+      "narration_text": "The import graph. app.py imports demo_watermark. demo_watermark imports watermark_processor — the mechanism. watermark_processor imports normalizers. normalizers imports homoglyphs. Four files in the full repo import watermark_processor: the demo runner, the HuggingFace demo, and two files in the reliability release.",
+      "new_visual_element": "GitHubCallChain — main chain: app.py → demo_watermark → watermark_processor (highlighted) → normalizers → homoglyphs",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubCallChain",
+          "props": {
+            "nodes": [
+              {
+                "k": "app.py",
+                "d": "52 LOC · entry point"
+              },
+              {
+                "k": "demo_watermark.py",
+                "d": "701 LOC · CLI runner"
+              },
+              {
+                "k": "watermark_processor.py",
+                "d": "282 LOC · the mechanism",
+                "hi": true
+              },
+              {
+                "k": "normalizers.py",
+                "d": "208 LOC · text cleanup"
+              },
+              {
+                "k": "homoglyphs.py",
+                "d": "265 LOC · Unicode"
+              }
+            ],
+            "caption": "watermark_processor.py: 4 importers repo-wide. The only path from the demo to the mechanism."
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 18.56,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B11.mp3"
+    },
+    {
+      "beat_id": "B12",
+      "act": "ACT III — PATH",
+      "estimated_duration_s": 12,
+      "narration_text": "watermark_processor.py: 282 lines, four importers. Every call that matters routes through this file. If you want to understand what this algorithm does in code, that is the file.",
+      "new_visual_element": "FormACard — 4 importers list: demo_watermark.py, hf_hub_space_demo/demo_watermark.py, watermark_reliability_release/generation_pipeline.py, watermark_reliability_release/utils/evaluation.py",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "watermark_processor.py — 4 importers:",
+              "  demo_watermark.py",
+              "  hf_hub_space_demo/demo_watermark.py",
+              "  watermark_reliability_release/generation_pipeline.py",
+              "  watermark_reliability_release/utils/evaluation.py"
+            ]
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 10.86,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B12.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B12.mp3"
+    },
+    {
+      "beat_id": "B13",
+      "act": "ACT III — PATH",
+      "estimated_duration_s": 7,
+      "narration_text": "And then there is extended_watermark_processor.py.",
+      "new_visual_element": "GitHubCallChain — single orphan node: extended_watermark_processor.py, 0 importers, highlighted",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubCallChain",
+          "props": {
+            "nodes": [
+              {
+                "k": "extended_watermark_processor.py",
+                "d": "625 LOC · README: 'recommended' · 0 importers",
+                "hi": true
+              }
+            ],
+            "caption": "One commit, ever. The README calls it recommended. Nothing in the tree imports it."
+          },
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 3.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B13.mp3"
+    },
+    {
+      "beat_id": "B14",
+      "act": "ACT III — PATH",
+      "estimated_duration_s": 10,
+      "narration_text": "625 lines, the README calls it 'recommended,' and not one file in this repository imports it.",
+      "new_visual_element": "FormACard — dark card: 625 LOC / 'recommended' / 0 importers",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "extended_watermark_processor.py",
+              "  625 lines",
+              "  README: 'Extended implementation (recommended)'",
+              "  Importers: 0"
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 7.1,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B14.mp3"
+    },
+    {
+      "beat_id": "B15",
+      "act": "ACT III — PATH",
+      "estimated_duration_s": 16,
+      "narration_text": "One more finding: three copies of watermark_processor.py in the tree. Root: 282 lines. HuggingFace demo copy: 280 lines, 32 differing lines. Reliability release copy: 672 lines, 592 differing lines. Three divergent branches. None of them connected to each other.",
+      "new_visual_element": "FormACard — three-copy divergence table",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Three copies of watermark_processor.py:",
+              "  watermark_processor.py           — 282 LOC (root, canonical)",
+              "  hf_hub_space_demo/...            — 280 LOC, 32 differing lines",
+              "  watermark_reliability_release/... — 672 LOC, 592 differing lines",
+              "Three branches. None connected."
+            ]
+          },
+          "rendered": {
+            "out": "media/B15.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 17.69,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B15.mp3"
+    },
+    {
+      "beat_id": "B16",
+      "act": "ACT IV — HISTORY",
+      "estimated_duration_s": 5,
+      "narration_text": "The git log.",
+      "new_visual_element": "GitHubSectionRail — kicker: GIT ARCHAEOLOGY",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "GIT ARCHAEOLOGY",
+            "headline": "16 commits across three years",
+            "body": "2023: 12 · 2024: 2 · 2025: 2",
+            "chip": "history"
+          },
+          "rendered": {
+            "out": "media/B16.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 1.13,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B16.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B16.mp3"
+    },
+    {
+      "beat_id": "B17",
+      "act": "ACT IV — HISTORY",
+      "estimated_duration_s": 18,
+      "narration_text": "Sixteen commits across three years. 2023: twelve — the initial push, the paper release, the extended implementation, a Jonas Geiping documentation pass. 2024: two. 2025: two, the most recent in September — a HuggingFace Spaces demo update. Every year has at least one commit.",
+      "new_visual_element": "GitHubChurn — bar chart: 2023 (12, peak), 2024 (2), 2025 (2); no frozen bars",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubChurn",
+          "props": {
+            "years": [
+              {
+                "label": "2023",
+                "count": 12,
+                "peak": true
+              },
+              {
+                "label": "2024",
+                "count": 2
+              },
+              {
+                "label": "2025",
+                "count": 2
+              }
+            ],
+            "max": 12,
+            "caption": "16 commits · 3 years · every year active. Not abandoned — maintained."
+          },
+          "rendered": {
+            "out": "media/B17.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 18.13,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B17.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B17.mp3"
+    },
+    {
+      "beat_id": "B18",
+      "act": "ACT IV — HISTORY",
+      "estimated_duration_s": 14,
+      "narration_text": "Sixteen commits is a paper artifact being maintained. This family of techniques is deployed at production scale. The reference implementation has 16 commits. That is not a project with dedicated resources. That is a researcher keeping the lights on.",
+      "new_visual_element": "FormACard — what 16 commits means",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "16 commits: a paper artifact under active maintenance.",
+              "Deployed at scale. Reference implementation: 16 commits.",
+              "Not a team. A researcher keeping the lights on."
+            ]
+          },
+          "rendered": {
+            "out": "media/B18.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 14.14,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B18.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B18.mp3"
+    },
+    {
+      "beat_id": "B19",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 5,
+      "narration_text": "Time to read the code.",
+      "new_visual_element": "GitHubSectionRail — kicker: THE READ GATE",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "THE READ GATE",
+            "headline": "Three functions. The key. The bias. The test.",
+            "body": "watermark_processor.py · 282 lines · γ=0.5 · δ=2.0 · z_threshold=4.0",
+            "chip": "read"
+          },
+          "rendered": {
+            "out": "media/B19.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 2.05,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B19.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B19.mp3"
+    },
+    {
+      "beat_id": "B20",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 18,
+      "narration_text": "Five parameters. gamma: 0.5 — half the vocabulary is green at each position. delta: 2.0 — the logit boost applied to green tokens. hash_key: 15485863 — the secret, described in the code as 'just a large prime.' seeding_scheme: simple_1 — the RNG seeds on the single previous token only. z_threshold: 4.0 — the detector's decision boundary.",
+      "new_visual_element": "FormACard — parameter table: γ, δ, hash_key, seeding_scheme, z_threshold",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "gamma = 0.5          — green list is half the vocabulary",
+              "delta = 2.0          — logit boost for green tokens (L37-38)",
+              "hash_key = 15485863  — the secret: 'just a large prime' (L40)",
+              "seeding_scheme = 'simple_1'  — seed on previous token (L39)",
+              "z_threshold = 4.0   — detection boundary (L125)"
+            ]
+          },
+          "rendered": {
+            "out": "media/B20.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 22.49,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B20.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B20.mp3"
+    },
+    {
+      "beat_id": "B21",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 8,
+      "narration_text": "Three functions. First: how the key and the previous token seed a fresh random partition of the vocabulary at every position.",
+      "new_visual_element": "FormACard — act map: key → partition → bias → detect",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "1. _seed_rng + _get_greenlist_ids  — the key",
+              "2. _bias_greenlist_logits          — the watermark",
+              "3. _compute_z_score + _compute_p_value — the detection"
+            ]
+          },
+          "rendered": {
+            "out": "media/B21.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 7.53,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B21.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B21.mp3"
+    },
+    {
+      "beat_id": "B22",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 7,
+      "narration_text": "Animate how the green list is built at each token.",
+      "new_visual_element": "ClaudeComposerAsk ASK — vocab partition Manim before B23",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "command": "Animate the KGW green list: 50,257-token vocabulary grid, γ=0.5 → 25,128 green tokens. Show the partition reshuffling at each of 6 successive token positions — same grid, new coloring each time.",
+            "segment": "The Watermark Is One Line of Code",
+            "topic": "CLAUDE · CODE",
+            "runningText": "rendering Manim B23_VocabPartition…",
+            "output": [
+              "B23_VocabPartition.mp4 — green list per position"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "claude-sonnet-4-6",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B22.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 3.56,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B22.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B22.mp3"
+    },
+    {
+      "beat_id": "B23",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 20,
+      "narration_text": "At every token position, the mechanism draws a fresh random permutation of the full vocabulary — seeded by the secret key and the previous token. The first half of that permutation is the green list. It changes completely at the next position. It is never stored. There is no green list file anywhere in this repository.",
+      "new_visual_element": "Manim B23_VocabPartition — 50,257-cell grid, γ=0.5 green/red split reshuffling across 6 positions",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B23_VocabPartition",
+        "engine": "manim",
+        "production_viz": {
+          "label": "Vocabulary partition animation",
+          "mechanic": "Grid of dots (simplified to ~200 representing 50,257). First frame: half green (#3D3929 warm), half red (#A44A32). At each of 6 position steps, the coloring reshuffles completely — new random partition. Annotation: 'Position N · key × prev_token → RNG → partition'.",
+          "colors": [
+            "#3D3929",
+            "#A44A32",
+            "#D97757"
+          ],
+          "note": "γ=0.5 verified at watermark_processor.py L37. No gen-AI. Teardown palette."
+        }
+      },
+      "actual_duration_s": 17.96,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B23.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B23.mp3"
+    },
+    {
+      "beat_id": "B24",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 16,
+      "narration_text": "The seeding and partitioning code. Line 63: the previous token times hash_key seeds the RNG — that is the entire secret. Line 74: torch.randperm shuffles the full vocabulary using that RNG. Line 76: the first gamma-fraction of the shuffle is the green list. Range shortened to L62–80: L61, the assert, overflows the frame at the type floor — see BUILD-LOG.md.",
+      "new_visual_element": "GitHubCodeViewer — Slice A, L62-80, watermark_processor.py, branch main",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubCodeViewer",
+          "props": {
+            "path": [
+              "jwkirchenbauer",
+              "lm-watermarking",
+              "watermark_processor.py"
+            ],
+            "branch": "main",
+            "lang": "python",
+            "lines": [
+              "            prev_token = input_ids[-1].item()",
+              "            self.rng.manual_seed(self.hash_key * prev_token)",
+              "        else:",
+              "            raise NotImplementedError(f\"Unexpected seeding_scheme: {seeding_scheme}\")",
+              "        return",
+              "",
+              "    def _get_greenlist_ids(self, input_ids: torch.LongTensor) -> list[int]:",
+              "        # seed the rng using the previous tokens/prefix",
+              "        # according to the seeding_scheme",
+              "        self._seed_rng(input_ids)",
+              "",
+              "        greenlist_size = int(self.vocab_size * self.gamma)",
+              "        vocab_permutation = torch.randperm(self.vocab_size, device=input_ids.device, generator=self.rng)",
+              "        if self.select_green_tokens:  # directly",
+              "            greenlist_ids = vocab_permutation[:greenlist_size]  # new",
+              "        else:  # select green via red",
+              "            greenlist_ids = vocab_permutation[(self.vocab_size - greenlist_size) :]  # legacy behavior",
+              "        return greenlist_ids",
+              ""
+            ],
+            "caption": "L62–80 · secret key × prev_token → RNG → green list (range shortened: L61 assert overflows frame)"
+          },
+          "rendered": {
+            "out": "media/B24.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 21.93,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B24.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B24.mp3"
+    },
+    {
+      "beat_id": "B25",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 14,
+      "narration_text": "The green list is not stored anywhere. It's regenerated from scratch at every token, from the secret key times the previous token. Delete the key and it is unrecoverable.",
+      "new_visual_element": "FormACard — key insight: green list is ephemeral, not stored",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The green list is not stored anywhere.",
+              "Regenerated at every token: key × prev_token → RNG → partition.",
+              "Delete the key → unrecoverable."
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B25.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 10.18,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B25.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B25.mp3"
+    },
+    {
+      "beat_id": "B26",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 7,
+      "narration_text": "Now show the bias — high entropy versus low entropy.",
+      "new_visual_element": "ClaudeComposerAsk ASK — logit bars before Manim B27",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "command": "Show logit distributions before and after applying +2.0 delta to green tokens. Two panels: high entropy (uniform-ish distribution — token choice flips with the boost) and low entropy (peaked distribution — top token wins regardless, Barack → Obama case).",
+            "segment": "The Watermark Is One Line of Code",
+            "topic": "CLAUDE · CODE",
+            "runningText": "rendering Manim B27_LogitBars…",
+            "output": [
+              "B27_LogitBars.mp4 — high vs low entropy bias"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "claude-sonnet-4-6",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B26.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 3.95,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B26.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B26.mp3"
+    },
+    {
+      "beat_id": "B27",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 22,
+      "narration_text": "When the model is uncertain — high entropy, multiple near-equal options — adding 2.0 to the green logits shifts which token is sampled. Choice flips. When the model is confident — Barack followed by Obama — the top token wins regardless of the green boost. The watermark is invisible at low entropy. It only bites when there is a real choice.",
+      "new_visual_element": "Manim B27_LogitBars — two panels: high entropy (choice flips with +δ) vs low entropy (top token holds)",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B27_LogitBars",
+        "engine": "manim",
+        "production_viz": {
+          "label": "Logit bias: high vs low entropy",
+          "mechanic": "Left panel: ~6 bars near equal height (high entropy). Apply +2.0 to green bars: one green bar surpasses the previous argmax — sampled token changes. Right panel: one dominant bar (low entropy, Barack→Obama). Apply +2.0 to green bars: argmax unchanged — token holds. Teardown palette.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#A44A32"
+          ],
+          "note": "delta=2.0 verified at watermark_processor.py L38. green bars in terracotta, red bars in warn. No data invented."
+        }
+      },
+      "actual_duration_s": 18.67,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B27.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B27.mp3"
+    },
+    {
+      "beat_id": "B28",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 14,
+      "narration_text": "Line 95: scores on the green list get plus greenlist_bias — which is delta, which is 2.0. That is the entire marking mechanism. Everything else in __call__ is batch handling, RNG setup, and the calls to the seeding and masking functions.",
+      "new_visual_element": "GitHubCodeViewer — Slice B, L95-117, watermark_processor.py, branch main",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubCodeViewer",
+          "props": {
+            "path": [
+              "jwkirchenbauer",
+              "lm-watermarking",
+              "watermark_processor.py"
+            ],
+            "branch": "main",
+            "lang": "python",
+            "lines": [
+              "        scores[greenlist_mask] = scores[greenlist_mask] + greenlist_bias",
+              "        return scores",
+              "",
+              "    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:",
+              "",
+              "        # this is lazy to allow us to colocate on the watermarked model's device",
+              "        if self.rng is None:",
+              "            self.rng = torch.Generator(device=input_ids.device)",
+              "",
+              "        # NOTE, it would be nice to get rid of this batch loop, but currently,",
+              "        # the seed and partition operations are not tensor/vectorized, thus",
+              "        # each sequence in the batch needs to be treated separately.",
+              "        batched_greenlist_ids = [None for _ in range(input_ids.shape[0])]",
+              "",
+              "        for b_idx in range(input_ids.shape[0]):",
+              "            greenlist_ids = self._get_greenlist_ids(input_ids[b_idx])",
+              "            batched_greenlist_ids[b_idx] = greenlist_ids",
+              "",
+              "        green_tokens_mask = self._calc_greenlist_mask(scores=scores, greenlist_token_ids=batched_greenlist_ids)",
+              "",
+              "        scores = self._bias_greenlist_logits(scores=scores, greenlist_mask=green_tokens_mask, greenlist_bias=self.delta)",
+              "        return scores",
+              ""
+            ],
+            "caption": "L95–117 · L95 is the watermark: +greenlist_bias on green scores (range shortened: L94 def overflows frame)"
+          },
+          "rendered": {
+            "out": "media/B28.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 14.29,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B28.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B28.mp3"
+    },
+    {
+      "beat_id": "B29",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 10,
+      "narration_text": "scores[greenlist_mask] = scores[greenlist_mask] + greenlist_bias. That is the watermark. One line. Add two to half the logits.",
+      "new_visual_element": "FormACard — dark card: the one line, isolated",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "scores[greenlist_mask] = scores[greenlist_mask] + greenlist_bias",
+              "",
+              "That is the watermark. One line.",
+              "Add two to half the logits."
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B29.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 8.45,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B29.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B29.mp3"
+    },
+    {
+      "beat_id": "B30",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 7,
+      "narration_text": "Now the test. 200 tokens versus 40.",
+      "new_visual_element": "ClaudeComposerAsk ASK — binomial null before Manim B31",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "command": "Plot the binomial null distribution for γ=0.5 at T=200 tokens. Mark the z_threshold=4.0 boundary. Show a realistic watermarked observed count and its z-score. Then repeat for T=40 tokens — show that the test has no statistical power to detect.",
+            "segment": "The Watermark Is One Line of Code",
+            "topic": "CLAUDE · CODE",
+            "runningText": "rendering Manim B31_BinomialNull…",
+            "output": [
+              "B31_BinomialNull.mp4 — z-test power: 200 vs 40 tokens"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "claude-sonnet-4-6",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B30.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 3.65,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B30.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B30.mp3"
+    },
+    {
+      "beat_id": "B31",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 22,
+      "narration_text": "Detection is a hypothesis test. Under the null — no watermark — approximately gamma times T tokens fall green by chance. The z-statistic measures how many standard deviations above chance the observed count sits. At 200 tokens, the test has power — a watermarked text clears the z_threshold of 4.0. At 40 tokens, the distribution is wide and the same observed count does not clear the threshold. The test returns a p-value, not a ruling.",
+      "new_visual_element": "Manim B31_BinomialNull — binomial null at T=200 (detection) vs T=40 (no power); z=4.0 boundary marked",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B31_BinomialNull",
+        "engine": "manim",
+        "production_viz": {
+          "label": "Binomial null vs observed: 200 vs 40 tokens",
+          "mechanic": "Left panel T=200: narrow binomial distribution centered at γT=100. Observed count (e.g. 118) marked; z-score computed; arrow to z=4.0 threshold — observed exceeds it. 'DETECTED'. Right panel T=40: wide distribution centered at γT=20. Same observed fraction: z-score below 4.0 threshold — 'INSUFFICIENT POWER'. Teardown palette.",
+          "colors": [
+            "#3D3929",
+            "#D97757",
+            "#A44A32"
+          ],
+          "note": "gamma=0.5 (L37), z_threshold=4.0 (L125) verified. Binomial math correct. No data invented."
+        }
+      },
+      "actual_duration_s": 24.23,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B31.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B31.mp3"
+    },
+    {
+      "beat_id": "B32",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 14,
+      "narration_text": "Lines 153–163. The z-score: observed green count minus expected, divided by the binomial standard deviation. The p-value: scipy.stats.norm.sf — the survival function, one-tailed area above z. This function returns a float. The threshold comparison happens in the caller.",
+      "new_visual_element": "GitHubCodeViewer — Slice C, L153-164, watermark_processor.py, branch main",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubCodeViewer",
+          "props": {
+            "path": [
+              "jwkirchenbauer",
+              "lm-watermarking",
+              "watermark_processor.py"
+            ],
+            "branch": "main",
+            "lang": "python",
+            "lines": [
+              "    def _compute_z_score(self, observed_count, T):",
+              "        # count refers to number of green tokens, T is total number of tokens",
+              "        expected_count = self.gamma",
+              "        numer = observed_count - expected_count * T",
+              "        denom = sqrt(T * expected_count * (1 - expected_count))",
+              "        z = numer / denom",
+              "        return z",
+              "",
+              "    def _compute_p_value(self, z):",
+              "        p_value = scipy.stats.norm.sf(z)",
+              "        return p_value",
+              ""
+            ],
+            "caption": "L153–164 · z-score: binomial deviation · p-value: scipy.stats.norm.sf(z)"
+          },
+          "rendered": {
+            "out": "media/B32.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 18.26,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B32.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B32.mp3"
+    },
+    {
+      "beat_id": "B33",
+      "act": "ACT V — READ",
+      "estimated_duration_s": 16,
+      "narration_text": "Detection is scipy.stats.norm.sf(z). It returns a p-value. A p-value is not a verdict, and asking to see the watermark is like asking to see the loadedness of a single die roll.",
+      "new_visual_element": "FormACard — dark card: p-value is not a verdict",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "scipy.stats.norm.sf(z)  →  a p-value.",
+              "",
+              "A p-value is not a verdict.",
+              "Asking to see the watermark: like asking to see",
+              "the loadedness of a single die roll."
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B33.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 10.97,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B33.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B33.mp3"
+    },
+    {
+      "beat_id": "B34",
+      "act": "ACT VI — CHANGE",
+      "estimated_duration_s": 5,
+      "narration_text": "One commit.",
+      "new_visual_element": "GitHubSectionRail — kicker: THE CHANGE",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "THE CHANGE",
+            "headline": "A commit that said 'Documentation Updates' and wasn't.",
+            "body": "bbe1fb8 · August 2023 · +17 −15",
+            "chip": "diff"
+          },
+          "rendered": {
+            "out": "media/B34.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 1.09,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B34.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B34.mp3"
+    },
+    {
+      "beat_id": "B35",
+      "act": "ACT VI — CHANGE",
+      "estimated_duration_s": 16,
+      "narration_text": "Commit bbe1fb8. August 2023. Message: 'Documentation Updates.' The stat for watermark_processor.py: seventeen lines added, fifteen removed. Most of it is genuine cosmetics — blank lines, PEP8 comment spacing. But one line is not documentation.",
+      "new_visual_element": "FormACard — commit metadata card: bbe1fb8, Documentation Updates, +17 -15",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "commit bbe1fb8  ·  2023-08-10",
+              "message: 'Documentation Updates'",
+              "watermark_processor.py: +17 insertions, −15 deletions",
+              "Most of it: blank lines, PEP8 spacing.",
+              "One line: not documentation."
+            ]
+          },
+          "rendered": {
+            "out": "media/B35.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 16.83,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B35.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B35.mp3"
+    },
+    {
+      "beat_id": "B36",
+      "act": "ACT VI — CHANGE",
+      "estimated_duration_s": 14,
+      "narration_text": "Buried in the WatermarkDetector __init__ signature: the default value of ignore_repeated_bigrams changed from False to True. That is not documentation.",
+      "new_visual_element": "GitHubCodeDiff — bbe1fb8 key section: ignore_repeated_bigrams False → True in WatermarkDetector.__init__",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "GitHubCodeDiff",
+          "props": {
+            "file": "watermark_processor.py",
+            "badge": "+17 −15",
+            "lines": [
+              {
+                "gutter": "",
+                "text": "class WatermarkDetector(WatermarkBase):",
+                "kind": "context"
+              },
+              {
+                "gutter": "",
+                "text": "    def __init__(",
+                "kind": "context"
+              },
+              {
+                "gutter": "",
+                "text": "        tokenizer: Tokenizer = None,",
+                "kind": "context"
+              },
+              {
+                "gutter": "",
+                "text": "        z_threshold: float = 4.0,",
+                "kind": "context"
+              },
+              {
+                "gutter": "",
+                "text": "        normalizers: list[str] = [\"unicode\"],",
+                "kind": "context"
+              },
+              {
+                "gutter": "-",
+                "text": "        ignore_repeated_bigrams: bool = False,",
+                "kind": "del"
+              },
+              {
+                "gutter": "+",
+                "text": "        ignore_repeated_bigrams: bool = True,",
+                "kind": "add"
+              },
+              {
+                "gutter": "",
+                "text": "        **kwargs,",
+                "kind": "context"
+              },
+              {
+                "gutter": "",
+                "text": "    ):",
+                "kind": "context"
+              }
+            ],
+            "caption": "bbe1fb8 · 'Documentation Updates' · WatermarkDetector.__init__ · the key line"
+          },
+          "rendered": {
+            "out": "media/B36.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 9.13,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B36.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B36.mp3"
+    },
+    {
+      "beat_id": "B37",
+      "act": "ACT VI — CHANGE",
+      "estimated_duration_s": 12,
+      "narration_text": "Seventeen lines added, fifteen removed, message 'Documentation Updates.' One of them flipped a detector default from False to True. The key line is where the error hides.",
+      "new_visual_element": "FormACard — dark verdict card: the specific failure of the commit message",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "+17 −15 · 'Documentation Updates'",
+              "One line: False → True.",
+              "The key line is where the error hides."
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B37.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 10.09,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B37.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B37.mp3"
+    },
+    {
+      "beat_id": "B38",
+      "act": "ACT VI — CHANGE",
+      "estimated_duration_s": 18,
+      "narration_text": "ignore_repeated_bigrams changes how observed_count is computed — whether repeated token bigrams get counted once or every time they occur. That changes the z-score. That changes the p-value. That changes the detection verdict for any text that sits near z_threshold of 4.0. A commit labelled 'Documentation Updates' changed the detection statistic.",
+      "new_visual_element": "FormACard — consequence chain: ignore_repeated_bigrams → observed_count → z-score → p-value → verdict",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "ignore_repeated_bigrams: False → True",
+              "  → changes: observed_count",
+              "  → changes: z-score",
+              "  → changes: p-value",
+              "  → changes: detection verdict for texts near z_threshold=4.0"
+            ]
+          },
+          "rendered": {
+            "out": "media/B38.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 19.67,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B38.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B38.mp3"
+    },
+    {
+      "beat_id": "B39",
+      "act": "VERDICT",
+      "estimated_duration_s": 20,
+      "narration_text": "The verdict: the algorithm is honest. The mechanism is 282 lines and it does exactly what the paper says. But the mismatch between what the README recommends and what the tree imports is a real gap — and the commit that said 'Documentation Updates' changed the scoring rule. If you audit a text and the detector says no, you are reading a p-value above 4.0, not a ruling. The watermark is statistical. So is the doubt.",
+      "new_visual_element": "FormACard — verdict summary: honest algorithm, real gaps, p-value framing",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The algorithm is honest. 282 lines. Does what the paper says.",
+              "Gap: recommended implementation is an orphan (0 importers).",
+              "Gap: 'Documentation Updates' changed the detection statistic.",
+              "The detector returns a p-value. A p-value is not a ruling.",
+              "The watermark is statistical. So is the doubt."
+            ]
+          },
+          "rendered": {
+            "out": "media/B39.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 21.4,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B39.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B39.mp3"
+    },
+    {
+      "beat_id": "B40",
+      "act": "YOUR TURN",
+      "estimated_duration_s": 22,
+      "narration_text": "Your turn. Take this into your own session: clone jwkirchenbauer/lm-watermarking, open watermark_processor.py, and ask Claude what happens to detection power when you raise delta from 2.0 to 5.0 — and what the model quality trade-off looks like at high delta. Then ask what z_threshold controls, and what a false positive looks like at 200 tokens with no watermark present. Liam, in for Bear.",
+      "new_visual_element": "ClaudeComposerAsk — Your Turn: handoff prompt typed into composer",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Clone jwkirchenbauer/lm-watermarking. Open watermark_processor.py. What happens to detection power when you raise delta from 2.0 to 5.0? What is the model quality trade-off at high delta? What does z_threshold control, and what would a false positive look like at 200 tokens with no watermark?",
+            "segment": "The Watermark Is One Line of Code",
+            "topic": "CLAUDE · CODE",
+            "runningText": "paste this into Claude…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "claude-sonnet-4-6",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B40.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 22.02,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B40.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B40.mp3"
+    },
+    {
+      "beat_id": "B41",
+      "act": "OUTRO",
+      "estimated_duration_s": 12,
+      "narration_text": "The Watermark Is One Line of Code.",
+      "new_visual_element": "ClaudeTitleOutro — title restate + @NikBearBrown + slug-seeded mascot",
+      "tail_silence_s": 1.0,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Watermark Is One Line of Code",
+            "slug": "claude-liam-lm-watermarking-walkthrough"
+          },
+          "rendered": {
+            "out": "media/B41.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 2.62,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B41.mp4",
+        "filled_by": "media",
+        "at": "2026-08-12T18:03:12"
+      },
+      "audio_file": "mp3/beat-B41.mp3"
+    }
+  ]
+}

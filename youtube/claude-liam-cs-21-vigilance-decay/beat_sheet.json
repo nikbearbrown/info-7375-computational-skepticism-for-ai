@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-21-vigilance-decay",
+    "title": "The Better the AI Works, the Worse You Watch It",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that every accepted AI output quietly erodes the supervisor's verification habit, so vigilance decays as trust grows — and the rare error arrives precisely when checking has stopped. Source: books/computational-skepticism-for-ai/chapters/10-delegation-trust-and-the-supervisory-role.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = approved outputs / the green streak; CRIMSON = the undetected error / the failure; GOLD = vigilance decay / key insight; SLATE = the stamp / the checking action",
+    "note": "EXCLUSIONS: no delegation-map format, no Boondoggle questions, no trust-calibration monitoring protocol, no Broadbent history aside",
+    "total_estimated_duration_seconds": 188,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 21,
+    "build": {
+      "at": "2026-07-19T02:37:35",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "The Better the AI Works, the Worse You Watch It",
+            "greeting": "Bonjour, Liam.",
+            "command": "The most dangerous AI deployment is the one that is almost always right.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "The most dangerous AI deployment is the one that is almost always right.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Better the AI Works, the Worse You Watch It",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "The Better the AI Works,\nthe Worse You Watch It"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 4.78,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A human reviewer is checking AI-generated reports. Day one: careful. Day five: still checking, but faster. Week three: skimming — it has been correct every single time. Week eight: stamp, stamp, stamp — barely reading. The error arrives in week nine. It is a wrong diagnosis, wrong medication name, wrong patient. The reviewer's stamp is on it. Their name is on the output. The AI was right four hundred times in a row. That streak is what made the four-hundred-and-first one lethal.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "scene_class": "B02_StampStreakDecay",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 25.07,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:37:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: A human reviewer is checking AI-generated reports. Day one: careful. Day five: still checking, but faster. Week three: skimming — it has been correct every sing"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "If a supervisor's vigilance decays as the AI's track record grows, what is the failure mode that the track record itself creates?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What failure mode does a long correct streak create",
+              "for the operator?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What failure mode does\na long correct streak create?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.0,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:37:35"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Human attention is not unlimited. Sustained vigilance on a task that never needs vigilance is cognitively expensive and evolutionarily irrational. When a system produces correct outputs reliably, the brain optimises — it reduces the depth of checking because checking has never caught anything. This is not negligence. This is ordinary human cognition responding rationally to the evidence. The streak of correct outputs is the evidence. The brain concludes: checking is low-value. Checking decreases.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "scene_class": "B04_CognitiveCostOptimisation",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 27.73,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:37:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: Human attention is not unlimited. Sustained vigilance on a task that never needs vigilance is cognitively expensive and evolutionarily irrational. When a system"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The problem is that the AI's error distribution is not uniform across time. A model that is ninety-nine-percent accurate fails one percent of the time — but that failure is not evenly spread across the output stream. Errors cluster around edge cases, distribution shifts, and novel input types. The streak of correct outputs is not evidence that the error rate has fallen to zero. It is evidence that the system has not recently encountered the inputs where it fails. That is a different thing.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B05_ErrorClusteringMisread",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 25.77,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:37:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The problem is that the AI's error distribution is not uniform across time. A model that is ninety-nine-percent accurate fails one percent of the time — but tha"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Every accepted output erodes the verification habit — vigilance decays exactly as trust grows, so the rare error arrives precisely when checking has stopped.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Vigilance decays as trust grows",
+              "the error arrives unchecked."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A human figure at a desk stamping a conveyor belt of documents: the early stamps show careful inspection with a magnifying glass raised, each subsequent stamp shows the magnifying glass lower and the figure more relaxed, the final stamp shows the figure looking away entirely — and a crimson-bordered document passing under the stamp unseen; doodle-style line art on aged newsprint",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 9.6,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:37:35"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here's the vigilance meter. It starts full at the left — deep verification, careful reading. Watch the outputs arrive: teal check, teal check, teal check. The meter drains a little with each accepted output. Output twenty: the meter is at eighty percent. Output one hundred: sixty. Output two hundred: forty. The reviewer is still looking — but the looking is shallower, faster, more automatic. The crimson output arrives at position two-forty. The meter is at thirty. The review takes three seconds. The error passes. The meter had been telling us the whole time that this was coming.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "scene_class": "B07_VigilanceMeterDrain",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 28.84,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:37:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Here's the vigilance meter. It starts full at the left — deep verification, careful reading. Watch the outputs arrive: teal check, teal check, teal check. The m"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The mechanism has a name: automation bias. Once the AI is framed as a trusted system, human reviewers shift from independent evaluators to confirmation checkers — they look for reasons the output might be wrong rather than determining from scratch whether it is right. Confirmation checking is faster, and it is the wrong mode for catching errors the AI makes systematically. A systematic error looks plausible by definition — it matches the model's learned pattern, which has been correct hundreds of times before.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B08_AutomationBiasMode",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 26.69,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:37:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The mechanism has a name: automation bias. Once the AI is framed as a trusted system, human reviewers shift from independent evaluators to confirmation checkers"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For AI deployment design, this means that long correct streaks are a risk factor, not a safety signal. The longer the streak, the lower the current vigilance, and the higher the chance that the next error arrives in a low-vigilance window. Systems designed with the assumption that human reviewers maintain constant vigilance are systems designed to fail at the worst possible moment — when the trust is highest and the checking is shallowest.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "scene_class": "B09_StreakAsRiskFactor",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 21.8,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:37:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: For AI deployment design, this means that long correct streaks are a risk factor, not a safety signal. The longer the streak, the lower the current vigilance, a"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The structural response is not to ask reviewers to stay vigilant — they won't, and asking does not change the cognitive mechanism. The structural response is to design for decaying vigilance. That means: surfacing randomised canary outputs that require active checking regardless of streak length; routing high-consequence outputs to a separate review track with explicit verification steps; and using the streak as a trigger for increased scrutiny, not reduced scrutiny.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B10_DesignForDecay",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 23.84,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:37:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The structural response is not to ask reviewers to stay vigilant — they won't, and asking does not change the cognitive mechanism. The structural response is to"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The accountability question that vigilance decay creates: who is responsible for an error that passed through a review process where the reviewer had rationally reduced their checking depth in response to the AI's track record? The supervisor signed off. The AI generated a wrong output. Both are true. The answer is that the deployment design is responsible — for creating a system where rational human adaptation to a good track record produces a review process that cannot catch the rare failure. The design should have anticipated this.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_AccountabilityDesign",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 29.4,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:37:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The accountability question that vigilance decay creates: who is responsible for an error that passed through a review process where the reviewer had rationally"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A radiology AI assists with chest X-ray reads. The radiologist reviews each AI suggestion. In the first month, the radiologist examines every AI call carefully against the image. In month three, the review time has halved — the AI has been right ninety-seven times in a hundred. In month six, the AI's confidence score is the primary input to the review — a high confidence score with no obvious visual contradiction is sufficient. The AI encounters an unusual presentation of a pneumothorax it has not seen in training. Confidence score: high. The radiologist confirms in twelve seconds. The patient is sent home. The error rate statistics for the AI still show ninety-seven percent. The other three percent have not been distributed randomly.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "scene_class": "B12_RadiologyVigilanceDecay",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 41.58,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:37:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A radiology AI assists with chest X-ray reads. The radiologist reviews each AI suggestion. In the first month, the radiologist examines every AI call carefully "
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Every correct AI output rationally reduces the supervisor's verification depth — vigilance decays as trust grows, and the rare error arrives in the window where checking has stopped. Long correct streaks are risk factors, not safety signals, because they suppress the verification that would catch the systematic failures the model makes on edge cases. Design for decaying vigilance: canary outputs, consequence-scaled review tracks, and streak-triggered scrutiny — not appeals to sustained attention that human cognition will not sustain.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Design for decaying vigilance. The streak is a risk,",
+              "not a guarantee."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Vigilance decays. Errors don't.\nDesign for the human, not against them.",
+        "sub": "Long streaks suppress checking — build in canaries, not just in appeals to attention.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 28.74,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:37:35"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Better the AI Works, the Worse You Watch It",
+            "artifactHeading": "Key findings — The Better the AI Works, the Worse You Watch It",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A radiology AI assists with chest X-ray reads."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:37:35"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — THE BETTER THE AI WORKS, THE WORSE YOU WATCH IT",
+            "segment": "The Better the AI Works, the Worse You Watch It",
+            "greeting": "Hola, Liam.",
+            "command": "Ask Claude: The Better the AI Works, the Worse You Watch It",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:37:35"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Better the AI Works, the Worse You Watch It",
+            "slug": "claude-liam-cs-21-vigilance-decay",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

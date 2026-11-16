@@ -168,6 +168,12 @@ def derive_tables(doc):
                 f"{hits if hits is not None else '-'} | {t['why']} | {t['todo'] or 'none'} |")
     out["federal508"] = table([f508_row(t) for t in sec("federal508")],
                               ("| Employer | Kind | Verdict | System | Board or careers page | Postings 2026-10-31 (a later read is dated) | Titles with a 508 or accessibility phrase | Why this verdict; what answered | To-do |", "|---|---|---|---|---|---|---|---|---|"))
+    def fellowships_row(t):
+        f = t.get("fellowships") or {}
+        return (f"| {t['name']} | {f.get('organization', '')} | {f.get('kind', '')} | **{f.get('verdict', '')}** | {f.get('deadline_listed') or '-'} ({f.get('deadline_source', '')}) | "
+                f"{cells(t)} | {f.get('eligibility', '')} | {t['status_note'] or t['why']} |")
+    out["fellowships"] = table([fellowships_row(t) for t in sec("fellowships")],
+                               ("| Program | Organization | Kind | Verdict | Deadline as recorded (and where it came from) | Page and application links | Eligibility, in the program's words | How it is read / why |", "|---|---|---|---|---|---|---|---|"))
     out["removed"] = table([f"| {t['name']} | {t['removed']['on'] or 'earlier'} | {t['removed']['entry'].get('reason', '')} |" for t in T if t["status"] == "removed"],
                            ("| Removed | On | Reason, as recorded |", "|---|---|---|"))
     return out

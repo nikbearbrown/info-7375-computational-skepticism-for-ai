@@ -1,0 +1,2707 @@
+{
+  "metadata": {
+    "slug": "claude-liam-lecture-key-terms-the-confidence-illusion",
+    "title": "Key Terms: The Confidence Illusion",
+    "skill": "lecture",
+    "style_preset": "lecture",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "neu",
+    "channel_handle": "@NikBearBrown",
+    "register": "Teardown",
+    "fps": 24,
+    "width": 3840,
+    "height": 2160,
+    "aspect_ratio": "16:9",
+    "caption_policy": "sidecar",
+    "greeting_language": "German (Hallo)",
+    "source_doc": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/youtube/claude-liam-lecture-key-terms-the-confidence-illusion/SOURCES.md",
+    "playlist": "Computational Skepticism, Exam Prep",
+    "series_title": "Computational Skepticism, Exam Prep",
+    "series_numbered": false,
+    "course": "INFO 7375 Computational Skepticism for AI",
+    "lecture_opening_description": "33 terms for what a confident number tells you.",
+    "lecture_opening_title_lines": [
+      "Key Terms:",
+      "The Confidence",
+      "Illusion"
+    ],
+    "tags": [
+      "Computational Skepticism",
+      "INFO 7375",
+      "Key terms",
+      "Exam prep",
+      "The Confidence Illusion",
+      "Glossary",
+      "Liam",
+      "Lecture"
+    ],
+    "deck_file": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html",
+    "deck_note": "Body beats are the terminology deck filmed live; see exam-prep-deck-films/tools/deck_capture.py",
+    "on_exam": true,
+    "pronounce": {
+      "ECE": "ˌiːsˌiːˈiː",
+      "Bayesian": "bˈeɪziən",
+      "Cauchy": "koʊʃˈiː",
+      "Gaussian": "ɡˈaʊsiən",
+      "logits": "lˈoʊdʒɪts",
+      "A-I": "ˈeɪaɪ",
+      "A-I's": "ˈeɪaɪz"
+    },
+    "bookends": {
+      "idea": {
+        "text": "A confident number\ntells you how sure to be.",
+        "triggerWords": "tells you how sure to be",
+        "replacementWords": "has to be checked against what happened"
+      },
+      "labels": [
+        {
+          "key": "in the book text",
+          "kind": "tag",
+          "meaning": "the course text uses and explains the term"
+        },
+        {
+          "key": "in the glossary",
+          "kind": "tag",
+          "meaning": "on the course term list; the text does not explain it"
+        },
+        {
+          "key": "Computed",
+          "kind": "badge",
+          "meaning": "numbers worked out on screen from stated inputs"
+        },
+        {
+          "key": "Simulation (seeded)",
+          "kind": "badge",
+          "meaning": "a made-up run with a fixed seed, the same every time"
+        },
+        {
+          "key": "Illustrative data",
+          "kind": "badge",
+          "meaning": "numbers chosen to show the idea, not measured"
+        },
+        {
+          "key": "Conceptual illustration",
+          "kind": "badge",
+          "meaning": "a drawing of the idea, with no data behind it"
+        }
+      ],
+      "defs_parts": [
+        "Six labels sit in the corners of the pictures that follow.",
+        "In the book text: the course text uses and explains the term.",
+        "In the glossary: the term is on the course term list, but the text does not explain it.",
+        "Computed: the numbers are worked out on screen from stated inputs.",
+        "Simulation: a made-up run with a fixed seed, so it comes out the same every time.",
+        "Illustrative data: numbers chosen to show the idea, not measured.",
+        "Conceptual: a drawing of the idea, with no data behind it."
+      ],
+      "recap_lead": "Let's recap.",
+      "recap_lines": [
+        "A probability can be a count, a long-run frequency, or a belief that updates.",
+        "A chain multiplies conditionals, and assuming independence overstates it.",
+        "Bayes' theorem turns a prior and a likelihood into a posterior.",
+        "When the base rate is low, most flags from a good test are false positives.",
+        "Calibration, unlike accuracy, asks whether stated confidence matches outcomes.",
+        "Distribution shift and heavy-tailed loss can break a number that once held."
+      ],
+      "segment": "One Case, One Exact Term",
+      "command": "Quiz me on the terms for judging a confident number. Give me one short case at a time. I must name the exact term, choosing from base rate, sensitivity, PPV, which is positive predictive value, calibration, overconfidence, decorative number, independence, the multiplication rule, distribution shift and heavy-tailed. I must also say why its look-alike is wrong. Hold back the answer until I reply, then correct me briefly.",
+      "checks": [
+        "Check: Did every case make you name one exact term before the answer?",
+        "Check: Did it say why the look-alike, like sensitivity for PPV, is wrong?"
+      ]
+    },
+    "build": {
+      "at": "2026-11-12T06:55:44",
+      "cut": "master",
+      "filled": 52,
+      "of": 52,
+      "slates": [],
+      "skin_warnings": [
+        "NO RENDERABLE BEATS: no beat carries a shot.remotion.pattern or Manim annotation — the pipeline will render NOTHING and every slot becomes a YOU-slate. The sheet was authored without the scene contract."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BOPEN",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Computational Skepticism, Exam Prep. Key Terms: The Confidence Illusion. Thirty-three terms for judging a confident number, from sample space and Bayes' theorem to calibration and distribution shift. With them you can say exactly what a stated ninety-nine percent does and does not tell you.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide. Playlist name as Bear gave it.",
+      "routing": {
+        "about": "Playlist, exact film title, payoff",
+        "runner_up": "Writer-first opening",
+        "reason": "The lecture skill requires the narrated portrait/title card before the writer."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "template": "neu-bookend-title",
+        "narration_contract": "playlist-title-summary-v1",
+        "visual_intent": "Named opening fields visible from frame zero",
+        "motion_claim": "Playlist, title, portrait, credits and handle, visible from frame zero; held for the measured narration.",
+        "show": [
+          {
+            "at": 0,
+            "event": "Complete portrait/title/series card visible"
+          }
+        ],
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Identity card in the deck's look: a still hold is the design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame.",
+        "typography_fill": "#FFFFFF",
+        "typography_reason": "Lecture identity card: the portrait slot is a photograph, not typography; all text fields are listed.",
+        "typography_regions": [
+          {
+            "label": "playlist",
+            "box": [
+              0.0625,
+              0.08,
+              0.8,
+              0.135
+            ]
+          },
+          {
+            "label": "title, rule and summary",
+            "box": [
+              0.41,
+              0.26,
+              0.95,
+              0.72
+            ]
+          },
+          {
+            "label": "presenter and narrator credits",
+            "box": [
+              0.0625,
+              0.73,
+              0.4,
+              0.845
+            ]
+          },
+          {
+            "label": "channel handle",
+            "box": [
+              0.74,
+              0.895,
+              0.945,
+              0.95
+            ]
+          }
+        ]
+      },
+      "voice_key": "2c8e4e30d03d",
+      "audio_file": "mp3/beat-BOPEN.mp3",
+      "actual_duration_s": 16.77,
+      "render_duration_s": 16.791666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOPEN.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. Many people believe a confident number tells you how sure to be. A model says ninety-nine percent, so you trust it ninety-nine percent. But the stated number and what happens are different things. A confident number has to be checked against what happened. This film goes through thirty-three terms for making that check, each one shown in a picture.",
+      "estimated_duration_s": 26.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json idea; the deck's own framing",
+      "routing": {
+        "about": "Core framing correction",
+        "runner_up": "Overview card",
+        "reason": "One phrase is revised; the terms that follow earn the correction."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Core framing correction",
+        "motion_claim": "The assumption is typed, one phrase is struck and replaced in NU red.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types the assumption"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'tells you how sure to be', types 'has to be checked against what happened'"
+          }
+        ],
+        "template": "neu-bookend-writer",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.8,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Typing builds the line on an empty page; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "2c70994fc462",
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "actual_duration_s": 18.77,
+      "render_duration_s": 18.791666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "Terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Six labels sit in the corners of the pictures that follow. In the book text: the course text uses and explains the term. In the glossary: the term is on the course term list, but the text does not explain it. Computed: the numbers are worked out on screen from stated inputs. Simulation: a made-up run with a fixed seed, so it comes out the same every time. Illustrative data: numbers chosen to show the idea, not measured. Conceptual: a drawing of the idea, with no data behind it.",
+      "estimated_duration_s": 35.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "The deck's opening speaker note (what each tag means) and the evidence badge on every slide",
+      "routing": {
+        "about": "The labels printed on every slide",
+        "runner_up": "The deck's own title slide",
+        "reason": "Prerequisite vocabulary only: the tags and badges the viewer will see in every picture. The terms the film teaches arrive in the body."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Prerequisite labels",
+        "motion_claim": "Each tag or badge, drawn as the deck draws it, rises as it is spoken.",
+        "show": [
+          {
+            "at": 0.08,
+            "event": "'In the book text' lands"
+          },
+          {
+            "at": 0.22,
+            "event": "'In the glossary' lands"
+          },
+          {
+            "at": 0.36,
+            "event": "'Computed' lands"
+          },
+          {
+            "at": 0.5,
+            "event": "'Simulation' lands"
+          },
+          {
+            "at": 0.64,
+            "event": "'Illustrative data' lands"
+          },
+          {
+            "at": 0.78,
+            "event": "'Conceptual' lands"
+          }
+        ],
+        "template": "neu-bookend-labels",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The label rows rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "ca082400414a",
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "actual_duration_s": 24.75,
+      "render_duration_s": 24.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0101",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This is a map of thirty-three terms in four groups. All of them answer one question, what does a confident number actually tell you. The first group, what a probability is, holds sample space, event, the three axioms, classical probability, frequentist probability, Bayesian probability and prior.",
+      "estimated_duration_s": 18.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 2 step 1. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "GROUP; TERMS; WHAT IT IS ABOUT; What a probability is",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-three terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: GROUP; TERMS; WHAT IT IS ABOUT; What a probability is"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "0f2051005243",
+      "audio_file": "mp3/beat-B0101.mp3",
+      "actual_duration_s": 16.19,
+      "render_duration_s": 16.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0102",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The second group is updating on evidence, how a chance changes once you know more. Its terms are conditional probability, the multiplication rule, independence, partition, total probability, likelihood, posterior and Bayes' theorem. Each one is a step in turning new information into a new number.",
+      "estimated_duration_s": 18.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 2 step 2. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Updating on evidence; How a chance changes once you know more",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-three terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Updating on evidence; How a chance changes once you know more"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "639073200440",
+      "audio_file": "mp3/beat-B0102.mp3",
+      "actual_duration_s": 16.3,
+      "render_duration_s": 16.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0103",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The third group is rare events. Its terms are base rate, sensitivity, specificity, false positive, and PPV, positive predictive value. Together they explain why a test that is ninety-nine percent accurate can still flag mostly healthy people when the condition is rare.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 2 step 3. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Rare events; Base rate, Sensitivity, Specificity, False positive, PPV; Why a 99% test mostly flags healthy people",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-three terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Rare events; Base rate, Sensitivity, Specificity, False positive, PPV; Why a 99% test mostly flags healthy people"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "a54a58870e42",
+      "audio_file": "mp3/beat-B0103.mp3",
+      "actual_duration_s": 16.11,
+      "render_duration_s": 16.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0104",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The last group, earning the number, asks whether stated confidence is checked, and when it breaks. Checking covers calibration, the calibration curve, overconfidence, decorative number, temperature scaling, ECE, expected calibration error, calibration baseline and plausibility auditing. Breaking covers distribution shift, Hume's induction problem, the central limit theorem, heavy-tailed and loss.",
+      "estimated_duration_s": 20.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 2 step 4. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Earning the number; Whether stated confidence is checked, and when it breaks",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-three terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Earning the number; Whether stated confidence is checked, and when it breaks"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8e7b2a6dfb0b",
+      "audio_file": "mp3/beat-B0104.mp3",
+      "actual_duration_s": 21.23,
+      "render_duration_s": 21.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0201",
+      "act": "What a probability is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Here are the six faces of a single die. That full list is the sample space, every outcome that could happen, and one of them must. Everything else in probability is built from this list. For example, when an applicant-tracking system screens your résumé, the sample space is every result it can give. It rejects you, holds you for review, or passes you to a recruiter.",
+      "estimated_duration_s": 26.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 3 step 1. Source: Chapter 2, “What probability actually is”, “The three axioms”; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "Sample space; in the book text; The list of every outcome that could happen.; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sample space, event and the axioms: Six die faces. Then faces 2, 4 and 6 picked out as an event. Then a bar of six equal pieces that shows the three axioms.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Sample space; in the book text; The list of every outcome that could happen.; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 1,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b420054867f4",
+      "audio_file": "mp3/beat-B0201.mp3",
+      "actual_duration_s": 18.82,
+      "render_duration_s": 18.833333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0202",
+      "act": "What a probability is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now faces two, four and six turn red. That group is an event, the die shows an even number. An event is any part of the sample space you care about. Three of six equally likely faces gives one half. For example, an application can end in no reply, a rejection, a phone screen or an interview. Hearing back at all is an event. It groups the rejection, the phone screen and the interview.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 3 step 2. Source: Chapter 2, “What probability actually is”, “The three axioms”; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; Any group of outcomes you care about.; Event; AN EVENT: THE DIE SHOWS AN EVEN NUMBER",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sample space, event and the axioms: Six die faces. Then faces 2, 4 and 6 picked out as an event. Then a bar of six equal pieces that shows the three axioms.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Any group of outcomes you care about.; Event; AN EVENT: THE DIE SHOWS AN EVEN NUMBER"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "2abd5960f735",
+      "audio_file": "mp3/beat-B0202.mp3",
+      "actual_duration_s": 19.84,
+      "render_duration_s": 19.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0203",
+      "act": "What a probability is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A bar cut into six equal pieces shows the three axioms. Nonnegativity, no piece is below zero. Normalization, the pieces total one. Additivity, outcomes that cannot happen together add, so the red pieces sum to one half. For example, a tool gives chances for how one application ends, no reply, rejection, or interview. None can be below zero, together they must make one, and the chance of hearing anything is rejection plus interview.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 3 step 3. Source: Chapter 2, “What probability actually is”, “The three axioms”; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "Three axioms; in the book text; No negatives, the total is 1, and exclusive outcomes add.; THE THREE AXIOMS ON THE SAME DIE",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sample space, event and the axioms: Six die faces. Then faces 2, 4 and 6 picked out as an event. Then a bar of six equal pieces that shows the three axioms.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (958 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Three axioms; in the book text; No negatives, the total is 1, and exclusive outcomes add.; THE THREE AXIOMS ON THE SAME DIE"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 3,
+        "anim_ms": 958
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "7b37c6f0bf25",
+      "audio_file": "mp3/beat-B0203.mp3",
+      "actual_duration_s": 23.67,
+      "render_duration_s": 23.708333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0301",
+      "act": "What a probability is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Five balls, each as likely to be drawn as any other, with the one labelled yellow highlighted. Classical probability is counting. One favourable outcome out of five equally likely outcomes gives zero point two. It needs that symmetry. For example, five finalists are equally qualified, so a recruiter draws one name at random for the first interview slot. Counting alone gives each finalist one chance in five.",
+      "estimated_duration_s": 26.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 4 step 1. Source: Chapter 2, “Classical and frequentist probability”, “What probability actually is”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Classical probability; in the book text; Count the favourable outcomes out of equally likely ones.; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Classical, frequentist, Bayesian: Five balls with one yellow. Then a running relative frequency of seeded coin flips settling near one half. Then two engineers with different priors reaching different posteriors from the same evidence.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (875 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Classical probability; in the book text; Count the favourable outcomes out of equally likely ones.; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 1,
+        "anim_ms": 875
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1b363a52bfa6",
+      "audio_file": "mp3/beat-B0301.mp3",
+      "actual_duration_s": 21.93,
+      "render_duration_s": 21.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0302",
+      "act": "What a probability is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The red line is the share of heads as a coin flips. Frequentist probability is that share over a long run. In this simulated run it is zero point four after twenty flips and near one half after five hundred. For example, a job board counts, across a great many applications sent through it, the share that led to an interview. That long-run share is a frequentist probability.",
+      "estimated_duration_s": 27.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 4 step 2. Source: Chapter 2, “Classical and frequentist probability”, “What probability actually is”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Frequentist probability; in the book text; The share of times it happens over a long run of repeats.; 0",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Classical, frequentist, Bayesian: Five balls with one yellow. Then a running relative frequency of seeded coin flips settling near one half. Then two engineers with different priors reaching different posteriors from the same evidence.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (3500 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Frequentist probability; in the book text; The share of times it happens over a long run of repeats.; 0"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 2,
+        "anim_ms": 3500
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4769c18977bc",
+      "audio_file": "mp3/beat-B0302.mp3",
+      "actual_duration_s": 19.5,
+      "render_duration_s": 19.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0303",
+      "act": "What a probability is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Each engineer gets a grey bar and a red bar. Bayesian probability is a degree of belief that evidence updates, and the prior is the belief before the evidence. In this made-up example the same evidence moves a prior of ten percent to thirty-one percent, and fifty percent to eighty. For example, two recruiters see the same strong work sample. One began doubtful, one hopeful. Those starting beliefs are their priors. Both raise their belief, correctly, and still differ.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 4 step 3. Source: Chapter 2, “Classical and frequentist probability”, “What probability actually is”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Bayesian probability; in the book text; A degree of belief that evidence updates.; Prior",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Classical, frequentist, Bayesian: Five balls with one yellow. Then a running relative frequency of seeded coin flips settling near one half. Then two engineers with different priors reaching different posteriors from the same evidence.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Bayesian probability; in the book text; A degree of belief that evidence updates.; Prior"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 3,
+        "anim_ms": 1417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "0c9840f53e66",
+      "audio_file": "mp3/beat-B0303.mp3",
+      "actual_duration_s": 23.91,
+      "render_duration_s": 23.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0401",
+      "act": "Updating on evidence",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A square of all cases. The left block is flagged, its red part also high-acuity. Conditional probability is the chance of one thing once another is known. In this made-up example, red is about forty percent of the flagged block. For example, the chance an applicant gets an interview, once you know the application came with a referral, is a conditional probability. Knowing about the referral changes the number.",
+      "estimated_duration_s": 27.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 5 step 1. Source: Chapter 2, “Conditional probability”, “The multiplication rule”; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "Conditional probability; in the book text; The chance of A once you know B has happened.; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Conditioning, the chain rule, independence: A square split by a flag B, with the share of high-acuity cases inside B. Then three shrinking bars for a chain of tool calls. Then the independent product beside the chain-rule product.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Conditional probability; in the book text; The chance of A once you know B has happened.; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1eb65cd59bf0",
+      "audio_file": "mp3/beat-B0401.mp3",
+      "actual_duration_s": 21.06,
+      "render_duration_s": 21.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0401.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0402",
+      "act": "Updating on evidence",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three bars for three calls in a chain, and all three must work. The multiplication rule, also called the chain rule, multiplies each step's chance given the steps before it. Ninety percent, then eighty-five, then eighty, leaves about sixty-one percent. For example, an agent finds a listing, tailors your résumé to it, then submits. If it picked the wrong listing, the tailoring is likely wrong too, so each step's chance is taken given the steps before.",
+      "estimated_duration_s": 30.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 5 step 2. Source: Chapter 2, “Conditional probability”, “The multiplication rule”; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "Multiplication rule; in the book text; THREE CALLS, ALL MUST WORK; call 1: 0.90",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Conditioning, the chain rule, independence: A square split by a flag B, with the share of high-acuity cases inside B. Then three shrinking bars for a chain of tool calls. Then the independent product beside the chain-rule product.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Multiplication rule; in the book text; THREE CALLS, ALL MUST WORK; call 1: 0.90"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 2,
+        "anim_ms": 1625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "a0e4fed16b5e",
+      "audio_file": "mp3/beat-B0402.mp3",
+      "actual_duration_s": 21.78,
+      "render_duration_s": 21.791666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0402.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0403",
+      "act": "Updating on evidence",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two bars for the same three steps. Independence means one event tells you nothing about the other. Assume it, and ninety percent three times gives seventy-three percent, where the chain rule gave sixty-one. For example, whether you hear back from one company tells you nothing about whether a stranger in another city hears back from a different one. Those are independent. Two of your own applications sent with the same résumé are not. One flaw in the résumé hurts both.",
+      "estimated_duration_s": 32.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 5 step 3. Source: Chapter 2, “Conditional probability”, “The multiplication rule”; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "in the book text; Knowing one event tells you nothing about the other.; Independence; TWO WAYS TO MULTIPLY THE SAME THREE STEPS",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Conditioning, the chain rule, independence: A square split by a flag B, with the share of high-acuity cases inside B. Then three shrinking bars for a chain of tool calls. Then the independent product beside the chain-rule product.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1167 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; Knowing one event tells you nothing about the other.; Independence; TWO WAYS TO MULTIPLY THE SAME THREE STEPS"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 3,
+        "anim_ms": 1167
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "a7da8448e37e",
+      "audio_file": "mp3/beat-B0403.mp3",
+      "actual_duration_s": 22.65,
+      "render_duration_s": 22.666666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0403.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0501",
+      "act": "Updating on evidence",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "One bar holds every case, split by model version. A partition is pieces that do not overlap and together cover every case. In this made-up fleet the shares are forty, thirty and thirty percent, one hundred in all. For example, sort every application an agent sent this month by where it went, a job board, a company site, or a recruiter's inbox. If each went to exactly one place, those groups are a partition.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 6 step 1. Source: Chapter 2, “The total probability theorem”, “Bayes’ theorem”; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "Partition; in the book text; Non-overlapping pieces that cover every case.; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Partition, total probability, Bayes: A bar split into three model versions. Then each version's contribution to the error rate summed to 3.2 percent. Then the share of wrong outputs each version produced.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (958 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Partition; in the book text; Non-overlapping pieces that cover every case.; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 1,
+        "anim_ms": 958
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "91afa733e429",
+      "audio_file": "mp3/beat-B0501.mp3",
+      "actual_duration_s": 20.76,
+      "render_duration_s": 20.791666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0501.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0502",
+      "act": "Updating on evidence",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Each version now has a bar for its share times its error rate. Total probability weights each piece's chance by its share, then adds. The sum is three point two percent, an error rate no single version reports. For example, a job-market report gives one overall interview rate. To get it, take each job category's interview rate, weight it by that category's share of applicants, and add them up.",
+      "estimated_duration_s": 27.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 6 step 2. Source: Chapter 2, “The total probability theorem”, “Bayes’ theorem”; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "Total probability; in the book text; Weight each piece's chance by its share, add up.; SHARE × ERROR RATE, THEN ADD",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Partition, total probability, Bayes: A bar split into three model versions. Then each version's contribution to the error rate summed to 3.2 percent. Then the share of wrong outputs each version produced.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (2042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Total probability; in the book text; Weight each piece's chance by its share, add up.; SHARE × ERROR RATE, THEN ADD"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 2,
+        "anim_ms": 2042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "67c1d8c054b6",
+      "audio_file": "mp3/beat-B0502.mp3",
+      "actual_duration_s": 20.03,
+      "render_duration_s": 20.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0502.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0503",
+      "act": "Updating on evidence",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Work backwards from a wrong output. Likelihood is the chance of the evidence if a hypothesis is true. Posterior is the belief after the evidence. Bayes' theorem gives it, prior times likelihood, divided by the chance of the evidence. Version C runs thirty percent of traffic, but makes about forty-seven percent of errors. For example, a résumé comes back rejected, by software or a human reviewer. The likelihood is how often each rejects résumés like it. The posterior is how strongly you now believe each one did it.",
+      "estimated_duration_s": 35.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 6 step 3. Source: Chapter 2, “The total probability theorem”, “Bayes’ theorem”; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "in the book text; Chance of the evidence if the hypothesis is true.; in the book text; Belief after the evidence: prior updated.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Partition, total probability, Bayes: A bar split into three model versions. Then each version's contribution to the error rate summed to 3.2 percent. Then the share of wrong outputs each version produced.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; Chance of the evidence if the hypothesis is true.; in the book text; Belief after the evidence: prior updated."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 3,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4379bae7b2b5",
+      "audio_file": "mp3/beat-B0503.mp3",
+      "actual_duration_s": 28.01,
+      "render_duration_s": 28.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0503.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0601",
+      "act": "Rare events",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A grid of ten thousand squares, one per person, with a single red square for the one sick person. The base rate is how common the thing is before any test. Here it is one in ten thousand. For example, among everyone who applies to a popular job posting, only a tiny share get hired. That share, before any screening runs, is the base rate.",
+      "estimated_duration_s": 26.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 7 step 1. Source: Chapter 2, “The test that is 99% accurate, and the patient it kills”; “Glimmer 2.3” for PPV; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "Base rate; in the book text; How common the thing is before any test.; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The 99% test and the base rate: A grid of 10,000 people with one sick person. Then the test flags the sick person and about 100 healthy people. Then only the flagged people remain, so the share who are really sick is about 1 percent.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Base rate; in the book text; How common the thing is before any test.; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b1536f288637",
+      "audio_file": "mp3/beat-B0601.mp3",
+      "actual_duration_s": 18.15,
+      "render_duration_s": 18.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0601.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0602",
+      "act": "Rare events",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the test runs, and black squares appear across the grid. Sensitivity is the share of the truly sick the test flags, here ninety-nine percent. Specificity is the share of the healthy it clears, also ninety-nine. The other one percent, about one hundred people, are flagged anyway, each a false positive. For example, a résumé screener passes strong applicants. Sensitivity is the share of strong ones it passes, specificity the share of weak ones it turns away. A weak one it passes is a false positive.",
+      "estimated_duration_s": 34.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 7 step 2. Source: Chapter 2, “The test that is 99% accurate, and the patient it kills”; “Glimmer 2.3” for PPV; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; Of the truly sick, the share flagged.; Specificity; in the book text",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The 99% test and the base rate: A grid of 10,000 people with one sick person. Then the test flags the sick person and about 100 healthy people. Then only the flagged people remain, so the share who are really sick is about 1 percent.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (917 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Of the truly sick, the share flagged.; Specificity; in the book text"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 2,
+        "anim_ms": 917
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "88c0b3744005",
+      "audio_file": "mp3/beat-B0602.mp3",
+      "actual_duration_s": 26.18,
+      "render_duration_s": 26.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0602.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0603",
+      "act": "Rare events",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The cleared squares fade, leaving only the flagged. PPV, positive predictive value, is the share of flags that are real, about one in one hundred and one, just under one percent. Sensitivity starts from the sick, PPV from the flag. For example, a tool flags job listings as scams. PPV is the share of flagged listings that really are scams. If scams are rare among listings, many flags land on honest jobs.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 7 step 3. Source: Chapter 2, “The test that is 99% accurate, and the patient it kills”; “Glimmer 2.3” for PPV; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "in the glossary; positive predictive value; Of everything flagged, the share that is real.; PPV",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The 99% test and the base rate: A grid of 10,000 people with one sick person. Then the test flags the sick person and about 100 healthy people. Then only the flagged people remain, so the share who are really sick is about 1 percent.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the glossary; positive predictive value; Of everything flagged, the share that is real.; PPV"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1e345bfd3b6c",
+      "audio_file": "mp3/beat-B0603.mp3",
+      "actual_duration_s": 22.45,
+      "render_duration_s": 22.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0603.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0701",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The bars are a thousand cases a model rated seventy percent. Calibration means stated confidence matches how often it comes true, so seven hundred should turn out positive. Four hundred is overconfident, nine hundred underconfident. Accuracy is a different question. For example, an AI tool tells a group of job seekers it is seventy percent sure each will get an interview. If the tool is calibrated, about seventy percent of them do.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 8 step 1. Source: Chapter 2, “Calibration”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Calibration; in the book text; Stated confidence matches how often it comes true.; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Calibration and the decorative number: Three bars for 1,000 cases stated at 70 percent. Then a calibration curve from a seeded simulation that sags below the diagonal. Then the top confidence bin, stated 0.97 and actual 0.85.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Calibration; in the book text; Stated confidence matches how often it comes true.; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 1,
+        "anim_ms": 1417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9679786b0974",
+      "audio_file": "mp3/beat-B0701.mp3",
+      "actual_duration_s": 21.85,
+      "render_duration_s": 21.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0701.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0702",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This chart is a calibration curve. Stated confidence runs across, actual accuracy runs up, and the dashed diagonal is perfect calibration. In this simulated run of two thousand five hundred cases, the dots sag below it. That gap is overconfidence, stated confidence above how often the model is right. For example, chart a fit-scoring agent's stated chance of an interview against how often its users got one. If its top scores come true less often than they claim, it is overconfident.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 8 step 2. Source: Chapter 2, “Calibration”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Calibration curve; in the book text; Overconfidence; in the book text",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Calibration and the decorative number: Three bars for 1,000 cases stated at 70 percent. Then a calibration curve from a seeded simulation that sags below the diagonal. Then the top confidence bin, stated 0.97 and actual 0.85.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Calibration curve; in the book text; Overconfidence; in the book text"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 2,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "da7518e81932",
+      "audio_file": "mp3/beat-B0702.mp3",
+      "actual_duration_s": 26.22,
+      "render_duration_s": 26.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0702.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0703",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The red line marks the gap at the top dot. The model says ninety-seven percent, and eighty-five percent happens. A decorative number is a confident figure nobody has checked against outcomes. Without this curve, that ninety-seven is one. For example, a job-matching app shows a high match score beside a listing. If nobody has checked how often high scores led to interviews, that score is a decorative number.",
+      "estimated_duration_s": 27.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 8 step 3. Source: Chapter 2, “Calibration”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Decorative number; in the book text; A confident figure nobody has checked against outcomes.; Says 0.97. Happens 0.85.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Calibration and the decorative number: Three bars for 1,000 cases stated at 70 percent. Then a calibration curve from a seeded simulation that sags below the diagonal. Then the top confidence bin, stated 0.97 and actual 0.85.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Decorative number; in the book text; A confident figure nobody has checked against outcomes.; Says 0.97. Happens 0.85."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "e6d75166b30d",
+      "audio_file": "mp3/beat-B0703.mp3",
+      "actual_duration_s": 21.21,
+      "render_duration_s": 21.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0703.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0801",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The bars are a model's scores for its classes. Temperature scaling divides the logits, the raw scores, by one fitted number, T. As T rises from one to two, the top score falls from eighty-four percent to sixty-two, and the order never changes. Sampling temperature is different, it sets how random generated text is. For example, a fit-scoring model is too sure about its top job matches. Temperature scaling softens every score, and the listings stay in the same order.",
+      "estimated_duration_s": 32.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 9 step 1. Source: Chapter 2, “Calibration”, “The calibration baseline”; exam-term list for ECE and sampling temperature. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Temperature scaling; in the book text; TELL THESE APART; Temperature scaling",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Temperature scaling and the 90% baseline: Three bars of softmax scores that soften as T rises while keeping their order. Then a calibration curve before and after scaling with ECE. Then twenty 90 percent intervals and how many contained the truth.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (3542 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Temperature scaling; in the book text; TELL THESE APART; Temperature scaling"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 1,
+        "anim_ms": 3542
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b986d7792669",
+      "audio_file": "mp3/beat-B0801.mp3",
+      "actual_duration_s": 25.24,
+      "render_duration_s": 25.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0801.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0802",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Hollow dots are before scaling, red dots after. ECE, expected calibration error, is the average gap between stated and actual, weighted by bin size. In this simulated run it falls from zero point one one to zero point zero two. For example, group a résumé screener's past calls by how sure it was. Compare each group's stated confidence with how often it was right, then average the gaps, counting bigger groups more. That one score is its ECE.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 9 step 2. Source: Chapter 2, “Calibration”, “The calibration baseline”; exam-term list for ECE and sampling temperature. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "ECE; in the glossary; expected calibration error; Bin-weighted average gap between stated and actual.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Temperature scaling and the 90% baseline: Three bars of softmax scores that soften as T rises while keeping their order. Then a calibration curve before and after scaling with ECE. Then twenty 90 percent intervals and how many contained the truth.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: ECE; in the glossary; expected calibration error; Bin-weighted average gap between stated and actual."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 2,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ee0e33c2624f",
+      "audio_file": "mp3/beat-B0802.mp3",
+      "actual_duration_s": 25.81,
+      "render_duration_s": 25.833333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0802.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0803",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Twenty ninety percent intervals, ticked if they held the truth. The calibration baseline is that exercise, write the intervals, then count the hits. In this simulated set ten of twenty hit, where calibrated gives eighteen. Plausibility auditing is hearing the wrong note in a number before you can prove it wrong. For example, a job seeker writes a ninety percent salary range for each offer before it arrives, then counts the hits. And a report that an entry-level job pays like an executive one should sound wrong at once.",
+      "estimated_duration_s": 35.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 9 step 3. Source: Chapter 2, “Calibration”, “The calibration baseline”; exam-term list for ECE and sampling temperature. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Calibration baseline; in the book text; Write 90% intervals for questions, then count how many hit.; Plausibility auditing",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Temperature scaling and the 90% baseline: Three bars of softmax scores that soften as T rises while keeping their order. Then a calibration curve before and after scaling with ECE. Then twenty 90 percent intervals and how many contained the truth.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (2833 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Calibration baseline; in the book text; Write 90% intervals for questions, then count how many hit.; Plausibility auditing"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 3,
+        "anim_ms": 2833
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "91f20d2c17af",
+      "audio_file": "mp3/beat-B0803.mp3",
+      "actual_duration_s": 27.22,
+      "render_duration_s": 27.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0803.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0901",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Ten batches from a simulated model, not a real deployment. Dashed grey is stated confidence, black is actual accuracy, both near seventy-four percent. Distribution shift is what comes next, the world after deployment stops matching the training data. For example, a model learned who gets interviews from résumés written before AI writing tools were common. Now many applicants polish their résumés with AI, and the signals it learned stop meaning what they did.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 10 step 1. Source: Chapter 2, “Hume’s induction problem, re-translated as distribution shift”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Distribution shift; in the book text; TELL THESE APART; Calibration",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Distribution shift and Hume’s problem: A line chart over twenty batches of 300 cases. Stated confidence stays flat at about 0.74. Accuracy tracks it for ten batches, then drops to about 0.63 when the world changes.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Distribution shift; in the book text; TELL THESE APART; Calibration"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "10b375361ad6",
+      "audio_file": "mp3/beat-B0901.mp3",
+      "actual_duration_s": 24.04,
+      "render_duration_s": 24.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0901.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0902",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "At the dotted red line the world moves. Stated confidence stays near seventy-four percent, while actual accuracy drops to about sixty-three. That is distribution shift. The outputs alone look unchanged, so you have to watch the outcomes.",
+      "estimated_duration_s": 15.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 10 step 2. Source: Chapter 2, “Hume’s induction problem, re-translated as distribution shift”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "the world moves; stated: 0.743 → 0.745; actual: 0.741 → 0.633; the outputs alone look unchanged",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Distribution shift and Hume’s problem: A line chart over twenty batches of 300 cases. Stated confidence stays flat at about 0.74. Accuracy tracks it for ten batches, then drops to about 0.63 when the world changes.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: the world moves; stated: 0.743 → 0.745; actual: 0.741 → 0.633; the outputs alone look unchanged"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 2,
+        "anim_ms": 1208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "e3d4860491c0",
+      "audio_file": "mp3/beat-B0902.mp3",
+      "actual_duration_s": 13.53,
+      "render_duration_s": 13.541666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0902.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B0903",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The shading splits the past from what the track record never saw. Hume's induction problem says the past does not guarantee the future. The world has to cooperate, so ask what must stay true. For example, a résumé tip worked in every job search a career coach can remember. That record alone cannot promise it works in the next one. Ask what about hiring must stay the same for the tip to keep working.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 10 step 3. Source: Chapter 2, “Hume’s induction problem, re-translated as distribution shift”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Hume's induction problem; in the book text; the past: the record; what the record never saw",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Distribution shift and Hume’s problem: A line chart over twenty batches of 300 cases. Stated confidence stays flat at about 0.74. Accuracy tracks it for ten batches, then drops to about 0.63 when the world changes.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Hume's induction problem; in the book text; the past: the record; what the record never saw"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "2d706be242b1",
+      "audio_file": "mp3/beat-B0903.mp3",
+      "actual_duration_s": 20.76,
+      "render_duration_s": 20.791666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0903.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1001",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A running average of two thousand simulated draws from a Gaussian, the bell curve, settles near zero. The central limit theorem says averages of many independent, finite-variance values look bell-shaped. It needs both conditions, independence and finite variance. For example, survey many large random groups of job seekers and average each group's weeks to a first interview. Those group averages pile into a bell shape, as long as no one's wait affects another's and the waits have no wild extremes.",
+      "estimated_duration_s": 32.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 11 step 1. Source: Chapter 2, “When the Central Limit Theorem politely declines to help”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Central limit theorem; in the book text; TELL THESE APART; Central limit theorem",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Central limit theorem, heavy tails, loss: A running mean of Gaussian draws settling near zero. Then a running mean of Cauchy draws that jumps. Then a grid of 1,000 wrong outputs where one costs most of the total.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Central limit theorem; in the book text; TELL THESE APART; Central limit theorem"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 1,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b9c9e2fdb693",
+      "audio_file": "mp3/beat-B1001.mp3",
+      "actual_duration_s": 27.33,
+      "render_duration_s": 27.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1001.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1002",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The red line is the same running average for a Cauchy distribution, and it never settles. Heavy-tailed means extremes are common enough that the average does not converge. One late draw moved the average by two point six one. Picture averaging the value of job offers that include startup stock. Most are modest, but a rare one can be enormous, so a single new offer can jump the average however many came before.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 11 step 2. Source: Chapter 2, “When the Central Limit Theorem politely declines to help”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "in the book text; Extremes are common enough that the average never settles.; Heavy-tailed; Gaussian settles; Cauchy does not",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Central limit theorem, heavy tails, loss: A running mean of Gaussian draws settling near zero. Then a running mean of Cauchy draws that jumps. Then a grid of 1,000 wrong outputs where one costs most of the total.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (3500 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Extremes are common enough that the average never settles.; Heavy-tailed; Gaussian settles; Cauchy does not"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 2,
+        "anim_ms": 3500
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "7ac6ab742ffd",
+      "audio_file": "mp3/beat-B1002.mp3",
+      "actual_duration_s": 21.46,
+      "render_duration_s": 21.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1002.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1003",
+      "act": "Earning the number",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A grid of one thousand wrong outputs, with made-up costs. Loss is what being wrong costs, not how often it happens. Most cost ten dollars, the red one five hundred thousand. That one is ninety-eight percent of the loss. For example, an agent that sends applications for you can make a typo in a cover letter, which costs little. Or it can send your résumé to your current employer's recruiter, which could cost you your job. Loss counts what each error costs.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 11 step 3. Source: Chapter 2, “When the Central Limit Theorem politely declines to help”; docs/Exam terms - compact list.md. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Loss; in the book text; What being wrong costs, not how often it happens.; 1,000 WRONG OUTPUTS (ILLUSTRATIVE)",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Central limit theorem, heavy tails, loss: A running mean of Gaussian draws settling near zero. Then a running mean of Cauchy draws that jumps. Then a grid of 1,000 wrong outputs where one costs most of the total.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Loss; in the book text; What being wrong costs, not how often it happens.; 1,000 WRONG OUTPUTS (ILLUSTRATIVE)"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "803135f2b6ae",
+      "audio_file": "mp3/beat-B1003.mp3",
+      "actual_duration_s": 22.05,
+      "render_duration_s": 22.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1003.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1101",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the look-alike pairs, each shown as bars side by side. First, sensitivity against PPV, positive predictive value. Sensitivity is how often the test flags the sick, ninety-nine percent. PPV is how often a flag is real, under one percent at a base rate of one in ten thousand. Same test, opposite question.",
+      "estimated_duration_s": 21.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 12 step 1. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "PAIR 1 · LEFT; Sensitivity; How often the test flags the sick.; P(positive | sick) = 0.99",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small bar chart.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: PAIR 1 · LEFT; Sensitivity; How often the test flags the sick.; P(positive | sick) = 0.99"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 1,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "20da0a947b54",
+      "audio_file": "mp3/beat-B1101.mp3",
+      "actual_duration_s": 18.43,
+      "render_duration_s": 18.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1102",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The second pair is accuracy and calibration. Accuracy is how often the model is right, in this made-up example ninety of one hundred. Calibration asks whether stated confidence matches that. Here the model says ninety-nine percent and ninety percent happens, a gap of nine points. Accurate, yet not calibrated.",
+      "estimated_duration_s": 19.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 12 step 2. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "PAIR 2 · LEFT; Accuracy; How often the model is right.; right on 90 of 100",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small bar chart.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: PAIR 2 · LEFT; Accuracy; How often the model is right.; right on 90 of 100"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 2,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "a1ac6eff53f4",
+      "audio_file": "mp3/beat-B1102.mp3",
+      "actual_duration_s": 17.05,
+      "render_duration_s": 17.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1103",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The third pair is independence and the chain rule. Independence assumes the steps do not affect one another, so ninety percent three times gives about seventy-three percent. The chain rule takes each step's chance given the steps before it, and gives about sixty-one percent. The gap is the cost of the assumption.",
+      "estimated_duration_s": 21.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 12 step 3. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "PAIR 3 · LEFT; Independence; Steps assumed not to affect one another.; 0.9 × 0.9 × 0.9 = 0.729",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small bar chart.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: PAIR 3 · LEFT; Independence; Steps assumed not to affect one another.; 0.9 × 0.9 × 0.9 = 0.729"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 3,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "324cf5634e29",
+      "audio_file": "mp3/beat-B1103.mp3",
+      "actual_duration_s": 16.81,
+      "render_duration_s": 16.833333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1104",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The last pair is average loss and worst-case loss, with illustrative costs. Average loss is what an error costs averaged over many, five hundred ten dollars, barely a sliver. Worst-case loss is what the one bad error costs, five hundred thousand dollars. The average hides it.",
+      "estimated_duration_s": 18.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 12 step 4. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Illustrative data.",
+      "routing": {
+        "about": "PAIR 4 · LEFT; Average loss; What an error costs, averaged over many.; average $510 per error",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small bar chart.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: PAIR 4 · LEFT; Average loss; What an error costs, averaged over many.; average $510 per error"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 4,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "2751d81f5771",
+      "audio_file": "mp3/beat-B1104.mp3",
+      "actual_duration_s": 15.78,
+      "render_duration_s": 15.791666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1201",
+      "act": "Vague claim, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "On the left is a vague claim with an exact instruction under it, on the right what the instruction gives. The claim, the test is ninety-nine percent accurate. The instruction, compute the chance of sick given positive from the base rate, sensitivity and specificity. The answer, about one in one hundred.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 13 step 1. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "“the test is 99% accurate”; WHAT THE INSTRUCTION GIVES; stated accuracy: 0.99; P(sick | positive): 0.0098",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact instruction. On the right, a chart computed from the exact instruction.",
+        "motion_claim": "The deck's own animation for step 1 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: “the test is 99% accurate”; WHAT THE INSTRUCTION GIVES; stated accuracy: 0.99; P(sick | positive): 0.0098"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 1,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "63046c3a7305",
+      "audio_file": "mp3/beat-B1201.mp3",
+      "actual_duration_s": 16.19,
+      "render_duration_s": 16.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1202",
+      "act": "Vague claim, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second claim, the agent said task complete. The exact instruction is to multiply the conditionals, each call's chance given the calls before it. On these example numbers, one report of complete is a sixty-one percent chain, not the seventy-three percent independence would give.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 13 step 2. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "“the agent said task complete”; after call 1: 0.900; after call 2: 0.765; after call 3: 0.612",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact instruction. On the right, a chart computed from the exact instruction.",
+        "motion_claim": "The deck's own animation for step 2 of 5 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: “the agent said task complete”; after call 1: 0.900; after call 2: 0.765; after call 3: 0.612"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "56521d47188a",
+      "audio_file": "mp3/beat-B1202.mp3",
+      "actual_duration_s": 15.68,
+      "render_duration_s": 15.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1203",
+      "act": "Vague claim, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third claim, the model is ninety-four percent confident. The instruction is a calibration check, bin the cases by stated confidence on deployment data and compare each bin with its actual rate. In the simulated run the top bin states ninety-seven percent and delivers eighty-five.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 13 step 3. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "“the model is 94% confident”; stated, bin 0.9 to 1.0: 0.97; actual, same 1,256 cases: 0.85; a gap of 12 points in the bin you trust most",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact instruction. On the right, a chart computed from the exact instruction.",
+        "motion_claim": "The deck's own animation for step 3 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: “the model is 94% confident”; stated, bin 0.9 to 1.0: 0.97; actual, same 1,256 cases: 0.85; a gap of 12 points in the bin you trust most"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 3,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "7a44a479d47a",
+      "audio_file": "mp3/beat-B1203.mp3",
+      "actual_duration_s": 15.87,
+      "render_duration_s": 15.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1204",
+      "act": "Vague claim, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fourth claim, fix the overconfidence. The exact instruction is temperature scaling. Fit one temperature, T, on held-out data, divide the logits by it, and report ECE before and after. In the simulated run ECE falls eighty-three percent, and the ranking does not move.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 13 step 4. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "“fix the overconfidence”; ECE before: 0.111; ECE after, T = 2.03: 0.019; ECE falls 83%; the ranking does not move",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact instruction. On the right, a chart computed from the exact instruction.",
+        "motion_claim": "The deck's own animation for step 4 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: “fix the overconfidence”; ECE before: 0.111; ECE after, T = 2.03: 0.019; ECE falls 83%; the ranking does not move"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 4,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ad1c24c0f427",
+      "audio_file": "mp3/beat-B1204.mp3",
+      "actual_duration_s": 15.94,
+      "render_duration_s": 15.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1204.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1205",
+      "act": "Vague claim, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last claim, average loss looks fine. The exact instruction is to report the worst case. With the illustrative costs, one error in a thousand, costing five hundred thousand dollars, is ninety-eight percent of the loss. Average loss hides the one that matters.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 13 step 5. Source: Chapter 2; docs/Exam terms - compact list.md. Badge: Computed.",
+      "routing": {
+        "about": "“average loss looks fine”; 999 errors × $10: 2% of the loss; 1 error × $500,000: 98%; average loss hides the one that matters",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact instruction. On the right, a chart computed from the exact instruction.",
+        "motion_claim": "The deck's own animation for step 5 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: “average loss looks fine”; 999 errors × $10: 2% of the loss; 1 error × $500,000: 98%; average loss hides the one that matters"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 5,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ad6b3e044a9d",
+      "audio_file": "mp3/beat-B1205.mp3",
+      "actual_duration_s": 14.69,
+      "render_duration_s": 14.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1205.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1301",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A checklist of six questions to ask before you trust a confident number. The first is ticked, what is the base rate. How common was the thing before any test. When it is rare, most flags are false positives.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 14 step 1. Source: Chapter 2, “Synthesis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "What is the base rate?; Is the model calibrated on data from this deployment?; What is the cost distribution of being wrong?; What changed since training?",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a confident number: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 1 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: What is the base rate?; Is the model calibrated on data from this deployment?; What is the cost distribution of being wrong?; What changed since training?"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ec6c15811710",
+      "audio_file": "mp3/beat-B1301.mp3",
+      "actual_duration_s": 11.52,
+      "render_duration_s": 11.541666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1302",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second tick, is the model calibrated on data from this deployment. Calibration measured somewhere else does not count. You want the calibration curve drawn from the cases this system actually handles.",
+      "estimated_duration_s": 12.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 14 step 2. Source: Chapter 2, “Synthesis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a confident number",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a confident number: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 2 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Before you trust a confident number"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "bc6f29c327aa",
+      "audio_file": "mp3/beat-B1302.mp3",
+      "actual_duration_s": 11.39,
+      "render_duration_s": 11.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1303",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third tick, what is the cost distribution of being wrong. Ask whether errors cost about the same, or whether a rare one is catastrophic. If the loss is heavy-tailed, average loss will look fine, so report the worst case.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 14 step 3. Source: Chapter 2, “Synthesis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a confident number",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a confident number: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 3 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Before you trust a confident number"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "431179b8dbc9",
+      "audio_file": "mp3/beat-B1303.mp3",
+      "actual_duration_s": 12.25,
+      "render_duration_s": 12.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1304",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fourth tick, what changed since training. This is the distribution shift question, and behind it Hume's induction problem. A track record describes the past. Ask what must stay true for it to keep holding.",
+      "estimated_duration_s": 13.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 14 step 4. Source: Chapter 2, “Synthesis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a confident number",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a confident number: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 4 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Before you trust a confident number"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1988c094f567",
+      "audio_file": "mp3/beat-B1304.mp3",
+      "actual_duration_s": 11.46,
+      "render_duration_s": 11.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1304.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1305",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fifth tick, did I multiply conditionals, or assume independence. For a chain of steps, apply the multiplication rule, each step's chance given the steps before it. Assuming independence makes the chain look more reliable than it is.",
+      "estimated_duration_s": 15.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 14 step 5. Source: Chapter 2, “Synthesis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a confident number",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a confident number: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 5 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: Before you trust a confident number"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 5,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "96fc359236a6",
+      "audio_file": "mp3/beat-B1305.mp3",
+      "actual_duration_s": 13.16,
+      "render_duration_s": 13.166666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1305.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "B1306",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last tick, what result would make me reject this number, stated before I look. Then say it exactly. Not ninety-four percent confident, but zero point nine seven stated, zero point eight five actual in that bin.",
+      "estimated_duration_s": 14.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/02 The confidence illusion.html slide 14 step 6. Source: Chapter 2, “Synthesis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a confident number",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a confident number: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 6 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 6 animates: Before you trust a confident number"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 6,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d71f364147cc",
+      "audio_file": "mp3/beat-B1306.mp3",
+      "actual_duration_s": 12.81,
+      "render_duration_s": 12.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1306.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "Recap",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Let's recap. A probability can be a count, a long-run frequency, or a belief that updates. A chain multiplies conditionals, and assuming independence overstates it. Bayes' theorem turns a prior and a likelihood into a posterior. When the base rate is low, most flags from a good test are false positives. Calibration, unlike accuracy, asks whether stated confidence matches outcomes. Distribution shift and heavy-tailed loss can break a number that once held.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "This film's body beats; nothing new is asserted",
+      "routing": {
+        "about": "Six things the terms established",
+        "runner_up": "Summary drawing",
+        "reason": "Restates only what the body showed."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Six earned conclusions",
+        "motion_claim": "Six recap lines rise in narration order.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact page opens"
+          },
+          {
+            "at": 0.2,
+            "event": "six lines land in narration order"
+          }
+        ],
+        "template": "neu-bookend-recap",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.5,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Recap lines rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "8b73615add11",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 23.91,
+      "render_duration_s": 23.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "Your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Quiz me on the terms for judging a confident number. Give me one short case at a time. I must name the exact term, choosing from base rate, sensitivity, PPV, which is positive predictive value, calibration, overconfidence, decorative number, independence, the multiplication rule, distribution shift and heavy-tailed. I must also say why its look-alike is wrong. Hold back the answer until I reply, then correct me briefly.",
+      "estimated_duration_s": 26.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json your_turn (a practice prompt composed from this film's terms; not a run we made)",
+      "routing": {
+        "about": "Practice: name the exact term and defend it",
+        "runner_up": "Worksheet",
+        "reason": "The spoken prompt makes the viewer use the terms; two checks let them judge the result. Not a run we made."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Practice prompt",
+        "motion_claim": "The practice prompt types into a box marked for Claude, then two checks land.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens - 'Your turn.'"
+          },
+          {
+            "at": 0.12,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.85,
+            "event": "two check lines land"
+          }
+        ],
+        "template": "neu-bookend-your-turn",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The prompt types into an empty box; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "add3bd117fe5",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 21.91,
+      "render_duration_s": 21.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "Outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Key Terms: The Confidence Illusion. At Nik Bear Brown.",
+      "estimated_duration_s": 4.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "OUTRO-LOCK.md",
+      "routing": {
+        "about": "Locked sign-off",
+        "runner_up": "None",
+        "reason": "Exact title and channel, slug-seeded mascot."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "template": "neu-bookend-outro",
+        "motion_claim": "Exact title and channel handle in the deck's look; held.",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Closing card: title and handle only, by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "1a741c1b8c26",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 4.3,
+      "render_duration_s": 4.333333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T06:55:44"
+      }
+    }
+  ]
+}

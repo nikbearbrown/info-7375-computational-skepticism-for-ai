@@ -1,0 +1,2671 @@
+{
+  "metadata": {
+    "slug": "claude-liam-watermarks-remover",
+    "title": "Four Days, No Dependencies",
+    "subtitle": "A git-explainer walkthrough of guillaumemeyer/watermarks-remover — stdlib Python strips multi-vendor AI provenance marks in four days",
+    "topic": "CLAUDE · CODE",
+    "purpose": "Walk the guillaumemeyer/watermarks-remover GitHub repo with real git/wc data. Show the three-tier architecture, four-day commit history, ethics.md scope document, binary-guard HEAD commit, and stdlib-only dependency graph. The thesis: the marks a major lab shipped worldwide come off with re and unicodedata. Rung 1 throughout — all data from the local clone at books/github/watermarks-remover HEAD 256d90d.",
+    "audience": "Claude",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "folderLabel": "@NikBearBrown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "register": "Teardown",
+    "aspect": "16:9",
+    "clock": "narration",
+    "style_preset": "claude",
+    "genre": "git-explainer",
+    "skill": "git-explainer (descends from code-walkthrough; Claude bookends from ai-explainer)",
+    "source": "guillaumemeyer/watermarks-remover cloned 2026-08-14; HEAD 256d90d. All data computed via git log, wc -l, git grep, git show. See REPO-VERIFY.md.",
+    "repo_clone": "books/github/watermarks-remover",
+    "repo_clone_date": "2026-08-14",
+    "notes": "Kokoro am_onyx, free. GATE P before any audio spend. Six GitHub skin scenes in fixed order: RepoHero, StructureMap, CallChain, Churn, CodeViewer, CodeDiff. Four Manim beats: B07 LOC hotspot, B12 import fan, B17 four-day churn, B33 dependency count. Three narrations locked: B18 (CHURN), B22 (READ GATE), BVDT (VERDICT). ethics.md quoted verbatim at five byte-exact ranges per REPO-VERIFY.md. KGW arclabel: this is the fourth piece — Nature paper, forensic-readiness score, KGW reference, counter-tool. Never publish.",
+    "channel_title": "@NikBearBrown",
+    "build": {
+      "at": "2026-08-14T23:51:57",
+      "cut": "master",
+      "filled": 41,
+      "of": 41,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN",
+      "lane": "BOOKEND",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.3,
+      "narration_text": "Liam here. On the eleventh of August, 2026, someone pushed the first commit to a new repo: remove AI watermarks from text and files, with nothing but Python and the standard library. Forty-nine commits later, four days later, it was tagged v0.4.0. We are going to read it.",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "greeting 'Liam here.' appears above composer — spark armed with four-day arc"
+          },
+          {
+            "at": 0.15,
+            "event": "command types: 'walk me through guillaumemeyer/watermarks-remover'"
+          },
+          {
+            "at": 0.7,
+            "event": "runningText: 'reading HEAD 256d90d…'"
+          },
+          {
+            "at": 0.85,
+            "event": "output lines appear: '49 commits · 4 days · stdlib only'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam here.",
+            "command": "walk me through guillaumemeyer/watermarks-remover",
+            "topic": "CLAUDE · CODE",
+            "segment": "Four Days, No Dependencies",
+            "runningText": "reading HEAD 256d90d…",
+            "output": [
+              "49 commits · 4 days",
+              "4,370 LOC in 16 scripts · 1,858 lines of tests",
+              "stdlib only — no model, no GPU, no third-party package"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Sonnet 4.6",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 16.26
+    },
+    {
+      "beat_id": "B01",
+      "act": "ACT I — CONTEXT",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Four days. No dependencies. That is the thesis.",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'CONTEXT' tracks in from left in blue"
+          },
+          {
+            "at": 0.2,
+            "event": "headline 'Four Days, No Dependencies' drops in at 72px"
+          },
+          {
+            "at": 0.5,
+            "event": "body text appears: '49 commits · v0.4.0 · stdlib Python · multi-vendor AI provenance removal'"
+          },
+          {
+            "at": 0.75,
+            "event": "chip 'thesis' fades in at bottom-right"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "CONTEXT",
+            "headline": "Four Days, No Dependencies",
+            "body": "49 commits · v0.4.0 · stdlib Python · multi-vendor AI provenance removal",
+            "chip": "thesis"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 3.43
+    },
+    {
+      "beat_id": "B02",
+      "act": "ACT I — CONTEXT",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "guillaumemeyer / watermarks-remover. Agent skill plus stdlib Python scripts to strip multi-vendor AI provenance marks from text and files. The first thing you notice: no claim about beating any specific detector. The scope line is surgical — marks from text and files, not from the model, not from the human, the artifact.",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Octocat mark fades in at top-center"
+          },
+          {
+            "at": 0.15,
+            "event": "pill badge: 'watermarks-remover · Agent skill + stdlib Python scripts' slides in"
+          },
+          {
+            "at": 0.35,
+            "event": "headline 'Agent skill + stdlib Python scripts to strip multi-vendor AI provenance marks from text and files' animates in at 80px"
+          },
+          {
+            "at": 0.6,
+            "event": "blue rule extends across center"
+          },
+          {
+            "at": 0.75,
+            "event": "star button / repo path 'guillaumemeyer/watermarks-remover' appears"
+          },
+          {
+            "at": 0.88,
+            "event": "tagline 'strip · verify · read the ethics.md' fades in"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubRepoHero",
+          "props": {
+            "name": "watermarks-remover",
+            "kind": "Agent skill + stdlib Python scripts",
+            "headline": "Strip multi-vendor AI provenance marks from text and files",
+            "starLabel": "Star",
+            "repo": "guillaumemeyer/watermarks-remover",
+            "handle": "@NikBearBrown",
+            "tagline": "strip · verify · read the ethics.md"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 18.35
+    },
+    {
+      "beat_id": "B03",
+      "act": "ACT I — CONTEXT",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Three layers. Layer A: invisible Unicode — zero-width characters, soft hyphens, unusual whitespace that survives copy-paste and breaks diffs. Layer B: statistical rewrite — changes the token probability fingerprint without altering meaning. Layer C: C2PA metadata, EXIF, XMP — the provenance chains embedded in image and document containers. Three different forensic surfaces, three different scrub depths.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card background fades in — cream page"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1 appears: 'Layer A  invisible Unicode — zero-width chars, soft hyphens, unusual whitespace'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2 appears: 'Layer B  statistical rewrite — token probability fingerprint, no meaning change'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3 appears: 'Layer C  C2PA metadata · EXIF · XMP — provenance chains in containers'"
+          },
+          {
+            "at": 0.85,
+            "event": "line 4 appears: 'three surfaces · three scrub depths'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Layer A  invisible Unicode — zero-width chars, soft hyphens, unusual whitespace",
+              "Layer B  statistical rewrite — token probability fingerprint, no meaning change",
+              "Layer C  C2PA metadata · EXIF · XMP — provenance chains in containers",
+              "three surfaces · three scrub depths"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 22.19
+    },
+    {
+      "beat_id": "B04",
+      "act": "ACT I — CONTEXT",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The numbers before we open a single file: 4,370 lines of scripts across 16 Python files, 1,858 lines of tests, 512 lines of docs. 49 commits. Two Dockerfiles. Four days. Seven tags from v0.0.1 to v0.4.0 — the author iterated through four release cycles in the same window.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: '4,370 LOC — 16 scripts in skills/remove-ai-marks/scripts/'"
+          },
+          {
+            "at": 0.35,
+            "event": "line 2: '1,858 lines of tests · 512 lines of docs'"
+          },
+          {
+            "at": 0.55,
+            "event": "line 3: '49 commits · 2 Dockerfiles · CI green'"
+          },
+          {
+            "at": 0.75,
+            "event": "line 4: 'v0.0.1 through v0.4.0 — 7 tags in four days'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "4,370 LOC — 16 scripts in skills/remove-ai-marks/scripts/",
+              "1,858 lines of tests · 512 lines of docs",
+              "49 commits · 2 Dockerfiles · CI green",
+              "v0.0.1 through v0.4.0 — 7 tags in four days"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 20.25
+    },
+    {
+      "beat_id": "B05",
+      "act": "ACT II — STRUCTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "What are the files?",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'STRUCTURE' tracks in"
+          },
+          {
+            "at": 0.2,
+            "event": "headline 'What are the files?' drops in"
+          },
+          {
+            "at": 0.5,
+            "event": "body: '16 scripts · 4,370 LOC · container_meta.py is the heaviest at 855'"
+          },
+          {
+            "at": 0.75,
+            "event": "chip 'shape' fades in"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "STRUCTURE",
+            "headline": "What are the files?",
+            "body": "16 scripts · 4,370 LOC · container_meta.py is the heaviest at 855",
+            "chip": "shape"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 1.28
+    },
+    {
+      "beat_id": "B06",
+      "act": "ACT II — STRUCTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The structure is sharp. container_meta.py at 855 is the heaviest — that is the EXIF, XMP, and C2PA strip. image_meta.py at 668 is second. text_unicode.py at 449, rewrite_text.py at 436, common.py at 428. A cluster of five scripts carrying most of the weight, then the CLI leaves below a hundred and fifty.",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'Structure' appears top-left in blue"
+          },
+          {
+            "at": 0.15,
+            "event": "container_meta.py row fades in with bar extending 855/855 = 100% — highlighted in blue"
+          },
+          {
+            "at": 0.3,
+            "event": "image_meta.py bar extends to 78%"
+          },
+          {
+            "at": 0.45,
+            "event": "text_unicode.py, rewrite_text.py, common.py bars animate in as a cluster at 52-51%"
+          },
+          {
+            "at": 0.7,
+            "event": "remaining scripts fade in as dim bars below 35%"
+          },
+          {
+            "at": 0.85,
+            "event": "caption appears: 'container_meta.py is 19.6% of scripts — EXIF, XMP, C2PA, ZIP containers. Images carry more provenance surface than plain text.'"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubStructureMap",
+          "props": {
+            "rows": [
+              {
+                "name": "container_meta.py",
+                "loc": 855,
+                "hi": true
+              },
+              {
+                "name": "image_meta.py",
+                "loc": 668
+              },
+              {
+                "name": "text_unicode.py",
+                "loc": 449
+              },
+              {
+                "name": "rewrite_text.py",
+                "loc": 436
+              },
+              {
+                "name": "common.py",
+                "loc": 428
+              },
+              {
+                "name": "audit_website.py",
+                "loc": 265
+              },
+              {
+                "name": "clean_ctrlregen.py",
+                "loc": 212
+              }
+            ],
+            "max": 855,
+            "caption": "container_meta.py is 19.6% of scripts — EXIF, XMP, C2PA, ZIP containers. Images carry more provenance surface than plain text."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 20.74
+    },
+    {
+      "beat_id": "B07",
+      "act": "ACT II — STRUCTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The bar chart in LOC order. container_meta.py at 855 is not over-engineered — it handles ZIP containers, PDF, PNG chunks, JPEG APP segments, and C2PA JUMBF boxes. That is five format families in one file. image_meta.py at 668 handles the same formats at the pixel layer. The scripts are sized to their problem surface.",
+      "estimated_duration_s": 20,
+      "new_visual_element": "Manim B07_LOCHotspot — horizontal bar chart: top 5 scripts by LOC, bars animate left-to-right; container_meta highlighted in accent; value labels at bar right ends; title 'Scripts by LOC'; bounding-box overlap assertion before render",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title 'Scripts by LOC' draws in at top"
+          },
+          {
+            "at": 0.15,
+            "event": "container_meta.py bar extends left-to-right in accent color, label '855' appears at right end"
+          },
+          {
+            "at": 0.3,
+            "event": "image_meta.py bar extends, label '668'"
+          },
+          {
+            "at": 0.45,
+            "event": "text_unicode.py bar, '449'"
+          },
+          {
+            "at": 0.55,
+            "event": "rewrite_text.py bar, '436'"
+          },
+          {
+            "at": 0.65,
+            "event": "common.py bar, '428' — annotated 'imported by 13 of 16'"
+          },
+          {
+            "at": 0.85,
+            "event": "caption: 'five format families in container_meta; common.py smallest of the top five, most imported'"
+          }
+        ]
+      },
+      "graphic": {
+        "manim": "B07_LOCHotspot",
+        "engine": "manim",
+        "data": {
+          "bars": [
+            {
+              "label": "container_meta.py",
+              "value": 855,
+              "highlight": true
+            },
+            {
+              "label": "image_meta.py",
+              "value": 668
+            },
+            {
+              "label": "text_unicode.py",
+              "value": 449
+            },
+            {
+              "label": "rewrite_text.py",
+              "value": 436
+            },
+            {
+              "label": "common.py",
+              "value": 428,
+              "annotation": "imported by 13 of 16"
+            }
+          ],
+          "source": "wc -l skills/remove-ai-marks/scripts/*.py | sort -rn"
+        }
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 21.38
+    },
+    {
+      "beat_id": "B08",
+      "act": "ACT II — STRUCTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "text_unicode.py and rewrite_text.py are the text path: Unicode codepoint removal and the statistical rewrite. 449 and 436 lines. common.py at 428 is the smallest of the five heaviest scripts — and the most imported. That asymmetry is the signal: common.py is small because it has to be. Thirteen scripts depend on it.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'text_unicode.py 449 lines — Unicode codepoint removal (re, unicodedata)'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'rewrite_text.py 436 lines — statistical rewrite (Layer B)'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: 'common.py 428 lines — smallest of top five, imported by 13 of 16 scripts'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "text_unicode.py  449 lines — Unicode codepoint removal (re, unicodedata)",
+              "rewrite_text.py  436 lines — statistical rewrite (Layer B)",
+              "common.py  428 lines — smallest of top five, imported by 13 of 16"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.69
+    },
+    {
+      "beat_id": "B09",
+      "act": "ACT II — STRUCTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Test-to-script ratio: 1,858 lines of tests against 4,370 lines of scripts. That is 0.43. A token test suite sits between 0.05 and 0.10. This is not coverage theater — every major path has tests, and the HEAD commit added 253 lines of them for a single guard function.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: '1,858 lines of tests · 4,370 lines of scripts'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'test-to-script ratio: 0.43'"
+          },
+          {
+            "at": 0.6,
+            "event": "line 3: 'HEAD commit alone: +253 lines of tests for one guard function'"
+          },
+          {
+            "at": 0.8,
+            "event": "line 4: 'token test suite: 0.05–0.10 · this is not that'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "1,858 lines of tests · 4,370 lines of scripts",
+              "test-to-script ratio: 0.43",
+              "HEAD commit alone: +253 lines of tests for one guard function",
+              "token test suite sits at 0.05–0.10 · this is not that"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B09.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.14
+    },
+    {
+      "beat_id": "B10",
+      "act": "ACT III — ARCHITECTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "How do the scripts connect?",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'ARCHITECTURE' tracks in"
+          },
+          {
+            "at": 0.2,
+            "event": "headline 'How do the scripts connect?' drops in"
+          },
+          {
+            "at": 0.5,
+            "event": "body: 'three-tier fan · common.py imported by 13 of 16 · no cycles'"
+          },
+          {
+            "at": 0.75,
+            "event": "chip 'graph' fades in"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "ARCHITECTURE",
+            "headline": "How do the scripts connect?",
+            "body": "three-tier fan · common.py imported by 13 of 16 · no cycles",
+            "chip": "graph"
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B10.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 1.92
+    },
+    {
+      "beat_id": "B11",
+      "act": "ACT III — ARCHITECTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The import graph is a clean three-tier fan. CLI leaves at the top — clean_text, inspect_text, clean_file, inspect_file — thin entry points, some under a hundred lines. Format engines in the middle — text_unicode and image_meta handle the format-specific work. common.py at the bottom, everything routes through it. No cross-tier dependencies. No cycles.",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'Entry points' tracks in"
+          },
+          {
+            "at": 0.15,
+            "event": "top node: 'CLI leaves (clean_text · inspect_text · clean_file · inspect_file)  thin entry points' fades in"
+          },
+          {
+            "at": 0.3,
+            "event": "arrow down, middle node: 'text_unicode · image_meta  format engines — 449 + 668 LOC' appears"
+          },
+          {
+            "at": 0.55,
+            "event": "arrow down, bottom node: 'common.py  428 LOC — imported by 13 of 16 scripts' appears highlighted in blue"
+          },
+          {
+            "at": 0.75,
+            "event": "caption: '13 of 16 scripts import common.py. Every path routes through it — the shared safety net.'"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubCallChain",
+          "props": {
+            "nodes": [
+              {
+                "k": "CLI leaves (clean_text · inspect_text · clean_file…)",
+                "d": "16 scripts — thin entry points"
+              },
+              {
+                "k": "text_unicode · image_meta · container_meta",
+                "d": "format engines — 449 + 668 + 855 LOC"
+              },
+              {
+                "k": "common.py",
+                "d": "428 LOC — imported by 13 of 16 scripts",
+                "hi": true
+              }
+            ],
+            "caption": "13 of 16 scripts import common.py. Every path routes through it — the shared safety net."
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B11.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.67
+    },
+    {
+      "beat_id": "B12",
+      "act": "ACT III — ARCHITECTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Imported by: common, 13 scripts. text_unicode, 6. image_meta, 6. container_meta, 3. audit_lib, 2. inspect_file, 1. This is a fan, not a mesh. The most-imported module is not the largest — it is the shared contract. common.py is small because it has to be: thirteen things pull on it.",
+      "estimated_duration_s": 20,
+      "new_visual_element": "Manim B12_ImportFan — radial fan from common.py at center; 5 labeled nodes for other imported modules; edges labeled with import-count; common.py node highlighted; imported-by counts drawn as node sizes; bounding-box overlap assertion before render",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title 'Imported by (scripts)' draws in"
+          },
+          {
+            "at": 0.15,
+            "event": "common.py node appears at center, large — label 'imported by 13'"
+          },
+          {
+            "at": 0.35,
+            "event": "text_unicode node and edge animate in at upper-left — '6'"
+          },
+          {
+            "at": 0.45,
+            "event": "image_meta node animates in at upper-right — '6'"
+          },
+          {
+            "at": 0.55,
+            "event": "container_meta at right — '3'"
+          },
+          {
+            "at": 0.65,
+            "event": "audit_lib at lower-right — '2'"
+          },
+          {
+            "at": 0.75,
+            "event": "inspect_file at lower-left — '1'"
+          },
+          {
+            "at": 0.88,
+            "event": "caption: 'a fan not a mesh — common.py is small because 13 things depend on it'"
+          }
+        ]
+      },
+      "graphic": {
+        "manim": "B12_ImportFan",
+        "engine": "manim",
+        "data": {
+          "nodes": [
+            {
+              "name": "common.py",
+              "imported_by": 13,
+              "center": true
+            },
+            {
+              "name": "text_unicode",
+              "imported_by": 6
+            },
+            {
+              "name": "image_meta",
+              "imported_by": 6
+            },
+            {
+              "name": "container_meta",
+              "imported_by": 3
+            },
+            {
+              "name": "audit_lib",
+              "imported_by": 2
+            },
+            {
+              "name": "inspect_file",
+              "imported_by": 1
+            }
+          ],
+          "source": "grep -rhE '^(import|from) ' skills --include='*.py'"
+        }
+      },
+      "audio_file": "mp3/beat-B12.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 16.62
+    },
+    {
+      "beat_id": "B13",
+      "act": "ACT III — ARCHITECTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Nothing crosses tiers: a CLI leaf does not reach image_meta without going through common. You can swap a format engine — replace text_unicode — and every caller picks up the change for free. The architecture is separable. The tiers are not just a naming convention, they are an enforced dependency rule.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'three tiers — CLI leaves · format engines · common.py'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'no cross-tier dependencies · no cycles'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: 'swap a format engine and every caller picks up the change for free'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "three tiers — CLI leaves · format engines · common.py",
+              "no cross-tier dependencies · no cycles",
+              "swap a format engine and every caller picks up the change for free"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 16.49
+    },
+    {
+      "beat_id": "B14",
+      "act": "ACT III — ARCHITECTURE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "inspect and clean are paired at every layer: inspect_text and clean_text both use text_unicode; inspect_image and clean_image both use image_meta; inspect_file and clean_file use all three format engines. Inspection is not a stepping stone to cleaning — they are separate entry points against the same engine. You can run the entire stack read-only. audit_dir and audit_website have no clean counterpart.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'inspect_* and clean_* are paired at every layer — same engine, separate entry points'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'inspect_text + clean_text → text_unicode · inspect_image + clean_image → image_meta'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: 'audit_dir and audit_website are inspection-only — no clean counterpart'"
+          },
+          {
+            "at": 0.82,
+            "event": "line 4: 'run the whole stack read-only — inspection does not imply cleaning'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "inspect_* and clean_* are paired — same engine, separate entry points",
+              "inspect_text + clean_text → text_unicode · inspect_image + clean_image → image_meta",
+              "audit_dir and audit_website are inspection-only — no clean counterpart",
+              "run the whole stack read-only — inspection does not imply cleaning"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 21.42
+    },
+    {
+      "beat_id": "B15",
+      "act": "ACT IV — HISTORY",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "When was it built?",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'HISTORY' tracks in"
+          },
+          {
+            "at": 0.2,
+            "event": "headline 'When was it built?' drops in"
+          },
+          {
+            "at": 0.5,
+            "event": "body: '11–14 August 2026 · 49 commits across four days · entire history is four days'"
+          },
+          {
+            "at": 0.75,
+            "event": "chip 'four days' fades in"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "HISTORY",
+            "headline": "When was it built?",
+            "body": "49 commits · 4 days · entire project history",
+            "chip": "four days"
+          },
+          "rendered": {
+            "out": "media/B15.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 1.34
+    },
+    {
+      "beat_id": "B16",
+      "act": "ACT IV — HISTORY",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The commit histogram: eleven commits on August 11. Twenty on August 12. Seventeen on August 13 — including the v0.4.0 tag. One more on August 14, after the tag, and that is HEAD. The entire project history is four days. The bars sum to 49 — equal to the commit count from git rev-list. No gaps, no frozen years, no long tail.",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'Git archaeology' appears top-left"
+          },
+          {
+            "at": 0.2,
+            "event": "Aug-11 bar animates up to 11/20 = 55% height"
+          },
+          {
+            "at": 0.35,
+            "event": "Aug-12 bar (peak) animates up to 100% height — highlighted in blue"
+          },
+          {
+            "at": 0.5,
+            "event": "Aug-13 bar animates up to 85%"
+          },
+          {
+            "at": 0.65,
+            "event": "Aug-14 bar animates up to 5% (1 commit)"
+          },
+          {
+            "at": 0.8,
+            "event": "caption: 'sums to 49 = git rev-list HEAD. The entire history is four days.'"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubChurn",
+          "props": {
+            "years": [
+              {
+                "label": "Aug 11",
+                "count": 11
+              },
+              {
+                "label": "Aug 12",
+                "count": 20,
+                "peak": true
+              },
+              {
+                "label": "Aug 13",
+                "count": 17
+              },
+              {
+                "label": "Aug 14",
+                "count": 1
+              }
+            ],
+            "max": 20,
+            "caption": "sums to 49 = git rev-list HEAD. The entire history is four days."
+          },
+          "rendered": {
+            "out": "media/B16.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B16.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B16.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.43
+    },
+    {
+      "beat_id": "B17",
+      "act": "ACT IV — HISTORY",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The cumulative curve: zero before August 11. Eleven commits by end of day one. Thirty-one by end of day two. Forty-eight by end of day three. Forty-nine, then the tag. The slope does not decay — day two has the peak. The project was not built gradually. It was front-loaded and released.",
+      "estimated_duration_s": 20,
+      "new_visual_element": "Manim B17_FourDayChurn — step-line chart of cumulative commits by day (Aug 11–14); x-axis: four days; y-axis: cumulative commits 0→49; values annotated at each step; tag marker at Aug-14; VGroup/arrange layout, bounding-box overlap assertion before render",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "axes draw in: x=four days, y=0→49"
+          },
+          {
+            "at": 0.2,
+            "event": "step line draws from 0 to Aug-11: 11 — label '11' appears"
+          },
+          {
+            "at": 0.4,
+            "event": "step to Aug-12: 31 — label '31' — steepest segment"
+          },
+          {
+            "at": 0.6,
+            "event": "step to Aug-13: 48 — label '48'"
+          },
+          {
+            "at": 0.75,
+            "event": "step to Aug-14: 49 — label '49' — tag marker draws in: 'v0.4.0'"
+          },
+          {
+            "at": 0.88,
+            "event": "caption: 'day two has the peak — the project was front-loaded then released'"
+          }
+        ]
+      },
+      "graphic": {
+        "manim": "B17_FourDayChurn",
+        "engine": "manim",
+        "data": {
+          "days": [
+            {
+              "label": "Aug 11",
+              "commits": 11,
+              "cumulative": 11
+            },
+            {
+              "label": "Aug 12",
+              "commits": 20,
+              "cumulative": 31
+            },
+            {
+              "label": "Aug 13",
+              "commits": 17,
+              "cumulative": 48,
+              "tag": "v0.4.0"
+            },
+            {
+              "label": "Aug 14",
+              "commits": 1,
+              "cumulative": 49,
+              "tag": "HEAD 256d90d"
+            }
+          ],
+          "source": "git log --date=format:'%m-%d' --pretty=%ad | sort | uniq -c"
+        }
+      },
+      "audio_file": "mp3/beat-B17.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 16.19
+    },
+    {
+      "beat_id": "B18",
+      "act": "ACT IV — HISTORY",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The first eleven commits land on 11 August 2026, the day Anthropic announced global text watermarking. Standing start to v0.4.0 with CI, 1,858 lines of tests and two Dockerfiles in four days.",
+      "narration_lock": "LOCKED — do not alter",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in — dark variant"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'Aug 11, 2026 — Anthropic announces global text watermarking'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'Aug 11, 2026 — first 11 commits to watermarks-remover'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: 'v0.4.0 tagged Aug 14 — CI · 1,858 test lines · 2 Dockerfiles'"
+          },
+          {
+            "at": 0.82,
+            "event": "line 4: 'four days' — held as final frame"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Aug 11, 2026 — Anthropic announces global text watermarking",
+              "Aug 11, 2026 — first 11 commits to watermarks-remover",
+              "v0.4.0 tagged Aug 13 — CI · 1,858 test lines · 2 Dockerfiles",
+              "four days"
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B18.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B18.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B18.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 14.72
+    },
+    {
+      "beat_id": "B19",
+      "act": "ACT IV — HISTORY",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The date coincidence is verifiable from git log — we are stating it as a coincidence, not a claim about the author's motive. What is not a coincidence: the scope of what shipped in four days. A test suite at 0.43 ratio. A CI pipeline. Two Dockerfiles isolating the optional layers. A three-tier architecture with no cycles. That architecture does not happen by accident at this pace.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'date coincidence: verifiable from git log · not a claim about motive'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'test ratio 0.43 · CI pipeline · 2 Dockerfiles shipped inside 4 days'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: 'three-tier architecture with no cycles — does not happen by accident at this pace'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "date coincidence — verifiable from git log · not a claim about motive",
+              "test ratio 0.43 · CI pipeline · 2 Dockerfiles shipped inside 4 days",
+              "three-tier architecture with no cycles — does not happen by accident at this pace"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B19.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B19.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B19.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 21.01
+    },
+    {
+      "beat_id": "B20",
+      "act": "ACT V — READ GATE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The scope document.",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'READ GATE' tracks in"
+          },
+          {
+            "at": 0.2,
+            "event": "headline 'The scope document' drops in"
+          },
+          {
+            "at": 0.5,
+            "event": "body: 'ethics.md · 32 lines · the document the agent loads before doing anything'"
+          },
+          {
+            "at": 0.75,
+            "event": "chip 'ethics.md' fades in"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "READ GATE",
+            "headline": "The scope document",
+            "body": "ethics.md · 32 lines · loaded before any action",
+            "chip": "ethics.md"
+          },
+          "rendered": {
+            "out": "media/B20.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B20.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B20.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 1.9
+    },
+    {
+      "beat_id": "B21",
+      "act": "ACT V — READ GATE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The file we want to read is not a strip implementation. It is ethics.md — the scope document the agent loads before doing anything. 32 lines. Shorter than any of the strip implementations. Read it.",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "panel fades in — breadcrumb: guillaumemeyer / watermarks-remover / skills / remove-ai-marks / references / ethics.md"
+          },
+          {
+            "at": 0.15,
+            "event": "branch badge: main · '32 lines · markdown'"
+          },
+          {
+            "at": 0.25,
+            "event": "lines 1-5 scroll in: '# Intended use' … '## Appropriate'"
+          },
+          {
+            "at": 0.5,
+            "event": "lines 6-12 appear: Appropriate bullet points · '## Not appropriate'"
+          },
+          {
+            "at": 0.7,
+            "event": "lines 13-18 appear: Not appropriate bullets · 'A removed mark does not mean…'"
+          },
+          {
+            "at": 0.85,
+            "event": "caption: '32 lines — the document the agent loads. Shorter than any strip implementation.'"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubCodeViewer",
+          "props": {
+            "path": [
+              "watermarks-remover",
+              "references",
+              "ethics.md"
+            ],
+            "branch": "main",
+            "lang": "markdown",
+            "lines": [
+              "# Intended use",
+              "",
+              "This skill removes machine-readable provenance marks and hygiene",
+              "problems from content **you own or are authorized to process**.",
+              "",
+              "## Appropriate",
+              "",
+              "- Privacy: strip tool/device/AI provenance from your own files before sharing",
+              "- Engineering hygiene: remove invisible Unicode that breaks diffs, search, or paste",
+              "- Research: understand how text and C2PA marks work across vendors",
+              "- Cleaning your own drafts where policy allows unmarked local copies",
+              "",
+              "## Not appropriate",
+              "",
+              "- Academic fraud or misrepresenting AI assistance where disclosure is required",
+              "- Circumventing lawful transparency or platform disclosure rules",
+              "- Claiming cleaned content is \"human-written\" for compliance theater",
+              "",
+              "A removed mark does **not** mean the content was never AI-assisted.",
+              "Use this toolkit honestly."
+            ],
+            "caption": "32 lines — the document the agent loads. Shorter than any strip implementation."
+          },
+          "rendered": {
+            "out": "media/B21.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B21.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B21.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 11.33
+    },
+    {
+      "beat_id": "B22",
+      "act": "ACT V — READ GATE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "A removal tool that ships a document telling you removal proves nothing is making the same argument this channel has been making all week from the other direction. The detector's silence is not evidence of absence — and neither is the remover's success.",
+      "narration_lock": "LOCKED — do not alter",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "dark card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'the detector's silence is not evidence of absence'"
+          },
+          {
+            "at": 0.45,
+            "event": "line 2: 'the remover's success is not either'"
+          },
+          {
+            "at": 0.7,
+            "event": "line 3: 'the tool ships both arguments in the same repo'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "the detector's silence is not evidence of absence",
+              "the remover's success is not either",
+              "the tool ships both arguments in the same repo"
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B22.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B22.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B22.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 14.1
+    },
+    {
+      "beat_id": "B23",
+      "act": "ACT V — READ GATE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Lines 5 to 10. Appropriate: privacy — strip provenance from your own files before sharing. Engineering hygiene — invisible Unicode breaks diffs, search, paste. Research — understand how text and C2PA marks work across vendors. Cleaning your own drafts where policy allows.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in — section header 'Appropriate (L5–L10)'"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: '— Privacy: strip tool/device/AI provenance from your own files before sharing'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: '— Engineering hygiene: invisible Unicode breaks diffs, search, or paste'"
+          },
+          {
+            "at": 0.6,
+            "event": "line 3: '— Research: understand how text and C2PA marks work across vendors'"
+          },
+          {
+            "at": 0.8,
+            "event": "line 4: '— Cleaning your own drafts where policy allows unmarked local copies'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Appropriate (L5–L10):",
+              "— Privacy: strip provenance from your own files before sharing",
+              "— Engineering hygiene: invisible Unicode breaks diffs, search, or paste",
+              "— Research: understand how text and C2PA marks work across vendors",
+              "— Cleaning your own drafts where policy allows unmarked local copies"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B23.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B23.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B23.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 16.17
+    },
+    {
+      "beat_id": "B24",
+      "act": "ACT V — READ GATE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Lines 12 to 16. Not appropriate: academic fraud or misrepresenting AI assistance where disclosure is required. Circumventing lawful transparency or platform disclosure rules. Claiming cleaned content is human-written for compliance theater. Three explicit prohibitions, each naming the failure mode.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in — section header 'Not appropriate (L12–L16)'"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: '— Academic fraud or misrepresenting AI assistance where disclosure is required'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: '— Circumventing lawful transparency or platform disclosure rules'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: '— Claiming cleaned content is human-written for compliance theater'"
+          },
+          {
+            "at": 0.85,
+            "event": "line 4: 'three prohibitions — each names the failure mode'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Not appropriate (L12–L16):",
+              "— Academic fraud or misrepresenting AI assistance where disclosure is required",
+              "— Circumventing lawful transparency or platform disclosure rules",
+              "— Claiming cleaned content is human-written for compliance theater"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B24.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B24.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B24.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 17.51
+    },
+    {
+      "beat_id": "B25",
+      "act": "ACT V — READ GATE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Line 18. Verbatim: 'A removed mark does not mean the content was never AI-assisted. Use this toolkit honestly.' That line ships with the tool. It is not a disclaimer buried in a license — it is the scope document the agent loads.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "dark card fades in — centered single line"
+          },
+          {
+            "at": 0.2,
+            "event": "large text appears: 'A removed mark does not mean the content was never AI-assisted.'"
+          },
+          {
+            "at": 0.65,
+            "event": "second line: 'Use this toolkit honestly.'"
+          },
+          {
+            "at": 0.82,
+            "event": "attribution below: '— ethics.md L18 · verbatim'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "L18 — verbatim:",
+              "\"A removed mark does not mean the content was never AI-assisted.",
+              "Use this toolkit honestly.\""
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B25.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B25.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B25.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 13.46
+    },
+    {
+      "beat_id": "B26",
+      "act": "ACT V — READ GATE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Lines 22 to 26. Honesty in reports. Always separate: verifiable removals — what you can count, Unicode removed, metadata actions taken. Best-effort statistical rewrite — no gold undetection claim. Out-of-scope channels — audio, video watermarks, secret-key detectors, training backdoors. The tool reports what it can verify and names what it cannot.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in — section header 'Honesty in reports (L22–L26)'"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: '1. Verifiable removals — Unicode counts, metadata actions'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: '2. Best-effort statistical rewrite — no gold undetection claim'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: '3. Out-of-scope channels — audio/video, secret-key detectors, training backdoors'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Honesty in reports (L22–L26):",
+              "1. Verifiable removals — Unicode counts, metadata actions",
+              "2. Best-effort statistical rewrite — no gold undetection claim",
+              "3. Out-of-scope channels — audio/video, secret-key detectors, training backdoors"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B26.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B26.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B26.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.8
+    },
+    {
+      "beat_id": "B27",
+      "act": "ACT V — READ GATE",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Line 28: 'Do not imply that a successful C2PA/metadata strip means no AI provenance left. Soft-bound and SynthID-class media signals can survive.' The tool tells you it is not the last word. That is a design decision, not a legal hedge.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'L28 — verbatim'"
+          },
+          {
+            "at": 0.25,
+            "event": "line 2: '\"Do not imply that a successful C2PA/metadata strip means no AI provenance left.'"
+          },
+          {
+            "at": 0.55,
+            "event": "line 3: 'Soft-bound and SynthID-class media signals can survive.\"'"
+          },
+          {
+            "at": 0.8,
+            "event": "line 4: 'the tool tells you it is not the last word'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "L28 — verbatim:",
+              "\"Do not imply that a successful C2PA/metadata strip means no AI provenance left.",
+              "Soft-bound and SynthID-class media signals can survive.\"",
+              "the tool tells you it is not the last word — design decision, not legal hedge"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B27.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B27.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B27.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 15.27
+    },
+    {
+      "beat_id": "B28",
+      "act": "ACT VI — HARDENING",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The binary guard.",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'HARDENING' tracks in"
+          },
+          {
+            "at": 0.2,
+            "event": "headline 'The binary guard' drops in"
+          },
+          {
+            "at": 0.5,
+            "event": "body: 'HEAD commit 256d90d · +482 lines · 253 of them tests · refuses binary before touching the file'"
+          },
+          {
+            "at": 0.75,
+            "event": "chip 'guard' fades in"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "HARDENING",
+            "headline": "The binary guard",
+            "body": "HEAD 256d90d · +482 lines · 253 tests · refuses binary",
+            "chip": "guard"
+          },
+          "rendered": {
+            "out": "media/B28.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B28.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B28.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 1.37
+    },
+    {
+      "beat_id": "B29",
+      "act": "ACT VI — HARDENING",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The HEAD commit. inspect_text.py picks up a new argument: --force-text. The read_text_input call gets allow_binary equals args.force_text. Behind that: common.looks_binary sniffs magic numbers plus a control-byte ratio, and guard_binary refuses with a message before touching the file. Eight files changed, 482 insertions, 16 deletions.",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "diff panel fades in — file header: skills/remove-ai-marks/scripts/inspect_text.py · badge: 8 files · +482 −16"
+          },
+          {
+            "at": 0.2,
+            "event": "context lines animate in: '28 action=store_true,' … '30 )'"
+          },
+          {
+            "at": 0.35,
+            "event": "addition lines appear in green: '+31 p.add_argument(' … '+35 )'"
+          },
+          {
+            "at": 0.55,
+            "event": "context line: '36 args = p.parse_args()'"
+          },
+          {
+            "at": 0.65,
+            "event": "deletion line in red: '-38 text = read_text_input(args.path)'"
+          },
+          {
+            "at": 0.75,
+            "event": "addition line in green: '+38 text = read_text_input(args.path, allow_binary=args.force_text)'"
+          },
+          {
+            "at": 0.88,
+            "event": "caption: 'the guard is wired in at the entry point — opt-in bypass via --force-text'"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubCodeDiff",
+          "props": {
+            "file": "skills/remove-ai-marks/scripts/inspect_text.py",
+            "badge": "8 files · +482 −16",
+            "lines": [
+              {
+                "gutter": "28",
+                "text": "    action=\"store_true\",",
+                "kind": "context"
+              },
+              {
+                "gutter": "29",
+                "text": "    help=\"Flag emoji presentation selectors/ZWJ even after an emoji base\",",
+                "kind": "context"
+              },
+              {
+                "gutter": "30",
+                "text": ")",
+                "kind": "context"
+              },
+              {
+                "gutter": "+",
+                "text": "p.add_argument(",
+                "kind": "add"
+              },
+              {
+                "gutter": "+",
+                "text": "    \"--force-text\",",
+                "kind": "add"
+              },
+              {
+                "gutter": "+",
+                "text": "    action=\"store_true\",",
+                "kind": "add"
+              },
+              {
+                "gutter": "+",
+                "text": "    help=\"Scan even when the input looks like a binary container\",",
+                "kind": "add"
+              },
+              {
+                "gutter": "+",
+                "text": ")",
+                "kind": "add"
+              },
+              {
+                "gutter": "36",
+                "text": "args = p.parse_args()",
+                "kind": "context"
+              },
+              {
+                "gutter": "37",
+                "text": "",
+                "kind": "context"
+              },
+              {
+                "gutter": "-",
+                "text": "text = read_text_input(args.path)",
+                "kind": "del"
+              },
+              {
+                "gutter": "+",
+                "text": "text = read_text_input(args.path, allow_binary=args.force_text)",
+                "kind": "add"
+              }
+            ],
+            "caption": "the guard is wired in at the entry point — opt-in bypass via --force-text"
+          },
+          "rendered": {
+            "out": "media/B29.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B29.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B29.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 20.01
+    },
+    {
+      "beat_id": "B30",
+      "act": "ACT VI — HARDENING",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The pre-guard behavior in clean_text.py: you point it at a .docx, it decodes compressed bytes as text, calls that findings, then writes the mangled decode back. The output still passes zipfile.is_zipfile — the end-of-central-directory record survives — but reading a member raises. The tool reported removed equals 1 and silently corrupted the file.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'pre-guard: clean_text.py report.docx → decodes ZIP as text → \"removed=1\"'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'output passes zipfile.is_zipfile — end-of-central-directory survives'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: 'reading a member raises — file is corrupted, tool reported success'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "pre-guard: clean_text.py report.docx → decodes ZIP as text → reports removed=1",
+              "output passes zipfile.is_zipfile — end-of-central-directory survives",
+              "reading a member raises — file corrupted, tool reported success"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B30.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B30.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B30.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.48
+    },
+    {
+      "beat_id": "B31",
+      "act": "ACT VI — HARDENING",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The HEAD commit adds 253 lines of tests for this one change. They cover magic-number detection, heuristic detection, the --force-text override, refusal without writing or backing up, and that clean_file.py still routes a .docx to the container path. 253 lines to gate-test one guard.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: '253 lines in tests/test_binary_guard.py for one guard function'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'magic-number detection · heuristic detection · --force-text override'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: 'refusal without writing or backing up · clean_file.py container routing preserved'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "253 lines in tests/test_binary_guard.py — for one guard function",
+              "magic-number detection · heuristic detection · --force-text override",
+              "refusal without writing or backing up · clean_file.py container routing preserved"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B31.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B31.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B31.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 17.86
+    },
+    {
+      "beat_id": "B32",
+      "act": "ACT VII — DEPENDENCIES",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "What does it need?",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "skin": "github-dark",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "kicker 'DEPENDENCIES' tracks in"
+          },
+          {
+            "at": 0.2,
+            "event": "headline 'What does it need?' drops in"
+          },
+          {
+            "at": 0.5,
+            "event": "body: 'every import across 16 scripts · stdlib only · requirements-dev.txt: pytest + pip-audit'"
+          },
+          {
+            "at": 0.75,
+            "event": "chip 'stdlib' fades in"
+          }
+        ],
+        "remotion": {
+          "pattern": "GitHubSectionRail",
+          "props": {
+            "kicker": "DEPENDENCIES",
+            "headline": "What does it need?",
+            "body": "16 scripts · stdlib only · dev deps: pytest + pip-audit",
+            "chip": "stdlib"
+          },
+          "rendered": {
+            "out": "media/B32.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B32.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B32.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 1.26
+    },
+    {
+      "beat_id": "B33",
+      "act": "ACT VII — DEPENDENCIES",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "The dependency audit. Every import across all 16 scripts is standard library: argparse, collections, dataclasses, gzip, io, json, os, pathlib, re, struct, subprocess, sys, tempfile, typing, unicodedata, urllib, xml.etree.ElementTree, zipfile, zlib. Plus the repo's own modules. Nothing else in the core.",
+      "estimated_duration_s": 20,
+      "new_visual_element": "Manim B33_DependencyCount — grouped module list by category: text processing (re, unicodedata), I/O (pathlib, io, os, gzip), process (subprocess, sys, argparse), data (collections, dataclasses, struct, typing); each category fades in as a VGroup; title 'stdlib imports — all 16 scripts'; bounding-box overlap assertion before render",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title 'stdlib imports — all 16 scripts' draws in"
+          },
+          {
+            "at": 0.15,
+            "event": "category group 1: 'text/string  re · unicodedata' fades in — highlighted"
+          },
+          {
+            "at": 0.3,
+            "event": "category group 2: 'file/I-O  pathlib · io · os · gzip · json · zipfile · zlib · xml.etree' appears"
+          },
+          {
+            "at": 0.5,
+            "event": "category group 3: 'process  subprocess · sys · argparse · urllib' appears"
+          },
+          {
+            "at": 0.65,
+            "event": "category group 4: 'data  collections · dataclasses · struct · typing' appears"
+          },
+          {
+            "at": 0.82,
+            "event": "caption: 'zero third-party packages in the core — no model, no GPU, no pip install'"
+          }
+        ]
+      },
+      "graphic": {
+        "manim": "B33_DependencyCount",
+        "engine": "manim",
+        "data": {
+          "categories": [
+            {
+              "label": "text/string",
+              "modules": [
+                "re",
+                "unicodedata"
+              ]
+            },
+            {
+              "label": "file/I-O",
+              "modules": [
+                "pathlib",
+                "io",
+                "os",
+                "gzip",
+                "tempfile",
+                "json",
+                "zipfile",
+                "zlib",
+                "xml.etree"
+              ]
+            },
+            {
+              "label": "process",
+              "modules": [
+                "subprocess",
+                "sys",
+                "argparse",
+                "urllib"
+              ]
+            },
+            {
+              "label": "data",
+              "modules": [
+                "collections",
+                "dataclasses",
+                "struct",
+                "typing",
+                "__future__"
+              ]
+            }
+          ],
+          "source": "grep -rhE '^(import|from) ' skills --include='*.py' | awk '{print $2}' | sort -u"
+        }
+      },
+      "audio_file": "mp3/beat-B33.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B33.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.24
+    },
+    {
+      "beat_id": "B34",
+      "act": "ACT VII — DEPENDENCIES",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "No model. No GPU. No third-party package in the core. The Unicode strip is re and unicodedata. The metadata strip is struct, gzip, and format-specific byte manipulation. The statistical rewrite is scipy and torch — but those are optional, isolated behind a separate requirements file and a Dockerfile. The core installs with zero packages.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'Unicode strip: re and unicodedata — both stdlib'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'metadata strip: struct, gzip — both stdlib'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: 'statistical rewrite: scipy + torch — optional, isolated, Dockerized'"
+          },
+          {
+            "at": 0.82,
+            "event": "line 4: 'core installs with zero packages'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Unicode strip: re and unicodedata — both stdlib",
+              "metadata strip: struct, gzip — both stdlib",
+              "statistical rewrite: scipy + torch — optional, isolated, Dockerized",
+              "core installs with zero packages"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B34.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B34.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B34.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.9
+    },
+    {
+      "beat_id": "B35",
+      "act": "ACT VII — DEPENDENCIES",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "requirements-dev.txt: pytest equals 9.1.1 and pip-audit equals 2.10.1. Both are test tooling. pip-audit is the supply-chain auditor — the project audits its own supply chain. The production install has no requirements file because it has no requirements.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'requirements-dev.txt: pytest==9.1.1 · pip-audit==2.10.1'"
+          },
+          {
+            "at": 0.45,
+            "event": "line 2: 'both are test tooling — pip-audit audits its own supply chain'"
+          },
+          {
+            "at": 0.7,
+            "event": "line 3: 'no production requirements file — because there are no production requirements'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "requirements-dev.txt: pytest==9.1.1 · pip-audit==2.10.1",
+              "both are test tooling — pip-audit audits its own supply chain",
+              "no production requirements file — because there are no production requirements"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B35.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B35.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B35.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 16.13
+    },
+    {
+      "beat_id": "B36",
+      "act": "ACT VII — DEPENDENCIES",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Layer B and CtrlRegen are optional because they add weight the core does not need. CtrlRegen is external pixel removal — different attack surface, different runtime, different trust model. The Dockerfiles isolate them. The project is explicit about what the core does and what it does not.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "card fades in"
+          },
+          {
+            "at": 0.15,
+            "event": "line 1: 'Layer B (statistical rewrite): scipy + torch · optional · isolated Dockerfile'"
+          },
+          {
+            "at": 0.4,
+            "event": "line 2: 'CtrlRegen: external pixel removal · different attack surface · isolated Dockerfile'"
+          },
+          {
+            "at": 0.65,
+            "event": "line 3: 'the project names its scope and isolates what exceeds it'"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Layer B (statistical rewrite): scipy + torch · optional · isolated Dockerfile",
+              "CtrlRegen: external pixel removal · different attack surface · isolated Dockerfile",
+              "the project names its scope and isolates what exceeds it"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B36.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B36.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B36.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 16.47
+    },
+    {
+      "beat_id": "BSRC",
+      "act": "SOURCES",
+      "lane": "BODY",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Sources: guillaumemeyer/watermarks-remover, cloned 2026-08-14. HEAD commit 256d90d. All data computed by git log, wc -l, git grep, git show. REPO-VERIFY.md has the commands and their outputs. ethics.md quoted verbatim at five byte-exact ranges.",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact panel fades in — title 'Sources'"
+          },
+          {
+            "at": 0.15,
+            "event": "heading 'guillaumemeyer/watermarks-remover' appears"
+          },
+          {
+            "at": 0.3,
+            "event": "source lines scroll in one by one"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Sources",
+            "artifactHeading": "guillaumemeyer/watermarks-remover",
+            "artifactLines": [
+              "Cloned 2026-08-14 · HEAD 256d90d ('Refuse binary input in the text-only tools').",
+              "Commit count: git rev-list --count HEAD = 49.",
+              "LOC: wc -l skills/remove-ai-marks/scripts/*.py | sort -rn.",
+              "Churn: git log --date=format:'%m-%d' --pretty=%ad | sort | uniq -c.",
+              "Imports: grep -rhE '^(import|from) ' skills --include='*.py'.",
+              "ethics.md: git show main:skills/remove-ai-marks/references/ethics.md.",
+              "Diff: git show 256d90d -- skills/remove-ai-marks/scripts/inspect_text.py.",
+              "REPO-VERIFY.md has commands and byte-exact outputs for every scene."
+            ]
+          },
+          "rendered": {
+            "out": "media/BSRC.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BSRC.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BSRC.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.5
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Every import across all sixteen scripts is standard library. The only pinned dependencies are pytest and pip-audit. The marks a major lab shipped worldwide come off with re and unicodedata.",
+      "narration_lock": "LOCKED — do not alter",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact panel fades in — title 'Four Days, No Dependencies'"
+          },
+          {
+            "at": 0.15,
+            "event": "heading 'The verdict' appears"
+          },
+          {
+            "at": 0.3,
+            "event": "verdict lines appear one by one"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Four Days, No Dependencies",
+            "artifactHeading": "The verdict",
+            "artifactLines": [
+              "Every import across all 16 scripts: standard library.",
+              "Only pinned deps: pytest==9.1.1 and pip-audit==2.10.1 — both test tooling.",
+              "The marks a major lab shipped worldwide come off with re and unicodedata.",
+              "Three-tier fan architecture — no cycles, no cross-tier deps — shipped in four days.",
+              "ethics.md L18: 'A removed mark does not mean the content was never AI-assisted.'",
+              "The detector's silence is not evidence of absence. Neither is the remover's success."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 11.31
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR-TURN",
+      "lane": "BOOKEND",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.2,
+      "narration_text": "Your turn. Clone the repo. Run audit_dir.py on a directory of your own text files — documents you wrote, drafts that may have AI in them, anything. Read what comes back. Then read ethics.md again, because the tool has already told you: a report is not evidence. The detector's silence is not evidence of absence. The remover's success is not either. What you do with that is the question.",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "composer fades in — greeting 'Your turn.'"
+          },
+          {
+            "at": 0.15,
+            "event": "command types: 'run audit_dir.py on a directory of your own text files'"
+          },
+          {
+            "at": 0.6,
+            "event": "runningText: 'then read ethics.md again…'"
+          },
+          {
+            "at": 0.8,
+            "event": "output: 'what you do with that is the question'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "run audit_dir.py on a directory of your own text files. Then read ethics.md again.",
+            "topic": "YOUR TURN · FOUR DAYS",
+            "segment": "Four Days, No Dependencies",
+            "runningText": "the detector's silence is not evidence of absence…",
+            "output": [
+              "the remover's success is not either",
+              "what you do with that is the question"
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 19.31
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "lead_silence_s": 0.0,
+      "narration_text": "",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title card fades in: 'Four Days, No Dependencies' · handle '@NikBearBrown'"
+          },
+          {
+            "at": 0.3,
+            "event": "subline fades in: 'guillaumemeyer/watermarks-remover'"
+          },
+          {
+            "at": 0.6,
+            "event": "mascot celebrate animation plays"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Four Days, No Dependencies",
+            "handle": "@NikBearBrown",
+            "subline": "guillaumemeyer/watermarks-remover",
+            "slug": "claude-liam-watermarks-remover",
+            "mascotAnimation": "celebrate"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-14T23:51:57"
+      },
+      "actual_duration_s": 8.0
+    }
+  ]
+}

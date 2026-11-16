@@ -1,0 +1,1866 @@
+1
+00:00:00,000 --> 00:00:01,348
+Computational Skepticism, Exam Prep.
+
+2
+00:00:01,398 --> 00:00:02,397
+Key Terms: Robustness.
+
+3
+00:00:02,447 --> 00:00:07,290
+Thirty-four terms for asking what a model
+actually learned, and what a small change
+
+4
+00:00:07,340 --> 00:00:07,639
+reveals.
+
+5
+00:00:07,689 --> 00:00:13,231
+You will be able to name each attack and
+each defense, and say exactly what a
+
+6
+00:00:13,281 --> 00:00:14,280
+robustness claim covers.
+
+7
+00:00:15,430 --> 00:00:15,647
+Hallo.
+
+8
+00:00:15,697 --> 00:00:17,250
+This is Liam, in for Bear.
+
+9
+00:00:17,300 --> 00:00:21,525
+A tiny change flips a model's answer, and
+people say the model is fragile, so harden
+
+10
+00:00:21,575 --> 00:00:21,792
+it.
+
+11
+00:00:21,842 --> 00:00:25,800
+The better reading is that the model
+learned a proxy, a signal that went with
+
+12
+00:00:25,850 --> 00:00:27,937
+the right label without being the thing
+itself.
+
+13
+00:00:27,987 --> 00:00:31,410
+This film goes through thirty-four terms
+for that, each one shown on screen.
+
+14
+00:00:31,760 --> 00:00:34,662
+Five labels sit in the corners of the
+pictures that follow.
+
+15
+00:00:34,712 --> 00:00:37,882
+In the book text: the course text uses and
+explains the term.
+
+16
+00:00:37,932 --> 00:00:42,443
+In the glossary: the term is on the course
+term list, but the text does not explain
+
+17
+00:00:42,493 --> 00:00:42,712
+it.
+
+18
+00:00:42,762 --> 00:00:47,005
+Simulation: a made-up run with a fixed
+seed, so it comes out the same every time.
+
+19
+00:00:47,055 --> 00:00:49,688
+Illustrative data: numbers chosen to show
+the idea, not measured.
+
+20
+00:00:49,738 --> 00:00:52,640
+Conceptual: a drawing of the idea, with no
+data behind it.
+
+21
+00:00:52,990 --> 00:00:56,913
+This is a map of thirty-four terms in four
+groups.
+
+22
+00:00:56,963 --> 00:01:01,284
+The first group asks why a small change
+flips the answer.
+
+23
+00:01:01,334 --> 00:01:04,860
+It holds adversarial example, proxy,
+robust features, non-robust features,
+
+24
+00:01:04,910 --> 00:01:08,833
+FGSM, the Fast Gradient Sign Method,
+perturbation budget, linearity hypothesis,
+
+25
+00:01:08,883 --> 00:01:10,820
+low-variance direction and boundary
+tilting.
+
+26
+00:01:11,170 --> 00:01:13,525
+The second group is the ways in.
+
+27
+00:01:13,575 --> 00:01:16,616
+White-box attack, black-box attack,
+transfer attack, patch attack, natural
+
+28
+00:01:16,666 --> 00:01:17,990
+adversarial and prompt injection.
+
+29
+00:01:18,040 --> 00:01:23,830
+Each one is defined by what the attacker
+has, and by what it exploits in the model.
+
+30
+00:01:24,180 --> 00:01:27,292
+The third group is defenses and their
+limits.
+
+31
+00:01:27,342 --> 00:01:30,454
+PGD, Projected Gradient Descent,
+adversarial training, robustness trade-
+
+32
+00:01:30,504 --> 00:01:33,616
+off, randomized smoothing, Lipschitz
+constant, formal verification, detection,
+
+33
+00:01:33,666 --> 00:01:35,197
+preprocessing and adaptive attack.
+
+34
+00:01:35,247 --> 00:01:39,940
+For each tool, know what it buys and what
+it cannot do.
+
+35
+00:01:40,290 --> 00:01:43,838
+The last group is saying what you know.
+
+36
+00:01:43,888 --> 00:01:47,435
+Distribution shift, semantic invariance,
+prompt sensitivity, adversarial testing,
+
+37
+00:01:47,485 --> 00:01:51,033
+robustness profile, residual risk,
+monitoring, Pearl's ladder, counterfactual
+
+38
+00:01:51,083 --> 00:01:52,382
+and governance question.
+
+39
+00:01:52,432 --> 00:01:55,980
+These are the terms for reporting
+robustness honestly.
+
+40
+00:01:56,330 --> 00:01:58,299
+One input, before and after a push.
+
+41
+00:01:58,349 --> 00:02:02,626
+An adversarial example is an input changed
+on purpose, too slightly for a person to
+
+42
+00:02:02,676 --> 00:02:04,068
+notice, so the answer flips.
+
+43
+00:02:04,118 --> 00:02:08,683
+In this simulated run no value moves more
+than zero point two, and the model says
+
+44
+00:02:08,733 --> 00:02:08,972
+gibbon.
+
+45
+00:02:09,022 --> 00:02:12,433
+For example, an applicant slips a few
+invisible characters into a résumé.
+
+46
+00:02:12,483 --> 00:02:16,472
+A recruiter sees the same page, but the
+screening model flips from reject to
+
+47
+00:02:16,522 --> 00:02:16,760
+interview.
+
+48
+00:02:17,110 --> 00:02:18,143
+Now the original input.
+
+49
+00:02:18,193 --> 00:02:20,849
+The red texture bar carries ninety-three
+percent of the score.
+
+50
+00:02:20,899 --> 00:02:24,910
+Texture is a proxy, a signal that tracked
+the label in training without being the
+
+51
+00:02:24,960 --> 00:02:25,451
+thing itself.
+
+52
+00:02:25,501 --> 00:02:27,346
+So inspect what the model relies on.
+
+53
+00:02:27,396 --> 00:02:28,699
+Do not just patch it.
+
+54
+00:02:28,749 --> 00:02:32,759
+For example, a résumé screener trained on
+past hires leans on a few buzzwords those
+
+55
+00:02:32,809 --> 00:02:33,842
+hires happened to use.
+
+56
+00:02:33,892 --> 00:02:37,090
+The words went with good hires, but they
+are not the skill.
+
+57
+00:02:37,440 --> 00:02:38,549
+Two kinds of feature.
+
+58
+00:02:38,599 --> 00:02:42,896
+Shape is one of the robust features, tied
+to the label and hard to move.
+
+59
+00:02:42,946 --> 00:02:46,663
+A push of zero point two is ten percent of
+the class gap.
+
+60
+00:02:46,713 --> 00:02:48,111
+Texture shows the non-robust features.
+
+61
+00:02:48,161 --> 00:02:52,458
+It predicts the label too, but the same
+push is sixty-seven percent of the gap.
+
+62
+00:02:52,508 --> 00:02:56,225
+For example, in a résumé screener, the
+projects someone actually built are robust
+
+63
+00:02:56,275 --> 00:02:56,515
+features.
+
+64
+00:02:56,565 --> 00:02:59,123
+The exact wording of the skills line is
+non-robust.
+
+65
+00:02:59,173 --> 00:03:02,600
+It predicted hires in training, and a
+single swapped word moves it.
+
+66
+00:03:02,950 --> 00:03:05,962
+A table of weights, and the step each
+input gets.
+
+67
+00:03:06,012 --> 00:03:10,555
+FGSM, the Fast Gradient Sign Method, takes
+one step of size epsilon on every input,
+
+68
+00:03:10,605 --> 00:03:12,393
+along the sign of the gradient.
+
+69
+00:03:12,443 --> 00:03:16,986
+Every step helps the attacker, so in this
+simulated run they total zero point four
+
+70
+00:03:17,036 --> 00:03:17,292
+seven.
+
+71
+00:03:17,342 --> 00:03:21,273
+For example, picture a model that predicts
+interviews from numeric fields such as
+
+72
+00:03:21,323 --> 00:03:22,192
+years of experience.
+
+73
+00:03:22,242 --> 00:03:27,091
+FGSM nudges every field by the same small
+amount, up or down as the gradient says,
+
+74
+00:03:27,141 --> 00:03:28,010
+in one step.
+
+75
+00:03:28,360 --> 00:03:30,233
+Three ways to spend the same budget.
+
+76
+00:03:30,283 --> 00:03:33,805
+The perturbation budget, epsilon, is the
+most any single input value may change,
+
+77
+00:03:33,855 --> 00:03:35,454
+also called the L infinity budget.
+
+78
+00:03:35,504 --> 00:03:37,377
+It caps each value, not the total.
+
+79
+00:03:37,427 --> 00:03:41,224
+The red bar follows the sign of every
+weight and spends all of it.
+
+80
+00:03:41,274 --> 00:03:45,070
+For example, someone auditing a résumé
+screener lets each field, such as a test
+
+81
+00:03:45,120 --> 00:03:47,543
+score, move by at most a small fixed
+amount.
+
+82
+00:03:47,593 --> 00:03:51,390
+Every field may use the full amount, so
+the total change can be large.
+
+83
+00:03:51,740 --> 00:03:55,330
+The same tiny step, zero point zero one,
+on every input value.
+
+84
+00:03:55,380 --> 00:03:59,577
+The linearity hypothesis says such pushes
+add up when the score is locally linear.
+
+85
+00:03:59,627 --> 00:04:01,093
+Ten inputs barely move it.
+
+86
+00:04:01,143 --> 00:04:05,340
+About one hundred fifty thousand inputs
+move it by fifty-nine point nine, past the
+
+87
+00:04:05,390 --> 00:04:05,947
+red tick.
+
+88
+00:04:05,997 --> 00:04:10,497
+Picture a screener that reads a scanned
+résumé as an image of many thousands of
+
+89
+00:04:10,547 --> 00:04:10,800
+pixels.
+
+90
+00:04:10,850 --> 00:04:15,047
+Shading each pixel by an invisible amount
+barely moves the score, but summed over
+
+91
+00:04:15,097 --> 00:04:17,170
+every pixel it can flip the call.
+
+92
+00:04:17,520 --> 00:04:22,333
+Two groups of points, wide from side to
+side and thin up and down, with boundary A
+
+93
+00:04:22,383 --> 00:04:22,905
+between them.
+
+94
+00:04:22,955 --> 00:04:26,910
+A low-variance direction is one where the
+training data barely varies, here up and
+
+95
+00:04:26,960 --> 00:04:27,196
+down.
+
+96
+00:04:27,246 --> 00:04:28,912
+Training said almost nothing about it.
+
+97
+00:04:28,962 --> 00:04:32,917
+For example, every résumé in a screener's
+training set used almost the same font
+
+98
+00:04:32,967 --> 00:04:33,203
+size.
+
+99
+00:04:33,253 --> 00:04:36,922
+Font size barely varied, so training
+taught the model almost nothing about what
+
+100
+00:04:36,972 --> 00:04:37,780
+it should mean.
+
+101
+00:04:38,130 --> 00:04:42,243
+Boundary tilting means a boundary that
+runs almost alongside the data, like the
+
+102
+00:04:42,293 --> 00:04:43,524
+red line, boundary B.
+
+103
+00:04:43,574 --> 00:04:48,008
+In this simulated run both boundaries get
+all sixty points right, but the nearest
+
+104
+00:04:48,058 --> 00:04:53,132
+point is zero point eight from boundary A
+and zero point zero seven from boundary B.
+
+105
+00:04:53,182 --> 00:04:56,975
+For example, a screener's boundary sorts
+every past résumé correctly, yet runs
+
+106
+00:04:57,025 --> 00:05:00,177
+almost alongside them, a hair away in the
+font-size direction.
+
+107
+00:05:00,227 --> 00:05:03,700
+A résumé in slightly larger type lands on
+the other side.
+
+108
+00:05:04,050 --> 00:05:08,473
+The ringed point steps zero point zero
+nine in the quiet, low-variance direction
+
+109
+00:05:08,523 --> 00:05:09,849
+and crosses boundary B.
+
+110
+00:05:09,899 --> 00:05:11,569
+Boundary A does not change.
+
+111
+00:05:11,619 --> 00:05:12,601
+Keep these apart.
+
+112
+00:05:12,651 --> 00:05:15,354
+The decision boundary is where the answer
+changes.
+
+113
+00:05:15,404 --> 00:05:18,450
+The data manifold is where the training
+data sits.
+
+114
+00:05:18,800 --> 00:05:21,819
+A chart of how many correct predictions
+each attack flips.
+
+115
+00:05:21,869 --> 00:05:25,194
+In a white-box attack, also called
+gradient-based, the attacker has the
+
+116
+00:05:25,244 --> 00:05:28,877
+model's weights and gradients, so the best
+direction comes straight from them.
+
+117
+00:05:28,927 --> 00:05:31,945
+In this simulated run it flips eighty-five
+point four percent.
+
+118
+00:05:31,995 --> 00:05:35,628
+For example, someone gets a copy of a
+company's résumé screener, weights
+
+119
+00:05:35,678 --> 00:05:39,310
+included, and reads off it exactly which
+words raise the score most.
+
+120
+00:05:39,660 --> 00:05:42,471
+A black-box attack, also called query-
+based, has no weights.
+
+121
+00:05:42,521 --> 00:05:45,903
+The attacker sees only outputs and
+estimates the gradient by probing, nudging
+
+122
+00:05:45,953 --> 00:05:47,620
+each input value up and down.
+
+123
+00:05:47,670 --> 00:05:51,338
+Here that takes forty queries per input,
+and it flips the same share.
+
+124
+00:05:51,388 --> 00:05:55,915
+For example, an applicant can only upload
+résumés to a job portal and see the fit
+
+125
+00:05:55,965 --> 00:05:56,773
+score it returns.
+
+126
+00:05:56,823 --> 00:05:59,920
+They change a line, upload again, and
+watch the score move.
+
+127
+00:06:00,270 --> 00:06:02,392
+A transfer attack never touches the
+target.
+
+128
+00:06:02,442 --> 00:06:07,667
+The push is built on a surrogate, a stand-
+in model trained on similar data, and it
+
+129
+00:06:07,717 --> 00:06:09,528
+still flips eighty-four point seven
+percent.
+
+130
+00:06:09,578 --> 00:06:11,080
+Similar data teaches similar proxies.
+
+131
+00:06:11,130 --> 00:06:12,321
+Black-box queries the target.
+
+132
+00:06:12,371 --> 00:06:13,252
+Transfer does not.
+
+133
+00:06:13,302 --> 00:06:17,595
+For example, a job seeker trains a
+practice screener on public job posts and
+
+134
+00:06:17,645 --> 00:06:21,939
+résumés, finds edits that fool it, then
+sends that résumé to a company screener
+
+135
+00:06:21,989 --> 00:06:22,870
+they never queried.
+
+136
+00:06:23,220 --> 00:06:25,349
+Two pixel grids with the same score drop.
+
+137
+00:06:25,399 --> 00:06:26,984
+Left, every pixel changes a little.
+
+138
+00:06:27,034 --> 00:06:30,798
+Right, a patch attack, a big change in a
+small region, like a sticker.
+
+139
+00:06:30,848 --> 00:06:34,612
+In this simulated run it touches six
+percent of the pixels, and it survives
+
+140
+00:06:34,662 --> 00:06:34,885
+printing.
+
+141
+00:06:34,935 --> 00:06:39,244
+For example, an applicant prints a small,
+bold block in one corner of a résumé that
+
+142
+00:06:39,294 --> 00:06:40,061
+will be scanned.
+
+143
+00:06:40,111 --> 00:06:43,330
+The rest of the page is untouched, yet the
+screener's call flips.
+
+144
+00:06:43,680 --> 00:06:47,955
+Natural adversarial means no attacker at
+all, just an unusual, long-tail input that
+
+145
+00:06:48,005 --> 00:06:48,954
+training hardly covered.
+
+146
+00:06:49,004 --> 00:06:52,946
+Typical inputs score ninety-nine point
+four percent, the long tail only fifteen
+
+147
+00:06:52,996 --> 00:06:53,612
+point nine.
+
+148
+00:06:53,662 --> 00:06:57,937
+The overall bar still says ninety-five
+percent, so the average hides the failure.
+
+149
+00:06:57,987 --> 00:07:02,263
+For example, a screener trained mostly on
+standard office résumés meets a career
+
+150
+00:07:02,313 --> 00:07:04,592
+changer whose résumé is all farm work.
+
+151
+00:07:04,642 --> 00:07:05,590
+Nobody altered anything.
+
+152
+00:07:05,640 --> 00:07:09,250
+The input is just rare, and the model gets
+it wrong.
+
+153
+00:07:09,600 --> 00:07:13,272
+Four lines an agent sees, one from the
+user, three from a document.
+
+154
+00:07:13,322 --> 00:07:17,281
+Prompt injection is an instruction hidden
+in data, which the agent treats as a
+
+155
+00:07:17,331 --> 00:07:17,567
+command.
+
+156
+00:07:17,617 --> 00:07:20,431
+In one mixed stream it obeys the hidden
+email line.
+
+157
+00:07:20,481 --> 00:07:22,721
+With channels split, it obeys only the
+user.
+
+158
+00:07:22,771 --> 00:07:27,016
+For example, an applicant hides a line in
+white text on a résumé, telling the
+
+159
+00:07:27,066 --> 00:07:29,307
+recruiter's AI assistant to rank this
+candidate first.
+
+160
+00:07:29,357 --> 00:07:32,170
+The résumé is data, but the assistant
+obeys the line.
+
+161
+00:07:32,520 --> 00:07:35,776
+An invented loss surface inside the
+budget, darker is worse.
+
+162
+00:07:35,826 --> 00:07:39,082
+PGD, Projected Gradient Descent, takes
+many small gradient-sign steps, each
+
+163
+00:07:39,132 --> 00:07:40,735
+projected back inside the budget.
+
+164
+00:07:40,785 --> 00:07:44,041
+One FGSM step lands on a corner and stays
+right.
+
+165
+00:07:44,091 --> 00:07:47,678
+Ten PGD steps reach the dark patch, and
+the answer flips.
+
+166
+00:07:47,728 --> 00:07:51,976
+For example, an attacker nudges an
+application's numeric fields a little at a
+
+167
+00:07:52,026 --> 00:07:53,960
+time, the way the gradient points.
+
+168
+00:07:54,010 --> 00:07:58,588
+After each nudge, any field past the
+budget is pulled back inside, until the
+
+169
+00:07:58,638 --> 00:07:59,580
+interview call flips.
+
+170
+00:07:59,930 --> 00:08:04,077
+Adversarial training means training on the
+worst push an attacker could find, at
+
+171
+00:08:04,127 --> 00:08:04,723
+every step.
+
+172
+00:08:04,773 --> 00:08:08,919
+In this simulated run the standard model
+falls to twenty-four point five percent
+
+173
+00:08:08,969 --> 00:08:09,565
+under attack.
+
+174
+00:08:09,615 --> 00:08:12,148
+The adversarially trained model holds
+seventy-four point eight.
+
+175
+00:08:12,198 --> 00:08:16,667
+For example, a company retrains its résumé
+screener on the worst doctored résumés an
+
+176
+00:08:16,717 --> 00:08:21,187
+attacker could make, found fresh at every
+training step, each labeled with the right
+
+177
+00:08:21,237 --> 00:08:21,510
+decision.
+
+178
+00:08:21,860 --> 00:08:25,162
+Each point is a model trained against a
+different budget.
+
+179
+00:08:25,212 --> 00:08:28,514
+The robustness trade-off, or accuracy-
+robustness trade-off, is the price.
+
+180
+00:08:28,564 --> 00:08:32,872
+As the budget grows, robust accuracy
+climbs, while clean accuracy, the score on
+
+181
+00:08:32,922 --> 00:08:34,213
+ordinary inputs, moves left.
+
+182
+00:08:34,263 --> 00:08:37,230
+Adversarial training also costs several
+times more to run.
+
+183
+00:08:37,280 --> 00:08:41,923
+For example, a screener trained to resist
+keyword stuffing gets harder to fool, but
+
+184
+00:08:41,973 --> 00:08:44,940
+it also misjudges more ordinary, honest
+résumés than before.
+
+185
+00:08:45,290 --> 00:08:48,245
+A grid of one thousand noisy copies of one
+input.
+
+186
+00:08:48,295 --> 00:08:50,950
+Randomized smoothing classifies every copy
+and takes the vote.
+
+187
+00:08:51,000 --> 00:08:54,856
+In this simulated run nine hundred ninety-
+three pick the right class, which
+
+188
+00:08:54,906 --> 00:08:57,861
+certifies a radius R of zero point two
+four six.
+
+189
+00:08:57,911 --> 00:09:02,068
+For example, a screener scores many noisy
+copies of an application, each with small
+
+190
+00:09:02,118 --> 00:09:05,374
+random changes to its numeric fields, and
+gives the majority call.
+
+191
+00:09:05,424 --> 00:09:08,980
+A lopsided vote means no edit inside the
+radius can flip it.
+
+192
+00:09:09,330 --> 00:09:11,187
+More noise buys a bigger radius.
+
+193
+00:09:11,237 --> 00:09:16,592
+The red bars grow from zero point one five
+to zero point eight two as the noise,
+
+194
+00:09:16,642 --> 00:09:17,228
+sigma, rises.
+
+195
+00:09:17,278 --> 00:09:19,135
+The dark bars show the cost.
+
+196
+00:09:19,185 --> 00:09:22,950
+Accuracy of the smoothed classifier falls
+from one hundred percent to eighty-five.
+
+197
+00:09:23,300 --> 00:09:24,683
+Output change against input change.
+
+198
+00:09:24,733 --> 00:09:28,982
+The Lipschitz constant, L, caps how fast
+the output can move as the input moves.
+
+199
+00:09:29,032 --> 00:09:31,274
+The steep red line is the standard model.
+
+200
+00:09:31,324 --> 00:09:35,286
+The flat dark line is the trained one,
+whose small L bounds every push.
+
+201
+00:09:35,336 --> 00:09:39,012
+For example, a salary-estimate model with
+a small Lipschitz constant can only shift
+
+202
+00:09:39,062 --> 00:09:42,164
+its estimate a little when the listed
+experience changes a little.
+
+203
+00:09:42,214 --> 00:09:45,890
+With a large one, that same small edit
+could swing the estimate wildly.
+
+204
+00:09:46,240 --> 00:09:48,627
+A small network's score as the budget
+grows.
+
+205
+00:09:48,677 --> 00:09:52,284
+Formal verification proves a property for
+every input in a stated region.
+
+206
+00:09:52,334 --> 00:09:57,159
+In this simulated run the grey band is
+proved, up to zero point one four nine.
+
+207
+00:09:57,209 --> 00:10:00,205
+A real flip sits at zero point two one
+nine.
+
+208
+00:10:00,255 --> 00:10:01,119
+Between them, unknown.
+
+209
+00:10:01,169 --> 00:10:05,385
+For example, a team proves that, for every
+application in a stated range, changing
+
+210
+00:10:05,435 --> 00:10:08,127
+only the graduation year cannot change the
+interview call.
+
+211
+00:10:08,177 --> 00:10:10,260
+Outside that range, the proof says
+nothing.
+
+212
+00:10:10,610 --> 00:10:13,927
+A detector's scores, grey for clean
+inputs, red for attacked ones.
+
+213
+00:10:13,977 --> 00:10:17,907
+A detection-based defense flags inputs
+that look attacked and routes them to a
+
+214
+00:10:17,957 --> 00:10:19,131
+fallback or a person.
+
+215
+00:10:19,181 --> 00:10:21,886
+Here it catches seventy-four point five
+percent of attacks.
+
+216
+00:10:21,936 --> 00:10:23,723
+It does not fix the model.
+
+217
+00:10:23,773 --> 00:10:28,008
+For example, a job portal flags résumés
+that look doctored, such as ones packed
+
+218
+00:10:28,058 --> 00:10:31,069
+with invisible characters, and sends them
+to a human recruiter.
+
+219
+00:10:31,119 --> 00:10:32,600
+The screener itself is unchanged.
+
+220
+00:10:32,950 --> 00:10:36,782
+Input preprocessing changes the input
+before the model sees it, by denoising,
+
+221
+00:10:36,832 --> 00:10:37,753
+quantizing or smoothing.
+
+222
+00:10:37,803 --> 00:10:39,694
+Here a filter averages neighbouring
+values.
+
+223
+00:10:39,744 --> 00:10:43,900
+With no defense, the FGSM push shifts the
+score by six point four.
+
+224
+00:10:43,950 --> 00:10:47,782
+With the filter, the alternating pushes
+cancel and the shift is zero.
+
+225
+00:10:47,832 --> 00:10:51,988
+For example, a portal turns every uploaded
+résumé into plain visible text before
+
+226
+00:10:52,038 --> 00:10:55,546
+screening, which strips out hidden
+characters and keywords hidden in white
+
+227
+00:10:55,596 --> 00:10:55,870
+text.
+
+228
+00:10:56,220 --> 00:11:00,838
+An adaptive attack is built by someone who
+knows the defense, and is designed to get
+
+229
+00:11:00,888 --> 00:11:01,421
+past it.
+
+230
+00:11:01,471 --> 00:11:05,797
+The new red bar pushes where the filter
+does not erase, and the answer flips.
+
+231
+00:11:05,847 --> 00:11:09,298
+Against the detector, the catch rate drops
+to thirty-one point seven percent.
+
+232
+00:11:09,348 --> 00:11:13,091
+For example, an applicant who knows the
+portal strips hidden text writes the
+
+233
+00:11:13,141 --> 00:11:16,300
+stuffed keywords as visible, ordinary-
+looking phrases that the cleanup keeps.
+
+234
+00:11:16,650 --> 00:11:19,130
+Two lines over the six months after
+training.
+
+235
+00:11:19,180 --> 00:11:23,240
+Distribution shift means the inputs a
+deployed model meets drift away from its
+
+236
+00:11:23,290 --> 00:11:24,821
+training inputs, with no attacker.
+
+237
+00:11:24,871 --> 00:11:28,932
+In this simulated run accuracy, the red
+line, falls to sixty-five percent while
+
+238
+00:11:28,982 --> 00:11:31,145
+confidence does not fall, ending at
+eighty-eight.
+
+239
+00:11:31,195 --> 00:11:35,256
+For example, a screener trained on cover
+letters written before AI writing tools
+
+240
+00:11:35,306 --> 00:11:37,469
+spread now meets letters drafted with
+them.
+
+241
+00:11:37,519 --> 00:11:38,418
+Nobody attacks it.
+
+242
+00:11:38,468 --> 00:11:41,580
+Its calls get worse while it stays just as
+sure.
+
+243
+00:11:41,930 --> 00:11:45,431
+Four pairs of sentences, each pair the
+same meaning in different words.
+
+244
+00:11:45,481 --> 00:11:49,278
+Semantic invariance says the answer should
+not change when only the wording does.
+
+245
+00:11:49,328 --> 00:11:54,308
+This toy rule adds up word scores, and
+gives the same answer on only one of the
+
+246
+00:11:54,358 --> 00:11:54,900
+four pairs.
+
+247
+00:11:54,950 --> 00:11:59,043
+For example, one résumé says managed the
+support team, another says was the support
+
+248
+00:11:59,093 --> 00:11:59,635
+team's manager.
+
+249
+00:11:59,685 --> 00:12:02,890
+A screener with semantic invariance gives
+both the same fit score.
+
+250
+00:12:03,240 --> 00:12:06,128
+One instruction, phrased five ways, for
+two made-up models.
+
+251
+00:12:06,178 --> 00:12:09,719
+Prompt sensitivity means prompts with the
+same meaning get noticeably different
+
+252
+00:12:09,769 --> 00:12:10,046
+answers.
+
+253
+00:12:10,096 --> 00:12:14,290
+Model A's bars change a lot, a sensitivity
+of zero point three eight.
+
+254
+00:12:14,340 --> 00:12:16,902
+Model B's barely move, zero point zero
+five.
+
+255
+00:12:16,952 --> 00:12:22,125
+For example, a job seeker types to an AI
+agent, tailor my résumé to this posting.
+
+256
+00:12:22,175 --> 00:12:25,716
+Later the same person types, adapt my
+résumé for this job.
+
+257
+00:12:25,766 --> 00:12:30,614
+Same request, yet one answer trims a few
+lines and the other rewrites the whole
+
+258
+00:12:30,664 --> 00:12:30,940
+page.
+
+259
+00:12:31,290 --> 00:12:34,066
+Three test results, with clean accuracy as
+the outline.
+
+260
+00:12:34,116 --> 00:12:38,461
+Adversarial testing means running inputs
+built to fool the model, to find what it
+
+261
+00:12:38,511 --> 00:12:39,089
+relies on.
+
+262
+00:12:39,139 --> 00:12:43,171
+In this made-up example clean accuracy is
+ninety-four percent, and every test lands
+
+263
+00:12:43,221 --> 00:12:43,799
+below it.
+
+264
+00:12:43,849 --> 00:12:47,880
+For example, before launch, a team feeds
+its résumé screener doctored résumés, with
+
+265
+00:12:47,930 --> 00:12:52,276
+stuffed keywords, hidden text and reworded
+job titles, to see what it really relies
+
+266
+00:12:52,326 --> 00:12:52,590
+on.
+
+267
+00:12:52,940 --> 00:12:57,191
+A robustness profile says what the model
+resists and what it does not, by attack,
+
+268
+00:12:57,241 --> 00:12:58,051
+budget and shift.
+
+269
+00:12:58,101 --> 00:13:00,058
+It is a table, not one number.
+
+270
+00:13:00,108 --> 00:13:03,498
+Average these three results and you get
+seventy-two percent, which hides the
+
+271
+00:13:03,548 --> 00:13:05,505
+weakest one, the fifty-eight percent
+transfer attack.
+
+272
+00:13:05,555 --> 00:13:09,519
+For example, the maker of an interview-
+prediction model reports a table, with a
+
+273
+00:13:09,569 --> 00:13:12,960
+row each for ordinary résumés, keyword
+stuffing at a stated budget, and
+
+274
+00:13:13,010 --> 00:13:14,680
+applications from a newer hiring season.
+
+275
+00:13:15,030 --> 00:13:17,783
+Six attack classes, each with a tick or a
+cross.
+
+276
+00:13:17,833 --> 00:13:21,426
+Residual risk disclosure is the written
+list of known weaknesses that were not
+
+277
+00:13:21,476 --> 00:13:22,547
+tested or not fixed.
+
+278
+00:13:22,597 --> 00:13:26,752
+In this example four of the six were not
+tested, and each one is named.
+
+279
+00:13:26,802 --> 00:13:30,675
+For example, an agent that sends job
+applications ships with a note saying it
+
+280
+00:13:30,725 --> 00:13:34,599
+was never tested against prompt injection
+hidden in job listings, and that this risk
+
+281
+00:13:34,649 --> 00:13:35,440
+is not fixed.
+
+282
+00:13:35,790 --> 00:13:38,509
+The share of inputs flagged each week in
+production.
+
+283
+00:13:38,559 --> 00:13:42,201
+A monitoring specification names the
+signal being watched, and the value that
+
+284
+00:13:42,251 --> 00:13:43,739
+triggers human review or rollback.
+
+285
+00:13:43,789 --> 00:13:46,816
+Here review triggers at four percent,
+crossed in week seven.
+
+286
+00:13:46,866 --> 00:13:48,969
+Rollback, at eight percent, is never
+reached.
+
+287
+00:13:49,019 --> 00:13:52,661
+For example, a résumé screener's spec
+watches the weekly share of résumés
+
+288
+00:13:52,711 --> 00:13:53,584
+flagged as doctored.
+
+289
+00:13:53,634 --> 00:13:55,738
+Past a set level, a recruiter reviews.
+
+290
+00:13:55,788 --> 00:13:59,430
+Past a higher level, the team rolls back
+to the earlier version.
+
+291
+00:13:59,780 --> 00:14:01,374
+Three rungs for the panda case.
+
+292
+00:14:01,424 --> 00:14:04,661
+Pearl's ladder sorts causal questions into
+three levels, seeing, doing and imagining.
+
+293
+00:14:04,711 --> 00:14:08,222
+Rung one is answered by watching the
+model, rung two by an experiment.
+
+294
+00:14:08,272 --> 00:14:12,332
+Rung three asks about a model that was
+never built, so no data answers it.
+
+295
+00:14:12,382 --> 00:14:13,975
+For example, take a hiring model.
+
+296
+00:14:14,025 --> 00:14:15,619
+Seeing, whom does it rank first?
+
+297
+00:14:15,669 --> 00:14:18,359
+Doing, what if we retrain it without the
+school field?
+
+298
+00:14:18,409 --> 00:14:21,646
+Imagining, would this rejected applicant
+have been invited had it learned real
+
+299
+00:14:21,696 --> 00:14:21,920
+skill?
+
+300
+00:14:22,270 --> 00:14:25,186
+The same input, two models, before and
+after the push.
+
+301
+00:14:25,236 --> 00:14:27,559
+An intervention changes something and
+watches what follows.
+
+302
+00:14:27,609 --> 00:14:31,119
+A counterfactual asks about this one case,
+had one thing been different.
+
+303
+00:14:31,169 --> 00:14:34,975
+In this toy, a model that learned only
+shape would still say panda.
+
+304
+00:14:35,025 --> 00:14:38,238
+For example, an intervention drops the
+employment-gap field for everyone and
+
+305
+00:14:38,288 --> 00:14:39,127
+watches interview rates.
+
+306
+00:14:39,177 --> 00:14:42,094
+A counterfactual asks whether this
+particular applicant would have been
+
+307
+00:14:42,144 --> 00:14:44,170
+invited had the screener ignored her gap.
+
+308
+00:14:44,520 --> 00:14:49,028
+A chain from rules to goals to training to
+this model, and a dashed copy.
+
+309
+00:14:49,078 --> 00:14:52,066
+The governance question, also called the
+governance counterfactual, asks whether
+
+310
+00:14:52,116 --> 00:14:55,713
+the model would be different had the
+institutions around it been different.
+
+311
+00:14:55,763 --> 00:14:57,536
+Other rules, other goals, another model.
+
+312
+00:14:57,586 --> 00:15:01,790
+For example, would a hiring model still
+lean on polished keywords had the company
+
+313
+00:15:01,840 --> 00:15:05,740
+that built it been judged on hires who
+stayed, not on screening speed?
+
+314
+00:15:06,090 --> 00:15:07,647
+Two pictures of one boundary.
+
+315
+00:15:07,697 --> 00:15:08,932
+Left, an adversarial example.
+
+316
+00:15:08,982 --> 00:15:13,751
+One point is pushed across, built by an
+attacker as the worst case inside the
+
+317
+00:15:13,801 --> 00:15:14,073
+budget.
+
+318
+00:15:14,123 --> 00:15:15,037
+Right, distribution shift.
+
+319
+00:15:15,087 --> 00:15:17,607
+Every point drifts, and no attacker is
+involved.
+
+320
+00:15:17,657 --> 00:15:20,820
+Ask whether someone built the change, or
+the world moved.
+
+321
+00:15:21,170 --> 00:15:22,340
+Left, an empirical defense.
+
+322
+00:15:22,390 --> 00:15:26,917
+Six attacks were tried and it survived all
+six, which says nothing about the next
+
+323
+00:15:26,967 --> 00:15:27,222
+one.
+
+324
+00:15:27,272 --> 00:15:31,799
+Right, a certified defense, a proof that
+nothing gets in, up to a stated radius.
+
+325
+00:15:31,849 --> 00:15:34,240
+Surviving the attacks tried is not a
+proof.
+
+326
+00:15:34,590 --> 00:15:36,879
+Clean accuracy is measured on ordinary
+inputs.
+
+327
+00:15:36,929 --> 00:15:41,222
+Robust accuracy is measured under a worst-
+case push at a stated budget.
+
+328
+00:15:41,272 --> 00:15:45,899
+In the simulated run the same model scores
+one hundred percent clean and twenty-four
+
+329
+00:15:45,949 --> 00:15:47,235
+point five percent robust.
+
+330
+00:15:47,285 --> 00:15:49,240
+Ask which one you are shown.
+
+331
+00:15:49,590 --> 00:15:50,240
+Left, detection.
+
+332
+00:15:50,290 --> 00:15:55,136
+The detector flags a suspect input and
+routes it to review, without changing it.
+
+333
+00:15:55,186 --> 00:15:55,836
+Right, preprocessing.
+
+334
+00:15:55,886 --> 00:16:00,733
+The jagged grey input comes out of the
+filter as the flat red line.
+
+335
+00:16:00,783 --> 00:16:01,782
+Detection sorts inputs.
+
+336
+00:16:01,832 --> 00:16:04,580
+Preprocessing changes them before the
+model sees them.
+
+337
+00:16:04,930 --> 00:16:08,197
+A vague request, and the exact statement
+that replaces it.
+
+338
+00:16:08,247 --> 00:16:11,514
+Make it robust becomes, name the attack
+and the budget.
+
+339
+00:16:11,564 --> 00:16:16,158
+In this simulated run, under an L infinity
+white-box attack at epsilon zero point
+
+340
+00:16:16,208 --> 00:16:18,148
+two, twenty-five percent are still right.
+
+341
+00:16:18,198 --> 00:16:20,470
+The line falls as the budget grows.
+
+342
+00:16:20,820 --> 00:16:23,156
+The request is, the model is fragile.
+
+343
+00:16:23,206 --> 00:16:24,859
+Fragile says nothing about why.
+
+344
+00:16:24,909 --> 00:16:26,904
+The exact version names the proxy.
+
+345
+00:16:26,954 --> 00:16:30,994
+Texture carries ninety-three percent of
+the score and shape seven percent, the
+
+346
+00:16:31,044 --> 00:16:33,720
+long red bar against the short dark one.
+
+347
+00:16:34,070 --> 00:16:36,600
+The request is, harden it against attacks.
+
+348
+00:16:36,650 --> 00:16:38,812
+Say how, and report both numbers.
+
+349
+00:16:38,862 --> 00:16:41,024
+Train at epsilon zero point two.
+
+350
+00:16:41,074 --> 00:16:45,078
+Robust accuracy rises from twenty-five to
+seventy-five percent, and clean accuracy
+
+351
+00:16:45,128 --> 00:16:47,290
+falls from one hundred to eighty-four.
+
+352
+00:16:47,640 --> 00:16:50,126
+The request is, prove it cannot be fooled.
+
+353
+00:16:50,176 --> 00:16:52,662
+No proof covers everything, so certify a
+radius.
+
+354
+00:16:52,712 --> 00:16:57,733
+With noise sigma of zero point one, the
+red bar, the certified radius R is zero
+
+355
+00:16:57,783 --> 00:17:01,220
+point two five for this one input, and
+nothing beyond it.
+
+356
+00:17:01,570 --> 00:17:04,127
+The request is, check it copes with
+rewording.
+
+357
+00:17:04,177 --> 00:17:07,060
+The exact version reports semantic
+invariance as a count.
+
+358
+00:17:07,110 --> 00:17:11,297
+The toy rule gives the same answer on one
+of four reworded pairs.
+
+359
+00:17:11,347 --> 00:17:14,230
+The crosses mark the pairs where the
+answer changed.
+
+360
+00:17:14,580 --> 00:17:18,628
+A checklist of six questions to ask before
+you trust a robustness claim.
+
+361
+00:17:18,678 --> 00:17:20,520
+The first is, robust against what.
+
+362
+00:17:20,570 --> 00:17:24,618
+The attack class has to be named, such as
+white-box, transfer or patch.
+
+363
+00:17:24,668 --> 00:17:27,140
+Robust with nothing named is not a claim.
+
+364
+00:17:27,490 --> 00:17:28,413
+Next, the budget.
+
+365
+00:17:28,463 --> 00:17:32,955
+Ask for the perturbation budget, and for
+the accuracy under attack reported next to
+
+366
+00:17:33,005 --> 00:17:33,928
+the clean accuracy.
+
+367
+00:17:33,978 --> 00:17:38,470
+A robust accuracy means nothing until you
+know the budget it was measured at.
+
+368
+00:17:38,820 --> 00:17:39,634
+Next, the proxy.
+
+369
+00:17:39,684 --> 00:17:44,239
+Ask what proxy the model might lean on,
+and which feature a person would use that
+
+370
+00:17:44,289 --> 00:17:45,391
+it stands in for.
+
+371
+00:17:45,441 --> 00:17:49,709
+A model that learned a proxy needs its
+reliance inspected, not just a patch on
+
+372
+00:17:49,759 --> 00:17:50,860
+the spot that broke.
+
+373
+00:17:51,210 --> 00:17:54,197
+Then ask whether the defense is tested or
+certified.
+
+374
+00:17:54,247 --> 00:17:56,896
+An empirical defense held against the
+attacks tried.
+
+375
+00:17:56,946 --> 00:18:00,271
+A certified defense comes with a proof,
+inside a radius.
+
+376
+00:18:00,321 --> 00:18:04,320
+Either way, ask what sits outside that
+radius, or outside its scope.
+
+377
+00:18:04,670 --> 00:18:09,043
+Then ask which attacks and which shifts
+were not tested, and whether that is
+
+378
+00:18:09,093 --> 00:18:09,675
+written down.
+
+379
+00:18:09,725 --> 00:18:12,203
+That written list is the residual risk
+disclosure.
+
+380
+00:18:12,253 --> 00:18:16,310
+Silence about an untested attack is not
+evidence that the model resists it.
+
+381
+00:18:16,660 --> 00:18:21,287
+Last, ask what is monitored in production,
+and what triggers review or rollback.
+
+382
+00:18:21,337 --> 00:18:23,086
+That is the monitoring specification.
+
+383
+00:18:23,136 --> 00:18:24,525
+Then say it exactly.
+
+384
+00:18:24,575 --> 00:18:25,964
+Not, it is robust.
+
+385
+00:18:26,014 --> 00:18:30,281
+Say, for example, seventy-one percent
+under an L infinity white-box attack at
+
+386
+00:18:30,331 --> 00:18:32,080
+epsilon zero point zero three.
+
+387
+00:18:32,930 --> 00:18:33,488
+Let's recap.
+
+388
+00:18:33,538 --> 00:18:37,139
+A small push flips the answer because the
+model learned a proxy.
+
+389
+00:18:37,189 --> 00:18:40,790
+FGSM takes one step, and tiny pushes add
+up across many inputs.
+
+390
+00:18:40,840 --> 00:18:44,136
+White-box, black-box and transfer attacks
+differ in what the attacker has.
+
+391
+00:18:44,186 --> 00:18:47,787
+Every defense has a limit, and an adaptive
+attack aims at it.
+
+392
+00:18:47,837 --> 00:18:50,525
+Distribution shift and natural adversarial
+inputs need no attacker.
+
+393
+00:18:50,575 --> 00:18:54,480
+A robustness claim names the attack, the
+budget and what was not tested.
+
+394
+00:18:54,830 --> 00:18:56,460
+Quiz me on robustness terms.
+
+395
+00:18:56,510 --> 00:18:59,148
+Give me one short case at a time.
+
+396
+00:18:59,198 --> 00:19:03,516
+I must name the exact term and say why its
+look-alike is wrong.
+
+397
+00:19:03,566 --> 00:19:06,204
+Use adversarial example, distribution
+shift, natural adversarial, white-box
+
+398
+00:19:06,254 --> 00:19:09,564
+attack, transfer attack, adaptive attack,
+certified defense, robust accuracy and
+
+399
+00:19:09,614 --> 00:19:10,572
+residual risk disclosure.
+
+400
+00:19:10,622 --> 00:19:14,940
+Hold back the answer until I reply, then
+correct me in one sentence.
+
+401
+00:19:15,290 --> 00:19:16,731
+Key Terms: Robustness.
+
+402
+00:19:16,781 --> 00:19:18,720
+At Nik Bear Brown.

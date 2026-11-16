@@ -1,0 +1,1558 @@
+{
+  "metadata": {
+    "slug": "claude-liam-dashboard-that-lied",
+    "title": "The Dashboard That Lied",
+    "topic": "Silent measurement failures, seeing vs doing (P(Y|X) vs P(Y|do(X))), Pearl's Ladder, and why dashboards can't answer decision questions — from Chapter 1 of Bear's Living Models book",
+    "purpose": "deep-explainer episode 3 — from Bear's own published chapter (skepticism.ai, Mar 2026)",
+    "skill": "deep-explainer",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "greeting": "Annyeong, Liam",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude-liam",
+    "clock": "narration",
+    "audience": "practitioners and makers following the channel's Claude workflows",
+    "playlist": "Computational Skepticism for AI",
+    "playlist_short": "Shorts",
+    "source": "Bear's Chapter 1, 'The Dashboard That Lied' (Living Models book; published on skepticism.ai 2026-03-16; on disk as SOURCE.md)",
+    "total_estimated_duration_seconds": 480,
+    "acts": [
+      "I — The Green Line",
+      "II — The $4.3 Billion Inference",
+      "III — Seeing v. Doing",
+      "IV — Pearl's Ladder",
+      "V — Silent Failures",
+      "VI — Living Models"
+    ],
+    "lane_histogram_plan": {
+      "vox": 7,
+      "manim": 8,
+      "remotion": 7,
+      "card": 6,
+      "ask_exempt": 1,
+      "body_total": 28,
+      "vox_share": 0.25
+    },
+    "notes": "The WAU story is the chapter's own teaching case (unnamed platform) — narrated AS the chapter's case, never as a named real company. J.C. Penney / Ron Johnson and Knight Capital are real and verifiable (FACTCHECK). Ownership: built into computational-skepticism-for-ai per Bear's standing instruction; chapter's home book is Living Models — logged in BUILD-LOG.",
+    "build": {
+      "at": "2026-07-21T13:47:56",
+      "cut": "master",
+      "filled": 8,
+      "of": 33,
+      "slates": [
+        "B00",
+        "B01",
+        "B02",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B11",
+        "B14",
+        "B16",
+        "B18",
+        "B19",
+        "B20",
+        "B21",
+        "B23",
+        "B24",
+        "B25",
+        "B26",
+        "B27",
+        "B28",
+        "B29",
+        "B30",
+        "B31",
+        "B32"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B32: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "OPEN",
+      "estimated_duration_s": 15,
+      "narration_text": "Annyeong — this is Liam, in for Bear. Today's ask comes from Bear's own book on Living Models, chapter one: can you trust your dashboard? Here's the uncomfortable shape of the answer — the most expensive analytics failures don't crash, don't error, don't warn. They hand you a beautiful green line, and let you believe it.",
+      "new_visual_element": "Cold open — composer ask, answered",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "Silent measurement failures, seeing vs doing (P(Y|X) vs P(Y|do(X))), Pearl's Ladder, and why dashboards can't answer decision questions — from Chapter 1 of Bear's Living Models book",
+            "segment": "The Dashboard That Lied",
+            "command": "What is: The Dashboard That Lied?",
+            "runningText": "building the answer…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "remotion": {
+        "pattern": "ClaudeComposerAsk",
+        "props": {
+          "greeting": "Annyeong, Liam",
+          "command": "My dashboard says we're growing. Can I trust it — and can it answer what I should actually do next?",
+          "runningText": "auditing the instrument…",
+          "output": [
+            "Two different questions.",
+            "A dashboard cannot ask whether its own output is reliable —",
+            "and it cannot say what happens if you act."
+          ]
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 16.3,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — The Green Line",
+      "estimated_duration_s": 10,
+      "narration_text": "Act one. The chapter opens on a conference room, a Tuesday morning, and a line everyone wanted to see.",
+      "new_visual_element": "Act card I",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Dashboard That Lied",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "remotion": {
+        "pattern": "FluencySegmentCard",
+        "props": {
+          "title": "The Green Line",
+          "index": "I"
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 6.19,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "I — The Green Line",
+      "estimated_duration_s": 13.4,
+      "narration_text": "The scene: a senior data team, weekly metrics review. On the screen, weekly active users climbing eighteen percent — rendered in a satisfying shade of green. Leadership leaves energized. Hiring accelerates. The chart gets screenshot into an investor deck.",
+      "new_visual_element": "VOX: the conference room glow",
+      "prompt": "Tier 1. Conference room in low light, team silhouettes facing a large wall screen glowing green with a rising chart. See SHOPPING.md.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "lane": "vox",
+        "motion": "kenburns",
+        "focus": [
+          0.55,
+          0.42
+        ],
+        "show": [
+          {
+            "at": 0.0,
+            "event": "treated plate; slow push toward the glowing screen"
+          },
+          {
+            "at": 0.6,
+            "event": "serif label: 'the chapter's case — a Tuesday morning'"
+          }
+        ]
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 14.45,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: Tier 1. Conference room in low light, team silhouettes facing a large wall screen glowing green with a rising chart. See SHOPPING.md."
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "I — The Green Line",
+      "estimated_duration_s": 11.4,
+      "narration_text": "Two point one million users to two point five. The line does exactly what a healthy product's line does. Nothing on this chart — nothing — distinguishes real growth from what actually happened.",
+      "new_visual_element": "The WAU line, drawn clean",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "the WAU line draws upward, 2.1M → 2.5M, green; +18% chip lands"
+          },
+          {
+            "at": 0.7,
+            "event": "the line holds, pristine, as 'nothing distinguishes' lands — no flaw appears"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B03_GreenLine",
+        "production_viz": {
+          "label": "WAU +18%",
+          "mechanic": "clean rising line; deliberately NO tell",
+          "note": "chapter's teaching-case numbers, labeled as the chapter's case"
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 11.04,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-21T13:47:56"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "I — The Green Line",
+      "estimated_duration_s": 17.6,
+      "narration_text": "What happened: a partial refresh failure quietly dropped four hundred thousand European user records. No error, no null, no flag — the users just ceased to exist to the reporting system. The denominator shrank; the ratio climbed. The instrument drifted — precisely, consistently, in the direction that felt like good news.",
+      "new_visual_element": "The silent mechanism — vanishing denominator",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "a user-dot field; a region of dots silently fades — no alarm, no X, just absence"
+          },
+          {
+            "at": 0.45,
+            "event": "the ratio fraction re-computes: denominator shrinks, the quotient ticks UP in green"
+          },
+          {
+            "at": 0.85,
+            "event": "'felt like good news' — terracotta underline"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B04_VanishingDenominator",
+        "production_viz": {
+          "label": "400k, silently",
+          "mechanic": "dots fade without alarm; fraction recomputes upward",
+          "note": "chapter's case mechanics"
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 17.35,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-21T13:47:56"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "I — The Green Line",
+      "estimated_duration_s": 15.2,
+      "narration_text": "Four days passed before a routine quality check caught it. And the chapter's sharpest detail: in those four days, nobody asked whether the data was reliable. The number looked right, so it was treated as right — authority borrowed from the appearance of precision.",
+      "new_visual_element": "VOX: the deck on the table",
+      "prompt": "Tier 1. Printed investor deck on a boardroom table, the green chart visible on the open page, empty chairs. See SHOPPING.md.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "lane": "vox",
+        "motion": "kenburns",
+        "focus": [
+          0.48,
+          0.5
+        ],
+        "show": [
+          {
+            "at": 0.0,
+            "event": "treated plate; slow drift across the open deck page"
+          },
+          {
+            "at": 0.55,
+            "event": "serif label: 'authority, borrowed from appearance'"
+          },
+          {
+            "at": 0.85,
+            "event": "terracotta ring lands on the printed chart"
+          }
+        ]
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 13.9,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: Tier 1. Printed investor deck on a boardroom table, the green chart visible on the open page, empty chairs. See SHOPPING.md."
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "II — The $4.3 Billion Inference",
+      "estimated_duration_s": 5.9,
+      "narration_text": "Act two. Now the same structure at catastrophic scale — with a number that was completely true.",
+      "new_visual_element": "Act card II",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card 'The $4.3 Billion Inference'"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "FluencySegmentCard",
+        "props": {
+          "title": "The $4.3 Billion Inference",
+          "index": "II"
+        }
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 5.76,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "II — The $4.3 Billion Inference",
+      "estimated_duration_s": 14.1,
+      "narration_text": "Twenty twelve. J.C. Penney's new CEO, Ron Johnson, reads the transaction history: promotional events correlate with revenue spikes, sluggish sales between them. His inference — the sales are training customers not to pay full price. Kill the promotions, lift the baseline.",
+      "new_visual_element": "VOX run R1 (1/2): the SALE storefront, tight",
+      "prompt": "Tier 1. Department-store window dense with red SALE and percent-off signage, tight framing. One plate serves B07+B08. See SHOPPING.md.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "lane": "vox",
+        "motion": "kenburns",
+        "focus": [
+          0.45,
+          0.45
+        ],
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.45,
+            "y": 0.45,
+            "scale": 1.9
+          },
+          "objects": [
+            {
+              "id": "sale-plate",
+              "x": 0.5,
+              "y": 0.5,
+              "scale": 1.0,
+              "opacity": 1.0
+            }
+          ]
+        },
+        "show": [
+          {
+            "at": 0.0,
+            "event": "tight on the red SALE tags; slow drift"
+          },
+          {
+            "at": 0.65,
+            "event": "serif label: 'the observation was real'"
+          }
+        ]
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 15.05,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Tier 1. Department-store window dense with red SALE and percent-off signage, tight framing. One plate serves B07+B08. See SHOPPING.md."
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "II — The $4.3 Billion Inference",
+      "estimated_duration_s": 15.9,
+      "narration_text": "Pull back to what the historical record actually contains: only worlds where the promotions ran. For a huge slice of customers the promotion wasn't friction — the hunt, the markdown, the win WAS the experience. That truth was structurally invisible in the data. Not hidden. Invisible.",
+      "new_visual_element": "VOX run R1 (2/2): the whole promotional world revealed",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "lane": "vox",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "vox_run": "R1",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "camera eases OUT from the handoff frame — the whole store is signage, every aisle a promotion"
+          },
+          {
+            "at": 0.7,
+            "event": "serif label: 'the record contains only this world'; terracotta underline"
+          }
+        ]
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 15.34,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: VOX run R1 (2/2): the whole promotional world revealed"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "II — The $4.3 Billion Inference",
+      "estimated_duration_s": 14.8,
+      "narration_text": "Eighteen months later: four point three billion in annual revenue gone, Johnson fired. The chapter's scalpel — the number was correct, the inference was wrong, and those are different failures. Act one's dashboard was technically false. This number was technically true. Same wreck.",
+      "new_visual_element": "True number, wrong inference — two failures, one wreck",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "remotion",
+        "scene_type": "divergence",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "two cards: 'FALSE NUMBER (the dashboard)' and 'TRUE NUMBER (the correlation)'"
+          },
+          {
+            "at": 0.5,
+            "event": "both tracks converge into the same wreck marker on 'same wreck'"
+          },
+          {
+            "at": 0.85,
+            "event": "$4.3B card lands small with 'reported figure' citation tag"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "FluencyDivergence",
+        "props": {
+          "a": "false number, trusted",
+          "b": "true number, misread",
+          "note": "both converge — the mechanism is shared"
+        }
+      },
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 14.52,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "II — The $4.3 Billion Inference",
+      "estimated_duration_s": 15.5,
+      "narration_text": "Watch the mechanism run. Remove the promotions — and the baseline doesn't rise to meet everyday low prices. The mechanism customers used to choose the store is gone, and revenue follows it down. No amount of additional historical data would have shown this in advance.",
+      "new_visual_element": "The intervention runs — collapse, not lift",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "revenue line with promo-spike rhythm; the spikes are deleted one by one"
+          },
+          {
+            "at": 0.45,
+            "event": "a ghost 'expected baseline' rises hopefully — then the REAL line sags below the old baseline"
+          },
+          {
+            "at": 0.85,
+            "event": "'more data would not have helped' — serif, terracotta period"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B10_RemoveThePromos",
+        "production_viz": {
+          "label": "the do, executed",
+          "mechanic": "spikes deleted; expected vs actual baseline diverge",
+          "note": "schematic — no invented revenue units"
+        }
+      },
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 14.81,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-21T13:47:56"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "III — Seeing v. Doing",
+      "estimated_duration_s": 6.9,
+      "narration_text": "Act three. The chapter gives that gap a precise mathematical name — and one small operator carries all of it.",
+      "new_visual_element": "Act card III",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card 'Seeing v. Doing'"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "FluencySegmentCard",
+        "props": {
+          "title": "Seeing v. Doing",
+          "index": "III"
+        }
+      },
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 6.55,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B11"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "III — Seeing v. Doing",
+      "estimated_duration_s": 18.6,
+      "narration_text": "P of Y given X — the outcome given we observe X. What co-occurs in the record. P of Y given do of X — Pearl's operator — the outcome if we reach in and set X by action. Seeing a world, versus making one. Johnson had the first. His decision needed the second.",
+      "new_visual_element": "Equation tangent: P(Y|X) vs P(Y|do(X))",
+      "lands_equation": true,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "equation card: P(Y | X) — 'seeing' — glossed as spoken"
+          },
+          {
+            "at": 0.4,
+            "event": "beside it P(Y | do(X)) types in; the do() glows terracotta on Pearl's name"
+          },
+          {
+            "at": 0.8,
+            "event": "under each: 'observe a world' / 'make a world'; Johnson's decision-chip slides under the wrong one"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B12_DoOperator",
+        "production_viz": {
+          "label": "do(·)",
+          "mechanic": "two probability cards, the do() spotlighted; equation tangent group with B13",
+          "viz.pattern": "equation_tangent"
+        }
+      },
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 14.83,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-21T13:47:56"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "III — Seeing v. Doing",
+      "estimated_duration_s": 15.2,
+      "narration_text": "Here's what the equation commits you to: that gap cannot be closed with more rows. The record holds only worlds where promotions ran — a do steps outside every world the data contains. Not a sample-size problem. A category boundary. Back to the story.",
+      "new_visual_element": "Tangent claim: the category boundary",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "equation card persists; below, a shelf of recorded-world tiles (all promo-worlds)"
+          },
+          {
+            "at": 0.5,
+            "event": "the do-arrow points OFF the shelf into empty space; more tiles pour in — none land where the arrow points"
+          },
+          {
+            "at": 0.85,
+            "event": "'a category boundary, not a data shortage' — terracotta"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B13_CategoryBoundary",
+        "production_viz": {
+          "label": "no rows there",
+          "mechanic": "recorded worlds vs the world the do creates; pouring data never fills the gap",
+          "viz.zone": "claim"
+        }
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 14.23,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-21T13:47:56"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "III — Seeing v. Doing",
+      "estimated_duration_s": 8.3,
+      "narration_text": "This has a picture. We asked Claude to draw the smallest graph where the correlation is perfectly real — and the intervention still fails.",
+      "new_visual_element": "ASK micro-beat: draw the confounder",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "ask",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "ClaudeComposerAsk micro-beat, spark line 'Real correlation. Failed intervention.'"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "ClaudeComposerAsk",
+        "props": {
+          "greeting": "",
+          "sparkLine": "Real correlation. Failed intervention.",
+          "command": "Draw the smallest causal graph where X and Y correlate strongly in observation, but intervening on X changes nothing — and name the variable that explains the trick.",
+          "runningText": "drawing the graph…",
+          "output": []
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 7.54,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B14"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "III — Seeing v. Doing",
+      "estimated_duration_s": 16.6,
+      "narration_text": "Three nodes. A confounder Z drives both X and Y — big spenders join loyalty programs. Observe X, and Y rides along beautifully. Set X by force, and nothing moves — the arrow into Y never came from X. One hidden parent, and seeing and doing come apart.",
+      "new_visual_element": "RESULT: the confounder DAG, animated",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "DAG draws: Z → X, Z → Y; observe-mode: X and Y pulse together"
+          },
+          {
+            "at": 0.55,
+            "event": "do-mode: the arrow INTO X is cut (the do severs it); X pulses alone, Y unmoved"
+          },
+          {
+            "at": 0.85,
+            "event": "'one hidden parent' — terracotta ring on Z"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B15_ConfounderDAG",
+        "production_viz": {
+          "label": "Z → X, Z → Y",
+          "mechanic": "observe-mode co-pulse vs do-mode severed edge",
+          "note": "loyalty example from the chapter's own exercise"
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 15.22,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-21T13:47:56"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "IV — Pearl's Ladder",
+      "estimated_duration_s": 5.2,
+      "narration_text": "Act four. Pearl stacked these ideas into a ladder — three rungs, and no elevator.",
+      "new_visual_element": "Act card IV",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card \"Pearl's Ladder\""
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "FluencySegmentCard",
+        "props": {
+          "title": "Pearl's Ladder",
+          "index": "IV"
+        }
+      },
+      "audio_file": "mp3/beat-B16.mp3",
+      "actual_duration_s": 5.26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B16"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "IV — Pearl's Ladder",
+      "estimated_duration_s": 17.9,
+      "narration_text": "Rung one, association: what does the data show? Every dashboard lives here. Rung two, intervention: what happens if we act — the do-operator's home, and where real decisions live. Rung three, counterfactual: what would have happened otherwise? The hardest questions of all — they need a structural model of the mechanism itself.",
+      "new_visual_element": "The Ladder, climbed",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "three rungs draw and label in turn: SEEING · DOING · IMAGINING, each with its question"
+          },
+          {
+            "at": 0.6,
+            "event": "a dashboard chip sits parked on rung one; a decision chip hovers at rung two"
+          },
+          {
+            "at": 0.85,
+            "event": "rung three glows: 'worlds that never existed'"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B17_TheLadder",
+        "production_viz": {
+          "label": "Pearl's Ladder",
+          "mechanic": "three rungs, questions, and where the tools actually sit"
+        }
+      },
+      "audio_file": "mp3/beat-B17.mp3",
+      "actual_duration_s": 16.63,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-21T13:47:56"
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "IV — Pearl's Ladder",
+      "estimated_duration_s": 15.9,
+      "narration_text": "The ladder's one brutal property: no rung is reachable by piling up more of the rung below. A thousand rows plus a structural causal model answers questions a billion rows plus a correlation engine cannot. Penney didn't need more transaction data. It needed a different instrument.",
+      "new_visual_element": "Thousand rows beats a billion",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "remotion",
+        "scene_type": "scale",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "left: a small 1k-row block + a causal-graph badge; right: a towering 1B-row stack + a correlation badge"
+          },
+          {
+            "at": 0.55,
+            "event": "the rung-two gate opens for the SMALL side; the tower bounces off it"
+          },
+          {
+            "at": 0.85,
+            "event": "'a different instrument' — terracotta underline"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "DtlScale",
+        "props": {
+          "left_label": "1,000 rows + SCM",
+          "right_label": "1,000,000,000 rows + correlations",
+          "note": "the gate only opens for the model"
+        }
+      },
+      "audio_file": "mp3/beat-B18.mp3",
+      "actual_duration_s": 15.91,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B18"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "IV — Pearl's Ladder",
+      "estimated_duration_s": 12.8,
+      "narration_text": "Which is worth sitting with, because it runs against how a generation of data organizations were built. Warehouses of history, beautifully indexed — every terabyte of it parked on rung one, answering yesterday's question with increasing precision.",
+      "new_visual_element": "VOX: the warehouse of yesterday",
+      "prompt": "Tier 1. Vast server room / data-center aisle receding to a vanishing point, cold light. See SHOPPING.md.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "lane": "vox",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "show": [
+          {
+            "at": 0.0,
+            "event": "treated plate; slow push down the aisle"
+          },
+          {
+            "at": 0.6,
+            "event": "serif label: 'rung one, at scale'"
+          }
+        ]
+      },
+      "audio_file": "mp3/beat-B19.mp3",
+      "actual_duration_s": 13.61,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B19.mp4)",
+        "suggested": "suggested prompt: Tier 1. Vast server room / data-center aisle receding to a vanishing point, cold light. See SHOPPING.md."
+      }
+    },
+    {
+      "beat_id": "B20",
+      "act": "V — Silent Failures",
+      "estimated_duration_s": 6.2,
+      "narration_text": "Act five. Name the failure mode precisely — because it has a signature, and the signature is silence.",
+      "new_visual_element": "Act card V",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card 'Silent Failures'"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "FluencySegmentCard",
+        "props": {
+          "title": "Silent Failures",
+          "index": "V"
+        }
+      },
+      "audio_file": "mp3/beat-B20.mp3",
+      "actual_duration_s": 6.07,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B20"
+      }
+    },
+    {
+      "beat_id": "B21",
+      "act": "V — Silent Failures",
+      "estimated_duration_s": 14.8,
+      "narration_text": "A system that crashes announces itself. A system that quietly changes what it measures does not. The dashboard's silence was mechanical — absence treated as the absence of absence. Penney's was epistemic — every component correct, the inference catastrophic. Same signature. No alarm.",
+      "new_visual_element": "Crash vs drift — the two silences",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "remotion",
+        "scene_type": "divergence",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "left system CRASHES loudly — red, sirens, obvious; right system keeps humming green"
+          },
+          {
+            "at": 0.5,
+            "event": "under the humming one, the measured-thing quietly swaps out — the display never flickers"
+          },
+          {
+            "at": 0.85,
+            "event": "'the signature is silence' — terracotta"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "FluencyDivergence",
+        "props": {
+          "a": "loud failure (self-announcing)",
+          "b": "silent failure (self-concealing)"
+        }
+      },
+      "audio_file": "mp3/beat-B21.mp3",
+      "actual_duration_s": 16.01,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B21"
+      }
+    },
+    {
+      "beat_id": "B22",
+      "act": "V — Silent Failures",
+      "estimated_duration_s": 14.1,
+      "narration_text": "Predictive models have their own version: concept drift. A model is a bet that yesterday's relationships persist. When the world restructures, the model keeps confidently predicting the old world's future — unaware of its own staleness. Outputs continue. Reality has left.",
+      "new_visual_element": "Concept drift — predicting the old world",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "data points flow; a fitted curve tracks them; the generating process visibly shifts regime"
+          },
+          {
+            "at": 0.5,
+            "event": "the curve keeps extrapolating the OLD regime, diverging from the new points — confidence band unchanged"
+          },
+          {
+            "at": 0.85,
+            "event": "'reality has left' — serif, terracotta period"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B22_ConceptDrift",
+        "production_viz": {
+          "label": "concept drift",
+          "mechanic": "regime shift; model extrapolates the dead regime with unchanged confidence"
+        }
+      },
+      "audio_file": "mp3/beat-B22.mp3",
+      "actual_duration_s": 14.88,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B22.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-21T13:47:56"
+      }
+    },
+    {
+      "beat_id": "B23",
+      "act": "V — Silent Failures",
+      "estimated_duration_s": 11.7,
+      "narration_text": "And when you wire rung-one outputs directly to actions, silence gets expensive fast. August first, twenty twelve. Knight Capital deploys an automated trading system. It begins executing — in error — at algorithmic speed.",
+      "new_visual_element": "VOX run R2 (1/2): the trading screens, tight",
+      "prompt": "Tier 1. Wall of trading monitors dense with numbers, tight crop, screen glow. One plate serves B23+B24. See SHOPPING.md.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "lane": "vox",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "vox_run": "R2",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.45,
+            "scale": 1.9
+          },
+          "objects": [
+            {
+              "id": "trading-plate",
+              "x": 0.5,
+              "y": 0.5,
+              "scale": 1.0,
+              "opacity": 1.0
+            }
+          ]
+        },
+        "show": [
+          {
+            "at": 0.0,
+            "event": "tight on the flickering numbers; slow drift"
+          },
+          {
+            "at": 0.7,
+            "event": "serif label: 'August 1, 2012 · 9:30 AM'"
+          }
+        ]
+      },
+      "audio_file": "mp3/beat-B23.mp3",
+      "actual_duration_s": 13.15,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B23.mp4)",
+        "suggested": "suggested prompt: Tier 1. Wall of trading monitors dense with numbers, tight crop, screen glow. One plate serves B23+B24. See SHOPPING.md."
+      }
+    },
+    {
+      "beat_id": "B24",
+      "act": "V — Silent Failures",
+      "estimated_duration_s": 14.8,
+      "narration_text": "Forty-five minutes. Four hundred forty million dollars. No human decision node stood between the execution loop and the market — the system worked exactly as designed, and the design had no provision for stopping. The human-machine boundary isn't bureaucracy. It's the accountability surface.",
+      "new_visual_element": "VOX run R2 (2/2): pull back — the empty floor",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "lane": "vox",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.55
+        ],
+        "vox_run": "R2",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "camera eases OUT from the handoff — the whole floor of screens, no human in the loop's path"
+          },
+          {
+            "at": 0.6,
+            "event": "counter chips: '45 min' · '$440M' land with citations"
+          },
+          {
+            "at": 0.85,
+            "event": "serif label: 'no provision for stopping'; terracotta underline"
+          }
+        ]
+      },
+      "audio_file": "mp3/beat-B24.mp3",
+      "actual_duration_s": 16.44,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B24.mp4)",
+        "suggested": "suggested prompt: VOX run R2 (2/2): pull back — the empty floor"
+      }
+    },
+    {
+      "beat_id": "B25",
+      "act": "V — Silent Failures",
+      "estimated_duration_s": 15.9,
+      "narration_text": "The chapter maps four maturity stages — descriptive, diagnostic, predictive, prescriptive: what happened, why, what's next, what to do. The trap in the map: an organization can climb all four and still stand on causation's first rung, prescribing from correlations. The two ladders are parallel climbs.",
+      "new_visual_element": "Four stages — and the parallel-ladder trap",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "remotion",
+        "scene_type": "structure",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "ChipGrid: DESCRIPTIVE · DIAGNOSTIC · PREDICTIVE · PRESCRIPTIVE light in order with their questions"
+          },
+          {
+            "at": 0.55,
+            "event": "beside it Pearl's three rungs; a fully-lit prescriptive org's marker still sits on RUNG ONE"
+          },
+          {
+            "at": 0.85,
+            "event": "'parallel climbs' — terracotta bracket joining the two ladders"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "DtlChipGrid",
+        "props": {
+          "chips": [
+            "what happened",
+            "why",
+            "what's next",
+            "what to do"
+          ],
+          "note": "prescriptive ≠ rung two"
+        }
+      },
+      "audio_file": "mp3/beat-B25.mp3",
+      "actual_duration_s": 16.87,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B25"
+      }
+    },
+    {
+      "beat_id": "B26",
+      "act": "VI — Living Models",
+      "estimated_duration_s": 5.5,
+      "narration_text": "Act six. What the chapter is building toward — and it is not a better dashboard.",
+      "new_visual_element": "Act card VI",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "card",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card 'Living Models'"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "FluencySegmentCard",
+        "props": {
+          "title": "Living Models",
+          "index": "VI"
+        }
+      },
+      "audio_file": "mp3/beat-B26.mp3",
+      "actual_duration_s": 4.73,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B26"
+      }
+    },
+    {
+      "beat_id": "B27",
+      "act": "VI — Living Models",
+      "estimated_duration_s": 17.6,
+      "narration_text": "A Living Model has four properties. Causal — recommendations are estimated do-effects. Counterfactual — it can price the decision not taken. Continually updated — parameters live against incoming data. Treatment-oriented — the output is a ranked list of interventions. Run the checklist: a dashboard scores zero of four. That's the distance.",
+      "new_visual_element": "The four-property checklist",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "remotion",
+        "scene_type": "structure",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "four property rows draw with checkboxes: causal · counterfactual · continually updated · treatment-oriented"
+          },
+          {
+            "at": 0.55,
+            "event": "column chips run the checklist: DASHBOARD 0/4 · PREDICTIVE 1/4 · PRESCRIPTIVE 2-ish · LIVING MODEL 4/4"
+          },
+          {
+            "at": 0.9,
+            "event": "terracotta ring on the 4/4"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "DtlLayerStack",
+        "props": {
+          "note": "checklist grid; scores per the chapter's definitions"
+        }
+      },
+      "audio_file": "mp3/beat-B27.mp3",
+      "actual_duration_s": 18.1,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B27"
+      }
+    },
+    {
+      "beat_id": "B28",
+      "act": "VI — Living Models",
+      "estimated_duration_s": 17.2,
+      "narration_text": "Underneath it all, the posture the chapter names observability: a measurement system that treats its own integrity as a first-class output. Not a bolted-on monitor — an instrument that tells you what's happening to itself, and which questions the data can structurally answer. The integrity panel belongs beside the metrics.",
+      "new_visual_element": "Observability — the instrument reports on itself",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "remotion",
+        "scene_type": "structure",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "a metrics panel; beside it a second panel slides in: pipeline freshness · row counts · dimension integrity"
+          },
+          {
+            "at": 0.55,
+            "event": "a simulated refresh failure fires — THIS time the integrity panel flags it before the green line moves"
+          },
+          {
+            "at": 0.9,
+            "event": "'beside the metrics, not behind them' — terracotta"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "FluencySourceFlow",
+        "props": {
+          "stages": [
+            "the world",
+            "the pipeline",
+            "the metric",
+            "the integrity panel watching the pipeline"
+          ],
+          "note": "the B04 failure, replayed and caught"
+        }
+      },
+      "audio_file": "mp3/beat-B28.mp3",
+      "actual_duration_s": 17.52,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B28"
+      }
+    },
+    {
+      "beat_id": "B29",
+      "act": "VI — Living Models",
+      "estimated_duration_s": 16.9,
+      "narration_text": "Back to the conference room. Given what the screen showed, growth was the sensible read — the failure wasn't incompetence, it was architecture. The team trusted the screen showed the data, and the data held the world. Neither was verified. Both were verifiable. That gap is the whole book.",
+      "new_visual_element": "The callback — the green line, re-examined",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "remotion",
+        "scene_type": "structure",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "the B03 green line returns, small, in a frame; two trust-links draw beneath: screen→data, data→world"
+          },
+          {
+            "at": 0.55,
+            "event": "both links stamp 'UNVERIFIED' — then flip to 'VERIFIABLE' in terracotta on the spoken word"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "DtlLayerStack",
+        "props": {
+          "layers": [
+            "what the screen shows",
+            "what the data contains",
+            "what the world holds"
+          ],
+          "note": "two links, both checkable"
+        }
+      },
+      "audio_file": "mp3/beat-B29.mp3",
+      "actual_duration_s": 15.34,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B29"
+      }
+    },
+    {
+      "beat_id": "B30",
+      "act": "CLOSE",
+      "estimated_duration_s": 28,
+      "narration_text": "Let's recap with Claude. Silent failures don't announce themselves — the green line looks identical either way. A true number can still power a false inference; seeing is not doing. The do-operator marks a category boundary no pile of data crosses. Prescriptive is not causal — the two ladders are parallel climbs. And the fix is architectural: instruments that verify themselves, and models built to answer what happens if we act.",
+      "new_visual_element": "VERDICT recap",
+      "lead_silence_s": 0.5,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "bookend",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "ClaudeVerdictArtifact: five bare lines land with the voice"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "ClaudeVerdictArtifact",
+        "props": {
+          "title": "Seeing is not doing",
+          "artifactLines": [
+            "Silent failures look exactly like good news.",
+            "A true number can power a false inference.",
+            "do(X) marks a boundary more data never crosses.",
+            "Prescriptive is not causal — parallel ladders.",
+            "Build instruments that verify themselves."
+          ]
+        }
+      },
+      "audio_file": "mp3/beat-B30.mp3",
+      "actual_duration_s": 21.36,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B30"
+      }
+    },
+    {
+      "beat_id": "B31",
+      "act": "CLOSE",
+      "estimated_duration_s": 38,
+      "narration_text": "Your turn. Here's the prompt, straight from the chapter's own exercise: my team found a strong correlation between loyalty program membership and average order value, and leadership wants to expand the program. Construct two causal stories consistent with that correlation — one where the program causes the spending, one where a pre-existing difference drives both. Draw each causal graph, name the data that would distinguish them, and express the whole answer as P of Y given X versus P of Y given do of X — then tell me what that implies for the budget decision. Run it on a correlation your own org is about to act on. That's where the money is.",
+      "new_visual_element": "YOUR TURN",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "bookend",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "ClaudeComposerAsk, greeting 'Your turn.', the full prompt typed as Liam reads it"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "ClaudeComposerAsk",
+        "props": {
+          "greeting": "Your turn.",
+          "runningText": "paste this into Claude…",
+          "command": "My team reports a strong positive correlation between loyalty program membership and average order value, and leadership proposes expanding the program to all segments. (1) Construct two causal stories consistent with the correlation — one where the program causes higher spending, one where a pre-existing difference between joiners and non-joiners drives both. (2) Draw the causal graph for each. (3) Name two specific pieces of data that would distinguish them empirically. (4) Express the analysis as P(Y|X) versus P(Y|do(X)), and state what it implies for the proposed budget decision."
+        }
+      },
+      "audio_file": "mp3/beat-B31.mp3",
+      "actual_duration_s": 34.22,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B31"
+      }
+    },
+    {
+      "beat_id": "B32",
+      "act": "CLOSE",
+      "estimated_duration_s": 7,
+      "narration_text": "The Dashboard That Lied. Liam, in for Bear.",
+      "new_visual_element": "Title re-read outro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "bookend",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "ClaudeTitleOutro: poster serif title, terracotta period, handle"
+          }
+        ]
+      },
+      "remotion": {
+        "pattern": "ClaudeTitleOutro",
+        "props": {
+          "title": "The Dashboard That Lied",
+          "handle": "@NikBearBrown",
+          "subline": "Computational Skepticism for AI"
+        }
+      },
+      "audio_file": "mp3/beat-B32.mp3",
+      "actual_duration_s": 3.22,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-21T13:47:56",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B32"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Dashboard That Lied",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · Silent measurement failures, seeing vs doing (P(Y|X) vs P(Y|do(X))), Pearl's Ladder, and why dashboards can't answer decision questions — from Chapter 1 of Bear's Living Models book",
+            "segment": "The Dashboard That Lied",
+            "command": "Take what you learned from [The Dashboard That Lied] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@claude-liam"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Dashboard That Lied",
+            "slug": "claude-liam-dashboard-that-lied"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

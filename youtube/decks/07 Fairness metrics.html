@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fairness metrics | INFO 7375 Computational Skepticism terminology deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --nu-red:#C8102E; --nu-black:#000000; --nu-white:#FFFFFF; --nu-gold:#A4804A;
+  --nu-red-hover:#A50C25; --nu-red-press:#870A1F; --nu-red-tint:#FBE7EA;
+  --nu-neutral-1:#E3E3E3; --nu-neutral-2:#C4C4C4; --nu-neutral-3:#909090; --nu-neutral-4:#787878;
+  --nu-neutral-5:#545454; --nu-neutral-6:#404040; --nu-neutral-7:#2D2926; --nu-neutral-8:#1A1A1A;
+  --diagram-ink:#2A1A0E; --panel-subtle:#F6F6F6;
+  --font:"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --mono:ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(0.4, 0, 0.2, 1);
+  /* viewer chrome (theme-aware; slides themselves keep fixed brand colors) */
+  --stage-bg:#E9E9E9; --chrome-bg:rgba(255,255,255,0.94); --chrome-fg:#1A1A1A;
+  --chrome-line:#C4C4C4; --chrome-muted:#545454; --chrome-hover:rgba(0,0,0,0.07);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+    --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+  }
+}
+:root[data-theme="dark"]{
+  --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+  --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top, 0px)}
+body{
+  height:100%; margin:0; overflow:hidden; display:flex; flex-direction:column;
+  background:var(--stage-bg); color:var(--chrome-fg); font-family:var(--font);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+:fullscreen body, body:fullscreen{background:#000}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------- stage & scaling ---------- */
+#stage{position:relative; flex:1 1 auto; min-height:0; overflow:hidden; touch-action:pan-y}
+#deck{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0}
+
+/* ---------- slide base ---------- */
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column; overflow:hidden;
+  background:var(--nu-white); color:var(--nu-black); font-family:var(--font);
+  padding-left:120px; padding-right:120px;
+}
+.slide.is-active{display:flex}
+:where(.slide) :where(h1,h2,p,ul){margin:0}
+.s-dark{background:var(--nu-black); color:var(--nu-white)}
+.s-red{background:var(--nu-red); color:var(--nu-white)}
+.rule{position:absolute; top:0; left:0; right:0; height:8px; background:var(--nu-red)}
+.rule.r10{height:10px}
+
+.s-opening,.s-closing{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-intro{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-section{padding-top:110px; padding-bottom:110px; justify-content:center}
+.s-text{padding-top:96px; padding-bottom:96px}
+.s-diagram{padding-top:72px; padding-bottom:56px}
+.s-chart{padding-top:64px; padding-bottom:56px}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-size:22px; font-weight:700; line-height:1.2; text-transform:uppercase;
+  letter-spacing:0.16em; color:var(--nu-red); margin-bottom:28px;
+}
+.s-intro .eyebrow{font-size:24px; letter-spacing:0.18em; margin-bottom:40px}
+.s-section .eyebrow{font-size:26px; letter-spacing:0.20em; color:rgba(255,255,255,0.78); margin-bottom:36px}
+.s-chart .eyebrow,.s-diagram .eyebrow{margin-bottom:18px}
+
+.t-opening{font-size:104px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-section{font-size:108px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-closing{font-size:84px; font-weight:400; line-height:1.04; letter-spacing:-0.02em; max-width:1560px}
+.t-intro{font-size:72px; font-weight:400; line-height:1.1; letter-spacing:-0.01em; max-width:1500px}
+.t-text{font-size:66px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1500px}
+.t-chart{font-size:50px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1560px}
+.s-chart .t-chart{margin-bottom:30px}
+.s-diagram .t-chart{margin-bottom:40px}
+
+.sub-opening{font-size:38px; font-weight:400; line-height:1.3; color:var(--nu-neutral-2); max-width:1300px}
+.sub-section{font-size:34px; font-weight:400; line-height:1.3; color:rgba(255,255,255,0.92); margin-top:40px; max-width:1300px}
+.para{font-size:30px; line-height:1.4; color:var(--nu-neutral-7); max-width:1300px}
+.caption{font-size:24px; line-height:1.36; color:var(--nu-neutral-5); max-width:1400px; margin-top:22px}
+.t-opening,.t-section,.t-closing,.t-intro,.t-text,.t-chart,.sub-opening,.sub-section,.caption{text-wrap:pretty}
+.source{font-size:19px; line-height:1.4; color:var(--nu-neutral-5); margin-top:12px}
+
+.bar-120{width:120px; height:8px; background:var(--nu-red); margin:52px 0 44px}
+.bar-88{width:88px; height:6px; background:var(--nu-red); margin:40px 0 60px}
+
+.bullets{list-style:none; padding:0; max-width:1480px; display:flex; flex-direction:column; gap:26px}
+.bullets li{
+  display:grid; grid-template-columns:14px 1fr; column-gap:22px;
+  font-size:31px; line-height:1.42; color:var(--nu-neutral-7);
+}
+.bullets li::before{
+  content:""; width:14px; height:14px; background:var(--nu-red);
+  margin-top:calc((31px * 1.42 - 14px) / 2);
+}
+.bullets strong{font-weight:700; color:var(--nu-black)}
+
+/* ---------- charts ---------- */
+.chart{width:1480px; height:600px; flex:none}
+.chart svg{display:block; width:1480px; height:600px; overflow:visible}
+.chart-fallback{
+  width:100%; height:100%; display:grid; place-items:center; border:1px solid var(--nu-neutral-1);
+  font-size:24px; color:var(--nu-neutral-5); background:var(--panel-subtle)
+}
+
+/* ---------- diagram ---------- */
+.diagram{flex:0 1 auto; min-height:0; width:100%; max-width:1400px; max-height:720px}
+.diagram svg{display:block}
+
+/* ---------- evidence status: conceptual vs. illustrative vs. observed ---------- */
+.evidence{
+  position:absolute; right:120px; font-size:18px; font-weight:700; line-height:1;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--nu-neutral-5);
+  border:1px solid var(--nu-neutral-2); padding:9px 12px 8px;
+}
+.s-chart .evidence{top:58px}
+.s-diagram .evidence{top:66px}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)}}
+.slide.is-active .rise{animation:rise 550ms var(--ease) both}
+.slide.is-active .g2{animation-delay:120ms}
+.slide.is-active .g3{animation-delay:240ms}
+@media (prefers-reduced-motion: reduce){
+  .slide.is-active .rise{animation:none}
+}
+
+/* ---------- viewer chrome ---------- */
+#controls{
+  position:absolute; right:14px; bottom:14px; z-index:10;
+  display:flex; align-items:center; gap:2px; padding:4px;
+  background:var(--chrome-bg); border:1px solid var(--chrome-line); color:var(--chrome-fg);
+  opacity:0.38; transition:opacity 200ms var(--ease);
+}
+#controls:hover,#controls:focus-within,body.show-controls #controls{opacity:1}
+#controls button,#thumbs .close{
+  appearance:none; border:0; background:transparent; color:inherit; cursor:pointer;
+  width:34px; height:34px; display:grid; place-items:center; padding:0;
+}
+#controls button:hover,#thumbs .close:hover{background:var(--chrome-hover)}
+#controls button[disabled]{opacity:0.35; cursor:default}
+#controls button[aria-pressed="true"]{background:var(--chrome-hover)}
+#controls svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:square}
+#counter{
+  min-width:66px; text-align:center; font-family:var(--mono); font-size:13px;
+  font-variant-numeric:tabular-nums; color:var(--chrome-fg)
+}
+#pips{display:flex; gap:4px; padding:0 6px 0 2px}
+#pips:empty{display:none}
+.pip{width:6px; height:6px; background:var(--chrome-line)}
+.pip.on{background:var(--nu-red)}
+.sep{width:1px; height:20px; background:var(--chrome-line); margin:0 4px}
+button:focus-visible,.thumb:focus-visible{outline:3px solid var(--nu-red); outline-offset:2px}
+
+#notes{
+  display:none; flex:none; height:min(30vh, 260px); overflow:auto;
+  padding:18px 28px 20px; background:var(--chrome-bg); border-top:1px solid var(--chrome-line);
+  color:var(--chrome-fg); font-size:17px; line-height:1.55;
+}
+body.notes-open #notes{display:block}
+#notes h2{margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-muted)}
+#notes p{margin:0 0 10px; max-width:78ch}
+
+#thumbs{position:absolute; inset:0; z-index:20; display:none; overflow:auto; background:var(--stage-bg); padding:24px}
+#thumbs.open{display:block}
+#thumbs .bar{display:flex; align-items:center; justify-content:space-between; max-width:1400px; margin:0 auto 18px}
+#thumbs .bar h2{margin:0; font-size:15px; font-weight:700; color:var(--chrome-fg)}
+#thumbs .close svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75}
+#thumbs .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:18px; max-width:1400px; margin:0 auto}
+.thumb{
+  appearance:none; padding:0; margin:0; border:1px solid var(--chrome-line); background:#fff;
+  cursor:pointer; position:relative; overflow:hidden; aspect-ratio:16 / 9; width:100%; display:block
+}
+.thumb.current{outline:3px solid var(--nu-red); outline-offset:2px}
+.thumb-inner{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0; pointer-events:none; text-align:left; font:400 16px/1.2 var(--font); white-space:normal}
+.thumb-inner .slide{display:flex}
+.thumb-num{
+  position:absolute; left:0; bottom:0; padding:3px 7px; background:rgba(0,0,0,0.72); color:#fff;
+  font-family:var(--mono); font-size:12px; line-height:1.2
+}
+
+/* ---------- print: every slide, final state ---------- */
+@media print{
+  @page{size:1920px 1080px; margin:0}
+  :root{padding:0}
+  html,body{height:auto; overflow:visible; display:block; background:#fff}
+  #stage{overflow:visible; height:auto}
+  #deck{position:static; transform:none !important; width:1920px; height:auto}
+  .slide{position:relative; display:flex !important; width:1920px; height:1080px; break-after:page; page-break-after:always}
+  .slide .rise{animation:none !important; opacity:1 !important; transform:none !important}
+  #controls,#notes,#thumbs{display:none !important}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+/* ---------- review-deck additions (small; typography classes above are untouched) ---------- */
+.slide .source{font-size:24px; margin-top:10px}
+.evidence{font-size:24px; letter-spacing:0.1em}
+.diagram svg text{font-kerning:normal}
+.diagram{cursor:pointer}
+</style>
+</head>
+<body>
+
+<main id="stage" aria-roledescription="slide deck" aria-label="INFO 7375 Computational Skepticism terminology: Chapter 7, Fairness metrics">
+  <div id="deck">
+
+    <section class="slide s-dark s-opening" aria-roledescription="slide" data-title="Fairness metrics">
+      <div class="rule r10"></div>
+      <p class="eyebrow rise">INFO 7375 · Terminology · Chapter 7</p>
+      <h1 class="t-opening rise g2">Fairness metrics</h1>
+      <div class="bar-120 rise g2"></div>
+      <p class="sub-opening rise g3">Terms for choosing a fairness definition, and defending it</p>
+      <div class="speaker-notes" hidden><p>31 terms. Tags: in the book text means Chapter 7 uses and explains it (30 terms); in the glossary means a row in the course exam-term list that the chapter does not explain (threshold). Chapter 7 is Fairness Metrics: Choosing a Definition and Defending It. Left out: accuracy, loss function, Pearl ladder, build and audit pairing.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Thirty-one terms in four groups">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Map</p>
+      <h2 class="t-chart">Thirty-one terms in four groups</h2>
+      <div class="diagram build" data-build="map" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7; docs/Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Four groups, one per click.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Rates from a confusion matrix">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Definitions and the theorem</p>
+      <h2 class="t-chart">Rates from a confusion matrix</h2>
+      <div class="diagram build" data-build="rates" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “The arithmetic” and its calibration-satisfying table.</p>
+      <div class="speaker-notes" hidden><p>Counts are rebuilt from the chapter calibrated table (base rates 0.6 and 0.3, TPR 0.60 and 0.70, FPR 0.30 and 0.10, 200 people per group). Check: 72 of 96 flagged in A and 42 of 56 in B are truly positive, both 0.75, as the chapter states.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Demographic parity, equalized odds, calibration parity">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Definitions and the theorem</p>
+      <h2 class="t-chart">Demographic parity, equalized odds, calibration parity</h2>
+      <div class="diagram build" data-build="defs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “Three definitions”.</p>
+      <div class="speaker-notes" hidden><p>Same 200 people per group as the previous slide. Yes rates are 96/200 = 0.48 and 56/200 = 0.28, matching the chapter table. Calibration parity is read as equal PPV, as the chapter does for a binary score.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="The impossibility theorem and the threshold">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Definitions and the theorem</p>
+      <h2 class="t-chart">The impossibility theorem and the threshold</h2>
+      <div class="diagram build" data-build="thm" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “The arithmetic”; docs/Exam terms - compact list (threshold).</p>
+      <div class="speaker-notes" hidden><p>Steps 1 and 2 are the chapter algebra with its numbers. Steps 3 and 4 use a stated illustrative score model: group A scores follow Beta(3,2) (mean 0.6), group B Beta(1.5,3.5) (mean 0.3), and the outcome is 1 with probability equal to the score, so scores are calibrated in both groups. Rates are computed by integrating the densities above the cutoff. The cutoff for B that matches the false-positive rate is found by search.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="COMPAS, values claims and the defended choice">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Choosing and defending</p>
+      <h2 class="t-chart">COMPAS, values claims and the defended choice</h2>
+      <div class="diagram build" data-build="compas" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “The COMPAS case”; “Each metric is a values claim”; “The defense as deliverable”; “Who should have decided”.</p>
+      <div class="speaker-notes" hidden><p>The 44.9% and 23.5% are ProPublica figures as shown in the course review deck; the chapter says about 2 times. The score bars are illustrative: equal for both groups, as Northpointe claimed. The six steps are the chapter structure.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Group fairness and individual fairness">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Beyond groups</p>
+      <h2 class="t-chart">Group fairness and individual fairness</h2>
+      <div class="diagram build" data-build="indiv" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “Beyond group metrics: individual fairness”.</p>
+      <div class="speaker-notes" hidden><p>Applicant outputs 0.72 and 0.58, the distance 0.02 and the zip weight 0.30 are illustrative. D is total variation: half the sum of absolute differences over the two outcomes.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Awareness, unawareness and proxy">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Beyond groups</p>
+      <h2 class="t-chart">Awareness, unawareness and proxy</h2>
+      <div class="diagram build" data-build="aware" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “Fairness through awareness vs. unawareness”.</p>
+      <div class="speaker-notes" hidden><p>200 people, 100 per group; 85% live in their group home zip code (seeded draw). The accuracy is computed from the sample. The distance weight 0.30 is the same illustrative value as the previous slide.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Causal paths and counterfactual fairness">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Causal fairness</p>
+      <h2 class="t-chart">Causal paths and counterfactual fairness</h2>
+      <div class="diagram build" data-build="causal" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “Causal fairness: what the data cannot tell you”.</p>
+      <div class="speaker-notes" hidden><p>Path coefficients 0.30, 0.40 x 0.50 and 0.50 x 0.60 are illustrative linear values, so the association is the sum of three path products. The counterfactual uses E = 50 + 10A + U and a score (E - 30)/50, also illustrative.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="The Generalized Entropy Index">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Measuring unfairness</p>
+      <h2 class="t-chart">The Generalized Entropy Index</h2>
+      <div class="diagram build" data-build="ge" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “The Generalized Entropy Index”; exercise 10.</p>
+      <div class="speaker-notes" hidden><p>Eight illustrative benefit scores. The within and between figures use the numbers of the chapter exercise 10 (n 200 each, means 0.65 and 0.45, GE 0.05 and 0.04, overall mean 0.55).</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Pre-, in- and post-processing">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">The toolkit</p>
+      <h2 class="t-chart">Pre-, in- and post-processing</h2>
+      <div class="diagram build" data-build="tool" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “The toolkit and what it cannot do”.</p>
+      <div class="speaker-notes" hidden><p>Reweighting uses the chapter base rates and 200 people per group. Steps 2 and 3 use the Beta score model from the theorem slide. In step 2 one cutoff stands in for all the parameters of a model.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Look-alike pairs">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Tell them apart</p>
+      <h2 class="t-chart">Look-alike pairs</h2>
+      <div class="diagram build" data-build="pairs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7.</p>
+      <div class="speaker-notes" hidden><p>Demographic parity and equalized odds; group and individual fairness; awareness and unawareness; disparate treatment and disparate impact.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Say it exactly">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Vague request, exact instruction</p>
+      <h2 class="t-chart">Say it exactly</h2>
+      <div class="diagram build" data-build="say" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7.</p>
+      <div class="speaker-notes" hidden><p>Five requests and exact versions, each computed from this deck.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Before you defend a fairness metric">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Checklist</p>
+      <h2 class="t-chart">Before you defend a fairness metric</h2>
+      <div class="diagram build" data-build="closing" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 7, “The defense as deliverable”.</p>
+      <div class="speaker-notes" hidden><p>Six checks.</p></div>
+    </section>
+
+  </div>
+
+  <nav id="controls" aria-label="Slide controls">
+    <button type="button" id="btn-prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="counter" aria-hidden="true">1 / 1</span>
+    <span id="pips" aria-hidden="true"></span>
+    <button type="button" id="btn-next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <span class="sep" aria-hidden="true"></span>
+    <button type="button" id="btn-thumbs" aria-label="Show all slides (G)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="7" height="5"/><rect x="13" y="5" width="7" height="5"/><rect x="4" y="14" width="7" height="5"/><rect x="13" y="14" width="7" height="5"/></svg></button>
+    <button type="button" id="btn-notes" aria-label="Speaker notes (N)" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 11h14M5 16h9"/></svg></button>
+    <button type="button" id="btn-fs" aria-label="Fullscreen (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+  </nav>
+
+  <div id="thumbs" role="dialog" aria-modal="true" aria-label="All slides">
+    <div class="bar">
+      <h2>All slides</h2>
+      <button type="button" class="close" aria-label="Close slide overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="grid"></div>
+  </div>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+</main>
+
+<aside id="notes" aria-label="Speaker notes">
+  <h2 id="notes-head">Speaker notes</h2>
+  <div id="notes-body"></div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var stage = document.getElementById("stage");
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(".slide"));
+  var total = slides.length;
+  var counter = document.getElementById("counter");
+  var pips = document.getElementById("pips");
+  var live = document.getElementById("live");
+  var notesHead = document.getElementById("notes-head");
+  var notesBody = document.getElementById("notes-body");
+  var btnPrev = document.getElementById("btn-prev");
+  var btnNext = document.getElementById("btn-next");
+  var btnNotes = document.getElementById("btn-notes");
+  var btnThumbs = document.getElementById("btn-thumbs");
+  var btnFs = document.getElementById("btn-fs");
+  var thumbs = document.getElementById("thumbs");
+  var thumbGrid = thumbs.querySelector(".grid");
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hasD3 = typeof window.d3 !== "undefined";
+  var current = -1, step = 0, lastFocus = null;
+
+  /* Recurring visual vocabulary
+     ink   = confidence / belief        red  = failure, consequence, causal break
+     gray  = familiar data, same source tint = what an inspection or failure exposes */
+  var INK = "#2A1A0E", RED = "#C8102E", TINT = "#FBE7EA", GRID = "#E3E3E3", MUTED = "#545454",
+      BASE = "#909090", FAMILIAR = "#C4C4C4", SUBTLE = "#F6F6F6", BODY = "#2D2926";
+  var MONO = 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace';
+  var SANS = '"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+
+  /* ---------------- scaling ---------------- */
+  function fit() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    var s = Math.min(w / 1920, h / 1080);
+    deck.style.transform = "translate(" + (w - 1920 * s) / 2 + "px," + (h - 1080 * s) / 2 + "px) scale(" + s + ")";
+  }
+  if ("ResizeObserver" in window) new ResizeObserver(fit).observe(stage);
+  window.addEventListener("resize", fit);
+
+  /* ---------------- drawing helpers ---------------- */
+  function svgFor(el, w, h, label, desc, fixed) {
+    el.innerHTML = "";
+    var svg = d3.select(el).append("svg").attr("viewBox", "0 0 " + w + " " + h)
+      .attr("role", "img").attr("aria-label", label);
+    if (fixed) svg.attr("width", w).attr("height", h).style("overflow", "visible");
+    else svg.attr("width", "100%").attr("height", "100%").attr("preserveAspectRatio", "xMinYMin meet");
+    svg.append("title").text(label);
+    svg.append("desc").text(desc);
+    return svg;
+  }
+  function txt(g, x, y, s, o) {
+    o = o || {};
+    var t = g.append("text").attr("x", x).attr("y", y)
+      .attr("font-family", o.family || SANS).attr("font-size", o.size || 22)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || INK);
+    if (o.anchor) t.attr("text-anchor", o.anchor);
+    if (o.ls) t.attr("letter-spacing", o.ls);
+    if (o.dy) t.attr("dy", o.dy);
+    return t.text(s);
+  }
+  function fadeIn(sel, delay, dur) {
+    sel.attr("opacity", 0).transition().delay(delay || 0).duration(dur || 400).ease(d3.easeCubicOut).attr("opacity", 1);
+    return sel;
+  }
+  function rng(seed) {
+    var s = seed >>> 0;
+    return function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  /* ================= review-deck helpers ================= */
+  var W = 1400, H = 700;
+  function A(anim, k, n) { return anim && k === n; }
+  function shuffle(a, r) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function drawIn(path, delay, dur) {
+    var L = path.node().getTotalLength();
+    if (!(L > 0)) return path;
+    path.attr("stroke-dasharray", L + " " + L).attr("stroke-dashoffset", L)
+      .transition().delay(delay || 0).duration(dur || 500).ease(d3.easeCubicOut).attr("stroke-dashoffset", 0)
+      .on("end", function () { d3.select(this).attr("stroke-dasharray", null).attr("stroke-dashoffset", null); });
+    return path;
+  }
+  function tweenNum(sel, from, to, fmt, delay, dur) {
+    sel.text(fmt(from)).transition().delay(delay || 0).duration(dur || 1000).ease(d3.easeCubicOut)
+      .tween("text", function () { var it = d3.interpolate(from, to), node = this; return function (t) { node.textContent = fmt(it(t)); }; });
+  }
+  var pct1 = function (v) { return v.toFixed(1) + "%"; };
+  function lab(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: 700, fill: o.fill || MUTED, ls: 1.2, anchor: o.anchor }); }
+  /* wrap a string into tspans; n = characters per line (estimate) */
+  function wrap(g, x, y, s, n, o) {
+    o = o || {};
+    var size = o.size || 26, lh = o.lh || Math.round(size * 1.34), words = s.split(" "), lines = [], cur = "";
+    words.forEach(function (w) { var t = (cur ? cur + " " : "") + w; if (t.length > n && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur);
+    var t = g.append("text").attr("x", x).attr("y", y).attr("font-family", SANS).attr("font-size", size)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || BODY);
+    lines.forEach(function (l, i) { t.append("tspan").attr("x", x).attr("dy", i ? lh : 0).text(l); });
+    t.node().__h = lines.length * lh;
+    return t;
+  }
+  function box(g, x, y, w, h, o) {
+    o = o || {};
+    return g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", w).attr("height", h)
+      .attr("fill", o.fill || "#FFFFFF").attr("stroke", o.stroke || FAMILIAR).attr("stroke-width", o.sw || 1.5);
+  }
+  function ppvOf(p, sens, spec) { return p * sens / (p * sens + (1 - p) * (1 - spec)); }
+  function sigmoid(z) { return 1 / (1 + Math.exp(-z)); }
+  function logit(c) { return Math.log(c / (1 - c)); }
+  function fmtInt(v) { return d3.format(",")(Math.round(v)); }
+  function check(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + y + " L" + (x - s / 3) + "," + (y + s * 0.7) + " L" + (x + s) + "," + (y - s * 0.8)).attr("fill", "none").attr("stroke", color || INK).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+  function cross(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + (y - s) + " L" + (x + s) + "," + (y + s) + " M" + (x + s) + "," + (y - s) + " L" + (x - s) + "," + (y + s)).attr("stroke", color || RED).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+
+  /* ---------- small drawing helpers ---------- */
+  function run(g, dur, fn, anim, ease) {
+    if (!anim) { fn(1); return; }
+    fn(0);
+    d3.select(g.node()).transition().duration(dur).ease(ease || d3.easeLinear)
+      .tween("run", function () { return function (t) { fn(t); }; });
+  }
+  /* keyframes through the values in a, smooth between them, t in 0..1 */
+  function kf(t, a) {
+    var n = a.length - 1, s = Math.min(n - 1e-9, Math.max(0, t) * n), i = Math.floor(s);
+    return a[i] + (a[i + 1] - a[i]) * d3.easeCubicInOut(s - i);
+  }
+  function hint(svg) { wrap(svg.append("g"), 800, 44, "Click or press → to start the animation. Each click adds one idea.", 46, { size: 28, fill: MUTED }); }
+  function cap(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 26, weight: o.weight || 400, fill: o.fill || BODY, anchor: o.anchor, family: o.family }); }
+  function sgn(v, d) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d || 0); }
+
+  /* right-hand column: one glossary entry per step, with its tag; returns the y below the last entry */
+  function entries(svg, list, k, anim) {
+    var g = svg.append("g"), y = 4;
+    list.forEach(function (it) {
+      if (it.s > k) return;
+      var t = T[it.id], cur = it.s === k, e = g.append("g");
+      txt(e, 800, y + 26, t.n, { size: 26, weight: 700, fill: cur ? RED : INK });
+      var TG = { book: ["in the book text", 212], gloss: ["in the glossary", 200], video: ["video only", 150], editor: ["editor or docs", 190], web: ["outside source", 200] }[t.tag || "video"], tg = TG[0], tw_ = TG[1], fill_ = t.tag === "book";
+      e.append("rect").attr("x", 1400 - tw_ + 0.5).attr("y", y + 3.5).attr("width", tw_ - 1).attr("height", 34)
+        .attr("fill", fill_ ? INK : "none").attr("stroke", fill_ ? INK : GREY).attr("stroke-width", 1.5);
+      txt(e, 1400 - tw_ / 2, y + 28, tg, { size: 24, anchor: "middle", fill: fill_ ? "#FFFFFF" : MUTED });
+      var yy = y + 58;
+      if (t.alias) { txt(e, 800, yy, t.alias, { size: 24, fill: MUTED }); yy += 30; }
+      var w = wrap(e, 800, yy, t.m + ".", 50, { size: 24, lh: 30, fill: BODY });
+      y = yy + w.node().__h + 6;
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    return y;
+  }
+  function pairStrip(svg, a, b) {
+    var g = svg.append("g");
+    lab(g, 0, 598, "TELL THESE APART");
+    [[0, a], [740, b]].forEach(function (p, i) {
+      box(g, p[0], 612, 660, 88, { stroke: i ? RED : INK, sw: 2 });
+      txt(g, p[0] + 20, 646, p[1][0], { size: 26, weight: 700, fill: i ? RED : INK });
+      txt(g, p[0] + 20, 682, p[1][1], { size: 24, fill: BODY });
+    });
+    txt(g, 700, 664, "≠", { size: 44, weight: 700, anchor: "middle", fill: RED });
+  }
+  function base(svg, list, k, anim, a, b) { var y = entries(svg, list, k, anim); pairStrip(svg, a, b); if (k === 0) hint(svg); return y; }
+
+  /* top-down / side-view camera pieces. ang: radians, 0 = +x, y grows downward */
+  function conePath(x, y, ang, fov, len) {
+    var h = fov * DEG / 2;
+    return "M" + x + "," + y + "L" + (x + len * Math.cos(ang - h)) + "," + (y + len * Math.sin(ang - h)) +
+      "A" + len + "," + len + " 0 0 1 " + (x + len * Math.cos(ang + h)) + "," + (y + len * Math.sin(ang + h)) + "Z";
+  }
+  function cone(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", TINT).attr("fill-opacity", 0.9).attr("stroke", RED).attr("stroke-width", 2);
+  }
+  function ghost(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 1.5).attr("stroke-dasharray", "6 6");
+  }
+  function camBody(g, x, y, ang) {
+    var c = g.append("g").attr("transform", "translate(" + x + "," + y + ") rotate(" + (ang / DEG) + ")");
+    c.append("rect").attr("x", -16).attr("y", -11).attr("width", 24).attr("height", 22).attr("fill", INK);
+    c.append("path").attr("d", "M8,-7 L22,-14 L22,14 L8,7Z").attr("fill", INK);
+  }
+  function inView(px, py, x, y, ang, fov, len) {
+    var dx = px - x, dy = py - y;
+    if (Math.hypot(dx, dy) > len) return false;
+    var da = Math.atan2(dy, dx) - ang; da = Math.atan2(Math.sin(da), Math.cos(da));
+    return Math.abs(da) <= fov * DEG / 2;
+  }
+  function post(g, x, y, on, r) {
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", r || 11).attr("fill", on ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+  }
+  function ptsInView(g, pts, cx, cy, ang, fov, len) {
+    var n = 0;
+    pts.forEach(function (p) { var on = inView(p[0], p[1], cx, cy, ang, fov, len); if (on) n++; post(g, p[0], p[1], on); });
+    return n;
+  }
+
+
+  /* ================= Fairness metrics (Chapter 7) ================= */
+  var GREY = "#909090";
+  /* tag: book = Chapter 7 uses and explains it; gloss = exam-term row only; web = outside source */
+  var T = {
+    br: { n: "Base rate", tag: "book", alias: "prevalence", m: "The share of a group that truly has the positive outcome" },
+    tpr: { n: "True-positive rate", tag: "book", m: "Of the people who truly are positive, the share the model flags" },
+    fpr: { n: "False-positive rate", tag: "book", m: "Of the people who truly are not positive, the share the model flags anyway" },
+    ppv: { n: "Predictive value (PPV)", tag: "book", alias: "precision", m: "Of the people the model flags, the share who truly are positive" },
+    dp: { n: "Demographic parity", tag: "book", alias: "statistical parity", m: "The model says yes at the same rate in every group" },
+    eo: { n: "Equalized odds", tag: "book", alias: "equal TPR and FPR", m: "Both error rates match across groups" },
+    cp: { n: "Calibration parity", tag: "book", alias: "predictive parity", m: "A stated probability means the same observed rate in every group" },
+    imp: { n: "Impossibility theorem", tag: "book", m: "With unequal base rates, calibration and equal error rates cannot both hold" },
+    th: { n: "Threshold", tag: "gloss", m: "The score cutoff above which the model says yes" },
+    compas: { n: "COMPAS", tag: "book", m: "A recidivism risk tool whose 2016 audit set two true claims against each other" },
+    vc: { n: "Values claim", tag: "book", m: "The belief about who should bear errors that a choice of metric carries" },
+    dc: { n: "Defended choice", tag: "book", m: "The deliverable: a chosen metric with written reasons, in six steps" },
+    gf: { n: "Group fairness", tag: "book", m: "Fairness judged by comparing aggregate rates across whole groups" },
+    ifn: { n: "Individual fairness", tag: "book", m: "Similar people should be treated similarly, even when group totals balance" },
+    lip: { n: "Lipschitz condition", tag: "book", alias: "(D, d)-Lipschitz", m: "The difference in treatment may not exceed the difference between the people" },
+    sd: { n: "Similarity metric d", tag: "book", m: "A task-specific measure of how alike two people are, and a values choice" },
+    fta: { n: "Awareness (FTA)", tag: "book", alias: "fairness through awareness", m: "Decide openly how much group membership counts when judging similarity" },
+    ftu: { n: "Unawareness (FTU)", tag: "book", alias: "fairness through unawareness", m: "Drop the sensitive attribute from the model and call it fair" },
+    px: { n: "Proxy", tag: "book", m: "A feature such as zip code that reveals group membership indirectly" },
+    scm: { n: "Structural causal model", tag: "book", m: "Variables with arrows for which causes which" },
+    de: { n: "Direct effect", tag: "book", alias: "disparate treatment", m: "The attribute alone moves the prediction" },
+    ie: { n: "Indirect effect", tag: "book", alias: "disparate impact", m: "Attribute moves a mediator, which moves prediction" },
+    sp: { n: "Spurious effect", tag: "book", m: "A confounder links them with no causal path" },
+    cf: { n: "Counterfactual fairness", tag: "book", m: "Same decision for this person in another group" },
+    bn: { n: "Benefit", tag: "book", m: "The number per person whose spread is measured: a score, a probability or an error flag" },
+    ge: { n: "GE Index", tag: "book", alias: "generalized entropy index", m: "One number for how unequally benefit is spread across people, as in income inequality" },
+    al: { n: "Alpha (α)", tag: "book", m: "Sets whose unfairness counts more: low alpha the bottom, high alpha the top" },
+    dec: { n: "GE decomposition", tag: "book", m: "Total unfairness equals the within-group part plus the between-group part" },
+    pre: { n: "Pre-processing", tag: "book", m: "Change the training data first, for example by reweighting" },
+    inp: { n: "In-processing", tag: "book", m: "Change the training objective, for example by adding a fairness penalty" },
+    post: { n: "Post-processing", tag: "book", m: "Change predictions afterwards, for example with a threshold per group" }
+  };
+  function f2(v) { return v.toFixed(2); }
+  function f3(v) { return v.toFixed(3); }
+  function capL(svg, s, y) { return wrap(svg.append("g"), 0, y || 524, s, 52, { size: 28, lh: 34, fill: INK }); }
+  function fade(sel, anim, delay) { if (anim) sel.attr("opacity", 0).transition().delay(delay || 0).duration(450).attr("opacity", 1); return sel; }
+  function bar(g, x, y, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("width", 0).transition().delay(delay || 0).duration(700).attr("width", w); return b; }
+  function mono(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: o.weight || 400, fill: o.fill || INK, family: MONO, anchor: o.anchor }); }
+  function arrowT(g, x1, y1, x2, y2, color, w, r1, r2, t) {
+    var dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L, sx = x1 + ux * r1, sy = y1 + uy * r1, ex = x2 - ux * r2, ey = y2 - uy * r2;
+    t = t === undefined ? 1 : t;
+    var cx = sx + (ex - sx) * t, cy = sy + (ey - sy) * t;
+    g.append("path").attr("d", "M" + sx + "," + sy + "L" + cx + "," + cy).attr("stroke", color).attr("stroke-width", w).attr("fill", "none");
+    if (t > 0.97) g.append("path").attr("d", "M" + ex + "," + ey + "L" + (ex - 18 * ux + 9 * uy) + "," + (ey - 18 * uy - 9 * ux) + "L" + (ex - 18 * ux - 9 * uy) + "," + (ey - 18 * uy + 9 * ux) + "Z").attr("fill", color);
+  }
+  function node(g, x, y, s, hl) {
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", 38).attr("fill", hl ? TINT : "#FFFFFF").attr("stroke", hl ? RED : INK).attr("stroke-width", 3);
+    txt(g, x, y + 10, s, { size: 30, weight: 700, anchor: "middle", fill: INK });
+  }
+
+  /* ---------- data: the chapter's calibrated table, rebuilt from counts (200 people per group) ---------- */
+  var NG = 200, CAL = { A: { p: 0.6, t: 0.6, f: 0.3 }, B: { p: 0.3, t: 0.7, f: 0.1 } };
+  function conf(g) {
+    var c = CAL[g], pos = Math.round(c.p * NG), neg = NG - pos, tp = Math.round(c.t * pos), fn = pos - tp, fp = Math.round(c.f * neg), tn = neg - fp;
+    return { pos: pos, neg: neg, tp: tp, fn: fn, fp: fp, tn: tn, base: pos / NG, tpr: tp / pos, fpr: fp / neg, ppv: tp / (tp + fp), rate: (tp + fp) / NG, acc: (tp + tn) / NG };
+  }
+  var CA = conf("A"), CB = conf("B");
+  var EQ = { A: { t: 0.7, f: 0.15 }, B: { t: 0.7, f: 0.15 } };
+
+  /* ---------- data: calibrated Beta score model (stated inputs: Beta(3,2) and Beta(1.5,3.5), Y ~ Bernoulli(score)) ---------- */
+  function lgam(x) {
+    var c = [76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155, 0.1208650973866179e-2, -0.5395239384953e-5], y = x, t = x + 5.5, s = 1.000000000190015;
+    t -= (x + 0.5) * Math.log(t); for (var j = 0; j < 6; j++) s += c[j] / ++y;
+    return -t + Math.log(2.5066282746310005 * s / x);
+  }
+  var GN = 1000;
+  function betaModel(a, b) {
+    var w = [], tot = 0, j, s, k0 = lgam(a + b) - lgam(a) - lgam(b);
+    for (j = 0; j < GN; j++) { s = (j + 0.5) / GN; w[j] = Math.exp(k0 + (a - 1) * Math.log(s) + (b - 1) * Math.log(1 - s)); tot += w[j]; }
+    var P = [], Sy = [], Sn = [], p = 0, sy = 0, sn = 0; P[GN] = 0; Sy[GN] = 0; Sn[GN] = 0;
+    for (j = GN - 1; j >= 0; j--) { s = (j + 0.5) / GN; w[j] /= tot; p += w[j]; sy += s * w[j]; sn += (1 - s) * w[j]; P[j] = p; Sy[j] = sy; Sn[j] = sn; }
+    var mean = Sy[0];
+    return {
+      mean: mean,
+      pdf: function (s) { return Math.exp(k0 + (a - 1) * Math.log(s) + (b - 1) * Math.log(1 - s)); },
+      at: function (tau) { var i = Math.max(0, Math.min(GN, Math.round(tau * GN))); return { tpr: Sy[i] / mean, fpr: Sn[i] / (1 - mean), ppv: P[i] > 1e-9 ? Sy[i] / P[i] : 0, rate: P[i], err: (mean - Sy[i]) + Sn[i] }; }
+    };
+  }
+  var MA = betaModel(3, 2), MB = betaModel(1.5, 3.5), TAU = 0.5, rA = MA.at(TAU), rB0 = MB.at(TAU), tauFpr = TAU, tauRate = TAU, ii;
+  for (ii = 500; ii >= 0; ii--) { if (MB.at(ii / GN).fpr >= rA.fpr) { tauFpr = ii / GN; break; } }
+  for (ii = 500; ii >= 0; ii--) { if (MB.at(ii / GN).rate >= rA.rate) { tauRate = ii / GN; break; } }
+  var LAMS = [0, 0.1, 0.25, 1].map(function (lam) {
+    var best = 1e9, bt = 0.5, i, tt, L;
+    for (i = 50; i <= 950; i += 5) { tt = i / GN; L = (rA.err + MB.at(tt).err) / 2 + lam * Math.abs(rA.fpr - MB.at(tt).fpr); if (L < best) { best = L; bt = tt; } }
+    return { lam: lam, tau: bt, err: (rA.err + MB.at(bt).err) / 2, gap: Math.abs(rA.fpr - MB.at(bt).fpr) };
+  });
+
+  /* ---------- data: two applicants, one similarity check ---------- */
+  var MX = 0.72, MY = 0.58, DTV = 0.5 * (Math.abs(MX - MY) + Math.abs((1 - MX) - (1 - MY))), DFIN = 0.02, WZIP = 0.30, DZIP = DFIN + WZIP;
+
+  /* ---------- data: seeded zip-code proxy simulation ---------- */
+  var ZR = rng(7), PEOPLE = [], zc = { AZ1: 0, AZ2: 0, BZ1: 0, BZ2: 0 };
+  (function () {
+    for (var i = 0; i < 200; i++) {
+      var grp = i < 100 ? "A" : "B", home = grp === "A" ? "Z1" : "Z2", other = grp === "A" ? "Z2" : "Z1", zip = ZR() < 0.85 ? home : other, inc = 30 + Math.round(ZR() * 60);
+      PEOPLE.push({ g: grp, zip: zip, inc: inc }); zc[grp + zip]++;
+    }
+  })();
+  var ZACC = (zc.AZ1 + zc.BZ2) / 200;
+
+  /* ---------- data: GE ---------- */
+  function GEi(b, a) {
+    var N = b.length, mu = d3.mean(b), s = 0;
+    if (a === 0) { b.forEach(function (x) { s += Math.log(mu / x); }); return s / N; }
+    b.forEach(function (x) { s += Math.pow(x / mu, a) - 1; }); return s / (N * a * (a - 1));
+  }
+  var BEN = [0.2, 0.4, 0.5, 0.5, 0.6, 0.6, 0.7, 0.9], BMU = d3.mean(BEN), BSD = Math.sqrt(d3.mean(BEN.map(function (x) { return (x - BMU) * (x - BMU); })));
+  var BLO = BEN.slice(), BHI = BEN.slice(); BLO[0] = 0.1; BHI[7] = 1.0;
+  var DLO = [GEi(BLO, 0) - GEi(BEN, 0), GEi(BLO, 2) - GEi(BEN, 2)], DHI = [GEi(BHI, 0) - GEi(BEN, 0), GEi(BHI, 2) - GEi(BEN, 2)];
+  var GG = [{ n: 200, mu: 0.65, ge: 0.05 }, { n: 200, mu: 0.45, ge: 0.04 }], GMU = 0.55;
+  var WITHIN = d3.sum(GG, function (g) { return g.n / 400 * Math.pow(g.mu / GMU, 2) * g.ge; });
+  var BETWEEN = d3.sum(GG, function (g) { return g.n / 400 * Math.pow(g.mu - GMU, 2); }) / (2 * GMU * GMU), GTOT = WITHIN + BETWEEN;
+
+  var MAPROWS = [
+    ["Definitions and the theorem", "base rate, true-positive rate, false-positive rate, predictive value, demographic parity, equalized odds, calibration parity, impossibility theorem, threshold", "Three yardsticks that cannot all hold"],
+    ["Choosing and defending", "COMPAS, values claim, defended choice, pre-processing, in-processing, post-processing", "What the choice means, and what tools implement it"],
+    ["Beyond groups", "group fairness, individual fairness, Lipschitz condition, similarity metric d, awareness, unawareness, proxy", "Person-level checks, and where the choice moves"],
+    ["Causal fairness and the GE Index", "structural causal model, direct effect, indirect effect, spurious effect, counterfactual fairness, benefit, GE Index, alpha, decomposition", "Paths, counterfactuals and a single number"]
+  ];
+  function renderMap(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four groups of fairness terms", "A table with four rows: group, terms, what the group is about.");
+    var g = svg.append("g");
+    wrap(g, 0, 36, "31 terms from Chapter 7. Each is a way to say what fair means for a yes-or-no model, or to show why that cannot be settled by arithmetic alone.", 96, { size: 28, lh: 38, fill: INK });
+    var cx = [0, 380, 1010];
+    ["GROUP", "TERMS", "WHAT IT IS ABOUT"].forEach(function (h, i) { lab(g, cx[i] + 18, 152, h); });
+    g.append("path").attr("d", "M0,168 H1400").attr("stroke", INK).attr("stroke-width", 2);
+    MAPROWS.forEach(function (r, i) {
+      if (i + 1 > k) return;
+      var y = 180 + i * 128, row = g.append("g");
+      box(row, 0, y, 1400, 118, { stroke: FAMILIAR });
+      row.append("rect").attr("x", 0).attr("y", y).attr("width", 10).attr("height", 119).attr("fill", RED);
+      wrap(row, cx[0] + 28, y + 44, r[0], 22, { size: 26, lh: 30, weight: 700, fill: RED });
+      wrap(row, cx[1] + 18, y + 34, r[1], 58, { size: 24, lh: 30, fill: INK });
+      wrap(row, cx[2] + 18, y + 34, r[2], 30, { size: 24, lh: 30 });
+      if (A(anim, k, i + 1)) row.attr("opacity", 0).attr("transform", "translate(0,18)").transition().duration(450).ease(d3.easeCubicOut).attr("opacity", 1).attr("transform", "translate(0,0)");
+    });
+    if (k === 0) cap(g, 0, 430, "Click or press → to add the four groups, one at a time.", { fill: MUTED });
+  }
+
+  /* ---------- 1. rates from a confusion matrix ---------- */
+  function renderRates(el, k, anim) {
+    var svg = svgFor(el, W, H, "Base rate, true-positive rate, false-positive rate and predictive value read off one confusion matrix per group", "Two two-by-two tables of 200 people each. Each step highlights the cells that make one rate and shows the rate for both groups.");
+    base(svg, [{ id: "br", s: 1 }, { id: "tpr", s: 2 }, { id: "fpr", s: 3 }, { id: "ppv", s: 4 }], k, anim, ["True-positive rate", "share of the positives caught"], ["Predictive value", "share of the flagged who are positive"]);
+    var d = svg.append("g"), kk = Math.max(k, 1);
+    function mat(y0, name, C) {
+      var g = d.append("g").attr("transform", "translate(0," + y0 + ")");
+      lab(g, 0, 24, "GROUP " + name + " · " + NG + " PEOPLE");
+      cap(g, 295, 62, "model yes", { size: 24, weight: 700, anchor: "middle", fill: MUTED }); cap(g, 585, 62, "model no", { size: 24, weight: 700, anchor: "middle", fill: MUTED });
+      cap(g, 0, 124, "truly yes", { size: 24, weight: 700, fill: MUTED }); cap(g, 0, 196, "truly no", { size: 24, weight: 700, fill: MUTED });
+      var cells = [{ id: "tp", x: 150, y: 76, t: "caught " + C.tp }, { id: "fn", x: 440, y: 76, t: "missed " + C.fn }, { id: "fp", x: 150, y: 148, t: "false alarm " + C.fp }, { id: "tn", x: 440, y: 148, t: "correct no " + C.tn }];
+      var NUM = [null, ["tp", "fn"], ["tp"], ["fp"], ["tp"]][kk], DEN = [null, ["tp", "fn", "fp", "tn"], ["tp", "fn"], ["fp", "tn"], ["tp", "fp"]][kk];
+      cells.forEach(function (c) {
+        var isN = NUM.indexOf(c.id) >= 0, isD = DEN.indexOf(c.id) >= 0, cg = g.append("g");
+        cg.append("rect").attr("x", c.x + 0.5).attr("y", c.y + 0.5).attr("width", 290).attr("height", 72).attr("fill", isD ? TINT : "#FFFFFF").attr("stroke", isN ? RED : FAMILIAR).attr("stroke-width", isN ? 4 : 1.5);
+        cap(cg, c.x + 145, c.y + 46, c.t, { size: 28, weight: 700, anchor: "middle" });
+        if (anim && k === kk && isD) cg.attr("opacity", 0.35).transition().duration(450).attr("opacity", 1);
+      });
+      var f = [null, "(" + C.tp + " + " + C.fn + ") / " + NG + " = " + f2(C.base), C.tp + " / (" + C.tp + " + " + C.fn + ") = " + f2(C.tpr), C.fp + " / (" + C.fp + " + " + C.tn + ") = " + f2(C.fpr), C.tp + " / (" + C.tp + " + " + C.fp + ") = " + f2(C.ppv)][kk];
+      var ft = cap(g, 760, 28, f, { size: 26, weight: 700, anchor: "end", fill: RED }); if (A(anim, k, kk)) ft.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    }
+    mat(0, "A", CA); mat(262, "B", CB);
+    capL(svg, ["", "Base rate: the share who truly are positive. It differs: " + f2(CA.base) + " against " + f2(CB.base) + ".", "True-positive rate: of the truly positive, the share caught. " + f2(CA.tpr) + " against " + f2(CB.tpr) + ".", "False-positive rate: of the truly not positive, the share flagged. " + f2(CA.fpr) + " against " + f2(CB.fpr) + ".", "Predictive value: of those flagged, the share truly positive. " + f2(CA.ppv) + " in both groups."][k]);
+  }
+
+  /* ---------- 2. the three definitions on one table ---------- */
+  function renderDefs(el, k, anim) {
+    var svg = svgFor(el, W, H, "Demographic parity, equalized odds and calibration parity measured on the same table", "Paired bars for groups A and B. Positive-prediction rate differs, true-positive and false-positive rates differ, and predictive value is equal.");
+    base(svg, [{ id: "dp", s: 1 }, { id: "eo", s: 2 }, { id: "cp", s: 3 }], k, anim, ["Demographic parity", "same share flagged"], ["Equalized odds", "same error rates"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), SC = 560;
+    function blk(y, title, verdict, rows, step) {
+      if (step > kk) return;
+      var g = d.append("g"), cur = A(anim, k, step);
+      lab(g, 0, y, title); cap(g, 760, y, verdict, { size: 24, weight: 700, anchor: "end", fill: RED });
+      rows.forEach(function (r, i) {
+        var yy = y + 16 + i * 44;
+        cap(g, 0, yy + 25, r[0], { size: 24, weight: 700 });
+        bar(g, 130, yy, r[1] * SC, 32, r[2] ? INK : RED, cur, i * 200);
+        cap(g, 130 + r[1] * SC + 12, yy + 25, f2(r[1]), { size: 24, weight: 700 });
+      });
+      if (cur) g.attr("opacity", 0).transition().duration(300).attr("opacity", 1);
+    }
+    blk(24, "DEMOGRAPHIC PARITY", "gap " + f2(Math.abs(CA.rate - CB.rate)) + ": not met", [["A yes rate", CA.rate, 1], ["B yes rate", CB.rate, 0]], 1);
+    blk(158, "EQUALIZED ODDS", "gaps " + f2(Math.abs(CA.tpr - CB.tpr)) + " and " + f2(Math.abs(CA.fpr - CB.fpr)) + ": not met", [["A TPR", CA.tpr, 1], ["B TPR", CB.tpr, 0], ["A FPR", CA.fpr, 1], ["B FPR", CB.fpr, 0]], 2);
+    blk(386, "CALIBRATION PARITY", "gap " + f2(Math.abs(CA.ppv - CB.ppv)) + ": met", [["A PPV", CA.ppv, 1], ["B PPV", CB.ppv, 1]], 3);
+    capL(svg, ["", "Of the 200 people in each group, " + (CA.tp + CA.fp) + " and " + (CB.tp + CB.fp) + " are flagged: the yes rates differ.", "True-positive rates and false-positive rates differ too: the errors are not spread evenly.", "Yet precision is equal. This model is calibrated and breaks the other two."][k], 534);
+  }
+
+  /* ---------- 3. the theorem and the threshold ---------- */
+  function renderThm(el, k, anim) {
+    var svg = svgFor(el, W, H, "Equal precision forces unequal error ratios when base rates differ; a threshold moves the rates", "First bars of the required true-positive to false-positive ratio, then a curve of the gap factor against base rate, then two score densities with a cutoff whose position changes the rates.");
+    base(svg, [{ id: "imp", s: 1 }, { id: "th", s: 3 }], k, anim, ["Calibration parity", "scores mean the same"], ["Equalized odds", "errors fall evenly"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), V = 0.75, pa = 0.6, pb = 0.3;
+    var rq = function (p) { return V / (1 - V) * (1 - p) / p; };
+    if (kk === 1) {
+      lab(d, 0, 30, "EQUAL PRECISION FORCES THE RATIO t / f");
+      mono(d, 0, 72, "v/(1−v) = p/(1−p) · t/f", { size: 28 });
+      cap(d, 0, 112, "Precision v = " + f2(V) + " in both groups, so v/(1−v) = " + (V / (1 - V)).toFixed(1), { size: 24 });
+      [["A", pa], ["B", pb]].forEach(function (r, i) {
+        var y = 168 + i * 140, g = d.append("g"), need = rq(r[1]);
+        cap(g, 0, y, "Group " + r[0] + ": base rate " + f2(r[1]), { size: 24, weight: 700 });
+        bar(g, 0, y + 14, need / 7 * 560, 40, i ? RED : INK, A(anim, k, 1), i * 300);
+        cap(g, need / 7 * 560 + 12, y + 44, "t/f = " + need.toFixed(1), { size: 26, weight: 700 });
+        cap(g, 0, y + 90, (V / (1 - V)).toFixed(1) + " ÷ (" + f2(r[1]) + "/" + f2(1 - r[1]) + ") = " + need.toFixed(1), { size: 24, fill: MUTED });
+      });
+      cap(d, 0, 470, "Equalized odds needs one ratio: " + rq(pa).toFixed(1) + " ≠ " + rq(pb).toFixed(1), { size: 26, weight: 700, fill: RED });
+    } else if (kk === 2) {
+      var X0 = 80, X1 = 720, Y0 = 400, Y1 = 40, LO = -4, HI = 3;
+      var xs = function (p) { return X0 + (p - 0.1) / 0.8 * (X1 - X0); }, ys = function (c) { return Y0 - (Math.log2(c) - LO) / (HI - LO) * (Y0 - Y1); };
+      var cf = function (p) { return p * (1 - pa) / (pa * (1 - p)); };
+      mono(d, 0, 28, "c = p_b(1−p_a) / (p_a(1−p_b)),  p_a = 0.60", { size: 24 });
+      d.append("path").attr("d", "M" + X0 + "," + Y0 + " H" + X1 + " M" + X0 + "," + Y0 + " V" + Y1).attr("stroke", INK).attr("stroke-width", 2).attr("fill", "none");
+      d.append("path").attr("d", "M" + X0 + "," + ys(1) + " H" + X1).attr("stroke", FAMILIAR).attr("stroke-width", 2).attr("stroke-dasharray", "8 6").attr("fill", "none");
+      [0.25, 1, 4].forEach(function (c) { cap(d, X0 - 10, ys(c) + 8, String(c), { size: 24, anchor: "end" }); });
+      [0.1, 0.3, 0.6, 0.9].forEach(function (p) { cap(d, xs(p), Y0 + 30, String(p), { size: 24, anchor: "middle" }); });
+      lab(d, X0, Y0 + 66, "BASE RATE OF GROUP B", { size: 24 });
+      var pts = d3.range(0.1, 0.9001, 0.01).map(function (p) { return [xs(p), ys(cf(p))]; });
+      var path = d.append("path").attr("d", d3.line()(pts)).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 4);
+      if (A(anim, k, 2)) drawIn(path, 0, 1200);
+      var pg = d.append("g"); fade(pg, A(anim, k, 2), 1100);
+      pg.append("circle").attr("cx", xs(pb)).attr("cy", ys(cf(pb))).attr("r", 10).attr("fill", RED);
+      cap(pg, xs(pb) + 18, ys(cf(pb)) + 36, "0.3: c = " + f2(cf(pb)), { size: 24, weight: 700, fill: RED });
+      pg.append("circle").attr("cx", xs(pa)).attr("cy", ys(1)).attr("r", 10).attr("fill", INK);
+      cap(pg, xs(pa) - 16, ys(1) - 18, "0.6: c = 1, equal base rates", { size: 24, weight: 700, anchor: "end" });
+    } else {
+      var rs = kk === 3 ? rB0 : null;
+      function plot(g, M, y0, name, bse, tau, hl) {
+        g.selectAll("*").remove();
+        var X = function (s) { return 40 + 440 * s; }, yb = y0 + 206, r = M.at(tau);
+        lab(g, 0, y0 + 24, "GROUP " + name + " · BASE RATE " + bse);
+        var pts = [], area = [];
+        for (var s = 0.01; s < 0.995; s += 0.01) { var y = yb - 62 * M.pdf(s); pts.push([X(s), y]); if (s >= tau) area.push([X(s), y]); }
+        if (area.length) g.append("path").attr("d", "M" + area[0][0] + "," + yb + "L" + area.map(function (p) { return p.join(","); }).join("L") + "L" + area[area.length - 1][0] + "," + yb + "Z").attr("fill", TINT);
+        g.append("path").attr("d", d3.line()(pts)).attr("fill", "none").attr("stroke", INK).attr("stroke-width", 3);
+        g.append("path").attr("d", "M40," + yb + " H480").attr("stroke", INK).attr("stroke-width", 2);
+        [0, 0.5, 1].forEach(function (s2) { cap(g, X(s2), yb + 28, String(s2), { size: 24, anchor: "middle" }); });
+        g.append("path").attr("d", "M" + X(tau) + "," + yb + " V" + (y0 + 62)).attr("stroke", RED).attr("stroke-width", 4);
+        cap(g, X(tau), y0 + 54, "τ = " + f2(tau), { size: 24, weight: 700, anchor: "middle", fill: RED });
+        [["TPR", r.tpr, 0], ["FPR", r.fpr, 1], ["PPV", r.ppv, 0]].forEach(function (q, i) { cap(g, 520, y0 + 96 + i * 42, q[0] + " " + f2(q[1]), { size: 26, weight: 700, fill: hl && q[2] ? RED : INK }); });
+      }
+      var gA = d.append("g"), gB = d.append("g");
+      plot(gA, MA, 0, "A", f2(MA.mean), TAU, false);
+      if (kk === 3) { plot(gB, MB, 250, "B", f2(MB.mean), TAU, false); fade(gA, A(anim, k, 3), 0); fade(gB, A(anim, k, 3), 300); }
+      else { run(gB, 2600, function (t) { plot(gB, MB, 250, "B", f2(MB.mean), TAU + (tauFpr - TAU) * t, t > 0.99); }, A(anim, k, 4), d3.easeCubicInOut); }
+    }
+    var rEnd = MB.at(tauFpr);
+    capL(svg, ["", "Same precision in both groups, so the odds ratio t/f must be " + rq(pa).toFixed(1) + " for A and " + rq(pb).toFixed(1) + " for B.", "c equals 1 only when the base rates are equal. The other escape is perfect prediction.", "One cutoff, scores calibrated in both groups: true- and false-positive rates still differ.", "Lower B's cutoff to " + f2(tauFpr) + " and false-positive rates match, but precision is " + f2(rA.ppv) + " against " + f2(rEnd.ppv) + "."][k], 524);
+  }
+
+  /* ---------- 4. COMPAS, values claims, the defended choice ---------- */
+  var DCS = ["Specify the deployment", "Compute the candidate metrics", "Name the conflict", "State your choice", "Defend the choice in writing", "Name what would change your mind"];
+  function renderCompas(el, k, anim) {
+    var svg = svgFor(el, W, H, "COMPAS: two true claims, three values claims, and the six steps of a defended choice", "Bars of the false-positive rates ProPublica reported, bars of equal re-arrest rates at each score, three values claims, and six numbered steps.");
+    base(svg, [{ id: "compas", s: 1 }, { id: "vc", s: 3 }, { id: "dc", s: 4 }], k, anim, ["Equalized odds", "same error rates"], ["Calibration parity", "same score meaning"]);
+    var d = svg.append("g"), kk = Math.max(k, 1);
+    if (kk === 1) {
+      lab(d, 0, 30, "LABELED HIGH-RISK, NEVER RE-ARRESTED");
+      [["Black defendants", 44.9, RED], ["White defendants", 23.5, INK]].forEach(function (r, i) {
+        var y = 80 + i * 110, g = d.append("g"); cap(g, 0, y, r[0], { size: 24, weight: 700 });
+        bar(g, 0, y + 14, r[1] / 60 * 600, 44, r[2], A(anim, k, 1), i * 300); cap(g, r[1] / 60 * 600 + 12, y + 46, r[1].toFixed(1) + "%", { size: 26, weight: 700 });
+      });
+      cap(d, 0, 330, "Ratio " + (44.9 / 23.5).toFixed(1) + ": about 2 times. ProPublica's claim is true.", { size: 26, weight: 700, fill: RED });
+      cap(d, 0, 372, "Equalized odds is violated.", { size: 24, fill: MUTED });
+    } else if (kk === 2) {
+      lab(d, 0, 30, "RE-ARREST RATE AT EACH RISK SCORE");
+      [["Black", INK], ["White", RED]].forEach(function (r, i) { d.append("rect").attr("x", i * 160).attr("y", 46).attr("width", 20).attr("height", 20).attr("fill", r[1]); cap(d, 30 + i * 160, 64, r[0], { size: 24 }); });
+      d.append("path").attr("d", "M20,400 H740").attr("stroke", INK).attr("stroke-width", 2);
+      d3.range(1, 11).forEach(function (s) {
+        var h = s * 30, x = 30 + (s - 1) * 71, g = d.append("g");
+        [0, 1].forEach(function (j) { bar(g, x + j * 28, 400 - h, 26, h, j ? RED : INK, A(anim, k, 2), s * 60); });
+        cap(g, x + 27, 432, String(s), { size: 24, anchor: "middle" });
+      });
+      cap(d, 0, 474, "Illustrative: equal at every score, as Northpointe reported.", { size: 24, fill: MUTED });
+    } else if (kk === 3) {
+      [["Demographic parity", "The decision itself should be allocated equally, whatever the base rates", "measured by neither side"], ["Equalized odds", "Group membership should not change your risk of being wronged", "ProPublica measured it"], ["Calibration parity", "A score should mean the same thing for everyone, so it can be read uniformly", "Northpointe met it"]].forEach(function (r, i) {
+        var y = 0 + i * 150, g = d.append("g"), hl = i > 0; box(g, 0, y, 740, 138, { stroke: i === 1 ? RED : INK, sw: 2.5 });
+        cap(g, 20, y + 34, r[0], { size: 26, weight: 700, fill: i === 1 ? RED : INK }); wrap(g, 20, y + 66, r[1], 56, { size: 24, lh: 30 }); cap(g, 20, y + 124, r[2], { size: 24, weight: 700, fill: hl ? RED : MUTED });
+        fade(g, A(anim, k, 3), i * 350);
+      });
+    } else {
+      DCS.forEach(function (s, i) {
+        var x = (i % 2) * 380, y = 20 + Math.floor(i / 2) * 140, g = d.append("g"); box(g, x, y, 360, 100, { stroke: INK, sw: 2.5 });
+        cap(g, x + 18, y + 46, String(i + 1), { size: 32, weight: 700, fill: RED }); wrap(g, x + 62, y + 44, s, 22, { size: 24, lh: 30, weight: 700 });
+        fade(g, A(anim, k, 4), i * 250);
+      });
+    }
+    capL(svg, ["", "ProPublica measured error rates: Black defendants were wrongly flagged about twice as often.", "Northpointe measured calibration: a score meant about the same in both groups. Both are true.", "Each metric carries a claim about who should bear the errors. None is the obvious one.", "The deliverable is a defended choice. For COMPAS, the court system should have decided, on the record."][k], 524);
+  }
+
+  /* ---------- 5. group fairness and individual fairness ---------- */
+  function renderIndiv(el, k, anim) {
+    var svg = svgFor(el, W, H, "Group fairness can hold while two similar people are treated differently; the Lipschitz check needs a similarity metric d", "Two rows of four applicants with equal approval rates and one similar pair treated differently, then a bar check of the difference in treatment against the distance d.");
+    base(svg, [{ id: "gf", s: 1 }, { id: "ifn", s: 2 }, { id: "lip", s: 3 }, { id: "sd", s: 4 }], k, anim, ["Group fairness", "rates match across groups"], ["Individual fairness", "like cases, like treatment"]);
+    var d = svg.append("g"), kk = Math.max(k, 1);
+    if (kk <= 2) {
+      lab(d, 0, 30, "EIGHT APPLICANTS, FILLED = APPROVED");
+      [["A", [1, 0, 1, 0]], ["B", [0, 1, 0, 1]]].forEach(function (r, ri) {
+        var y = 90 + ri * 150, g = d.append("g");
+        cap(g, 0, y + 52, "Group " + r[0], { size: 24, weight: 700 });
+        r[1].forEach(function (v, i) { g.append("rect").attr("x", 150 + i * 100 + 0.5).attr("y", y + 0.5).attr("width", 80).attr("height", 80).attr("fill", v ? INK : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 3); });
+        cap(g, 580, y + 52, "approved " + d3.sum(r[1]) + " of 4", { size: 24, weight: 700 });
+        cap(g, 580, y + 82, "= " + f2(d3.sum(r[1]) / 4), { size: 24, weight: 700 });
+      });
+      cap(d, 0, 360, "Approval rates: " + f2(2 / 4) + " and " + f2(2 / 4) + ". Parity is met.", { size: 26, weight: 700 });
+      if (kk === 2) {
+        var g2 = d.append("g"); [[150, 90], [150, 240]].forEach(function (p) { g2.append("rect").attr("x", p[0] - 6).attr("y", p[1] - 6).attr("width", 92).attr("height", 92).attr("fill", "none").attr("stroke", RED).attr("stroke-width", 4); });
+        g2.append("path").attr("d", "M236,130 L236,280").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6");
+        cap(g2, 250, 214, "x and y: same income, history and debt ratio", { size: 24, weight: 700, fill: RED });
+        cap(g2, 0, 420, "x is approved, y is denied. Group totals balance, so a group audit sees nothing.", { size: 24, fill: INK });
+        fade(g2, A(anim, k, 2), 0);
+      }
+    } else {
+      var SCL = 560 / 0.4, dd = kk === 3 ? DFIN : DZIP;
+      lab(d, 0, 30, "THE (D, d) CHECK FOR APPLICANTS x AND y");
+      cap(d, 0, 82, "D(M(x), M(y)): difference in treatment", { size: 24, weight: 700 });
+      bar(d, 0, 96, DTV * SCL, 40, INK, A(anim, k, 3), 0); cap(d, DTV * SCL + 12, 126, f2(DTV), { size: 26, weight: 700 });
+      mono(d, 0, 176, "M(x) = " + f2(MX) + ", M(y) = " + f2(MY) + ", so D = " + f2(DTV), { size: 24, fill: MUTED });
+      cap(d, 0, 236, kk === 3 ? "d(x, y), financial variables only" : "d(x, y), zip-code distance included", { size: 24, weight: 700 });
+      bar(d, 0, 250, dd * SCL, 40, kk === 3 ? RED : GREY, A(anim, k, kk), 300); cap(d, dd * SCL + 12, 280, f2(dd), { size: 26, weight: 700 });
+      var ok = DTV <= dd;
+      cap(d, 0, 370, f2(DTV) + " ≤ " + f2(dd) + " ?  " + (ok ? "Yes: different treatment is allowed" : "No: violated"), { size: 28, weight: 700, fill: ok ? INK : RED });
+      if (kk === 4) cap(d, 0, 412, "Same equation, opposite guarantee.", { size: 24, fill: RED });
+    }
+    capL(svg, ["", "Group fairness compares rates. Both groups approve " + f2(0.5) + ", so the check passes.", "Individual fairness looks at people. The same-looking pair x and y got different outcomes.", "The Lipschitz condition caps the gap in treatment, " + f2(DTV) + ", by the distance d, here " + f2(DFIN) + ". Violated.", "Count zip-code distance in d and the same gap is allowed. Everything hinges on d."][k], 524);
+  }
+
+  /* ---------- 6. awareness, unawareness, proxy ---------- */
+  function renderAware(el, k, anim) {
+    var svg = svgFor(el, W, H, "Dropping the race column does not drop race: zip code predicts it; awareness names how much group counts in d", "A table of five people with the race column struck out, then stacked bars showing group shares within each zip code, then distance bars with and without a group weight.");
+    base(svg, [{ id: "ftu", s: 1 }, { id: "px", s: 2 }, { id: "fta", s: 3 }], k, anim, ["Awareness", "name the attribute in d"], ["Unawareness", "drop the attribute's column"]);
+    var d = svg.append("g"), kk = Math.max(k, 1);
+    if (kk === 1) {
+      lab(d, 0, 30, "WHAT THE MODEL IS GIVEN");
+      var cx = [0, 170, 340, 560], hd = ["person", "race", "zip", "income"], rows = [0, 1, 50, 100, 101, 150];
+      hd.forEach(function (h, i) { mono(d, cx[i], 78, h, { size: 24, weight: 700, fill: i === 1 ? RED : MUTED }); });
+      d.append("path").attr("d", "M0,92 H740").attr("stroke", INK).attr("stroke-width", 2);
+      rows.slice(0, 5).forEach(function (pi, r) {
+        var p = PEOPLE[pi], y = 128 + r * 56, g = d.append("g");
+        mono(g, cx[0], y, "#" + (pi + 1), { size: 24 }); mono(g, cx[1], y, p.g, { size: 24, fill: GREY }); mono(g, cx[2], y, p.zip, { size: 24 }); mono(g, cx[3], y, "$" + p.inc + "k", { size: 24 });
+      });
+      var st = d.append("g"); st.append("rect").attr("x", 156).attr("y", 100).attr("width", 110).attr("height", 296).attr("fill", RED).attr("fill-opacity", 0.1).attr("stroke", RED).attr("stroke-width", 3);
+      cap(st, 211, 432, "removed", { size: 24, weight: 700, anchor: "middle", fill: RED });
+      fade(st, A(anim, k, 1), 400);
+    } else if (kk === 2) {
+      lab(d, 0, 30, "GROUP SHARE WITHIN EACH ZIP CODE (200 PEOPLE)");
+      [["Z1", zc.AZ1, zc.BZ1], ["Z2", zc.AZ2, zc.BZ2]].forEach(function (r, i) {
+        var y = 90 + i * 130, g = d.append("g"), tot = r[1] + r[2];
+        cap(g, 0, y + 32, "zip " + r[0], { size: 24, weight: 700 });
+        bar(g, 110, y, r[1] / tot * 600, 44, INK, A(anim, k, 2), i * 300); bar(g, 110 + r[1] / tot * 600, y, r[2] / tot * 600, 44, RED, A(anim, k, 2), i * 300);
+        cap(g, 120, y + 32, "A " + r[1], { size: 24, weight: 700, fill: "#FFFFFF" }); cap(g, 110 + 600 - 10, y + 32, "B " + r[2], { size: 24, weight: 700, fill: "#FFFFFF", anchor: "end" });
+      });
+      cap(d, 0, 370, "Guess the group from zip alone: " + (zc.AZ1 + zc.BZ2) + " of 200 right (" + Math.round(ZACC * 100) + "%).", { size: 26, weight: 700, fill: RED });
+      cap(d, 0, 412, "A coin flip would be 50%.", { size: 24, fill: MUTED });
+    } else {
+      var SCL = 560 / 0.4;
+      lab(d, 0, 30, "HOW MUCH DOES GROUP COUNT IN d?");
+      mono(d, 0, 76, "d = finance distance + w · [groups differ]", { size: 24 });
+      [["w = 0: group ignored", DFIN, GREY], ["w = " + f2(WZIP) + ": group named", DZIP, RED]].forEach(function (r, i) {
+        var y = 130 + i * 110, g = d.append("g"); cap(g, 0, y, r[0], { size: 24, weight: 700 });
+        bar(g, 0, y + 14, r[1] * SCL, 40, r[2], A(anim, k, 3), i * 400); cap(g, r[1] * SCL + 12, y + 44, f2(r[1]), { size: 26, weight: 700 });
+      });
+      cap(d, 0, 400, "x and y differ only in group: d = " + f2(DFIN) + " + " + f2(WZIP) + " = " + f2(DZIP), { size: 24, fill: MUTED });
+    }
+    capL(svg, ["", "Unawareness: delete the race column and call the model fair.", "Zip code rebuilds the group for " + Math.round(ZACC * 100) + "% of people. Direct use is blocked; indirect use is not.", "Awareness: state how much group counts in d. It is uncomfortable because it names the thing."][k], 524);
+  }
+
+  /* ---------- 7. causal paths and counterfactual fairness ---------- */
+  var CP = { de: 0.30, am: 0.40, my: 0.50, ca: 0.50, cy: 0.60 }, CE = { de: CP.de, ie: CP.am * CP.my, sp: CP.ca * CP.cy };
+  function renderCausal(el, k, anim) {
+    var svg = svgFor(el, W, H, "One association between attribute and prediction can arrive by three causal paths; counterfactual fairness tests one person", "A graph with the attribute A, prediction Y-hat, mediator M and confounder C. Each step lights one path and adds its share to a bar. The last step shows abduction, action and prediction for one person.");
+    base(svg, [{ id: "scm", s: 1 }, { id: "de", s: 1 }, { id: "ie", s: 2 }, { id: "sp", s: 3 }, { id: "cf", s: 4 }], k, anim, ["Direct effect", "attribute moves the prediction"], ["Spurious effect", "a confounder moves both"]);
+    var d = svg.append("g"), kk = Math.max(k, 1);
+    if (kk <= 3) {
+      var P = { A: [80, 230], Y: [680, 230], M: [380, 90], C: [380, 370] }, hl = function (n) { return (kk === 1 && n === "de") || (kk === 2 && (n === "am" || n === "my")) || (kk === 3 && (n === "ca" || n === "cy")); };
+      var E = [["de", "A", "Y"], ["am", "A", "M"], ["my", "M", "Y"], ["ca", "C", "A"], ["cy", "C", "Y"]];
+      E.forEach(function (e) { var on = hl(e[0]), g = d.append("g"); arrowT(g, P[e[1]][0], P[e[1]][1], P[e[2]][0], P[e[2]][1], on ? RED : FAMILIAR, on ? 5 : 2.5, 40, 44, 1); if (on) fade(g, A(anim, k, kk), 0); });
+      cap(d, 380, 214, f2(CP.de), { size: 24, weight: 700, anchor: "middle", fill: kk === 1 ? RED : MUTED });
+      cap(d, 190, 128, f2(CP.am), { size: 24, weight: 700, anchor: "end", fill: kk === 2 ? RED : MUTED }); cap(d, 570, 128, f2(CP.my), { size: 24, weight: 700, fill: kk === 2 ? RED : MUTED });
+      cap(d, 190, 340, f2(CP.ca), { size: 24, weight: 700, anchor: "end", fill: kk === 3 ? RED : MUTED }); cap(d, 570, 340, f2(CP.cy), { size: 24, weight: 700, fill: kk === 3 ? RED : MUTED });
+      node(d, P.A[0], P.A[1], "A", kk === 1 || kk === 2 || kk === 3); node(d, P.Y[0], P.Y[1], "Ŷ", true); node(d, P.M[0], P.M[1], "M", kk === 2); node(d, P.C[0], P.C[1], "C", kk === 3);
+      cap(d, 80, 292, "attribute", { size: 24, anchor: "middle", fill: MUTED }); cap(d, 680, 292, "prediction", { size: 24, anchor: "middle", fill: MUTED });
+      cap(d, 432, 98, "mediator", { size: 24, fill: MUTED }); cap(d, 432, 378, "confounder", { size: 24, fill: MUTED });
+      var segs = [["direct " + f2(CE.de), CE.de, INK], ["via M " + f2(CE.ie), CE.ie, GREY], ["via C " + f2(CE.sp), CE.sp, RED]], x = 0, TOT = CE.de + CE.ie + CE.sp;
+      segs.forEach(function (s, i) {
+        if (i + 1 > kk) return; var w = s[1] / TOT * 740, g = d.append("g");
+        g.append("rect").attr("x", x).attr("y", 450).attr("width", w).attr("height", 36).attr("fill", s[2]); cap(g, x + 10, 476, s[0], { size: 24, weight: 700, fill: "#FFFFFF" });
+        fade(g, A(anim, k, i + 1), 200); x += w;
+      });
+      lab(d, 0, 436, "ASSOCIATION BETWEEN A AND Ŷ, BUILT PATH BY PATH", { size: 24 });
+    } else {
+      var obsA = 0, obsE = 45, U = obsE - (50 + 10 * obsA), E2 = 50 + 10 * 1 + U, s0 = (obsE - 30) / 50, s1 = (E2 - 30) / 50;
+      var ST = [["1  Abduction: infer the background U", ["seen A = 0, E = " + obsE + "; E = 50 + 10·A + U", "so U = " + U]], ["2  Action: set A to the other value", ["A ← 1, and hold U = " + U]], ["3  Prediction: propagate forward", ["E = 50 + 10·1 − 5 = " + E2, "score (E − 30)/50: " + f2(s0) + " → " + f2(s1)]]];
+      ST.forEach(function (s, i) {
+        var y = 10 + i * 140, g = d.append("g"); box(g, 0, y, 740, 124, { stroke: i === 2 ? RED : INK, sw: 2.5 });
+        cap(g, 18, y + 38, s[0], { size: 26, weight: 700, fill: i === 2 ? RED : INK }); s[1].forEach(function (l, j) { mono(g, 18, y + 78 + j * 32, l, { size: 24 }); });
+        fade(g, A(anim, k, 4), i * 600);
+      });
+      var vg = d.append("g"); cap(vg, 0, 472, "Moves by " + sgn(s1 - s0, 2) + ": not counterfactually fair.", { size: 28, weight: 700, fill: RED }); fade(vg, A(anim, k, 4), 1900);
+    }
+    capL(svg, ["", "The attribute alone moves the prediction: disparate treatment. Path product " + f2(CE.de) + ".", "It moves a mediator such as education, which moves the prediction. Path product " + f2(CP.am) + " × " + f2(CP.my) + " = " + f2(CE.ie) + ".", "A confounder drives both, with no causal path from A. " + f2(CP.ca) + " × " + f2(CP.cy) + " = " + f2(CE.sp) + ". Same total, " + f2(CE.de + CE.ie + CE.sp) + ".", "Flip the attribute, keep the background: the score moves, because E sits downstream of A."][k], 524);
+  }
+
+  /* ---------- 8. the Generalized Entropy Index ---------- */
+  function renderGE(el, k, anim) {
+    var svg = svgFor(el, W, H, "The Generalized Entropy Index measures how unequally benefit is spread and splits it into within-group and between-group parts", "Eight benefit bars with their mean, then the same bars with deviations and the index, then how alpha reacts to a change at the bottom or the top, then a bar split into within-group and between-group parts.");
+    base(svg, [{ id: "bn", s: 1 }, { id: "ge", s: 2 }, { id: "al", s: 3 }, { id: "dec", s: 4 }], k, anim, ["Within-group", "unequal inside each group"], ["Between-group", "unequal group averages"]);
+    var d = svg.append("g"), kk = Math.max(k, 1);
+    if (kk <= 2) {
+      var YB = 430, SC = 320;
+      lab(d, 0, 30, kk === 1 ? "BENEFIT b: A PREDICTED PROBABILITY PER PERSON" : "DISTANCE FROM THE MEAN, SQUARED, AVERAGED");
+      if (kk === 2) { mono(d, 0, 68, "GE(2) = ½ (σ/μ)² = ½ (" + f3(BSD) + "/" + f2(BMU) + ")² = " + f3(GEi(BEN, 2)), { size: 24 }); }
+      BEN.forEach(function (b, i) {
+        var x = 40 + i * 85, g = d.append("g"); bar(g, x, YB - b * SC, 60, b * SC, kk === 1 ? INK : FAMILIAR, A(anim, k, 1), i * 80);
+        cap(g, x + 30, YB - 12, f2(b), { size: 24, weight: 700, anchor: "middle", fill: kk === 1 ? "#FFFFFF" : INK });
+        if (kk === 2) { var dev = g.append("path").attr("d", "M" + (x + 30) + "," + (YB - BMU * SC) + " V" + (YB - b * SC)).attr("stroke", RED).attr("stroke-width", 6); if (A(anim, k, 2)) dev.attr("opacity", 0).transition().delay(i * 100).duration(400).attr("opacity", 1); }
+      });
+      d.append("path").attr("d", "M0," + (YB - BMU * SC) + " H740").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6");
+      cap(d, 0, YB - BMU * SC - 12, "μ = " + f2(BMU), { size: 24, weight: 700, fill: RED });
+      d.append("path").attr("d", "M0," + YB + " H740").attr("stroke", INK).attr("stroke-width", 2);
+    } else if (kk === 3) {
+      lab(d, 0, 30, "CHANGE IN THE INDEX");
+      var SC2 = 560 / 0.07;
+      [["lowest benefit falls 0.2 → 0.1", DLO], ["highest benefit rises 0.9 → 1.0", DHI]].forEach(function (r, i) {
+        var y = 76 + i * 160, g = d.append("g"); cap(g, 0, y, r[0], { size: 24, weight: 700 });
+        [["α = 0", r[1][0], GREY], ["α = 2", r[1][1], RED]].forEach(function (b, j) {
+          var yy = y + 14 + j * 46; cap(g, 0, yy + 26, b[0], { size: 24 }); bar(g, 90, yy, b[1] * SC2, 34, b[2], A(anim, k, 3), i * 300 + j * 200); cap(g, 90 + b[1] * SC2 + 10, yy + 26, "+" + f3(b[1]), { size: 24, weight: 700 });
+        });
+      });
+      cap(d, 0, 420, "Bottom to top: " + (DLO[0] / DHI[0]).toFixed(1) + " times at α = 0, " + (DLO[1] / DHI[1]).toFixed(1) + " times at α = 2", { size: 26, weight: 700, fill: RED });
+      cap(d, 0, 458, "Low alpha reacts far more to the bottom.", { size: 24, fill: MUTED });
+    } else {
+      var SC3 = 700 / GTOT;
+      lab(d, 0, 30, "SPLIT OF GE(2): TWO GROUPS OF 200");
+      GG.forEach(function (g, i) { mono(d, 0, 72 + i * 34, "Group " + "AB"[i] + ": n = " + g.n + ", mean " + f2(g.mu) + ", GE " + f2(g.ge), { size: 24 }); });
+      mono(d, 0, 142, "overall mean " + f2(GMU), { size: 24 });
+      var sg = d.append("g"); bar(sg, 0, 190, WITHIN * SC3, 60, INK, A(anim, k, 4), 0); bar(sg, WITHIN * SC3, 190, BETWEEN * SC3, 60, RED, A(anim, k, 4), 500);
+      cap(d, 0, 180, "total " + f3(GTOT), { size: 26, weight: 700 });
+      d.append("rect").attr("x", 0).attr("y", 290).attr("width", 24).attr("height", 24).attr("fill", INK); cap(d, 38, 311, "within-group " + f3(WITHIN) + " (" + Math.round(WITHIN / GTOT * 100) + "%)", { size: 24, weight: 700 });
+      d.append("rect").attr("x", 0).attr("y", 340).attr("width", 24).attr("height", 24).attr("fill", RED); cap(d, 38, 361, "between-group " + f3(BETWEEN) + " (" + Math.round(BETWEEN / GTOT * 100) + "%)", { size: 24, weight: 700, fill: RED });
+      cap(d, 0, 440, "A group audit sees only the red part.", { size: 24, fill: MUTED });
+    }
+    capL(svg, ["", "Benefit is the number measured for each person. Here it is a score between 0 and 1. The mean is " + f2(BMU) + ".", "GE(2) is half the squared ratio of spread to mean: " + f3(GEi(BEN, 2)) + ". A larger spread gives a larger index.", "Alpha chooses whose unfairness counts. Low alpha weights the bottom, high alpha the top.", "Total unfairness is the within-group part plus the between-group part. The ratio steers the remedy."][k], 524);
+  }
+
+  /* ---------- 9. the toolkit ---------- */
+  function renderTool(el, k, anim) {
+    var svg = svgFor(el, W, H, "Pre-, in- and post-processing change the data, the training objective or the predictions", "Three boxes in a row: training data, model training, predictions. Each step highlights one box and shows a computed example: reweighted positive shares, a penalised loss at four weights, and a lowered cutoff for one group.");
+    base(svg, [{ id: "pre", s: 1 }, { id: "inp", s: 2 }, { id: "post", s: 3 }], k, anim, ["In-processing", "change the training objective"], ["Post-processing", "change predictions afterwards"]);
+    var d = svg.append("g"), kk = Math.max(k, 1);
+    [["training data", 0, 200], ["model training", 250, 200], ["predictions", 500, 240]].forEach(function (b, i) {
+      var on = i + 1 === kk; box(d, b[1], 10, b[2], 64, { stroke: on ? RED : INK, sw: on ? 4 : 2, fill: on ? TINT : "#FFFFFF" }); cap(d, b[1] + b[2] / 2, 52, b[0], { size: 24, weight: 700, anchor: "middle", fill: on ? RED : INK });
+      if (i < 2) { d.append("path").attr("d", "M" + (b[1] + b[2] + 6) + ",42 H" + (b[1] + b[2] + 44)).attr("stroke", INK).attr("stroke-width", 3); d.append("path").attr("d", "M" + (b[1] + b[2] + 44) + ",42 l-12,-8 v16Z").attr("fill", INK); }
+    });
+    if (kk === 1) {
+      var W0 = {}, P0 = (CA.pos + CB.pos) / (2 * NG), WA = [0.5 * P0 / (CA.pos / (2 * NG)), 0.5 * (1 - P0) / (CA.neg / (2 * NG))], WB = [0.5 * P0 / (CB.pos / (2 * NG)), 0.5 * (1 - P0) / (CB.neg / (2 * NG))];
+      var after = function (C, w) { return w[0] * C.pos / (w[0] * C.pos + w[1] * C.neg); };
+      lab(d, 0, 124, "POSITIVE SHARE OF THE TRAINING DATA");
+      [["Group A", CA, WA], ["Group B", CB, WB]].forEach(function (r, i) {
+        var y = 160 + i * 150, g = d.append("g"); cap(g, 0, y, r[0] + ": weights " + f2(r[2][0]) + " on positives, " + f2(r[2][1]) + " on negatives", { size: 24, weight: 700 });
+        bar(g, 90, y + 14, r[1].base * 600, 34, GREY, A(anim, k, 1), i * 300); cap(g, 0, y + 40, "before", { size: 24 }); cap(g, 90 + r[1].base * 600 + 10, y + 40, f2(r[1].base), { size: 24, weight: 700 });
+        bar(g, 90, y + 56, after(r[1], r[2]) * 600, 34, RED, A(anim, k, 1), i * 300 + 300); cap(g, 0, y + 82, "after", { size: 24 }); cap(g, 90 + after(r[1], r[2]) * 600 + 10, y + 82, f2(after(r[1], r[2])), { size: 24, weight: 700, fill: RED });
+      });
+    } else if (kk === 2) {
+      mono(d, 0, 124, "loss = error + λ · (false-positive-rate gap)", { size: 24 });
+      LAMS.forEach(function (r, i) {
+        var y = 150 + i * 84, g = d.append("g"); cap(g, 0, y + 22, "λ = " + r.lam, { size: 24, weight: 700 });
+        bar(g, 120, y, r.err * 1000, 26, INK, A(anim, k, 2), i * 200); cap(g, 120 + r.err * 1000 + 10, y + 22, "error " + f2(r.err), { size: 24 });
+        bar(g, 120, y + 32, r.gap * 1000, 26, RED, A(anim, k, 2), i * 200 + 100); cap(g, 120 + Math.max(r.gap * 1000, 0) + 10, y + 54, "gap " + f2(r.gap), { size: 24, weight: 700, fill: RED });
+      });
+    } else {
+      lab(d, 0, 124, "SHARE OF EACH GROUP FLAGGED");
+      var rB1 = MB.at(tauRate);
+      [["one cutoff 0.50 for both", rA.rate, rB0.rate], ["B's cutoff lowered to " + f2(tauRate), rA.rate, rB1.rate]].forEach(function (r, i) {
+        var y = 160 + i * 130, g = d.append("g"); cap(g, 0, y, r[0], { size: 24, weight: 700 });
+        [["A", r[1], INK], ["B", r[2], RED]].forEach(function (b, j) { var yy = y + 14 + j * 40; cap(g, 0, yy + 26, b[0], { size: 24 }); bar(g, 40, yy, b[1] * 600, 32, b[2], A(anim, k, 3), i * 300 + j * 150); cap(g, 40 + b[1] * 600 + 10, yy + 26, f2(b[1]), { size: 24, weight: 700 }); });
+      });
+      cap(d, 0, 450, "B's false-positive rate goes from " + f2(rB0.fpr) + " to " + f2(rB1.fpr) + ". Equal yes rates, a cost elsewhere.", { size: 24, weight: 700, fill: RED });
+    }
+    capL(svg, ["", "Reweighting makes the positive share equal before training. It equalizes base rates, not errors.", "A penalty trades a smaller gap for a larger error: " + f2(LAMS[0].err) + " to " + f2(LAMS[3].err) + " here.", "A cutoff per group acts on a frozen model. It needs the group label at deployment."][k], 524);
+  }
+
+  /* ---------- pairs ---------- */
+  function renderPairs(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four look-alike pairs from the fairness chapter", "Each step shows two ideas people mix up, side by side with a small animation.");
+    var d = svg.append("g");
+    var PAIRS = [
+      [["Demographic parity", "The same share of each group is flagged"], ["Equalized odds", "The same error rates in each group"]],
+      [["Group fairness", "Rates match across whole groups"], ["Individual fairness", "Similar people get similar treatment"]],
+      [["Awareness", "Name how much group counts in d"], ["Unawareness", "Drop the column and hope"]],
+      [["Disparate treatment", "The attribute itself moves the prediction"], ["Disparate impact", "It acts through a mediator"]]
+    ];
+    var L = d.append("g"), R = d.append("g").attr("transform", "translate(740,0)");
+    function head(g, i, j) { lab(g, 0, 24, "PAIR " + Math.max(1, k) + " · " + (j ? "RIGHT" : "LEFT"), { fill: MUTED }); txt(g, 0, 66, PAIRS[i][j][0], { size: 32, weight: 700, fill: j ? RED : INK }); wrap(g, 0, 470, PAIRS[i][j][1] + ".", 44, { size: 26, lh: 32, fill: BODY }); }
+    function hb(g, y, v, fill, lbl, t) { cap(g, 0, y + 26, lbl, { size: 24, weight: 700 }); g.append("rect").attr("x", 80).attr("y", y).attr("width", v * 340 * Math.min(1, t * 1.6)).attr("height", 32).attr("fill", fill); if (t > 0.6) cap(g, 80 + v * 340 + 10, y + 26, f2(v), { size: 24, weight: 700 }); }
+    function sq(g, x, y, on, hl) { g.append("rect").attr("x", x).attr("y", y).attr("width", 44).attr("height", 44).attr("fill", on ? INK : "#FFFFFF").attr("stroke", hl ? RED : INK).attr("stroke-width", hl ? 5 : 3); }
+    function draw(i, t) {
+      L.selectAll("*").remove(); R.selectAll("*").remove(); head(L, i, 0); head(R, i, 1);
+      var LG = L.append("g").attr("transform", "translate(30,0)"), RG = R.append("g").attr("transform", "translate(30,0)");
+      if (i === 0) {
+        hb(LG, 190, CA.rate, INK, "A", t); hb(LG, 240, CB.rate, RED, "B", t); cap(LG, 0, 340, "yes rates differ", { size: 24, fill: MUTED });
+        hb(RG, 150, CA.tpr, INK, "TPR", t); hb(RG, 194, CB.tpr, RED, "TPR", t); hb(RG, 250, CA.fpr, INK, "FPR", t); hb(RG, 294, CB.fpr, RED, "FPR", t); cap(RG, 0, 372, "both error rates compared", { size: 24, fill: MUTED });
+      } else if (i === 1) {
+        [[1, 0, 1, 0], [0, 1, 0, 1]].forEach(function (r, ri) { r.forEach(function (v, c) { sq(LG, c * 70, 190 + ri * 70, v, false); }); });
+        cap(LG, 0, 370, "totals: 0.50 and 0.50", { size: 24, fill: MUTED });
+        sq(RG, 40, 200, 1, t > 0.5); sq(RG, 40, 300, 0, t > 0.5); if (t > 0.5) { RG.append("path").attr("d", "M62,248 V296").attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "6 5"); cap(RG, 110, 280, "similar pair, different outcome", { size: 24, fill: RED, weight: 700 }); }
+        cap(RG, 0, 390, "checked pair by pair", { size: 24, fill: MUTED });
+      } else if (i === 2) {
+        var w1 = DFIN * 340 / 0.4 * 1.0, w2 = WZIP * 340 / 0.4 * Math.min(1, t * 1.4);
+        LG.append("rect").attr("x", 0).attr("y", 220).attr("width", w1).attr("height", 40).attr("fill", GREY); LG.append("rect").attr("x", w1).attr("y", 220).attr("width", w2).attr("height", 40).attr("fill", RED);
+        cap(LG, 0, 300, "finance " + f2(DFIN) + " + group w " + f2(WZIP), { size: 24, fill: MUTED });
+        mono(RG, 0, 230, "race", { size: 26, fill: GREY, weight: 700 }); RG.append("path").attr("d", "M-4,222 H64").attr("stroke", RED).attr("stroke-width", 4);
+        RG.append("rect").attr("x", 0).attr("y", 270).attr("width", ZACC * 340 * Math.min(1, t * 1.4)).attr("height", 36).attr("fill", INK); cap(RG, 0, 340, "zip still names the group " + Math.round(ZACC * 100) + "%", { size: 24, fill: MUTED });
+      } else {
+        [[LG, 0], [RG, 1]].forEach(function (p) {
+          var g = p[0]; node(g, 70, 240, "A", false); node(g, 400, 240, "Ŷ", false);
+          if (!p[1]) arrowT(g, 70, 240, 400, 240, RED, 5, 40, 44, Math.min(1, t * 1.3));
+          else { node(g, 235, 130, "M", false); arrowT(g, 70, 240, 235, 130, RED, 5, 40, 44, Math.min(1, t * 2)); if (t > 0.5) arrowT(g, 235, 130, 400, 240, RED, 5, 40, 44, Math.min(1, (t - 0.5) * 2)); }
+        });
+      }
+    }
+    if (k === 0) { draw(0, 0.5); cap(svg.append("g"), 0, 612, "Click or press → to see four pairs, one at a time.", { size: 24, fill: MUTED }); return; }
+    draw(k - 1, 0.99); run(d, 3000, function (t) { draw(k - 1, t); }, anim);
+  }
+
+  /* ---------- say it exactly ---------- */
+  var SAY = [
+    { v: "make the model fair", x: "Report the gaps and name what is given up: yes rate " + f2(Math.abs(CA.rate - CB.rate)) + ", FPR " + f2(Math.abs(CA.fpr - CB.fpr)) + ", precision " + f2(Math.abs(CA.ppv - CB.ppv)) },
+    { v: "it is accurate, so it is fair", x: "Accuracy is a separate question: report each group's accuracy, " + f2(CA.acc) + " against " + f2(CB.acc) },
+    { v: "just drop the race column", x: "Test the remaining features: zip code alone names the group right " + Math.round(ZACC * 100) + "% of the time" },
+    { v: "treat similar people alike", x: "Define d, then check D ≤ d: " + f2(DTV) + " fails at d = " + f2(DFIN) + " and passes at d = " + f2(DZIP) },
+    { v: "how unfair is it overall?", x: "Define the benefit, compute GE(2), then split it: " + f3(WITHIN) + " within groups, " + f3(BETWEEN) + " between" }
+  ];
+  function renderSay(el, k, anim) {
+    var svg = svgFor(el, W, H, "Say it exactly: five vague fairness requests turned into precise ones", "Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction does.");
+    var g = svg.append("g");
+    SAY.forEach(function (r, i) {
+      if (i + 1 > k) return; var y = 6 + i * 128, cur = i + 1 === k, e = g.append("g");
+      e.append("rect").attr("x", 0).attr("y", y).attr("width", 8).attr("height", 114).attr("fill", cur ? RED : FAMILIAR);
+      txt(e, 24, y + 30, "“" + r.v + "”", { size: 26, fill: RED, weight: 700 });
+      wrap(e, 24, y + 64, "→ " + r.x, 50, { size: 24, lh: 30, fill: INK, weight: 700 });
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    if (k === 0) { cap(g, 0, 60, "A vague request gets a guess. An exact one gets what you meant.", { fill: INK }); cap(g, 0, 110, "Click or press → to turn five requests into instructions.", { fill: MUTED }); return; }
+    var p = g.append("g").attr("transform", "translate(700,60)"), pw = 640, ph = 300, nt = "";
+    lab(p, 0, -14, "WHAT THE INSTRUCTION DOES", { fill: RED });
+    p.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", pw).attr("height", ph).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+    function hrow(y, lbl, v, fill, max, delay) { cap(p, 14, y, lbl, { size: 24 }); bar(p, 14, y + 10, v / max * 480, 30, fill, anim, delay); cap(p, 14 + v / max * 480 + 10, y + 34, f2(v), { size: 24, weight: 700 }); }
+    if (k === 1) { hrow(50, "yes-rate gap", Math.abs(CA.rate - CB.rate), RED, 0.4, 0); hrow(110, "true-positive gap", Math.abs(CA.tpr - CB.tpr), RED, 0.4, 200); hrow(170, "false-positive gap", Math.abs(CA.fpr - CB.fpr), RED, 0.4, 400); hrow(230, "precision gap", Math.abs(CA.ppv - CB.ppv), INK, 0.4, 600); nt = "calibration met; the other two are not"; }
+    else if (k === 2) { hrow(60, "group A", CA.acc, INK, 1, 0); hrow(130, "group B", CB.acc, RED, 1, 300); hrow(200, "all 400 people", (CA.acc + CB.acc) / 2, GREY, 1, 600); nt = "the overall figure hides a 0.20 gap"; }
+    else if (k === 3) { hrow(70, "coin flip", 0.5, GREY, 1, 0); hrow(160, "zip code alone", ZACC, RED, 1, 400); nt = "the dropped attribute is still recoverable"; }
+    else if (k === 4) { hrow(50, "D(M(x), M(y))", DTV, INK, 0.4, 0); hrow(130, "d, finance only", DFIN, GREY, 0.4, 300); hrow(210, "d, with zip distance", DZIP, RED, 0.4, 600); nt = "the verdict depends on d"; }
+    else { var sc = 600 / GTOT; bar(p, 14, 90, WITHIN * sc, 50, INK, anim, 0); bar(p, 14 + WITHIN * sc, 90, BETWEEN * sc, 50, RED, anim, 500); cap(p, 14, 76, "total " + f3(GTOT), { size: 24, weight: 700 }); cap(p, 14, 180, "within " + f3(WITHIN) + " (" + Math.round(WITHIN / GTOT * 100) + "%)", { size: 24, weight: 700 }); cap(p, 14, 220, "between " + f3(BETWEEN) + " (" + Math.round(BETWEEN / GTOT * 100) + "%)", { size: 24, weight: 700, fill: RED }); nt = "most of it sits inside the groups"; }
+    cap(p, 0, ph + 40, nt, { size: 24, weight: 700 });
+  }
+
+  var CHECKS = [
+    "Which of the three definitions am I reporting, and which two do I give up?",
+    "Do the base rates differ, and by how much?",
+    "Who bears the cost of each kind of error here?",
+    "What does d, or the causal graph, say about who counts as comparable?",
+    "Is a dropped column really gone, or do proxies remain?",
+    "Who should have decided, and is the choice on record with what would change it?"
+  ];
+  function renderClosing(el, k, anim) {
+    var svg = svgFor(el, W, H, "Six checks before you defend a fairness metric", "A checklist of six items drawn one at a time.");
+    var g = svg.append("g");
+    CHECKS.forEach(function (c, i) {
+      var y = 20 + i * 100, on = i + 1 <= k, row = g.append("g");
+      row.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 64).attr("height", 64).attr("fill", on ? "#FFFFFF" : "none").attr("stroke", on ? INK : FAMILIAR).attr("stroke-width", 3);
+      wrap(row, 100, y + 42, c, 78, { size: 32, lh: 36, fill: on ? INK : MUTED });
+      if (on) { var ck = check(row, 32, y + 36, 20, RED); if (A(anim, k, i + 1)) drawIn(ck, 0, 450); }
+    });
+    cap(g, 0, 660, "Then say it exactly: not “make it fair”, but “equal error rates; calibration given up”.", { size: 28, weight: 700 });
+  }
+
+  var BUILDS = {
+    map: { steps: 4, render: renderMap }, rates: { steps: 4, render: renderRates }, defs: { steps: 3, render: renderDefs },
+    thm: { steps: 4, render: renderThm }, compas: { steps: 4, render: renderCompas }, indiv: { steps: 4, render: renderIndiv },
+    aware: { steps: 3, render: renderAware }, causal: { steps: 4, render: renderCausal }, ge: { steps: 4, render: renderGE },
+    tool: { steps: 3, render: renderTool }, pairs: { steps: 4, render: renderPairs }, say: { steps: 5, render: renderSay },
+    closing: { steps: 6, render: renderClosing }
+  };
+
+  /* click on the stage advances one fragment (the original deck had keys and buttons only) */
+  stage.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest("#controls, #thumbs")) return;
+    nextSlide();
+  });
+  function buildEl(slide) { return slide ? slide.querySelector("[data-build]") : null; }
+  function buildOf(slide) { var el = buildEl(slide); return el ? BUILDS[el.getAttribute("data-build")] : null; }
+  function stopBuild(el) { if (hasD3 && el) d3.select(el).selectAll("*").interrupt(); }
+  function renderBuild(el, k, animate) {
+    var b = BUILDS[el.getAttribute("data-build")];
+    if (!b) return;
+    if (!hasD3) {
+      el.innerHTML = '<div class="chart-fallback">This graphic needs D3, which did not load. Check the network connection and reload.</div>';
+      return;
+    }
+    stopBuild(el);
+    b.render(el, Math.max(0, Math.min(b.steps, k)), animate && !reduceMQ.matches);
+  }
+
+  /* ---------------- navigation ---------------- */
+  function go(i, atEnd, animate) {
+    i = Math.max(0, Math.min(total - 1, i));
+    var prev = slides[current];
+    if (prev && i !== current) { stopBuild(buildEl(prev)); prev.classList.remove("is-active"); }
+    current = i;
+    var s = slides[i], b = buildOf(s);
+    step = b && atEnd ? b.steps : 0;
+    s.classList.add("is-active");
+    var el = buildEl(s);
+    if (el) renderBuild(el, step, animate);
+    updateUI(true);
+  }
+  function setStep(k, animate) {
+    step = k;
+    renderBuild(buildEl(slides[current]), step, animate);
+    updateUI(false);
+  }
+  function nextSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step < b.steps) setStep(step + 1, true);
+    else if (current < total - 1) go(current + 1, false, true);
+  }
+  function prevSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step > 0) setStep(step - 1, false);
+    else if (current > 0) go(current - 1, true, false);
+  }
+  function updateUI(newSlide) {
+    var s = slides[current], b = buildOf(s);
+    var title = s.getAttribute("data-title") || "";
+    counter.textContent = (current + 1) + " / " + total;
+    pips.innerHTML = "";
+    if (b) {
+      for (var j = 1; j <= b.steps; j++) {
+        var p = document.createElement("span");
+        p.className = "pip" + (j <= step ? " on" : "");
+        pips.appendChild(p);
+      }
+    }
+    btnPrev.disabled = current === 0 && step === 0;
+    btnNext.disabled = current === total - 1 && (!b || step === b.steps);
+    var stepTxt = b ? ", step " + step + " of " + b.steps : "";
+    live.textContent = newSlide ? "Slide " + (current + 1) + " of " + total + ": " + title + stepTxt : "Step " + step + " of " + (b ? b.steps : 0);
+    if (newSlide) {
+      var n = s.querySelector(".speaker-notes");
+      notesHead.textContent = "Speaker notes, slide " + (current + 1);
+      notesBody.innerHTML = n ? n.innerHTML : "<p>No notes for this slide.</p>";
+      try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) { /* ignore */ }
+    }
+  }
+  btnPrev.addEventListener("click", prevSlide);
+  btnNext.addEventListener("click", nextSlide);
+
+  /* ---------------- notes ---------------- */
+  function toggleNotes() {
+    var on = !document.body.classList.contains("notes-open");
+    document.body.classList.toggle("notes-open", on);
+    btnNotes.setAttribute("aria-pressed", on ? "true" : "false");
+    fit();
+  }
+  btnNotes.addEventListener("click", toggleNotes);
+
+  /* ---------------- fullscreen ---------------- */
+  var root = document.documentElement;
+  var fsEnabled = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  if (!fsEnabled) btnFs.hidden = true;
+  function toggleFullscreen() {
+    if (!fsEnabled) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      if (fsEl) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else {
+        var pr = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+        if (pr && pr.catch) pr.catch(function () {});
+      }
+    } catch (e) { /* refused */ }
+  }
+  btnFs.addEventListener("click", toggleFullscreen);
+  document.addEventListener("fullscreenchange", fit);
+  document.addEventListener("webkitfullscreenchange", fit);
+
+  /* ---------------- thumbnails (always final state) ---------------- */
+  function buildThumbs() {
+    thumbGrid.innerHTML = "";
+    slides.forEach(function (s, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "thumb" + (i === current ? " current" : "");
+      btn.setAttribute("aria-label", "Go to slide " + (i + 1) + ": " + (s.getAttribute("data-title") || ""));
+      if (i === current) btn.setAttribute("aria-current", "true");
+      var inner = document.createElement("div");
+      inner.className = "thumb-inner";
+      inner.setAttribute("aria-hidden", "true");
+      var clone = s.cloneNode(true);
+      clone.classList.remove("is-active");
+      Array.prototype.forEach.call(clone.querySelectorAll("[id]"), function (n) { n.removeAttribute("id"); });
+      var sn = clone.querySelector(".speaker-notes");
+      if (sn) sn.remove();
+      inner.appendChild(clone);
+      var num = document.createElement("span");
+      num.className = "thumb-num";
+      num.textContent = String(i + 1);
+      btn.appendChild(inner);
+      btn.appendChild(num);
+      btn.addEventListener("click", function () { closeThumbs(true); go(i, false, true); });
+      thumbGrid.appendChild(btn);
+      var cb = clone.querySelector("[data-build]");
+      if (cb) renderBuild(cb, 99, false);
+    });
+    scaleThumbs();
+  }
+  function scaleThumbs() {
+    Array.prototype.forEach.call(thumbGrid.querySelectorAll(".thumb"), function (b) {
+      b.querySelector(".thumb-inner").style.transform = "scale(" + (b.clientWidth / 1920) + ")";
+    });
+  }
+  function openThumbs() {
+    lastFocus = document.activeElement;
+    thumbs.classList.add("open");
+    buildThumbs();
+    var cur = thumbGrid.querySelector(".thumb.current");
+    if (cur) { cur.focus(); cur.scrollIntoView({ block: "nearest" }); }
+  }
+  function closeThumbs(navigating) {
+    thumbs.classList.remove("open");
+    thumbGrid.innerHTML = "";
+    if (!navigating && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  btnThumbs.addEventListener("click", openThumbs);
+  thumbs.querySelector(".close").addEventListener("click", function () { closeThumbs(false); });
+  window.addEventListener("resize", function () { if (thumbs.classList.contains("open")) scaleThumbs(); });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (thumbs.classList.contains("open")) {
+      if (e.key === "Escape" || e.key === "g" || e.key === "G") { e.preventDefault(); closeThumbs(false); }
+      return;
+    }
+    var onButton = e.target && e.target.closest && e.target.closest("button");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": e.preventDefault(); nextSlide(); break;
+      case " ": if (onButton) return; e.preventDefault(); nextSlide(); break;
+      case "ArrowLeft": case "PageUp": e.preventDefault(); prevSlide(); break;
+      case "Home": e.preventDefault(); go(0, false, true); break;
+      case "End": e.preventDefault(); go(total - 1, true, false); break;
+      case "f": case "F": e.preventDefault(); toggleFullscreen(); break;
+      case "n": case "N": e.preventDefault(); toggleNotes(); break;
+      case "g": case "G": e.preventDefault(); openThumbs(); break;
+    }
+  });
+
+  /* ---------------- touch swipe ---------------- */
+  var tx = null, ty = null;
+  stage.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) return;
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (tx === null || thumbs.classList.contains("open")) { tx = null; return; }
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) { if (dx < 0) nextSlide(); else prevSlide(); }
+    tx = null;
+  }, { passive: true });
+
+  /* ---------------- quiet controls ---------------- */
+  var idle = null;
+  document.addEventListener("mousemove", function () {
+    document.body.classList.add("show-controls");
+    clearTimeout(idle);
+    idle = setTimeout(function () { document.body.classList.remove("show-controls"); }, 2200);
+  });
+
+  /* ---------------- print: every slide in its final state ---------------- */
+  window.addEventListener("beforeprint", function () {
+    slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  });
+  window.addEventListener("afterprint", function () {
+    slides.forEach(function (s, i) { var el = buildEl(s); if (el && i !== current) renderBuild(el, 99, false); });
+    var el = buildEl(slides[current]);
+    if (el) renderBuild(el, step, false);
+  });
+
+  /* ---------------- start ---------------- */
+  slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  fit();
+  var hm = /^#(\d+)$/.exec(location.hash);
+  go(hm ? parseInt(hm[1], 10) - 1 : 0, false, true);
+  window.addEventListener("hashchange", function () {
+    var m = /^#(\d+)$/.exec(location.hash);
+    if (m && parseInt(m[1], 10) - 1 !== current) go(parseInt(m[1], 10) - 1, false, true);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

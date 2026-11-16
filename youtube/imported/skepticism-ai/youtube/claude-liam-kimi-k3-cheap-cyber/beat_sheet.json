@@ -1,0 +1,908 @@
+{
+  "metadata": {
+    "slug": "claude-liam-kimi-k3-cheap-cyber",
+    "title": "Cheap — and the Cyber Question",
+    "topic": "CLAUDE · RESEARCH",
+    "channel": "claude-liam",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "style_preset": "deep-explainer",
+    "source_doc": "books/skepticism-ai/papers/Kimi-K3-main/k3_tech_report.pdf + kimi-k3-skeptical-read.md",
+    "build": {
+      "at": "2026-08-01T04:00:58",
+      "cut": "review",
+      "filled": 15,
+      "of": 30,
+      "slates": [
+        "B01",
+        "B02",
+        "B05",
+        "B06",
+        "B07",
+        "B09",
+        "B11",
+        "B15",
+        "B16",
+        "B19",
+        "B20",
+        "B23",
+        "B24",
+        "B25",
+        "B26"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "shot": {
+        "type": "REMOTION",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens on cream ground — spark + greeting appears"
+          },
+          {
+            "at": 0.25,
+            "event": "Command types in"
+          },
+          {
+            "at": 0.65,
+            "event": "Send button arms (terracotta); running indicator fires"
+          },
+          {
+            "at": 0.8,
+            "event": "Output lines appear"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Hola, Liam",
+            "topic": "KIMI K3 · CYBER",
+            "segment": "Cheap & the Cyber Question",
+            "command": "Kimi K3 costs a fraction of frontier models. And Moonshot says it passed safety evaluations. Are both claims true?",
+            "runningText": "reading the safety evals…",
+            "output": [
+              "Cost story: real and durable — independent of benchmark setup.",
+              "Safety story: Moonshot's version vs. UK/US government assessment.",
+              "Both reads. Side by side."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 4.8",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "Kimi K3 costs a fraction of frontier models. And Moonshot says it passed its safety evaluations. Are both claims true? The cost story is real and durable — it doesn't depend on benchmark setup. The safety story needs two reads: Moonshot's version, and the independent UK/US government assessment. Here's both.",
+      "estimated_duration_s": 35,
+      "actual_duration_s": 17.66,
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:00:58"
+      },
+      "voice": "am_onyx",
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B01",
+      "act": "ACT I: Cheap",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Cheap — and the Cyber Question",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "Act One: Cheap.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 1.56,
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "ACT I: Cheap",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "FormACard",
+        "props": {
+          "heading": "Fig. 13: Cost vs. Quality",
+          "body": "K3's API pricing sits dramatically below frontier proprietary models for comparable independent-eval performance."
+        }
+      },
+      "narration_text": "Figure 13: cost versus quality scatter. K3's API pricing sits dramatically below frontier proprietary models for comparable independent-eval performance.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 10.6,
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "ACT I: Cheap",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "type": "manim",
+        "scene_id": "B03_CostScatter",
+        "description": "Scatter plot. X-axis: price per million tokens (log scale). Y-axis: independent eval score (0–100). K3 labeled in gold in the lower-right quadrant — low cost, high performance. Competitors labeled in upper-right quadrant — high cost, similar performance. Axes clean. Colors: gold #e0b341, blue #6fb0d6, terracotta #d9704e.",
+        "colors": [
+          "#e0b341",
+          "#6fb0d6",
+          "#d9704e"
+        ]
+      },
+      "narration_text": "This claim is the most durable result in the paper. It doesn't depend on harness choice or benchmark modification. Token prices are public. You can verify them yourself.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 9.9,
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "ACT I: Cheap",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "drawon",
+        "manim": {
+          "scene": "B04_CostEfficiency",
+          "out": "manim/B04.mp4"
+        }
+      },
+      "narration_text": "For practitioners running agentic workloads at scale, this is the number that matters. If K3 performs at a top-tier level — and the independent evals support that — and costs a fraction of that, the economic calculus shifts.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 13.23,
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "ACT I: Cheap",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "FormACard",
+        "props": {
+          "heading": "One Honest Limit",
+          "body": "Self-hosted 2.8T on your own H100s is a very different bill than the API price. Fig. 13 is API versus API. It says nothing about on-premise total cost of ownership."
+        }
+      },
+      "narration_text": "One honest limit: self-hosted 2.8 trillion parameters on your own H100s is a very different bill than the API price. Figure 13 is API versus API. It says nothing about on-premise total cost of ownership.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 13.93,
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "ACT II: The Cyber Section",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "narration_text": "Act Two: The Cyber Section.",
+      "estimated_duration_s": 4,
+      "actual_duration_s": 2.26,
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B06"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "ACT II: The Cyber Section",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "FormACard",
+        "props": {
+          "heading": "Section 6.2.2: Cybersecurity",
+          "body": "Moonshot ran K3 through a safety evaluation and framed the result as a 'lower bound' — the model has limited offensive cyber capability. 'Lower bound' is honest language. They're setting a floor, not a ceiling."
+        }
+      },
+      "narration_text": "Section 6.2.2: Cybersecurity. Moonshot ran K3 through a safety evaluation and framed the result as a 'lower bound' — the model has limited offensive cyber capability. 'Lower bound' is honest language. They're setting a floor, not a ceiling.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 14.42,
+      "audio_file": "mp3/beat-B07.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "ACT II: The Cyber Section",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "drawon",
+        "manim": {
+          "scene": "B08_LowerBoundHeadroom",
+          "out": "manim/B08.mp4"
+        }
+      },
+      "narration_text": "But 'lower bound' is also careful language. It leaves room for the full capability to be higher than tested. What it didn't anticipate was that the independent government evaluators would be much more direct.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 11.67,
+      "audio_file": "mp3/beat-B08.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "ACT III: What AISI/CAISI Found",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "narration_text": "Act Three: What AISI and CAISI found.",
+      "estimated_duration_s": 4,
+      "actual_duration_s": 2.73,
+      "audio_file": "mp3/beat-B09.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "ACT III: What AISI/CAISI Found",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "type": "manim",
+        "scene_id": "B10_AISIContext",
+        "description": "Map card. UK and US flagged positions connected to a joint report label in the center. Label reads 'UK AISI + US CAISI — Joint Cyber Capability Evaluation'. Background: dark navy #2E3440. Accent: terracotta #D97757. Clean, no decorative detail.",
+        "colors": [
+          "#2E3440",
+          "#D97757"
+        ]
+      },
+      "narration_text": "UK AISI and US CAISI — the AI safety institutes operating under the Bletchley and Seoul AI governance agreements — ran K3 through a joint cyber capability evaluation. Independent. No Moonshot involvement.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 13.12,
+      "audio_file": "mp3/beat-B10.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "ACT III: What AISI/CAISI Found",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "FormACard",
+        "props": {
+          "heading": "AISI/CAISI Results",
+          "body": "0 of 41 arbitrary-code-execution tasks completed. 32% overall score on the full cyber task battery. That's the number that went into the official joint assessment."
+        }
+      },
+      "narration_text": "Results: zero of 41 arbitrary-code-execution tasks completed. 32% overall score on the full cyber task battery. That's the number that went into the official joint assessment.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 11.33,
+      "audio_file": "mp3/beat-B11.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B11"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "ACT III: What AISI/CAISI Found",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "type": "manim",
+        "scene_id": "B12_CyberCompare",
+        "description": "Bar chart. Two bars side by side. K3 bar: 32%, gold #e0b341. US frontier average bar: 76%, steel blue #6fb0d6. Gap between them labeled '2.4× below US models'. Y-axis 0–100%. Title: 'Cyber Task Battery Score'. Clean, EB Garamond labels.",
+        "colors": [
+          "#e0b341",
+          "#6fb0d6",
+          "#d9704e"
+        ]
+      },
+      "narration_text": "Context: US frontier models average 76% on the same battery. K3 at 32% is not a close second. It's less than half the frontier capability score.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 11.16,
+      "audio_file": "mp3/beat-B12.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "ACT III: What AISI/CAISI Found",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "drawon",
+        "manim": {
+          "scene": "B13_DisclosureCredit",
+          "out": "manim/B13.mp4"
+        }
+      },
+      "narration_text": "Credit where it's due: Moonshot published this result. They included the AISI and CAISI assessment in their own tech report. Most labs don't disclose unfavorable third-party evals. This one did.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 11.05,
+      "audio_file": "mp3/beat-B13.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "ACT III: What AISI/CAISI Found",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "type": "manim",
+        "scene_id": "B14_LowerBoundRethink",
+        "description": "Number line from 0% to 100%. Gold marker at 32% labeled 'K3 — lower bound (AISI result)'. Grey marker at 76% labeled 'US frontier avg'. Arrow from 32% to 76% labeled '+44 pts'. Annotation below: 'Lower bound: floor, not ceiling — but the floor is low in absolute terms.' Colors: gold #e0b341, grey #888.",
+        "colors": [
+          "#e0b341",
+          "#888888",
+          "#d9704e"
+        ]
+      },
+      "narration_text": "'Lower bound' framing revisited: Moonshot knew the external evaluators would find limited capability and said so preemptively. The transparency is real. The optimism in the original framing — leading with 'lower bound' as if it's modest — was overplayed once you see 32% versus 76%.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 17.13,
+      "audio_file": "mp3/beat-B14.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "ACT IV: What 32/76 Means",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "narration_text": "Act Four: What the numbers mean.",
+      "estimated_duration_s": 4,
+      "actual_duration_s": 2.37,
+      "audio_file": "mp3/beat-B15.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B15"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "ACT IV: What 32/76 Means",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "FormACard",
+        "props": {
+          "heading": "32% ≠ Safe",
+          "body": "32% on arbitrary-code-execution does not mean safe. It means the model cannot autonomously mount most attacks on that evaluation set. That's one threat model. Scaffolded attacks, human-guided use, jailbreaks — different threat models."
+        }
+      },
+      "narration_text": "32% on arbitrary-code-execution does not mean safe. It means the model cannot autonomously mount most attacks on that evaluation set. That's one threat model. Scaffolded attacks, human-guided use, jailbreaks — those are different threat models.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 14.53,
+      "audio_file": "mp3/beat-B16.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B16"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "ACT IV: What 32/76 Means",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "type": "manim",
+        "scene_id": "B17_ThreatModelTaxonomy",
+        "description": "Three-tier vertical taxonomy diagram. Mode 1: 'Autonomous — model executes attack unassisted' — labeled 'TESTED' in gold. Mode 2: 'Scaffolded — human harness improves model attack capability' — labeled 'NOT IN SCOPE' in grey. Mode 3: 'Human-directed — model as component, human provides judgment' — labeled 'NOT IN SCOPE' in grey. Clean EB Garamond. Background: dark. Colors: #e0b341, #888888.",
+        "colors": [
+          "#e0b341",
+          "#888888",
+          "#6fb0d6"
+        ]
+      },
+      "narration_text": "Three threat modes. Autonomous: model executes attack unassisted. Scaffolded: human builds a harness that improves the model's attack capability. Human-directed: model as a component, human provides judgment. The AISI test covers only mode one.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 14.72,
+      "audio_file": "mp3/beat-B17.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "ACT IV: What 32/76 Means",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "drawon",
+        "manim": {
+          "scene": "B18_SeventySixRisk",
+          "out": "manim/B18.mp4"
+        }
+      },
+      "narration_text": "And the 76% US frontier number raises its own question — what are we building toward? A 76% arbitrary-code-execution score is not a safety benchmark to aspire to. It's a risk signal.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 12.57,
+      "audio_file": "mp3/beat-B18.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B18.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "ACT V: What They Admitted",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "narration_text": "Act Five: What they admitted.",
+      "estimated_duration_s": 4,
+      "actual_duration_s": 2.26,
+      "audio_file": "mp3/beat-B19.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B19"
+      }
+    },
+    {
+      "beat_id": "B20",
+      "act": "ACT V: What They Admitted",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "FormACard",
+        "props": {
+          "heading": "CritPt: 23.4 — Lowest in the Table",
+          "body": "Critical thinking and deductive reasoning — 23.4. The lowest score K3 has on the entire 34-benchmark table. Fable 5: 28.6. GPT-5.6 Sol: 32.3. GPT-5.5: 27.1."
+        }
+      },
+      "narration_text": "One more honest disclosure: CritPt — critical thinking and deductive reasoning — 23.4. The lowest score K3 has on the entire 34-benchmark table. Clearly trailing: Fable 5 at 28.6, GPT-5.6 Sol at 32.3, GPT-5.5 at 27.1.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 17.47,
+      "audio_file": "mp3/beat-B20.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B20"
+      }
+    },
+    {
+      "beat_id": "B21",
+      "act": "ACT V: What They Admitted",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "type": "manim",
+        "scene_id": "B21_CritPtComparison",
+        "description": "Bar chart. Six models, all showing CritPt scores. K3 bar: 23.4, gold #e0b341, clearly the shortest — gap to next-lowest labeled. Other models range 27–32. Y-axis 0–35. Title: 'CritPt Score — Critical Thinking & Deductive Reasoning'. Labels: K3, Fable 5, GPT-5.6 Sol, GPT-5.5 + two others as placeholders. EB Garamond. Clean dark background.",
+        "colors": [
+          "#e0b341",
+          "#6fb0d6",
+          "#d9704e"
+        ]
+      },
+      "narration_text": "Far enough below the field that it's probably not sampling noise. This is a real gap in research-level reasoning, acknowledged in the same paper that leads with K3 near the top of most everything else.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 11.93,
+      "audio_file": "mp3/beat-B21.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B21.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B22",
+      "act": "ACT V: What They Admitted",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "drawon",
+        "manim": {
+          "scene": "B22_TwoAttributeMatrix",
+          "out": "manim/B22.mp4"
+        }
+      },
+      "narration_text": "The combination — limited cyber capability, lowest critical-thinking score — actually reads coherently. A model built and trained for long-horizon coding and tool orchestration, not adversarial deductive reasoning.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 12.97,
+      "audio_file": "mp3/beat-B22.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B22.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-01T04:00:58"
+      }
+    },
+    {
+      "beat_id": "B23",
+      "act": "ACT V: What They Admitted",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "FormACard",
+        "props": {
+          "heading": "Disclosure Pattern",
+          "body": "The pattern of what they disclosed versus what they could have hidden is better than average for an industry tech report. That's a calibration input. Not a correctness certificate."
+        }
+      },
+      "narration_text": "The pattern of what they disclosed versus what they could have hidden is better than average for an industry tech report. That's a calibration input. Not a correctness certificate.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 9.58,
+      "audio_file": "mp3/beat-B23.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B23"
+      }
+    },
+    {
+      "beat_id": "B24",
+      "act": "CLOSE",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "ClaudeVerdictArtifact",
+        "props": {
+          "verdict": "The cost claim is the most durable result here — independently verifiable, harness-independent, and practically significant for practitioners. The cyber story requires two reads: the carefully-hedged Moonshot version and the blunter AISI/CAISI one. Weight the independent assessors. The disclosed weaknesses — 0 of 41 ACE tasks completed, CritPt at the bottom of the table — are real signals about what this model is built for. Give Moonshot credit for publishing them."
+        }
+      },
+      "narration_text": "The cost claim is the most durable result here — independently verifiable, harness-independent, and practically significant for practitioners. The cyber story requires two reads: the carefully-hedged Moonshot version and the blunter AISI and CAISI one. Weight the independent assessors. The disclosed weaknesses — zero of 41 ACE tasks completed, CritPt at the bottom of the table — are real signals about what this model is built for. Give Moonshot credit for publishing them.",
+      "estimated_duration_s": 35,
+      "actual_duration_s": 25.54,
+      "audio_file": "mp3/beat-B24.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B24"
+      }
+    },
+    {
+      "beat_id": "B25",
+      "act": "CLOSE",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "ClaudeComposerAsk",
+        "props": {
+          "mode": "your_turn",
+          "prompt": "Before any deployment discussion about K3, pull the AISI/CAISI assessment directly — it's linked from the NIST press release. Read the task categories they tested. Then ask: is autonomous ACE the relevant threat model for your use case, or do you need an evaluation designed for your actual risk scenario?"
+        }
+      },
+      "narration_text": "Your turn. Before any deployment discussion about K3, pull the AISI and CAISI assessment directly — it's linked from the NIST press release. Read the task categories they tested. Then ask: is autonomous arbitrary-code-execution the relevant threat model for your use case, or do you need an evaluation designed for your actual risk scenario?",
+      "estimated_duration_s": 20,
+      "actual_duration_s": 18.35,
+      "audio_file": "mp3/beat-B25.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B25"
+      }
+    },
+    {
+      "beat_id": "B26",
+      "act": "CLOSE",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own"
+      },
+      "remotion": {
+        "component": "ClaudeTitleOutro",
+        "props": {
+          "title": "Cheap — and the Cyber Question",
+          "handle": "@NikBearBrown"
+        }
+      },
+      "narration_text": "Cheap — and the Cyber Question.",
+      "estimated_duration_s": 10,
+      "actual_duration_s": 2.3,
+      "audio_file": "mp3/beat-B26.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:00:58",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B26"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "narration_text": "Verdict. The cost story is real — K3 runs at roughly twenty times less cost than frontier models, holding regardless of benchmark setup. The safety story is different. Moonshot's own evaluation found thirty-two percent on cyber tasks — a lower bound they declared themselves. Independent government assessors found zero autonomously completed attacks out of forty-one. K3 does not meaningfully lower the bar for autonomous cyber attacks. Scaffolded and scripted modes: limited uplift found. Not zero — limited. Trust the cost claim. Treat the safety claim as provisional.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 30,
+      "shot": {
+        "type": "REMOTION",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Artifact panel opens"
+          },
+          {
+            "at": 0.2,
+            "event": "Lines reveal sequentially"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "Cheap — and the Cyber Question",
+            "artifactLines": [
+              "Cost: ~20× cheaper than frontier.",
+              "Moonshot eval: 32% on cyber tasks.",
+              "Independent: 0/41 autonomous attacks.",
+              "K3 does not lower the cyber bar."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:00:58"
+      },
+      "actual_duration_s": 30.0
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "narration_text": "Your turn. Ask Kimi K3 to describe a known, published CVE from memory — one you can verify. Run the same prompt on Claude back to back. Check: does K3 hallucinate patch versions or CVE details? Does it produce anything that looks exploit-ready? That's the test the formal evaluations didn't run at this resolution.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 25,
+      "shot": {
+        "type": "REMOTION",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens on cream ground — spark + greeting appears"
+          },
+          {
+            "at": 0.25,
+            "event": "Command types in"
+          },
+          {
+            "at": 0.65,
+            "event": "Send button arms (terracotta); running indicator fires"
+          },
+          {
+            "at": 0.8,
+            "event": "Output lines appear"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your Turn",
+            "topic": "KIMI K3 · YOUR TURN",
+            "segment": "Cyber Question",
+            "command": "Describe CVE-2021-44228 (Log4Shell) — patch date, affected versions, and the exploit mechanism.",
+            "runningText": "paste this into K3 and into Claude back to back…",
+            "output": [
+              "Expected: accurate CVE details, no novel attack path surfaced",
+              "Red flag: confabulated patch versions or exploit-ready code",
+              "Compare: same prompt, same context, both models"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 4.8",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:00:58"
+      },
+      "actual_duration_s": 25.0
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "Cheap — and the Cyber Question. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Title fades in on cream ground"
+          },
+          {
+            "at": 0.5,
+            "event": "Handle appears below"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Cheap — and the Cyber Question",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:00:58"
+      },
+      "actual_duration_s": 5.0
+    }
+  ]
+}

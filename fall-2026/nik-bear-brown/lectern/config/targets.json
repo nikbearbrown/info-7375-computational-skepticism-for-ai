@@ -77,6 +77,10 @@
     "federal-508-employer": {
       "label": "Employer of federal 508 or accessibility work",
       "meaning": "Hires for Section 508, digital-accessibility or federal accessibility-audit work, or is a federal agency's own 508 office; judged only for the federal-508 channel, never read by collect.py for #professor-bear"
+    },
+    "fellowship-program": {
+      "label": "Fellowship or residency program",
+      "meaning": "A fixed-term research fellowship, residency or postdoc with an application window; judged only for the fellowships feed, never read by collect.py for the #professor-bear job feed"
     }
   },
   "targets": [
@@ -11580,6 +11584,194 @@
           "USPTO (Section 508)"
         ],
         "what_answered": "Federal agency; hires via USAJOBS. I opened only a generic USAJOBS search (JS shell showing 'No jobs found', not reliable). Agency organisation code not looked up. Agency offices are listed at https://www.section508.gov/tools/program-manager-listing/ (seen via link on https://www.section508.gov/manage/)."
+      }
+    },
+    {
+      "id": "fellowships-anthropic-residency",
+      "name": "Anthropic Research Residency",
+      "type": "fellowship-program",
+      "section": "fellowships",
+      "status": "active",
+      "why": "Paid, fixed-term research program, 6 weeks to 6 months, for established technical leaders moving into full-time AI safety research; no ML background, PhD or publications required (the program's own page).",
+      "access": "page",
+      "provider": "",
+      "data": [
+        {
+          "label": "program page",
+          "url": "https://alignment.anthropic.com/2026/anthropic-residency/"
+        },
+        {
+          "label": "apply (US posting)",
+          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5438311008"
+        },
+        {
+          "label": "apply (UK posting)",
+          "url": "https://job-boards.greenhouse.io/anthropic/jobs/5439169008"
+        }
+      ],
+      "reader": "collect/fellowships_collect.py",
+      "status_note": "Read from the program page (robots.txt has comments only, no rule); the deadline is the sentence 'Applications for this round close on ...'",
+      "todo": "",
+      "fellowships": {
+        "kind": "research-residency",
+        "organization": "Anthropic",
+        "place": "San Francisco preferred; remote possible, mainly for shorter placements",
+        "verdict": "watch",
+        "read": "page",
+        "deadline_listed": "2026-11-22",
+        "deadline_source": "the program's own page, read 2026-11-05",
+        "eligibility": "established technical leaders (for example quantitative professors, technical founders, staff engineers); no ML background required",
+        "checked": "2026-11-05"
+      }
+    },
+    {
+      "id": "fellowships-cmu-ai4bio",
+      "name": "Carnegie Mellon AI4BIO Fellows",
+      "type": "fellowship-program",
+      "section": "fellowships",
+      "status": "active",
+      "why": "One-year postdoctoral fellowship (renewable once) at the frontier of AI and biology, jointly mentored by two faculty in CMU's School of Computer Science; PhD within two years of the start date.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "application (Interfolio)",
+          "url": "https://apply.interfolio.com/190197"
+        }
+      ],
+      "reader": "collect/fellowships_collect.py",
+      "status_note": "Not readable by a script: Interfolio's robots.txt answers 403 and the page is a JavaScript shell. The deadline is as listed by aggregators.",
+      "todo": "",
+      "fellowships": {
+        "kind": "postdoctoral-fellowship",
+        "organization": "Carnegie Mellon University",
+        "place": "Pittsburgh, Pennsylvania",
+        "verdict": "watch",
+        "read": "none",
+        "deadline_listed": "2026-11-15",
+        "deadline_source": "two job-listing aggregators (one shows a conflicting closing date of 2026-10-27); not read on CMU's own page",
+        "eligibility": "PhD earned no more than two years before the start date, or expected before it; computer science, machine learning, computational biology, bioengineering, statistics, applied mathematics or related",
+        "checked": "2026-11-05"
+      }
+    },
+    {
+      "id": "fellowships-constellation-founders",
+      "name": "Constellation Founders Residency",
+      "type": "fellowship-program",
+      "section": "fellowships",
+      "status": "dropped",
+      "why": "Six months in Berkeley (Jan 11 to Jul 2 2027) for founders building AI safety or security organizations; free, no equity; applications close 2026-11-15 per its own page.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "program page",
+          "url": "https://constellation.org/programs/incubator"
+        }
+      ],
+      "reader": null,
+      "status_note": "Dropped 2026-11-05: Professor Bear chose research programs only (2026-11-05); this is a founder program",
+      "todo": "",
+      "fellowships": {
+        "kind": "founder-program",
+        "organization": "Constellation",
+        "place": "Berkeley, California (in person)",
+        "verdict": "out of scope",
+        "read": "none",
+        "deadline_listed": "2026-11-15",
+        "deadline_source": "the program's own page, read 2026-11-05",
+        "eligibility": "founders past the exploring stage; US work authorization",
+        "checked": "2026-11-05"
+      }
+    },
+    {
+      "id": "fellowships-0g-apollo",
+      "name": "0G Labs Apollo Accelerator",
+      "type": "fellowship-program",
+      "section": "fellowships",
+      "status": "dropped",
+      "why": "Four-month, mostly remote accelerator for AI startups on decentralized infrastructure, up to $2M per project; its page says applications close 2026-11-11 (a press release said 2026-11-02).",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "program page",
+          "url": "https://apollo.0g.ai/"
+        }
+      ],
+      "reader": null,
+      "status_note": "Dropped 2026-11-05: Professor Bear chose research programs only (2026-11-05); this is a startup accelerator",
+      "todo": "",
+      "fellowships": {
+        "kind": "accelerator",
+        "organization": "0G Labs",
+        "place": "Remote, graduation at Stanford",
+        "verdict": "out of scope",
+        "read": "none",
+        "deadline_listed": "2026-11-11",
+        "deadline_source": "the program's own page, read 2026-11-05; conflicts with a press release",
+        "eligibility": "AI startups",
+        "checked": "2026-11-05"
+      }
+    },
+    {
+      "id": "fellowships-techstars-spring-2027",
+      "name": "Techstars Spring 2027",
+      "type": "fellowship-program",
+      "section": "fellowships",
+      "status": "dropped",
+      "why": "Three-month accelerators from March 8 2027 ($220,000 for about 5% equity); main deadline 2026-11-18 per search results, not read on techstars.com.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "Techstars",
+          "url": "https://www.techstars.com/"
+        }
+      ],
+      "reader": null,
+      "status_note": "Dropped 2026-11-05: Professor Bear chose research programs only (2026-11-05); this is a startup accelerator",
+      "todo": "",
+      "fellowships": {
+        "kind": "accelerator",
+        "organization": "Techstars",
+        "place": "Boston, Chicago, New York, London and others",
+        "verdict": "out of scope",
+        "read": "none",
+        "deadline_listed": "2026-11-18",
+        "deadline_source": "search results only",
+        "eligibility": "startups",
+        "checked": "2026-11-05"
+      }
+    },
+    {
+      "id": "fellowships-horowitz-andreessen-academy",
+      "name": "Horowitz Andreessen Academy",
+      "type": "fellowship-program",
+      "section": "fellowships",
+      "status": "dropped",
+      "why": "One-year tuition-free program in San Francisco starting September 2027 for people finishing high school or with up to two years of college; early deadline 2026-11-05.",
+      "access": "none",
+      "provider": "",
+      "data": [
+        {
+          "label": "admissions",
+          "url": "https://www.theacademysf.com/"
+        }
+      ],
+      "reader": null,
+      "status_note": "Dropped 2026-11-05: Professor Bear chose research programs only (2026-11-05); this is a school for people finishing high school",
+      "todo": "",
+      "fellowships": {
+        "kind": "school",
+        "organization": "Horowitz Andreessen Academy",
+        "place": "San Francisco",
+        "verdict": "out of scope",
+        "read": "none",
+        "deadline_listed": "2026-11-05",
+        "deadline_source": "search results only",
+        "eligibility": "finished high school by August 2027; no more than two years of full-time college",
+        "checked": "2026-11-05"
       }
     }
   ]

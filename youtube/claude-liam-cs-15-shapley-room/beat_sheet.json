@@ -1,0 +1,647 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-15-shapley-room",
+    "title": "Why Fair Credit-Splitting Has Exactly One Answer",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that Shapley values are the unique solution to fair credit attribution — average each feature's marginal contribution over all arrival orders, and the credits sum exactly to the prediction's deviation from average and cannot be gamed. Source: books/computational-skepticism-for-ai/chapters/06-model-explainability-distinguishing-explanation-from-the-appearance-of-explanation.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = positive credit / features that push up; CRIMSON = negative credit / features that push down; GOLD = the unique answer / key insight; SLATE = arrival orders shuffling",
+    "note": "EXCLUSIONS: no closed-form weight-formula derivation, no KernelSHAP/TreeSHAP approximations, no correlated-feature debate, no Rung 1 vs Rung 2 causal critique beyond one closing caption",
+    "total_estimated_duration_seconds": 191,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 15,
+    "build": {
+      "at": "2026-07-19T02:31:55",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why Fair Credit-Splitting Has Exactly One Answer",
+            "greeting": "Namaste, Liam.",
+            "command": "Your model's prediction was a team effort.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "Your model's prediction was a team effort. How much credit does each feature deserve — when the answer changes depending on who is already in the room?",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why Fair Credit-Splitting Has Exactly One Answer",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why Fair Credit-Splitting\nHas Exactly One Answer"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 8.15,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A loan model denies an application. The credit team asks: which features caused the denial? Someone attributes sixty percent to income, thirty to debt-to-income, ten to age of credit history. Someone else attributes forty to income, twenty to employment length, forty to credit score. Both teams used the same model. Neither number is wrong — they just chose different arrival orders. And without a principled method, there is no answer.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "graphic": {
+        "manim": "B02_TwoAttributions",
+        "production_viz": {
+          "label": "two attribution schemes — same model, different answers",
+          "mechanic": "two side-by-side horizontal bar charts; left labeled 'TEAM A': income 60% (teal), debt-ratio 30% (teal), age 10% (teal); right labeled 'TEAM B': income 40% (teal), employment 20% (teal), credit-score 40% (teal); a crimson X between them labeled 'neither is wrong'; SerifLabel 'no principled answer without Shapley' below",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "two valid but contradictory attribution tables; the X marks the problem space"
+        }
+      },
+      "scene_class": "B02_TwoAttributions",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 21.74,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:31:55",
+        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "Is there one correct way to split credit among features in a prediction — and if so, what is it?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Is there one correct way to split credit among model",
+              "features?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "Is there one correct way to split credit among features in a prediction?",
+        "sub": "and if so, what is it"
+      },
+      "scene_class": "B03_Question",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 5.7,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:31:55"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A feature's contribution to a prediction is not fixed. It depends on which other features are already included when you count it. Income alone predicts one way. Income plus debt-to-income predicts differently. The credit for income changes depending on who walked in before it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "graphic": {
+        "manim": "B04_MarginalShifts",
+        "production_viz": {
+          "label": "marginal contribution shifts with arrival order",
+          "mechanic": "a prediction meter (horizontal bar from 0.5 baseline to prediction); two scenarios side by side: left 'INCOME ARRIVES FIRST' — income alone moves meter up +0.15 (teal); right 'INCOME ARRIVES SECOND' — with debt-ratio already in, income moves meter up only +0.06 (shorter teal bar); gold annotation 'same feature, different credit'",
+          "colors": [
+            "#1F6F5C",
+            "#F5D061"
+          ],
+          "note": "the two scenarios are identical features but different credits due to arrival order; the gold annotation is the point"
+        }
+      },
+      "scene_class": "B04_MarginalShifts",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 14.89,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:31:55",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Any single arrival order picks an arbitrary path through the feature space and calls it the answer. But there are many possible orderings. A method that picks one ordering is not principled — it is a choice dressed as an answer.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B05_OrderingProblem",
+        "production_viz": {
+          "label": "many orderings, many answers — the problem",
+          "mechanic": "three nodes labeled A, B, C (representing features); arrows showing three different arrival orders: A→B→C, B→A→C, C→A→B; each order produces a different credit bar for feature A (three different lengths shown in slate); crimson X across all three labeled 'which one?'; SerifLabel 'arbitrary unless averaged' below",
+          "colors": [
+            "#2D3142",
+            "#BF3339"
+          ],
+          "note": "three orderings for three features; the varying bars for feature A visualize the problem"
+        }
+      },
+      "scene_class": "B05_OrderingProblem",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 12.16,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:31:55",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The Shapley solution: average across all orderings. Watch features enter the room.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "The Shapley solution: average across all orderings.",
+              "Watch features enter the room."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A minimalist editorial illustration of a doorway into a room; three features labeled A, B, and C are shown as simple geometric silhouettes queuing outside the door in different shuffled orders across three rows (showing different orderings); a prediction meter on the far wall ticks upward each time a feature enters; the meter accumulates the marginal contribution of each new arrival; the illustration is flat newsprint editorial style, cream background, charcoal ink outlines, teal fill on the meter bar",
+      "scene_class": "B06_RoomSetup",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 5.16,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:31:55"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "In each ordering, compute what each feature adds to whoever is already in the room. Average those marginal contributions over all orderings. That average is the Shapley value for each feature. The credits sum exactly to the prediction's total deviation from the baseline.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "graphic": {
+        "manim": "B07_ShapleyRoom",
+        "production_viz": {
+          "label": "three features, three orderings, Shapley average",
+          "mechanic": "three rows of arrival sequences; in each row three labeled squares enter a room in different order and a prediction meter ticks; after all three rows complete, three teal bars appear labeled A, B, C showing the averaged credits; gold label 'averaged over all orders' above the final bar chart; SerifLabel 'the unique answer' below the bars",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061",
+            "#2D3142"
+          ],
+          "note": "the accumulation across orderings is the key animation; the final averaged bars are the payoff"
+        }
+      },
+      "scene_class": "B07_ShapleyRoom",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 14.89,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:31:55",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Average each feature's marginal contribution over every possible arrival order — what it adds to whoever is already in the room — and the credits are unique and sum exactly to the prediction's deviation.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "Average each feature's marginal contribution over every possible arrival order — the credits are unique and sum exactly to the prediction's deviation.",
+        "attribution": "— Chapter 6, Computational Skepticism for AI",
+        "highlight_words": "unique and sum exactly",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B08_Quote",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 11.37,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:31:55",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: Average each feature's marginal contribution over every possible arrival order — what it adds to whoever is already in the room — and the credits are unique and"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Uniqueness matters. A SHAP explanation cannot be gamed by choosing a favorable ordering. Every ordering contributes to the average equally. The explanation is the same regardless of who runs it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B09_UniquenessBar",
+        "production_viz": {
+          "label": "uniqueness — the same answer from any ordering",
+          "mechanic": "three analysts shown with different icons, each running a different arbitrary ordering; all three produce the same final three-bar SHAP chart; gold brackets connecting all three identical charts to a single 'UNIQUE ANSWER' label; SerifLabel 'cannot be gamed by choice of order' below",
+          "colors": [
+            "#1F6F5C",
+            "#F5D061"
+          ],
+          "note": "the three-to-one convergence to the same answer is the key visual; gold ties them all together"
+        }
+      },
+      "scene_class": "B09_UniquenessBar",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 11.35,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:31:55",
+        "needs": "PIPELINE → render animated_graphics.py scene B09_*"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The sum property is equally important. The individual Shapley values add up to the full deviation of the prediction from the average prediction. No credit is invented. No credit disappears. The books balance.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "The individual Shapley values add up to the full deviation from average. No credit is invented. No credit disappears. The books balance.",
+        "attribution": "— Chapter 6, Computational Skepticism for AI",
+        "highlight_words": "books balance",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B10_ImplicationQuote",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 12.1,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:31:55",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The sum property is equally important. The individual Shapley values add up to the full deviation of the prediction from the average prediction. No credit is in"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "One important limit: Shapley values explain the model, not the world. A feature with high Shapley credit changed the model's output — that does not mean it caused the outcome in reality. Correlation is not causation, and the Shapley value does not promote itself to a causal claim.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B11_ModelNotWorld",
+        "production_viz": {
+          "label": "Shapley explains the model, not the world",
+          "mechanic": "two labeled boxes: 'MODEL' (teal) on the left with a bar chart inside labeled 'Shapley credits'; 'WORLD' (slate) on the right with a causal graph inside; a one-way arrow from MODEL box to MODEL credit bar (teal, bidirectional); a crimson X on an arrow attempting to go from the MODEL box to the WORLD box; SerifLabel 'correlation, not causation' next to the X",
+          "colors": [
+            "#1F6F5C",
+            "#2D3142",
+            "#BF3339"
+          ],
+          "note": "the blocked arrow from model to world is the one-caption causal limit the spec allows"
+        }
+      },
+      "scene_class": "B11_ModelNotWorld",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 15.57,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:31:55",
+        "needs": "PIPELINE → render animated_graphics.py scene B11_*"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 15.0,
+      "narration_text": "Back to the loan model. Run SHAP. The baseline prediction — average across all loans — is fifty-one percent approval probability. This application scored thirty-two percent. The Shapley values: income minus nine points, debt-to-income ratio minus six points, credit utilization minus four points. Those three credits sum to exactly minus nineteen — the full deviation from baseline. Income was the largest contributor. The answer is unique. The team on Team A and Team B will now produce the same output.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "graphic": {
+        "manim": "B12_LoanSHAP",
+        "production_viz": {
+          "label": "loan model SHAP waterfall — baseline to prediction",
+          "mechanic": "a waterfall chart: baseline bar at 51% (slate); three crimson bars descending: 'INCOME -9pts', 'DEBT-RATIO -6pts', 'UTILIZATION -4pts'; final bar at 32% (crimson); gold bracket spanning from 51% to 32% labeled '-19 total'; SerifLabel 'credits sum exactly' below the bracket",
+          "colors": [
+            "#2D3142",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "waterfall chart is the standard SHAP visualization; the sum bracket closing the gap is the key"
+        }
+      },
+      "scene_class": "B12_LoanSHAP",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 27.41,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:31:55",
+        "needs": "PIPELINE → render animated_graphics.py scene B12_*"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Shapley values are the unique fair answer to feature credit. Average marginal contributions over all arrival orders. Credits sum exactly to the deviation. The answer cannot be gamed by choosing an order.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Shapley: average marginal contributions across all",
+              "feature orderings."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Average marginal contributions over all arrival orders.",
+        "sub": "Credits sum exactly to the deviation. The answer is unique.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "scene_class": "B13_Recap",
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 11.99,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:31:55"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "name": "OutroSeries",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why Fair Credit-Splitting Has Exactly One Answer",
+            "artifactHeading": "Key findings — Why Fair Credit-Splitting Has Exactly One Answer",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "Shapley values are the unique fair answer to feature credit."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:31:55"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "name": "OutroCTA",
+      "estimated_duration_s": 5.0,
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY FAIR CREDIT-SPLITTING HAS EXACTLY ONE ANSWER",
+            "segment": "Why Fair Credit-Splitting Has Exactly One Answer",
+            "greeting": "Sawubona, Liam.",
+            "command": "Ask Claude: Why Fair Credit-Splitting Has Exactly One Answer",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:31:55"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why Fair Credit-Splitting Has Exactly One Answer",
+            "slug": "claude-liam-cs-15-shapley-room",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

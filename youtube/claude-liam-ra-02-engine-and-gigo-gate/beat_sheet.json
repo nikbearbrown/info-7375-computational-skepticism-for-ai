@@ -1,0 +1,283 @@
+{
+  "metadata": {
+    "title": "Build the Engine + the GIGO Gate",
+    "slug": "claude-liam-ra-02-engine-and-gigo-gate",
+    "topic": "INFO 7375 REALLOCATION ENGINE, AUDITED \u2014 ENGINE & GIGO (E2/6)",
+    "register": "Pragmatist",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Namaste, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "The Tool That Doubts Itself \u2014 The Reallocation Engine, Audited",
+    "series": "claude-liam-ra",
+    "episode": 2,
+    "source": "INFO 7375 (Computational Skepticism for AI) \u2014 The Reallocation Engine, Audited: Build a Useful Tool That Doubts Itself (100 pts)",
+    "build": {
+      "at": "2026-07-24T06:22:48",
+      "cut": "master",
+      "filled": 7,
+      "of": 7,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Namaste \u2014 Liam, in for Bear. Episode 2 of 6. Today you build the thing \u2014 and then you make its data earn the right to be believed. Two components, twenty-two points. Component one, the working tool: it ingests your dataset, outputs a concrete move \u2014 quantity Q from A to B \u2014 and attaches an explicit uncertainty. Twelve points, and remember the ladder: notebook-only is a five. Component two, the GIGO gate: before the engine is allowed to reallocate anything, the data passes a checkable quality standard, and you document what fails. Ten points \u2014 and the rubric says the reward goes to finding the failure the dataset was hiding, not to a clean-looking table. The engine is an afternoon with Claude. The gate is where the skepticism starts. Let's build.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 52,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Namaste, Liam",
+            "topic": "INFO 7375 REALLOCATION ENGINE, AUDITED \u2014 ENGINE & GIGO (E2/6)",
+            "segment": "Build the Engine + the GIGO Gate",
+            "command": "Build the tool: ingest \u2014 recommend (move Q from A to B) \u2014 uncertainty attached. State the objective in one plain sentence + what it leaves out. Then gate the data before the engine touches it.",
+            "runningText": "the engine is an afternoon with Claude \u2014 the gate is where the skepticism starts\u2026",
+            "output": [
+              "Component 1 (12 pts): runnable tool, concrete move, explicit uncertainty",
+              "Component 2 (10 pts): skeptical EDA, a checkable gate, documented rejections",
+              "The grading tell: reward is for finding what the dataset hides"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:22:48"
+      },
+      "actual_duration_s": 38.04
+    },
+    {
+      "beat_id": "B01",
+      "act": "the working tool, three requirements",
+      "narration_text": "The tool has three requirements, and each one kills a common shortcut. Requirement one: it ingests your dataset. Not hardcoded numbers \u2014 a pipeline from file to decision that someone else could run on next month's data. Requirement two: it outputs a concrete reallocation. Move quantity Q of the resource from A to B. Not a ranking, not a score, not a heatmap \u2014 a move. The move is what makes it an engine, and the move is what makes it dangerous, which is why the rubric insists on it. Requirement three: an explicit uncertainty attached to that recommendation. Not just a point decision \u2014 an honest interval, a confidence band, a probability the move is wrong. And notice the trap in the grading ladder: a notebook of disconnected cells caps you at five out of twelve. It must run as a tool \u2014 one command, data in, recommendation out. Then the sentence most students skip: state the objective it optimizes in one plain sentence, and name what that objective leaves out. Every objective leaves something out. 'Maximize expected bookings per unit of ad spend' leaves out long-term brand, customer quality, and whatever your data cannot see. Naming the omission is the first act of doubt, and it costs you one sentence.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 74,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Ingest / move Q from A to B / uncertainty attached",
+              "Ingests the dataset",
+              "Outputs a MOVE: quantity Q from A to B"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:22:48"
+      },
+      "actual_duration_s": 61.46
+    },
+    {
+      "beat_id": "B02",
+      "act": "skeptical EDA \u2014 what does this dataset assume",
+      "narration_text": "Now the gate. It starts with one question asked like you mean it: what does this dataset assume that isn't true? Every dataset is a theory about the world, and the theory is always partly wrong. Run the skeptical EDA looking for the standard liars. Missingness that isn't random \u2014 the warehouses that report inventory late are the understaffed ones, so the gaps correlate with exactly the thing you're reallocating. A measurement protocol that changed mid-collection \u2014 the definition of 'conversion' moved in March, and your engine reads the seam as a trend. Survivorship \u2014 the campaigns that got cancelled early are missing entirely, so everything in the table looks like it deserved its budget. Proxy drift \u2014 the column labeled demand is actually clicks, and clicks stopped tracking demand when the bot traffic arrived. None of these show up in df.describe. All of them show up if you ask where each column came from, who recorded it, and what would have to be true for it to mean what its name says. Write the assumptions down as claims \u2014 'this dataset assumes every unfilled shift was reported' \u2014 because a claim is something you can check, and checkable is the whole point of the next beat.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 72,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "What does this dataset assume that isn't true?",
+              "Every dataset is a theory about the world",
+              "Missingness that isn't random: the late reporters are the understaffed ones."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:22:48"
+      },
+      "actual_duration_s": 57.54
+    },
+    {
+      "beat_id": "B03",
+      "act": "the checkable gate and documented rejections",
+      "narration_text": "The gate itself must be a quality standard a human could check. The rubric even gives you the shape: every record has a timestamp, a source, and a non-null resource value; the measurement protocol did not change mid-collection. Notice what makes that checkable \u2014 each clause is a yes-or-no question about an observable property. 'Data should be high quality' is not a gate. 'No record's timestamp precedes the collection start date' is a gate. Aim for five to eight clauses, each one traceable to an assumption you named in the EDA. Then the part that earns the points: run the gate, and document the rejections. What failed, how many, and what you did about it \u2014 dropped, repaired, quarantined, or kept with a flag. Each choice changes your engine, so each choice gets a sentence of justification. And here is the honest tell the rubric is looking for: if your gate rejects nothing, your gate is too polite. Real data always has a body to show you. The grading explicitly rewards finding the failure the dataset was designed \u2014 or just happened \u2014 to hide. A clean-looking table with no interrogation scores like what it is: not looking. The gate runs before the engine, every run, forever. Data that arrives tomorrow gets doubted tomorrow.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 74,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Checkable clauses , documented rejections",
+              "A gate is yes/no questions about observable properties",
+              "'High quality data' is not a gate"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:22:48"
+      },
+      "actual_duration_s": 62.34
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lead_silence_s": 0.5,
+      "narration_text": "Verdict for Build the Engine and the GIGO Gate. The tool has three non-negotiables: it ingests real data, it outputs a concrete move \u2014 quantity Q from A to B \u2014 and it attaches explicit uncertainty. It runs as a tool, not a notebook, or you've capped yourself at five of twelve. The objective gets stated in one plain sentence, with what it leaves out named beside it. Then the gate: skeptical EDA that treats the dataset as a theory about the world, assumptions written as checkable claims, a five-to-eight clause quality standard a human could verify, and rejections documented with the reason for each disposal. The tell to remember: a gate that rejects nothing is not evidence of clean data \u2014 it is evidence of a polite gate. The points go to whoever finds the failure the dataset was hiding. Next episode: who the engine systematically starves, and the explanation that lies by omission.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 52,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Build the Engine + the GIGO Gate",
+            "artifactHeading": "Episode 2 key rules",
+            "artifactLines": [
+              "Three non-negotiables: ingest , concrete move (Q from A to B) , explicit uncertainty.",
+              "A tool, not a notebook \u2014 one command, data in, recommendation out.",
+              "Objective in one plain sentence + what it leaves out.",
+              "Gate = checkable clauses traced to named assumptions; rejections documented.",
+              "A gate that rejects nothing is a polite gate. Find what the data hides."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:22:48"
+      },
+      "actual_duration_s": 45.53
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "narration_text": "Your turn. Here is the prompt to paste into Claude, with your dataset in hand. The prompt reads: Here is my dataset's schema, its source, and how it was collected: paste your description. Name the three assumptions this dataset makes that are most likely false \u2014 write each as a checkable claim. Then draft a GIGO gate of five to eight yes-or-no clauses a human could verify in five minutes, and tell me which records you would expect to fail each clause and why. Why this one is worth running: Claude is good at generating the standard suspects \u2014 nulls, duplicates, timestamp order. Read the draft and ask what it could not know: the protocol change your org made in March, the warehouse that reports late, the column whose name stopped being true. The gate clause only you could have written is the one worth ten points. Run the drafted gate on your real data before you accept it \u2014 the clause that rejects nothing needs sharpening, and the clause that rejects half your table is telling you something about the data or about itself. Either way, you learn which. That loop \u2014 draft, run, doubt, tighten \u2014 is the assignment in miniature.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 70,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 BUILD THE ENGINE + THE GIGO GATE",
+            "segment": "Build the Engine + the GIGO Gate",
+            "command": "Here is my dataset schema and source: [paste]. Name 3 assumptions most likely false \u2014 each as a checkable claim. Draft a GIGO gate: 5\u20138 yes/no clauses a human can verify in 5 min.",
+            "runningText": "draft, run, doubt, tighten \u2014 the gate only you could write is worth ten points\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:22:48"
+      },
+      "actual_duration_s": 54.91
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "Build the Engine + the GIGO Gate. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Build the Engine + the GIGO Gate",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-ra-02-engine-and-gigo-gate"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:22:48"
+      },
+      "actual_duration_s": 4.07
+    }
+  ]
+}

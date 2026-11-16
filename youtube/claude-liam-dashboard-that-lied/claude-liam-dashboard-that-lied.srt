@@ -1,0 +1,595 @@
+1
+00:00:00,000 --> 00:00:04,657
+Annyeong — this is Liam, in for Bear.
+Today's ask comes from Bear's own book on
+
+2
+00:00:04,657 --> 00:00:08,150
+Living Models, chapter one: can you trust
+your dashboard? Here's the uncomfortable
+
+3
+00:00:08,150 --> 00:00:11,934
+shape of the answer — the most expensive
+analytics failures don't crash, don't
+
+4
+00:00:11,934 --> 00:00:16,300
+error, don't warn. They hand you a
+beautiful green line, and let you believe
+it.
+
+5
+00:00:16,300 --> 00:00:21,187
+Act one. The chapter opens on a conference
+room, a Tuesday morning, and a line
+
+6
+00:00:21,187 --> 00:00:22,490
+everyone wanted to see.
+
+7
+00:00:22,490 --> 00:00:27,677
+The scene: a senior data team, weekly
+metrics review. On the screen, weekly
+active
+
+8
+00:00:27,677 --> 00:00:32,123
+users climbing eighteen percent — rendered
+in a satisfying shade of green.
+
+9
+00:00:32,123 --> 00:00:36,199
+Leadership leaves energized. Hiring
+accelerates. The chart gets screenshot
+into an
+
+10
+00:00:36,199 --> 00:00:36,940
+investor deck.
+
+11
+00:00:36,940 --> 00:00:42,293
+Two point one million users to two point
+five. The line does exactly what a healthy
+
+12
+00:00:42,293 --> 00:00:46,642
+product's line does. Nothing on this chart
+— nothing — distinguishes real growth
+
+13
+00:00:46,642 --> 00:00:47,980
+from what actually happened.
+
+14
+00:00:47,980 --> 00:00:51,722
+What happened: a partial refresh failure
+quietly dropped four hundred thousand
+
+15
+00:00:51,722 --> 00:00:57,165
+European user records. No error, no null,
+no flag — the users just ceased to exist
+
+16
+00:00:57,165 --> 00:01:01,248
+to the reporting system. The denominator
+shrank; the ratio climbed. The instrument
+
+17
+00:01:01,248 --> 00:01:05,330
+drifted — precisely, consistently, in the
+direction that felt like good news.
+
+18
+00:01:05,330 --> 00:01:09,437
+Four days passed before a routine quality
+check caught it. And the chapter's
+
+19
+00:01:09,437 --> 00:01:13,860
+sharpest detail: in those four days,
+nobody asked whether the data was
+reliable. The
+
+20
+00:01:13,860 --> 00:01:18,282
+number looked right, so it was treated as
+right — authority borrowed from the
+
+21
+00:01:18,282 --> 00:01:19,230
+appearance of precision.
+
+22
+00:01:19,230 --> 00:01:24,312
+Act two. Now the same structure at
+catastrophic scale — with a number that
+was
+
+23
+00:01:24,312 --> 00:01:24,990
+completely true.
+
+24
+00:01:24,990 --> 00:01:29,395
+Twenty twelve. J.C. Penney's new CEO, Ron
+Johnson, reads the transaction history:
+
+25
+00:01:29,395 --> 00:01:33,433
+promotional events correlate with revenue
+spikes, sluggish sales between them. His
+
+26
+00:01:33,433 --> 00:01:38,572
+inference — the sales are training
+customers not to pay full price. Kill the
+
+27
+00:01:38,572 --> 00:01:40,040
+promotions, lift the baseline.
+
+28
+00:01:40,040 --> 00:01:44,375
+Pull back to what the historical record
+actually contains: only worlds where the
+
+29
+00:01:44,375 --> 00:01:49,044
+promotions ran. For a huge slice of
+customers the promotion wasn't friction —
+the
+
+30
+00:01:49,044 --> 00:01:53,046
+hunt, the markdown, the win WAS the
+experience. That truth was structurally
+
+31
+00:01:53,046 --> 00:01:55,380
+invisible in the data. Not hidden.
+Invisible.
+
+32
+00:01:55,380 --> 00:01:59,432
+Eighteen months later: four point three
+billion in annual revenue gone, Johnson
+
+33
+00:01:59,432 --> 00:02:04,160
+fired. The chapter's scalpel — the number
+was correct, the inference was wrong, and
+
+34
+00:02:04,160 --> 00:02:08,212
+those are different failures. Act one's
+dashboard was technically false. This
+number
+
+35
+00:02:08,212 --> 00:02:09,900
+was technically true. Same wreck.
+
+36
+00:02:09,900 --> 00:02:14,508
+Watch the mechanism run. Remove the
+promotions — and the baseline doesn't rise
+to
+
+37
+00:02:14,508 --> 00:02:19,115
+meet everyday low prices. The mechanism
+customers used to choose the store is
+gone,
+
+38
+00:02:19,115 --> 00:02:23,394
+and revenue follows it down. No amount of
+additional historical data would have
+
+39
+00:02:23,394 --> 00:02:24,710
+shown this in advance.
+
+40
+00:02:24,710 --> 00:02:29,623
+Act three. The chapter gives that gap a
+precise mathematical name — and one small
+
+41
+00:02:29,623 --> 00:02:31,260
+operator carries all of it.
+
+42
+00:02:31,260 --> 00:02:36,478
+P of Y given X — the outcome given we
+observe X. What co-occurs in the record. P
+of
+
+43
+00:02:36,478 --> 00:02:41,971
+Y given do of X — Pearl's operator — the
+outcome if we reach in and set X by
+action.
+
+44
+00:02:41,971 --> 00:02:45,815
+Seeing a world, versus making one. Johnson
+had the first. His decision needed the
+
+45
+00:02:45,815 --> 00:02:46,090
+second.
+
+46
+00:02:46,090 --> 00:02:50,941
+Here's what the equation commits you to:
+that gap cannot be closed with more rows.
+
+47
+00:02:50,941 --> 00:02:55,792
+The record holds only worlds where
+promotions ran — a do steps outside every
+world
+
+48
+00:02:55,792 --> 00:02:59,997
+the data contains. Not a sample-size
+problem. A category boundary. Back to the
+
+49
+00:02:59,997 --> 00:03:00,320
+story.
+
+50
+00:03:00,320 --> 00:03:05,033
+This has a picture. We asked Claude to
+draw the smallest graph where the
+correlation
+
+51
+00:03:05,033 --> 00:03:07,860
+is perfectly real — and the intervention
+still fails.
+
+52
+00:03:07,860 --> 00:03:12,616
+Three nodes. A confounder Z drives both X
+and Y — big spenders join loyalty
+
+53
+00:03:12,616 --> 00:03:17,055
+programs. Observe X, and Y rides along
+beautifully. Set X by force, and nothing
+
+54
+00:03:17,055 --> 00:03:22,446
+moves — the arrow into Y never came from
+X. One hidden parent, and seeing and doing
+
+55
+00:03:22,446 --> 00:03:23,080
+come apart.
+
+56
+00:03:23,080 --> 00:03:28,340
+Act four. Pearl stacked these ideas into a
+ladder — three rungs, and no elevator.
+
+57
+00:03:28,340 --> 00:03:32,498
+Rung one, association: what does the data
+show? Every dashboard lives here. Rung
+
+58
+00:03:32,498 --> 00:03:36,975
+two, intervention: what happens if we act
+— the do-operator's home, and where real
+
+59
+00:03:36,975 --> 00:03:40,493
+decisions live. Rung three,
+counterfactual: what would have happened
+otherwise? The
+
+60
+00:03:40,493 --> 00:03:44,970
+hardest questions of all — they need a
+structural model of the mechanism itself.
+
+61
+00:03:44,970 --> 00:03:50,504
+The ladder's one brutal property: no rung
+is reachable by piling up more of the rung
+
+62
+00:03:50,504 --> 00:03:55,000
+below. A thousand rows plus a structural
+causal model answers questions a billion
+
+63
+00:03:55,000 --> 00:03:59,497
+rows plus a correlation engine cannot.
+Penney didn't need more transaction data.
+It
+
+64
+00:03:59,497 --> 00:04:00,880
+needed a different instrument.
+
+65
+00:04:00,880 --> 00:04:06,030
+Which is worth sitting with, because it
+runs against how a generation of data
+
+66
+00:04:06,030 --> 00:04:09,708
+organizations were built. Warehouses of
+history, beautifully indexed — every
+
+67
+00:04:09,708 --> 00:04:14,122
+terabyte of it parked on rung one,
+answering yesterday's question with
+increasing
+
+68
+00:04:14,122 --> 00:04:14,490
+precision.
+
+69
+00:04:14,490 --> 00:04:19,548
+Act five. Name the failure mode precisely
+— because it has a signature, and the
+
+70
+00:04:19,548 --> 00:04:20,560
+signature is silence.
+
+71
+00:04:20,560 --> 00:04:25,400
+A system that crashes announces itself. A
+system that quietly changes what it
+
+72
+00:04:25,400 --> 00:04:30,240
+measures does not. The dashboard's silence
+was mechanical — absence treated as the
+
+73
+00:04:30,240 --> 00:04:34,708
+absence of absence. Penney's was epistemic
+— every component correct, the inference
+
+74
+00:04:34,708 --> 00:04:36,570
+catastrophic. Same signature. No alarm.
+
+75
+00:04:36,570 --> 00:04:41,651
+Predictive models have their own version:
+concept drift. A model is a bet that
+
+76
+00:04:41,651 --> 00:04:45,280
+yesterday's relationships persist. When
+the world restructures, the model keeps
+
+77
+00:04:45,280 --> 00:04:49,635
+confidently predicting the old world's
+future — unaware of its own staleness.
+
+78
+00:04:49,635 --> 00:04:51,450
+Outputs continue. Reality has left.
+
+79
+00:04:51,450 --> 00:04:56,478
+And when you wire rung-one outputs
+directly to actions, silence gets
+expensive fast.
+
+80
+00:04:56,478 --> 00:05:01,119
+August first, twenty twelve. Knight
+Capital deploys an automated trading
+system. It
+
+81
+00:05:01,119 --> 00:05:04,600
+begins executing — in error — at
+algorithmic speed.
+
+82
+00:05:04,600 --> 00:05:09,188
+Forty-five minutes. Four hundred forty
+million dollars. No human decision node
+stood
+
+83
+00:05:09,188 --> 00:05:14,540
+between the execution loop and the market
+— the system worked exactly as designed,
+
+84
+00:05:14,540 --> 00:05:19,128
+and the design had no provision for
+stopping. The human-machine boundary isn't
+
+85
+00:05:19,128 --> 00:05:21,040
+bureaucracy. It's the accountability
+surface.
+
+86
+00:05:21,040 --> 00:05:24,707
+The chapter maps four maturity stages —
+descriptive, diagnostic, predictive,
+
+87
+00:05:24,707 --> 00:05:30,208
+prescriptive: what happened, why, what's
+next, what to do. The trap in the map: an
+
+88
+00:05:30,208 --> 00:05:34,609
+organization can climb all four and still
+stand on causation's first rung,
+
+89
+00:05:34,609 --> 00:05:37,910
+prescribing from correlations. The two
+ladders are parallel climbs.
+
+90
+00:05:37,910 --> 00:05:42,640
+Act six. What the chapter is building
+toward — and it is not a better dashboard.
+
+91
+00:05:42,640 --> 00:05:46,817
+A Living Model has four properties. Causal
+— recommendations are estimated do-
+
+92
+00:05:46,817 --> 00:05:51,342
+effects. Counterfactual — it can price the
+decision not taken. Continually updated —
+
+93
+00:05:51,342 --> 00:05:55,519
+parameters live against incoming data.
+Treatment-oriented — the output is a
+ranked
+
+94
+00:05:55,519 --> 00:06:00,044
+list of interventions. Run the checklist:
+a dashboard scores zero of four. That's
+
+95
+00:06:00,044 --> 00:06:00,740
+the distance.
+
+96
+00:06:00,740 --> 00:06:04,945
+Underneath it all, the posture the chapter
+names observability: a measurement system
+
+97
+00:06:04,945 --> 00:06:10,201
+that treats its own integrity as a first-
+class output. Not a bolted-on monitor — an
+
+98
+00:06:10,201 --> 00:06:14,756
+instrument that tells you what's happening
+to itself, and which questions the data
+
+99
+00:06:14,756 --> 00:06:18,260
+can structurally answer. The integrity
+panel belongs beside the metrics.
+
+100
+00:06:18,260 --> 00:06:22,643
+Back to the conference room. Given what
+the screen showed, growth was the sensible
+
+101
+00:06:22,643 --> 00:06:26,713
+read — the failure wasn't incompetence, it
+was architecture. The team trusted the
+
+102
+00:06:26,713 --> 00:06:31,409
+screen showed the data, and the data held
+the world. Neither was verified. Both were
+
+103
+00:06:31,409 --> 00:06:33,600
+verifiable. That gap is the whole book.
+
+104
+00:06:33,600 --> 00:06:37,511
+Let's recap with Claude. Silent failures
+don't announce themselves — the green line
+
+105
+00:06:37,511 --> 00:06:41,723
+looks identical either way. A true number
+can still power a false inference; seeing
+
+106
+00:06:41,723 --> 00:06:45,935
+is not doing. The do-operator marks a
+category boundary no pile of data crosses.
+
+107
+00:06:45,935 --> 00:06:50,447
+Prescriptive is not causal — the two
+ladders are parallel climbs. And the fix
+is
+
+108
+00:06:50,447 --> 00:06:53,757
+architectural: instruments that verify
+themselves, and models built to answer
+what
+
+109
+00:06:53,757 --> 00:06:54,960
+happens if we act.
+
+110
+00:06:54,960 --> 00:06:58,862
+Your turn. Here's the prompt, straight
+from the chapter's own exercise: my team
+
+111
+00:06:58,862 --> 00:07:02,164
+found a strong correlation between loyalty
+program membership and average order
+
+112
+00:07:02,164 --> 00:07:05,766
+value, and leadership wants to expand the
+program. Construct two causal stories
+
+113
+00:07:05,766 --> 00:07:09,669
+consistent with that correlation — one
+where the program causes the spending, one
+
+114
+00:07:09,669 --> 00:07:13,571
+where a pre-existing difference drives
+both. Draw each causal graph, name the
+data
+
+115
+00:07:13,571 --> 00:07:18,674
+that would distinguish them, and express
+the whole answer as P of Y given X versus
+P
+
+116
+00:07:18,674 --> 00:07:24,377
+of Y given do of X — then tell me what
+that implies for the budget decision. Run
+it
+
+117
+00:07:24,377 --> 00:07:29,180
+on a correlation your own org is about to
+act on. That's where the money is.
+
+118
+00:07:29,180 --> 00:07:32,400
+The Dashboard That Lied. Liam, in for
+Bear.
+

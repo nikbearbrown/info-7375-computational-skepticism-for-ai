@@ -1,0 +1,505 @@
+{
+  "metadata": {
+    "title": "Supervision Calibration Logger — Weekly AI Audit",
+    "slug": "supervision-calibration-logger",
+    "topic": "CONDUCTING AI — SUPERVISION CALIBRATION",
+    "register": "Teardown",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "style": "cli",
+    "note": "CLI 10-beat spine: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(manim) · B05 CHANGE · B06 slate · B07 SUMMARY · B08 NEXT STEPS · B09 outro.",
+    "total_estimated_duration_seconds": 118,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-08-01T04:13:50",
+      "cut": "review",
+      "filled": 4,
+      "of": 11,
+      "slates": [
+        "B00",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "YOURTURN",
+        "B09"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "This is Liam, in for Bear. Nik Bear Brown. Build it with a CLI, then take it apart.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "CONDUCTING AI",
+            "lines": [
+              "Nik Bear Brown",
+              "Supervision Calibration Logger"
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 5.48,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:50",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM",
+      "role_note": "why care — before the CLI",
+      "narration_text": "You cannot improve what you do not measure. Most people have no idea how they are actually using AI — which interactions are Level I copy-paste, which are Level III collaborative decisions. And the mismatch between usage level and supervision level is invisible until it causes a problem. A weekly calibration log makes the invisible visible: here are twelve interactions, here is how long you actually spent verifying each one, and here is the gap. The gap interactions are the ones that need attention.",
+      "visual_intent": "title card: supervision calibration as a measurable skill — the gap between usage level and supervision level",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B01.mp4",
+        "manim": {
+          "scene_class": "Scene_B01_ClaudeLiamSupervision",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": "2026-07-25T09:49:28.710624"
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 25.83,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:50"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda)",
+      "narration_text": "Ask for the CLI tool. In the terminal: claude — write a Python CLI with three commands: log, which accepts an AI interaction description and stores it in a local JSON with a timestamp; classify, which calls the Anthropic API to classify each unclassified entry as Level I, II, or III and estimates verify time in minutes; and audit, which prints a weekly report with level breakdown, average verify time, and the top three gap interactions — Level III with less than two minutes of verification. Use claude-3-5-haiku.",
+      "shot": {
+        "type": "CARD",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "ASK",
+            "items": [
+              {
+                "label": "Ask for the CLI tool",
+                "sub": "Ask for the CLI tool. In the terminal: claude — write a Python CLI with three commands: log, which accepts an AI inte…",
+                "icon": "zap",
+                "cueFrame": 24
+              },
+              {
+                "label": "classify, which calls the Anthropic API to classify",
+                "sub": "classify, which calls the Anthropic API to classify each unclassified entry as Level I, II, or III and estimates veri…",
+                "icon": "circle-check",
+                "cueFrame": 459
+              },
+              {
+                "label": "and audit, which prints a",
+                "sub": "and audit, which prints a weekly report with level breakdown, average verify time, and the top three gap interactions…",
+                "icon": "circle-check",
+                "cueFrame": 894
+              }
+            ],
+            "dark": true
+          }
+        }
+      },
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 30.83,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:50",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda)",
+      "narration_text": "Read it before trusting it. The gap interactions are one list comprehension: Level III entries where verify time is less than two minutes. That is the definition of the calibration gap — high-capability AI use with insufficient verification time. The audit command surfaces those entries by name.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "supervision_logger.py",
+            "topic": "CONDUCTING AI — SUPERVISION CALIBRATION",
+            "segment": "CALIBRATION LOGGER",
+            "code": "# supervision_logger.py — Claude Code output\nimport anthropic, json, datetime, argparse\nfrom pathlib import Path\n\nclient = anthropic.Anthropic()\nLOG_FILE = Path('supervision_log.json')\n\ndef cmd_log(description):\n    log = json.loads(LOG_FILE.read_text()) if LOG_FILE.exists() else []\n    log.append({'description': description,\n                'timestamp': datetime.datetime.now().isoformat(),\n                'classified': False})\n    LOG_FILE.write_text(json.dumps(log, indent=2))\n\ndef cmd_audit(log):\n    # gap_interactions = [e for e in log if e['level']=='Level III'\n    #                     and e['verify_time']<2]\n    gaps = [e for e in log\n            if e.get('level')=='Level III'\n            and e.get('verify_time_minutes',99)<2]\n    return gaps"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 17.32,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:50",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT — run",
+      "role_note": "OPEN vox slot → Manim video",
+      "narration_text": "Run it on a demo week of twelve interactions. The dot chart maps each interaction on the usage-supervision grid. Green dots land on or near the calibrated diagonal — those are well-supervised. Red dots fall below the diagonal — usage level outpaces supervision. Three dots in the danger corner: Level III usage, Level I supervision. The calibration score is six of twelve — fifty percent — with three danger-corner interactions logged.",
+      "visual_intent": "Manim B04_SupervisionDots: usage/supervision grid, 12 interaction dots, green calibrated, red gap/danger, danger corner annotated",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B04_SupervisionDots",
+          "file": "vox_scenes.py"
+        }
+      },
+      "estimated_duration_s": 17,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 22.87,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:50",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE",
+      "role_note": "terminal — the REQUIRED revision",
+      "narration_text": "The audit report lists gap interactions but does not suggest a verification method for each. Ask for a revision: add a recommended verification step for each gap interaction based on its description.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"update supervision_logger.py:\n  -> add recommended_verification field to each gap interaction\n  -> base recommendation on interaction description and level\n  -> re-run audit command\"",
+            "topic": "CONDUCTING AI — SUPERVISION CALIBRATION",
+            "segment": "CALIBRATION LOGGER",
+            "runningText": "updating…",
+            "greeting": "The change,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 11.82,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:50",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTPUT — revised",
+      "role_note": "slate — fill with updated audit report",
+      "narration_text": "Re-run. Each gap interaction now carries a recommended verification step — a code check, a domain expert review, a retrieval lookup. The log is now a task list, not just a report.",
+      "visual_intent": "updated audit output with recommended_verification column for each gap interaction",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B06.mp4",
+        "manim": {
+          "scene_class": "Scene_B06_ClaudeLiamSupervision",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": "2026-07-25T09:49:30.888750"
+          }
+        }
+      },
+      "estimated_duration_s": 10,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 11.07,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:50"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B07",
+      "act": "SUMMARY",
+      "role_note": "lesson — one beat",
+      "narration_text": "Calibration is a skill, and skills improve with measurement. The logger makes the gap visible. The audit makes it actionable. And running it weekly creates a feedback loop — supervision level catches up to usage level over time, because you can see the gap.",
+      "visual_intent": "summary card: log → classify → audit feedback loop; calibration score as the target metric",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_ClaudeLiamSupervision",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T09:49:34.471640"
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 13.67,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:50"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B08",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Your move: run the logger for one week. Log every AI interaction with a one-sentence description. At the end of the week, run the audit. If your calibration score is below seventy percent, pick the top three gap interactions and add a verification step to each. Run the audit again in two weeks. The score should move.",
+      "visual_intent": "next-steps card: 1) log for one week, 2) run audit, 3) add verification to top 3 gaps, 4) re-audit in 2 weeks",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B08.mp4",
+        "manim": {
+          "scene_class": "Scene_B08_ClaudeLiamSupervision",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": "2026-07-25T09:49:38.377666"
+          }
+        }
+      },
+      "estimated_duration_s": 10,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 16.47,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:50"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to build a supervision calibration logger — a structured weekly audit of how much human oversight your AI workflow actually uses versus how much the risk level requires. Ask Claude to help you design the logger: what events to record, what the weekly review should check, and how to flag when oversight is systematically too low.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to build a supervision calibration logger — a structured weekly audit that tracks how much human oversight my AI workflow actually uses versus how much the risk level requires. Help me design the logger: what events should I record per session or task, what should the weekly review check against the risk baseline, and how do I surface when oversight is systematically lower than the task risk warrants?",
+            "segment": "Supervision Calibration Logger — Weekly AI Audit",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your question, paper, or concept here…"
+          }
+        }
+      },
+      "engine": "kokoro",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:50",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "audio_file": "mp3/beat-YOURTURN.mp3",
+      "actual_duration_s": 19.03
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Supervision Calibration Logger — Weekly AI Audit",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-supervision-calibration-logger"
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 6.51,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:50",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Supervision Calibration Logger — Weekly AI Audit",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · CONDUCTING AI — SUPERVISION CALIBRATION",
+            "segment": "Supervision Calibration Logger — Weekly AI Audit",
+            "command": "Take what you learned from [Supervision Calibration Logger — Weekly AI Audit] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Supervision Calibration Logger — Weekly AI Audit",
+            "slug": "supervision-calibration-logger"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

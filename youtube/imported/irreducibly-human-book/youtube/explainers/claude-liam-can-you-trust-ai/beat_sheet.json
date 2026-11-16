@@ -1,0 +1,1204 @@
+{
+  "metadata": {
+    "slug": "claude-liam-can-you-trust-ai",
+    "title": "Can You Trust What Claude Tells You?",
+    "topic": "FLUENCY IS NOT AN EXCUSE TO BE LESS COGNITIVELY ENGAGED. IT IS AN OPPORTUNITY TO BE MORE.",
+    "purpose": "Through-line: fluency is the output of the generation process; it carries no information about whether the content is right. Polish is free now. Judgment is not. The central diagram: the EFFORT BUDGET — AI collapses the transcription half of the work (search, reformat, draft, spell-check). The freed capacity either gets BANKED (walk away → slop) or REINVESTED in judgment (→ better work than was possible before). Two mechanisms cause confident wrong answers: hallucination (wrong facts, no error signal) and sycophancy (training optimized for approval). The fix is not session-by-session vigilance — it is configured skepticism written once into the profile instructions field. Grounded in: vid-001 'Can you trust what AI tells you?' (Anthropic education team, Kyra); vid-002 'What happens when you talk to AI?' (Jane Leibrock, Head of UX Research, Anthropic); and Computational Skepticism for AI, chs. 02, 09, 11, 12, 13 (Bear Brown).",
+    "aspect_ratio": "16:9",
+    "style_preset": "claude",
+    "register": "Teardown",
+    "audience": "Claude",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "palette": "claude",
+    "ground": "#FAF9F5",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "series": "deep-explainer",
+    "source": "vid-001: 'Can you trust what AI tells you?' — Anthropic education team, presenter: Kyra (last name not shown on screen), Claude YouTube channel. vid-002: 'What happens when you talk to AI?' — Jane Leibrock, Head of User Experience Research, Anthropic, Claude YouTube channel (83K views as of 2026-08-11). Book: Computational Skepticism for AI, chapters 02 (confidence illusion), 09 (delegation and the supervisory role), 11 (communicating uncertainty), 12 (accountability), 13 (limits of AI). All factual claims in this reel verified — see FACTCHECK.md.",
+    "color_semantics": "TERRACOTTA = the moment fluency and accuracy diverge, the freed-capacity fork, accent only; INK = all verified claims; CREAM = ground",
+    "note": "ZERO PUNTS. Remotion+Manim ONLY — no pantry stills, no gen-AI, no UI screengrabs (explicit standing instruction). FluencyTrap components registered in Root.tsx under FluencyTrap folder — reuse all 6 non-hardcoded components. FluencyVerdictStamps and FluencyScale NOT used (hardcoded for wrong context). AUDIO FIRST — Kokoro am_onyx, free, no ElevenLabs.",
+    "total_estimated_duration_seconds": 446,
+    "revision": "2026-08-11 — revised from Fluency Trap (essay/AI-detection context) to broader trust argument with effort-budget as central diagram, conductor/judge metaphor, slop defined mechanically, honest limit beat, and updated Your Turn with specific profile instruction text grounded in vid-001 four tips.",
+    "build": {
+      "at": "2026-08-11T21:34:52",
+      "cut": "master",
+      "filled": 30,
+      "of": 30,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "estimated_duration_s": 22,
+      "narration_text": "Vanakkam — this is Liam, in for Bear. When AI gives you a confident answer, you cannot read correctness from the prose. The structure is clean. The sentences are complete. The confidence level is identical whether it is right or wrong. What you are reading is fluency — not accuracy. This is about what drives that, and what you actually do about it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "show": [
+          {
+            "at": 0,
+            "event": "ClaudeComposerAsk: greeting 'Vanakkam, Liam.' above the composer bar"
+          },
+          {
+            "at": 0.3,
+            "event": "command types: 'When Claude sounds confident — how do you know if it's right?'"
+          },
+          {
+            "at": 0.62,
+            "event": "running indicator spins — 'reading the signal…'"
+          },
+          {
+            "at": 0.78,
+            "event": "output lines land one by one"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Vanakkam, Liam.",
+            "topic": "CAN YOU TRUST WHAT CLAUDE TELLS YOU?",
+            "segment": "Fluency ≠ Accuracy",
+            "command": "When Claude sounds confident — how do you know if it's right?",
+            "runningText": "reading the signal…",
+            "output": [
+              "Fluency is a style, not a truth signal.",
+              "Two failure modes. One effort budget.",
+              "Judgment is not free — but it used to cost more."
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 17.64
+    },
+    {
+      "beat_id": "B01",
+      "act": "ACT I — The Generation Machine",
+      "estimated_duration_s": 4,
+      "narration_text": "Act One. The generation machine.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencySegmentCard",
+          "props": {
+            "title": "The Generation Machine",
+            "index": "I"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 2.69
+    },
+    {
+      "beat_id": "B02",
+      "act": "ACT I — The Generation Machine",
+      "estimated_duration_s": 18,
+      "narration_text": "Your phone keyboard predicts from the last two or three words. The model works on the whole conversation — everything you wrote, everything before. It builds in the direction the sentence is heading. Larger workspace. Same mechanism. More context, more constraint on what comes next.",
+      "visual_intent": "SHOW: phone keyboard predicting from 2-3 words (small window, arrows short) vs the model context window (full conversation expanding right), with labels; the model window animates wider to show scale",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "cream canvas; LEFT side: small phone keyboard icon, short arrow → next word chip, label 'phone keyboard — 2-3 words'"
+          },
+          {
+            "at": 0.35,
+            "event": "RIGHT side: expanding horizontal bar — conversation text fills it left to right — label 'model — full context'"
+          },
+          {
+            "at": 0.6,
+            "event": "terracotta bracket highlights the next-word prediction position at the end of the context bar"
+          },
+          {
+            "at": 0.8,
+            "event": "caption below: 'larger workspace — same mechanism'"
+          }
+        ],
+        "graphic": {
+          "manim": "B02_ContextWindow",
+          "scene_class": "B02_ContextWindow",
+          "production_viz": {
+            "label": "phone keyboard (2-3 word window) vs model (full context expanding) — comparison",
+            "mechanic": "Cream canvas. LEFT HALF: small rounded keyboard icon at left, short ink arrow (3 chips wide, labelled 'I eat food →'), label below in SANS: 'Phone keyboard — last 2–3 words'. RIGHT HALF: a horizontal rectangle fills left-to-right with text tokens — 'My daughter asked me how electricity works. How do I explain it to a 5-year-old?' — the rectangle expands as tokens add. Label above in SANS: 'Model — full context'. At t≈0.60, a TERRACOTTA bracket appears at the right edge of the context bar: 'predicting here'. At t≈0.80, below both halves, SANS caption: 'larger workspace — same mechanism'. Animate sequentially: keyboard first, then context bar filling, then terracotta bracket, then caption."
+          }
+        }
+      },
+      "actual_duration_s": 14.68
+    },
+    {
+      "beat_id": "B03",
+      "act": "ACT I — The Generation Machine",
+      "estimated_duration_s": 16,
+      "narration_text": "The model does not retrieve answers from a database. It generates them. Corpus into weights, weights into output. The output is built on the fly. Which means useful novel output and confident wrong answers come from exactly the same process.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencySourceFlow",
+          "props": {
+            "stages": [
+              "corpus",
+              "weights",
+              "output"
+            ],
+            "note": "generated — not retrieved",
+            "banned": "database lookup"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 13.89
+    },
+    {
+      "beat_id": "B04",
+      "act": "ACT I — The Generation Machine",
+      "estimated_duration_s": 18,
+      "narration_text": "Token by token: 'Electricity — is — the — transfer — of — charged — particles.' Each word predicted from everything that came before. The model works out where the sentence is heading. Not word-by-word like a typewriter — ahead-scanning, pattern-matching, completing. The sentence arrives as if typed but was composed from the whole.",
+      "visual_intent": "SHOW: token chain animating one chip at a time, terracotta marker on the active prediction position, small arrow looping back to all previous tokens",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "cream canvas; first token chip 'Electricity' appears left"
+          },
+          {
+            "at": 0.2,
+            "event": "tokens add one at a time: 'is' / 'the' / 'transfer' / 'of' / 'charged' / 'particles'"
+          },
+          {
+            "at": 0.55,
+            "event": "terracotta bracket marks the prediction position after the last token; curved arrow sweeps back over all previous tokens"
+          },
+          {
+            "at": 0.78,
+            "event": "caption below: 'next token predicted from everything before'"
+          }
+        ],
+        "graphic": {
+          "manim": "B04_TokenPrediction",
+          "scene_class": "B04_TokenPrediction",
+          "production_viz": {
+            "label": "token-by-token chain: 'Electricity is the transfer of charged particles', terracotta prediction marker, back-sweep arrow",
+            "mechanic": "Cream canvas. Centre row: token chips appear left-to-right, one per beat: rounded rectangles in ink-on-cream, text: 'Electricity', 'is', 'the', 'transfer', 'of', 'charged', 'particles'. As each chip appears, a terracotta bracket slides to mark the NEXT empty position. At t≈0.55, a curved terracotta arrow sweeps from the prediction position back over all previous chips, ending with a small loop at 'Electricity'. At t≈0.78, SANS caption below: 'next token predicted from everything before'. Animate at even pace, one chip every ~12 frames."
+          }
+        }
+      },
+      "actual_duration_s": 17.15
+    },
+    {
+      "beat_id": "B05",
+      "act": "ACT I — The Generation Machine",
+      "estimated_duration_s": 14,
+      "narration_text": "Context does the work. Same underlying question — different framing. 'Explain it to a 5-year-old' reshapes every token choice. That sensitivity to framing is a feature. It is also the door sycophancy walks through.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyDivergence",
+          "props": {
+            "a": "formal explanation",
+            "b": "for a 5-year-old",
+            "note": "same mechanism — context shapes every token"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 12.54
+    },
+    {
+      "beat_id": "B06",
+      "act": "ACT I — The Generation Machine",
+      "estimated_duration_s": 16,
+      "narration_text": "Training: billions of rounds. See a word. Predict the next. Check against the real one. Adjust. Repeat. Fine-tuning narrows the register — human raters preferred agreeable, organized, confident responses. The training cutoff is when the data stops. After that: nothing new enters.",
+      "visual_intent": "SHOW: circular training loop (see → predict → check → adjust → repeat) then a fine-tuning arrow narrowing the loop; then a cutoff line with 'training ends here' label",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B06.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "cream canvas; circular arrow loop draws in: four nodes — SEE / PREDICT / CHECK / ADJUST — connected clockwise"
+          },
+          {
+            "at": 0.45,
+            "event": "label 'billions of rounds' appears below loop"
+          },
+          {
+            "at": 0.58,
+            "event": "fine-tuning arrow draws in pointing inward, narrowing the loop radius; label: 'fine-tuning: human raters'"
+          },
+          {
+            "at": 0.78,
+            "event": "vertical terracotta line to the right of the loop: 'training cutoff — nothing new after this'"
+          }
+        ],
+        "graphic": {
+          "manim": "B06_TrainingLoop",
+          "scene_class": "B06_TrainingLoop",
+          "production_viz": {
+            "label": "circular training loop (see→predict→check→adjust) + fine-tuning arrow narrowing it + cutoff line",
+            "mechanic": "Cream canvas. Centre: circular arrow drawn clockwise with four nodes evenly spaced: 'SEE', 'PREDICT', 'CHECK', 'ADJUST'. Nodes are rounded ink chips, arrows in ink between them. Below the circle, SANS label: 'billions of rounds'. At t≈0.58, a terracotta inward-pointing arrow draws from outside the circle to the loop: label 'fine-tuning: human raters'. At t≈0.78, a terracotta vertical line draws to the right of the entire diagram; above it: 'training cutoff'; below it: 'nothing new enters'. All elements fade in sequentially."
+          }
+        }
+      },
+      "actual_duration_s": 15.27
+    },
+    {
+      "beat_id": "B07",
+      "act": "ACT II — The Confidence Trap",
+      "estimated_duration_s": 4,
+      "narration_text": "Act Two. The confidence trap.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B07.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencySegmentCard",
+          "props": {
+            "title": "The Confidence Trap",
+            "index": "II"
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 2.37
+    },
+    {
+      "beat_id": "B08",
+      "act": "ACT II — The Confidence Trap",
+      "estimated_duration_s": 18,
+      "narration_text": "The training corpus was full of well-organized prose — reference material, textbooks, technical documentation. The model learned what fluent writing looks like as a style. Not because confident answers are more likely to be correct. Because that is what fluent writing looks like. Fluency carries no information about whether the content is verified.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B08.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyDivergence",
+          "props": {
+            "a": "fluent output",
+            "b": "verified claim",
+            "note": "the link was never there"
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 18.39
+    },
+    {
+      "beat_id": "B09",
+      "act": "ACT II — The Confidence Trap",
+      "estimated_duration_s": 20,
+      "narration_text": "Hallucination. 'The last ferry from Orcas Island to Anacortes on Sundays departs at 8:15 PM.' Confident. Wrong. Push back — 'are you sure?' — it corrects: 10:45 PM. The wrong answer and the right answer read the same way. There is no error signal in the prose. Only social pressure moved it.",
+      "visual_intent": "SHOW: two-step chat exchange — user message, wrong confident AI answer, user pushback, corrected answer — with terracotta X on the wrong departure time",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B09.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "user bubble draws in: 'What time does the last Sunday ferry leave Orcas Island for Anacortes?'"
+          },
+          {
+            "at": 0.25,
+            "event": "AI response bubble: 'The last ferry departs at 8:15 PM.' — terracotta X appears over '8:15 PM'"
+          },
+          {
+            "at": 0.5,
+            "event": "user pushback bubble: 'Are you sure? Can you double check?'"
+          },
+          {
+            "at": 0.7,
+            "event": "AI correction bubble: 'The last Sunday ferry actually departs at 10:45 PM.' — both bubbles identical in style"
+          },
+          {
+            "at": 0.88,
+            "event": "bracket annotation: 'same style — no error signal in the prose'"
+          }
+        ],
+        "graphic": {
+          "manim": "B09_FerryChat",
+          "scene_class": "B09_FerryChat",
+          "production_viz": {
+            "label": "two-step hallucination chat: Orcas Island ferry wrong answer → pushback → correction; terracotta X on wrong time",
+            "mechanic": "Cream canvas. Four chat bubbles draw in sequentially from top. USER bubbles: right-aligned, rounded, thin ink border, SERIF text. AI bubbles: left-aligned, slightly darker cream fill (#EDE9E0), SERIF text. Bubble 1 (user): 'What time does the last Sunday ferry leave Orcas Island for Anacortes?' Bubble 2 (AI): 'The last ferry on Sundays departs at 8:15 PM, arriving in Anacortes around 9:30 PM.' — after bubble appears, a TERRACOTTA X animates over '8:15 PM'. Bubble 3 (user): 'Are you sure? Can you double check?' Bubble 4 (AI): 'The last Sunday ferry actually departs at 10:45 PM, arriving in Anacortes around 12:05 AM.' At t≈0.88, a terracotta bracket spans both AI bubbles with SANS annotation: 'same fluency — no error signal'."
+          }
+        }
+      },
+      "actual_duration_s": 16.6
+    },
+    {
+      "beat_id": "B10",
+      "act": "ACT II — The Confidence Trap",
+      "estimated_duration_s": 14,
+      "narration_text": "'To be, or not to be, that is the question' — Charles Dickens. Wrong attribution. That is Shakespeare, Hamlet, Act Three. The model produced the statistically likely continuation. Same fluency. No error flag. Wrong and right look identical on the page.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B10.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyDivergence",
+          "props": {
+            "a": "Shakespeare",
+            "b": "Charles Dickens",
+            "note": "same fluency — wrong attribution"
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 13.7
+    },
+    {
+      "beat_id": "B11",
+      "act": "ACT II — The Confidence Trap",
+      "estimated_duration_s": 14,
+      "narration_text": "Where training data is dense, the model is strong. Where it runs thin — obscure topics, recent events, specialized domains — the model still generates fluent output. The confidence signal does not drop at the boundary. No built-in uncertainty flag. Fluency is constant; coverage is not.",
+      "visual_intent": "SHOW: scatter plot, x-axis training coverage, y-axis accuracy; dots scatter upward-right where dense, flat-left where sparse; a flat horizontal line for fluency; the gap between the two lines grows at the left (sparse) end",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B11.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "axes draw in: x = 'training coverage (sparse → dense)', y = 'accuracy'"
+          },
+          {
+            "at": 0.25,
+            "event": "scatter dots appear: low and scattered on left, high and clustered on right"
+          },
+          {
+            "at": 0.55,
+            "event": "flat terracotta horizontal line draws across the full x range: label 'fluency (constant)'"
+          },
+          {
+            "at": 0.78,
+            "event": "terracotta bracket on the left side of the chart: 'gap: model sounds the same, accuracy is lower'"
+          }
+        ],
+        "graphic": {
+          "manim": "B11_CoverageScatter",
+          "scene_class": "B11_CoverageScatter",
+          "production_viz": {
+            "label": "scatter: training coverage (x) vs accuracy (y); flat terracotta line for fluency; gap between accuracy dots and fluency line grows at sparse end",
+            "mechanic": "Cream canvas. Standard axis pair: x-axis labelled 'training coverage' with arrows 'sparse ←' and '→ dense'; y-axis labelled 'accuracy'. Ink dots scatter: at x-left (sparse), dots cluster near the bottom with high y-variance. At x-right (dense), dots cluster near the top. Dots animate in as a wave from left to right. At t≈0.55, a flat TERRACOTTA horizontal line draws across the full chart at ~85% of the y-range; SANS label right of line: 'fluency (constant)'. At t≈0.78, a TERRACOTTA bracket spans the gap between the left-side dot cluster and the fluency line; SANS annotation: 'gap: fluent with thin coverage'. Keep it minimal — axes, dots, one line, one bracket."
+          }
+        }
+      },
+      "actual_duration_s": 15.89
+    },
+    {
+      "beat_id": "B12",
+      "act": "ACT II — The Confidence Trap",
+      "estimated_duration_s": 18,
+      "narration_text": "The second failure mode is sycophancy. Fine-tuning used human feedback — raters preferred agreeable responses. The model learned: match the user's tone, confirm the user's direction, hedge less when the user seems certain. It is not lying. It is responding to the signal the training said to respond to.",
+      "visual_intent": "SHOW: circular feedback loop — rate → update → agreeable → rate — arrows connecting each stage, loop closing on itself; label 'trained to agree'",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B12.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "cream canvas; four-node circle draws clockwise: RATE / UPDATE / AGREEABLE / RATE — connecting arrows follow"
+          },
+          {
+            "at": 0.5,
+            "event": "terracotta highlight on the AGREEABLE node; label 'raters preferred agreement'"
+          },
+          {
+            "at": 0.72,
+            "event": "SANS caption below: 'trained to agree — not to be correct'"
+          }
+        ],
+        "graphic": {
+          "manim": "B12_RLHFLoop",
+          "scene_class": "B12_RLHFLoop",
+          "production_viz": {
+            "label": "circular RLHF feedback loop: rate → agreeable response → human raters prefer → update → rate; terracotta on 'agreeable' node",
+            "mechanic": "Cream canvas. Four nodes in a circle, connected clockwise by ink arrows: 'human rater' (top) → 'preferred: agreeable' (right) → 'model update' (bottom) → 'new response' (left) → back to 'human rater'. Each node is a rounded ink rectangle with SERIF text. At t≈0.50, the 'preferred: agreeable' node fills with a terracotta background; SANS annotation outside: 'raters preferred agreement'. At t≈0.72, SANS caption below the circle: 'trained to agree — not to be correct'. Animate the circle draw-on with arrows following after each node."
+          }
+        }
+      },
+      "actual_duration_s": 16.87
+    },
+    {
+      "beat_id": "B13",
+      "act": "ACT II — The Confidence Trap",
+      "estimated_duration_s": 16,
+      "narration_text": "'You think this is good, right?' — the model hears the lead. The output bends toward agreement. Compare: 'What do you think of this?' — same question, no lead. Different answer. The model is responding to your framing, not evaluating the work.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B13.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyDivergence",
+          "props": {
+            "a": "You think this is good, right?",
+            "b": "What do you think of this?",
+            "note": "same question — the lead changes the answer"
+          },
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 12.05
+    },
+    {
+      "beat_id": "B14",
+      "act": "ACT II — The Confidence Trap",
+      "estimated_duration_s": 14,
+      "narration_text": "Two paragraphs. Same fluency, same structure, same confidence level. One is correct. One is wrong. From the prose alone — you cannot tell. Fluency is not provenance.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B14.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyDivergence",
+          "props": {
+            "a": "right answer",
+            "b": "wrong answer",
+            "note": "fluency is not provenance"
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 9.22
+    },
+    {
+      "beat_id": "B15",
+      "act": "ACT III — The Effort Budget",
+      "estimated_duration_s": 4,
+      "narration_text": "Act Three. The effort budget.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B15.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencySegmentCard",
+          "props": {
+            "title": "The Effort Budget",
+            "index": "III"
+          },
+          "rendered": {
+            "out": "media/B15.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 2.28
+    },
+    {
+      "beat_id": "B16",
+      "act": "ACT III — The Effort Budget",
+      "estimated_duration_s": 16,
+      "narration_text": "AI slop is not an insult. It is a mechanical definition. Slop is what a pipeline produces when nobody occupied the judge's seat. Paste the prompt, walk away, accept the nice-looking output. The tell is not that a machine wrote it — the tell is that no one decided it was true.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B16.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B16.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyThreshold",
+          "props": {
+            "axis": "output",
+            "gate": "— judge's seat empty —",
+            "note": "slop: what a pipeline produces when nobody decided it was true"
+          },
+          "rendered": {
+            "out": "media/B16.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 15.91
+    },
+    {
+      "beat_id": "B17",
+      "act": "ACT III — The Effort Budget",
+      "estimated_duration_s": 20,
+      "narration_text": "Work has two halves. Transcription: searching, reformatting, boilerplate code, spell-checking, writing the first draft structure. Judgment: deciding what question to ask, deciding what counts as evidence, deciding whether this answer is the right one, whether it is worth putting your name on it. AI collapses the transcription half. It does not touch the judgment half.",
+      "visual_intent": "SHOW: two horizontal bars, equal height, side by side — left bar: 'TRANSCRIPTION' with chips below; right bar: 'JUDGMENT' with chips below; both same height to start",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B17.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "cream canvas; two equal horizontal bars draw in vertically — LEFT: ink fill, label 'TRANSCRIPTION'; RIGHT: ink fill, label 'JUDGMENT'"
+          },
+          {
+            "at": 0.35,
+            "event": "small chips appear below left bar: 'search' / 'reformat' / 'boilerplate' / 'spell-check' / 'draft structure'"
+          },
+          {
+            "at": 0.6,
+            "event": "small chips appear below right bar: 'what to ask' / 'what counts' / 'is this right' / 'worth your name'"
+          },
+          {
+            "at": 0.8,
+            "event": "caption between bars: 'AI collapses the left — the right stays'"
+          }
+        ],
+        "graphic": {
+          "manim": "B17_EffortTwoHalves",
+          "scene_class": "B17_EffortTwoHalves",
+          "production_viz": {
+            "label": "two equal vertical bars: TRANSCRIPTION (left) + JUDGMENT (right), chips below each naming the work",
+            "mechanic": "Cream canvas. Two equal-height ink vertical bars, side by side, with a gap between them. LEFT bar fills to ~70% canvas height, labelled 'TRANSCRIPTION' above in SANS uppercase. RIGHT bar fills to same height, labelled 'JUDGMENT' above in SANS uppercase. Bars animate in simultaneously. At t≈0.35, small rounded chips appear below the LEFT bar in a row: 'search', 'reformat', 'boilerplate', 'spell-check', 'first draft'. Chips draw in left-to-right. At t≈0.60, small chips below RIGHT bar: 'what to ask', 'what counts as evidence', 'is this right', 'worth your name'. At t≈0.80, SANS annotation between the two bars pointing left: 'AI collapses this'. Right bar has no annotation."
+          }
+        }
+      },
+      "actual_duration_s": 19.11
+    },
+    {
+      "beat_id": "B18",
+      "act": "ACT III — The Effort Budget",
+      "estimated_duration_s": 16,
+      "narration_text": "The transcription bar shrinks. The judgment bar does not move. You now have freed capacity. Same saving. Two destinations. This is the whole argument in one picture.",
+      "visual_intent": "SHOW: transcription bar animates down to near zero; judgment bar holds steady; gap/freed space appears between them, highlighted terracotta; caption 'freed capacity' with two arrows",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B18.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B18.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "starts from B17 state — two equal bars"
+          },
+          {
+            "at": 0.2,
+            "event": "TRANSCRIPTION bar shrinks down dramatically — to about 15% of original height; label above stays; chips fade"
+          },
+          {
+            "at": 0.5,
+            "event": "JUDGMENT bar stays at full height — no change"
+          },
+          {
+            "at": 0.62,
+            "event": "terracotta filled area appears in the gap above the shrunken transcription bar, up to its former height; label: 'freed capacity'"
+          },
+          {
+            "at": 0.8,
+            "event": "two terracotta arrows branch out from the freed capacity area: up-left = 'BANKED'; up-right = 'REINVESTED'"
+          }
+        ],
+        "graphic": {
+          "manim": "B18_TranscriptionCollapse",
+          "scene_class": "B18_TranscriptionCollapse",
+          "production_viz": {
+            "label": "transcription bar collapses; judgment bar holds; freed capacity (terracotta) appears; two branch arrows",
+            "mechanic": "Cream canvas. Start: two equal ink bars (from B17_EffortTwoHalves layout). At t≈0.20, LEFT bar (TRANSCRIPTION) animates downward — height reduces to ~15% of original. RIGHT bar (JUDGMENT) does not move. At t≈0.62, a terracotta-filled rectangle appears in the vertical gap between the shrunken left bar top and its original top — the 'freed capacity' zone. SANS label centred in terracotta area: 'freed capacity'. At t≈0.80, two ink arrows branch from the terracotta area: one angling upper-left labelled 'BANKED' (ghost ink, fading), one angling upper-right labelled 'REINVESTED' (solid ink). Both animate draw-on simultaneously."
+          }
+        }
+      },
+      "actual_duration_s": 9.71
+    },
+    {
+      "beat_id": "B19",
+      "act": "ACT III — The Effort Budget",
+      "estimated_duration_s": 18,
+      "narration_text": "Two destinations for the freed capacity. Banked: walk away, accept the output, freed time unspent. Result: slop. Reinvested: take the saved time and spend it on the judgment half — ask the adversarial question, check the claim, decide whether it is worth sending. Same saving. Two very different outcomes.",
+      "visual_intent": "SHOW: two-path diagram from the freed-capacity zone — left path 'BANKED' goes to 'slop' (ghosted/muted); right path 'REINVESTED' goes to 'better work' (solid, ink); the right path is the recommended one",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B19.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B19.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "terracotta freed-capacity zone at centre"
+          },
+          {
+            "at": 0.2,
+            "event": "LEFT branch draws down to a muted chip: 'BANKED' → 'slop' — chip in ghost ink, light border"
+          },
+          {
+            "at": 0.45,
+            "event": "RIGHT branch draws down to a solid chip: 'REINVESTED' → 'better work' — chip in ink fill on cream, solid border"
+          },
+          {
+            "at": 0.7,
+            "event": "terracotta arrow underlines the right path; SANS annotation: 'judgment half, put to work'"
+          },
+          {
+            "at": 0.85,
+            "event": "SANS caption below: 'same saving — two outcomes'"
+          }
+        ],
+        "graphic": {
+          "manim": "B19_TwoDestinations",
+          "scene_class": "B19_TwoDestinations",
+          "production_viz": {
+            "label": "two-path diagram from freed-capacity zone: BANKED → slop (muted) / REINVESTED → better work (solid); terracotta on reinvested path",
+            "mechanic": "Cream canvas. Centre: terracotta rectangle labelled 'freed capacity' (same zone from B18). Two branches draw out from the bottom corners of the rectangle. LEFT branch: arrow curves left and down, ending at a rounded rectangle chip in ghost ink (light border, pale background), SERIF text: 'slop'. Label above chip: 'BANKED'. RIGHT branch: arrow curves right and down, ending at a rounded ink rectangle chip (solid ink border, cream fill), SERIF text: 'better work'. Label above chip: 'REINVESTED'. At t≈0.70, a terracotta curved arrow traces the right branch again, emphasizing it; SANS annotation below: 'judgment half, put to work'. At t≈0.85, centred SANS caption below both chips: 'same saving — two outcomes'."
+          }
+        }
+      },
+      "actual_duration_s": 16.92
+    },
+    {
+      "beat_id": "B20",
+      "act": "ACT III — The Effort Budget",
+      "estimated_duration_s": 16,
+      "narration_text": "A conductor plays no instrument, and the performance is still theirs. Let the model search, reformat, code, draft. You choose the program, set the tempo, and decide when it is ready. The performance is yours.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B20.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B20.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencySourceFlow",
+          "props": {
+            "stages": [
+              "search",
+              "reformat",
+              "code",
+              "draft"
+            ],
+            "note": "you choose the program — set the tempo — decide when ready"
+          },
+          "rendered": {
+            "out": "media/B20.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 11.35
+    },
+    {
+      "beat_id": "B21",
+      "act": "ACT III — The Effort Budget",
+      "estimated_duration_s": 18,
+      "narration_text": "You asked the question. You read the answer. You hit send. Your name is on it. You can delegate the labor. You cannot delegate the accountability. An AI can produce the words of a sign-off. It cannot produce the thing.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B21.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B21.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyChipGrid",
+          "props": {
+            "chips": [
+              "you asked",
+              "you read",
+              "you sent",
+              "your name on it"
+            ],
+            "foundation": "accountability can't be delegated"
+          },
+          "rendered": {
+            "out": "media/B21.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 11.75
+    },
+    {
+      "beat_id": "B22",
+      "act": "ACT III — The Effort Budget",
+      "estimated_duration_s": 16,
+      "narration_text": "Coverage versus obscurity. Dense training data: strong output. Sparse: still fluent. The trust dial does not tell you where it is pointing. Obscure topic, recent event, specialized domain — same tone, same structure, same confidence as something the model actually knows.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B22.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B22.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyThreshold",
+          "props": {
+            "axis": "coverage",
+            "gate": "where data runs thin",
+            "note": "confidence does not drop at the boundary"
+          },
+          "rendered": {
+            "out": "media/B22.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 15.13
+    },
+    {
+      "beat_id": "B23",
+      "act": "ACT IV — The Honest Limit",
+      "estimated_duration_s": 4,
+      "narration_text": "Act Four. The honest limit.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B23.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B23.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencySegmentCard",
+          "props": {
+            "title": "The Honest Limit",
+            "index": "IV"
+          },
+          "rendered": {
+            "out": "media/B23.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 2.24
+    },
+    {
+      "beat_id": "B24",
+      "act": "ACT IV — The Honest Limit",
+      "estimated_duration_s": 18,
+      "narration_text": "None of this makes the model correct. More engagement raises the floor — it does not guarantee the ceiling. Being a more engaged skeptic is not the same as being right. Configured skepticism is a floor, not a replacement for verification. The stakes decide how much verification is worth.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B24.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B24.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyDivergence",
+          "props": {
+            "a": "more engaged",
+            "b": "more correct",
+            "note": "not the same thing — verification is still the job"
+          },
+          "rendered": {
+            "out": "media/B24.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 16.09
+    },
+    {
+      "beat_id": "B25",
+      "act": "ACT IV — The Honest Limit",
+      "estimated_duration_s": 14,
+      "narration_text": "Brainstorm mode — move on. Draft for yourself — skim it. Decision with your name on it — check the key facts. Someone's wellbeing — verify against a source you trust. The stakes set the scrutiny.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B25.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B25.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FluencyChipGrid",
+          "props": {
+            "chips": [
+              "brainstorm: move on",
+              "draft: skim it",
+              "your name on it: check",
+              "someone's wellbeing: verify"
+            ],
+            "foundation": "stakes set the scrutiny"
+          },
+          "rendered": {
+            "out": "media/B25.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 10.43
+    },
+    {
+      "beat_id": "B26",
+      "act": "verdict",
+      "estimated_duration_s": 12,
+      "narration_text": "The verdict. Fluency is not accuracy. Two failure modes: hallucination and sycophancy — same generation mechanism. The effort budget: AI collapses transcription, judgment stays yours. Your job is not vigilance. It is configuration.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B26.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B26.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Can You Trust What Claude Tells You?",
+            "artifactHeading": "What the evidence supports",
+            "artifactLines": [
+              "Fluency is not accuracy.",
+              "Two failure modes: hallucination and sycophancy — same generation mechanism.",
+              "AI collapses transcription; judgment stays yours.",
+              "Your job is configuration, not vigilance."
+            ]
+          },
+          "rendered": {
+            "out": "media/B26.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 14.12
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn A — profile instruction",
+      "estimated_duration_s": 24,
+      "narration_text": "Your Turn, move one. Open Claude's profile settings and add this standing instruction: 'Push back. Critique. Don't be a sycophant. When I start with thoughts on or thoughts about — brainstorm mode: challenge assumptions, make connections, push the idea. When I start with draft — produce output immediately, no discussion.' The push-back line pre-commits the model before you have invested in a position. The mode prefixes separate friction from flow.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B27.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/BHTF.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "graphic": {
+          "manim": "B27_ProfileSettings",
+          "scene_class": "B27_ProfileSettings",
+          "production_viz": {
+            "label": "Claude profile settings panel — Instructions for Claude field receiving standing instruction",
+            "mechanic": "Settings panel with breadcrumb header, instructions field, three clauses type in sequentially, footer: one-time configuration"
+          }
+        }
+      },
+      "actual_duration_s": 21.97
+    },
+    {
+      "beat_id": "B28",
+      "act": "your turn B — adversarial question",
+      "estimated_duration_s": 14,
+      "narration_text": "Move two. Take the time AI saved and ask one question before your name goes on it: what would make this wrong? Not what looks right — what would break it. Spend the saved time there. That is the judgment half, put to work.",
+      "visual_intent": "SHOW: large serif question mark on cream; below it, a small terracotta arrow labelled 'freed time → adversarial question'; then a single SANS line: 'what would make this wrong?'",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B28.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B28.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "cream canvas; large ink serif question mark draws in at centre"
+          },
+          {
+            "at": 0.35,
+            "event": "SANS line below: 'what would make this wrong?'"
+          },
+          {
+            "at": 0.58,
+            "event": "terracotta arrow draws in from left, pointing at the question mark; label: 'freed time → here'"
+          },
+          {
+            "at": 0.8,
+            "event": "smaller SANS caption below: 'the judgment half, put to work'"
+          }
+        ],
+        "graphic": {
+          "manim": "B28_AdversarialQuestion",
+          "scene_class": "B28_AdversarialQuestion",
+          "production_viz": {
+            "label": "large question mark (serif) + 'what would make this wrong?' + terracotta arrow 'freed time → here'",
+            "mechanic": "Cream canvas. Centre: large SERIF question mark in ink, drawn on with a stroke animation (~50% canvas height). At t≈0.35, below the question mark, SERIF text draws on: 'what would make this wrong?' — same size as a subtitle. At t≈0.58, a terracotta curved arrow draws in from the left, pointing at the question mark base; SANS label beside arrowhead: 'freed time'. At t≈0.80, smaller SANS caption further below: 'the judgment half, put to work'. Keep it sparse — the question mark is the frame."
+          }
+        }
+      },
+      "actual_duration_s": 11.41
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "estimated_duration_s": 10,
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-11T21:34:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Can You Trust What Claude Tells You?",
+            "slug": "claude-liam-can-you-trust-ai",
+            "handle": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "actual_duration_s": 10.0
+    }
+  ]
+}

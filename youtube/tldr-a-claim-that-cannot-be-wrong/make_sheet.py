@@ -1,0 +1,358 @@
+#!/usr/bin/env python3
+"""make_sheet.py — writes beat_sheet.json for tldr-a-claim-that-cannot-be-wrong.
+
+tldr skill (brutalist.art/skills/make/tldr). Section S1 of chapter 1
+(youtube/tldr-sections-01-skeptics-toolkit.md) — Popper's move: a claim counts
+only in the form that names the observation that would make it false.
+
+The one representation: an outcome axis with the claim drawn as the REGION IT
+FORBIDS. "Robust" shades nothing; "error < 2% over 30 days" carves a region.
+Key case: the chapter's rhetorical-claim table + the Epic sepsis model
+(internal checks = white swans; the Michigan external validation = the black one).
+
+Every number is the chapter's own (Wong et al. 2021 via the chapter; the table
+rows) or recomputed from the chapter's inputs and asserted below. FACTCHECK.md
+carries a row per claim. Re-run, then audio, then ./art run.
+"""
+import json
+from fractions import Fraction
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+SLUG = "tldr-a-claim-that-cannot-be-wrong"
+TITLE = "A Claim That Cannot Be Wrong Is Not a Claim"
+COURSE = "INFO 7375 · Computational Skepticism · Chapter 1"
+
+# ── the chapter's numbers (asserted) ─────────────────────────────────────────
+N_MICHIGAN = 27_697                       # "checked it against what actually happened to 27,697 hospitalized patients"
+MISSED = Fraction(2, 3)                   # "missed roughly two of every three patients who went on to develop sepsis"
+CAUGHT = 1 - MISSED                       # recomputed: caught roughly one in three  (recall ≈ 1/3)
+ALERT_SHARE = 0.18                        # "raised alerts on 18 percent of all hospitalized patients"
+TABLE = {                                 # the chapter's rhetorical-claim table, verbatim thresholds
+    "robust": {"ood_error_below": 0.02, "window_days": 30},
+    "performs well": {"precision_min": 0.91, "recall_min": 0.88},
+    "migration": {"data_loss_events": 0, "p95_ms_max": 120, "hours_post_cutover": 48},
+    "drift": {"psi_below": 0.10, "features": 3},
+}
+assert CAUGHT == Fraction(1, 3)
+assert float(CAUGHT) < TABLE["performs well"]["recall_min"]          # the Michigan result lands in the forbidden region
+assert float(CAUGHT) < 0.5                                          # …and would for any recall floor above one third
+assert N_MICHIGAN == 27697 and ALERT_SHARE == 0.18
+N_WHITE = 5                                                         # the five favorable checks the chapter lists (B13)
+WHITE = ["strong internal validation", "a respectable reported AUC", "a risk number on every patient",
+         "published", "cleared through procurement"]
+assert len(WHITE) == N_WHITE
+
+def beat(bid, act, narration, shot, role=None, section=None, learn=None, lane="manim", proof="SHOW", **extra):
+    b = {"beat_id": bid, "act": act, "lane": lane, "proof_gate": proof}
+    if section is not None: b["section"] = section
+    if role: b["role"] = role
+    if learn: b["learn"] = learn
+    b.update({"narration_text": narration, "estimated_duration_s": round(len(narration.split()) / 2.5, 1),
+              "voice": "am_onyx", "engine": "kokoro", "shot": shot})
+    b.update(extra); return b
+
+def manim(cls, intent, show, claim):
+    return {"type": "GRAPHIC", "source": "own", "visual_intent": intent, "show": show, "manim": {"class": cls}, "motion_claim": claim}
+
+def remotion(pattern, props, show):
+    return {"type": "REMOTION", "source": "own", "show": show, "remotion": {"pattern": pattern, "props": props}}
+
+beats = []
+
+beats.append(beat("B00", "tldr · what",
+    "Vanakkam. This is Liam, in for Bear, with chapter one of INFO 7375, Computational Skepticism for AI, at Northeastern. "
+    "This film is about one test for any claim about a model: what result would make it false? "
+    "A claim counts only if it names that result. "
+    "You'll see each claim drawn as the outcomes it forbids. "
+    "The trap: a claim nothing could refute looks, on a dashboard, just like one that passed.",
+    remotion("ClaudeTldrWhat", {
+        "eyebrow": "TL;DR", "heading": "What This Film Is About", "greeting": "Vanakkam, Liam", "topic": COURSE,
+        "question": "The dashboard says the system is robust. What would it look like if it weren't?",
+        "lines": ["A claim counts only if it names the result that would make it false.",
+                  "You'll see each claim drawn as the region of outcomes it forbids.",
+                  "The trap: a claim nothing could refute looks just like one that passed."],
+        "cues": [1.5, 13.0, 16.5, 19.5], "durationSeconds": 25, "folderLabel": "@NikBearBrown"},
+        [{"at": 0.0, "event": "'TL;DR.' wordmark; 'Vanakkam, Liam'; the course line; heading"},
+         {"at": 0.06, "event": "the question writes on"},
+         {"at": 0.52, "event": "line 1 lands on 'a claim counts only'"},
+         {"at": 0.66, "event": "line 2 lands on 'drawn as the outcomes it forbids'"},
+         {"at": 0.8, "event": "line 3 lands on 'the trap'"}]),
+    lane="bookend"))
+
+beats.append(beat("B01", "tldr · why",
+    "Why should you care? Every model you ship or buy arrives with claims like robust, performs well, a success. "
+    "If a claim forbids nothing, no test can ever catch the model failing. "
+    "A sepsis model passed every check its builders chose, and still missed roughly two in three septic patients. "
+    "Write the forbidden result first, and a test can finally say no.",
+    remotion("ClaudeTldrWhy", {
+        "eyebrow": "TL;DR", "heading": "Why You Should Care", "topic": COURSE,
+        "lead": "Every model you ship or buy arrives with claims like robust, performs well, a success.",
+        "lines": ["If a claim forbids nothing, no test can ever catch the model failing.",
+                  "A sepsis model passed every check its builders chose, and still missed roughly two in three septic patients.",
+                  "Write the forbidden result first, and a test can finally say no."],
+        "cues": [1.0, 7.0, 11.5, 18.0], "durationSeconds": 22, "folderLabel": "@NikBearBrown"},
+        [{"at": 0.0, "event": "page turn: same header, heading 'Why You Should Care'"},
+         {"at": 0.05, "event": "the stake writes on"},
+         {"at": 0.32, "event": "dash 1 on 'forbids nothing'"},
+         {"at": 0.52, "event": "dash 2 on 'a sepsis model'"},
+         {"at": 0.82, "event": "dash 3 on 'write the forbidden result first'"}]),
+    lane="bookend", qc={"sparse_by_design": True, "sparse_reason": "TL;DR card two — text lands on cues by design."}))
+
+beats.append(beat("B02", "the question",
+    "The question this film is really asking: what result would prove the claim wrong? "
+    "Not right. Results that fit can pile up forever and never finish the job. One result that doesn't fit can.",
+    remotion("BrutalistHesitantWriter", {
+        "text": "“The system is robust.”\nWhat result would\nprove it right?",
+        "triggerWords": "prove it right", "replacementWords": "prove it wrong",
+        "fontSize": 72, "charMs": 28, "hesitateBetween": 7, "hesitateWithin": 1, "mistakeRate": 5, "jitter": 20,
+        "seed": SLUG, "banner": ""},
+        [{"at": 0.0, "event": "types the dashboard claim"},
+         {"at": 0.35, "event": "types the question; backspaces 'prove it right' → 'prove it wrong' on the spoken correction"},
+         {"at": 0.85, "event": "caret holds on the corrected question"}]),
+    lane="bookend", lead_silence_s=0.8,
+    motion_claim="The writer types the naive question and corrects the phrase that makes it the wrong question.",
+    qc={"sparse_by_design": True, "sparse_reason": "Hesitant-writer bookend: the correction is the motion."}))
+
+beats.append(beat("B03", "terms",
+    "Four terms you'll hear. A held-out test set: data kept aside during training, used only to test the model. "
+    "Recall: of the real cases, the share the model catches. "
+    "Precision: of the cases the model flags, the share that are real. "
+    "And out-of-distribution: inputs unlike the data the model learned from.",
+    remotion("ClaudeDefinitions", {
+        "title": "Terms In This Film",
+        "terms": [{"term": "held-out test set", "meaning": "data kept aside during training, used only to test the model"},
+                  {"term": "recall", "meaning": "of the real cases, the share the model catches"},
+                  {"term": "precision", "meaning": "of the cases the model flags, the share that are real"},
+                  {"term": "out-of-distribution", "meaning": "inputs unlike the data the model learned from"}],
+        "durationSeconds": 17, "folderLabel": "@NikBearBrown"},
+        [{"at": 0.1, "event": "'held-out test set' lands, terracotta"}, {"at": 0.38, "event": "'recall' lands"},
+         {"at": 0.6, "event": "'precision' lands"}, {"at": 0.8, "event": "'out-of-distribution' lands"}]),
+    lane="bookend", proof="CARD",
+    qc={"sparse_by_design": True, "sparse_reason": "TERMS card: prerequisites only — 'falsifiable' is earned in the section, not defined here."}))
+
+# ── LEARN section 1 (B10–B19) ────────────────────────────────────────────────
+beats.append(beat("B10", "learn 1",
+    "A dashboard tile says: the system is robust. Under it, an axis: the error rate on unfamiliar inputs, from none on the left to a lot on the right. "
+    "Now let results come in. A low error rate. Robust. A middling one. Still robust. A terrible one. "
+    "Nobody wrote down what would count against it, so — still robust. "
+    "So what would non-robust look like?",
+    manim("B10_TheTile",
+          "The claim tile 'The system is robust.' lands at top; the outcome axis draws below (error rate on unfamiliar inputs, none → a lot, no numbers); three constructed observation dots drop onto the axis — left, middle, far right — and after each a tally 'compatible: n of n' updates; a small dim caption 'constructed observations'; the question lands.",
+          [{"at": 0.0, "event": "tile + axis draw"}, {"at": 0.35, "event": "dot 1 drops (low): compatible 1 of 1"},
+           {"at": 0.5, "event": "dot 2 (middling): 2 of 2"}, {"at": 0.68, "event": "dot 3 (terrible): 3 of 3"},
+           {"at": 0.9, "event": "question: what would non-robust look like?"}],
+          "The key case, unsolved: every result fits a claim that forbids nothing."),
+    role="HOOK", section=1,
+    learn={"question": "The dashboard says robust. What would it look like if it weren't?",
+           "action": "Drop three very different results onto the outcome axis under the claim.",
+           "observation": "The claim survives all three, including the terrible one.",
+           "inference": "A claim that survives everything has not been tested by anything.",
+           "next_question": "What would the same claim look like if it could fail?"}))
+
+beats.append(beat("B11", "learn 1",
+    "Rewrite it the way the chapter's table does: error rate on out-of-distribution inputs stays below two percent, across a thirty-day rolling window. "
+    "Put a mark at two percent. Everything past it is now forbidden — shade it. "
+    "Replay the same three results. The first fits. The second lands in the shaded part. So does the third. "
+    "Either one refutes it. The claim can now be wrong, which means it finally says something.",
+    manim("B11_DrawTheBan",
+          "The tile morphs from 'The system is robust.' into the two-line Popperian form; a tick at 0% and 2% appear on the SAME axis; the region right of 2% shades (dim fill, 'forbidden' label inside); the three dots replay — dot 1 stays left of the mark, dots 2 and 3 land inside the region; a terracotta dot marks 'refuted' beside the tally.",
+          [{"at": 0.05, "event": "tile morphs to the table's correction"}, {"at": 0.35, "event": "2% mark; the region shades"},
+           {"at": 0.6, "event": "the three dots replay; two land inside"}, {"at": 0.85, "event": "'refuted' with a dot"}],
+          "Instance one, moving: the same axis and the same results, one change — the claim now forbids a region."),
+    role="INSTANCE", section=1,
+    learn={"question": "What does 'robust' look like when it could fail?",
+           "action": "Rewrite the claim with a metric, threshold and window; shade what it forbids; replay the results.",
+           "observation": "Two of the three results land in the forbidden region.",
+           "inference": "Only a claim that forbids something can be refuted — or survive a real test.",
+           "next_question": "Is that a trick of this one claim, or does it work on another?"}))
+
+beats.append(beat("B12", "learn 1",
+    "Second row. The model performs well. The table's rewrite: precision at least point nine one, and recall at least point eight eight, on the held-out test set, evaluated monthly. "
+    "Swap the axis to recall — the share of real cases caught. Watch the forbidden region move: now it is everything below point eight eight, on the left. "
+    "Different claim, different side. Same move: the claim is the region it rules out.",
+    manim("B12_OtherSide",
+          "The dots clear; the tile morphs to 'The model performs well.' then to its correction (precision ≥ 0.91 · recall ≥ 0.88 · monthly); the axis label morphs to 'recall', ticks 0 · 0.88 · 1; the shaded region slides and re-sizes from the right side to [0, 0.88) on the left.",
+          [{"at": 0.05, "event": "tile: 'The model performs well.'"}, {"at": 0.3, "event": "tile morphs to the correction"},
+           {"at": 0.55, "event": "axis relabels to recall; ticks 0 · 0.88 · 1"}, {"at": 0.75, "event": "the region slides to the left side"}],
+          "Instance two, moving: vary one thing (the claim); the forbidden region morphs to the other side."),
+    role="INSTANCE", section=1,
+    learn={"question": "Does the move work on a different claim?",
+           "action": "Rewrite 'performs well' with the table's precision and recall floors; redraw on a recall axis.",
+           "observation": "The forbidden region moves to the left — below 0.88.",
+           "inference": "Where the region sits depends on the claim; that it exists is the whole point.",
+           "next_question": "So how do people usually check a claim like 'performs well'?"}))
+
+beats.append(beat("B13", "learn 1",
+    "Now the usual way to check a model. Take the sepsis early-warning model the chapter opens with, and count the evidence that it works. "
+    "Strong internal validation. A respectable reported A U C. A risk number on every patient. Published. Cleared through procurement. "
+    "Each one pushes confidence up. But look at the top of the bar: however many you stack, it never reaches certain. "
+    "Five white swans do not prove that every swan is white.",
+    manim("B13_CountTheSwans",
+          "The region fades (the axis stays, ghosted); the tile reads 'The sepsis model performs well.'; five checks write on at left one per spoken item, each with an ink dot; beside them a confidence bar grows a step per check toward a dashed 'certain' line at the top and never reaches it; dim caption 'confidence: schematic, not measured'.",
+          [{"at": 0.15, "event": "tile: the sepsis model performs well"}, {"at": 0.3, "event": "five checks land, one per spoken item"},
+           {"at": 0.3, "event": "the bar steps up with each"}, {"at": 0.8, "event": "the bar stops short of the dashed top"}],
+          "The natural approach walked to its limit: confirmations stack without ever reaching certainty."),
+    role="NAIVE", section=1,
+    learn={"question": "How do people usually decide a model works?",
+           "action": "Stack the favorable checks the chapter lists and let each raise a confidence bar.",
+           "observation": "The bar climbs with every check and never reaches the top.",
+           "inference": "Confirming instances pile up without providing certainty.",
+           "next_question": "Then what kind of evidence could actually settle it?"}))
+
+beats.append(beat("B14", "learn 1",
+    "So stop asking how much evidence the claim has. Ask what it forbids. "
+    "The model performs well — what recall would count against it? Nothing was written down, so the whole axis is allowed, and every check can only confirm. "
+    "Now borrow the table's row: recall at least point eight eight. Everything below it goes dark. "
+    "That is the claim, drawn: the outcomes it rules out.",
+    manim("B14_WhatItForbids",
+          "The five check labels fade and their dots slide into a compact column beside the bar; the recall axis returns to ink with the whole axis marked 'allowed' (no region); then the 0.88 tick and the forbidden region [0, 0.88) grow in from the axis; dim caption 'threshold: the table's row, applied'.",
+          [{"at": 0.05, "event": "labels fade; the five dots slide beside the bar"}, {"at": 0.35, "event": "the axis: everything allowed"},
+           {"at": 0.65, "event": "0.88 tick; the region below it grows"}, {"at": 0.9, "event": "caption: the table's row, applied"}],
+          "The representation: a claim is the region of outcomes it forbids — now on the sepsis case."),
+    role="SHIFT", section=1,
+    learn={"question": "What kind of evidence could settle 'performs well'?",
+           "action": "Ask what the claim forbids; draw it as a region on the recall axis.",
+           "observation": "As written it forbids nothing; with a recall floor it forbids everything below 0.88.",
+           "inference": "Only a result inside the forbidden region can test the claim.",
+           "next_question": "What happens when a real result arrives?"}))
+
+beats.append(beat("B15", "learn 1",
+    "Then a team at the University of Michigan checked the model against what actually happened to twenty-seven thousand, six hundred ninety-seven hospitalized patients, at a health system that had not built it. "
+    "Before the result lands — commit. Where on this axis does it fall? And what happens to the confidence bar?",
+    manim("B15_Predict",
+          "A terracotta dot appears above the axis, hovering, with the label 'Michigan: 27,697 patients'; a dashed guide drops from it toward the axis; everything else holds still; caption 'commit before it lands'.",
+          [{"at": 0.1, "event": "the external result hovers above the axis"}, {"at": 0.55, "event": "HOLD — nothing moves on 'commit'"}],
+          "The predict-before-reveal beat."),
+    role="INSTANCE", section=1, predict=True,
+    learn={"question": "Where will the external result land, and what will it do to the bar?",
+           "action": "Hold the hovering result above the axis and ask the viewer to commit.",
+           "observation": "The viewer commits a position and a bar height.",
+           "inference": "A prediction turns the drop into evidence.",
+           "next_question": "Drop it."}))
+
+beats.append(beat("B16", "learn 1",
+    "It caught roughly one in three. Deep inside the shaded region. "
+    "And the bar — five confirmations — falls to nothing. "
+    "Five white swans. One black one. Settled.",
+    manim("B16_BlackSwan",
+          "The terracotta dot drops onto the axis at recall ≈ 1/3, deep in the forbidden region; label 'caught ≈ 1 in 3'; the confidence bar's fill shrinks to zero; the five confirmation dots dim to ghost; 'refuted' lands beside the tile.",
+          [{"at": 0.05, "event": "the dot drops to ≈ 1/3"}, {"at": 0.4, "event": "the bar falls to zero"},
+           {"at": 0.65, "event": "five dots go ghost"}, {"at": 0.85, "event": "'refuted'"}],
+          "The aha: the two threads collide — the forbidden region and the swan count — in one continuous drop; narration short."),
+    role="TRANSFORM", section=1,
+    learn={"question": "What does one result inside the forbidden region do?",
+           "action": "Drop the Michigan result onto the axis.",
+           "observation": "It lands at about one third, inside the region; the stacked confidence goes to zero.",
+           "inference": "One falsifying instance settles what no number of confirmations could.",
+           "next_question": "Does this work on every claim in the table?"}))
+
+beats.append(beat("B17", "learn 1",
+    "Now the move is quick. Line up the chapter's four claims. "
+    "Robust becomes: error below two percent over thirty days. Performs well becomes: precision and recall floors. "
+    "The migration was a success becomes: zero data-loss events, and ninety-fifth percentile latency at most a hundred and twenty milliseconds, forty-eight hours after cutover. "
+    "We have mitigated drift becomes: P S I on the three highest-weight features below point one zero, week over week. "
+    "Left column: nothing forbidden. Right column: every cell carves a region.",
+    manim("B17_FourRows",
+          "A two-column table builds row by row: left 'forbids nothing' (the four rhetorical claims), right 'forbids a region' (the four corrections); a column rule draws; beside each right cell a small dim shaded block grows — the carved region — while the left cells get none; dim caption 'PSI is named here, not taught'.",
+          [{"at": 0.1, "event": "column rule + headers"}, {"at": 0.25, "event": "row 1 lands, block grows"},
+           {"at": 0.4, "event": "row 2"}, {"at": 0.6, "event": "row 3"}, {"at": 0.8, "event": "row 4"}],
+          "Developing the insight: the same move on four claims; what varies is the region, what stays is that it exists."),
+    role="INSTANCE", section=1,
+    learn={"question": "Does the move work on every claim in the table?",
+           "action": "Rewrite each of the four rhetorical claims with its metric, threshold and window.",
+           "observation": "Every left cell forbids nothing; every right cell carves a region.",
+           "inference": "The move is general: name the result that would make it false.",
+           "next_question": "What do we call a claim in the right-hand form?"}))
+
+beats.append(beat("B18", "learn 1",
+    "This deserves its name. A claim is falsifiable when it names the observation that would make it false. "
+    "And notice the asymmetry you just watched. Confirming results pile up without ever reaching certainty. One falsifying result settles it. "
+    "You can't prove a model works in all cases. You can prove it fails in this one.",
+    manim("B18_NameIt",
+          "Left: the five ink dots in a column with an upward arrow that stops short of a dashed 'certain' line — 'confirmations pile up'; right: the one terracotta dot — 'one refutation settles it'; a divider draws between; then 'falsifiable' lands bold with its one-line definition beneath.",
+          [{"at": 0.1, "event": "'falsifiable' lands with its definition"}, {"at": 0.4, "event": "left: dots + arrow short of certain"},
+           {"at": 0.6, "event": "right: the one dot settles it"}, {"at": 0.85, "event": "hold on the asymmetry"}],
+          "The abstraction arrives last, as the name for what was watched; no equation, so no tangent."),
+    role="ABSTRACTION", section=1,
+    learn={"question": "What do we call a claim that names what would make it false?",
+           "action": "Name it and set the two evidence columns side by side.",
+           "observation": "Confirmations never reach certainty; one refutation does.",
+           "inference": "Falsifiable claims are the only ones a test can speak to.",
+           "next_question": "So what was wrong with the dashboard tile we started with?"}))
+
+beats.append(beat("B19", "learn 1",
+    "Back to the dashboard. The system is robust. It survived every result because it forbade none. "
+    "On a dashboard, a claim that survived a real test and a claim that was never at risk look identical. "
+    "Draw the two-percent line, and the same results can finally say no. "
+    "Not taught here: writing that line before you read the output. That part is yours.",
+    manim("B19_Payoff",
+          "The HOOK state returns — tile 'The system is robust.', the error-rate axis, the three constructed dots, 'compatible: 3 of 3'; a twin tile 'validated' appears beside it, identical in form — 'look identical'; then the 2% mark and the forbidden region grow on the same axis and the far dots land inside it; dim caption 'not taught here: the line first'.",
+          [{"at": 0.05, "event": "the HOOK state returns"}, {"at": 0.3, "event": "twin tiles: survived a test vs never at risk"},
+           {"at": 0.6, "event": "the 2% region grows; two dots now inside"}, {"at": 0.9, "event": "boundary caption"}],
+          "The HOOK's objects resolve; the boundary names the transfer exercise."),
+    role="PAYOFF", section=1,
+    learn={"question": "What was wrong with 'the system is robust'?",
+           "action": "Return to the first tile and draw the line it never had.",
+           "observation": "Without the line every result fits; with it, results can refute.",
+           "inference": "'Unrefuted' and 'validated' look identical until the claim forbids something.",
+           "next_question": ""}))
+
+beats.append(beat("BVDT", "verdict",
+    "Let's recap with Claude. A claim counts only in the form that names the result that would make it false. "
+    "Draw it as the outcomes it forbids: robust forbids nothing; error below two percent over thirty days carves a region. "
+    "Confirmations pile up without certainty; one refutation settles it. "
+    "The sepsis model's checks were white swans; one external test on twenty-seven thousand patients was the black one. "
+    "And on a dashboard, unrefuted and validated look the same.",
+    remotion("ClaudeVerdictArtifact", {
+        "artifactTitle": "Verdict", "artifactHeading": TITLE,
+        "artifactLines": ["A claim counts only in the form that names the result that would make it false.",
+                          "Draw it as the outcomes it forbids: 'robust' forbids nothing; '< 2% over 30 days' carves a region.",
+                          "Confirmations pile up without certainty; one refutation settles it.",
+                          "The sepsis model's checks were white swans; the external test on 27,697 patients was the black one.",
+                          "On a dashboard, unrefuted and validated look the same."]},
+        [{"at": 0.0, "event": "artifact page opens"}, {"at": 0.2, "event": "five verdict lines land"}]),
+    lane="bookend", lead_silence_s=0.5, qc={"sparse_by_design": True, "sparse_reason": "Mandated ClaudeVerdictArtifact bookend."}))
+
+YT = ("A team reports: \"Our model achieves 94% accuracy on the held-out test set.\" "
+      "Before anything else, predict: what result would make this claim false, as written? "
+      "Then rewrite it the Popperian way, naming a metric, a threshold and a measurement window, and draw what it forbids as a shaded region on a number line. "
+      "Finally, describe one way the model could perform badly that the original sentence would never catch.")
+beats.append(beat("BHTF", "your turn",
+    "Your turn. Paste this into Claude: " + YT.replace('"', '') + " "
+    "Two things to look for. Did it write a threshold and a window, not just 'accuracy should be high'? "
+    "And did it say what the claim forbids before it said anything about whether the claim is true?",
+    remotion("ClaudeComposerAsk", {
+        "greeting": "Your turn.", "topic": "INFO 7375 · YOUR TURN", "segment": "Make It Falsifiable",
+        "command": YT, "runningText": "paste this into Claude…",
+        "output": ["Check: a metric, a threshold and a window, all named.",
+                   "Check: the forbidden region came before any verdict."],
+        "folderLabel": "@NikBearBrown", "modelLabel": "Fable 5", "effortLabel": "High"},
+        [{"at": 0.0, "event": "Composer opens — 'Your turn.'"}, {"at": 0.1, "event": "the prompt types in full"}, {"at": 0.8, "event": "two rubric lines land"}]),
+    lane="bookend"))
+
+beats.append(beat("BOUT", "outro", f"{TITLE}. At Nik Bear Brown.",
+    remotion("ClaudeTitleOutro", {"title": TITLE, "slug": SLUG, "handle": "@NikBearBrown", "subline": ""},
+             [{"at": 0.0, "event": "title restates; handle; slug-seeded mascot. Liam reads the title, then 'At Nik Bear Brown'. No jingle."}]),
+    lane="bookend", kind="outro_voice", tail_silence_s=1.0,
+    hold_note="spoken outro + 1.0 s silent tail (apad into the mp3); no jingle (OUTRO-LOCK §Voice)"))
+
+sheet = {"metadata": {
+    "slug": SLUG, "title": TITLE, "topic": "INFO 7375 · TL;DR", "skill": "tldr", "style_preset": "tldr",
+    "channel": "claude-liam", "persona": "Liam (in for Bear)", "voice": "am_onyx", "voice_kokoro": "am_onyx", "engine": "kokoro",
+    "clock": "narration", "palette": "claude", "learn_canvas": "cream", "register": "Teardown",
+    "fps": 24, "aspect_ratio": "16:9", "width": 3840, "height": 2160, "caption_policy": "none",
+    "audience": "INFO 7375 students in week one, and anyone who reads model dashboards that say 'robust'",
+    "course": "INFO 7375 Computational Skepticism for AI · Nik Bear Brown · Northeastern University",
+    "source_doc": "chapters/01-the-skeptics-toolkit.md, §'What I mean by skepticism' — the Popper paragraphs and the rhetorical-claim table; the sepsis opener; section S1 of youtube/tldr-sections-01-skeptics-toolkit.md",
+    "sections": [{"n": 1, "title": TITLE, "key_case": "the chapter's rhetorical-claim table (robust → < 2% OOD error / 30 days; performs well → precision ≥ 0.91, recall ≥ 0.88) and the Epic sepsis model: five favorable checks vs the Michigan external validation on 27,697 patients (caught roughly 1 in 3)"}],
+    "greeting_language": "Tamil (Vanakkam)",
+    "typography": {"serif": "Tiempos/EB Garamond", "ui": "system sans", "mono": "SF Mono"},
+    "playlist": "Claude & Agentic AI", "chapter_number": 0,
+    "outro_policy": "OUTRO-LOCK §Voice: spoken title + 'At Nik Bear Brown', 1.0 s silent tail padded into the mp3, no jingle.",
+    "bookloop_policy": "Course film: carries the INFO 7375 course credit (spoken in B00, on the cards' course line).",
+    "tags": ["falsifiability", "Karl Popper", "model evaluation", "sepsis model", "computational skepticism", "INFO 7375", "3Blue1Brown style", "Claude", "Nik Bear Brown"]},
+    "beats": beats}
+out = HERE / "beat_sheet.json"
+out.write_text(json.dumps(sheet, indent=2, ensure_ascii=False) + "\n")
+print(f"{len(beats)} beats → {out}")

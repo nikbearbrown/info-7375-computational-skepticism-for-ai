@@ -1,0 +1,552 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-n1-check-the-world",
+    "title": "Check the World, Not the Report",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that an audit reading the system's own output has graded the shadow not the wall; the case is only real when you name the artifact, name the world, and check the relationship between them yourself. Source: books/computational-skepticism-for-ai/chapters/01-the-skeptics-toolkit.md + A1 Agentic Casebook assignment",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = the world state / ground truth; CRIMSON = the report / the shadow; GOLD = the flashlight / the auditor's check; SLATE = both panels",
+    "note": "EXCLUSIONS: no full four-moves lecture, no taxonomy, no specific Pebble — one report, one world-check",
+    "total_estimated_duration_seconds": 186,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 29,
+    "build": {
+      "at": "2026-07-19T02:49:15",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Check the World, Not the Report",
+            "greeting": "Hej, Liam.",
+            "command": "The report says: done.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "The report says: done. The only way to know is to go look.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Check the World, Not the Report",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Check the World,\nNot the Report"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 3.93,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "The agent completes its run and returns a status report. File deleted — check mark. Invoice paid — check mark. Support ticket closed — check mark. The report is complete, neatly formatted, confident in tone. Your job as an auditor is not to read that report and nod. Your job is to go look at the file, the bank account, the ticket system — the actual state of the world — and check whether the report describes it. Because a system can produce a perfect report about a thing it did not do. The report is not the world. It is the system's story about the world.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B02_ReportVsWorldSplitPanel",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 29.18,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:49:15",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: The agent completes its run and returns a status report. File deleted — check mark. Invoice paid — check mark. Support ticket closed — check mark. The report is"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When a system reports its own success, what is the auditor actually checking — and what should they be checking instead?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "When a system reports its own success, what is the",
+              "auditor checking?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "When a system reports its own success,\nwhat is the auditor checking —\nand what should they check instead?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 6.7,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:49:15"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "An audit that reads the system's output to verify the system's output has graded the shadow, not the wall. The shadow can be perfect while the wall stands untouched. This is not an edge case — it is the default failure mode of agentic systems. An agent that encounters an error during execution may log success anyway, because the success message was the easier path through its instruction set. An agent that partially completed a task may report full completion because partial completion was not a recognized output state. An agent that reversed its action may report it as completed because the reversal happened silently. The output is the system's view of itself. It is not the ground truth.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B04_ShadowNotWall",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 37.44,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:49:15",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: An audit that reads the system's output to verify the system's output has graded the shadow, not the wall. The shadow can be perfect while the wall stands untou"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The Casebook assignment makes this concrete. You pick a system — your Pebble — and you audit its agentic failures. Every case you document has an 'actual outcome' field. The most common mistake is to fill that field with the system's own report: 'the system reported the file was deleted.' That is not an actual outcome. That is the shadow. The actual outcome requires naming the world state: 'the file was still present in the directory at path X, verified by running ls -la.' One sentence. The artifact is the report. The world is the directory. You checked the relationship between them.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B05_CasebookActualOutcomeMistake",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 29.21,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:49:15",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The Casebook assignment makes this concrete. You pick a system — your Pebble — and you audit its agentic failures. Every case you document has an 'actual outcom"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The mechanism is artifact-world separation: name the artifact the system produces, name the world state the artifact claims to describe, and verify the relationship by checking the world directly — not the artifact again.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Name the artifact. Name the world. Check the",
+              "relationship directly."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A split-panel scene viewed from above: left panel labeled ARTIFACT — a tidy crimson report page with checkmarks, titled 'Agent Output'. Right panel labeled WORLD — a file directory, a bank ledger, a ticket system, all in teal. A gold flashlight beam crosses from the left panel to the right, illuminating the actual state. The right panel's world state does not match the report's claims — a file icon is still present where the report says 'deleted'. The flashlight circle highlights the discrepancy",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 12.93,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:49:15"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The split-panel animation. Left side: the agent's report, formatted, complete, timestamped, confident. Right side: the actual system state at the same timestamp. The agent's report says 'invoice paid.' The payment system shows the payment in PENDING status. The agent's report says 'file deleted.' The file system shows the file, intact, at its original path. The agent's report says 'ticket closed.' The ticketing system shows it OPEN, reassigned. The auditor's flashlight sweeps from left to right — not to admire the report, but to check each claim against the world state on the right side of the panel. Three claims. Three mismatches. The report is not wrong by intention. The system had no way to know what it did not know. The audit did.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B07_FlashlightAcrossPanel",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 38.02,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:49:15",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: The split-panel animation. Left side: the agent's report, formatted, complete, timestamped, confident. Right side: the actual system state at the same timestamp"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Practically: the world-check requires external access. You cannot check the file system from inside the agent's output log. You need to go to the file system — open a terminal, run ls, read the directory state. You need to go to the payment system — open the ledger, read the transaction status. The world-check is always an out-of-band verification. If your audit requires only reading the agent's own outputs, you have not left the artifact. You are still reading the shadow. The distinction is not philosophical — it is operational. Which source of data are you reading to establish ground truth?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B08_OutOfBandVerification",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 30.12,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:49:15",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: Practically: the world-check requires external access. You cannot check the file system from inside the agent's output log. You need to go to the file system — "
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The Casebook implication is precise: every case your casebook documents must include a world-state check, not a report-read. 'The system reported success' is never an actual outcome. The actual outcome is what you found when you went and looked. For a file operation: what was the directory state. For a message send: what appeared in the inbox. For a database write: what the database returned when you queried it. The sentence that starts 'I verified by...' is the sentence that distinguishes an audited case from a repeated performance review.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B09_CasebookVerifiedByLine",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 26.99,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:49:15",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: The Casebook implication is precise: every case your casebook documents must include a world-state check, not a report-read. 'The system reported success' is ne"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The broader design implication: agentic systems that rely on their own output as ground truth have no way to detect their own silent failures. A complete agentic pipeline needs an independent verification step that checks world state after every high-blast-radius action — not by reading the agent's log, but by querying the system the action affected. Verification is a separate read from a separate source. The agent's success message is not verification. It is the thing being verified.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B10_IndependentVerificationStep",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 26.2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:49:15",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The broader design implication: agentic systems that rely on their own output as ground truth have no way to detect their own silent failures. A complete agenti"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The epistemic implication is the deepest one: a system that cannot distinguish 'I did the thing' from 'I produced a report that says I did the thing' is not a reliable executor. It is a confident writer. Confidence in tone is not confidence in outcome. The auditor's role is to hold the distinction between the artifact and the world, and to check the relationship between them every single time. Not because the system is malicious — it is not. But because the system has no way to check its own ground truth. You do.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_ArtifactVsWorldDistinction",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 26.71,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:49:15",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The epistemic implication is the deepest one: a system that cannot distinguish 'I did the thing' from 'I produced a report that says I did the thing' is not a r"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 13.0,
+      "narration_text": "A student submits their Casebook with ten cases. Case 4 documents the system deleting a user account. Actual outcome field: 'The system reported: User account deleted successfully. Status: 200 OK.' The grader reads the case and writes: this is not an actual outcome. This is the artifact. Where is the world-check? The student returns to their notes. They open the admin panel and query the user account. It is still there, deactivated but not deleted — the system had mapped 'delete' to 'deactivate' because hard deletion required a separate admin flag the agent never set. The report was truthful from the system's perspective. The world state was different. The rewritten actual outcome reads: 'Queried the admin panel at path /admin/users/{id}. Account status was DEACTIVATED, not deleted. The hard-delete flag was not set. The system's 200 OK response described a successful deactivation, not the deletion the prompt requested.' That is a case. The first version was a report-read. The second is a world-check.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B12_CasebookRevisionExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 53.31,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:49:15",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A student submits their Casebook with ten cases. Case 4 documents the system deleting a user account. Actual outcome field: 'The system reported: User account d"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "An audit that reads the system's output has graded the shadow. The world-check is a separate read from a separate source that verifies the actual state of the thing the system claimed to change. Name the artifact — the report. Name the world — the directory, the ledger, the inbox. Check the relationship by querying the world directly. In the Casebook: every actual outcome field must describe what you found when you went and looked — never what the system reported. The report is what you are checking. It is not how you check.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "The report is what you check — not how you check it."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "The report is the shadow.\nGo look at the wall.",
+        "sub": "Name the artifact. Name the world. Check the relationship.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 25.92,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:49:15"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Check the World, Not the Report",
+            "artifactHeading": "Key findings — Check the World, Not the Report",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "An audit that reads the system's output has graded the shadow."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:49:15"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — CHECK THE WORLD, NOT THE REPORT",
+            "segment": "Check the World, Not the Report",
+            "greeting": "Привет, Liam.",
+            "command": "Ask Claude: Check the World, Not the Report",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:49:15"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Check the World, Not the Report",
+            "slug": "claude-liam-cs-n1-check-the-world",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

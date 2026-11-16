@@ -1,0 +1,317 @@
+{
+ "metadata": {
+  "title": "Probe the Model and Its Data: Robustness + the Data-Frame",
+  "slug": "claude-liam-bnb-03-robustness-and-data-frame",
+  "topic": "INFO 7375 SKEPTIC'S PORTFOLIO — ROBUSTNESS & DATA-FRAME (E3/6)",
+  "register": "Pragmatist",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "greeting": "Ciao, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "playlist": "Break Your Own Build — A Skeptic's Portfolio",
+  "series": "claude-liam-bnb",
+  "episode": 3,
+  "source": "INFO 7375 (Computational Skepticism for AI) — Build It Then Break It: A Skeptic's Portfolio (100 pts)",
+  "build": {
+   "at": "2026-08-01T04:17:57",
+   "cut": "review",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "narration_text": "Ciao — Liam. Episode 3 of 6. Two instruments in this episode, and they attack the two places a build hides mistakes. The robustness probe attacks the model: it asks what the model actually learned, by testing whether removing or perturbing specific inputs breaks the predictions. The data-frame audit attacks the data: it asks what the data actually is, by reconstructing the decisions that produced it. The loop is identical for both: predict, run the instrument on your own work, report what it exposed, name the fix and the residual risk. Pick whichever fits your artifact — or run both for the stretch. If your build is a prompt-based system or an agent, the robustness probe applies directly, with authority-escalation and tool-surface variants. If your build is a classifier or dataset, either instrument applies. The data your model never questioned is the data most likely to be the problem.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 56,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Ciao, Liam",
+      "topic": "INFO 7375 SKEPTIC'S PORTFOLIO — ROBUSTNESS & DATA-FRAME (E3/6)",
+      "segment": "Probe the Model and Its Data: Robustness + the Data-Frame",
+      "command": "Robustness: probe suite ≥3 — robustness profile table. Data-frame: datasheet + six-step reconstruction + one-row trace + Plato sentence.",
+      "runningText": "two instruments, two hiding places — the model's shortcuts and the data it never questioned…",
+      "output": [
+       "Robustness probe: perturbation + proxy-feature + distribution-shift / profile table",
+       "Features-not-bugs: name the proxy, the real feature, the gap",
+       "Data-frame: datasheet + six steps + one-row trace + Plato sentence"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": 45.55,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:57"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "robustness probe suite",
+   "narration_text": "The robustness probe suite requires at least three probes. Probe one: the perturbation probe. Make a small change to the input — swap a synonymous word, shift a numeric value by ten percent, alter a date by one day — and check whether the output changes wildly in response. A model that reacts strongly to an irrelevant perturbation learned a surface-level pattern, not the underlying concept. Probe two: the proxy-feature probe. Remove or scramble the feature you most suspect the model is using as a stand-in for something it should not be using. Did accuracy barely move? That is a finding. It means the model was not actually relying on what you thought it was, or it means the feature you removed was the proxy and the real signal is somewhere else in the data. Probe three: the distribution-shift probe. Test on a slice of the data that was underrepresented in training — a different time period, a different geographic region, a demographic group with fewer rows. For agent and prompt-based systems, add two more: an authority-escalation probe, which asks what happens when the input claims elevated permissions or identity, and a tool-surface probe, which asks what happens when the input attempts to redirect the agent to unintended tool use. The result of the probe suite is not a number — it is a robustness profile table. Three columns: what the probe tested; what it found; the monitoring flag you would set in production.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 76,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Three required probes — table, not a number",
+       "Probe 1: perturbation",
+       "Probe 2: proxy-feature — remove/scramble suspect feature. Accuracy barely moved = finding."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": 71.3,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:57"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "features-not-bugs framing",
+   "narration_text": "For each break in the probe suite, the features-not-bugs framing asks three questions. One: what proxy did your build actually learn? Not what you intended it to learn — what the loss function rewarded it for learning, given the data you gave it. Two: what human-relevant feature should it have used instead? The feature you intended, named specifically. Three: what does the gap between the proxy and the real feature say about your training data? A classifier that used timestamp as a proxy for relevance did not make a mistake in the usual sense — it found a real pattern in the data. The timestamp genuinely correlated with relevance in the training distribution. That is the problem. The proxy worked, and that is exactly the failure mode: your model will perform well in the training distribution and fail in the deployment distribution wherever the correlation breaks. The features-not-bugs framing is not about assigning blame. It is about naming the gap precisely enough to design a fix. If you removed the timestamp feature and accuracy barely moved, write: proxy used — timestamp; real feature — semantic relevance signal; gap — the correlation was an artifact of a specific time window and will break on data outside that window. That sentence is the robustness finding.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 72,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "For each break: name the proxy, the real feature, the gap",
+       "Proxy actually learned — what the loss function rewarded given your data.",
+       "Human-relevant feature it should have used — named specifically."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": 63.38,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:57"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "data-frame audit — datasheet and six steps",
+   "narration_text": "The data-frame audit starts with a datasheet. Gebru's five questions, adapted for your build. One: motivation — why was this dataset collected, and by whom? Two: composition — what does one row represent? What is and is not included? Three: collection process — how were rows acquired, labeled, and joined? Four: uses — what was this data intended for, and what should it not be used for? Five: distribution and maintenance — how is the data distributed to you, and who maintains it? Then the six-step epistemic-frame reconstruction. Step one: why exactly N rows? Not 'I filtered it,' but what decision produced that exact count. Step two: what is NOT in the data? Name the concept or entity that cannot appear. Step three: what is the time window, and what changed at its edges? Step four: what label proxy did you use, and what real concept does it approximate? Step five: where is the data MNAR — missing not at random — where the absence itself is informative? An MNAR field is one where the missing rows are systematically different from the present rows, so imputing the missing values or ignoring them both produce the same bias. Step six: what boundary assumption did you make? The assumption about what the data is allowed to say about. Then: trace one row end-to-end, from its source to its prediction. Name one hidden failure that procedural exploratory data analysis would not catch.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 78,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Datasheet (5 questions) + six-step frame reconstruction",
+       "Datasheet: motivation , composition , collection process , uses , distribution+maintenance.",
+       "Step 1–2: why exactly N rows? What is NOT in the data?"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "actual_duration_s": 68.78,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:57"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "Plato inward",
+   "narration_text": "Plato inward is the classical move for the data-frame audit. The question is: what is the artifact you made, versus the world it claims to describe? Your rows are not the population. Your labels are proxies for real concepts. Your boundary assumptions are invisible until someone outside the window asks a question inside it. The exercise is to write one sentence, specifically: My [artifact] describes [what I actually have], not [what I claimed it describes]. Here is an example. My loan default classifier describes the repayment behavior of approved applicants from a single regional lender between 2022 and 2023, not the creditworthiness of the general population. That sentence does four things: it names the artifact, it names what the data actually is, it names what the claim implies but the data cannot support, and it makes the boundary assumption explicit. If you cannot write that sentence, the data-frame audit is not done. If the sentence is uncomfortable to write, it is especially not done. Write it anyway. The discomfort is the finding.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 64,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Name the artifact vs. the world it claims to describe",
+       "Plato: what is the artifact you made vs",
+       "Rows ≠ population"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "actual_duration_s": 56.0,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B04.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:57"
+   }
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict",
+   "lead_silence_s": 0.5,
+   "narration_text": "Verdict for Probe the Model and Its Data: Robustness and the Data-Frame. Probe suite requires at least three probes: perturbation, proxy-feature, and distribution-shift. For agent and prompt systems, add authority-escalation and tool-surface probes. The result is a robustness profile table, not a number — three columns: tested, found, monitoring flag. Features-not-bugs names the proxy actually learned, the real feature that should have been used, and the gap that explains where the correlation came from. Data-frame audit: Gebru's five-question datasheet plus six-step epistemic-frame reconstruction. MNAR is the field where absence is informative. One-row trace, end-to-end. One hidden failure EDA would not catch. Plato sentence written: my artifact describes what I have, not what I claimed.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 52,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact",
+     "props": {
+      "artifactTitle": "Probe the Model and Its Data",
+      "artifactHeading": "Episode 3 key rules",
+      "artifactLines": [
+       "Probe suite ≥3: perturbation + proxy-feature + distribution-shift / profile table.",
+       "Features-not-bugs: proxy learned , real feature , gap in training data.",
+       "Datasheet (5 questions) + six-step frame reconstruction + one-row trace.",
+       "MNAR: the absence is informative — imputing or ignoring both produce the same bias.",
+       "Plato sentence: my artifact describes [what I have], not [what I claimed]."
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BVDT.mp3",
+   "actual_duration_s": 42.56,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:57"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Here is the prompt. The prompt reads: I have a [artifact type — for example: a loan default classifier]. My top features are [list your top five to ten features by importance or coefficient magnitude]. I suspect my model is leaning on [specific feature — for example: account_age] as a proxy for [real concept — for example: financial stability]. Help me design a proxy-feature probe: what exactly should I remove or scramble — remove the feature entirely from the test set, or scramble it by randomly permuting its values — how should I run the before-and-after comparison, and what result would confirm the proxy hypothesis versus refute it? A result that confirms: accuracy drops significantly when I remove or scramble the feature, even on inputs where the feature seems irrelevant. A result that refutes: accuracy is stable across the scrambled version, meaning the model was not relying on it. Also: my data has [describe your MNAR situation — for example: income is missing for applicants who chose not to disclose, and those applicants are systematically higher-risk]. Name one hidden failure that my exploratory data analysis would not catch given this MNAR pattern. After you get the probe design and the MNAR failure, run the probe as designed. The result — not the hypothesis — goes in the instrument report.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 78,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN — PROBE THE MODEL AND ITS DATA: ROBUSTNESS + THE DATA-FRA",
+      "segment": "Probe the Model and Its Data: Robustness + the Data-Frame",
+      "command": "I have a [artifact type]. Top features: [list]. I suspect [feature] is a proxy for [real concept]. Design a proxy-feature probe: what to remove/scramble, how to run before/after, what confirms vs. refutes. Also: my MNAR situation is [describe]. Name one hidden failure EDA wouldn't catch.",
+      "runningText": "run the probe as designed — the result, not the hypothesis, goes in the instrument report…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "actual_duration_s": 67.71,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:57"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Probe the Model and Its Data: Robustness + the Data-Frame. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Probe the Model and Its Data: Robustness + the Data-Frame",
+      "handle": "@NikBearBrown",
+      "subline": "Liam, in for Bear.",
+      "slug": "claude-liam-bnb-03-robustness-and-data-frame"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "actual_duration_s": 5.46,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:57"
+   }
+  }
+ ]
+}

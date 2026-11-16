@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-17-panda-proxy",
+    "title": "The Model Isn't Broken — It's Honest About What It Learned",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that adversarial perturbations exploit high-frequency texture proxies the model learned instead of human-legible shape features, revealing that the model is doing exactly what training rewarded. Source: books/computational-skepticism-for-ai/chapters/08-robustness-what-understanding-means-when-a-pixel-can-break-the-model.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = shape channel / human features; CRIMSON = texture channel / the proxy features; GOLD = the proxy / key insight; SLATE = the combined input image",
+    "note": "EXCLUSIONS: no Ilyas et al. experimental details, no robust-dataset debate, no defense toolkit, no gradient math",
+    "total_estimated_duration_seconds": 190,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 17,
+    "build": {
+      "at": "2026-07-19T02:33:47",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "The Model Isn't Broken — It's Honest About What It Learned",
+            "greeting": "Hola, Liam.",
+            "command": "The panda never moved.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "The panda never moved. What the model was actually looking at did.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Model Isn't Broken — It's Honest About What It Learned",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "The Model Isn't Broken —\nIt's Honest About What It Learned"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 4.22,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A neural network sees a panda. Confident: panda. Then a barely-visible static pattern is added — the kind of noise you'd dismiss as image compression. The network sees the same shape, the same pose, the same animal. But now it says: gibbon. Eighty-nine percent confident. The panda is still there. Nothing a human would call meaningful changed. The model didn't break. It reported exactly what it learned to report.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B02_PandaProxySplit",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 20.46,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:33:47",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: A neural network sees a panda. Confident: panda. Then a barely-visible static pattern is added — the kind of noise you'd dismiss as image compression. The netwo"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "If the shape and the pose didn't change, what exactly did the model use to flip its answer from panda to gibbon?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What did the model actually use to flip panda to",
+              "gibbon?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What did the model actually use\nto flip panda to gibbon?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 6.51,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:33:47"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The short answer is: not the shape. Training rewards whatever features reliably predict the label, not the features humans would call meaningful. High-frequency texture statistics — the fine-grained statistical fingerprint of a pixel neighbourhood — are extraordinarily predictive in ImageNet-scale training. They're also invisible to human inspection. The model learned them because they work. And an adversarial perturbation is simply a targeted edit to those texture statistics.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B04_TextureVsShapeProblem",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 23.55,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:33:47",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: The short answer is: not the shape. Training rewards whatever features reliably predict the label, not the features humans would call meaningful. High-frequency"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "This is not a bug in the training procedure. It is the training procedure working as specified. The objective is: minimize prediction error on the training distribution. The model found features that accomplish that. Those features happen to be texture proxies rather than shape features. The model is perfectly rational given what it was rewarded for. What's broken is the assumption that what the model learned matches what we think it learned.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B05_TrainingRewardMismatch",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 21.5,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:33:47",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: This is not a bug in the training procedure. It is the training procedure working as specified. The objective is: minimize prediction error on the training dist"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Training rewards proxy features that predict the label — and an adversarial edit slides just those proxies toward a different class while leaving everything humans see untouched.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Training rewards proxies",
+              "an adversarial edit slides only the proxies."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A side-by-side panel: left shows a teal-tinted shape silhouette of a panda — clean, human-legible outline; right shows a crimson-tinted static pattern of high-frequency pixel noise, invisible detail. A gold arrow between them labeled 'the proxy the model learned', dramatic editorial lighting on aged newsprint",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 10.03,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:33:47"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here's the decomposition. The slate combined image splits into two channels. The teal channel: shape — the outline and pose of the panda. It never moves. The crimson channel: texture — high-frequency statistical patterns invisible to human inspection. Watch the texture channel slide. The panda-signature texture pattern shifts toward a gibbon-signature pattern. The teal shape channel stays perfectly still. The model reads both channels. For this model, the crimson channel wins.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B07_ChannelDecompositionSlide",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 24.11,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:33:47",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Here's the decomposition. The slate combined image splits into two channels. The teal channel: shape — the outline and pose of the panda. It never moves. The cr"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The adversarial perturbation did not add noise randomly. It pushed the texture channel in a specific direction — toward the statistical fingerprint of a different class. The shape stayed. The label flipped. That directional edit is possible because the texture proxy is a feature the model genuinely uses, one with structure, one that responds predictably. The perturbation is not random. It is a precise read of what the model cares about.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B08_TextureShiftDirection",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 21.89,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:33:47",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The adversarial perturbation did not add noise randomly. It pushed the texture channel in a specific direction — toward the statistical fingerprint of a differe"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "What this means for deployment: the model's confidence is not a measure of what a human would call understanding. It is a measure of how well the proxy features match the training signal. A model can be extremely confident about the wrong label if someone knows which proxy features to target. For any safety-critical application, robustness to this kind of edit is a separate requirement from accuracy on clean inputs — and it must be tested separately.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B09_ConfidenceMisread",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 22.27,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:33:47",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: What this means for deployment: the model's confidence is not a measure of what a human would call understanding. It is a measure of how well the proxy features"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The deeper implication: you cannot assume that a model using the right label is using the right features. High accuracy on the test set does not tell you whether the model learned the shape channel or the texture channel. Both can achieve high accuracy on a clean distribution. Only adversarial or out-of-distribution evaluation tells you which features the model actually relied on.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "scene_class": "B10_ProxyAuditImplication",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 19.78,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:33:47",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The deeper implication: you cannot assume that a model using the right label is using the right features. High accuracy on the test set does not tell you whethe"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The model is doing something real and internally consistent. It is not hallucinating. It learned proxy features that work on the training distribution, and it reports what those proxies say. The problem is that we called the proxy 'understanding the panda' when it was actually 'recognising the panda's texture signature.' Those two things look identical on clean images and fall apart the moment the texture is edited.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_ProxyVsUnderstanding",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 21.25,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:33:47",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The model is doing something real and internally consistent. It is not hallucinating. It learned proxy features that work on the training distribution, and it r"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 15.0,
+      "narration_text": "A medical imaging model is trained to detect a particular skin lesion. It achieves ninety-four percent accuracy on the held-out test set. A hospital auditor runs a texture analysis and notices the model's high-confidence positives correlate with the presence of a surgical ruler in the corner of the photograph — a ruler that clinicians placed next to concerning lesions. The model learned: ruler present, flag positive. Remove the ruler, confidence drops. The shape of the lesion barely moves the score. Training rewarded the proxy, not the pathology. The model was honest about what it learned.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B12_SkinLesionRulerExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 31.85,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:33:47",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A medical imaging model is trained to detect a particular skin lesion. It achieves ninety-four percent accuracy on the held-out test set. A hospital auditor run"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Training optimises for whatever features predict the label — and high-frequency texture proxies are often better predictors than human-legible shape features. An adversarial perturbation slides those texture proxies toward a different class while leaving shape untouched. The model wasn't tricked; it reported exactly what it learned. For AI systems, this means accuracy on clean inputs does not confirm which features the model uses — proxy auditing and out-of-distribution testing are the only way to find out.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Model learned the proxy, not the target. Audit the",
+              "proxy column."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "The model learned a proxy.\nNot the panda.",
+        "sub": "Audit which features the model actually uses before deployment.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 27.31,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:33:47"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Model Isn't Broken — It's Honest About What It Learned",
+            "artifactHeading": "Key findings — The Model Isn't Broken — It's Honest About What It Learned",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A medical imaging model is trained to detect a particular skin lesion."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:33:47"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — THE MODEL ISN'T BROKEN — IT'S HONEST ABOUT WHAT IT LEAR",
+            "segment": "The Model Isn't Broken — It's Honest About What It Learned",
+            "greeting": "Hej, Liam.",
+            "command": "Ask Claude: The Model Isn't Broken — It's Honest About What It Learned",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:33:47"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Model Isn't Broken — It's Honest About What It Learned",
+            "slug": "claude-liam-cs-17-panda-proxy",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

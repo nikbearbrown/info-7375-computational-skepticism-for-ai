@@ -1,0 +1,319 @@
+{
+ "metadata": {
+  "title": "More Lenses and the Case: Filling the Template",
+  "slug": "claude-liam-cb-04-more-lenses-and-the-case",
+  "topic": "AGENTIC CASEBOOK — E4/6: MORE LENSES AND THE CASE",
+  "register": "Pragmatist",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "greeting": "Ciao, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "playlist": "Doubt It When It Looks Right — The Agentic Casebook",
+  "series": "claude-liam-cb",
+  "episode": 4,
+  "source": "Computational Skepticism for AI — Agentic Casebook Assignment (100 pts)",
+  "build": {
+   "at": "2026-07-27T21:17:02",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "narration_text": "Ciao — this is Liam. Episode 4 of 6. The cases are 45 of the 100 points. This episode runs two more lenses — one quant-behavioral, one values — and then fills the full case template. Every field in the template earns or loses points. The hardest field to fill correctly is 'actual outcome' — not the reported outcome, not the success message, but what the world actually looked like after the action. Five minutes.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 26,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Ciao, Liam",
+      "topic": "AGENTIC CASEBOOK — E4/6: MORE LENSES AND THE CASE",
+      "segment": "More Lenses and the Case: Filling the Template",
+      "command": "I have my Chapter 8 case from Episode 3. Now run two more lenses: a quant/behavioral lens (Ch2 Bayes or Ch5 explainability) and a values lens (Ch6 bias or Ch7 fairness impossibility). For each, apply the instrument to my Pebble and fill the case template. Pay special attention to the actual-outcome field — do not accept the reported outcome as evidence of the world state.",
+      "runningText": "the cases are 45 of the 100 points — the hardest field is actual outcome, not the success message…",
+      "output": [
+       "Quant/behavioral lens: instrument procedure + one completed case",
+       "Values lens: instrument procedure + one completed case",
+       "Case template: all nine fields filled correctly for each case",
+       "Actual-outcome field: verified world state, not the system's report"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:17:02"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "quant/behavioral lens — Chapter 2 or Chapter 5",
+   "narration_text": "Your second lens is quant or behavioral. Two candidates. Chapter 2: base-rate and Bayesian updating. The instrument asks: does the system anchor to a prior? And if so, where did that prior come from? The procedure has three steps. Step one: identify the baseline rate for the outcome the system predicts. For a fraud-detection system, the base rate of fraud in the population it serves. For a hiring system, the base rate of successful hires from a given source. Step two: ask the system what probability it assigns to a test case and then reason through what probability a Bayesian reasoner would assign given only the base rate and the evidence the system has. If the system's output diverges from the Bayesian estimate by more than you can explain from the additional evidence it holds, name it. Step three: check whether the system updates on new evidence. Give it a piece of strongly disconfirming evidence and observe whether its output changes, and by how much. The second candidate, Chapter 5, instruments explainability self-audit. The procedure is simpler: ask the system to explain its output for a given input. Then ask again, identically. If the two explanations differ materially — different features emphasized, different weights assigned, different conclusions reached — the system's explanations are not grounded in its computation. That gap between explanation and computation is the case.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 72,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Two instruments — choose the one that fits your Pebble",
+       "Ch2",
+       "Ch5"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:17:02"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "values lens — Chapter 6 or Chapter 7",
+   "narration_text": "Your third lens is values. Two candidates. Chapter 6: bias leverage. The instrument asks: where does demographic signal enter the computation, and how much does it move the output? The procedure has two steps. Step one: identify the demographic variables the system uses directly, or the proxy variables that correlate with demographic categories — zip code, name-phonetics, browsing history. Step two: run the same base case with one demographic variable changed and everything else held constant. If the output changes materially, name the demographic variable as a leverage point and measure the magnitude of the change. This is the bias leverage case. Chapter 7: fairness impossibility. The instrument starts from a theorem: no system can simultaneously satisfy demographic parity, equal opportunity, and calibration when base rates differ between groups. Pick the fairness definition your system was designed to satisfy — the one named in the documentation or implied by the use case. Then name one fairness definition it cannot simultaneously satisfy and explain why the math prevents it. The case is not 'the system is unfair.' The case is: 'this system satisfies definition A and therefore cannot satisfy definition B for the following mathematical reason.' That specificity is what earns the points.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 70,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Two instruments — fairness as structure, not as verdict",
+       "Ch6",
+       "Ch7"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:17:02"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "the case template — all nine fields",
+   "narration_text": "Every case uses the same nine-field template. Field one: Case ID. A short unique label — your initials, the lens chapter, and a sequence number. Something like 'JS-Ch8-01.' Field two: Lens. The chapter number and short name. 'Ch8: Agentic False-Success.' Field three: Input. Exactly what you gave the system — the specific query, document, or action trigger you used. Enough detail that someone else could reproduce the trial. Field four: Prediction-lock. The dated, falsifiable prediction you wrote before applying the lens. Copy it verbatim from your notes. If you did not write it before the trial, you cannot fill this field honestly. Field five: Action taken. What the system did — the specific operation it executed or the specific output it produced. Field six: Reported outcome. What the system said about its own action. The success message, the confidence score, the confirmation — the artifact. Field seven: Actual outcome. What the world looked like after the system's action. This is the field most students get wrong. Do not write the success message again. Query the underlying resource. Read the log. Check the downstream state. Write what you observed, not what the system told you. Field eight: Supervisory capacity that failed. One of the five: [PA] Plausibility Auditing, [PF] Problem Formulation, [TO] Tool Orchestration, [IJ] Interpretive Judgment, [EI] Executive Integration. Field nine: Evidence and severity. The artifact or observation that supports your actual-outcome finding, and a severity rating: Low, Medium, or High.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 75,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Every field earns or loses points",
+       "F1 Case ID: initials + chapter + sequence (e.g. JS-Ch8-01)",
+       "F2 Lens: chapter number + name (e.g. Ch8: Agentic False-Success)"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:17:02"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "naming the supervisory capacity — how to choose the right tag",
+   "narration_text": "The supervisory capacity tag is not decoration — it is the claim that this case identifies a specific gap in human oversight. Choosing the wrong tag wastes a finding. Five capacities; here is when each applies. Plausibility Auditing — [PA] — is the capacity to judge whether an output makes sense given domain knowledge. If a human reviewer with domain knowledge could have caught the error by looking at the output, the failure is [PA]. Interpretive Judgment — [IJ] — is the capacity to read ambiguous outputs and know what they mean in context. If the output required contextual interpretation that the human overseer lacked, the failure is [IJ]. Tool Orchestration — [TO] — is the capacity to monitor and manage the system's tool calls and external actions. If the failure was in a tool call, an API call, or an external action the system took without the human seeing it, the failure is [TO]. Problem Formulation — [PF] — is the capacity to define the problem correctly before the system runs. If the failure was baked in at setup — wrong objective, wrong scope, wrong population — the failure is [PF]. Executive Integration — [EI] — is the capacity to integrate findings across multiple agents or subsystems. If the failure only becomes visible when you combine two or more outputs that individually looked reasonable, the failure is [EI]. Most agentic false-success cases tag [TO]. Most fairness impossibility cases tag [PF] or [EI]. Name the capacity, then write one sentence explaining what the human overseer could not see from their position that caused the oversight gap.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 72,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "The tag is a claim about where human oversight was insufficient",
+       "[PA] Plausibility Auditing: human with domain knowledge could catch it by looking",
+       "[IJ] Interpretive Judgment: output required contextual interpretation the overseer lacked."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B04.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:17:02"
+   }
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict",
+   "lead_silence_s": 0.5,
+   "narration_text": "Verdict for More Lenses and the Case. Your second lens is quant or behavioral: Chapter 2 for systems that output probabilities or scores, Chapter 5 for systems that explain themselves. Your third lens is values: Chapter 6 measures demographic leverage, Chapter 7 applies the fairness impossibility theorem to name definitions satisfied and definitions that cannot be simultaneously satisfied. The case template has nine fields. The field that costs the most points when wrong is Field Seven — actual outcome. The actual outcome is the world state, verified independently, not the system's reported artifact. The supervisory capacity tag is a claim about where human oversight was insufficient: [TO] for tool and action failures, [PF] for setup failures, [EI] for failures only visible in aggregate, [PA] for plausibility failures a domain-knowledgeable reviewer should have caught, [IJ] for failures requiring contextual interpretation. Three lenses, nine-field case template, correct capacity tags. That is forty-five points in reach.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 42,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact",
+     "props": {
+      "artifactTitle": "More Lenses and the Case: Filling the Template",
+      "artifactHeading": "Core rules — 45 pts (cases)",
+      "artifactLines": [
+       "Lens 2 (quant/behavioral): Ch2 probability anchor + Bayesian gap, or Ch5 explanation inconsistency.",
+       "Lens 3 (values): Ch6 demographic leverage measured, or Ch7 fairness theorem applied + named definitions.",
+       "Nine-field case template — F7 actual outcome is the world state, NOT the artifact.",
+       "Supervisory capacity: [PA] domain catch / [IJ] interpretation / [TO] tool action / [PF] setup / [EI] aggregate.",
+       "Ch8 / [TO]. Ch7 / [PF] or [EI]. Name it + one sentence: what couldn't the overseer see?",
+       "Three lenses. Nine fields each. Correct tags. 45 points."
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BVDT.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:17:02"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Here is the prompt for this episode — run it with your system dossier and your Chapter 8 case from Episode 3 in context. The prompt reads: I have a completed Chapter 8 case. My second lens is [Chapter 2 or 5] and my third lens is [Chapter 6 or 7]. My Pebble is [system name]. For each remaining lens, run the instrument exactly as the chapter defines it — no improvisation. Produce a completed nine-field case template for each. Pay special attention to Field 7: before you write the actual outcome, query or observe the underlying resource independently of the system's report. For the supervisory capacity field, name one of the five capacities and write one sentence explaining what the human overseer could not see from their position. Do not recycle the same capacity tag across all three cases unless the failures are genuinely structurally identical. End quote. When the cases come back, read all three Field 7 entries side by side. If they all say 'as reported' or 'success confirmed,' you have not checked the world state. Go back and verify independently before you write the attestation in Episode 5.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 65,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN — MORE LENSES AND THE CASE: FILLING THE TEMPLATE",
+      "segment": "More Lenses and the Case: Filling the Template",
+      "command": "Pebble: [system name]. Ch8 case already complete. Lens 2: [Ch2 or Ch5]. Lens 3: [Ch6 or Ch7]. Run each instrument. Produce nine-field case template for each. F7: verify world state independently. Capacity tag: one of [PA][PF][TO][IJ][EI] + one-sentence reasoning. Do not recycle same tag across all cases without structural justification.",
+      "runningText": "read all three F7 entries — if they all say 'as reported,' you have not checked the world state…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:17:02"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "More Lenses and the Case: Filling the Template. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "More Lenses and the Case: Filling the Template",
+      "handle": "@NikBearBrown",
+      "subline": "Liam, in for Bear.",
+      "slug": "claude-liam-cb-04-more-lenses-and-the-case"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T21:17:02"
+   }
+  }
+ ]
+}

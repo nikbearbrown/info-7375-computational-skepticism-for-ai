@@ -1,0 +1,327 @@
+{
+  "metadata": {
+    "title": "Schema as Source of Truth.",
+    "slug": "claude-liam-schema-policy-truth",
+    "topic": "COMPUTATIONAL SKEPTICISM · AI POLICY ARCHITECTURE",
+    "register": "Teardown",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Hey, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "Claude for Computational Skepticism",
+    "series": null,
+    "episode": null,
+    "source": "Research: Prior Art on Schema-as-Source-of-Truth for Institutional AI Policy (2026-08-04)",
+    "build": {
+      "at": "2026-08-05T03:01:41",
+      "cut": "master",
+      "filled": 9,
+      "of": 9,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Hey Liam — here's the question every AI-for-Teaching committee is sitting with right now.",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Hey, Liam",
+            "topic": "COMPUTATIONAL SKEPTICISM · AI POLICY ARCHITECTURE",
+            "segment": "Schema as Source of Truth.",
+            "command": "Hey Claude — every instructor at a university needs the same AI policy in their syllabus. What could go wrong?",
+            "runningText": "the committee wrote the policy in a Google Doc and sent it to fifty faculty to paste into fifty syllabi…",
+            "output": [
+              "* Drift: N independent rewordings — nothing detects divergence",
+              "* Unauditability: compliance is a reading task, not a query",
+              "* AI-assisted rewriting makes both worse, not better"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "claude-sonnet-4-6",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-05T03:01:41"
+      },
+      "actual_duration_s": 5.38
+    },
+    {
+      "beat_id": "B01",
+      "act": "the failure mechanism — drift and unauditability",
+      "narration_text": "Here is what happens when a policy lives as prose. A committee drafts it. Instructors paste it into syllabi — verbatim, paraphrased, or AI-assisted. Each copy is now independent. Semester to semester, each one drifts. N syllabi, N independent rewordings. Nothing detects divergence. Auditing whether any syllabus complies becomes a reading task across the whole corpus — not a query. Two compounding failures, both scaling with N: drift and unauditability.",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 26,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "B01_PolicyDrift",
+          "spec": "one POLICY RECORD box at top; arrows down to five SYLLABUS boxes; phase 1 — connected diagram; phase 2 — syllabi drift to different colors showing N independent rewordings; phase 3 — DRIFT and UNAUDITABILITY labels in terracotta; cream background, warm-ink text",
+          "out": "manim/B01.mp4"
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-05T03:01:41"
+      },
+      "actual_duration_s": 23.74
+    },
+    {
+      "beat_id": "B02",
+      "act": "the fix — one record, cascade update",
+      "narration_text": "The structural fix is one architectural decision. The policy is a record — typed fields, not prose. Every syllabus is a render of that record. Change one field. Every downstream syllabus gets the update automatically. Not N edits. One edit.",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "B02_RecordRender",
+          "spec": "RECORD box at top with typed fields (permission_level, disclosure_format, approved_by); arrows to N SYLLABUS boxes; animate: one field changes (terracotta flash); all SYLLABUS boxes cascade-update; label: 1 EDIT → N RENDERS UPDATED; cream background",
+          "out": "manim/B02.mp4"
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-05T03:01:41"
+      },
+      "actual_duration_s": 14.06
+    },
+    {
+      "beat_id": "B03",
+      "act": "prior art — four domains, same topology",
+      "narration_text": "This pattern has a name in four adjacent domains. Enterprise GRC: one versioned policy record, many rendered compliance documents, full audit trail. Technical writing: DITA conref — author once, reference everywhere, every rebuild propagates the update. Software engineering: docs-as-code — policy in git, every change a commit, every semester a tagged release. Legal document assembly: HotDocs — the template expert builds once, end users fill a form, the compliant document assembles automatically. Four domains. Same topology. One source, N derived outputs, automatic propagation.",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 40,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "B03_PriorArtGrid",
+          "spec": "four rows appearing sequentially; each row: domain label + ONE SOURCE box + arrows to three DERIVED boxes; rows: ENTERPRISE GRC / DITA CONREF / DOCS-AS-CODE / HOTDOCS; final frame: shared topology highlighted with ONE SOURCE → N DERIVED label; cream background, warm-ink text, terracotta accent",
+          "out": "manim/B03.mp4"
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-05T03:01:41"
+      },
+      "actual_duration_s": 33.09
+    },
+    {
+      "beat_id": "B04",
+      "act": "the gap — higher ed tooling audit",
+      "narration_text": "An audit of the leading syllabus management platforms found no typed AI-disclosure field anywhere in the category. CourseLeaf SYL pulls structured curriculum metadata — course IDs, credits, outcomes — but policy content is a prose field. Watermark Concourse has a Policies tab: column A is policy name, column B is the description, entered as prose. No platform has a typed permission_level field, a disclosure_format field, or any structured AI-disclosure dimension. The pattern is established in four adjacent domains. Higher education's tooling has not caught up. A spreadsheet — one column per policy dimension — plus a documented render step is enough to start today.",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 40,
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "reveal",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "THE GAP — syllabus platform audit (2026-08-04)",
+              "CourseLeaf / Watermark Concourse: policy content is a prose field. No typed dimensions.",
+              "Zero platforms: AI-disclosure schema field. Zero universities: AI policy as structured data.",
+              "Absence is the finding. A spreadsheet + render step is enough to start today."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-05T03:01:41"
+      },
+      "actual_duration_s": 37.59
+    },
+    {
+      "beat_id": "B05",
+      "act": "the meta-beat — the document about drift drifts",
+      "narration_text": "Here is the calibration finding. The source document that prompted this episode described Simple Syllabus as offering structured syllabus data, compliance checking, and institution-wide policy insertion. The live site says something softer. Structured syllabus data appears only in the pitch for Simple TA — a separate product. The main platform: centralized templates, reporting, accreditation compliance. No schema-level compliance checking. The document about prose drift exhibits prose drift. Caught by checking the source.",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 34,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "B05_ProsesDrift",
+          "spec": "two-column layout: left panel DOCUMENT SAID with claim text; right panel LIVE SITE with different softer text; a not-equal symbol appears between panels; PROSE DRIFTS label appears in terracotta at bottom; cream background",
+          "out": "manim/B05.mp4"
+        }
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-05T03:01:41"
+      },
+      "actual_duration_s": 28.25
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict artifact",
+      "narration_text": "The adoption argument. Enterprise GRC owns the one-record audit trail. DITA owns single-source reuse. Docs-as-code gives versioning free. HotDocs gives the non-technical wrapper. Applying this pattern to AI-disclosure policy in higher education is an adoption, not an invention. The lineage is citable. Name it. Use it.",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 22,
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Schema as Source of Truth.",
+            "artifactHeading": "Adoption, not invention. The lineage is citable.",
+            "artifactLines": [
+              "GRC audit trail · DITA reuse · docs-as-code versioning · HotDocs form.",
+              "The pattern is established in four adjacent domains.",
+              "Applying it to AI-disclosure policy in higher ed: the adoption play."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-05T03:01:41"
+      },
+      "actual_duration_s": 18.62
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn — handoff with the standalone research prompt",
+      "narration_text": "Here is the handoff — the research prompt from the document itself. Run it. Compare what you find to this episode. Where the episode is wrong, the source moved. That is the lesson.",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · AI POLICY ARCHITECTURE",
+            "segment": "Schema as Source of Truth.",
+            "command": "Research whether any academic institution, syllabus-management platform, or higher-education policy toolkit has implemented a schema-as-source-of-truth system for institutional policy — specifically AI-use disclosure policy in course syllabi — where a single structured record (not prose) is the canonical policy, and individual syllabi are generated/rendered from it rather than independently authored. [Full prompt in PRIOR-ART-FINDINGS.md]",
+            "runningText": "run this in Claude · compare findings to this episode · where it's wrong, the source moved…",
+            "output": [
+              "* Absence of prior art in higher ed = the finding, not a gap in the search.",
+              "* A spreadsheet + a documented render step is enough to start today.",
+              "* The adoption play: apply an established pattern to the gap. Name the lineage."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-05T03:01:41"
+      },
+      "actual_duration_s": 9.88
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "voice_kokoro": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Schema as Source of Truth.",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-05T03:01:41"
+      },
+      "actual_duration_s": 5.0
+    }
+  ]
+}

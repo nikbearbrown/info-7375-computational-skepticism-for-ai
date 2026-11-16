@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-20-error-cascade",
+    "title": "You Validated Each Agent at 1%. The System Fails at 30%.",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that small per-agent error rates compound multiplicatively down a pipeline, so a chain of individually-validated agents can produce a system failure rate that shocks the team that approved each component. Source: books/computational-skepticism-for-ai/chapters/09-validating-agentic-ai-when-autonomous-systems-misbehave.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = correct signal / error-free outputs; CRIMSON = accumulated errors / the growing contamination; GOLD = the multiplication / key insight; SLATE = individual agent nodes",
+    "note": "EXCLUSIONS: no authority-laundering variant, no resource-exhaustion cases, no identity-confusion case, no compound-probability derivation beyond one multiplication",
+    "total_estimated_duration_seconds": 192,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 20,
+    "build": {
+      "at": "2026-07-19T02:36:35",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "You Validated Each Agent at 1%. The System Fails at 30%.",
+            "greeting": "Olá, Liam.",
+            "command": "Every agent in the pipeline passed validation.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "Every agent in the pipeline passed validation. The pipeline fails anyway.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "You Validated Each Agent at 1%. The System Fails at 30%.",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "You Validated Each Agent at 1%.\nThe System Fails at 30%."
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 5.03,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "Four agents in a row. Each one validated. Each one has a one-percent error rate — impressive. In isolation. The first agent makes one error in a hundred. The second agent conditions on the first agent's output, so it inherits those errors and adds its own. The third agent inherits the second's mistakes. By the fourth agent, the chain has compounded. The error rate of the system is not one percent. It is not even two percent. It is closer to four percent — and that's the best case, when errors don't amplify each other.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B02_ChainErrorOpeningHook",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 25.86,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:36:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: Four agents in a row. Each one validated. Each one has a one-percent error rate — impressive. In isolation. The first agent makes one error in a hundred. The se"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When each agent in a pipeline treats the previous agent's output as ground truth, what happens to small per-agent error rates as the chain grows?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What happens to small per-agent errors when agents",
+              "chain their outputs?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What happens to small errors\nwhen agents condition on each other?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.58,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:36:35"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The naive mental model is that errors average out. If each agent is mostly right, the chain should be mostly right. This would be true if each agent independently sampled from reality. But pipeline agents don't do that. Each agent receives the previous agent's output and treats it as the input data. A flawed extraction from Agent One becomes the authoritative text for Agent Two's classification. Agent Two is not correcting Agent One's errors — it is classifying on top of them.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B04_DependentErrorProblem",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 25.64,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:36:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: The naive mental model is that errors average out. If each agent is mostly right, the chain should be mostly right. This would be true if each agent independent"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The compounding is multiplicative, not additive. Three agents at ninety-nine percent accuracy each produce a system accuracy of ninety-nine times ninety-nine times ninety-nine — which is ninety-seven percent. Not ninety-nine. That one-percent gap has tripled. At ten agents each at ninety-five percent accurate, the system accuracy is ninety-five to the power of ten: roughly sixty percent. You approved a ten-agent pipeline where each step looked good, and the system fails four times in ten runs.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B05_MultiplicativeCompounding",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 25.9,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:36:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The compounding is multiplicative, not additive. Three agents at ninety-nine percent accuracy each produce a system accuracy of ninety-nine times ninety-nine ti"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Each agent conditions on the previous agent's output as ground truth — so errors don't cancel, they multiply, and small per-step rates become large system failure rates as the chain grows.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Errors don't cancel in a pipeline",
+              "they multiply through every hop."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A horizontal chain of four grey slate circles connected by arrows, with small crimson error dots appearing at each node and multiplying in number toward the right end of the chain, the final node surrounded by a dense crimson cluster while the first node has almost none — editorial infographic on aged newsprint",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 11.01,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:36:35"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here's the chain. Four slate agent nodes. The message starts as a teal signal — clean, correct. Agent One processes it. One crimson error dot appears, small — ninety-nine percent of the signal is still teal. The message passes to Agent Two. Agent Two's own one-percent error rate adds more crimson dots — but it also propagates the crimson it received. The teal signal shrinks. Agent Three. Agent Four. Watch the crimson accumulate. The final output is visibly contaminated — not because any single agent was badly broken, but because the chain never had a checkpoint.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B07_ChainErrorAccumulation",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 30.66,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:36:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Here's the chain. Four slate agent nodes. The message starts as a teal signal — clean, correct. Agent One processes it. One crimson error dot appears, small — n"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The amplification effect is worse than simple multiplication when errors compound semantically. An extraction error in Agent One produces a wrong entity. Agent Two's reasoning is coherent given that entity but wrong relative to reality. Agent Three's decision is rational given Agent Two's reasoning. Each agent is locally correct given its input. The chain of locally correct reasoning produces a globally wrong output. The error was made at step one, but the decision was made at step four — where it looks perfectly reasonable.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B08_SemanticAmplification",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 27.99,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:36:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The amplification effect is worse than simple multiplication when errors compound semantically. An extraction error in Agent One produces a wrong entity. Agent "
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The validation protocol that misses this is: test each agent on a held-out set of clean inputs. Each agent passes. Ship the pipeline. The problem is that the held-out set is not the runtime input distribution for any agent except the first. Runtime inputs for Agent Two are Agent One's outputs, including Agent One's errors. Testing Agent Two on clean inputs tells you how Agent Two performs in an impossible world — a world where Agent One made no mistakes.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B09_TestDistributionMismatch",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 24.83,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:36:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: The validation protocol that misses this is: test each agent on a held-out set of clean inputs. Each agent passes. Ship the pipeline. The problem is that the he"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The correct validation strategy evaluates the chain as a system, not as a collection of components. Each agent must be tested on the actual output distribution of its predecessor — which means running the full pipeline on a representative test set and measuring error at the terminal output, not only at each node individually. Component-level accuracy is a necessary condition. It is not sufficient.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B10_SystemLevelValidation",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 21.01,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:36:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The correct validation strategy evaluates the chain as a system, not as a collection of components. Each agent must be tested on the actual output distribution "
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The architectural response: shorter chains, human checkpoints at high-consequence nodes, and canary inputs — known-answer test cases that travel through the full pipeline and trigger an alert when they fail. A pipeline without canaries has no way to detect compounding degradation before it reaches a user. And as the chain grows longer, the expected degradation grows, so canary coverage must scale with chain length.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_CanaryCheckpoint",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 21.89,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:36:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The architectural response: shorter chains, human checkpoints at high-consequence nodes, and canary inputs — known-answer test cases that travel through the ful"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 15.0,
+      "narration_text": "A legal document processing pipeline has five agents: extract clauses, classify clause type, identify parties, flag obligations, summarise. Each is validated at ninety-eight percent accuracy on clean clause inputs. The team ships. In production, Agent One encounters a non-standard contract format it has seen rarely in training. It extracts clauses correctly but mis-segments one compound clause into two. Agent Two classifies each half against the wrong clause type. Agent Three assigns parties to wrong clause types. Agent Four flags obligations that don't exist and misses ones that do. Agent Five summarises coherently from wrong inputs. The output looks clean and professionally formatted. The obligation that was missed was a regulatory deadline. Nobody in the chain made an obviously wrong move. The chain made a wrong move.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B12_LegalPipelineExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 43.88,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:36:35",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A legal document processing pipeline has five agents: extract clauses, classify clause type, identify parties, flag obligations, summarise. Each is validated at"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Pipeline agents condition on each other's outputs rather than on ground truth — so errors multiply rather than average out. A chain of individually-validated agents can produce a system failure rate that far exceeds any single component's validated error rate, and the failures are often invisible because each downstream agent produces locally coherent output. Validate the chain as a system, test each agent on realistic predecessor outputs, and run canary inputs through the full pipeline before measuring accuracy one node at a time.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Validate the chain",
+              "component accuracy is necessary but never sufficient."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Small errors multiply.\nThe chain fails when components passed.",
+        "sub": "Test the pipeline end-to-end before trusting per-agent accuracy numbers.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 28.65,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:36:35"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "You Validated Each Agent at 1%. The System Fails at 30%.",
+            "artifactHeading": "Key findings — You Validated Each Agent at 1%. The System Fails at 30%.",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "The compounding is multiplicative, not additive."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:36:35"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — YOU VALIDATED EACH AGENT AT 1%. THE SYSTEM FAILS AT 30%",
+            "segment": "You Validated Each Agent at 1%. The System Fails at 30%.",
+            "greeting": "Ciao, Liam.",
+            "command": "Ask Claude: You Validated Each Agent at 1%. The System Fails at 30%.",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:36:35"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "You Validated Each Agent at 1%. The System Fails at 30%.",
+            "slug": "claude-liam-cs-20-error-cascade",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

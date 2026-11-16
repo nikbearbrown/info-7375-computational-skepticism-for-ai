@@ -1,0 +1,283 @@
+{
+  "metadata": {
+    "title": "Who Gets Starved + the Explanation That Lies",
+    "slug": "claude-liam-ra-03-bias-and-explanation",
+    "topic": "INFO 7375 REALLOCATION ENGINE, AUDITED \u2014 BIAS & EXPLANATION (E3/6)",
+    "register": "Pragmatist",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Jambo, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "The Tool That Doubts Itself \u2014 The Reallocation Engine, Audited",
+    "series": "claude-liam-ra",
+    "episode": 3,
+    "source": "INFO 7375 (Computational Skepticism for AI) \u2014 The Reallocation Engine, Audited: Build a Useful Tool That Doubts Itself (100 pts)",
+    "build": {
+      "at": "2026-07-24T06:24:53",
+      "cut": "master",
+      "filled": 7,
+      "of": 7,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Jambo \u2014 Liam, in for Bear. Episode 3 of 6. Two audits today, twenty points, and one uncomfortable shape they share: in both, the engine produces something that looks fine, and your job is to show where fine is a lie. First, the bias audit \u2014 a reallocation engine doesn't just predict unfairly, it FEEDS unfairly: whoever it advantages gets the resource, and the resource generates the next round of data. Ten points for tracing bias from collection to output, putting two fairness definitions in tension, and naming what your choice costs. Second, explainability and its critique \u2014 produce a real explanation of the engine's recommendations, then find the case where the explanation is technically accurate and practically misleading. The gap is the point, not the plot. Let's find who pays.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 55,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Jambo, Liam",
+            "topic": "INFO 7375 REALLOCATION ENGINE, AUDITED \u2014 BIAS & EXPLANATION (E3/6)",
+            "segment": "Who Gets Starved + the Explanation That Lies",
+            "command": "Trace bias from collection to output. Put two fairness definitions in tension and pay for your choice. Then explain the engine \u2014 and find the case where the explanation lies by omission.",
+            "runningText": "the engine doesn't just predict unfairly \u2014 it FEEDS unfairly, and the fed generate the next round of data\u2026",
+            "output": [
+              "Bias audit (10 pts): mechanism named, two definitions in tension, leverage point",
+              "Explainability (10 pts): a real explanation + the case where it misleads",
+              "The shared shape: 'fine' that is a lie, and you show where"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:24:53"
+      },
+      "actual_duration_s": 40.49
+    },
+    {
+      "beat_id": "B01",
+      "act": "trace the bias to its mechanism",
+      "narration_text": "The bias audit starts with a blunt question: who is systematically advantaged or starved by this engine? Not 'is there bias' \u2014 there is \u2014 but where does it enter. Four doors. Door one, the sampling: who is in the data, and who never made it in? If your staffing data comes from units that log carefully, the chaotic units \u2014 the ones that most need staff \u2014 are underrepresented at the exact moment of decision. Door two, the labels: who defined the outcome, and does 'good outcome' mean the same thing for every group? Door three, the objective: maximizing total throughput will quietly starve every small site, because the big sites move the average. Door four \u2014 and this is the reallocation-specific one \u2014 the feedback loop. The engine gives resource to A. A, now resourced, performs better. The next training run reads A's performance as evidence A deserves more. The engine is grading its own homework, and the starved units are generating the data that justifies starving them. Trace your bias to a SPECIFIC one of these mechanisms, in your domain, with your data. 'Bias could enter anywhere' is a category claim, and category claims score like they're worth: nothing. Then name the highest-leverage intervention point \u2014 the one door where fixing it changes the most downstream.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 76,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Who gets starved \u2014 and where it enters",
+              "Sampling: who never made it into the data? The chaotic units",
+              "Labels: who defined 'good outcome'"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:24:53"
+      },
+      "actual_duration_s": 62.08
+    },
+    {
+      "beat_id": "B02",
+      "act": "two fairness definitions in tension",
+      "narration_text": "Now the part of the rubric that has a theorem behind it: apply at least one quantitative fairness metric, and evaluate two competing fairness definitions \u2014 documenting the tradeoff. Why two? Because fairness definitions provably conflict, and the assignment wants you to feel the collision, not recite it. Take a credit reallocation. Demographic parity says: approval rates should match across groups. Equalized odds says: error rates should match across groups \u2014 among people who would repay, equal approval; among people who would default, equal rejection. When the base rates differ between groups \u2014 and in real data they almost always do \u2014 you mathematically cannot have both. Satisfy parity and your error rates diverge; satisfy equalized odds and your approval rates split. This is the impossibility result, and it means 'my engine is fair' is never a complete sentence. Fair by which definition, at whose expense? So: compute your metric with fairlearn or aif360 \u2014 a demographic parity difference, an equalized odds gap. Then write the sentence the rubric is actually grading: we chose definition X, which costs group Y this measurable amount Z, and here is why that tradeoff is defensible in this domain. That sentence is uncomfortable to write. It is also the only honest version of a fairness claim that exists.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 76,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "You cannot satisfy both",
+              "Demographic parity: approval rates match across groups.",
+              "Equalized odds: error rates match across groups."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:24:53"
+      },
+      "actual_duration_s": 66.75
+    },
+    {
+      "beat_id": "B03",
+      "act": "the explanation that lies by omission",
+      "narration_text": "Component four: explain the engine, then catch the explanation lying. First half is mechanical: SHAP values, LIME, or counterfactual explanations on your recommendations. 'The engine moved budget to campaign B because last-week ROI contributed plus point four, and audience size contributed plus point two.' Fine. Produce it. The second half is the actual assignment: find at least one case where that explanation is technically accurate and practically misleading. Here is what that looks like. The SHAP plot truthfully reports that last-week ROI drove the recommendation. What it cannot report is that last-week ROI is doing the work of a variable it never saw \u2014 seasonality, a promotion, a competitor's outage. The explanation is accurate about the model and misleading about the world. A deployer reads 'ROI drove this' as 'B causes better returns' \u2014 the explanation invites exactly the causal misreading your domain knowledge says is wrong. That is lying by omission: every number true, the conclusion false. Find your version of that case. Name it specifically \u2014 this recommendation, this feature, this thing my domain knowledge requires that the plot cannot show. The rubric says it plainly: the gap is the point, not the plot. An explainability section that ends with a pretty SHAP chart and no indictment of it has done half the component \u2014 the ungraded half.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 76,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Accurate about the model, misleading about the world",
+              "Produce the explanation: SHAP , LIME , counterfactuals. Mechanical. Do it.",
+              "Then find the case where it lies by omission."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:24:53"
+      },
+      "actual_duration_s": 72.09
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lead_silence_s": 0.5,
+      "narration_text": "Verdict for Who Gets Starved and the Explanation That Lies. Bias in a reallocation engine enters through four doors \u2014 sampling, labels, objective, feedback loop \u2014 and the feedback loop is the one unique to engines that move resources: the advantaged generate the data that justifies their advantage. Trace yours to one specific mechanism and name the highest-leverage intervention point. Fairness definitions provably collide, so the graded sentence is the honest one: which definition you chose, what it measurably costs, and to whom. And explanations lie by omission \u2014 a SHAP plot can be accurate about the model and misleading about the world, and finding your specific case of that gap is the component. The thread through all of it: looking fine is not the same as being fine, and the points live in the difference. Next episode, the heart of the assignment: Pearl's ladder, and whether your engine is optimizing a correlation in a suit.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 54,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Who Gets Starved + the Explanation That Lies",
+            "artifactHeading": "Episode 3 key rules",
+            "artifactLines": [
+              "Four doors: sampling , labels , objective , feedback loop \u2014 name YOUR one.",
+              "The loop is engine-specific: the fed generate the data that justifies feeding them.",
+              "Fairness definitions provably collide \u2014 say which you chose, what it costs, to whom.",
+              "Explanations lie by omission: accurate about the model, misleading about the world.",
+              "The gap is the point, not the plot."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:24:53"
+      },
+      "actual_duration_s": 47.57
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "narration_text": "Your turn. The prompt to paste into Claude reads: My engine reallocates this resource across these units \u2014 fill in yours. Here is my pipeline: data source, features, objective, and who receives the output \u2014 paste it. Propose the two fairness definitions most in tension for this specific decision, state what each would demand of my engine, and tell me concretely who pays under each choice. Then name the single highest-leverage intervention point in my pipeline and defend the choice. Why run it: Claude will map the fairness landscape faster than you will, and it is genuinely good at articulating the tension. But watch for the move it cannot make \u2014 it will describe who pays in the abstract, because it has never met your units, your sites, your applicants. Take its abstract 'group Y bears higher false rejection' and make it concrete: which actual population, how many, what happens to them next quarter. If you chose attention or access as your domain, this is the component that carries extra weight \u2014 so the concreteness is not optional polish, it is the audit. The definition you choose is a values call. Claude can price the options. Only you can sign for one.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 72,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 WHO GETS STARVED + THE EXPLANATION THAT LIES",
+            "segment": "Who Gets Starved + the Explanation That Lies",
+            "command": "My engine reallocates [resource] across [units]. Pipeline: [data source, features, objective, who receives the output]. Propose the two fairness definitions most in tension for this decision, what each demands, and who pays under each choice. Then name the highest-leverage intervention point and defend it.",
+            "runningText": "Claude can price the options \u2014 only you can sign for one\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:24:53"
+      },
+      "actual_duration_s": 58.84
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "Who Gets Starved + the Explanation That Lies. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Who Gets Starved + the Explanation That Lies",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-ra-03-bias-and-explanation"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T06:24:53"
+      },
+      "actual_duration_s": 4.71
+    }
+  ]
+}

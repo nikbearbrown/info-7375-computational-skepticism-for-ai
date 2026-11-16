@@ -1,0 +1,178 @@
+{
+  "video": "claude-liam-cli-adversarial-perturbation-detector",
+  "metadata": {
+    "title": "Adversarial Perturbation Detector: FGSM in One Epsilon",
+    "slug": "claude-liam-cli-adversarial-perturbation-detector",
+    "topic": "COMPUTATIONAL SKEPTICISM \u2014 ADVERSARIAL ROBUSTNESS",
+    "register": "Teardown",
+    "palette": "claude",
+    "style_preset": "claude",
+    "style": "cli",
+    "note": "CLI video: B00 intro \u00b7 B01 PROBLEM \u00b7 B02 ASK \u00b7 B03 CODE \u00b7 B04 OUTPUT(slate \u2014 PyTorch + real image, human fill) \u00b7 B05 CHANGE \u00b7 B06 SUMMARY \u00b7 B07 NEXT STEPS \u00b7 B08 extra-slate \u00b7 B09 outro. B04 is a slate requiring human fill with PyTorch screen-recording.",
+    "total_estimated_duration_seconds": 118,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "channel": "NikBearBrown",
+    "build": {
+      "at": "2026-07-27T21:49:57",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": []
+    },
+    "clifix_at": "2026-07-19T21:48:38",
+    "voice": "kokoro:am_onyx"
+  },
+  "source_of_truth": "beat_sheet.json \u2014 edit the sheet, not this file",
+  "beats_total": 13,
+  "beats_open": 0,
+  "beats": [
+    {
+      "beat_id": "B00",
+      "status": "filled",
+      "on_disk": "media/B00.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B00.mp4",
+      "label": "Ol\u00e1 \u2014 this is Liam, in for Bear. Can one invisible pixel flip a confident AI classifier to the wrong"
+    },
+    {
+      "beat_id": "B01",
+      "status": "filled",
+      "on_disk": "media/B01.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B01.mp4",
+      "label": "A ResNet-50 trained on ImageNet classifies a golden retriever at ninety-eight percent confidence. Ad"
+    },
+    {
+      "beat_id": "B02",
+      "status": "filled",
+      "on_disk": "media/B02.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B02.mp4",
+      "label": "In the terminal: ask Claude to write a PyTorch script that loads a pretrained ResNet-50, runs FGSM w"
+    },
+    {
+      "beat_id": "B03",
+      "status": "filled",
+      "on_disk": "media/B03.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B03.mp4",
+      "label": "Read the attack line. x underscore adv equals x plus epsilon times x dot grad dot sign. That sign fu"
+    },
+    {
+      "beat_id": "B04",
+      "status": "filled",
+      "on_disk": "media/B04.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B04.mp4",
+      "label": "Run it against a real image. You will see the top-three classifications before and after the perturb"
+    },
+    {
+      "beat_id": "B05",
+      "status": "filled",
+      "on_disk": "media/B05.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B05.mp4",
+      "label": "Raise the stakes. Ask Claude to run an epsilon sweep from point-zero-zero-one to point-zero-five, re"
+    },
+    {
+      "beat_id": "B06",
+      "status": "filled",
+      "on_disk": "media/B06.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B06.mp4",
+      "label": "At epsilon equals point-zero-zero-five \u2014 noise bounded to half a percent of pixel range \u2014 the attack"
+    },
+    {
+      "beat_id": "B07",
+      "status": "filled",
+      "on_disk": "media/B07.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B07.mp4",
+      "label": "Your move: run this script on your own model with your own images. Find the epsilon where the top-on"
+    },
+    {
+      "beat_id": "B08",
+      "status": "filled",
+      "on_disk": "media/B08.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B08.mp4",
+      "label": "The complete source is in the video description. Fork it, swap in your own data, and see what you fi"
+    },
+    {
+      "beat_id": "BVDT",
+      "status": "filled",
+      "on_disk": "media/BVDT.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/BVDT.mp4",
+      "label": "Let's recap with Claude. A ResNet-50 trained on ImageNet classifies a golden retriever at ninety-eig"
+    },
+    {
+      "beat_id": "BHTF",
+      "status": "filled",
+      "on_disk": "media/BHTF.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/BHTF.mp4",
+      "label": "Your turn. Paste this into Claude: 'I'm studying adversarial perturbation with FGSM in PyTorch. A Re"
+    },
+    {
+      "beat_id": "B09",
+      "status": "filled",
+      "on_disk": "media/B09.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B09.mp4",
+      "label": "Adversarial Perturbation Detector: FGSM in One Epsilon."
+    },
+    {
+      "beat_id": "BOUT",
+      "status": "filled",
+      "on_disk": "media/BOUT.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/BOUT.mp4",
+      "label": ""
+    }
+  ]
+}

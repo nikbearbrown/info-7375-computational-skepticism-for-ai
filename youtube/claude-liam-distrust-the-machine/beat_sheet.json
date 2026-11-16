@@ -1,0 +1,1401 @@
+{
+  "metadata": {
+    "slug": "claude-liam-distrust-the-machine",
+    "title": "Knowing Enough to Distrust the Machine",
+    "topic": "The curriculum trained humans for the machine's home turf — a triage taxonomy of human intelligence, the cognitive forklift, and the reorientation from answer retrieval to question asking. From Bear's Theorist.ai launch essay.",
+    "purpose": "deep-explainer — first-party source (Bear's essay, Theorist.ai, 2026-03-13)",
+    "skill": "deep-explainer",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude-liam",
+    "clock": "narration",
+    "audience": "practitioners and makers following the channel's Claude workflows",
+    "playlist": "Computational Skepticism for AI",
+    "playlist_short": "Shorts",
+    "source": "Bear's essay 'Knowing Enough to Distrust the Machine — Introducing Theorist.ai' (Theorist.ai, 2026-03-13; on disk as SOURCE.md)",
+    "total_estimated_duration_seconds": 470,
+    "acts": [
+      "I — The Freeze",
+      "II — An Honest Mistake",
+      "III — The Forklift",
+      "IV — The Triage",
+      "V — The Tier That Isn't in Anyone",
+      "VI — Question Askers"
+    ],
+    "lane_histogram_plan": {
+      "manim": 6,
+      "remotion": 18,
+      "card": 6,
+      "ask_exempt": 1,
+      "body_total": 25,
+      "notes": "Zero gen-AI stills; former VOX beats converted to DeckPattern Remotion scenes (B02, B05, B06, B10) or Manim (B18); new beats B13a and B14a added for Gardner's own position + measurement problem"
+    },
+    "notes": "REVISION 2026-08-11: B02/B05/B06/B10 converted from VOX stills to Remotion DeckPattern (zero gen-AI). B18 converted to Manim (network graph). Two new beats: B13a (Gardner's position/Fadel challenge) and B14a (measurement problem). B13/B14/B19 narration revised (Gardner count precision; two-series chart framing; blurry-JPEG lineage credit). TierTriageChart.tsx new Remotion component registered in Root.tsx. Gardner count: 7 original (1983), 8th naturalist confirmed ~1995, 9th existential proposed/tentative. 'Blurry JPEG' prior art: Ted Chiang, New Yorker, Feb 2023.",
+    "voice": "kokoro:am_onyx",
+    "build": {
+      "at": "2026-08-13T12:13:52",
+      "cut": "master",
+      "filled": 33,
+      "of": 33,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "OPEN",
+      "estimated_duration_s": 18,
+      "narration_text": "Vanakkam — this is Liam, in for Bear. Today's ask comes from Bear's new project, Theorist point AI, and it starts with a student he's watched for ten years: fast, confident, correct on everything the rubric rewards — who freezes a few years into a professional life. Not because the problem is too hard. Because they don't know what the problem is.",
+      "new_visual_element": "Cold open — composer ask, answered",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Vanakkam, Liam",
+            "topic": "COMPUTATIONAL SKEPTICISM · THEORIST.AI",
+            "segment": "Knowing Enough to Distrust the Machine",
+            "command": "What should school teach, now that a machine in every pocket answers questions better than the students can?",
+            "runningText": "rethinking the curriculum…",
+            "output": [
+              "We spent twelve years teaching a generation",
+              "to be slower, more expensive versions of machines.",
+              "The machines arrived. The curriculum didn't notice."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 17.98,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — The Freeze",
+      "estimated_duration_s": 6,
+      "narration_text": "Act one. The educational catastrophe hiding in plain sight — and the moment it shows up.",
+      "new_visual_element": "Act card I — The Freeze",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "title": "The Freeze",
+            "actLabel": "Act I"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 5.52,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "I — The Freeze",
+      "estimated_duration_s": 16,
+      "narration_text": "Picture the student. Fast retrieval, confident answers, perfect formatting — everything the rubric rewards, on demand. Then, two or three years into a career, the freeze. The desk is quiet. The tools all work. And nothing on it says what the problem is.",
+      "new_visual_element": "PROBLEM GIVEN vs PROBLEM FOUND — the untested half",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "The thing school never graded",
+            "left": {
+              "label": "Problem given",
+              "note": "Solve for x.\nFind the answer.\nMatch the rubric."
+            },
+            "right": {
+              "label": "Problem found",
+              "note": "What IS x?\nWhat is the question?\nWhere is the rubric?"
+            },
+            "sparkLine": "School graded one. The career demands the other."
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 13.5,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "I — The Freeze",
+      "estimated_duration_s": 16,
+      "narration_text": "Name the failure precisely, because it isn't weakness. Every skill this student has answers questions. Nothing they were taught formulates one. School graded the retrieval; the career demanded the framing. That gap sat invisible for twelve years of schooling — right up until the first unrubriced Tuesday.",
+      "new_visual_element": "Answering drilled; asking assumed",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "What the rubric saw",
+            "left": {
+              "label": "Answering",
+              "note": "Drilled.\nGraded.\nRewarded for twelve years."
+            },
+            "right": {
+              "label": "Asking",
+              "note": "Assumed.\nUntaught.\nNever on the test."
+            },
+            "sparkLine": "The first unrubriced Tuesday."
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 15.79,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "II — An Honest Mistake",
+      "estimated_duration_s": 8,
+      "narration_text": "Act two. Before the indictment, the defense — because the mistake was not malicious, and understanding it is the only way to correct it.",
+      "new_visual_element": "Act card II — An Honest Mistake",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "title": "An Honest Mistake",
+            "actLabel": "Act II"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 7.7,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "II — An Honest Mistake",
+      "estimated_duration_s": 18,
+      "narration_text": "This curriculum was built for a world where arithmetic speed and fact retrieval were genuinely valuable human capacities. Multiplication drills, the periodic table, syntactic correctness — not arbitrary. The exact skills an industrial economy required, and the ones its tests could measure at scale.",
+      "new_visual_element": "Right for its moment — the industrial curriculum",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "The curriculum was not wrong.",
+            "note": "Arithmetic speed. Fact retrieval. Syntactic correctness.",
+            "sparkLine": "Right. For a world that existed."
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 17.18,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "II — An Honest Mistake",
+      "estimated_duration_s": 16,
+      "narration_text": "Pull back and see the whole machine working as designed: rows, standardized measures, knowledge transmitted at scale. Then the economy changed. The tools changed. The curriculum did not — schools were built to transmit what is known, not respond to what is new. That feature is now a bug.",
+      "new_visual_element": "The system working as designed — then the bug",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "The lag",
+            "left": {
+              "label": "The feature",
+              "note": "Transmit what is known.\nRows. Drills. Standardized output."
+            },
+            "right": {
+              "label": "The bug",
+              "note": "The economy changed.\nThe tools changed.\nThe curriculum did not."
+            },
+            "sparkLine": "That feature is now a bug."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 15.17,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "II — An Honest Mistake",
+      "estimated_duration_s": 16,
+      "narration_text": "Hold the charity and the verdict at once. The people who built this weren't wrong — they were right for a world that no longer exists, preserved by normal institutional lag, not stupidity. And the result, stated plainly: we are training humans to compete on the machine's home turf.",
+      "new_visual_element": "Right-then, wrong-now — the lag",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "Institutional lag, not stupidity.",
+            "note": "The curriculum was right for a world that no longer exists.",
+            "sparkLine": "We are training humans to compete on the machine's home turf."
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 15.19,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "III — The Forklift",
+      "estimated_duration_s": 6,
+      "narration_text": "Act three. What the machine actually does better — and the forklift argument that reorganizes everything.",
+      "new_visual_element": "Act card III — The Forklift",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "title": "The Forklift",
+            "actLabel": "Act III"
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 6.0,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "III — The Forklift",
+      "estimated_duration_s": 18,
+      "narration_text": "Be specific about the competition. Superhuman at arithmetic — faster than any human who has lived, without fatigue. Superhuman at retrieval. Superhuman at syntactic correctness across languages. Strong wherever data is dense and success is well-defined. None of that should frighten an educator. All of it should reorganize one.",
+      "new_visual_element": "The capability bars leave the chart",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "four capability bars rise: arithmetic, retrieval, syntax, dense-pattern — each blows past a 'best human' line and exits the frame top"
+          },
+          {
+            "at": 0.75,
+            "event": "'frighten' strikes through; 'reorganize' types in beneath — terracotta"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B09_OffTheChart",
+        "production_viz": {
+          "label": "superhuman where it's superhuman",
+          "mechanic": "bars exit the frame past the human line; no invented magnitudes, schematic only"
+        }
+      },
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 18.1,
+      "lane": "manim",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "III — The Forklift",
+      "estimated_duration_s": 14,
+      "narration_text": "Here’s the picture that reframes it. The intelligent response to a forklift is not to practice lifting heavier objects. It’s to operate it, maintain it, know what it can and cannot lift — and above all, develop the judgment to know what needs lifting in the first place.",
+      "new_visual_element": "Lift heavier vs operate — the forklift choice",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "The intelligent response",
+            "left": {
+              "label": "Wrong move",
+              "note": "Practice lifting heavier.\n\n→ Compete with the machine.\n→ Lose."
+            },
+            "right": {
+              "label": "Right move",
+              "note": "Operate it.\nMaintain it.\nKnow what needs lifting."
+            },
+            "sparkLine": "The forklift doesn't make you obsolete. Refusing to touch it does."
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 14.08,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "III — The Forklift",
+      "estimated_duration_s": 15,
+      "narration_text": "The forklift doesn't make the human obsolete. It makes the human who can't operate one obsolete — and the one who can, dramatically more capable. We're in the early years of the most powerful cognitive forklifts ever built. And the curriculum still teaches lifting with your back.",
+      "new_visual_element": "Obsolete vs amplified — and the closing line",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "The same machine. Two outcomes.",
+            "left": {
+              "label": "Can't operate it",
+              "note": "Displaced.\n\nThe curriculum that didn't notice the machine."
+            },
+            "right": {
+              "label": "Operates it",
+              "note": "Amplified.\n\nDramatically more capable than before."
+            },
+            "sparkLine": "The curriculum still teaches lifting with your back."
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 14.64,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "IV — The Triage",
+      "estimated_duration_s": 5,
+      "narration_text": "Act four. The taxonomy — read not as classification, but as triage.",
+      "new_visual_element": "Act card IV — The Triage",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "title": "The Triage",
+            "actLabel": "Act IV"
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 4.75,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B12.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "IV — The Triage",
+      "estimated_duration_s": 22,
+      "narration_text": "Howard Gardner cracked this open in nineteen eighty-three: intelligence is not one thing — seven kinds confirmed, an eighth added in the nineties when he named naturalist, a ninth — existential intelligence — proposed and left tentative because the evidence wasn't strong enough to confirm. Right for its moment. But Gardner never had to ask which intelligences technology endangers — in nineteen eighty-three, technology wasn't a serious competitor to any of them. The moment changed.",
+      "new_visual_element": "Gardner's frame — and the question it never faced",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Seven intelligence chips fan out under '1983'; all equally lit"
+          },
+          {
+            "at": 0.4,
+            "event": "An 8th chip appears (naturalist, 1995), then a 9th chip (existential) appears with a question mark — tentative, dashed border"
+          },
+          {
+            "at": 0.65,
+            "event": "A machine-mark approaches the fan; a new axis draws: 'Which intelligences does technology endanger?' — a question the fan was never sorted by"
+          },
+          {
+            "at": 0.88,
+            "event": "'The moment changed.' — terracotta"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B13_GardnersFrame",
+        "production_viz": {
+          "label": "1983 → now",
+          "mechanic": "Fan gains an axis it was never built to answer; 9th chip tentative/dashed",
+          "note": "Seven confirmed (1983), eighth naturalist ~1995, ninth existential proposed/tentative — not confirmed"
+        }
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 24.0,
+      "lane": "manim",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B13a",
+      "act": "IV — The Triage",
+      "estimated_duration_s": 26,
+      "narration_text": "One objection this film shouldn’t cut — because cutting it would make a video about intellectual honesty that suppresses its sharpest objection. This argument drew a response from someone who knows Gardner personally, who says Gardner himself regretted Multiple Intelligences being taken as an ontology to design curricula by. That’s a direct shot at what this taxonomy is doing. The answer: Gardner explicitly clarified that M I describes cognitive capacities — not curriculum design templates. This taxonomy’s question is different: not which activities map to which intelligences, but which human capacities machines now make redundant. That reframe changes what you’re sorting by.",
+      "new_visual_element": "The objection surfaced — and Bear's answer",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "The sharp objection",
+            "left": {
+              "label": "The challenge",
+              "note": "Gardner himself: MI ≠ curriculum design tool."
+            },
+            "right": {
+              "label": "The answer",
+              "note": "MI describes capacities.\nThis taxonomy triages them."
+            },
+            "sparkLine": "Suppressing the sharpest objection would betray the point."
+          },
+          "rendered": {
+            "out": "media/B13a.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B13a.mp3",
+      "actual_duration_s": 36.82,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13a.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "IV — The Triage",
+      "estimated_duration_s": 24,
+      "narration_text": "So — seven tiers, and they’re labelled version one, a draft. Pattern and association. Embodied. Social. Metacognitive. Causal. Collective. Existential. One thing to say clearly before the diagram: pattern matching is genuine intelligence — just not sufficient intelligence. Now watch what the comparison shows: machine strength across the seven tiers, and where the school day spends its time. The shape is the argument.",
+      "new_visual_element": "THE SPINE — two-series comparison across the seven tiers",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "TierTriageChart",
+          "props": {
+            "title": "Machine strength vs. curriculum time",
+            "draftLabel": "seven-tier taxonomy · v1 draft · Theorist.ai",
+            "handle": "@NikBearBrown",
+            "tiers": [
+              {
+                "label": "Pattern & Association",
+                "machineStrength": 95,
+                "curriculumTime": 88,
+                "triage": false
+              },
+              {
+                "label": "Embodied & Sensorimotor",
+                "machineStrength": 18,
+                "curriculumTime": 36,
+                "triage": false
+              },
+              {
+                "label": "Social & Personal",
+                "machineStrength": 28,
+                "curriculumTime": 28,
+                "triage": false
+              },
+              {
+                "label": "Metacognitive & Supervisory",
+                "machineStrength": 14,
+                "curriculumTime": 10,
+                "triage": true
+              },
+              {
+                "label": "Causal & Counterfactual",
+                "machineStrength": 18,
+                "curriculumTime": 8,
+                "triage": true
+              },
+              {
+                "label": "Collective & Distributed",
+                "machineStrength": 10,
+                "curriculumTime": 14,
+                "triage": false
+              },
+              {
+                "label": "Existential & Wisdom",
+                "machineStrength": 6,
+                "curriculumTime": 5,
+                "triage": true
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 21.63,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B14a",
+      "act": "IV — The Triage",
+      "estimated_duration_s": 26,
+      "narration_text": "One honest limit this film shouldn’t pass over. Name it, teach it, measure it — that’s the three-stage sequence educational reform keeps failing to complete. Stage one is done here: the taxonomy has a name and a structure. Stage two and three — how to teach for these tiers, and how to measure whether it worked — are unspecified. That’s also the standing empirical objection to Gardner’s original framework, and it’s worn openly: version one. A taxonomy without measurement is a vocabulary, not yet a science.",
+      "new_visual_element": "Name it → Teach it → Measure it — stages complete",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "The three-stage sequence",
+            "chips": [
+              "✓  Name it — done. Seven tiers, v1.",
+              "◻  Teach it — implied, not specified.",
+              "◻  Measure it — absent. Also the problem with Gardner's MI."
+            ],
+            "cols": 1,
+            "sparkLine": "A taxonomy without measurement is a vocabulary, not yet a science.",
+            "credit": "Companion post — “Name it → Teach it → Measure it,” theorist.ai"
+          },
+          "rendered": {
+            "out": "media/B14a.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14a.mp3",
+      "actual_duration_s": 26.39,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14a.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "IV — The Triage",
+      "estimated_duration_s": 18,
+      "narration_text": "And look at what goes unscaffolded — tiers four, five, seven. Plausibility auditing. Problem formulation. Causal reasoning. Interpretive judgment. Wisdom. The refusal matters here: these are not soft skills. They’re what separates an AI-amplified human from an AI-confused one. And they are not on the test.",
+      "new_visual_element": "The unscaffolded tiers",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "The untaught list",
+            "chips": [
+              "Plausibility auditing",
+              "Problem formulation",
+              "Causal reasoning",
+              "Interpretive judgment",
+              "Wisdom"
+            ],
+            "cols": 2,
+            "sparkLine": "Not soft. Unscaffolded. Not on the test."
+          },
+          "rendered": {
+            "out": "media/B15.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 17.0,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "IV — The Triage",
+      "estimated_duration_s": 15,
+      "narration_text": "Which lands the hardest sentence in the whole argument: where machines are strongest, training humans to compete directly is now malpractice. Not suboptimal. Malpractice. The strong word is the point — triage means someone finally says which injuries get treated first.",
+      "new_visual_element": "The malpractice line",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "Triage means naming priorities.",
+            "note": "Where machines are strongest,\ntraining humans to compete directly\nis now malpractice.",
+            "sparkLine": "The strong word is the point."
+          },
+          "rendered": {
+            "out": "media/B16.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B16.mp3",
+      "actual_duration_s": 14.63,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B16.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "V — The Tier That Isn't in Anyone",
+      "estimated_duration_s": 7,
+      "narration_text": "Act five. Tier six deserves its own act — because it isn't a property of any individual at all.",
+      "new_visual_element": "Act card V — The Tier That Isn't in Anyone",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "title": "The Tier That Isn't in Anyone",
+            "actLabel": "Act V"
+          },
+          "rendered": {
+            "out": "media/B17.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B17.mp3",
+      "actual_duration_s": 5.66,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B17.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "V — The Tier That Isn't in Anyone",
+      "estimated_duration_s": 20,
+      "narration_text": "Collective intelligence is emergent — it lives in systems of people in relationship, not in any one head. It's what makes science work, lets markets sometimes aggregate information, makes democracy more than the sum of its voters. And every intelligence framework we have — Gardner's included — is a framework of individuals. It misses this entirely.",
+      "new_visual_element": "Network — property lives on edges, not nodes",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Five nodes appear; each labeled with a role (scientist, economist, citizen, researcher, voter). No edges yet. Label: 'Each individual.'"
+          },
+          {
+            "at": 0.35,
+            "event": "Edges draw between nodes. An emergent glow appears on the edges — NOT on the nodes. Label: 'The intelligence lives here.'"
+          },
+          {
+            "at": 0.65,
+            "event": "A bounding box draws around a single node — label 'Individual intelligence framework'; the edge-glow fades inside the box (the framework misses it)."
+          },
+          {
+            "at": 0.85,
+            "event": "'Every MI framework is a framework of individuals. This is what it misses.' — terracotta"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B18_Network",
+        "production_viz": {
+          "label": "tier six — on edges, not nodes",
+          "mechanic": "Edges glow; single-node bounding box fades the glow (individual frameworks miss it)"
+        }
+      },
+      "audio_file": "mp3/beat-B18.mp3",
+      "actual_duration_s": 18.74,
+      "lane": "manim",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B18.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "V — The Tier That Isn't in Anyone",
+      "estimated_duration_s": 28,
+      "narration_text": "And here’s the sharpest reframe of the machine itself: an LLM may be a lossy compression of collective human intelligence — our own writing reflected back. The collective axis is what that adds — not just lossy writing, but missing the friction between writers that shaped the writing. Centuries of what we wrote, argued, got right and wrong, compressed with extraordinary fidelity. Impressive and limited for exactly the same reason.",
+      "new_visual_element": "The lossy compression — and what the codec drops",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "A river of text-marks from many author-nodes funnels into a compressor block; a model-mark emits the pattern back as a mirror"
+          },
+          {
+            "at": 0.45,
+            "event": "The mirror reflects the WRITING faithfully; the author-nodes' connecting edges (disagreements, friction, trust-marks) do NOT pass the funnel — they dissolve at the codec"
+          },
+          {
+            "at": 0.72,
+            "event": "friction · disagreement · trust label appears — terracotta dashes dissolving at the funnel"
+          },
+          {
+            "at": 0.88,
+            "event": "'Our own pattern-making, reflected back.' — serif"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B19_LossyCompression",
+        "production_viz": {
+          "label": "compression of us",
+          "mechanic": "Text flows through; between-edges are stripped at the funnel; credit: Ted Chiang framing"
+        }
+      },
+      "audio_file": "mp3/beat-B19.mp3",
+      "actual_duration_s": 21.76,
+      "lane": "manim",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B19.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B20",
+      "act": "V — The Tier That Isn't in Anyone",
+      "estimated_duration_s": 16,
+      "narration_text": "What the compression cannot carry is the thing that happened between us — the collaborative friction, the disagreement that refined an idea, the trust that made knowledge transmissible. That's tier six. That's what no amount of training data captures — because it was never in the text to begin with.",
+      "new_visual_element": "The between — what the funnel strips",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "lane": "manim",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Two author-nodes argue: an idea-chip bounces between them, visibly reshaping on each pass"
+          },
+          {
+            "at": 0.55,
+            "event": "The final refined chip enters the corpus; the BOUNCES — the edges — dissolve behind it"
+          },
+          {
+            "at": 0.85,
+            "event": "'Never in the text to begin with.' — terracotta underline"
+          }
+        ]
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B20_TheBetween",
+        "production_viz": {
+          "label": "tier six",
+          "mechanic": "Idea refined by bounces; only the endpoint enters the training data"
+        }
+      },
+      "audio_file": "mp3/beat-B20.mp3",
+      "actual_duration_s": 15.05,
+      "lane": "manim",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B20.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B21",
+      "act": "VI — Question Askers",
+      "estimated_duration_s": 7,
+      "narration_text": "Act six. What the reorientation actually looks like — and the one-sentence version of the whole argument.",
+      "new_visual_element": "Act card VI — Question Askers",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeSegmentCard",
+          "props": {
+            "title": "Question Askers",
+            "actLabel": "Act VI"
+          },
+          "rendered": {
+            "out": "media/B21.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B21.mp3",
+      "actual_duration_s": 6.19,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B21.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B22",
+      "act": "VI — Question Askers",
+      "estimated_duration_s": 13,
+      "narration_text": "The taxonomy is published as a draft, and pushback is the point. So we took it up on that. Watch: we asked Claude to triage a syllabus against the seven tiers.",
+      "new_visual_element": "ASK micro-beat: triage a syllabus",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Here's the audit.",
+            "topic": "TRIAGE · SEVEN TIERS",
+            "segment": "Knowing Enough to Distrust the Machine",
+            "command": "Here's a standard intro course syllabus. Classify every graded activity by which of the seven tiers it trains — and flag every hour spent training tier-1 skills a machine already does at superhuman level.",
+            "runningText": "triaging the syllabus…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B22.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B22.mp3",
+      "actual_duration_s": 8.85,
+      "lane": "ask",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B22.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B23",
+      "act": "VI — Question Askers",
+      "estimated_duration_s": 16,
+      "narration_text": "The result reads like an audit you can’t unsee: week after week of graded hours landing on tier one — retrieval, drill, format — with problem formulation appearing exactly nowhere as a graded act. That’s one syllabus. The claim is that it’s nearly every syllabus. Run yours.",
+      "new_visual_element": "RESULT: the triaged syllabus artifact",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Week 1–4: fact retrieval · format · drill.  Tier 1.",
+              "Week 5–8: syntax, pattern recognition, recall.  Tier 1.",
+              "Problem formulation as a graded act:  0 weeks.",
+              "Causal reasoning, graded:  0 weeks.",
+              "Run yours."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B23.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B23.mp3",
+      "actual_duration_s": 15.17,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B23.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B24",
+      "act": "VI — Question Askers",
+      "estimated_duration_s": 16,
+      "narration_text": "The one-sentence version: stop teaching people to be slower calculators; start teaching better question askers. That's not a tweak — it's a reorientation of what school is for. The machines aren't the problem. The curriculum that didn't notice them is. And the curriculum, unlike the machines, we can change.",
+      "new_visual_element": "The reorientation",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "What school is actually for.",
+            "left": {
+              "label": "The machines",
+              "note": "Fixed.\n\nNot the problem."
+            },
+            "right": {
+              "label": "The curriculum",
+              "note": "Ours to move.\n\nThe problem — and the fix."
+            },
+            "sparkLine": "Stop teaching slower calculators. Start teaching better question askers."
+          },
+          "rendered": {
+            "out": "media/B24.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B24.mp3",
+      "actual_duration_s": 15.77,
+      "lane": "remotion",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B24.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B25",
+      "act": "CLOSE",
+      "estimated_duration_s": 30,
+      "narration_text": "Let's recap with Claude. The freeze isn't weakness — it's twelve years of answering with no training in asking. The curriculum wasn't malicious; it was right for a world that ended. Where machines are strongest, competing directly is malpractice — triage toward the unscaffolded tiers. Pattern matching is genuine intelligence, just not sufficient intelligence. The machine is our own writing compressed; what it can't reflect is what happens between us. And the fix is a reorientation: question askers, not slower calculators.",
+      "new_visual_element": "VERDICT recap",
+      "lead_silence_s": 0.5,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Better question askers",
+            "artifactHeading": "Key findings — Knowing Enough to Distrust the Machine",
+            "artifactLines": [
+              "The freeze is trained: all answering, no asking.",
+              "The curriculum was right — for a world that ended.",
+              "Pattern matching is genuine intelligence. Not sufficient intelligence.",
+              "Competing on the machine's turf is malpractice; triage toward 4, 5, 7.",
+              "The machine reflects our writing, never our between.",
+              "Reorient the school: question askers, not slower calculators."
+            ]
+          },
+          "rendered": {
+            "out": "media/B25.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B25.mp3",
+      "actual_duration_s": 21.82,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B25.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B26",
+      "act": "CLOSE",
+      "estimated_duration_s": 40,
+      "narration_text": "Your turn — and this one takes the taxonomy up on its own request: push back. Here’s the prompt: here is a seven-tier triage taxonomy of intelligences — pattern, embodied, social, metacognitive, causal, collective, wisdom — built to ask which intelligences machines endanger and which education neglects. First, attack it: name a human intelligence it misses, a tier you’d reorder, or a case where the machine-strength overlay is wrong. Second, apply it: triage a syllabus or curriculum I give you, tier by graded hour. Third, propose the single highest-leverage change that moves graded time from tier one to tiers four, five, or seven. The taxonomy gets better with more minds on it — be one of them.",
+      "new_visual_element": "YOUR TURN",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "ATTACK · APPLY · PROPOSE",
+            "segment": "Knowing Enough to Distrust the Machine",
+            "runningText": "paste this into Claude…",
+            "command": "Here is a seven-tier triage taxonomy of human intelligences (pattern/association, embodied, social, metacognitive/supervisory, causal/counterfactual, collective/distributed, existential/wisdom), built to ask which intelligences machines endanger and which education neglects. (1) ATTACK IT: name an intelligence it misses, a tier you'd reorder, or a case where its machine-strength overlay is wrong. (2) APPLY IT: triage this syllabus/curriculum [paste one], classifying every graded activity by tier and totaling the graded hours per tier. (3) PROPOSE the single highest-leverage change that moves graded time from tier 1 to tiers 4, 5, or 7 — with the assessment design that makes it gradable.",
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B26.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B26.mp3",
+      "actual_duration_s": 37.61,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B26.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "B27",
+      "act": "CLOSE",
+      "estimated_duration_s": 7,
+      "narration_text": "Knowing Enough to Distrust the Machine. Liam, in for Bear.",
+      "new_visual_element": "Title re-read outro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Knowing Enough to Distrust the Machine",
+            "slug": "claude-liam-distrust-the-machine"
+          },
+          "rendered": {
+            "out": "media/B27.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B27.mp3",
+      "actual_duration_s": 4.08,
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B27.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "estimated_duration_s": 22.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Better question askers",
+            "artifactHeading": "Key findings — Knowing Enough to Distrust the Machine",
+            "artifactLines": [
+              "The freeze is trained: all answering, no asking.",
+              "The curriculum was right — for a world that ended.",
+              "Pattern matching is genuine intelligence. Not sufficient intelligence.",
+              "Competing on the machine's turf is malpractice; triage.",
+              "The machine reflects our writing, never our between.",
+              "Reorient the school: question askers, not slower calculators."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "estimated_duration_s": 15.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "YOUR TURN",
+            "segment": "Knowing Enough to Distrust the Machine",
+            "greeting": "Ciao, Liam.",
+            "command": "Ask Claude: Knowing Enough to Distrust the Machine",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-13T12:13:52"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Knowing Enough to Distrust the Machine",
+            "slug": "claude-liam-distrust-the-machine"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

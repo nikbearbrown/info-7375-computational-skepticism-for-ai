@@ -1,0 +1,646 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-10-calibration-curve",
+    "title": "Why an Accurate Model Can Still Lie Every Time It Says 99%",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that model accuracy is orthogonal to calibration — a model can score high on accuracy while systematically overclaiming confidence in exactly the bins where it matters most, visible only by building a reliability diagram. Source: books/computational-skepticism-for-ai/chapters/02-probability-uncertainty-and-the-confidence-illusion.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = well-calibrated bins / on the diagonal; CRIMSON = overclaiming bins / peeling from diagonal; GOLD = the gap / the lie; SLATE = prediction dots accumulating",
+    "note": "EXCLUSIONS: no ECE or Brier formulas, no temperature-scaling or softmax mechanics, no human-forecaster calibration tangent — one model, one curve",
+    "total_estimated_duration_seconds": 188,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 10,
+    "build": {
+      "at": "2026-07-19T02:58:38",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why an Accurate Model Can Still Lie Every Time It Says 99%",
+            "greeting": "Ni hao, Liam.",
+            "command": "A model scores ninety-four percent accuracy and is still wrong every time it says it is ninety-nine percent sure.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "A model scores ninety-four percent accuracy and is still wrong every time it says it is ninety-nine percent sure.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why an Accurate Model Can Still Lie Every Time It Says 99%",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why an Accurate Model Can Still Lie\nEvery Time It Says 99%"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 6.87,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A medical AI flags high-risk patients. The team checks accuracy: ninety-four percent. Strong number. Then a doctor asks a different question — when the model says ninety-nine percent confident, how often is it actually right? The answer is seventy-one percent.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "graphic": {
+        "manim": "B02_AccuracyVsConfidence",
+        "production_viz": {
+          "label": "accuracy vs. confidence — two different measurements",
+          "mechanic": "two LabelChips side by side: 'ACCURACY 94%' in teal and 'CONFIDENCE 99%' in crimson; a gold annotation arrow points from the crimson chip downward to a SerifLabel 'actual rate: 71%'; the gap between 99% and 71% is emphasized with a gold bracket",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "establish the core dissonance in the cold open; the gap is the whole film"
+        }
+      },
+      "scene_class": "B02_AccuracyVsConfidence",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 14.53,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:58:38",
+        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "What does it mean for a model to be honest about how sure it is — and how would you check?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What does it mean for a model to be honest about",
+              "uncertainty?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What does it mean for a model to be honest about how sure it is?",
+        "sub": "and how would you check"
+      },
+      "scene_class": "B03_Question",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 4.91,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:58:38"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Accuracy measures whether predictions land. Calibration measures whether the confidence numbers mean anything. A model can nail one and completely fail the other. Accuracy will never tell you about calibration.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B04_TwoAxes",
+        "production_viz": {
+          "label": "accuracy vs. calibration — orthogonal measurements",
+          "mechanic": "a 2x2 grid draws in: top-left 'accurate + calibrated' (teal dot), top-right 'accurate + miscalibrated' (crimson dot), bottom-left and bottom-right are faded; a gold circle highlights the 'accurate + miscalibrated' cell; SerifLabel 'this is possible' points to the gold circle",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the grid makes the independence visible; the crimson cell is the film's subject"
+        }
+      },
+      "scene_class": "B04_TwoAxes",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 12.27,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:58:38",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Calibration is a claim about long-run frequencies. When the model says seventy percent confident across many predictions, it should be right seventy percent of the time. Not sixty. Not eighty-five. Seventy.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B05_DiagonalIdeal",
+        "production_viz": {
+          "label": "perfect calibration — the diagonal",
+          "mechanic": "a square axes box draws in with x-label 'predicted confidence' and y-label 'actual frequency'; a teal diagonal line from (0,0) to (1,1) draws in; SerifLabel 'perfect calibration' placed just above the midpoint of the line; small tick marks at 0.25, 0.5, 0.75, 1.0 on both axes",
+          "colors": [
+            "#1F6F5C"
+          ],
+          "note": "the diagonal is the reference object for the whole film — establish it clearly here"
+        }
+      },
+      "scene_class": "B05_DiagonalIdeal",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 12.03,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:58:38",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Here is how you build the curve that reveals the lie.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Here is how you build the curve that reveals the lie."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A minimalist editorial illustration of a reliability diagram being constructed: small slate prediction dots are piling into labeled confidence bins (labeled 0.1, 0.2 ... 0.9, 1.0) along the x-axis; above each bin a teal bar grows to show empirical accuracy; a teal diagonal reference line runs across the whole chart; the illustration is flat print on aged newsprint, charcoal ink lines, cream background — the process of accumulation is the subject",
+      "scene_class": "B06_CurveBuild",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 3.46,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:58:38"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Bin the model's predictions by stated confidence. Let outcomes pile up in each bin. Compute the fraction that were actually correct. Plot each bin's empirical frequency against its stated confidence. That is the reliability diagram.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "graphic": {
+        "manim": "B07_ReliabilityBuild",
+        "production_viz": {
+          "label": "reliability diagram building — bins accumulating",
+          "mechanic": "slate dots rain down and sort into 9 bins along the x-axis (0.1 to 0.9); each bin accumulates; teal bars grow from each bin showing empirical frequency; the teal diagonal reference line appears last; bins near the diagonal stay teal; bins that overshoot the diagonal turn crimson",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#2D3142"
+          ],
+          "note": "the accumulation animation is the key mechanic — prediction dots falling into bins, then bars rising; overclaiming bins peel crimson at the end"
+        }
+      },
+      "scene_class": "B07_ReliabilityBuild",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 13.44,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:58:38",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "When a model overclaims, the empirical curve peels away from the diagonal. The model says ninety percent. The bar lands at sixty-five. That gap is the lie — and the accuracy score never touched it.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "The empirical curve peels away from the diagonal exactly where the model overclaims.",
+        "attribution": "— Chapter 2, Computational Skepticism for AI",
+        "highlight_words": "peels away",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B08_Quote",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 11.22,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:58:38",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: When a model overclaims, the empirical curve peels away from the diagonal. The model says ninety percent. The bar lands at sixty-five. That gap is the lie — and"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A model that is well-calibrated in the middle bins — and badly overclaims in the high-confidence bins — will still report strong accuracy. The high-confidence calls are where it matters most. That is exactly where the curve lies.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B09_PeelHighConf",
+        "production_viz": {
+          "label": "high-confidence bins peeling — where the lie lives",
+          "mechanic": "a reliability diagram with the teal diagonal and 9 bars; bins 0.1–0.6 sit on or near the diagonal (teal); bins 0.7–0.9 are crimson and visually overshoot the diagonal, bars shorter than the diagonal reference; a gold bracket spans the rightmost crimson bars with label 'overclaims here'",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the gold bracket is the key call-out — the overclaiming concentrates in exactly the high-stakes bins"
+        }
+      },
+      "scene_class": "B09_PeelHighConf",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 12.59,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:58:38",
+        "needs": "PIPELINE → render animated_graphics.py scene B09_*"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "If a doctor, a judge, or a loan officer acts on the model's ninety-nine percent confidence, they are trusting a number the model has never earned.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "Trusting the model's stated confidence without checking calibration means trusting a number the model has never earned.",
+        "attribution": "— Chapter 2, Computational Skepticism for AI",
+        "highlight_words": "never earned",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B10_ImplicationQuote",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 8.32,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:58:38",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: If a doctor, a judge, or a loan officer acts on the model's ninety-nine percent confidence, they are trusting a number the model has never earned."
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The reliability diagram is available on almost any model output. It takes five lines of code to produce. Most teams never look at it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B11_DiagramContrast",
+        "production_viz": {
+          "label": "two reliability diagrams — calibrated vs. overclaiming",
+          "mechanic": "side-by-side two small reliability diagrams: left panel labeled 'calibrated' with all bars on the diagonal (teal); right panel labeled 'overclaiming' with high-confidence bars below diagonal (crimson); gold annotation on right panel 'never reported'",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the split shows what calibration reporting would reveal; 'never reported' is the critique"
+        }
+      },
+      "scene_class": "B11_DiagramContrast",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 8.26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:58:38",
+        "needs": "PIPELINE → render animated_graphics.py scene B11_*"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "The medical AI flags one hundred high-risk patients — each flagged at ninety-nine percent confidence. The team validates. Of those hundred, seventy-one are confirmed. The model was right seventy-one percent of the time on its most confident calls. Accuracy stayed at ninety-four. Nobody looked at the reliability diagram. Calibration was never measured.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "graphic": {
+        "manim": "B12_ExampleDots",
+        "production_viz": {
+          "label": "100 high-confidence predictions — 71 correct, 29 wrong",
+          "mechanic": "one hundred small dots accumulate in a grid; 71 turn teal (correct) and 29 turn crimson (wrong); a SerifLabel '71%' hovers over the teal cluster; a MONO label '99% confidence claimed' sits above the grid; a gold annotation at bottom '29 wrong — at max confidence'",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the dot grid makes the miscalibration visceral — 29 crimson wrong ones against the 99% claim"
+        }
+      },
+      "scene_class": "B12_ExampleDots",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 18.84,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:58:38",
+        "needs": "PIPELINE → render animated_graphics.py scene B12_*"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Accuracy tells you how often the model lands. Calibration tells you whether it knows how sure it is. A high accuracy score is not an excuse to skip the reliability diagram.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Accuracy: how often right. Calibration: how honest",
+              "about confidence."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Accuracy tells you how often the model lands.",
+        "sub": "Calibration tells you whether it knows how sure it is.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "scene_class": "B13_Recap",
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 10.3,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:58:38"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "name": "OutroSeries",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why an Accurate Model Can Still Lie Every Time It Says 99%",
+            "artifactHeading": "Key findings — Why an Accurate Model Can Still Lie Every Time It Says 99%",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "Accuracy tells you how often the model lands."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:58:38"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "name": "OutroCTA",
+      "estimated_duration_s": 5.0,
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY AN ACCURATE MODEL CAN STILL LIE EVERY TIME IT SAYS ",
+            "segment": "Why an Accurate Model Can Still Lie Every Time It Says 99%",
+            "greeting": "Annyeong, Liam.",
+            "command": "Ask Claude: Why an Accurate Model Can Still Lie Every Time It Says 99%",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:58:38"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why an Accurate Model Can Still Lie Every Time It Says 99%",
+            "slug": "claude-liam-cs-10-calibration-curve",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

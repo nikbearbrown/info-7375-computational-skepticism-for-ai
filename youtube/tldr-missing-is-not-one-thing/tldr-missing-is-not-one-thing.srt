@@ -1,0 +1,303 @@
+1
+00:00:00,000 --> 00:00:04,257
+Vanakkam. This is Liam, in for Bear, with chapter three of INFO 7375, Computational
+
+2
+00:00:04,277 --> 00:00:08,535
+Skepticism for AI, at Northeastern. This film is about blank cells. The reason a
+
+3
+00:00:08,555 --> 00:00:13,423
+value is missing decides whether filling it in is safe. Sort the rows by what you
+
+4
+00:00:13,443 --> 00:00:18,311
+can see, and some blanks line up. Some never will. The trap: the worst kind of
+
+5
+00:00:18,331 --> 00:00:20,450
+missing looks exactly like the harmless kind.
+
+6
+00:00:20,520 --> 00:00:24,560
+Why should you care? Every dataset you inherit has blanks, and the first fix anyone
+
+7
+00:00:24,580 --> 00:00:28,619
+reaches for is the average. When the reason is harmless, the average lands on the
+
+8
+00:00:28,639 --> 00:00:32,950
+truth. When the people who left it blank are different, it drifts in a direction you
+
+9
+00:00:32,970 --> 00:00:36,739
+cannot measure. Knowing the three kinds tells you which question no plot can answer
+
+10
+00:00:36,759 --> 00:00:37,280
+for you.
+
+11
+00:00:37,350 --> 00:00:42,547
+The real question: before I fill them in, should I ask why it is missing? How much
+
+12
+00:00:42,567 --> 00:00:46,536
+is missing is identical here: eighteen percent, both times. The count cannot tell
+
+13
+00:00:46,556 --> 00:00:48,070
+them apart. The reason can.
+
+14
+00:00:48,140 --> 00:00:52,438
+Three words you'll hear. A missingness matrix: every row a thin line, every column a
+
+15
+00:00:52,458 --> 00:00:57,044
+stripe, dark where a value is absent. Impute: fill a blank with an estimate, such as
+
+16
+00:00:57,064 --> 00:01:01,938
+the average of the values you can see. And a subgroup: rows that share a trait, such
+
+17
+00:01:01,958 --> 00:01:03,090
+as everyone under twenty-five.
+
+18
+00:01:03,160 --> 00:01:07,367
+Two tables of the same fifty people. In each, the income column is eighteen percent
+
+19
+00:01:07,387 --> 00:01:11,594
+blank: nine rows out of fifty. Look at the dark cells. Scattered, in both. Same
+
+20
+00:01:11,614 --> 00:01:16,102
+count, same look. Fill both with the average income you can see. One fill lands on
+
+21
+00:01:16,122 --> 00:01:18,920
+the truth. The other lands somewhere else. Which is which?
+
+22
+00:01:18,990 --> 00:01:22,834
+Start with the easy case: a third table, where nine income cells were wiped at
+
+23
+00:01:22,854 --> 00:01:26,956
+random, a coin flip, nothing to do with the person. Fill the nine with the average
+
+24
+00:01:26,976 --> 00:01:31,077
+of the forty-one you can see. We built this table, so we can reveal the true
+
+25
+00:01:31,097 --> 00:01:35,456
+average. The fill lands right on it. Wipe a different nine at random: it lands on it
+
+26
+00:01:35,476 --> 00:01:38,290
+again. Random loss shrinks your sample. It does not tilt it.
+
+27
+00:01:38,360 --> 00:01:42,957
+Now table A. Same fill, same average of the visible rows. This time the dot lands to
+
+28
+00:01:42,977 --> 00:01:47,302
+the right of the truth. Too high. Something about who is blank pulled it. Look along
+
+29
+00:01:47,322 --> 00:01:51,103
+the age stripe, beside each dark cell: every blank row belongs to someone under
+
+30
+00:01:51,123 --> 00:01:55,177
+twenty-five. In this table the young earn less, and they are the ones who skipped
+
+31
+00:01:55,197 --> 00:01:55,720
+the question.
+
+32
+00:01:55,790 --> 00:02:00,363
+The natural fix: fill each blank with the average of its own age group. Do it for
+
+33
+00:02:00,383 --> 00:02:04,956
+table A, and the dot slides back onto the truth. Now do exactly the same thing for
+
+34
+00:02:04,976 --> 00:02:09,009
+table B, whose blanks look just as scattered. The dot barely moves. It stays low.
+
+35
+00:02:09,029 --> 00:02:11,170
+And nothing in the table tells you why.
+
+36
+00:02:11,240 --> 00:02:15,852
+Here's the move. Stop reading the matrix in file order. Sort the rows by a column
+
+37
+00:02:15,872 --> 00:02:21,063
+you can see, and watch where the blanks go. Sort table A by age: the nine dark cells
+
+38
+00:02:21,083 --> 00:02:24,537
+slide together, all inside the under-twenty-fives. Sort table B by age: still
+
+39
+00:02:24,557 --> 00:02:28,590
+scattered. By city: scattered. A block means the blanks depend on something you can
+
+40
+00:02:28,610 --> 00:02:28,880
+see.
+
+41
+00:02:28,950 --> 00:02:33,667
+Table B stays scattered under every column it has. So here is the one column it
+
+42
+00:02:33,687 --> 00:02:37,517
+doesn't have: each person's true income, the value that was never written down.
+
+43
+00:02:37,537 --> 00:02:42,254
+Before I sort by it, commit. Where will table B's nine blanks go? And the random
+
+44
+00:02:42,274 --> 00:02:42,550
+table's?
+
+45
+00:02:42,620 --> 00:02:47,726
+Sort. Table B's blanks slide into one block at the very top: the nine highest
+
+46
+00:02:47,746 --> 00:02:52,168
+earners. The random table's stay scattered. From inside the data, those two looked
+
+47
+00:02:52,188 --> 00:02:52,510
+identical.
+
+48
+00:02:52,580 --> 00:02:56,364
+These deserve names, and they come from Donald Rubin's work on missing data. Missing
+
+49
+00:02:56,384 --> 00:03:00,167
+completely at random: the chance of a blank depends on nothing. Missing at random:
+
+50
+00:03:00,187 --> 00:03:04,514
+it depends on something you can see, like age. Missing not at random: it depends on
+
+51
+00:03:04,534 --> 00:03:09,133
+the missing value itself. The first two, a sort can show you. The third, no sort you
+
+52
+00:03:09,153 --> 00:03:10,220
+can run ever will.
+
+53
+00:03:10,290 --> 00:03:13,678
+Same shape, different table. A study's final measurement, blank for the patients who
+
+54
+00:03:13,698 --> 00:03:17,348
+left before the end. Sort by anything recorded: scattered. The sort that would line
+
+55
+00:03:17,368 --> 00:03:21,804
+them up is who got sicker, which is the very thing that's missing. So you don't find
+
+56
+00:03:21,824 --> 00:03:26,260
+this kind with a plot. You find it by asking: who would not report this, and why?
+
+57
+00:03:26,330 --> 00:03:30,131
+Back to the two tables. Both eighteen percent blank, both scattered in file order.
+
+58
+00:03:30,151 --> 00:03:35,045
+Sort by age: table A lines up, so fill within the age group and you land on the
+
+59
+00:03:35,065 --> 00:03:39,139
+truth. Table B never lines up, and its average sits low, biased in exactly the
+
+60
+00:03:39,159 --> 00:03:42,687
+direction you cannot measure. Not taught here: how to choose an imputation method,
+
+61
+00:03:42,707 --> 00:03:45,690
+or rows a join dropped before any matrix could see them.
+
+62
+00:03:45,760 --> 00:03:49,488
+Let's recap with Claude. Missing is not one thing. If the blanks depend on nothing,
+
+63
+00:03:49,508 --> 00:03:53,486
+an average fill lands on the truth. If they depend on something you can see, like
+
+64
+00:03:53,506 --> 00:03:57,733
+age, sort by it, fill within the group, and you recover it. If they depend on the
+
+65
+00:03:57,753 --> 00:04:01,481
+missing value itself, every fill drifts, and no plot can show you. For that kind,
+
+66
+00:04:01,501 --> 00:04:03,230
+ask who would not report, and why.
+
+67
+00:04:03,300 --> 00:04:07,521
+Your turn. Paste this into Claude: A clinic dataset has a column pain_score that is
+
+68
+00:04:07,541 --> 00:04:10,913
+18% blank, and the missingness matrix shows the blanks cluster in evening
+
+69
+00:04:10,933 --> 00:04:14,871
+appointments. Before writing any code, predict: MCAR, MAR, or MNAR? Then give me one
+
+70
+00:04:14,891 --> 00:04:19,394
+story under which it really is MAR, and one under which it is actually MNAR. For
+
+71
+00:04:19,414 --> 00:04:23,917
+each story, say which way an average fill would move the mean pain score, and name
+
+72
+00:04:23,937 --> 00:04:28,441
+one question I should ask the clinic that no plot of this data could answer. Two
+
+73
+00:04:28,461 --> 00:04:32,964
+things to look for. Did it commit to a prediction before it reached for code? And
+
+74
+00:04:32,984 --> 00:04:37,205
+does its MNAR story name who would not report, and why, instead of recommending a
+
+75
+00:04:37,225 --> 00:04:37,770
+fancier fill?
+
+76
+00:04:37,840 --> 00:04:41,885
+Missing Is Not One Thing. At Nik Bear Brown.

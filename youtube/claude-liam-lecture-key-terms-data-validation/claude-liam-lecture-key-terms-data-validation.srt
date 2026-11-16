@@ -1,0 +1,1827 @@
+1
+00:00:00,000 --> 00:00:01,299
+Computational Skepticism, Exam Prep.
+
+2
+00:00:01,349 --> 00:00:02,647
+Key Terms: Data Validation.
+
+3
+00:00:02,697 --> 00:00:07,368
+Thirty terms for questioning a dataset
+before you trust it, from the row count
+
+4
+00:00:07,418 --> 00:00:10,402
+and missing values to the choices nobody
+wrote down.
+
+5
+00:00:10,452 --> 00:00:15,460
+Knowing them lets you say exactly what a
+clean report does and does not show.
+
+6
+00:00:16,610 --> 00:00:16,836
+Hallo.
+
+7
+00:00:16,886 --> 00:00:18,490
+This is Liam, in for Bear.
+
+8
+00:00:18,540 --> 00:00:22,627
+A newcomer thinks that if the standard
+checks come back clean, the data is clean.
+
+9
+00:00:22,677 --> 00:00:25,109
+But the checks only examine what was
+written down.
+
+10
+00:00:25,159 --> 00:00:27,866
+Dropped rows, unwritten choices and proxy
+labels never show up.
+
+11
+00:00:27,916 --> 00:00:31,727
+This film goes through thirty terms for
+asking what a dataset cannot show, each
+
+12
+00:00:31,777 --> 00:00:32,830
+one with a picture.
+
+13
+00:00:33,180 --> 00:00:36,340
+Six labels sit in the corners of the
+pictures that follow.
+
+14
+00:00:36,390 --> 00:00:39,841
+In the book text: the course text uses and
+explains the term.
+
+15
+00:00:39,891 --> 00:00:43,634
+Outside source: the term comes from a
+named reference outside the course text.
+
+16
+00:00:43,684 --> 00:00:46,844
+Computed: the numbers are worked out on
+screen from stated inputs.
+
+17
+00:00:46,894 --> 00:00:51,512
+Simulation: a made-up run with a fixed
+seed, so it comes out the same every time.
+
+18
+00:00:51,562 --> 00:00:54,430
+Illustrative data: numbers chosen to show
+the idea, not measured.
+
+19
+00:00:54,480 --> 00:00:57,640
+Conceptual: a drawing of the idea, with no
+data behind it.
+
+20
+00:00:57,990 --> 00:01:02,932
+This is a map of the film, a table that
+fills in one group at a time.
+
+21
+00:01:02,982 --> 00:01:04,400
+Thirty terms in four groups.
+
+22
+00:01:04,450 --> 00:01:06,162
+The first group is the frame.
+
+23
+00:01:06,212 --> 00:01:09,099
+Epistemic frame, row-count question,
+silent join drop, recording instrument and
+
+24
+00:01:09,149 --> 00:01:09,686
+Plato's Cave.
+
+25
+00:01:09,736 --> 00:01:13,210
+They ask what a dataset is, and who
+decided what it holds.
+
+26
+00:01:13,560 --> 00:01:17,595
+Second row, the procedural pass, the
+standard checks and their limits.
+
+27
+00:01:17,645 --> 00:01:21,680
+Procedural EDA, exploratory data analysis,
+column type, sentinel value and Pearson
+
+28
+00:01:21,730 --> 00:01:22,052
+correlation.
+
+29
+00:01:22,102 --> 00:01:27,251
+MCAR, MAR and MNAR, missing completely at
+random, at random, and not at random.
+
+30
+00:01:27,301 --> 00:01:31,707
+Then missingness matrix, outlier, the IQR
+rule, for interquartile range, and the
+
+31
+00:01:31,757 --> 00:01:32,450
+z-score rule.
+
+32
+00:01:32,800 --> 00:01:35,009
+Third row, charts and silent failures.
+
+33
+00:01:35,059 --> 00:01:39,527
+Marks and channels, channel ranking and
+expressiveness cover how a chart argues.
+
+34
+00:01:39,577 --> 00:01:42,163
+Then the failures the standard checks
+miss.
+
+35
+00:01:42,213 --> 00:01:45,551
+Sampling, also called the convenience
+sample, time-window, label, feature-
+
+36
+00:01:45,601 --> 00:01:48,940
+engineering and access boundary, with
+datasheets and boundary leakage.
+
+37
+00:01:49,290 --> 00:01:50,585
+Last row, the interrogation.
+
+38
+00:01:50,635 --> 00:01:53,610
+Prediction-lock, gap analysis, row tracing
+and do not delegate.
+
+39
+00:01:53,660 --> 00:01:58,988
+This is the work that comes after EDA, the
+questions the plots cannot answer, and the
+
+40
+00:01:59,038 --> 00:02:02,350
+part that stays with you instead of an AI
+tool.
+
+41
+00:02:02,700 --> 00:02:06,196
+The boxes on the left are choices made
+before you saw the data.
+
+42
+00:02:06,246 --> 00:02:09,741
+What gets recorded, what is included, how
+tables are joined, where it stops.
+
+43
+00:02:09,791 --> 00:02:11,378
+Each was decided, none written down.
+
+44
+00:02:11,428 --> 00:02:13,014
+Together they are the epistemic frame.
+
+45
+00:02:13,064 --> 00:02:16,833
+For example, an AI agent hands a job
+seeker a table of job listings.
+
+46
+00:02:16,883 --> 00:02:20,924
+Someone chose which job boards to search,
+which job titles counted, and the day the
+
+47
+00:02:20,974 --> 00:02:21,470
+search stopped.
+
+48
+00:02:21,520 --> 00:02:24,470
+None of that is a column, yet it shapes
+every row.
+
+49
+00:02:24,820 --> 00:02:28,007
+In this made-up example the documentation
+promises eighty-five thousand customer
+
+50
+00:02:28,057 --> 00:02:31,243
+records, and the merged table holds
+seventy-nine thousand four hundred.
+
+51
+00:02:31,293 --> 00:02:33,832
+The row-count question asks why exactly
+that many.
+
+52
+00:02:33,882 --> 00:02:38,687
+The red gap is dropped rows, not empty
+cells, so a missing value check sees
+
+53
+00:02:38,737 --> 00:02:39,011
+nothing.
+
+54
+00:02:39,061 --> 00:02:43,542
+For example, an agent gathers the job
+listings for one search into a table.
+
+55
+00:02:43,592 --> 00:02:47,750
+Before trusting its fit scores, ask how
+many listings the job boards actually
+
+56
+00:02:47,800 --> 00:02:51,310
+showed, and why the table holds exactly
+the number it does.
+
+57
+00:02:51,660 --> 00:02:55,248
+Each dot is a customer in a simulated join
+of two hundred.
+
+58
+00:02:55,298 --> 00:02:57,370
+Red dots have an ID typed differently.
+
+59
+00:02:57,420 --> 00:03:01,613
+Fourteen vanish, mostly red, and the red
+share falls from fifteen percent to about
+
+60
+00:03:01,663 --> 00:03:01,917
+ten.
+
+61
+00:03:01,967 --> 00:03:04,038
+A silent join drop raises no error.
+
+62
+00:03:04,088 --> 00:03:07,979
+For example, a company joins its list of
+applicants to their interview scores,
+
+63
+00:03:08,029 --> 00:03:09,192
+matching on applicant ID.
+
+64
+00:03:09,242 --> 00:03:13,132
+Where the interview system typed an ID
+with an extra space, nothing matches.
+
+65
+00:03:13,182 --> 00:03:16,770
+That applicant drops out of the merged
+table, and nothing warns anyone.
+
+66
+00:03:17,120 --> 00:03:20,790
+A field of things and one sensor, the pink
+window sweeping across.
+
+67
+00:03:20,840 --> 00:03:23,890
+Filled dots inside were recorded, hollow
+dots outside never were.
+
+68
+00:03:23,940 --> 00:03:26,370
+The recording instrument is whatever did
+the recording.
+
+69
+00:03:26,420 --> 00:03:29,470
+Thirteen of twenty-four reach the table,
+which still looks complete.
+
+70
+00:03:29,520 --> 00:03:32,880
+For example, a company's applicant-
+tracking system captures only people who
+
+71
+00:03:32,930 --> 00:03:34,430
+applied through its online form.
+
+72
+00:03:34,480 --> 00:03:39,080
+A candidate referred by email never enters
+the table, and nothing in it shows that
+
+73
+00:03:39,130 --> 00:03:39,700
+they existed.
+
+74
+00:03:40,050 --> 00:03:43,046
+A fire, an object, and its red shadow on
+the wall.
+
+75
+00:03:43,096 --> 00:03:46,369
+The object moves, the shadow changes size,
+the object stays the same.
+
+76
+00:03:46,419 --> 00:03:48,585
+Plato's Cave says a dataset is the shadow.
+
+77
+00:03:48,635 --> 00:03:51,077
+Measuring it exactly does not show you the
+fire.
+
+78
+00:03:51,127 --> 00:03:55,231
+For example, a table of keyword counts
+from résumés can be measured to the last
+
+79
+00:03:55,281 --> 00:03:55,508
+decimal.
+
+80
+00:03:55,558 --> 00:03:56,892
+The résumés are the shadows.
+
+81
+00:03:56,942 --> 00:04:01,046
+What each candidate can actually do is the
+fire, and no exact count of keywords
+
+82
+00:04:01,096 --> 00:04:01,600
+reaches it.
+
+83
+00:04:01,950 --> 00:04:06,139
+A table of five checks, each ticked, each
+with its limit in red.
+
+84
+00:04:06,189 --> 00:04:09,725
+Procedural EDA, exploratory data analysis
+run as a routine, covers types,
+
+85
+00:04:09,775 --> 00:04:11,355
+distributions, missingness, correlations
+and outliers.
+
+86
+00:04:11,405 --> 00:04:12,334
+Run it first.
+
+87
+00:04:12,384 --> 00:04:14,616
+It cannot see what was never written.
+
+88
+00:04:14,666 --> 00:04:20,159
+For example, an AI tool runs the standard
+pass on a table of job listings, and the
+
+89
+00:04:20,209 --> 00:04:23,093
+salary histograms, missing counts and
+correlations all look fine.
+
+90
+00:04:23,143 --> 00:04:27,984
+None of it can show the listings that were
+taken down before the agent collected
+
+91
+00:04:28,034 --> 00:04:28,310
+them.
+
+92
+00:04:28,660 --> 00:04:30,256
+Zip codes for twenty made-up customers.
+
+93
+00:04:30,306 --> 00:04:33,822
+Treated as numbers, on the left, they
+average to thirty-one thousand one hundred
+
+94
+00:04:33,872 --> 00:04:35,742
+fifty-three, a place that does not exist.
+
+95
+00:04:35,792 --> 00:04:38,211
+Treated as categories, on the right, you
+count them.
+
+96
+00:04:38,261 --> 00:04:39,582
+Column type is that choice.
+
+97
+00:04:39,632 --> 00:04:43,148
+For example, an agent stores each
+listing's job category code as a number
+
+98
+00:04:43,198 --> 00:04:44,520
+and reports the average code.
+
+99
+00:04:44,570 --> 00:04:46,440
+That average names no job at all.
+
+100
+00:04:46,490 --> 00:04:50,280
+The code is a category, so count how many
+listings fall under each one.
+
+101
+00:04:50,630 --> 00:04:54,762
+Sixty-eight invented ages, with a red bar
+far right at nine hundred ninety-nine.
+
+102
+00:04:54,812 --> 00:04:57,657
+That is a sentinel value, a placeholder
+for unknown.
+
+103
+00:04:57,707 --> 00:05:01,517
+Left in, it drags the mean age to about
+one hundred fifty-four.
+
+104
+00:05:01,567 --> 00:05:03,447
+Removed, the mean is about forty-one.
+
+105
+00:05:03,497 --> 00:05:07,628
+For example, an applicant-tracking system
+stores zero as the expected salary when a
+
+106
+00:05:07,678 --> 00:05:09,237
+candidate leaves the box blank.
+
+107
+00:05:09,287 --> 00:05:14,062
+A salary report averages those zeros in as
+if they were real, and the typical
+
+108
+00:05:14,112 --> 00:05:15,670
+expectation looks far too low.
+
+109
+00:05:16,020 --> 00:05:17,194
+Two invented scatter plots.
+
+110
+00:05:17,244 --> 00:05:22,088
+On the left the points follow a curve, and
+Pearson correlation is near zero, though x
+
+111
+00:05:22,138 --> 00:05:23,006
+fully determines y.
+
+112
+00:05:23,056 --> 00:05:26,371
+On the right a straight trend scores zero
+point nine three.
+
+113
+00:05:26,421 --> 00:05:27,900
+It only measures straight-line
+association.
+
+114
+00:05:27,950 --> 00:05:31,877
+Picture interview offers that rise with
+years of experience, then fall for the
+
+115
+00:05:31,927 --> 00:05:32,794
+most senior applicants.
+
+116
+00:05:32,844 --> 00:05:36,771
+That arch is a real relationship, yet
+Pearson correlation can score it near
+
+117
+00:05:36,821 --> 00:05:39,830
+zero, and a report would say experience
+does not matter.
+
+118
+00:05:40,180 --> 00:05:44,274
+An axis where zero is the true average
+income of four thousand simulated people.
+
+119
+00:05:44,324 --> 00:05:46,049
+The dot is the observed average.
+
+120
+00:05:46,099 --> 00:05:48,417
+MCAR, missing completely at random, has no
+pattern.
+
+121
+00:05:48,467 --> 00:05:51,673
+Thirty percent of values are gone, and the
+dot barely moves.
+
+122
+00:05:51,723 --> 00:05:56,112
+For example, a job board's server randomly
+fails to save the salary on some listings,
+
+123
+00:05:56,162 --> 00:05:57,888
+whatever the job or the pay.
+
+124
+00:05:57,938 --> 00:05:59,960
+The average salary stays near the truth.
+
+125
+00:06:00,010 --> 00:06:01,440
+The gaps only cost rows.
+
+126
+00:06:01,790 --> 00:06:05,199
+MAR, missing at random, means the gaps
+follow a column you can see.
+
+127
+00:06:05,249 --> 00:06:09,189
+Here the young skip more, and the red dot
+lands one thousand five hundred fifty-four
+
+128
+00:06:09,239 --> 00:06:09,721
+too high.
+
+129
+00:06:09,771 --> 00:06:12,914
+Inside each age band the error nearly
+vanishes, so age explains it.
+
+130
+00:06:12,964 --> 00:06:16,373
+For example, small companies leave the
+salary off their listings more often than
+
+131
+00:06:16,423 --> 00:06:19,299
+large ones, and company size is a column
+in the table.
+
+132
+00:06:19,349 --> 00:06:23,290
+Within each size the gaps are random, so
+you can correct the average by size.
+
+133
+00:06:23,640 --> 00:06:27,161
+MNAR, missing not at random, means the
+gaps follow the missing value itself.
+
+134
+00:06:27,211 --> 00:06:31,007
+Here high earners skip, and the red dot
+lands three thousand eight hundred thirty-
+
+135
+00:06:31,057 --> 00:06:31,831
+five too low.
+
+136
+00:06:31,881 --> 00:06:35,128
+No observed column explains it, so the
+standard checks cannot detect it.
+
+137
+00:06:35,178 --> 00:06:39,248
+For example, employers leave the salary
+off a listing when the pay is low, because
+
+138
+00:06:39,298 --> 00:06:40,896
+a low number puts applicants off.
+
+139
+00:06:40,946 --> 00:06:45,292
+A salary report built from the listings
+that do show pay comes out too high, and
+
+140
+00:06:45,342 --> 00:06:46,940
+nothing in the table reveals why.
+
+141
+00:06:47,290 --> 00:06:49,711
+Two grids, dark where a value is missing.
+
+142
+00:06:49,761 --> 00:06:51,255
+Each is a missingness matrix.
+
+143
+00:06:51,305 --> 00:06:52,799
+On the left, scattered gaps.
+
+144
+00:06:52,849 --> 00:06:57,122
+On the right, red stripes show two columns
+missing in the same six rows.
+
+145
+00:06:57,172 --> 00:06:58,666
+The matrix finds the pattern.
+
+146
+00:06:58,716 --> 00:07:00,211
+Only reasoning finds the cause.
+
+147
+00:07:00,261 --> 00:07:04,225
+For example, a matrix of job applications
+shows the portfolio link and the
+
+148
+00:07:04,275 --> 00:07:06,387
+references field missing in the same rows.
+
+149
+00:07:06,437 --> 00:07:08,240
+The stripe says they fail together.
+
+150
+00:07:08,290 --> 00:07:12,255
+Only a person asking around learns why,
+perhaps that an older application form
+
+151
+00:07:12,305 --> 00:07:13,490
+never had either field.
+
+152
+00:07:13,840 --> 00:07:17,746
+A strip of one hundred twenty-five
+simulated values, a few far out in red.
+
+153
+00:07:17,796 --> 00:07:20,572
+An outlier is an extreme value flagged as
+a candidate.
+
+154
+00:07:20,622 --> 00:07:25,376
+The one at four hundred twenty could be an
+error, a real executive, or a code for
+
+155
+00:07:25,426 --> 00:07:25,659
+unknown.
+
+156
+00:07:25,709 --> 00:07:26,506
+A person decides.
+
+157
+00:07:26,556 --> 00:07:30,180
+For example, a salary-estimate tool flags
+a junior analyst listing that pays far
+
+158
+00:07:30,230 --> 00:07:31,310
+more than the rest.
+
+159
+00:07:31,360 --> 00:07:35,549
+It could be a typo with an extra zero, a
+real premium, or a placeholder.
+
+160
+00:07:35,599 --> 00:07:37,810
+Someone who knows the field makes the
+call.
+
+161
+00:07:38,160 --> 00:07:40,543
+The dashed red fences are the IQR rule.
+
+162
+00:07:40,593 --> 00:07:43,887
+IQR, the interquartile range, is the width
+of the middle half.
+
+163
+00:07:43,937 --> 00:07:47,840
+The fences sit one point five widths
+beyond the quartiles, at twenty-nine and
+
+164
+00:07:47,890 --> 00:07:48,144
+sixty-nine.
+
+165
+00:07:48,194 --> 00:07:49,361
+Seven values fall outside.
+
+166
+00:07:49,411 --> 00:07:51,185
+Extremes do not move the fences.
+
+167
+00:07:51,235 --> 00:07:55,138
+For example, a tool checking salaries on
+analyst listings builds its fences from
+
+168
+00:07:55,188 --> 00:07:56,962
+the middle half of those salaries.
+
+169
+00:07:57,012 --> 00:08:01,219
+A senior director job filed as analyst
+lands beyond the upper fence and gets
+
+170
+00:08:01,269 --> 00:08:04,260
+flagged, and it does not drag the fences
+with it.
+
+171
+00:08:04,610 --> 00:08:08,663
+The z-score rule flags anything more than
+three standard deviations from the mean.
+
+172
+00:08:08,713 --> 00:08:13,082
+But the extremes inflate that standard
+deviation, so the red line sits at one
+
+173
+00:08:13,132 --> 00:08:15,607
+hundred sixty-two and only one value is
+flagged.
+
+174
+00:08:15,657 --> 00:08:17,185
+The IQR rule flagged seven.
+
+175
+00:08:17,235 --> 00:08:20,973
+For example, a few executive salaries
+mixed into analyst listings swell the
+
+176
+00:08:21,023 --> 00:08:21,604
+standard deviation.
+
+177
+00:08:21,654 --> 00:08:26,023
+The z-score band widens around them, and
+the very listings that should be flagged
+
+178
+00:08:26,073 --> 00:08:26,970
+pass as normal.
+
+179
+00:08:27,320 --> 00:08:29,333
+A scatter plot, one point per row.
+
+180
+00:08:29,383 --> 00:08:30,806
+The point is the mark.
+
+181
+00:08:30,856 --> 00:08:33,753
+A channel is a visual property that
+carries a value.
+
+182
+00:08:33,803 --> 00:08:36,699
+Horizontal position carries age, vertical
+position carries salary, hue carries
+
+183
+00:08:36,749 --> 00:08:36,994
+department.
+
+184
+00:08:37,044 --> 00:08:38,762
+Every chart is marks and channels.
+
+185
+00:08:38,812 --> 00:08:43,771
+For example, in a chart of job listings an
+agent has scored, each dot is a listing,
+
+186
+00:08:43,821 --> 00:08:44,361
+the mark.
+
+187
+00:08:44,411 --> 00:08:47,897
+Horizontal position carries the fit score,
+vertical position the salary, and color
+
+188
+00:08:47,947 --> 00:08:49,370
+whether the job is remote.
+
+189
+00:08:49,720 --> 00:08:52,805
+Two values, forty and fifty, shown by
+position, length, area and color
+
+190
+00:08:52,855 --> 00:08:53,066
+intensity.
+
+191
+00:08:53,116 --> 00:08:57,507
+In the top rows the gap is easy to see, in
+the bottom rows it is not.
+
+192
+00:08:57,557 --> 00:09:00,381
+That order is the channel ranking,
+measured by Cleveland and McGill.
+
+193
+00:09:00,431 --> 00:09:04,560
+For example, to compare the fit scores of
+two job offers, draw them as bars of
+
+194
+00:09:04,610 --> 00:09:06,650
+different length, near the top of the
+ranking.
+
+195
+00:09:06,700 --> 00:09:10,830
+Drawn as two shades of green, near the
+bottom, a real gap is easy to miss.
+
+196
+00:09:11,180 --> 00:09:12,687
+The same departments drawn twice.
+
+197
+00:09:12,737 --> 00:09:16,112
+On the left, hue tells them apart and
+implies no order.
+
+198
+00:09:16,162 --> 00:09:20,783
+On the right, size makes one department
+look like more, though the data is the
+
+199
+00:09:20,833 --> 00:09:21,095
+same.
+
+200
+00:09:21,145 --> 00:09:23,586
+Expressiveness means the channel matches
+the data type.
+
+201
+00:09:23,636 --> 00:09:27,011
+Its look-alike, effectiveness, means the
+key variable gets the strongest channel.
+
+202
+00:09:27,061 --> 00:09:31,371
+For example, a job-market report draws
+each industry as a circle of a different
+
+203
+00:09:31,421 --> 00:09:33,239
+size, just to tell them apart.
+
+204
+00:09:33,289 --> 00:09:37,599
+Industry has no order, so the biggest
+circle suggests a ranking the data never
+
+205
+00:09:37,649 --> 00:09:37,910
+had.
+
+206
+00:09:38,260 --> 00:09:42,152
+A histogram of two thousand simulated
+people, easy to reach on the left, hard on
+
+207
+00:09:42,202 --> 00:09:42,678
+the right.
+
+208
+00:09:42,728 --> 00:09:44,517
+Grey is everyone, dark is the sample.
+
+209
+00:09:44,567 --> 00:09:46,620
+The sampling assumption is that the two
+match.
+
+210
+00:09:46,670 --> 00:09:48,459
+In a convenience sample they do not.
+
+211
+00:09:48,509 --> 00:09:51,876
+The hardest to reach are thirty-two
+percent of people, three percent of the
+
+212
+00:09:51,926 --> 00:09:52,139
+sample.
+
+213
+00:09:52,189 --> 00:09:55,818
+For example, a model that predicts who
+gets an interview learns only from users
+
+214
+00:09:55,868 --> 00:09:58,183
+of one job app, the easiest data to
+collect.
+
+215
+00:09:58,233 --> 00:09:59,760
+Then it is used on everyone.
+
+216
+00:10:00,110 --> 00:10:02,214
+A simulated conversion rate over four
+years.
+
+217
+00:10:02,264 --> 00:10:06,523
+The model trained on the shaded first
+year, so its dashed prediction stays flat
+
+218
+00:10:06,573 --> 00:10:07,447
+at thirty percent.
+
+219
+00:10:07,497 --> 00:10:10,217
+In twenty twenty-two the real rate is
+eighteen percent.
+
+220
+00:10:10,267 --> 00:10:12,987
+The time-window assumption is that nothing
+changed since training.
+
+221
+00:10:13,037 --> 00:10:16,680
+For example, a salary-estimate tool
+trained on listings from a hiring boom
+
+222
+00:10:16,730 --> 00:10:19,142
+keeps quoting boom-time offers after the
+market cools.
+
+223
+00:10:19,192 --> 00:10:22,220
+Nothing in its training data shows that
+the market moved.
+
+224
+00:10:22,570 --> 00:10:25,745
+Bars from a simulated run, one for each
+level of real interest.
+
+225
+00:10:25,795 --> 00:10:27,358
+Height is how often people clicked.
+
+226
+00:10:27,408 --> 00:10:30,852
+The most interested did so forty-seven
+percent of the time, the least interested
+
+227
+00:10:30,902 --> 00:10:31,121
+eighteen.
+
+228
+00:10:31,171 --> 00:10:34,615
+The label assumption treats that recorded
+label as the construct you care about.
+
+229
+00:10:34,665 --> 00:10:38,647
+For example, a model of good candidates
+learns from a column saying who was hired.
+
+230
+00:10:38,697 --> 00:10:39,722
+Hired is the label.
+
+231
+00:10:39,772 --> 00:10:44,291
+Good at the job is the construct, and good
+people who were never hired get marked as
+
+232
+00:10:44,341 --> 00:10:44,560
+bad.
+
+233
+00:10:44,910 --> 00:10:47,564
+A column called customer lifetime value,
+in simulated numbers.
+
+234
+00:10:47,614 --> 00:10:50,869
+It is a calculation built on an old guess
+about retention.
+
+235
+00:10:50,919 --> 00:10:54,775
+Grey bars are the inherited column, red
+bars what it should say now.
+
+236
+00:10:54,825 --> 00:10:57,780
+The feature-engineering assumption treats
+someone's model output as raw data.
+
+237
+00:10:57,830 --> 00:11:01,686
+For example, an applicant-tracking system
+exports a match score, and a new hiring
+
+238
+00:11:01,736 --> 00:11:03,489
+model takes it as raw data.
+
+239
+00:11:03,539 --> 00:11:07,695
+It is really an older model's output,
+built on old guesses about which skills
+
+240
+00:11:07,745 --> 00:11:07,996
+matter.
+
+241
+00:11:08,046 --> 00:11:10,700
+When those go stale, so does the new
+model.
+
+242
+00:11:11,050 --> 00:11:13,982
+Forty made-up emails, the dots inside the
+grey disc.
+
+243
+00:11:14,032 --> 00:11:16,632
+The disc is the schema, the declared
+columns.
+
+244
+00:11:16,682 --> 00:11:20,939
+Red lines run from the emails to things
+outside, phone numbers, addresses, other
+
+245
+00:11:20,989 --> 00:11:21,270
+people.
+
+246
+00:11:21,320 --> 00:11:25,577
+The dashed ring is the access boundary,
+the schema plus everything its contents
+
+247
+00:11:25,627 --> 00:11:26,240
+point to.
+
+248
+00:11:26,290 --> 00:11:27,896
+Thirty-one of forty point outside.
+
+249
+00:11:27,946 --> 00:11:32,534
+For example, an agent given a job seeker's
+inbox to track applications also reaches
+
+250
+00:11:32,584 --> 00:11:36,179
+every attachment, link and forwarded
+thread in it, other applicants' résumés
+
+251
+00:11:36,229 --> 00:11:36,510
+included.
+
+252
+00:11:36,860 --> 00:11:39,996
+A timeline of seven sections, from
+motivation down to maintenance.
+
+253
+00:11:40,046 --> 00:11:43,818
+This is Datasheets for Datasets, by Gebru
+and colleagues, fifty-seven questions that
+
+254
+00:11:43,868 --> 00:11:46,048
+document how a dataset came to be.
+
+255
+00:11:46,098 --> 00:11:50,189
+It turns the unwritten frame into a
+checklist, to go through before collecting
+
+256
+00:11:50,239 --> 00:11:50,508
+data.
+
+257
+00:11:50,558 --> 00:11:54,330
+For example, before an agent starts
+collecting job listings, a datasheet asks
+
+258
+00:11:54,380 --> 00:11:58,472
+why the collection exists, which job
+boards it draws from, how listings get
+
+259
+00:11:58,522 --> 00:12:01,020
+cleaned, and who keeps it up to date.
+
+260
+00:12:01,370 --> 00:12:04,275
+One thousand made-up messages, five of
+them leaky, in red.
+
+261
+00:12:04,325 --> 00:12:06,934
+A random spot check of fifty, outlined,
+caught one.
+
+262
+00:12:06,984 --> 00:12:10,479
+Boundary leakage is private material
+escaping through the edge of a corpus.
+
+263
+00:12:10,529 --> 00:12:14,025
+Random checks mostly miss it, so you need
+red-teaming, a targeted hunt.
+
+264
+00:12:14,075 --> 00:12:17,570
+For example, a cover-letter assistant
+built on a corpus of recruiter emails
+
+265
+00:12:17,620 --> 00:12:21,115
+drafts a letter that quotes another
+applicant's phone number from an old
+
+266
+00:12:21,165 --> 00:12:21,411
+thread.
+
+267
+00:12:21,461 --> 00:12:24,070
+That number was never meant to leave the
+thread.
+
+268
+00:12:24,420 --> 00:12:25,824
+A card with a padlock.
+
+269
+00:12:25,874 --> 00:12:30,475
+Before the first histogram you write down
+what you expect the dataset to be, what it
+
+270
+00:12:30,525 --> 00:12:33,092
+holds, what it leaves out, what period it
+covers.
+
+271
+00:12:33,142 --> 00:12:35,417
+Dated and fixed, that is the prediction-
+lock.
+
+272
+00:12:35,467 --> 00:12:37,453
+Without it, every finding feels obvious
+afterwards.
+
+273
+00:12:37,503 --> 00:12:41,523
+For example, before opening an agent's log
+of applications, a job seeker writes and
+
+274
+00:12:41,573 --> 00:12:42,395
+dates a note.
+
+275
+00:12:42,445 --> 00:12:46,465
+It should hold every application sent this
+spring, from every job board, with the
+
+276
+00:12:46,515 --> 00:12:47,046
+résumé attached.
+
+277
+00:12:47,096 --> 00:12:48,500
+The note never gets edited.
+
+278
+00:12:48,850 --> 00:12:50,930
+In this made-up example twelve months were
+predicted.
+
+279
+00:12:50,980 --> 00:12:53,325
+Nine bars are filled, three are empty red
+outlines.
+
+280
+00:12:53,375 --> 00:12:55,987
+Gap analysis compares the locked
+prediction with what you found.
+
+281
+00:12:56,037 --> 00:12:59,980
+The gap, three months of twelve, is what
+you learned, and the thing to pursue.
+
+282
+00:13:00,030 --> 00:13:03,707
+For example, a job seeker predicted the
+agent applied to every listing it scored
+
+283
+00:13:03,757 --> 00:13:04,771
+as a strong fit.
+
+284
+00:13:04,821 --> 00:13:07,966
+The log shows it only applied where the
+online form was easy.
+
+285
+00:13:08,016 --> 00:13:11,160
+That gap is the finding, and it says where
+to look next.
+
+286
+00:13:11,510 --> 00:13:13,894
+Row tracing follows one row back through
+its sources.
+
+287
+00:13:13,944 --> 00:13:17,681
+In the export its ID began with zeros,
+lost when it became a number.
+
+288
+00:13:17,731 --> 00:13:20,116
+In the ticketing system it had a trailing
+space.
+
+289
+00:13:20,166 --> 00:13:23,362
+Behind that the source is unreachable, and
+saying so is a finding.
+
+290
+00:13:23,412 --> 00:13:25,796
+For example, pick one application in an
+agent's log.
+
+291
+00:13:25,846 --> 00:13:29,854
+Follow it back to the listing it answered,
+the résumé version it sent, and the
+
+292
+00:13:29,904 --> 00:13:30,395
+confirmation email.
+
+293
+00:13:30,445 --> 00:13:33,370
+If the job board has deleted the listing,
+write that down.
+
+294
+00:13:33,720 --> 00:13:35,268
+Three tiers of EDA work.
+
+295
+00:13:35,318 --> 00:13:38,143
+Plots, summary statistics and counts you
+can delegate freely.
+
+296
+00:13:38,193 --> 00:13:41,658
+Any AI claim about what the data means,
+verify before trusting.
+
+297
+00:13:41,708 --> 00:13:45,492
+And do not delegate rebuilding the frame,
+the prediction-lock, row tracing or
+
+298
+00:13:45,542 --> 00:13:46,131
+boundary scoping.
+
+299
+00:13:46,181 --> 00:13:49,965
+An AI version of those holds nothing you
+did not already have.
+
+300
+00:13:50,015 --> 00:13:53,479
+For example, let an AI chart a job
+seeker's response rates.
+
+301
+00:13:53,529 --> 00:13:55,716
+Check its story about why replies dropped.
+
+302
+00:13:55,766 --> 00:13:59,550
+Tracing an application back to its listing
+stays with the job seeker.
+
+303
+00:13:59,900 --> 00:14:01,278
+Look-alike pairs, side by side.
+
+304
+00:14:01,328 --> 00:14:02,993
+On the left, a missing value.
+
+305
+00:14:03,043 --> 00:14:07,849
+The row is there with an empty cell, five
+rows, one empty, and the check finds it.
+
+306
+00:14:07,899 --> 00:14:09,563
+On the right, a dropped row.
+
+307
+00:14:09,613 --> 00:14:13,563
+Four rows, no empty cells, and the check
+finds nothing, because the row never
+
+308
+00:14:13,613 --> 00:14:14,420
+reached the table.
+
+309
+00:14:14,770 --> 00:14:16,676
+Hollow red dots are the missing values.
+
+310
+00:14:16,726 --> 00:14:21,706
+Under MAR, on the left, they cluster at
+low age, a column you can see, so you can
+
+311
+00:14:21,756 --> 00:14:22,544
+adjust for it.
+
+312
+00:14:22,594 --> 00:14:26,735
+Under MNAR, on the right, they cluster at
+high income, the very value that is
+
+313
+00:14:26,785 --> 00:14:29,250
+missing, so nothing in the table reveals
+the pattern.
+
+314
+00:14:29,600 --> 00:14:32,590
+On the left, the label, circles filled
+where a person clicked.
+
+315
+00:14:32,640 --> 00:14:33,972
+That is all anyone recorded.
+
+316
+00:14:34,022 --> 00:14:37,566
+On the right, the construct, how
+interested each person really is, from low
+
+317
+00:14:37,616 --> 00:14:38,118
+to high.
+
+318
+00:14:38,168 --> 00:14:39,777
+It was never in the table.
+
+319
+00:14:39,827 --> 00:14:43,370
+The label is what got recorded, the
+construct is what you care about.
+
+320
+00:14:43,720 --> 00:14:44,266
+Last pair.
+
+321
+00:14:44,316 --> 00:14:48,138
+On the left, the schema, a plain disc, the
+columns that were declared.
+
+322
+00:14:48,188 --> 00:14:52,903
+On the right, the boundary, the same disc
+with red spokes reaching out to a dashed
+
+323
+00:14:52,953 --> 00:14:53,201
+ring.
+
+324
+00:14:53,251 --> 00:14:56,477
+That ring is the schema plus everything
+its contents point to.
+
+325
+00:14:56,527 --> 00:14:58,860
+Validating the schema alone leaves the
+ring unchecked.
+
+326
+00:14:59,210 --> 00:15:03,741
+A vague request, the exact instruction
+under it, and on the right what it
+
+327
+00:15:03,791 --> 00:15:04,069
+measures.
+
+328
+00:15:04,119 --> 00:15:06,686
+Vague version, check that the data is
+clean.
+
+329
+00:15:06,736 --> 00:15:10,613
+Exact version, compare merged rows with
+source rows, in the example seventy-nine
+
+330
+00:15:10,663 --> 00:15:14,540
+thousand four hundred of eighty-five
+thousand, and report the gap by group.
+
+331
+00:15:14,890 --> 00:15:17,625
+Vague version, the data has some missing
+values.
+
+332
+00:15:17,675 --> 00:15:22,500
+Exact version, name the mechanism, MCAR,
+MAR or MNAR, and compare the observed mean
+
+333
+00:15:22,550 --> 00:15:23,893
+with the true one.
+
+334
+00:15:23,943 --> 00:15:28,767
+In the simulated example, MCAR barely
+shifts the mean, MAR pushes it high, MNAR
+
+335
+00:15:28,817 --> 00:15:30,160
+pulls it far low.
+
+336
+00:15:30,510 --> 00:15:32,201
+Vague version, find the outliers.
+
+337
+00:15:32,251 --> 00:15:37,077
+Exact version, flag values more than one
+point five times the IQR past each
+
+338
+00:15:37,127 --> 00:15:39,515
+quartile, then decide each with domain
+knowledge.
+
+339
+00:15:39,565 --> 00:15:44,739
+On the same simulated values the IQR rule
+flags seven and the z-score rule flags
+
+340
+00:15:44,789 --> 00:15:45,087
+one.
+
+341
+00:15:45,137 --> 00:15:46,480
+Two rules, two answers.
+
+342
+00:15:46,830 --> 00:15:48,686
+Vague version, is this chart honest.
+
+343
+00:15:48,736 --> 00:15:53,133
+Exact version, name the mark and the
+channel for each variable, and give the
+
+344
+00:15:53,183 --> 00:15:54,721
+key variable position or length.
+
+345
+00:15:54,771 --> 00:15:59,804
+On the right, zero point four three and
+zero point five one look alike as grey
+
+346
+00:15:59,854 --> 00:16:01,710
+shades and clearly different as bars.
+
+347
+00:16:02,060 --> 00:16:04,242
+Vague version, can we trust this dataset.
+
+348
+00:16:04,292 --> 00:16:08,705
+Exact version, lock a written prediction
+of its frame, trace one row, and report
+
+349
+00:16:08,755 --> 00:16:09,343
+the gap.
+
+350
+00:16:09,393 --> 00:16:14,125
+In the made-up example, twelve months were
+predicted and nine were found, a gap of
+
+351
+00:16:14,175 --> 00:16:15,400
+three months in twelve.
+
+352
+00:16:15,750 --> 00:16:19,763
+A checklist to run before you call a
+dataset clean, six questions, ticked one
+
+353
+00:16:19,813 --> 00:16:20,634
+at a time.
+
+354
+00:16:20,684 --> 00:16:21,795
+First, the row-count question.
+
+355
+00:16:21,845 --> 00:16:24,988
+Why exactly this many rows, and how many
+should there be.
+
+356
+00:16:25,038 --> 00:16:27,600
+A gap between the two is the first
+finding.
+
+357
+00:16:27,950 --> 00:16:30,777
+Second, do the column types match what
+each column means.
+
+358
+00:16:30,827 --> 00:16:35,092
+A zip code or an ID looks like a number
+and is really a category.
+
+359
+00:16:35,142 --> 00:16:39,119
+Check column type before trusting any
+mean, and look for a sentinel value posing
+
+360
+00:16:39,169 --> 00:16:40,270
+as a real one.
+
+361
+00:16:40,620 --> 00:16:42,372
+Third, why is each value missing.
+
+362
+00:16:42,422 --> 00:16:43,272
+Name the mechanism.
+
+363
+00:16:43,322 --> 00:16:44,173
+MCAR, no pattern.
+
+364
+00:16:44,223 --> 00:16:46,875
+MAR, the gaps follow a column you can see.
+
+365
+00:16:46,925 --> 00:16:51,379
+MNAR, the gaps follow the missing value
+itself, and no check on the remaining data
+
+366
+00:16:51,429 --> 00:16:52,280
+will show it.
+
+367
+00:16:52,630 --> 00:16:55,306
+Fourth, which channel carries the variable
+that matters.
+
+368
+00:16:55,356 --> 00:16:58,032
+In any chart, name the marks and channels.
+
+369
+00:16:58,082 --> 00:17:02,803
+The key variable belongs on position or
+length, the top of the channel ranking,
+
+370
+00:17:02,853 --> 00:17:06,210
+not on area or color intensity, where
+small differences disappear.
+
+371
+00:17:06,560 --> 00:17:10,700
+Fifth, which of the six silent assumptions
+could this dataset break.
+
+372
+00:17:10,750 --> 00:17:14,509
+Sampling, time-window, label, missing not
+at random, feature-engineering, and the
+
+373
+00:17:14,559 --> 00:17:15,270
+access boundary.
+
+374
+00:17:15,320 --> 00:17:19,460
+Each one passes the standard checks and
+fails later, in deployment.
+
+375
+00:17:19,810 --> 00:17:22,997
+Last, did I lock a prediction before the
+first plot.
+
+376
+00:17:23,047 --> 00:17:25,587
+Without the prediction-lock there is no
+gap analysis.
+
+377
+00:17:25,637 --> 00:17:26,882
+Then say it exactly.
+
+378
+00:17:26,932 --> 00:17:31,090
+Not the data is clean, but, as in the
+example, seventy-nine thousand four
+
+379
+00:17:31,140 --> 00:17:33,680
+hundred of eighty-five thousand rows, gap
+by group.
+
+380
+00:17:34,530 --> 00:17:35,055
+Let's recap.
+
+381
+00:17:35,105 --> 00:17:37,931
+The epistemic frame is every unwritten
+decision behind a table.
+
+382
+00:17:37,981 --> 00:17:41,669
+A dropped row is not a missing value, and
+no error flags it.
+
+383
+00:17:41,719 --> 00:17:43,970
+Procedural EDA examines only what was
+written down.
+
+384
+00:17:44,020 --> 00:17:47,708
+MAR follows a column you can see, MNAR
+follows the missing value itself.
+
+385
+00:17:47,758 --> 00:17:51,159
+A label is a recorded proxy, not the
+construct you care about.
+
+386
+00:17:51,209 --> 00:17:54,610
+Lock a prediction first, then trace one
+row and report the gap.
+
+387
+00:17:54,960 --> 00:17:57,284
+Quiz me on terms for validating a dataset.
+
+388
+00:17:57,334 --> 00:18:00,548
+Give me one short case at a time about a
+dataset.
+
+389
+00:18:00,598 --> 00:18:04,405
+I must name the exact term, choosing from
+epistemic frame, silent join drop,
+
+390
+00:18:04,455 --> 00:18:07,372
+sentinel value, MCAR, MAR, MNAR, label
+assumption, access boundary and
+
+391
+00:18:07,422 --> 00:18:10,043
+prediction-lock, and say why its look-
+alike is wrong.
+
+392
+00:18:10,093 --> 00:18:12,416
+Do not reveal the answer until I reply.
+
+393
+00:18:12,466 --> 00:18:14,790
+Then correct me and give the next case.
+
+394
+00:18:15,140 --> 00:18:16,970
+Key Terms: Data Validation.
+
+395
+00:18:17,020 --> 00:18:18,850
+At Nik Bear Brown.

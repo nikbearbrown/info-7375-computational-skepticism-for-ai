@@ -1,0 +1,857 @@
+{
+ "metadata": {
+  "slug": "claude-liam-vox-bias-pipe",
+  "title": "Why Fixing the Model Didn't Fix the Bias",
+  "topic": "COMPUTATIONAL SKEPTICISM",
+  "purpose": "vox-explainer slate cut of Computational Skepticism for AI candidate 12. Source chapter: books/computational-skepticism-for-ai/chapters/06-bias-where-it-enters-and-who-is-responsible.md (leverage analysis section only).",
+  "aspect_ratio": "16:9",
+  "style_preset": "vox-editorial",
+  "color_semantics": "TEAL = high-leverage intervention / blocked high-flow path / effective fix; CRIMSON = bias flow / low-leverage fix / flow rerouting around a block",
+  "note": "EXCLUSIONS: no Pearl do-calculus notation, no ten-mechanism taxonomy, no fairness metrics, cap the graph at 6 nodes — the three teams are one sentence each, not three scenes",
+  "total_estimated_duration_seconds": 112.57,
+  "audience": "Claude",
+  "derived_from": "beat_sheet.json",
+  "register": "Teardown",
+  "palette": "claude",
+  "outro_source": "AUTHOR.MD :: NikBearBrown",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "build": {
+   "at": "2026-07-27T15:25:10",
+   "cut": "master",
+   "filled": 24,
+   "of": 27,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "refactored": "2026-07-19",
+  "refactor_status": "BEAT_SHEET_DONE",
+  "verdict_stripped": "BVDT removed: all 3 lines are placeholders; placeholder heading. A placeholder verdict is worse than none."
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 15,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Liam",
+      "topic": "COMPUTATIONAL SKEPTICISM",
+      "segment": "Why Fixing the Model Didn't Fix the…",
+      "command": "Why Fixing the Model Didn't Fix the Bias?",
+      "runningText": "building the answer…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "cold open",
+   "narration_text": "Hallo — this is Liam, in for Bear. Why does fixing the model not fix the bias?",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 7,
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": 5.06,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Hallo, Liam",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "Why does fixing the model not fix the bias?",
+      "runningText": "computational skepticism — bias leverage…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "AB02",
+   "act": "ask",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 3,
+   "audio_file": "mp3/beat-AB02.mp3",
+   "actual_duration_s": null,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "The ask,",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "write a Manim scene showing: Two expert teams — one rewrote the loss function, one resampled the data. Both produced small reductions. A third team changed nothing in the model and cut the disparity tenfold.",
+      "runningText": "rendering Manim…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/AB02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/AB02.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "COLD OPEN",
+   "estimated_duration_s": 9.0,
+   "narration_text": "Two expert teams — one rewrote the loss function, one resampled the data. Both produced small reductions. A third team changed nothing in the model and cut the disparity tenfold.",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "scene_class": "B02_ThreeTeams"
+   },
+   "scene_class": "B02_ThreeTeams",
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": 10.73,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "THE QUESTION",
+   "estimated_duration_s": 7.0,
+   "narration_text": "Why did two correct fixes barely move the bias — and where was the leverage actually hiding?",
+   "shot": {
+    "type": "CARD",
+    "source": "own",
+    "motion": "question",
+    "remotion": {
+     "pattern": "FormACard",
+     "provenance": "proven-core/SlateCard",
+     "version": "1",
+     "props": {
+      "lines": [
+       "Why did two correct fixes barely move the bias — and…"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "card": {
+    "kind": "question",
+    "copy": "Why did two correct fixes barely move the bias — and where was the leverage actually hiding?"
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "actual_duration_s": 5.57,
+   "build": {
+    "status": "SLATE",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "AB04",
+   "act": "ask",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 3,
+   "audio_file": "mp3/beat-AB04.mp3",
+   "actual_duration_s": null,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "The ask,",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "write a Manim scene showing: The natural assumption: bias lives in the model. Fix the model's learning rule, fix the disparity. Reasonable. And mostly wrong.",
+      "runningText": "rendering Manim…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/AB04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/AB04.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "THE PROBLEM",
+   "estimated_duration_s": 8.5,
+   "narration_text": "The natural assumption: bias lives in the model. Fix the model's learning rule, fix the disparity. Reasonable. And mostly wrong.",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "scene_class": "B04_NaiveExpect"
+   },
+   "scene_class": "B04_NaiveExpect",
+   "audio_file": "mp3/beat-B04.mp3",
+   "actual_duration_s": 7.66,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B04.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "AB05",
+   "act": "ask",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 3,
+   "audio_file": "mp3/beat-AB05.mp3",
+   "actual_duration_s": null,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "The ask,",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "write a Manim scene showing: Bias flows from protected attribute to outcome along three parallel paths — model, proxy features, and deployment context. An intervention only blocks the path it sits on.",
+      "runningText": "rendering Manim…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/AB05.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/AB05.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "THE PROBLEM",
+   "estimated_duration_s": 9.0,
+   "narration_text": "Bias flows from protected attribute to outcome along three parallel paths — model, proxy features, and deployment context. An intervention only blocks the path it sits on.",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "scene_class": "B05_ThreePaths"
+   },
+   "scene_class": "B05_ThreePaths",
+   "audio_file": "mp3/beat-B05.mp3",
+   "actual_duration_s": 10.69,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B05.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "THE MECHANISM",
+   "estimated_duration_s": 6.0,
+   "narration_text": "The team that succeeded drew a different kind of picture.",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "remotion": {
+     "pattern": "FormACard",
+     "provenance": "proven-core/SlateCard",
+     "version": "1",
+     "props": {
+      "lines": [
+       "The team that succeeded drew a different kind of",
+       "picture."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "image_description": "A whiteboard with a causal diagram drawn in marker, arrows connecting boxes labeled with pipeline stages, in a conference room setting",
+   "chosen_media": null,
+   "audio_file": "mp3/beat-B06.mp3",
+   "actual_duration_s": 3.37,
+   "build": {
+    "status": "SLATE",
+    "src": "media/B06.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "AB07",
+   "act": "ask",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 3,
+   "audio_file": "mp3/beat-AB07.mp3",
+   "actual_duration_s": null,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "The ask,",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "write a Manim scene showing: Draw the full causal chain. Bias flows down each pipe simultaneously. Block one, and the flow reroutes through the others.",
+      "runningText": "rendering Manim…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/AB07.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/AB07.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "THE MECHANISM",
+   "estimated_duration_s": 9.5,
+   "narration_text": "Draw the full causal chain. Bias flows down each pipe simultaneously. Block one, and the flow reroutes through the others.",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "scene_class": "B07_PipeGraph"
+   },
+   "scene_class": "B07_PipeGraph",
+   "audio_file": "mp3/beat-B07.mp3",
+   "actual_duration_s": 7.34,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B07.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "AB08",
+   "act": "ask",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 3,
+   "audio_file": "mp3/beat-AB08.mp3",
+   "actual_duration_s": null,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "The ask,",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "write a Manim scene showing: Most algorithmic interventions block one path — the one running through the model's parameters — and leave the proxy paths and the deployment-context paths fully open.",
+      "runningText": "rendering Manim…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/AB08.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/AB08.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B08",
+   "act": "THE MECHANISM",
+   "estimated_duration_s": 8.5,
+   "narration_text": "Most algorithmic interventions block one path — the one running through the model's parameters — and leave the proxy paths and the deployment-context paths fully open.",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "scene_class": "B08_QuoteModelPath"
+   },
+   "scene_class": "B08_QuoteModelPath",
+   "audio_file": "mp3/beat-B08.mp3",
+   "actual_duration_s": 9.3,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B08.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "AB09",
+   "act": "ask",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 3,
+   "audio_file": "mp3/beat-AB09.mp3",
+   "actual_duration_s": null,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "The ask,",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "write a Manim scene showing: Team one blocked the model path. The flow rerouted through the proxy and review pipes. The bias barely moved.",
+      "runningText": "rendering Manim…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/AB09.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/AB09.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B09",
+   "act": "THE MECHANISM",
+   "estimated_duration_s": 9.0,
+   "narration_text": "Team one blocked the model path. The flow rerouted through the proxy and review pipes. The bias barely moved.",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "scene_class": "B09_ModelBlock"
+   },
+   "scene_class": "B09_ModelBlock",
+   "audio_file": "mp3/beat-B09.mp3",
+   "actual_duration_s": 6.61,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B09.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "AB10",
+   "act": "ask",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 3,
+   "audio_file": "mp3/beat-AB10.mp3",
+   "actual_duration_s": null,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "The ask,",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "write a Manim scene showing: Team three blocked the deployment-context pipe — the one carrying most of the flow. The disparity fell ninety percent.",
+      "runningText": "rendering Manim…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/AB10.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/AB10.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B10",
+   "act": "THE MECHANISM",
+   "estimated_duration_s": 9.0,
+   "narration_text": "Team three blocked the deployment-context pipe — the one carrying most of the flow. The disparity fell ninety percent.",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "scene_class": "B10_ReviewBlock"
+   },
+   "scene_class": "B10_ReviewBlock",
+   "audio_file": "mp3/beat-B10.mp3",
+   "actual_duration_s": 6.91,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B10.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "AB11",
+   "act": "ask",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 3,
+   "audio_file": "mp3/beat-AB11.mp3",
+   "actual_duration_s": null,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "The ask,",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "write a Manim scene showing: You can intervene on what is in your house. But your intervention will be at the wrong leverage point, and the disparity will persist.",
+      "runningText": "rendering Manim…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/AB11.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/AB11.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B11",
+   "act": "THE IMPLICATION",
+   "estimated_duration_s": 8.5,
+   "narration_text": "You can intervene on what is in your house. But your intervention will be at the wrong leverage point, and the disparity will persist.",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "scene_class": "B11_QuoteLeverage"
+   },
+   "scene_class": "B11_QuoteLeverage",
+   "audio_file": "mp3/beat-B11.mp3",
+   "actual_duration_s": 7.08,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B11.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "AB12",
+   "act": "ask",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 3,
+   "audio_file": "mp3/beat-AB12.mp3",
+   "actual_duration_s": null,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "The ask,",
+      "topic": "COMPUTATIONAL SKEPTICISM , BIAS LEVERAGE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "command": "write a Manim scene showing: A lending model shows a twenty-two point approval gap between groups. Engineers retrain it without protected attributes — the gap in the model's learned weights drops to seven points. But zip code remains in the features ",
+      "runningText": "rendering Manim…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/AB12.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/AB12.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B12",
+   "act": "THE EXAMPLE",
+   "estimated_duration_s": 18.0,
+   "narration_text": "A lending model shows a twenty-two point approval gap between groups. Engineers retrain it without protected attributes — the gap in the model's learned weights drops to seven points. But zip code remains in the features and carries eighteen points of the original gap on its own path. Final approval gap: twenty points. The model fix moved the flow. It didn't stop it.",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "scene_class": "B12_ExampleLending"
+   },
+   "scene_class": "B12_ExampleLending",
+   "audio_file": "mp3/beat-B12.mp3",
+   "actual_duration_s": 19.01,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B12.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "B13",
+   "act": "RECAP",
+   "estimated_duration_s": 9.0,
+   "narration_text": "The model is never the only pipe. Find the one carrying the most flow.",
+   "shot": {
+    "type": "CARD",
+    "source": "own",
+    "motion": "endcard",
+    "remotion": {
+     "pattern": "FormACard",
+     "provenance": "proven-core/SlateCard",
+     "version": "1",
+     "props": {
+      "lines": [
+       "The model is never the only pipe. Find the one",
+       "carrying…"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "card": {
+    "kind": "endcard",
+    "copy": "The model is never the only pipe.",
+    "sub": "Find the one carrying the most flow.",
+    "topic": "COMPUTATIONAL SKEPTICISM"
+   },
+   "audio_file": "mp3/beat-B13.mp3",
+   "actual_duration_s": 4.57,
+   "build": {
+    "status": "SLATE",
+    "src": "media/B13.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "HANDOFF",
+   "act": "HANDOFF",
+   "estimated_duration_s": 8.0,
+   "narration_text": "Your turn. map all the paths bias can travel from a protected attribute to model output — show which intervention blocks which path — paste that into Claude and push this one step further.",
+   "engine": "kokoro",
+   "voice": "am_onyx",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "ask",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "provenance": "proven-core/ClaudeComposerAsk",
+     "version": "1",
+     "props": {
+      "greeting": "Your turn.",
+      "command": "\"map all the paths bias can travel from a protected attribute to model output — show which intervention blocks which path\"",
+      "eyebrow": "COMPUTATIONAL SKEPTICISM · THE PIPE",
+      "segment": "Why Fixing the Model Didn't Fix the Bias",
+      "runningText": "paste this into Claude…",
+      "topic": "COMPUTATIONAL SKEPTICISM · BIAS LEVERAGE"
+     },
+     "rendered": {
+      "out": "media/HANDOFF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-HANDOFF.mp3",
+   "actual_duration_s": 10.5,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/HANDOFF.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   }
+  },
+  {
+   "beat_id": "OUTRO",
+   "act": "OUTRO",
+   "estimated_duration_s": 6.0,
+   "narration_text": "Why Fixing the Model Didn't Fix the Bias.",
+   "engine": "kokoro",
+   "voice": "am_onyx",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "provenance": "proven-core/ClaudeTitleOutro",
+     "version": "1",
+     "props": {
+      "title": "Why Fixing the Model Didn't Fix the Bias",
+      "handle": "@NikBearBrown",
+      "slug": "claude-liam-vox-bias-pipe"
+     },
+     "rendered": {
+      "out": "media/OUTRO.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-OUTRO.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "SLATE",
+    "src": "media/OUTRO.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T15:25:10"
+   },
+   "voice_kokoro": "am_onyx"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 20,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN · COMPUTATIONAL SKEPTICISM",
+      "segment": "Why Fixing the Model Didn't Fix the…",
+      "command": "Take what you learned from [Why Fixing the Model Didn't Fix the Bias] and apply it to your own work. What's one thing you'll try first?",
+      "runningText": "paste this into Claude and run it on your own work…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 8,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Why Fixing the Model Didn't Fix the Bias",
+      "slug": "claude-liam-vox-bias-pipe"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  }
+ ]
+}

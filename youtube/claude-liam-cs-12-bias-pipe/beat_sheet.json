@@ -1,0 +1,647 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-12-bias-pipe",
+    "title": "Why Fixing the Model Didn't Fix the Bias",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that bias flows from protected attribute to outcome along multiple parallel paths — plugging one path leaves proxy and deployment-context paths open, so the only high-leverage move is identifying which path carries the most flow. Source: books/computational-skepticism-for-ai/chapters/03-bias-where-it-enters-and-who-is-responsible.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = blocked paths / interventions; CRIMSON = active bias flow / the rerouting; GOLD = the high-leverage path / key insight; SLATE = the pipe graph nodes",
+    "note": "EXCLUSIONS: no Pearl do-calculus notation, no ten-mechanism taxonomy, no fairness metrics, cap the graph at 6 nodes",
+    "total_estimated_duration_seconds": 190,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 12,
+    "build": {
+      "at": "2026-07-19T03:00:07",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why Fixing the Model Didn't Fix the Bias",
+            "greeting": "Olá, Liam.",
+            "command": "Two expert teams fixed the model and fixed the data.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "Two expert teams fixed the model and fixed the data. The bias barely moved. A third team touched neither and cut it tenfold.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why Fixing the Model Didn't Fix the Bias",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why Fixing the Model\nDidn't Fix the Bias"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 7.51,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A hiring AI showed bias in interview selection. Team one audited and patched the model weights. Team two scrubbed protected attributes from the training data. Both teams reported success. The disparity in outcomes moved by eight percent. A third team changed neither the model nor the data — they changed how scores were used in the final decision. The disparity dropped seventy percent.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B02_ThreeTeams",
+        "production_viz": {
+          "label": "three teams, three interventions, one clear winner",
+          "mechanic": "three horizontal rows: 'TEAM 1: model patch' with a teal checkmark then a bar showing 8% reduction (short); 'TEAM 2: data scrub' with a teal checkmark then a bar showing 8% reduction (short); 'TEAM 3: decision layer' with a gold star then a bar showing 70% reduction (long, crimson fill to show bias removed); SerifLabel 'touched neither the model nor the data' below team 3",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the three-row bar chart makes the leverage differential immediately visible; gold marks the winner"
+        }
+      },
+      "scene_class": "B02_ThreeTeams",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 20.69,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T03:00:07",
+        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "Why does fixing the model or the data often fail to fix the bias — and how do you find where the leverage actually is?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Why does fixing the model often fail to fix the",
+              "outcome?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "Why does fixing the model or the data often fail to fix the bias?",
+        "sub": "and where is the leverage actually"
+      },
+      "scene_class": "B03_Question",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 6.89,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T03:00:07"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Bias is not a single thing in a single place. It flows from a protected attribute — race, gender, zip code — to an outcome through multiple parallel paths. Block one path, and the flow reroutes through the others you left open.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B04_PipeGraph",
+        "production_viz": {
+          "label": "bias pipe graph — attribute to outcome, three paths",
+          "mechanic": "a directed graph: SLATE node 'ATTRIBUTE' on the left; three parallel horizontal paths to SLATE node 'OUTCOME' on the right; paths labeled 'DIRECT', 'PROXY', 'DEPLOYMENT CONTEXT'; crimson flow lines animate along all three paths simultaneously; the graph has exactly 6 nodes total",
+          "colors": [
+            "#2D3142",
+            "#BF3339"
+          ],
+          "note": "cap at 6 nodes as specified; the three parallel paths are the key visual — bias flows along all of them"
+        }
+      },
+      "scene_class": "B04_PipeGraph",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 12.84,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T03:00:07",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "An intervention only blocks the path it sits on. Remove the protected attribute from training — and the model finds a proxy. Zip code. Browsing history. Purchase patterns. The flow reroutes. The bias arrives at the outcome by a different road.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "block"
+      },
+      "graphic": {
+        "manim": "B05_BlockAndReroute",
+        "production_viz": {
+          "label": "blocking one path — rerouting through proxy",
+          "mechanic": "same 6-node pipe graph; a teal X appears on the DIRECT path; crimson flow that was on the direct path reroutes around it and doubles on the PROXY path; a SerifLabel 'reroutes' appears on the thicker crimson proxy flow; the OUTCOME node still receives the same total flow",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#2D3142"
+          ],
+          "note": "the rerouting motion is the key mechanic — flow visibly redirects after the block; the OUTCOME node still lights crimson"
+        }
+      },
+      "scene_class": "B05_BlockAndReroute",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 13.38,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T03:00:07",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Leverage means finding the path carrying the most flow — and blocking it there.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Find the path carrying most flow",
+              "block it at the source."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A minimalist editorial illustration of a pipe network with three parallel horizontal pipes flowing from left (labeled 'PROTECTED ATTRIBUTE') to right (labeled 'OUTCOME'); the center pipe is much fatter than the others with a thick crimson flow of bias liquid; a teal clamp/valve sits on the center pipe, waiting to be engaged; the two thinner pipes carry only a trickle; the illustration is in flat newsprint editorial style, cream background, charcoal ink pipe outlines, crimson liquid fill, teal clamp highlight",
+      "scene_class": "B06_LeverageSetup",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 4.74,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T03:00:07"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "To find the highest-flow path: measure bias at the outcome, then block paths one at a time and remeasure. The path whose block produces the largest drop is carrying the most flow. Block that one first.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "block"
+      },
+      "graphic": {
+        "manim": "B07_PathAudit",
+        "production_viz": {
+          "label": "path audit — block, measure, find the highest-flow pipe",
+          "mechanic": "three sequential states: (1) all three paths flow crimson, outcome labeled '100%'; (2) DIRECT path blocked, outcome labeled '92%' (small drop); (3) PROXY path blocked, outcome labeled '28%' (large drop, gold annotation); LabelChip 'HIGH LEVERAGE' appears on the PROXY path block",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the three sequential states show the audit process; the large drop on state 3 makes the leverage visible"
+        }
+      },
+      "scene_class": "B07_PathAudit",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 11.29,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T03:00:07",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Bias does not live in the model. It flows through a system. The model is one node in that system — often not the highest-flow node.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "Bias flows through a system. The model is one node in that system — often not the highest-flow node.",
+        "attribution": "— Chapter 3, Computational Skepticism for AI",
+        "highlight_words": "one node in that system",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B08_Quote",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 7.74,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T03:00:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: Bias does not live in the model. It flows through a system. The model is one node in that system — often not the highest-flow node."
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The deployment context is often the highest-flow path. Who sees the output and under what pressure. What other signals they have available. Whether they are trained to override. The model shipped perfectly audited — and the bias lives downstream.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B09_DeploymentFlow",
+        "production_viz": {
+          "label": "deployment context as the highest-flow path",
+          "mechanic": "the 6-node graph; DIRECT and PROXY paths now show teal blocks; DEPLOYMENT CONTEXT path is crimson and thick with flow; a gold label 'highest flow' on the deployment context edge; OUTCOME node still receives crimson flow; SerifLabel 'shipped clean, bias lives here' below the deployment context path",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "show a scenario where the model and data interventions worked but deployment context was untouched"
+        }
+      },
+      "scene_class": "B09_DeploymentFlow",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 12.86,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T03:00:07",
+        "needs": "PIPELINE → render animated_graphics.py scene B09_*"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The audit question is not: did we fix the model? The audit question is: where does the flow run now?",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "The audit question is not: did we fix the model? The audit question is: where does the flow run now?",
+        "attribution": "— Chapter 3, Computational Skepticism for AI",
+        "highlight_words": "where does the flow run now",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B10_ImplicationQuote",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 5.91,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T03:00:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The audit question is not: did we fix the model? The audit question is: where does the flow run now?"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Re-measure after every intervention. Map all paths before the first intervention. Do not celebrate a patch until you have measured the outcome — not the patched node.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B11_AuditProtocol",
+        "production_viz": {
+          "label": "the three-rule audit protocol",
+          "mechanic": "three LabelChips appear in sequence: '1. MAP ALL PATHS FIRST' (teal), '2. MEASURE AT OUTCOME' (teal), '3. REMEASURE AFTER EVERY PATCH' (teal); each chip GrowsFromCenter; SerifLabel 'not at the patched node' appears below chip 3",
+          "colors": [
+            "#1F6F5C"
+          ],
+          "note": "simple and actionable; the chips are the takeaway"
+        }
+      },
+      "scene_class": "B11_AuditProtocol",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 9.11,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T03:00:07",
+        "needs": "PIPELINE → render animated_graphics.py scene B11_*"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 15.0,
+      "narration_text": "The hiring AI case, continued. Team one patched model weights — dropped protected attribute coefficients to near zero. Measured at the model. Reported success. Team two scrubbed race from training features. Measured at the data. Reported success. Disparity at hire outcome: eight percent improvement. Team three redesigned the recruiter briefing and override protocol — the context in which scores were used. Measured at hire outcome. Seventy percent improvement. The model was fine. The flow was downstream.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "block"
+      },
+      "graphic": {
+        "manim": "B12_ExamplePipes",
+        "production_viz": {
+          "label": "hiring AI — three interventions, pipe-flow visualization",
+          "mechanic": "the 6-node graph animated in three phases: (1) all paths flowing crimson; (2) teal X on direct path (team 1), small OUTCOME drop; (3) teal X on proxy path (team 2), still small OUTCOME drop; (4) teal valve on deployment context path (team 3), OUTCOME drops dramatically; gold label '70% drop' appears at the outcome node in phase 4",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061",
+            "#2D3142"
+          ],
+          "note": "animate in 4 phases to show the full journey; gold appears only on the effective intervention"
+        }
+      },
+      "scene_class": "B12_ExamplePipes",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 26.37,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T03:00:07",
+        "needs": "PIPELINE → render animated_graphics.py scene B12_*"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Bias flows through paths. Blocking one path reroutes the flow. Leverage means mapping all paths and blocking where the flow is heaviest — which is rarely the model itself.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Bias flows through paths. Block one, it reroutes.",
+              "Leverage matters."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Bias flows through paths. Block one, the flow reroutes.",
+        "sub": "Leverage is blocking where the flow is heaviest.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "scene_class": "B13_Recap",
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 9.77,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T03:00:07"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "name": "OutroSeries",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why Fixing the Model Didn't Fix the Bias",
+            "artifactHeading": "Key findings — Why Fixing the Model Didn't Fix the Bias",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "Bias flows through paths."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T03:00:07"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "name": "OutroCTA",
+      "estimated_duration_s": 5.0,
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY FIXING THE MODEL DIDN'T FIX THE BIAS",
+            "segment": "Why Fixing the Model Didn't Fix the Bias",
+            "greeting": "Ciao, Liam.",
+            "command": "Ask Claude: Why Fixing the Model Didn't Fix the Bias",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T03:00:07"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why Fixing the Model Didn't Fix the Bias",
+            "slug": "claude-liam-cs-12-bias-pipe",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

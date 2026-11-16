@@ -1,0 +1,193 @@
+{
+  "metadata": {
+    "slug": "claude-liam-ranfei-visa-risk-runway",
+    "title": "Claude, Recalibrated",
+    "subtitle": "Professor Bear's notes on Ranfei's Visa-Risk Runway Engine",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "audience": "Computational Skepticism students (INFO 7375) and anyone generalizing a calibrated pipeline to a new scope",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "typography": { "serif": "EB Garamond", "ui": "system sans", "mono": "SF Mono" },
+    "model_chip": { "model": "Fable 5", "effort": "High" },
+    "source": "SOURCE-PROMPT.md",
+    "derived_from": "Ranfei's Visa-Risk Runway Engine proposal + Computational-Skepticism feedback prompt",
+    "genre": "deep-explainer",
+    "framing": "Liam asks Claude what feedback Professor Bear would give the student. FIRST NAME ONLY — 'Ranfei', 'Professor Bear' / 'Bear'. Never the student's surname.",
+    "one_idea": "Generalizing a working pipeline isn't adding rows — each new scope silently breaks an assumption the original was calibrated on; the skeptic re-derives confidence, thresholds, and the risk-clock for the new scope instead of porting them.",
+    "duration_estimate_s": 320,
+    "lane_histogram_target": { "VOX": "20-25%", "MANIM": "25-40%", "REMOTION": "30-45%", "CARD": "remainder" }
+  },
+  "beats": [
+    {
+      "id": "B00", "act": "COLD OPEN", "lane": "ASK", "scene": "ClaudeComposerAsk",
+      "greeting": "Sawadee, Liam",
+      "props": { "command": "What feedback would Professor Bear give Ranfei on generalizing the Visa-Risk Runway Engine — FAANG → a broad company pool, plus STEM OPT extension timing?", "runningText": "thinking…", "output": ["Two changes, two broken assumptions.", "Re-derive — don't port."] },
+      "narration_text": "Sawadee — this is Liam, in for Bear. Ranfei wants to generalize a working visa-risk pipeline: widen it past FAANG, and add the STEM OPT extension clock. I asked Claude what Professor Bear would say. Short version — that's two changes, each quietly breaking an assumption. Re-derive them. Don't port them.",
+      "spark_line": "Re-derive, don't port."
+    },
+
+    { "id": "C01", "act": "ACT I", "lane": "CARD", "scene": "SegmentCard", "props": { "title": "Two Problems, One Codebase" }, "narration_text": "First, why this is two projects.", "spark_line": "Two Problems, One Codebase" },
+    {
+      "id": "B01", "act": "ACT I", "lane": "REMOTION", "scene": "PredictCard",
+      "narration_text": "Both moves sound like natural scope expansion — add more companies, add another deadline. That's the trap. Each one quietly breaks an assumption the original five-step pipeline was calibrated on, and doing both at once makes it easy to miss that they interact.",
+      "show": "A single 'generalize' arrow forks into two arrows that each crack a labeled assumption.",
+      "spark_line": "Scope hides the break."
+    },
+    {
+      "id": "B02", "act": "ACT I", "lane": "MANIM", "scene": "manim/branch_two_problems.mp4",
+      "narration_text": "So treat it as two engineering problems that happen to share a codebase. One: widening the company pool. Two: the extension clock. Bear's told Ranfei to build them as two problems, because the shortcut — one generalization — is where the skepticism gets skipped.",
+      "show": "One box splits into two labeled tracks: 'Widen the pool' and 'The extension clock', running in parallel.",
+      "viz": { "pattern": "branch", "in": "one generalization", "workers": 2, "out": "two calibrations" },
+      "spark_line": "Two tracks, one repo."
+    },
+
+    { "id": "C02", "act": "ACT II", "lane": "CARD", "scene": "SegmentCard", "props": { "title": "No History Isn't No" }, "narration_text": "Now the first assumption that breaks.", "spark_line": "No History Isn't No" },
+    {
+      "id": "B03", "act": "ACT II", "lane": "MANIM", "scene": "manim/value_vs_confidence.mp4",
+      "narration_text": "Widening the pool isn't 'add more rows' — it's a data-confidence problem. Every signal degrades differently off FAANG. The killer: at a Series B startup, 'no H-1B filing history' isn't 'confirmed non-sponsor.' It's an absence of data. Score both toward RED and you systematically bury real jobs at growing companies.",
+      "show": "A single 'signal' splits into two axes — VALUE and CONFIDENCE — that had been collapsed into one bar.",
+      "viz": { "pattern": "divergence", "from": "one score", "to": "value × confidence" },
+      "spark_line": "Absence isn't evidence."
+    },
+    {
+      "id": "B04", "act": "ACT II", "lane": "VOX", "scene": "media/B04.png",
+      "shot": { "type": "STILL", "source": "ai", "motion": "kenburns", "focus": [0.5, 0.5] },
+      "narration_text": "Picture the company that loses most from this bug — a forty-person startup that would sponsor, but has never filed because it's never had to. The tool the student built to surface hidden opportunities would be the tool that hides it.",
+      "show": "A small startup office, a few desks — the kind of company with no filing history yet. Slow push in.",
+      "spark_line": "The buried opportunity.",
+      "pantry_note": "Tier 1 illustrative: a small early-stage startup workspace, documentary duotone."
+    },
+    {
+      "id": "B05", "act": "ACT II", "lane": "ASK", "scene": "ClaudeComposerAsk",
+      "props": { "command": "Write sponsorship_signal(company) that separates signal VALUE from CONFIDENCE — a thin-data startup must never silently inherit a FAANG-calibrated RED.", "runningText": "writing the function…" },
+      "narration_text": "So the fix is to make confidence a first-class output. Ask for this:",
+      "spark_line": "Confidence, first-class."
+    },
+    {
+      "id": "B06", "act": "ACT II", "lane": "REMOTION", "scene": "code-block",
+      "narration_text": "Value and confidence, side by side. Zero filings at a startup returns 'unknown, low confidence' — a note, not a verdict. Zero filings at a FAANG returns 'non-sponsor, high confidence,' because there, absence is informative. Same input, two epistemic states.",
+      "show": "Onda code-block types sponsorship_signal(...); the two zero-filing branches highlight in turn.",
+      "props": { "code": "def sponsorship_signal(company):\n    history = get_h1b_filing_history(company)      # USCIS LCA / H-1B disclosure data\n    if history.filing_count == 0 and company.tier != 'faang':\n        return {'value': 'unknown', 'confidence': 'low',\n                'note': 'No filings — likely data sparsity, not confirmed non-sponsorship'}\n    if history.filing_count == 0 and company.tier == 'faang':\n        return {'value': 'non_sponsor', 'confidence': 'high', 'note': 'FAANG absence is informative'}\n    return {'value': 'sponsor', 'confidence': 'high' if history.filing_count >= 3 else 'medium',\n            'note': f'{history.filing_count} filings, weighted by recency'}" },
+      "spark_line": "Same input, two states."
+    },
+    {
+      "id": "B07", "act": "ACT II", "lane": "MANIM", "scene": "manim/classify_on_two_axes.mp4",
+      "narration_text": "Then the RED-AMBER-GREEN call becomes a function of both value and confidence — not value alone. An 'unknown, low-confidence' startup must render differently than a 'confirmed non-sponsor, high-confidence' FAANG, even when a naive pipeline would score them identically.",
+      "show": "Two companies with identical color land in different cells of a value×confidence grid.",
+      "viz": { "pattern": "threshold", "before": "color = f(value)", "after": "color = f(value, confidence)" },
+      "spark_line": "Two axes, not one."
+    },
+
+    { "id": "C03", "act": "ACT III", "lane": "CARD", "scene": "SegmentCard", "props": { "title": "A Different Clock" }, "narration_text": "Now the second assumption — and it's a bigger one.", "spark_line": "A Different Clock" },
+    {
+      "id": "B08", "act": "ACT III", "lane": "MANIM", "scene": "manim/two_state_machines.mp4",
+      "narration_text": "The STEM OPT extension isn't the initial-OPT deadline shifted later. It's a structurally different risk model — a terminal window, with no extension after it. Port the April-lottery logic and just move the date, and you've modeled the wrong machine. It's two coupled clocks, each with its own lottery cycle.",
+      "show": "One deadline timeline splits into two distinct state machines running side by side, the second ending in a hard STOP.",
+      "viz": { "pattern": "branch", "in": "one deadline", "workers": 2, "out": "initial-OPT clock + terminal STEM clock" },
+      "spark_line": "Not a later date."
+    },
+    {
+      "id": "B09", "act": "ACT III", "lane": "VOX", "scene": "media/B09.png",
+      "shot": { "type": "STILL", "source": "ai", "motion": "kenburns", "focus": [0.4, 0.5], "vox_run": "R1",
+        "handoff": { "camera": { "x": 0.4, "y": 0.5, "scale": 1.5 }, "objects": [ { "id": "clock", "x": 0.42, "y": 0.5, "scale": 1.0, "opacity": 1 } ] } },
+      "narration_text": "And the terminal clock keeps running during adjudication. The 180-day automatic extension while STEM OPT is pending is work-authorized — but it still counts against the 24-month total…",
+      "show": "A 24-month runway bar; a 'pending adjudication' segment eats into it rather than pausing it. Camera holds.",
+      "spark_line": "Delays eat the runway.",
+      "pantry_note": "Tier 1 illustrative: a depleting runway/hourglass motif; continuity into B10 (vox_run R1)."
+    },
+    {
+      "id": "B10", "act": "ACT III", "lane": "VOX", "scene": "media/B10.png",
+      "shot": { "type": "STILL", "source": "ai", "motion": "kenburns", "focus": [0.62, 0.5], "vox_run": "R1",
+        "handoff": { "camera": { "x": 0.62, "y": 0.5, "scale": 1.7 }, "objects": [ { "id": "stop", "x": 0.6, "y": 0.48, "scale": 1.0, "opacity": 1 } ] } },
+      "narration_text": "…so the runway erodes even when everything's filed correctly, and when it closes, there's no fallback. That terminal moment is the highest-stakes point in a student's whole OPT lifecycle — it has to outrank the initial deadline, not sit as a second row of the same kind.",
+      "show": "Continuous move from the eroding bar to the hard STOP at its end, flagged 'terminal — no fallback'.",
+      "spark_line": "Terminal outranks all.",
+      "pantry_note": "Tier 1 illustrative: the runway ending at a wall/stop; continuity from B09."
+    },
+    {
+      "id": "B11", "act": "ACT III", "lane": "ASK", "scene": "ClaudeComposerAsk",
+      "props": { "command": "Model initial-OPT and STEM-extension as two coupled but distinct clocks, each gated by its own lottery cycle and cap-gap rule; flag the STEM window terminal.", "runningText": "writing the clocks…" },
+      "narration_text": "So model two clocks, not one shifted deadline. Ask for this:",
+      "spark_line": "Two clocks, gated."
+    },
+    {
+      "id": "B12", "act": "ACT III", "lane": "REMOTION", "scene": "code-block",
+      "narration_text": "Two windows, each with its own lottery attempts and cap-gap rule. And note the cap-gap comment — the rule changed. Recently it can run to about April first of the next year, not stop at September thirtieth. A model still hard-coding the old September stop is running stale logic — verify it against current guidance.",
+      "show": "Onda code-block types compute_risk_windows(...); the cap-gap line and the terminal flag highlight terracotta.",
+      "props": { "code": "def compute_risk_windows(student):\n    windows = []\n    initial_end = student.opt_start + timedelta(days=365)\n    windows.append({'phase': 'initial_opt', 'hard_deadline': initial_end,\n        'lottery_attempts_remaining': 2 if student.stem_eligible else 1,\n        'cap_gap_extension_to': 'April 1 of following FY (verify vs current USCIS guidance)'})\n    if student.stem_eligible:\n        stem_end = initial_end + timedelta(days=730)\n        windows.append({'phase': 'stem_extension', 'hard_deadline': stem_end,\n            'lottery_attempts_remaining': 1, 'terminal': True,\n            'note': 'Adjudication delays still consume this 24-month total'})\n    return windows" },
+      "spark_line": "Verify the rule."
+    },
+
+    { "id": "C04", "act": "ACT IV", "lane": "CARD", "scene": "SegmentCard", "props": { "title": "Re-derive, Don't Port" }, "narration_text": "Which brings us to the thresholds.", "spark_line": "Re-derive, Don't Port" },
+    {
+      "id": "B13", "act": "ACT IV", "lane": "MANIM", "scene": "manim/threshold_on_new_pool.mp4",
+      "narration_text": "If the GREEN cutoff — say, three filings in two years — was tuned by eyeballing FAANG data, applying it unchanged to startups misclassifies by default. A threshold is only as good as the population it came from. So show the distribution of raw signal values inside the NEW pool first, then draw the cutoff.",
+      "show": "A FAANG-tuned cutoff line drops onto a startup distribution and mislabels a cluster; the line then re-fits to the new histogram.",
+      "viz": { "pattern": "threshold", "before": "FAANG-tuned cutoff", "after": "re-derived on the new pool" },
+      "spark_line": "Cutoff follows the pool."
+    },
+
+    { "id": "C05", "act": "ACT V", "lane": "CARD", "scene": "SegmentCard", "props": { "title": "Make It Break" }, "narration_text": "Robustness, aimed at exactly these two changes.", "spark_line": "Make It Break" },
+    {
+      "id": "B14", "act": "ACT V", "lane": "REMOTION", "scene": "ChipGrid",
+      "narration_text": "Four tests that target the generalization, not generic sensitivity. Tier-stratified: same raw inputs, FAANG versus startup — does the color change for the right reason? Regulatory-version: does the model tell the old September rule from the current April one? Sparse-data: does zero history render 'unknown', not RED? Terminal-primacy: does the STEM deadline outrank the initial one when both are close?",
+      "show": "Four test chips resolve: Tier-stratified · Regulatory-version · Sparse-data · Terminal-primacy.",
+      "viz": { "pattern": "ChipGrid", "chips": ["Tier-stratified", "Regulatory-version", "Sparse-data", "Terminal-primacy"] },
+      "spark_line": "Four targeted tests."
+    },
+    {
+      "id": "B15", "act": "ACT V", "lane": "VOX", "scene": "media/B15.png",
+      "shot": { "type": "STILL", "source": "ai", "motion": "drawon", "focus": [0.5, 0.45] },
+      "narration_text": "The regulatory-version test is the one to insist on. Feed it a case where the old September stop and the current April date give different classifications. If the pipeline can't tell them apart, it's silently running a rule that no longer exists — the exact stale-assumption bug this course teaches you to hunt.",
+      "show": "A still of two calendars — Sept 30 vs April 1; a terracotta X draws through the outdated one.",
+      "spark_line": "Catch the stale rule.",
+      "pantry_note": "Tier 1 illustrative: two calendar pages, one struck through; ring/X annotation at previz."
+    },
+
+    { "id": "C06", "act": "ACT VI", "lane": "CARD", "scene": "SegmentCard", "props": { "title": "Honest Colors" }, "narration_text": "Last — the picture the student ships.", "spark_line": "Honest Colors" },
+    {
+      "id": "B16", "act": "ACT VI", "lane": "MANIM", "scene": "manim/confirmed_vs_unknown.mp4",
+      "narration_text": "The FAANG-only version could get away with a clean three-color light, because the data was dense. The generalized one can't — not without misleading students at exactly the startups where the tool is most useful. Confirmed RED and unknown-low-confidence must not look the same, even when they score the same.",
+      "show": "Two identical red dots separate: one solid 'confirmed', one hatched 'unknown / low-confidence'.",
+      "viz": { "pattern": "divergence", "from": "one RED", "to": "confirmed vs unknown" },
+      "spark_line": "Two reds, not one."
+    },
+    {
+      "id": "B17", "act": "ACT VI", "lane": "REMOTION", "scene": "illustration/binding-clock",
+      "narration_text": "And show which clock is binding — a student should see instantly whether the initial-OPT or the STEM-extension window is the constraint driving the color. Flag anything resting on an unverified regulatory assumption. The whole point of the tool is to help someone trust or distrust a recommendation — not just receive one.",
+      "show": "A risk card surfaces a 'binding: STEM-extension (terminal)' tag and a small 'reg assumption: verify' flag.",
+      "spark_line": "Show the binding clock."
+    },
+    {
+      "id": "B18", "act": "ACT VI", "lane": "MANIM", "scene": "manim/converge_recalibrate.mp4",
+      "narration_text": "Under all five parts, one idea: generalizing isn't extending — it's recalibrating. The confidence dimension and the terminal clock are the load-bearing skepticism here, and they're the same moves that made Ranfei's own Reallocation Engine reliable in its narrow scope. Point at the open questions — how to weight startup equity, how to handle a student who hasn't entered either lottery — and let the wrestling be the assignment.",
+      "show": "Two tracks ('pool' and 'clock') converge on a single label: 'Recalibrate, don't extend.'",
+      "spark_line": "Recalibrate, don't extend."
+    },
+
+    {
+      "id": "V01", "act": "CLOSE", "lane": "REMOTION", "scene": "ClaudeVerdictArtifact",
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude. Bear's notes for Ranfei, in five. Widening the pool is a data-confidence problem — 'no history' is not 'non-sponsor.' The STEM extension is a different, terminal clock, not a later deadline — and verify the cap-gap rule, it changed. Re-derive the thresholds on the new pool; don't port FAANG cutoffs. Test the two generalizations directly. And make the picture show confidence and the binding clock. Strong extension of real work — now recalibrate it instead of extending it.",
+      "props": { "artifactLines": [ "Widen the pool = data-confidence, not coverage: no history ≠ non-sponsor", "STEM extension = a separate TERMINAL clock; verify the cap-gap rule (it changed)", "Adjudication delays consume the 24-month total — they don't pause it", "Re-derive thresholds on the new pool; don't port FAANG cutoffs", "Visualize confidence + which clock is binding, not just the color" ] },
+      "spark_line": "The verdict."
+    },
+    {
+      "id": "H01", "act": "CLOSE", "lane": "ASK", "scene": "ClaudeComposerAsk",
+      "greeting": "Your turn.",
+      "props": { "command": "I'm generalizing a risk classifier that was calibrated on one narrow population to a much broader one. Pressure-test it: (1) for each input signal, force me to separate its VALUE from my CONFIDENCE in it for the new population, and flag any 'missing data' I'm scoring as a real negative; (2) find any threshold I ported from the old population instead of re-deriving on the new one, and make me show the new distribution; (3) find any time/deadline/regulatory assumption that changed and make me add a version test; (4) tell me where the visualization hides uncertainty. End with two open questions I have to answer myself.", "runningText": "paste this into Claude…" },
+      "narration_text": "Your turn. Here's the prompt — paste it into Claude on any model you're widening to a new population. It forces you to split value from confidence, catch every ported threshold, version-test the assumptions that changed, and find where the picture hides doubt — then it leaves you two open questions instead of answers. Run it before you call your generalization done, and watch what it refuses to let you carry over.",
+      "spark_line": "Pressure-test your scope."
+    },
+    {
+      "id": "O01", "act": "CLOSE", "lane": "CARD", "scene": "ClaudeTitleOutro",
+      "narration_text": "Claude, Recalibrated.",
+      "props": { "title": "Claude, Recalibrated", "handle": "@NikBearBrown", "subline": "Professor Bear's notes on Ranfei's Visa-Risk Runway Engine" },
+      "spark_line": "Claude, Recalibrated"
+    }
+  ]
+}

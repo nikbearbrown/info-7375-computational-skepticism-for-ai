@@ -1,0 +1,551 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-02-confident-and-wrong",
+    "title": "Why More Data Makes the Wrong Answer More Confident",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that a biased estimator converges as data grows — but converges to the wrong value, so scale buys precision without buying accuracy. Source: books/computational-skepticism-for-ai/chapters/03-bias-where-it-enters-and-who-is-responsible.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = true value / where the bullseye should be; CRIMSON = systematic bias / the offset; GOLD = the convergence / key insight; SLATE = sample estimates accumulating",
+    "note": "EXCLUSIONS: no bias-variance decomposition, no E[θ̂] notation beyond a single label, no taxonomy of the ten bias mechanisms, Literary Digest gets one line of history and no more",
+    "total_estimated_duration_seconds": 191,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 2,
+    "build": {
+      "at": "2026-07-19T02:24:14",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why More Data Makes the Wrong Answer More Confident",
+            "greeting": "Annyeong, Liam.",
+            "command": "More data.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "More data. More confidence. More wrong.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why More Data Makes the Wrong Answer More Confident",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why More Data Makes\nthe Wrong Answer More Confident"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 2.79,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "In 1936, a magazine called Literary Digest sent out ten million postcards asking people who they planned to vote for. Two and a half million came back. It was the largest poll in American history, and it confidently called the election for the Republican. Franklin Roosevelt won by a landslide. More data made the poll more certain — and more catastrophically wrong. The magazine folded the next year. The data wasn't the problem. The sample was.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B02_ScatterTighteningOffCenter",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 23.0,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:14",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: In 1936, a magazine called Literary Digest sent out ten million postcards asking people who they planned to vote for. Two and a half million came back. It was t"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When an estimator is systematically biased, what does adding more data actually do to the answer?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What does adding more data do to a biased estimator?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What does more data do\nto a biased estimator?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 5.89,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:14"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "An unbiased estimator scatters around the true value. Sample from it ten times and you get ten different guesses, all circling the correct answer. Average them and you converge on the truth. That's the story we're taught — more data, better answer. But it depends entirely on whether your estimator is pointed at the right target. A biased estimator is pointed slightly off. Every sample still scatters around a center — but that center is not the true value.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B04_UnbiasedVsBiasedCenter",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 21.95,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:14",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: An unbiased estimator scatters around the true value. Sample from it ten times and you get ten different guesses, all circling the correct answer. Average them "
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "As you add data, something happens to both estimators. The scatter shrinks. Your guesses get tighter and tighter. For the unbiased estimator, tighter scatter around the truth means a better answer — great. For the biased estimator, tighter scatter around the wrong point means more confidence in the wrong answer. Scale doesn't correct bias. It compresses it into a narrow, wrong certainty. A million biased observations deliver a million-sample level of confidence in an error.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B05_ConvergenceToWrongValue",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 23.62,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:14",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: As you add data, something happens to both estimators. The scatter shrinks. Your guesses get tighter and tighter. For the unbiased estimator, tighter scatter ar"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Bias is a structural offset — data accumulation shrinks the scatter around it, but never moves it.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Bias is structural. More data shrinks scatter, not the",
+              "offset."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A dark target board shot from above: a teal bullseye at the center, and a tight cluster of crimson darts stuck in the upper-right quadrant — all clustered tightly together but far from center, the gold gap between the two clusters glowing like a measuring line, dramatic studio lighting making the offset unmistakable",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 5.87,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:14"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here's the bullseye target. The teal ring is the true value — what you want to estimate. Watch the slate dots appear: sample estimates from a biased source, scattered around a crimson center. Ten dots: some spread. One hundred dots: tighter. One thousand dots: tight cluster. But the cluster is sitting to the right of the gold teal mark. The crimson offset — the structural gap between where the data points and where the truth lives — never budges. Data shrinks the ring around the wrong place.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B07_BullseyeAccumulation",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 24.32,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:14",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Here's the bullseye target. The teal ring is the true value — what you want to estimate. Watch the slate dots appear: sample estimates from a biased source, sca"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The mechanism has a name. Bias is the expected distance between your estimator's center and the true value. Variance is the scatter around that center. Data collection shrinks variance. It does nothing to bias. Which means a high-variance biased estimator can at least look uncertain — its wide scatter is a signal that something might be wrong. A low-variance biased estimator looks precise. That precision is the lie.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B08_BiasVarianceNaming",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 21.27,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:14",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The mechanism has a name. Bias is the expected distance between your estimator's center and the true value. Variance is the scatter around that center. Data col"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For AI systems trained on biased data, this is the trap. A fraud model trained only on detected fraud cases develops a systematic offset — it learns to flag the patterns of fraud that was previously caught, not fraud that exists. Scale the training data and the model gets more confident at finding that narrower slice. The precision improves. The recall on new fraud types doesn't. More data, tighter wrong convergence.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B09_TrainingDataBiasTrap",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 22.08,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:14",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: For AI systems trained on biased data, this is the trap. A fraud model trained only on detected fraud cases develops a systematic offset — it learns to flag the"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The hard truth: you cannot data-volume your way out of a structural bias. You must first ask where the data came from, who collected it, what they were measuring for, and whose outcomes are systematically absent or distorted. Only then does the volume question become meaningful. More data helps only after you've confirmed the estimator is aimed correctly.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B10_DataProvenanceQuestion",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 18.33,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:14",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The hard truth: you cannot data-volume your way out of a structural bias. You must first ask where the data came from, who collected it, what they were measurin"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The practical test: look for the confidence interval on your model's outputs. A narrow confidence interval means low variance — the model is sure of itself. That is not necessarily good news. Ask separately whether the estimate is systematically offset from a known ground truth. Precision and accuracy are two separate questions. A well-calibrated model answers both. A scaled biased model only answers the first.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_PrecisionVsAccuracyCheck",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 21.5,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:14",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The practical test: look for the confidence interval on your model's outputs. A narrow confidence interval means low variance — the model is sure of itself. Tha"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A bank trains a loan default model on ten years of historical lending data. The bank historically lent less to certain ZIP codes — a practice now illegal. The model trained on this history learns that applicants from those ZIP codes are higher risk — because the historical data shows fewer loans there, and the loans that were made had different terms and monitoring. As the bank accumulates more data, the model's predictions get tighter. The confidence intervals narrow. The officers trust the scores more. The structural offset — trained on a history of unequal access — never moves. The bank is now more precisely wrong, and more confident about it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "accumulate"
+      },
+      "scene_class": "B12_BankLendingBiasExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 33.69,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:14",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A bank trains a loan default model on ten years of historical lending data. The bank historically lent less to certain ZIP codes — a practice now illegal. The m"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A biased estimator points at the wrong target — adding data tightens the scatter around that wrong point, producing confident precision in a systematically wrong direction. For AI systems, this means scale is not a remedy for bias in the training source: a model trained on historically skewed data gets more certain about its skewed conclusions, not closer to truth. Before celebrating a growing dataset, confirm the estimator is aimed at the right bullseye.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Scale buys precision. It never buys correction."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Scale buys precision.\nNever correction.",
+        "sub": "Confirm the estimator is aimed correctly before you add more data.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 22.87,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:14"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why More Data Makes the Wrong Answer More Confident",
+            "artifactHeading": "Key findings — Why More Data Makes the Wrong Answer More Confident",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A bank trains a loan default model on ten years of historical lending data."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:14"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY MORE DATA MAKES THE WRONG ANSWER MORE CONFIDENT",
+            "segment": "Why More Data Makes the Wrong Answer More Confident",
+            "greeting": "Konnichiwa, Liam.",
+            "command": "Ask Claude: Why More Data Makes the Wrong Answer More Confident",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:14"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why More Data Makes the Wrong Answer More Confident",
+            "slug": "claude-liam-cs-02-confident-and-wrong",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

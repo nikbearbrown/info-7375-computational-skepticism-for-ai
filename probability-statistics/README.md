@@ -27,6 +27,6 @@
 
 ## Status and how to use it
 
-**Draft.** Written from earlier probability and statistics course material plus standard references, and **not yet reviewed by Professor Bear.** The central limit theorem, confidence-interval and p-value material was added from standard sources because the earlier course material did not cover it. Check any formula against a textbook before relying on it for graded work.
+**Draft.** Written from earlier probability and statistics course material plus standard references, and **not yet reviewed by Professor Bear.** The central limit theorem section was written from standard sources (the earlier course notebook on probability distributions also covers it); the confidence-interval and p-value material was added from standard references. Check any formula against a textbook before relying on it for graded work.
 
 Use it the way you would a cheat sheet: skim a file, find the idea you are shaky on, work the small example, and move on.

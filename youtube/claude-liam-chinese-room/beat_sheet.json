@@ -1,0 +1,1257 @@
+{
+ "meta": {
+  "slug": "claude-liam-chinese-room",
+  "title": "The Chinese Room",
+  "kicker": "What a 1980 thought experiment saw coming",
+  "book": "computational-skepticism-for-ai",
+  "channel": "claude-liam",
+  "persona": "Liam (in for Professor Bear)",
+  "voice": "kokoro:am_onyx",
+  "register": "deep-explainer / documentary",
+  "pov": "Bear's take preserved as his stated view; documentary depth added",
+  "brand": "CLAUDE (cream #FAF9F5 / #F2F0E9 stage, warm ink #3D3929, terracotta #D97757 spark)",
+  "est_runtime_s": 300,
+  "est_note": "estimate at ~2.9 wps; measured audio is the only clock",
+  "render": {
+   "resolution": "3840x2160",
+   "fps": 30,
+   "rule": "BASE RULE — EVERY beat native 4K. Author ALL compositions at 1920x1080 (x scale=2 => 3840x2160). No 1280x720 comps. No ffmpeg bicubic upscaling.",
+   "qc": "ffprobe every beat clip: reject any beat whose native stream is not 3840x2160."
+  },
+  "content_rules": {
+   "no_text_slides": "HARD RULE — no beat may display a single sentence (or a few sentences) of the narration as an on-screen text slide. Concept beats are DOODLE (rough.js sketch animation) or VOX (pantry still, machine-animated). The narration is voiceover, never a caption card.",
+   "remotion_scope": "REMOTION is reserved for the Claude UI bookends ONLY (B00, C1, C2, C3) — ILLUSTRATE LAW. It is never used for a body concept beat.",
+   "manim_scope": "MANIM only where there is real data/math to animate (a chart, an isotype, an equation). Every Manim beat must have an AUTHORED scene in scenes.py. No beat may ship the toolkit default scene or show placeholder text such as 'Claude Code Manim' — an unauthored Manim beat FAILS qc, it does not ship as a stub.",
+   "qc_placeholder": "VISUAL QC: scan every rendered beat for placeholder/template text ('Claude Code', 'Manim', default slate titles). Any hit is a FAIL."
+  },
+  "gate_state": "RE-PLAN after review-cut rule violations — lanes corrected (no Remotion concept slides; Manim only for data; concepts on doodle/vox). Awaiting re-render on local toolkit.",
+  "lane_mix_body": {
+   "CARD": 5,
+   "VOX": 6,
+   "MANIM": 3,
+   "DOODLE": 15,
+   "note": "Intentionally deviates from the default deep-explainer Remotion mix per Bear's hard rule: concept illustration is doodle/vox, never single-sentence Remotion."
+  }
+ },
+ "bookends": {
+  "cold_open": "B00",
+  "closing": [
+   "C1",
+   "C2",
+   "C3"
+  ]
+ },
+ "beats": [
+  {
+   "lane": "REMOTION",
+   "act": "COLD OPEN",
+   "exempt": true,
+   "scene": "ClaudeComposerAsk",
+   "shot": {
+    "type": "UI",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "topic": "COMPUTATIONAL SKEPTICISM · AI",
+      "segment": "The Chinese Room",
+      "command": "Walk me through Searle's Chinese Room — then tell me if modern LLMs pass the test.",
+      "greeting": "Hola, Liam",
+      "runningText": "reading the thought experiment…",
+      "modelLabel": "Claude",
+      "effortLabel": "Deep"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "Claude UI bookend (allowed Remotion). Ask lands answered; Liam signs in.",
+   "beat_id": "B00",
+   "narration_text": "Hey Claude — in 1980 a philosopher locked a man in a room with a rulebook and had him answer letters in fluent Chinese, a language he couldn't read. His whole point: the man understood nothing. Forty-five years later, did we go and build that room? Liam here, in for Professor Bear.",
+   "actual_duration_s": 15.168,
+   "audio_file": "mp3/beat-B00.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "I — exec summary",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "FormBCard",
+     "props": {
+      "title": "The Chinese Room",
+      "items": [
+       {
+        "label": "Key point one",
+        "sub": "",
+        "icon": "target",
+        "cueFrame": 20
+       },
+       {
+        "label": "Key point two",
+        "sub": "",
+        "icon": "list-checks",
+        "cueFrame": 55
+       },
+       {
+        "label": "Key point three",
+        "sub": "",
+        "icon": "zap",
+        "cueFrame": 90
+       }
+      ]
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "I",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A1_ActTitle"
+    }
+   },
+   "note": "Act title card (structural, not a narration slide).",
+   "beat_id": "A1",
+   "narration_text": "Act one. The imitation game.",
+   "actual_duration_s": 2.432,
+   "audio_file": "mp3/beat-A1.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A1.mp4",
+    "filled_by": "manim:A1_ActTitle",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "I",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.42
+    ],
+    "vox_run": "R1",
+    "handoff": {
+     "camera": {
+      "x": 0.5,
+      "y": 0.42,
+      "scale": 1.6
+     },
+     "objects": [
+      {
+       "id": "portrait-turing",
+       "x": 0.5,
+       "y": 0.42,
+       "scale": 1.0,
+       "opacity": 1
+      }
+     ]
+    }
+   },
+   "pantry": "A2.png",
+   "tier": 3,
+   "note": "Archival Turing photo; rights check to human.",
+   "beat_id": "A2",
+   "narration_text": "Alan Turing, 1950. He set the question 'can machines think' aside as hopeless — too fuzzy to settle — and replaced it with a game. If a machine's typed answers are indistinguishable from a person's, he said, stop asking whether it thinks.",
+   "actual_duration_s": 14.187,
+   "audio_file": "mp3/beat-A2.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A2.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T03:45:46"
+   },
+   "scene_class": "A2_TuringPortrait"
+  },
+  {
+   "lane": "MANIM",
+   "act": "I",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.4,
+     0.55
+    ],
+    "vox_run": "R1",
+    "handoff": {
+     "camera": {
+      "x": 0.4,
+      "y": 0.55,
+      "scale": 1.4
+     },
+     "objects": [
+      {
+       "id": "teletype",
+       "x": 0.45,
+       "y": 0.5,
+       "scale": 1.0,
+       "opacity": 1
+      }
+     ]
+    }
+   },
+   "pantry": "A3.png",
+   "tier": 1,
+   "note": "Generic vintage teletype. vox run R1 (hard cut into A4).",
+   "beat_id": "A3",
+   "narration_text": "His era spoke in teletype and paper tape — machines that only ever shuffled symbols. And that is exactly the bet: whatever thinking is, maybe it's just the right symbols, moved the right way.",
+   "actual_duration_s": 11.008,
+   "audio_file": "mp3/beat-A3.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A3.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T03:45:46"
+   },
+   "scene_class": "A3_TeletypeEra"
+  },
+  {
+   "lane": "DOODLE",
+   "act": "I",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A4_TuringSetup"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "desk-terminal",
+     "person",
+     "robot",
+     "curtain",
+     "speech-bubble"
+    ],
+    "sketch": "a judge at a terminal; two curtained doors, one hiding a person, one a machine; identical speech bubbles crossing; a question-mark over the doors",
+    "build": "progressive reveal, rough.js hand-drawn, Shadows-Into-Light labels only on the door tags (HUMAN / ?)"
+   },
+   "note": "Was Remotion text slide -> now doodle. Narration is VO, not on-screen.",
+   "beat_id": "A4",
+   "narration_text": "Picture it. You sit at a terminal. Two hidden partners — one human, one machine. You type; they reply. If you can't reliably tell which is which, the machine passes. Behavior is the entire test.",
+   "actual_duration_s": 10.645,
+   "audio_file": "mp3/beat-A4.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A4.mp4",
+    "filled_by": "manim:A4_TuringSetup",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "I",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A5_TuringWager"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "eye",
+     "closed-box",
+     "two-heads"
+    ],
+    "sketch": "an eye watching a closed box; a crossed-out magnifying glass over the box's lid; two human heads facing each other, each also a closed box",
+    "build": "the box lid draws shut on the reveal word 'peeking'"
+   },
+   "note": "Was Manim state card -> doodle (no text-slide).",
+   "beat_id": "A5",
+   "narration_text": "No peeking inside. No asking what's 'really' happening in there. Turing's wager was that indistinguishable behavior is all the evidence of a mind we ever get — even about each other.",
+   "actual_duration_s": 10.56,
+   "audio_file": "mp3/beat-A5.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A5.mp4",
+    "filled_by": "manim:A5_TuringWager",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "II",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A6_ActTitle"
+    }
+   },
+   "beat_id": "A6",
+   "narration_text": "Act two. The room.",
+   "actual_duration_s": 1.643,
+   "audio_file": "mp3/beat-A6.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A6.mp4",
+    "filled_by": "manim:A6_ActTitle",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "VOX",
+   "act": "II",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.4
+    ],
+    "vox_run": "R2",
+    "handoff": {
+     "camera": {
+      "x": 0.5,
+      "y": 0.4,
+      "scale": 1.5
+     },
+     "objects": [
+      {
+       "id": "portrait-searle",
+       "x": 0.5,
+       "y": 0.4,
+       "scale": 1.0,
+       "opacity": 1
+      }
+     ]
+    }
+   },
+   "pantry": "A7.png",
+   "tier": 3,
+   "note": "Archival Searle photo; rights check to human.",
+   "beat_id": "A7",
+   "narration_text": "Thirty years on, John Searle was not convinced. In 1980 he published a thought experiment built to break the test — to show that a system could pass it and still understand absolutely nothing.",
+   "actual_duration_s": 11.712,
+   "audio_file": "mp3/beat-A7.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T03:45:46",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A7.mp4)",
+    "suggested": "suggested prompt: Thirty years on, John Searle was not convinced. In 1980 he published a thought experiment built to break the test — to show that a system could pass it and stil"
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "II",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "archive",
+    "motion": "drawon",
+    "focus": [
+     0.5,
+     0.35
+    ],
+    "vox_run": "R2",
+    "handoff": {
+     "camera": {
+      "x": 0.5,
+      "y": 0.35,
+      "scale": 1.7
+     },
+     "objects": [
+      {
+       "id": "paper-1980",
+       "x": 0.5,
+       "y": 0.4,
+       "scale": 1.0,
+       "opacity": 1
+      }
+     ]
+    }
+   },
+   "pantry": "A8.png",
+   "tier": 2,
+   "note": "The 1980 paper; terracotta underline draws on the title. vox run R2 (hard cut into A9).",
+   "beat_id": "A8",
+   "narration_text": "The paper was called 'Minds, Brains, and Programs.' A single thought experiment that would shadow artificial intelligence for the next half century.",
+   "actual_duration_s": 8.576,
+   "audio_file": "mp3/beat-A8.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A8.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T03:45:46"
+   },
+   "scene_class": "A8_SearlePaper"
+  },
+  {
+   "lane": "DOODLE",
+   "act": "II",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A9_SearleRoom"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "sealed-room",
+     "letter-slot",
+     "rulebook",
+     "person-confused"
+    ],
+    "sketch": "a sealed room in cross-section; a slot with a card of Chinese characters entering; a huge open rulebook; a person matching squiggle-to-squiggle with a puzzled face",
+    "build": "the card slides through the slot on 'slide in'; the rulebook flips open on 'rulebook'"
+   },
+   "note": "Was Remotion diagram -> doodle.",
+   "beat_id": "A9",
+   "narration_text": "Picture Searle himself locked in a room. Chinese characters slide in through a slot. He can't read a single one. But he has a giant rulebook: when you see these squiggles, copy out those squiggles.",
+   "actual_duration_s": 10.56,
+   "audio_file": "mp3/beat-A9.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A9.mp4",
+    "filled_by": "manim:A9_SearleRoom",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "II",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A10_RuleBook"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "letter-slot-out",
+     "person-outside",
+     "speech-bubble",
+     "blank-thought"
+    ],
+    "sketch": "reply card pushed out; a native speaker outside with a warm, impressed expression and a fluent speech bubble; back inside, the same worker with an empty thought bubble",
+    "build": "split reveal: outside understanding vs inside blankness lands on 'understands nothing'"
+   },
+   "note": "Was Remotion diagram -> doodle (pairs with A9).",
+   "beat_id": "A10",
+   "narration_text": "He matches shape to shape, copies the reply, pushes it back through the slot. Outside, a native speaker reads fluent, thoughtful Chinese. Inside, a man who understands nothing has just held a conversation.",
+   "actual_duration_s": 11.904,
+   "audio_file": "mp3/beat-A10.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A10.mp4",
+    "filled_by": "manim:A10_RuleBook",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "II",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A11_SyntaxSemantics"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "puzzle-shapes",
+     "arrow",
+     "lightbulb",
+     "not-equals"
+    ],
+    "sketch": "left: bare shapes flowing through a machine (SYNTAX); right: a shape with a glowing lightbulb of meaning (SEMANTICS); a hand-drawn not-equals between them",
+    "build": "the not-equals sign scratches in on 'never adds up'"
+   },
+   "note": "Was Manim split card -> doodle.",
+   "beat_id": "A11",
+   "narration_text": "That's Searle's knife. The room runs pure syntax — shape in, shape out. Understanding needs semantics — knowing what the shapes actually mean. And syntax, he argued, never adds up to semantics.",
+   "actual_duration_s": 11.072,
+   "audio_file": "mp3/beat-A11.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A11.mp4",
+    "filled_by": "manim:A11_SyntaxSemantics",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "II",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A12_FormNoContent"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "gears",
+     "speedometer",
+     "empty-vessel"
+    ],
+    "sketch": "gears spinning faster and faster (speed lines), an empty vessel staying empty no matter the speed; a small calendar flipping with no change in the puzzled worker",
+    "build": "speedometer needle pins to max but the vessel stays empty on 'nothing changes'"
+   },
+   "note": "Was Manim quote card -> doodle (avoids fabricated on-screen quote too).",
+   "beat_id": "A12",
+   "narration_text": "The program, in his account, is all form and no content. Run it faster, run it on better hardware — nothing changes. The man will never learn Chinese by shuffling more symbols.",
+   "actual_duration_s": 10.517,
+   "audio_file": "mp3/beat-A12.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A12.mp4",
+    "filled_by": "manim:A12_FormNoContent",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "III",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A13_ActTitle"
+    }
+   },
+   "beat_id": "A13",
+   "narration_text": "Act three. The replies.",
+   "actual_duration_s": 2.112,
+   "audio_file": "mp3/beat-A13.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A13.mp4",
+    "filled_by": "manim:A13_ActTitle",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "III",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A14_Objections"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "dashed-boundary",
+     "brain",
+     "walking-figure"
+    ],
+    "sketch": "a dashed boundary drawn around the whole room labelled 'the system'; then the boundary erased as the worker memorizes the book and walks out into open air, still with an empty thought bubble",
+    "build": "boundary expands on 'the whole room does', then dissolves on 'walk outside'"
+   },
+   "note": "Was Remotion pattern -> doodle.",
+   "beat_id": "A14",
+   "narration_text": "The objections came fast. The Systems reply: fine, the man doesn't understand — but the whole room does. Person, rulebook, and files together are the mind. Searle's answer: let the man memorize the rulebook and walk outside. Still nothing.",
+   "actual_duration_s": 13.099,
+   "audio_file": "mp3/beat-A14.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A14.mp4",
+    "filled_by": "manim:A14_Objections",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "III",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A15_RobotReply"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "robot-body",
+     "camera-eye",
+     "hand",
+     "link"
+    ],
+    "sketch": "the little room dropped inside a robot silhouette; camera-eyes and hands linking symbols to real objects (an apple, a cup); a small asterisk note 'experiment changed'",
+    "build": "the room nests into the robot on 'inside a body'"
+   },
+   "note": "Was Remotion pattern -> doodle.",
+   "beat_id": "A15",
+   "narration_text": "The Robot reply: put the room inside a body, with cameras and hands, so the symbols finally touch the world. Maybe. But notice — you've just changed the experiment. You've conceded that symbol-shuffling alone was never enough.",
+   "actual_duration_s": 12.096,
+   "audio_file": "mp3/beat-A15.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A15.mp4",
+    "filled_by": "manim:A15_RobotReply",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "III",
+   "scene": "IsotypeCombinatorics",
+   "shot": {
+    "type": "ISOTYPE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A16_CombinatoricsWall"
+    }
+   },
+   "viz": {
+    "kind": "scale_comparison",
+    "bars": [
+     {
+      "label": "entries to tabulate every sentence",
+      "magnitude": "10^(very large)"
+     },
+     {
+      "label": "atoms in the observable universe",
+      "magnitude": "~10^80"
+     }
+    ],
+    "point": "the table dwarfs the universe -> physically impossible"
+   },
+   "manim_scene": "AUTHOR REQUIRED: an isotype/scale bar where a growing stack of 'rulebook entries' blows past a labelled '~10^80 atoms' line and off the top of frame. No default template; no placeholder title.",
+   "note": "Genuine data -> stays Manim, but scene must be authored (see manim_scope rule).",
+   "beat_id": "A16",
+   "narration_text": "And a blunt practical objection. A rulebook that answers any Chinese sentence would be astronomically large — more entries than there are atoms in the universe. As a literal lookup table, the room simply cannot be built.",
+   "actual_duration_s": 12.245,
+   "audio_file": "mp3/beat-A16.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A16.mp4",
+    "filled_by": "manim:A16_CombinatoricsWall",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "III",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A17_SafeDistance"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "framed-picture",
+     "puzzle-piece",
+     "dust"
+    ],
+    "sketch": "the Chinese Room hung on a wall like a museum painting labelled 'thought experiment', a little velvet rope in front, gathering dust",
+    "build": "a 'harmless' tag dangles off the frame; slight sway"
+   },
+   "note": "Was Manim state card -> doodle. Sets up the Act IV reversal.",
+   "beat_id": "A17",
+   "narration_text": "For decades that felt like a safe dismissal. A room that big is a fantasy. You could admire the argument as a puzzle — without ever worrying that it described anything real.",
+   "actual_duration_s": 9.856,
+   "audio_file": "mp3/beat-A17.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A17.mp4",
+    "filled_by": "manim:A17_SafeDistance",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "IV",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A18_ActTitle"
+    }
+   },
+   "beat_id": "A18",
+   "narration_text": "Act four. The room comes true.",
+   "actual_duration_s": 2.517,
+   "audio_file": "mp3/beat-A18.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A18.mp4",
+    "filled_by": "manim:A18_ActTitle",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "IV",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A19_TokenMachine"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "text-stream",
+     "model-block",
+     "next-token"
+    ],
+    "sketch": "a stream of words flowing into a soft-edged 'model' blob; it emits one chunk at a time, chained; behind it, a faint globe of 'all text' feeding in",
+    "build": "chunks pop out one-by-one on each 'then the next'"
+   },
+   "note": "Was Remotion illustration -> doodle. No vendor/model names.",
+   "beat_id": "A19",
+   "narration_text": "Then we built the machines Professor Bear points to. Not a lookup table — a model. It reads your text and predicts the next best chunk, then the next, then the next, trained on writing at the scale of the whole internet.",
+   "actual_duration_s": 11.435,
+   "audio_file": "mp3/beat-A19.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A19.mp4",
+    "filled_by": "manim:A19_TokenMachine",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "IV",
+   "scene": "EquationTangent",
+   "shot": {
+    "type": "EQUATION",
+    "source": "own",
+    "manim": {
+     "scene_class": "A20_TokenProbability"
+    }
+   },
+   "viz": {
+    "kind": "equation_plus_bars",
+    "expr": "P(next token | context)",
+    "detail": "a probability bar chart over candidate tokens; the top bar highlighted terracotta as the sample"
+   },
+   "manim_scene": "AUTHOR REQUIRED: write P(next | context), then grow a labelled bar chart of a handful of candidate next-tokens with one highlighted. Real Manim scene; no placeholder.",
+   "note": "Genuine math -> stays Manim, scene must be authored.",
+   "beat_id": "A20",
+   "narration_text": "Under the hood it's a probability. Given everything so far, the model scores every possible next token, then samples from the top. No rulebook of sentences — a learned distribution over language.",
+   "actual_duration_s": 11.328,
+   "audio_file": "mp3/beat-A20.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A20.mp4",
+    "filled_by": "manim:A20_TokenProbability",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "IV",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A21_SameShape"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "three-box-skeleton",
+     "room",
+     "model"
+    ],
+    "sketch": "the Chinese Room and the model drawn above one shared skeleton: IN -> [ mechanical process ] -> OUT; the two collapse onto the same three boxes",
+    "build": "the room and model slide down and align onto the shared skeleton on 'same shape'"
+   },
+   "note": "Was Remotion illustration -> doodle. The parallel, drawn not captioned.",
+   "beat_id": "A21",
+   "narration_text": "But look at the shape of it. Symbols in. A mechanical procedure with no grasp of meaning. Fluent symbols out. Searle didn't just critique AI — in 1980 he sketched its mechanism, forty-five years early.",
+   "actual_duration_s": 12.245,
+   "audio_file": "mp3/beat-A21.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A21.mp4",
+    "filled_by": "manim:A21_SameShape",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "IV",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A22_SameSkeletonDifferentEngine"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "lookup-table",
+     "dice",
+     "thread-stitch"
+    ],
+    "sketch": "a rigid lookup table crossed out; replaced by weighted dice landing on guesses that a needle-and-thread stitches into a smooth sentence",
+    "build": "table crossed out on 'not a fixed table'; stitches pull a line taut on 'startlingly human'"
+   },
+   "note": "Was Manim state card -> doodle.",
+   "beat_id": "A22",
+   "narration_text": "With one twist he could not have named: it's probabilistic, not a fixed table. The room doesn't look up the answer. It weighs a next best guess, and another, and stitches them into something startlingly human.",
+   "actual_duration_s": 10.901,
+   "audio_file": "mp3/beat-A22.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A22.mp4",
+    "filled_by": "manim:A22_SameSkeletonDifferentEngine",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "V",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A23_ActTitle"
+    }
+   },
+   "beat_id": "A23",
+   "narration_text": "Act five. Did the room pass?",
+   "actual_duration_s": 2.304,
+   "audio_file": "mp3/beat-A23.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A23.mp4",
+    "filled_by": "manim:A23_ActTitle",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "V",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A24_CantTell"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "terminal",
+     "curtain",
+     "machine-reveal",
+     "checkmark"
+    ],
+    "sketch": "callback to A4's imitation-game doodle: the '?' curtained door swings open to reveal a machine, and a hand-drawn check stamps 'passes'",
+    "build": "door swings and check stamps on 'the test is passed'"
+   },
+   "note": "Was Remotion pattern -> doodle. Clearly Bear's claim (VO).",
+   "beat_id": "A24",
+   "narration_text": "Here is Professor Bear's claim. If you'd sat at a terminal a decade ago, not knowing these systems existed, and read what they write today — you'd have said, without hesitation, that a person was typing. By Turing's own bar, the test is passed.",
+   "actual_duration_s": 13.077,
+   "audio_file": "mp3/beat-A24.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A24.mp4",
+    "filled_by": "manim:A24_CantTell",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "V",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.55,
+     0.45
+    ]
+   },
+   "pantry": "A25.png",
+   "tier": 1,
+   "note": "Generic person at a terminal. If AI-generated: source:ai + disclosure sidecar.",
+   "beat_id": "A25",
+   "narration_text": "Indistinguishable. That was the whole test. And on the behavior Turing cared about, the machines clear it — often more patient, more fluent, more genuinely helpful than the human on the other side.",
+   "actual_duration_s": 10.453,
+   "audio_file": "mp3/beat-A25.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A25.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T03:45:46"
+   },
+   "scene_class": "A25_IndistinguishableTest"
+  },
+  {
+   "lane": "DOODLE",
+   "act": "V",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A26_UsefulNotUnderstanding"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "shrug-figure",
+     "wrench",
+     "empty-head",
+     "balance"
+    ],
+    "sketch": "a shrugging figure; a hyper-useful multi-tool doing chores; beside it a head that's still empty; a balance holding 'useful' and 'understanding' as separate weights",
+    "build": "the balance stays level with the two kept apart on 'both can be true'"
+   },
+   "note": "Was Manim quote card -> doodle.",
+   "beat_id": "A26",
+   "narration_text": "But Searle would only shrug. Passing the test was never the question. The room passes and still means nothing. Useful — extraordinarily useful — is not the same as understanding. Both can be true at once.",
+   "actual_duration_s": 11.307,
+   "audio_file": "mp3/beat-A26.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A26.mp4",
+    "filled_by": "manim:A26_UsefulNotUnderstanding",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "V",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A27_OpenQuestion"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "small-network",
+     "large-network",
+     "spark",
+     "steps"
+    ],
+    "sketch": "a small sketchy network sits flat/dim; a much larger one lights up with a chain of step-by-step reasoning arrows and a spark nobody drew in",
+    "build": "the reasoning chain and spark ignite on 'emerge from sheer scale'"
+   },
+   "note": "Was Remotion illustration -> doodle. Emergence as the open question.",
+   "beat_id": "A27",
+   "narration_text": "Which leaves the live question. These models increasingly seem to reason — to work a problem step by step. If that's real, it may not come from lookup at all. It may emerge from sheer scale — behavior the parts were never programmed to have.",
+   "actual_duration_s": 12.928,
+   "audio_file": "mp3/beat-A27.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A27.mp4",
+    "filled_by": "manim:A27_OpenQuestion",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "V",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.5
+    ]
+   },
+   "pantry": "A28.png",
+   "tier": 1,
+   "note": "Generic vast compute / scale image. source:ai + disclosure if generated.",
+   "beat_id": "A28",
+   "narration_text": "Enough parameters, enough data, and something shows up that nobody wrote in. Maybe it's a trick of fluency. Maybe it's the first crack in Searle's wall. Right now, nobody can say which.",
+   "actual_duration_s": 10.347,
+   "audio_file": "mp3/beat-A28.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A28.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T03:45:46"
+   },
+   "scene_class": "A28_EmergentCapability"
+  },
+  {
+   "lane": "MANIM",
+   "act": "V",
+   "scene": "EmergenceCurve",
+   "shot": {
+    "type": "GRAPH",
+    "source": "own",
+    "manim": {
+     "scene_class": "A29_EmergenceCurve"
+    }
+   },
+   "viz": {
+    "kind": "step_curve",
+    "x": "scale",
+    "y": "capabilities",
+    "note": "capability jumps up in steps, not a smooth line"
+   },
+   "manim_scene": "AUTHOR REQUIRED: draw axes (scale vs capability), then animate a step-like curve jumping upward. Real Manim scene; no placeholder.",
+   "note": "Genuine data -> stays Manim, scene must be authored. Closes the body.",
+   "beat_id": "A29",
+   "narration_text": "Scale on one axis. New abilities appearing on the other — not smoothly, but in jumps. That is the shape of the thing we don't yet understand about our own machines.",
+   "actual_duration_s": 9.237,
+   "audio_file": "mp3/beat-A29.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A29.mp4",
+    "filled_by": "manim:A29_EmergenceCurve",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "REMOTION",
+   "act": "CLOSING",
+   "exempt": true,
+   "scene": "ClaudeComposerAsk",
+   "shot": {
+    "type": "UI",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN — CHINESE ROOM",
+      "segment": "The Chinese Room",
+      "command": "Walk me through Searle's Chinese Room, then argue both sides — does a large language model understand language, or only imitate it? Make me pick.",
+      "runningText": "thinking about it…",
+      "modelLabel": "Claude",
+      "effortLabel": "Deep"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "Claude UI bookend: your-turn, prompt read in full.",
+   "beat_id": "BHTF",
+   "narration_text": "Your turn. Paste this into Claude: 'Walk me through Searle's Chinese Room, then argue both sides — does a large language model understand language, or only imitate it? Make me pick.' Then push back on the answer. That's where the thinking starts.",
+   "actual_duration_s": 13.12,
+   "audio_file": "mp3/beat-C2.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "lane": "REMOTION",
+   "act": "CLOSING",
+   "exempt": true,
+   "scene": "ClaudeTitleOutro",
+   "shot": {
+    "type": "UI",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "The Chinese Room",
+      "handle": "@NikBearBrown",
+      "slug": "claude-liam-chinese-room"
+     },
+     "rendered": {
+      "out": "media/C3.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "Claude UI bookend: title re-read.",
+   "beat_id": "C3",
+   "narration_text": "The Chinese Room.",
+   "actual_duration_s": null,
+   "audio_file": "mp3/beat-C3.mp3",
+   "voice_kokoro": "am_onyx",
+   "engine": "kokoro",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/C3.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:45:46"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "BOUT",
+   "estimated_duration_s": 8.0,
+   "actual_duration_s": null,
+   "narration_text": "",
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T03:45:46"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "The Chinese Room",
+      "slug": "claude-liam-chinese-room",
+      "handle": "@NikBearBrown",
+      "subline": ""
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   }
+  }
+ ],
+ "metadata": {
+  "voice_kokoro": "am_onyx",
+  "engine": "kokoro",
+  "palette": "claude",
+  "build": {
+   "at": "2026-08-01T03:45:46",
+   "cut": "review",
+   "filled": 33,
+   "of": 34,
+   "slates": [
+    "A7"
+   ],
+   "skin_warnings": []
+  },
+  "title": "The Chinese Room",
+  "slug": "claude-liam-chinese-room",
+  "playlist": "Computational Skepticism",
+  "hashtags": [
+   "AI",
+   "MachineLearning",
+   "ChineseRoom",
+   "Philosophy",
+   "ComputationalSkepticism",
+   "LLM",
+   "ArtificialIntelligence"
+  ],
+  "voice": "kokoro:am_onyx",
+  "verdict_stripped": "BVDT removed: all 0 lines are placeholders; placeholder heading. A placeholder verdict is worse than none."
+ }
+}

@@ -1,0 +1,170 @@
+{
+  "video": "claude-liam-cli-reliability-diagram-own-model",
+  "metadata": {
+    "title": "Reliability Diagram: Your Model's Confidence on Trial",
+    "slug": "claude-liam-cli-reliability-diagram-own-model",
+    "topic": "COMPUTATIONAL SKEPTICISM \u2014 CALIBRATION",
+    "register": "Teardown",
+    "voice": "NikBearBrown",
+    "voice_id": "${ELEVENLABS_VOICE_NIKBEARBROWN}",
+    "palette": "claude",
+    "style_preset": "claude",
+    "style": "cli",
+    "note": "CLI video: B00 intro \u00b7 B01 PROBLEM \u00b7 B02 ASK \u00b7 B03 CODE \u00b7 B04 OUTPUT(manim:B04_ReliabilityDiagram) \u00b7 B05 CHANGE \u00b7 B06 SUMMARY \u00b7 B07 NEXT STEPS \u00b7 B08 extra-slate \u00b7 B09 outro",
+    "total_estimated_duration_seconds": 125,
+    "audience": "Claude",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "channel": "NikBearBrown",
+    "assignment_tieins": [
+      "A2 \u2014 this IS the Calibration instrument (25 pts): reliability diagram + ECE + Brier + temperature scaling + shifted-distribution re-plot on the student's own model",
+      "Candidate 01 teaches the concept on synthetic data; this one produces the graded deliverable on a real build"
+    ],
+    "build": {
+      "at": "2026-07-24T03:21:46",
+      "cut": "master",
+      "filled": 12,
+      "of": 12,
+      "slates": [],
+      "skin_warnings": []
+    },
+    "clifix_at": "2026-07-19T21:48:38"
+  },
+  "source_of_truth": "beat_sheet.json \u2014 edit the sheet, not this file",
+  "beats_total": 12,
+  "beats_open": 0,
+  "beats": [
+    {
+      "beat_id": "B00",
+      "status": "filled",
+      "on_disk": "media/B00.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B00.mp4",
+      "label": "Salaam \u2014 this is Liam, in for Bear. When your model says 94 percent confidence \u2014 does that mean 94 o"
+    },
+    {
+      "beat_id": "B01",
+      "status": "filled",
+      "on_disk": "media/B01.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B01.mp4",
+      "label": "You trained a classifier this week. It prints confidence scores. You have never checked whether thos"
+    },
+    {
+      "beat_id": "B02",
+      "status": "filled",
+      "on_disk": "media/B02.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B02.mp4",
+      "label": "In the terminal: ask Claude to write a script that loads your held-out predictions CSV \u2014 two columns"
+    },
+    {
+      "beat_id": "B03",
+      "status": "filled",
+      "on_disk": "media/B03.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B03.mp4",
+      "label": "Read the three key operations before running. Calibration underscore curve from sklearn returns, per"
+    },
+    {
+      "beat_id": "B04",
+      "status": "filled",
+      "on_disk": "manim/B04.mp4",
+      "method": "manim",
+      "who": "pipeline",
+      "scene_hint": "animated_graphics",
+      "prompt": null,
+      "slot": "manim/B04.mp4",
+      "label": "Run it. Left panel: in-distribution reliability diagram. The curve tracks the diagonal reasonably we"
+    },
+    {
+      "beat_id": "B05",
+      "status": "filled",
+      "on_disk": "media/B05.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B05.mp4",
+      "label": "Before re-running with temperature scaling, lock a prediction. Ask Claude to add a step at the top o"
+    },
+    {
+      "beat_id": "B06",
+      "status": "filled",
+      "on_disk": "media/B06.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B06.mp4",
+      "label": "Temperature scaling closes the in-distribution ECE gap \u2014 the curve moves to the diagonal. But on the"
+    },
+    {
+      "beat_id": "B07",
+      "status": "filled",
+      "on_disk": "media/B07.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B07.mp4",
+      "label": "Your move: take any model you shipped last week. Pull the held-out predictions \u2014 predicted probabili"
+    },
+    {
+      "beat_id": "B08",
+      "status": "filled",
+      "on_disk": "media/B08.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B08.mp4",
+      "label": "The complete source is in the video description. Fork it, swap in your own data, and see what you fi"
+    },
+    {
+      "beat_id": "BVDT",
+      "status": "filled",
+      "on_disk": "media/BVDT.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/BVDT.mp4",
+      "label": "Let's recap with Claude. You trained a classifier this week. It prints confidence scores. You have n"
+    },
+    {
+      "beat_id": "BHTF",
+      "status": "filled",
+      "on_disk": "media/BHTF.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/BHTF.mp4",
+      "label": "Your turn. I'm studying Reliability Diagram: Your Model's Confidence on Trial using Claude CLI. I un"
+    },
+    {
+      "beat_id": "B09",
+      "status": "filled",
+      "on_disk": "media/B09.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B09.mp4",
+      "label": "Reliability Diagram: Your Model's Confidence on Trial. I'm Liam, in for Bear."
+    }
+  ]
+}

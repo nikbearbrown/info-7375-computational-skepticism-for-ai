@@ -1,0 +1,2849 @@
+{
+  "metadata": {
+    "slug": "claude-liam-lecture-key-terms-data-validation",
+    "title": "Key Terms: Data Validation",
+    "skill": "lecture",
+    "style_preset": "lecture",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "neu",
+    "channel_handle": "@NikBearBrown",
+    "register": "Teardown",
+    "fps": 24,
+    "width": 3840,
+    "height": 2160,
+    "aspect_ratio": "16:9",
+    "caption_policy": "sidecar",
+    "greeting_language": "German (Hallo)",
+    "source_doc": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/youtube/claude-liam-lecture-key-terms-data-validation/SOURCES.md",
+    "playlist": "Computational Skepticism, Exam Prep",
+    "series_title": "Computational Skepticism, Exam Prep",
+    "series_numbered": false,
+    "course": "INFO 7375 Computational Skepticism for AI",
+    "lecture_opening_description": "30 terms for what a dataset can and cannot show.",
+    "lecture_opening_title_lines": [
+      "Key Terms:",
+      "Data Validation"
+    ],
+    "tags": [
+      "Computational Skepticism",
+      "INFO 7375",
+      "Key terms",
+      "Exam prep",
+      "Data Validation",
+      "Glossary",
+      "Liam",
+      "Lecture"
+    ],
+    "deck_file": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html",
+    "deck_note": "Body beats are the terminology deck filmed live; see exam-prep-deck-films/tools/deck_capture.py",
+    "on_exam": true,
+    "pronounce": {
+      "MCAR": "ˌɛmkˈɑːɹ",
+      "EDA": "ˌiːdˌiːˈeɪ",
+      "Gebru": "ɡˈɛbɹuː",
+      "Epistemic": "ˌɛpɪstˈiːmɪk",
+      "A-I": "ˈeɪaɪ",
+      "A-I's": "ˈeɪaɪz"
+    },
+    "bookends": {
+      "idea": {
+        "text": "The checks came back clean,\nso the data is clean.",
+        "triggerWords": "so the data is clean",
+        "replacementWords": "for what was written down"
+      },
+      "labels": [
+        {
+          "key": "in the book text",
+          "kind": "tag",
+          "meaning": "the course text uses and explains the term"
+        },
+        {
+          "key": "outside source",
+          "kind": "tag",
+          "meaning": "from a named reference outside the course text"
+        },
+        {
+          "key": "Computed",
+          "kind": "badge",
+          "meaning": "numbers worked out on screen from stated inputs"
+        },
+        {
+          "key": "Simulation (seeded)",
+          "kind": "badge",
+          "meaning": "a made-up run with a fixed seed, the same every time"
+        },
+        {
+          "key": "Illustrative data",
+          "kind": "badge",
+          "meaning": "numbers chosen to show the idea, not measured"
+        },
+        {
+          "key": "Conceptual illustration",
+          "kind": "badge",
+          "meaning": "a drawing of the idea, with no data behind it"
+        }
+      ],
+      "defs_parts": [
+        "Six labels sit in the corners of the pictures that follow.",
+        "In the book text: the course text uses and explains the term.",
+        "Outside source: the term comes from a named reference outside the course text.",
+        "Computed: the numbers are worked out on screen from stated inputs.",
+        "Simulation: a made-up run with a fixed seed, so it comes out the same every time.",
+        "Illustrative data: numbers chosen to show the idea, not measured.",
+        "Conceptual: a drawing of the idea, with no data behind it."
+      ],
+      "recap_lead": "Let's recap.",
+      "recap_lines": [
+        "The epistemic frame is every unwritten decision behind a table.",
+        "A dropped row is not a missing value, and no error flags it.",
+        "Procedural EDA examines only what was written down.",
+        "MAR follows a column you can see, MNAR follows the missing value itself.",
+        "A label is a recorded proxy, not the construct you care about.",
+        "Lock a prediction first, then trace one row and report the gap."
+      ],
+      "segment": "Name The Term, Rule Out Its Twin",
+      "command": "Quiz me on terms for validating a dataset. Give me one short case at a time about a dataset. I must name the exact term, choosing from epistemic frame, silent join drop, sentinel value, MCAR, MAR, MNAR, label assumption, access boundary and prediction-lock, and say why its look-alike is wrong. Do not reveal the answer until I reply. Then correct me and give the next case.",
+      "checks": [
+        "Check: each case hides its answer until you have replied.",
+        "Check: the feedback says why the look-alike term does not fit the case."
+      ]
+    },
+    "build": {
+      "at": "2026-11-12T07:13:00",
+      "cut": "master",
+      "filled": 55,
+      "of": 55,
+      "slates": [],
+      "skin_warnings": [
+        "NO RENDERABLE BEATS: no beat carries a shot.remotion.pattern or Manim annotation — the pipeline will render NOTHING and every slot becomes a YOU-slate. The sheet was authored without the scene contract."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BOPEN",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Computational Skepticism, Exam Prep. Key Terms: Data Validation. Thirty terms for questioning a dataset before you trust it, from the row count and missing values to the choices nobody wrote down. Knowing them lets you say exactly what a clean report does and does not show.",
+      "estimated_duration_s": 18.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide. Playlist name as Bear gave it.",
+      "routing": {
+        "about": "Playlist, exact film title, payoff",
+        "runner_up": "Writer-first opening",
+        "reason": "The lecture skill requires the narrated portrait/title card before the writer."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "template": "neu-bookend-title",
+        "narration_contract": "playlist-title-summary-v1",
+        "visual_intent": "Named opening fields visible from frame zero",
+        "motion_claim": "Playlist, title, portrait, credits and handle, visible from frame zero; held for the measured narration.",
+        "show": [
+          {
+            "at": 0,
+            "event": "Complete portrait/title/series card visible"
+          }
+        ],
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Identity card in the deck's look: a still hold is the design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame.",
+        "typography_fill": "#FFFFFF",
+        "typography_reason": "Lecture identity card: the portrait slot is a photograph, not typography; all text fields are listed.",
+        "typography_regions": [
+          {
+            "label": "playlist",
+            "box": [
+              0.0625,
+              0.08,
+              0.8,
+              0.135
+            ]
+          },
+          {
+            "label": "title, rule and summary",
+            "box": [
+              0.41,
+              0.26,
+              0.95,
+              0.72
+            ]
+          },
+          {
+            "label": "presenter and narrator credits",
+            "box": [
+              0.0625,
+              0.73,
+              0.4,
+              0.845
+            ]
+          },
+          {
+            "label": "channel handle",
+            "box": [
+              0.74,
+              0.895,
+              0.945,
+              0.95
+            ]
+          }
+        ]
+      },
+      "voice_key": "c46e9787bcf0",
+      "audio_file": "mp3/beat-BOPEN.mp3",
+      "actual_duration_s": 15.81,
+      "render_duration_s": 15.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOPEN.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. A newcomer thinks that if the standard checks come back clean, the data is clean. But the checks only examine what was written down. Dropped rows, unwritten choices and proxy labels never show up. This film goes through thirty terms for asking what a dataset cannot show, each one with a picture.",
+      "estimated_duration_s": 23.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json idea; the deck's own framing",
+      "routing": {
+        "about": "Core framing correction",
+        "runner_up": "Overview card",
+        "reason": "One phrase is revised; the terms that follow earn the correction."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Core framing correction",
+        "motion_claim": "The assumption is typed, one phrase is struck and replaced in NU red.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types the assumption"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'so the data is clean', types 'for what was written down'"
+          }
+        ],
+        "template": "neu-bookend-writer",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.8,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Typing builds the line on an empty page; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "fba485ff65bd",
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "actual_duration_s": 17.37,
+      "render_duration_s": 17.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "Terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Six labels sit in the corners of the pictures that follow. In the book text: the course text uses and explains the term. Outside source: the term comes from a named reference outside the course text. Computed: the numbers are worked out on screen from stated inputs. Simulation: a made-up run with a fixed seed, so it comes out the same every time. Illustrative data: numbers chosen to show the idea, not measured. Conceptual: a drawing of the idea, with no data behind it.",
+      "estimated_duration_s": 33.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "The deck's opening speaker note (what each tag means) and the evidence badge on every slide",
+      "routing": {
+        "about": "The labels printed on every slide",
+        "runner_up": "The deck's own title slide",
+        "reason": "Prerequisite vocabulary only: the tags and badges the viewer will see in every picture. The terms the film teaches arrive in the body."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Prerequisite labels",
+        "motion_claim": "Each tag or badge, drawn as the deck draws it, rises as it is spoken.",
+        "show": [
+          {
+            "at": 0.08,
+            "event": "'In the book text' lands"
+          },
+          {
+            "at": 0.22,
+            "event": "'Outside source' lands"
+          },
+          {
+            "at": 0.36,
+            "event": "'Computed' lands"
+          },
+          {
+            "at": 0.5,
+            "event": "'Simulation' lands"
+          },
+          {
+            "at": 0.64,
+            "event": "'Illustrative data' lands"
+          },
+          {
+            "at": 0.78,
+            "event": "'Conceptual' lands"
+          }
+        ],
+        "template": "neu-bookend-labels",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The label rows rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "3c7d8215da35",
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "actual_duration_s": 24.81,
+      "render_duration_s": 24.833333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0101",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This is a map of the film, a table that fills in one group at a time. Thirty terms in four groups. The first group is the frame. Epistemic frame, row-count question, silent join drop, recording instrument and Plato's Cave. They ask what a dataset is, and who decided what it holds.",
+      "estimated_duration_s": 21.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 2 step 1. Source: Chapter 3, all sections. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "GROUP; TERMS; WHAT IT IS ABOUT; The frame",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: GROUP; TERMS; WHAT IT IS ABOUT; The frame"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "daea0f201df4",
+      "audio_file": "mp3/beat-B0101.mp3",
+      "actual_duration_s": 15.57,
+      "render_duration_s": 15.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0102",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second row, the procedural pass, the standard checks and their limits. Procedural EDA, exploratory data analysis, column type, sentinel value and Pearson correlation. MCAR, MAR and MNAR, missing completely at random, at random, and not at random. Then missingness matrix, outlier, the IQR rule, for interquartile range, and the z-score rule.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 2 step 2. Source: Chapter 3, all sections. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "The procedural pass; What the standard checks show, and what they cannot",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: The procedural pass; What the standard checks show, and what they cannot"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "0ea06c94bb91",
+      "audio_file": "mp3/beat-B0102.mp3",
+      "actual_duration_s": 19.24,
+      "render_duration_s": 19.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0103",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third row, charts and silent failures. Marks and channels, channel ranking and expressiveness cover how a chart argues. Then the failures the standard checks miss. Sampling, also called the convenience sample, time-window, label, feature-engineering and access boundary, with datasheets and boundary leakage.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 2 step 3. Source: Chapter 3, all sections. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Charts and silent failures; How a chart argues, and six failures EDA misses",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Charts and silent failures; How a chart argues, and six failures EDA misses"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "d9b3c79d6f33",
+      "audio_file": "mp3/beat-B0103.mp3",
+      "actual_duration_s": 16.49,
+      "render_duration_s": 16.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0104",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last row, the interrogation. Prediction-lock, gap analysis, row tracing and do not delegate. This is the work that comes after EDA, the questions the plots cannot answer, and the part that stays with you instead of an AI tool.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 2 step 4. Source: Chapter 3, all sections. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "The interrogation; prediction-lock, gap analysis, row tracing, do not delegate; The work that comes after EDA, and what stays with you",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: The interrogation; prediction-lock, gap analysis, row tracing, do not delegate; The work that comes after EDA, and what stays with you"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f4ff32588821",
+      "audio_file": "mp3/beat-B0104.mp3",
+      "actual_duration_s": 13.41,
+      "render_duration_s": 13.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0201",
+      "act": "The frame",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The boxes on the left are choices made before you saw the data. What gets recorded, what is included, how tables are joined, where it stops. Each was decided, none written down. Together they are the epistemic frame. For example, an AI agent hands a job seeker a table of job listings. Someone chose which job boards to search, which job titles counted, and the day the search stopped. None of that is a column, yet it shapes every row.",
+      "estimated_duration_s": 32.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 3 step 1. Source: Chapter 3, the opening case and “Reconstructing the epistemic frame”; Exercise 1. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Epistemic frame; in the book text; TELL THESE APART; Missing value",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Frame, row-count question, silent join drop: Four unwritten decisions. Then expected rows against actual rows. Then a grid of customers in which a join silently removes rows, mostly from one group.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1833 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Epistemic frame; in the book text; TELL THESE APART; Missing value"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 1,
+        "anim_ms": 1833
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "c1e97003c31a",
+      "audio_file": "mp3/beat-B0201.mp3",
+      "actual_duration_s": 22.12,
+      "render_duration_s": 22.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0202",
+      "act": "The frame",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "In this made-up example the documentation promises eighty-five thousand customer records, and the merged table holds seventy-nine thousand four hundred. The row-count question asks why exactly that many. The red gap is dropped rows, not empty cells, so a missing value check sees nothing. For example, an agent gathers the job listings for one search into a table. Before trusting its fit scores, ask how many listings the job boards actually showed, and why the table holds exactly the number it does.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 3 step 2. Source: Chapter 3, the opening case and “Reconstructing the epistemic frame”; Exercise 1. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Row-count question; in the book text; EXPECTED N VERSUS ACTUAL N; documented: 85,000 customer records",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Frame, row-count question, silent join drop: Four unwritten decisions. Then expected rows against actual rows. Then a grid of customers in which a join silently removes rows, mostly from one group.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1708 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Row-count question; in the book text; EXPECTED N VERSUS ACTUAL N; documented: 85,000 customer records"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 2,
+        "anim_ms": 1708
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f799bb3125d9",
+      "audio_file": "mp3/beat-B0202.mp3",
+      "actual_duration_s": 26.84,
+      "render_duration_s": 26.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0203",
+      "act": "The frame",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Each dot is a customer in a simulated join of two hundred. Red dots have an ID typed differently. Fourteen vanish, mostly red, and the red share falls from fifteen percent to about ten. A silent join drop raises no error. For example, a company joins its list of applicants to their interview scores, matching on applicant ID. Where the interview system typed an ID with an extra space, nothing matches. That applicant drops out of the merged table, and nothing warns anyone.",
+      "estimated_duration_s": 33.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 3 step 3. Source: Chapter 3, the opening case and “Reconstructing the epistemic frame”; Exercise 1. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Silent join drop; in the book text; 200 CUSTOMERS, ONE JOIN ON CUSTOMER ID; kept 186 of 200 · dropped 14",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Frame, row-count question, silent join drop: Four unwritten decisions. Then expected rows against actual rows. Then a grid of customers in which a join silently removes rows, mostly from one group.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (2458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Silent join drop; in the book text; 200 CUSTOMERS, ONE JOIN ON CUSTOMER ID; kept 186 of 200 · dropped 14"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 3,
+        "anim_ms": 2458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "bc5890c79777",
+      "audio_file": "mp3/beat-B0203.mp3",
+      "actual_duration_s": 25.46,
+      "render_duration_s": 25.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0301",
+      "act": "The frame",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A field of things and one sensor, the pink window sweeping across. Filled dots inside were recorded, hollow dots outside never were. The recording instrument is whatever did the recording. Thirteen of twenty-four reach the table, which still looks complete. For example, a company's applicant-tracking system captures only people who applied through its online form. A candidate referred by email never enters the table, and nothing in it shows that they existed.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 4 step 1. Source: Chapter 3, “Why this chapter” and the opening case. Badge: Computed.",
+      "routing": {
+        "about": "Recording instrument; in the book text; TELL THESE APART; Shadow",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Recording instrument and Plato’s Cave: A sensor window sweeps across a field of objects and records only those inside it. Then one object moves away from a light and its shadow on a wall shrinks, while the object stays the same.",
+        "motion_claim": "The deck's own animation for step 1 of 2 plays as the narration starts (2625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Recording instrument; in the book text; TELL THESE APART; Shadow"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 1,
+        "anim_ms": 2625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "5db32acbb74b",
+      "audio_file": "mp3/beat-B0301.mp3",
+      "actual_duration_s": 22.93,
+      "render_duration_s": 22.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0302",
+      "act": "The frame",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A fire, an object, and its red shadow on the wall. The object moves, the shadow changes size, the object stays the same. Plato's Cave says a dataset is the shadow. Measuring it exactly does not show you the fire. For example, a table of keyword counts from résumés can be measured to the last decimal. The résumés are the shadows. What each candidate can actually do is the fire, and no exact count of keywords reaches it.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 4 step 2. Source: Chapter 3, “Why this chapter” and the opening case. Badge: Computed.",
+      "routing": {
+        "about": "Plato's Cave; in the book text; SAME OBJECT, DIFFERENT SHADOW; fire",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Recording instrument and Plato’s Cave: A sensor window sweeps across a field of objects and records only those inside it. Then one object moves away from a light and its shadow on a wall shrinks, while the object stays the same.",
+        "motion_claim": "The deck's own animation for step 2 of 2 plays as the narration starts (3625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Plato's Cave; in the book text; SAME OBJECT, DIFFERENT SHADOW; fire"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 2,
+        "anim_ms": 3625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1c294a1d646d",
+      "audio_file": "mp3/beat-B0302.mp3",
+      "actual_duration_s": 21.9,
+      "render_duration_s": 21.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0401",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A table of five checks, each ticked, each with its limit in red. Procedural EDA, exploratory data analysis run as a routine, covers types, distributions, missingness, correlations and outliers. Run it first. It cannot see what was never written. For example, an AI tool runs the standard pass on a table of job listings, and the salary histograms, missing counts and correlations all look fine. None of it can show the listings that were taken down before the agent collected them.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 5 step 1. Source: Chapter 3, “The procedural EDA pass”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Procedural EDA; in the book text; TELL THESE APART; Numeric column",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Procedural EDA, column type, sentinel, correlation: Five checks that pass, each with what it cannot tell you. Zip codes averaged as numbers. A histogram with a spike at 999. Two scatter plots with their Pearson correlations.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (2083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Procedural EDA; in the book text; TELL THESE APART; Numeric column"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 1,
+        "anim_ms": 2083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "796c290c3b5f",
+      "audio_file": "mp3/beat-B0401.mp3",
+      "actual_duration_s": 26.71,
+      "render_duration_s": 26.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0401.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0402",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Zip codes for twenty made-up customers. Treated as numbers, on the left, they average to thirty-one thousand one hundred fifty-three, a place that does not exist. Treated as categories, on the right, you count them. Column type is that choice. For example, an agent stores each listing's job category code as a number and reports the average code. That average names no job at all. The code is a category, so count how many listings fall under each one.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 5 step 2. Source: Chapter 3, “The procedural EDA pass”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Column type; in the book text; 20 CUSTOMERS' ZIP CODES; READ AS A NUMBER",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Procedural EDA, column type, sentinel, correlation: Five checks that pass, each with what it cannot tell you. Zip codes averaged as numbers. A histogram with a spike at 999. Two scatter plots with their Pearson correlations.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1708 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Column type; in the book text; 20 CUSTOMERS' ZIP CODES; READ AS A NUMBER"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 2,
+        "anim_ms": 1708
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "03891892051a",
+      "audio_file": "mp3/beat-B0402.mp3",
+      "actual_duration_s": 21.97,
+      "render_duration_s": 22.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0402.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0403",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Sixty-eight invented ages, with a red bar far right at nine hundred ninety-nine. That is a sentinel value, a placeholder for unknown. Left in, it drags the mean age to about one hundred fifty-four. Removed, the mean is about forty-one. For example, an applicant-tracking system stores zero as the expected salary when a candidate leaves the box blank. A salary report averages those zeros in as if they were real, and the typical expectation looks far too low.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 5 step 3. Source: Chapter 3, “The procedural EDA pass”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Sentinel value; in the book text; A placeholder such as 999 or N/A standing in for unknown.; 68 AGES, 8 OF THEM 999",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Procedural EDA, column type, sentinel, correlation: Five checks that pass, each with what it cannot tell you. Zip codes averaged as numbers. A histogram with a spike at 999. Two scatter plots with their Pearson correlations.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Sentinel value; in the book text; A placeholder such as 999 or N/A standing in for unknown.; 68 AGES, 8 OF THEM 999"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 3,
+        "anim_ms": 1417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b1f9761e2a6f",
+      "audio_file": "mp3/beat-B0403.mp3",
+      "actual_duration_s": 25.39,
+      "render_duration_s": 25.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0403.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0404",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two invented scatter plots. On the left the points follow a curve, and Pearson correlation is near zero, though x fully determines y. On the right a straight trend scores zero point nine three. It only measures straight-line association. Picture interview offers that rise with years of experience, then fall for the most senior applicants. That arch is a real relationship, yet Pearson correlation can score it near zero, and a report would say experience does not matter.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 5 step 4. Source: Chapter 3, “The procedural EDA pass”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Pearson correlation; in the book text; TWO RELATIONSHIPS, TWO CORRELATIONS; r = −0.04",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Procedural EDA, column type, sentinel, correlation: Five checks that pass, each with what it cannot tell you. Zip codes averaged as numbers. A histogram with a spike at 999. Two scatter plots with their Pearson correlations.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (2042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Pearson correlation; in the book text; TWO RELATIONSHIPS, TWO CORRELATIONS; r = −0.04"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 4,
+        "anim_ms": 2042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d05193aa395c",
+      "audio_file": "mp3/beat-B0404.mp3",
+      "actual_duration_s": 24.16,
+      "render_duration_s": 24.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0404.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0501",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "An axis where zero is the true average income of four thousand simulated people. The dot is the observed average. MCAR, missing completely at random, has no pattern. Thirty percent of values are gone, and the dot barely moves. For example, a job board's server randomly fails to save the salary on some listings, whatever the job or the pay. The average salary stays near the truth. The gaps only cost rows.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 6 step 1. Source: Chapter 3, “Missingness”; Rubin 1976. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "MCAR; in the book text; Missing completely at random: no pattern at all.; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "MCAR, MAR, MNAR and the missingness matrix: A bias axis with the observed-minus-true mean income for three missingness rules. Then two missingness matrices: scattered gaps and aligned stripes.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: MCAR; in the book text; Missing completely at random: no pattern at all.; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 1,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "fe46180495ab",
+      "audio_file": "mp3/beat-B0501.mp3",
+      "actual_duration_s": 21.61,
+      "render_duration_s": 21.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0501.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0502",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "MAR, missing at random, means the gaps follow a column you can see. Here the young skip more, and the red dot lands one thousand five hundred fifty-four too high. Inside each age band the error nearly vanishes, so age explains it. For example, small companies leave the salary off their listings more often than large ones, and company size is a column in the table. Within each size the gaps are random, so you can correct the average by size.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 6 step 2. Source: Chapter 3, “Missingness”; Rubin 1976. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "in the book text; Missing at random: gaps follow a column you see.; MAR; MAR: young skip more",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "MCAR, MAR, MNAR and the missingness matrix: A bias axis with the observed-minus-true mean income for three missingness rules. Then two missingness matrices: scattered gaps and aligned stripes.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Missing at random: gaps follow a column you see.; MAR; MAR: young skip more"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 2,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "a9df5b7b0184",
+      "audio_file": "mp3/beat-B0502.mp3",
+      "actual_duration_s": 21.85,
+      "render_duration_s": 21.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0502.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0503",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "MNAR, missing not at random, means the gaps follow the missing value itself. Here high earners skip, and the red dot lands three thousand eight hundred thirty-five too low. No observed column explains it, so the standard checks cannot detect it. For example, employers leave the salary off a listing when the pay is low, because a low number puts applicants off. A salary report built from the listings that do show pay comes out too high, and nothing in the table reveals why.",
+      "estimated_duration_s": 33.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 6 step 3. Source: Chapter 3, “Missingness”; Rubin 1976. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "in the book text; Missing not at random: gaps follow the value.; MNAR; MNAR: high earners skip",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "MCAR, MAR, MNAR and the missingness matrix: A bias axis with the observed-minus-true mean income for three missingness rules. Then two missingness matrices: scattered gaps and aligned stripes.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; Missing not at random: gaps follow the value.; MNAR; MNAR: high earners skip"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 3,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "c2353590f3b0",
+      "audio_file": "mp3/beat-B0503.mp3",
+      "actual_duration_s": 23.65,
+      "render_duration_s": 23.666666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0503.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0504",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two grids, dark where a value is missing. Each is a missingness matrix. On the left, scattered gaps. On the right, red stripes show two columns missing in the same six rows. The matrix finds the pattern. Only reasoning finds the cause. For example, a matrix of job applications shows the portfolio link and the references field missing in the same rows. The stripe says they fail together. Only a person asking around learns why, perhaps that an older application form never had either field.",
+      "estimated_duration_s": 33.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 6 step 4. Source: Chapter 3, “Missingness”; Rubin 1976. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Missingness matrix; in the book text; Dark where missing; stripes mean columns fail together.; MISSINGNESS MATRICES: 18 ROWS, 6 COLUMNS",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "MCAR, MAR, MNAR and the missingness matrix: A bias axis with the observed-minus-true mean income for three missingness rules. Then two missingness matrices: scattered gaps and aligned stripes.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Missingness matrix; in the book text; Dark where missing; stripes mean columns fail together.; MISSINGNESS MATRICES: 18 ROWS, 6 COLUMNS"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 4,
+        "anim_ms": 1208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "c866f7b124bc",
+      "audio_file": "mp3/beat-B0504.mp3",
+      "actual_duration_s": 26.55,
+      "render_duration_s": 26.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0504.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0601",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A strip of one hundred twenty-five simulated values, a few far out in red. An outlier is an extreme value flagged as a candidate. The one at four hundred twenty could be an error, a real executive, or a code for unknown. A person decides. For example, a salary-estimate tool flags a junior analyst listing that pays far more than the rest. It could be a typo with an extra zero, a real premium, or a placeholder. Someone who knows the field makes the call.",
+      "estimated_duration_s": 33.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 7 step 1. Source: Chapter 3, “Outliers”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Outlier; in the book text; TELL THESE APART; IQR rule",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Outlier, IQR rule, z-score rule: A strip of 125 values. The IQR rule's fences flag seven values; the z-score rule's band flags only one, because the extremes inflate the spread.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Outlier; in the book text; TELL THESE APART; IQR rule"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 1,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3d70c9748e93",
+      "audio_file": "mp3/beat-B0601.mp3",
+      "actual_duration_s": 24.32,
+      "render_duration_s": 24.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0601.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0602",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The dashed red fences are the IQR rule. IQR, the interquartile range, is the width of the middle half. The fences sit one point five widths beyond the quartiles, at twenty-nine and sixty-nine. Seven values fall outside. Extremes do not move the fences. For example, a tool checking salaries on analyst listings builds its fences from the middle half of those salaries. A senior director job filed as analyst lands beyond the upper fence and gets flagged, and it does not drag the fences with it.",
+      "estimated_duration_s": 34.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 7 step 2. Source: Chapter 3, “Outliers”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "in the book text; Flag values below Q1 − 1.5 × IQR or above Q3 + 1.5 × IQR.; IQR rule; Q1 − 1.5·IQR = 29",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Outlier, IQR rule, z-score rule: A strip of 125 values. The IQR rule's fences flag seven values; the z-score rule's band flags only one, because the extremes inflate the spread.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Flag values below Q1 − 1.5 × IQR or above Q3 + 1.5 × IQR.; IQR rule; Q1 − 1.5·IQR = 29"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 2,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "5d91b91accf4",
+      "audio_file": "mp3/beat-B0602.mp3",
+      "actual_duration_s": 26.45,
+      "render_duration_s": 26.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0602.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0603",
+      "act": "The procedural pass",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The z-score rule flags anything more than three standard deviations from the mean. But the extremes inflate that standard deviation, so the red line sits at one hundred sixty-two and only one value is flagged. The IQR rule flagged seven. For example, a few executive salaries mixed into analyst listings swell the standard deviation. The z-score band widens around them, and the very listings that should be flagged pass as normal.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 7 step 3. Source: Chapter 3, “Outliers”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "in the book text; Z-score rule; mean + 3 SD = 162; mean 53, SD 36",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Outlier, IQR rule, z-score rule: A strip of 125 values. The IQR rule's fences flag seven values; the z-score rule's band flags only one, because the extremes inflate the spread.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; Z-score rule; mean + 3 SD = 162; mean 53, SD 36"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 3,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "26a72fa04a0d",
+      "audio_file": "mp3/beat-B0603.mp3",
+      "actual_duration_s": 22.71,
+      "render_duration_s": 22.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0603.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0701",
+      "act": "Reading a chart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A scatter plot, one point per row. The point is the mark. A channel is a visual property that carries a value. Horizontal position carries age, vertical position carries salary, hue carries department. Every chart is marks and channels. For example, in a chart of job listings an agent has scored, each dot is a listing, the mark. Horizontal position carries the fit score, vertical position the salary, and color whether the job is remote.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 8 step 1. Source: Chapter 3, “A chart is an argument”; Cleveland and McGill 1984; Mackinlay 1986, “Automating the design of graphical presentations”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Marks and channels; in the book text; TELL THESE APART; Expressiveness",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Marks and channels, ranking, expressiveness: A scatter plot labelled with its mark and channels. Then two values encoded by position, length, area and color intensity. Then a category encoded by hue and by size.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (3208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Marks and channels; in the book text; TELL THESE APART; Expressiveness"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 1,
+        "anim_ms": 3208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b1cc8bdbf8b5",
+      "audio_file": "mp3/beat-B0701.mp3",
+      "actual_duration_s": 22.4,
+      "render_duration_s": 22.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0701.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0702",
+      "act": "Reading a chart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two values, forty and fifty, shown by position, length, area and color intensity. In the top rows the gap is easy to see, in the bottom rows it is not. That order is the channel ranking, measured by Cleveland and McGill. For example, to compare the fit scores of two job offers, draw them as bars of different length, near the top of the ranking. Drawn as two shades of green, near the bottom, a real gap is easy to miss.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 8 step 2. Source: Chapter 3, “A chart is an argument”; Cleveland and McGill 1984; Mackinlay 1986, “Automating the design of graphical presentations”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Channel ranking; in the book text; THE SAME TWO VALUES, 40 AND 50; position",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Marks and channels, ranking, expressiveness: A scatter plot labelled with its mark and channels. Then two values encoded by position, length, area and color intensity. Then a category encoded by hue and by size.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1833 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Channel ranking; in the book text; THE SAME TWO VALUES, 40 AND 50; position"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 2,
+        "anim_ms": 1833
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "0d2d45f37a8b",
+      "audio_file": "mp3/beat-B0702.mp3",
+      "actual_duration_s": 21.46,
+      "render_duration_s": 21.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0702.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0703",
+      "act": "Reading a chart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The same departments drawn twice. On the left, hue tells them apart and implies no order. On the right, size makes one department look like more, though the data is the same. Expressiveness means the channel matches the data type. Its look-alike, effectiveness, means the key variable gets the strongest channel. For example, a job-market report draws each industry as a circle of a different size, just to tell them apart. Industry has no order, so the biggest circle suggests a ranking the data never had.",
+      "estimated_duration_s": 34.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 8 step 3. Source: Chapter 3, “A chart is an argument”; Cleveland and McGill 1984; Mackinlay 1986, “Automating the design of graphical presentations”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "outside source; Expressiveness; HUE: NO ORDER IMPLIED; SIZE: ORDER IMPLIED",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Marks and channels, ranking, expressiveness: A scatter plot labelled with its mark and channels. Then two values encoded by position, length, area and color intensity. Then a category encoded by hue and by size.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: outside source; Expressiveness; HUE: NO ORDER IMPLIED; SIZE: ORDER IMPLIED"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 3,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "5ac640533329",
+      "audio_file": "mp3/beat-B0703.mp3",
+      "actual_duration_s": 27.08,
+      "render_duration_s": 27.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0703.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0801",
+      "act": "Six silent failures",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A histogram of two thousand simulated people, easy to reach on the left, hard on the right. Grey is everyone, dark is the sample. The sampling assumption is that the two match. In a convenience sample they do not. The hardest to reach are thirty-two percent of people, three percent of the sample. For example, a model that predicts who gets an interview learns only from users of one job app, the easiest data to collect. Then it is used on everyone.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 9 step 1. Source: Chapter 3, “Hidden assumptions that hide in plain sight”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Sampling assumption; in the book text; also: convenience sample; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sampling, time window, label, feature engineering: A population histogram against a sample histogram. A rate over four years with a flat prediction. Click rate by interest quartile. Old and recomputed customer lifetime value for five customers.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1667 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Sampling assumption; in the book text; also: convenience sample; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 1,
+        "anim_ms": 1667
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "87ee6c003c05",
+      "audio_file": "mp3/beat-B0801.mp3",
+      "actual_duration_s": 21.85,
+      "render_duration_s": 21.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0801.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0802",
+      "act": "Six silent failures",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A simulated conversion rate over four years. The model trained on the shaded first year, so its dashed prediction stays flat at thirty percent. In twenty twenty-two the real rate is eighteen percent. The time-window assumption is that nothing changed since training. For example, a salary-estimate tool trained on listings from a hiring boom keeps quoting boom-time offers after the market cools. Nothing in its training data shows that the market moved.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 9 step 2. Source: Chapter 3, “Hidden assumptions that hide in plain sight”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Time-window assumption; in the book text; Trained on one period, deployed into a shifted one.; CONVERSION RATE BY MONTH, 4 YEARS",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sampling, time window, label, feature engineering: A population histogram against a sample histogram. A rate over four years with a flat prediction. Click rate by interest quartile. Old and recomputed customer lifetime value for five customers.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1750 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Time-window assumption; in the book text; Trained on one period, deployed into a shifted one.; CONVERSION RATE BY MONTH, 4 YEARS"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 2,
+        "anim_ms": 1750
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "616f1a47d2dc",
+      "audio_file": "mp3/beat-B0802.mp3",
+      "actual_duration_s": 22.46,
+      "render_duration_s": 22.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0802.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0803",
+      "act": "Six silent failures",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Bars from a simulated run, one for each level of real interest. Height is how often people clicked. The most interested did so forty-seven percent of the time, the least interested eighteen. The label assumption treats that recorded label as the construct you care about. For example, a model of good candidates learns from a column saying who was hired. Hired is the label. Good at the job is the construct, and good people who were never hired get marked as bad.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 9 step 3. Source: Chapter 3, “Hidden assumptions that hide in plain sight”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Label assumption; in the book text; The label is a proxy, not the thing you care about.; CLICK RATE BY HOW INTERESTED THE PERSON IS",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sampling, time window, label, feature engineering: A population histogram against a sample histogram. A rate over four years with a flat prediction. Click rate by interest quartile. Old and recomputed customer lifetime value for five customers.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Label assumption; in the book text; The label is a proxy, not the thing you care about.; CLICK RATE BY HOW INTERESTED THE PERSON IS"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 3,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "7fa0d56bff85",
+      "audio_file": "mp3/beat-B0803.mp3",
+      "actual_duration_s": 22.34,
+      "render_duration_s": 22.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0803.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0804",
+      "act": "Six silent failures",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A column called customer lifetime value, in simulated numbers. It is a calculation built on an old guess about retention. Grey bars are the inherited column, red bars what it should say now. The feature-engineering assumption treats someone's model output as raw data. For example, an applicant-tracking system exports a match score, and a new hiring model takes it as raw data. It is really an older model's output, built on old guesses about which skills matter. When those go stale, so does the new model.",
+      "estimated_duration_s": 34.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 9 step 4. Source: Chapter 3, “Hidden assumptions that hide in plain sight”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Feature-engineering; in the book text; A column that is someone's model output, not raw data.; customer_lifetime_value = spend × 1 / (1 − retention)",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sampling, time window, label, feature engineering: A population histogram against a sample histogram. A rate over four years with a flat prediction. Click rate by interest quartile. Old and recomputed customer lifetime value for five customers.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Feature-engineering; in the book text; A column that is someone's model output, not raw data.; customer_lifetime_value = spend × 1 / (1 − retention)"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 4,
+        "anim_ms": 1625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "321b9b7ffa9a",
+      "audio_file": "mp3/beat-B0804.mp3",
+      "actual_duration_s": 26.14,
+      "render_duration_s": 26.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0804.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0901",
+      "act": "Six silent failures",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Forty made-up emails, the dots inside the grey disc. The disc is the schema, the declared columns. Red lines run from the emails to things outside, phone numbers, addresses, other people. The dashed ring is the access boundary, the schema plus everything its contents point to. Thirty-one of forty point outside. For example, an agent given a job seeker's inbox to track applications also reaches every attachment, link and forwarded thread in it, other applicants' résumés included.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 10 step 1. Source: Chapter 3, “The access assumption” and “What would change my mind”; Gebru et al. 2021. Badge: Illustrative data.",
+      "routing": {
+        "about": "Access boundary; in the book text; the access assumption; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Access boundary, datasheets, boundary leakage: A corpus of 40 messages with lines to things outside it. Seven datasheet sections down a timeline. A grid of 1,000 messages with 5 leaky ones and a random spot check.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (2000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Access boundary; in the book text; the access assumption; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 1,
+        "anim_ms": 2000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9a50379d2dc8",
+      "audio_file": "mp3/beat-B0901.mp3",
+      "actual_duration_s": 25.81,
+      "render_duration_s": 25.833333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0901.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0902",
+      "act": "Six silent failures",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A timeline of seven sections, from motivation down to maintenance. This is Datasheets for Datasets, by Gebru and colleagues, fifty-seven questions that document how a dataset came to be. It turns the unwritten frame into a checklist, to go through before collecting data. For example, before an agent starts collecting job listings, a datasheet asks why the collection exists, which job boards it draws from, how listings get cleaned, and who keeps it up to date.",
+      "estimated_duration_s": 30.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 10 step 2. Source: Chapter 3, “The access assumption” and “What would change my mind”; Gebru et al. 2021. Badge: Illustrative data.",
+      "routing": {
+        "about": "Datasheets for Datasets; in the book text; 57 QUESTIONS IN 7 SECTIONS; Motivation",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Access boundary, datasheets, boundary leakage: A corpus of 40 messages with lines to things outside it. Seven datasheet sections down a timeline. A grid of 1,000 messages with 5 leaky ones and a random spot check.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (2458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Datasheets for Datasets; in the book text; 57 QUESTIONS IN 7 SECTIONS; Motivation"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 2,
+        "anim_ms": 2458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8860f9a25b8e",
+      "audio_file": "mp3/beat-B0902.mp3",
+      "actual_duration_s": 24.51,
+      "render_duration_s": 24.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0902.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B0903",
+      "act": "Six silent failures",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "One thousand made-up messages, five of them leaky, in red. A random spot check of fifty, outlined, caught one. Boundary leakage is private material escaping through the edge of a corpus. Random checks mostly miss it, so you need red-teaming, a targeted hunt. For example, a cover-letter assistant built on a corpus of recruiter emails drafts a letter that quotes another applicant's phone number from an old thread. That number was never meant to leave the thread.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 10 step 3. Source: Chapter 3, “The access assumption” and “What would change my mind”; Gebru et al. 2021. Badge: Illustrative data.",
+      "routing": {
+        "about": "Boundary leakage; in the book text; unconsented data leakage; 1,000 MESSAGES, 5 LEAKY, A RANDOM SPOT CHECK OF 50",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Access boundary, datasheets, boundary leakage: A corpus of 40 messages with lines to things outside it. Seven datasheet sections down a timeline. A grid of 1,000 messages with 5 leaky ones and a random spot check.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Boundary leakage; in the book text; unconsented data leakage; 1,000 MESSAGES, 5 LEAKY, A RANDOM SPOT CHECK OF 50"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "0c4a03562076",
+      "audio_file": "mp3/beat-B0903.mp3",
+      "actual_duration_s": 23.05,
+      "render_duration_s": 23.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0903.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1001",
+      "act": "The interrogation",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A card with a padlock. Before the first histogram you write down what you expect the dataset to be, what it holds, what it leaves out, what period it covers. Dated and fixed, that is the prediction-lock. Without it, every finding feels obvious afterwards. For example, before opening an agent's log of applications, a job seeker writes and dates a note. It should hold every application sent this spring, from every job board, with the résumé attached. The note never gets edited.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 11 step 1. Source: Chapter 3, “Reconstructing the epistemic frame” and “Strategic delegation in EDA”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Prediction-lock; in the book text; TELL THESE APART; Verify before trusting",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Prediction-lock, gap analysis, row tracing, do not delegate: A prediction card that locks. Twelve predicted months against nine found. A row traced back through three systems. Three tiers of work: delegate, verify, do not delegate.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (2208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Prediction-lock; in the book text; TELL THESE APART; Verify before trusting"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 1,
+        "anim_ms": 2208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "2852c33a5182",
+      "audio_file": "mp3/beat-B1001.mp3",
+      "actual_duration_s": 24.43,
+      "render_duration_s": 24.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1001.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1002",
+      "act": "The interrogation",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "In this made-up example twelve months were predicted. Nine bars are filled, three are empty red outlines. Gap analysis compares the locked prediction with what you found. The gap, three months of twelve, is what you learned, and the thing to pursue. For example, a job seeker predicted the agent applied to every listing it scored as a strong fit. The log shows it only applied where the online form was easy. That gap is the finding, and it says where to look next.",
+      "estimated_duration_s": 33.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 11 step 2. Source: Chapter 3, “Reconstructing the epistemic frame” and “Strategic delegation in EDA”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Gap analysis; in the book text; 12 MONTHS PREDICTED, 9 FOUND; J",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Prediction-lock, gap analysis, row tracing, do not delegate: A prediction card that locks. Twelve predicted months against nine found. A row traced back through three systems. Three tiers of work: delegate, verify, do not delegate.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (2000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Gap analysis; in the book text; 12 MONTHS PREDICTED, 9 FOUND; J"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 2,
+        "anim_ms": 2000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "c38ca61bd4a3",
+      "audio_file": "mp3/beat-B1002.mp3",
+      "actual_duration_s": 22.66,
+      "render_duration_s": 22.666666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1002.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1003",
+      "act": "The interrogation",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Row tracing follows one row back through its sources. In the export its ID began with zeros, lost when it became a number. In the ticketing system it had a trailing space. Behind that the source is unreachable, and saying so is a finding. For example, pick one application in an agent's log. Follow it back to the listing it answered, the résumé version it sent, and the confirmation email. If the job board has deleted the listing, write that down.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 11 step 3. Source: Chapter 3, “Reconstructing the epistemic frame” and “Strategic delegation in EDA”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Row tracing; in the book text; ONE ROW, FOLLOWED BACK; merged table, row 40,217",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Prediction-lock, gap analysis, row tracing, do not delegate: A prediction card that locks. Twelve predicted months against nine found. A row traced back through three systems. Three tiers of work: delegate, verify, do not delegate.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (2250 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Row tracing; in the book text; ONE ROW, FOLLOWED BACK; merged table, row 40,217"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 3,
+        "anim_ms": 2250
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "28542e2303c7",
+      "audio_file": "mp3/beat-B1003.mp3",
+      "actual_duration_s": 22.21,
+      "render_duration_s": 22.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1003.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1004",
+      "act": "The interrogation",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three tiers of EDA work. Plots, summary statistics and counts you can delegate freely. Any AI claim about what the data means, verify before trusting. And do not delegate rebuilding the frame, the prediction-lock, row tracing or boundary scoping. An AI version of those holds nothing you did not already have. For example, let an AI chart a job seeker's response rates. Check its story about why replies dropped. Tracing an application back to its listing stays with the job seeker.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 11 step 4. Source: Chapter 3, “Reconstructing the epistemic frame” and “Strategic delegation in EDA”. Badge: Illustrative data.",
+      "routing": {
+        "about": "in the book text; Do not delegate; THREE TIERS OF EDA WORK; Delegate freely",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Prediction-lock, gap analysis, row tracing, do not delegate: A prediction card that locks. Twelve predicted months against nine found. A row traced back through three systems. Three tiers of work: delegate, verify, do not delegate.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1250 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: in the book text; Do not delegate; THREE TIERS OF EDA WORK; Delegate freely"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 4,
+        "anim_ms": 1250
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "2de9b51b04a3",
+      "audio_file": "mp3/beat-B1004.mp3",
+      "actual_duration_s": 26.18,
+      "render_duration_s": 26.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1004.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1101",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Look-alike pairs, side by side. On the left, a missing value. The row is there with an empty cell, five rows, one empty, and the check finds it. On the right, a dropped row. Four rows, no empty cells, and the check finds nothing, because the row never reached the table.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 12 step 1. Source: Chapter 3. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 1 · LEFT; Missing value; A cell exists and is empty.; customer 1",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Four pairs shown one at a time, each with a left and right picture: missing value and dropped row, MAR and MNAR, label and construct, schema and boundary.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: PAIR 1 · LEFT; Missing value; A cell exists and is empty.; customer 1"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 1,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ea432513ee07",
+      "audio_file": "mp3/beat-B1101.mp3",
+      "actual_duration_s": 14.87,
+      "render_duration_s": 14.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1102",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Hollow red dots are the missing values. Under MAR, on the left, they cluster at low age, a column you can see, so you can adjust for it. Under MNAR, on the right, they cluster at high income, the very value that is missing, so nothing in the table reveals the pattern.",
+      "estimated_duration_s": 21.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 12 step 2. Source: Chapter 3. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 2 · LEFT; MAR; Gaps follow a column you can see.; age → hollow = missing",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Four pairs shown one at a time, each with a left and right picture: missing value and dropped row, MAR and MNAR, label and construct, schema and boundary.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: PAIR 2 · LEFT; MAR; Gaps follow a column you can see.; age → hollow = missing"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 2,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b9eeab41ebe9",
+      "audio_file": "mp3/beat-B1102.mp3",
+      "actual_duration_s": 14.83,
+      "render_duration_s": 14.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1103",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "On the left, the label, circles filled where a person clicked. That is all anyone recorded. On the right, the construct, how interested each person really is, from low to high. It was never in the table. The label is what got recorded, the construct is what you care about.",
+      "estimated_duration_s": 20.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 12 step 3. Source: Chapter 3. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 3 · LEFT; Label; What was recorded, such as a click.; filled = clicked",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Four pairs shown one at a time, each with a left and right picture: missing value and dropped row, MAR and MNAR, label and construct, schema and boundary.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: PAIR 3 · LEFT; Label; What was recorded, such as a click.; filled = clicked"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 3,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "76846a29cb0a",
+      "audio_file": "mp3/beat-B1103.mp3",
+      "actual_duration_s": 14.12,
+      "render_duration_s": 14.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1104",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last pair. On the left, the schema, a plain disc, the columns that were declared. On the right, the boundary, the same disc with red spokes reaching out to a dashed ring. That ring is the schema plus everything its contents point to. Validating the schema alone leaves the ring unchecked.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 12 step 4. Source: Chapter 3. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 4 · LEFT; Schema; The columns that were declared.; schema",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Four pairs shown one at a time, each with a left and right picture: missing value and dropped row, MAR and MNAR, label and construct, schema and boundary.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: PAIR 4 · LEFT; Schema; The columns that were declared.; schema"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 4,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8acc6b8efba4",
+      "audio_file": "mp3/beat-B1104.mp3",
+      "actual_duration_s": 15.49,
+      "render_duration_s": 15.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1201",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A vague request, the exact instruction under it, and on the right what it measures. Vague version, check that the data is clean. Exact version, compare merged rows with source rows, in the example seventy-nine thousand four hundred of eighty-five thousand, and report the gap by group.",
+      "estimated_duration_s": 19.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 13 step 1. Source: Chapter 3. Badge: Computed.",
+      "routing": {
+        "about": "“check that the data is clean”; WHAT THE INSTRUCTION MEASURES; source: 85,000; merged: 79,400",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction measures.",
+        "motion_claim": "The deck's own animation for step 1 of 5 plays as the narration starts (1500 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: “check that the data is clean”; WHAT THE INSTRUCTION MEASURES; source: 85,000; merged: 79,400"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 1,
+        "anim_ms": 1500
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f619f38bcff8",
+      "audio_file": "mp3/beat-B1201.mp3",
+      "actual_duration_s": 15.68,
+      "render_duration_s": 15.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1202",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Vague version, the data has some missing values. Exact version, name the mechanism, MCAR, MAR or MNAR, and compare the observed mean with the true one. In the simulated example, MCAR barely shifts the mean, MAR pushes it high, MNAR pulls it far low.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 13 step 2. Source: Chapter 3. Badge: Computed.",
+      "routing": {
+        "about": "“the data has some missing values”; MCAR +81; MAR +1,554; MNAR −3,835",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction measures.",
+        "motion_claim": "The deck's own animation for step 2 of 5 plays as the narration starts (1417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: “the data has some missing values”; MCAR +81; MAR +1,554; MNAR −3,835"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 2,
+        "anim_ms": 1417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "aeb0b2d8522f",
+      "audio_file": "mp3/beat-B1202.mp3",
+      "actual_duration_s": 15.62,
+      "render_duration_s": 15.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1203",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Vague version, find the outliers. Exact version, flag values more than one point five times the IQR past each quartile, then decide each with domain knowledge. On the same simulated values the IQR rule flags seven and the z-score rule flags one. Two rules, two answers.",
+      "estimated_duration_s": 18.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 13 step 3. Source: Chapter 3. Badge: Computed.",
+      "routing": {
+        "about": "“find the outliers”; IQR rule flags 7; z-score rule flags 1; same 125 values, two rules, two answers",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction measures.",
+        "motion_claim": "The deck's own animation for step 3 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: “find the outliers”; IQR rule flags 7; z-score rule flags 1; same 125 values, two rules, two answers"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 3,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d3d13846f7c2",
+      "audio_file": "mp3/beat-B1203.mp3",
+      "actual_duration_s": 16.32,
+      "render_duration_s": 16.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1204",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Vague version, is this chart honest. Exact version, name the mark and the channel for each variable, and give the key variable position or length. On the right, zero point four three and zero point five one look alike as grey shades and clearly different as bars.",
+      "estimated_duration_s": 19.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 13 step 4. Source: Chapter 3. Badge: Computed.",
+      "routing": {
+        "about": "“is this chart honest”; 0.43; 0.51; the same 0.43 and 0.51: color vs length",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction measures.",
+        "motion_claim": "The deck's own animation for step 4 of 5 plays as the narration starts (1000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: “is this chart honest”; 0.43; 0.51; the same 0.43 and 0.51: color vs length"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 4,
+        "anim_ms": 1000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9e9eb57f4d12",
+      "audio_file": "mp3/beat-B1204.mp3",
+      "actual_duration_s": 15.23,
+      "render_duration_s": 15.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1204.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1205",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Vague version, can we trust this dataset. Exact version, lock a written prediction of its frame, trace one row, and report the gap. In the made-up example, twelve months were predicted and nine were found, a gap of three months in twelve.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 13 step 5. Source: Chapter 3. Badge: Computed.",
+      "routing": {
+        "about": "“can we trust this dataset”; J; F; M",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction measures.",
+        "motion_claim": "The deck's own animation for step 5 of 5 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: “can we trust this dataset”; J; F; M"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 5,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d18a6fc103e9",
+      "audio_file": "mp3/beat-B1205.mp3",
+      "actual_duration_s": 13.69,
+      "render_duration_s": 13.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1205.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1301",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A checklist to run before you call a dataset clean, six questions, ticked one at a time. First, the row-count question. Why exactly this many rows, and how many should there be. A gap between the two is the first finding.",
+      "estimated_duration_s": 16.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 14 step 1. Source: Chapter 3, “Chapter summary”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Why are there exactly N rows, and what should N be?; Do the column types match what each column means?; Why is each value missing: MCAR, MAR or MNAR?; Which channel carries the variable that matters?",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you call a dataset clean: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 1 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Why are there exactly N rows, and what should N be?; Do the column types match what each column means?; Why is each value missing: MCAR, MAR or MNAR?; Which channel carries the variab"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "81618ebe3fd4",
+      "audio_file": "mp3/beat-B1301.mp3",
+      "actual_duration_s": 12.2,
+      "render_duration_s": 12.208333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1302",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second, do the column types match what each column means. A zip code or an ID looks like a number and is really a category. Check column type before trusting any mean, and look for a sentinel value posing as a real one.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 14 step 2. Source: Chapter 3, “Chapter summary”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you call a dataset clean",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you call a dataset clean: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 2 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Before you call a dataset clean"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1e6edcecc4e8",
+      "audio_file": "mp3/beat-B1302.mp3",
+      "actual_duration_s": 12.67,
+      "render_duration_s": 12.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1303",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third, why is each value missing. Name the mechanism. MCAR, no pattern. MAR, the gaps follow a column you can see. MNAR, the gaps follow the missing value itself, and no check on the remaining data will show it.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 14 step 3. Source: Chapter 3, “Chapter summary”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you call a dataset clean",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you call a dataset clean: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 3 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Before you call a dataset clean"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "17cf350a5e68",
+      "audio_file": "mp3/beat-B1303.mp3",
+      "actual_duration_s": 12.01,
+      "render_duration_s": 12.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1304",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fourth, which channel carries the variable that matters. In any chart, name the marks and channels. The key variable belongs on position or length, the top of the channel ranking, not on area or color intensity, where small differences disappear.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 14 step 4. Source: Chapter 3, “Chapter summary”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you call a dataset clean",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you call a dataset clean: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 4 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Before you call a dataset clean"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3e800db8abad",
+      "audio_file": "mp3/beat-B1304.mp3",
+      "actual_duration_s": 13.93,
+      "render_duration_s": 13.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1304.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1305",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fifth, which of the six silent assumptions could this dataset break. Sampling, time-window, label, missing not at random, feature-engineering, and the access boundary. Each one passes the standard checks and fails later, in deployment.",
+      "estimated_duration_s": 13.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 14 step 5. Source: Chapter 3, “Chapter summary”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you call a dataset clean",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you call a dataset clean: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 5 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: Before you call a dataset clean"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 5,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8ec1cc47c529",
+      "audio_file": "mp3/beat-B1305.mp3",
+      "actual_duration_s": 13.25,
+      "render_duration_s": 13.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1305.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "B1306",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last, did I lock a prediction before the first plot. Without the prediction-lock there is no gap analysis. Then say it exactly. Not the data is clean, but, as in the example, seventy-nine thousand four hundred of eighty-five thousand rows, gap by group.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/03 Data validation.html slide 14 step 6. Source: Chapter 3, “Chapter summary”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you call a dataset clean",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you call a dataset clean: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 6 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 6 animates: Before you call a dataset clean"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 6,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "5ac500685a9b",
+      "audio_file": "mp3/beat-B1306.mp3",
+      "actual_duration_s": 14.22,
+      "render_duration_s": 14.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1306.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "Recap",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Let's recap. The epistemic frame is every unwritten decision behind a table. A dropped row is not a missing value, and no error flags it. Procedural EDA examines only what was written down. MAR follows a column you can see, MNAR follows the missing value itself. A label is a recorded proxy, not the construct you care about. Lock a prediction first, then trace one row and report the gap.",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "This film's body beats; nothing new is asserted",
+      "routing": {
+        "about": "Six things the terms established",
+        "runner_up": "Summary drawing",
+        "reason": "Restates only what the body showed."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Six earned conclusions",
+        "motion_claim": "Six recap lines rise in narration order.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact page opens"
+          },
+          {
+            "at": 0.2,
+            "event": "six lines land in narration order"
+          }
+        ],
+        "template": "neu-bookend-recap",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.5,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Recap lines rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "bd0641dc28c0",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 20.93,
+      "render_duration_s": 20.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "Your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Quiz me on terms for validating a dataset. Give me one short case at a time about a dataset. I must name the exact term, choosing from epistemic frame, silent join drop, sentinel value, MCAR, MAR, MNAR, label assumption, access boundary and prediction-lock, and say why its look-alike is wrong. Do not reveal the answer until I reply. Then correct me and give the next case.",
+      "estimated_duration_s": 26.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json your_turn (a practice prompt composed from this film's terms; not a run we made)",
+      "routing": {
+        "about": "Practice: name the exact term and defend it",
+        "runner_up": "Worksheet",
+        "reason": "The spoken prompt makes the viewer use the terms; two checks let them judge the result. Not a run we made."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Practice prompt",
+        "motion_claim": "The practice prompt types into a box marked for Claude, then two checks land.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens - 'Your turn.'"
+          },
+          {
+            "at": 0.12,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.85,
+            "event": "two check lines land"
+          }
+        ],
+        "template": "neu-bookend-your-turn",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The prompt types into an empty box; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "702ea781730d",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 20.18,
+      "render_duration_s": 20.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "Outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Key Terms: Data Validation. At Nik Bear Brown.",
+      "estimated_duration_s": 3.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "OUTRO-LOCK.md",
+      "routing": {
+        "about": "Locked sign-off",
+        "runner_up": "None",
+        "reason": "Exact title and channel, slug-seeded mascot."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "template": "neu-bookend-outro",
+        "motion_claim": "Exact title and channel handle in the deck's look; held.",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Closing card: title and handle only, by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "d6408ea3ce07",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 4.06,
+      "render_duration_s": 4.083333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:13:00"
+      }
+    }
+  ]
+}

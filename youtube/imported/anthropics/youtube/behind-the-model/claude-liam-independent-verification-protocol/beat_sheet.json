@@ -1,0 +1,515 @@
+{
+  "metadata": {
+    "title": "Build an Independent Verification Protocol for Agent Outputs with Claude",
+    "slug": "independent-verification-protocol",
+    "topic": "AGENTIC AI",
+    "source": "claude-agentic-ai/chapters/08-verification-is-the-control-system.md",
+    "register": "Teardown",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "style": "cli",
+    "note": "CLI video. Exclusions: automated verification tooling, semantic entropy measurement, second-model review systems.",
+    "total_estimated_duration_seconds": 98.74,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-07-28T21:18:15",
+      "cut": "master",
+      "filled": 11,
+      "of": 11,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "This is Liam, in for Bear. Nik Bear Brown. Build it with a CLI, then take it apart.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "NIK BEAR BROWN",
+            "lines": [
+              "Nik Bear Brown",
+              "Verification is the Control System."
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 5.48,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM -- why care",
+      "role_note": "the problem, context, stakes -- BEFORE the CLI opens",
+      "narration_text": "The agent says 'verified.' The verification protocol shows it matched citations against its own training data, not the actual documents. Verification is designed before the agent starts. What you specify as the evidence artifact is what makes the task verifiable instead of impressive.",
+      "visual_intent": "SLATE -- title card: 'VERIFIED' IS NOT EVIDENCE. The evidence artifact is what makes it verifiable.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B01.mp4",
+        "manim": {
+          "scene_class": "Scene_B01_ClaudeLiamIndependent",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": "2026-07-25T09:52:43.018238"
+          }
+        }
+      },
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 16.32,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) -- the command typed",
+      "narration_text": "Ask Claude to generate a verification protocol for a literature summary task -- output type, independent evidence, key check, and the required artifact.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"For 'Summarize literature on treatment protocol X with source citations,' generate a verification protocol. State the output type. List: (1) what independent evidence confirms completion, (2) the specific check for the most likely failure mode, (3) the evidence artifact the agent must produce.\"",
+            "topic": "AGENTIC AI",
+            "segment": "VERIFICATION",
+            "runningText": "generating...",
+            "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 9.17,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) -- reading the generated code",
+      "narration_text": "The protocol generator outputs four fields: output type, independent evidence, key check, and the required artifact. Artifact must be independent of the agent's self-report.",
+      "shot": {
+        "type": "CARD",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "CODE",
+            "items": [
+              {
+                "label": "output type",
+                "sub": "output type",
+                "icon": "target",
+                "cueFrame": 24
+              },
+              {
+                "label": "independent evidence",
+                "sub": "independent evidence",
+                "icon": "BOX",
+                "cueFrame": 112
+              },
+              {
+                "label": "key check",
+                "sub": "key check",
+                "icon": "circle-check",
+                "cueFrame": 200
+              },
+              {
+                "label": "the required artifact. Artifact must be independent of the agent's self-report",
+                "sub": "the required artifact. Artifact must be independent of the agent's self-report",
+                "icon": "BOX",
+                "cueFrame": 289
+              }
+            ],
+            "dark": true
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 10.65,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT -- run",
+      "role_note": "first output -- OPEN vox slot",
+      "narration_text": "Protocol for research output prints. Evidence artifact is a source map -- file to claim mapping. Key check is open the cited documents, not ask the agent to confirm.",
+      "visual_intent": "SLATE -- screen-recording: terminal showing research-task protocol: output type=research, evidence=open cited documents, key_check=verify citation exists and supports claim, artifact=source map: file->claim mapping",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B04.mp4",
+        "manim": {
+          "scene_class": "Scene_B04_ClaudeLiamIndependent",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": "2026-07-25T09:52:49.735054"
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 10.03,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE -- check and revise",
+      "role_note": "terminal (Onda) -- THE REQUIRED revision",
+      "narration_text": "Apply the same protocol to a code-change task. What switches when the output type changes from research to code?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Generate the verification protocol for a code-change task: 'Refactor the auth module.' Use the same four-field format.\"",
+            "topic": "AGENTIC AI",
+            "segment": "VERIFICATION",
+            "runningText": "updating...",
+            "greeting": "The change,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 7.15,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTPUT -- revised",
+      "role_note": "revised output -- OPEN vox slot",
+      "narration_text": "Code-task protocol: evidence switches to run tests and inspect diff. Artifact switches from source map to test run output plus diff. Same structure, different independent evidence.",
+      "visual_intent": "SLATE -- screen-recording: terminal showing code-task protocol: output type=code, evidence=run tests/inspect diff, key_check=diff shows only intended changes, artifact=test run output + diff",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B06.mp4",
+        "manim": {
+          "scene_class": "Scene_B06_ClaudeLiamIndependent",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": "2026-07-25T09:52:54.138185"
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 11.09,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B07",
+      "act": "SUMMARY",
+      "role_note": "the lesson -- one beat",
+      "narration_text": "Verification is designed before the agent starts. The evidence artifact you name is what makes the output verifiable. Without a named artifact, 'verified' is a statement, not evidence.",
+      "visual_intent": "SLATE -- recap card: NAME THE ARTIFACT BEFORE THE TASK. 'Verified' without an artifact is just a statement.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_ClaudeLiamIndependent",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T09:52:58.228258"
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 10.99,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B08",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Before any agentic task, name the output type and the evidence artifact. Then verify the artifact exists independently -- without asking the agent to confirm it.",
+      "visual_intent": "SLATE -- next-steps card: Name the output type and the artifact before the task starts. Verify the artifact exists independently.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B08.mp4",
+        "manim": {
+          "scene_class": "Scene_B08_ClaudeLiamIndependent",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": "2026-07-25T09:53:01.779838"
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 9.98,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to build an independent verification protocol for an agent output in your workflow. Ask Claude to walk you through the protocol structure — what makes verification independent rather than just re-checking, what classes of error each check catches, and what the minimum viable protocol looks like for a high-stakes output.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to build an independent verification protocol for an agent output in my workflow. Walk me through the protocol structure: what makes verification genuinely independent rather than just re-checking the same way? What classes of error does each check catch — and what does the minimum viable protocol look like for a high-stakes output?",
+            "segment": "Build an Independent Verification Protocol for Agent Outputs with Claude",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your question, paper, or concept here…"
+          },
+          "rendered": {
+            "out": "media/YOURTURN.mp4",
+            "at": ""
+          }
+        }
+      },
+      "engine": "kokoro",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/YOURTURN.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "audio_file": "mp3/beat-YOURTURN.mp3",
+      "actual_duration_s": 18.33
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Build an Independent Verification Protocol for Agent Outputs with Claude",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-independent-verification-protocol"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 6.51,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T21:18:15"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Build an Independent Verification Protocol for Agent Outputs with Claude",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · AGENTIC AI",
+            "segment": "Build an Independent Verification Protocol for Agent…",
+            "command": "Take what you learned from [Build an Independent Verification Protocol for Agent Outputs with Claude] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Build an Independent Verification Protocol for Agent Outputs with Claude",
+            "slug": "independent-verification-protocol"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

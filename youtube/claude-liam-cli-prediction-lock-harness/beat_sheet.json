@@ -1,0 +1,472 @@
+{
+ "metadata": {
+  "title": "Prediction-Lock Harness: The Edit-Proof Prediction",
+  "slug": "claude-liam-cli-prediction-lock-harness",
+  "topic": "COMPUTATIONAL SKEPTICISM — HONESTY",
+  "register": "Teardown",
+  "voice": "kokoro:am_onyx",
+  "voice_id": "${ELEVENLABS_VOICE_NIKBEARBROWN}",
+  "palette": "claude",
+  "style_preset": "claude",
+  "style": "cli",
+  "note": "CLI video: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(screen-recording) · B05 CHANGE · B06 SUMMARY · B07 NEXT STEPS · B08 extra-slate · B09 outro",
+  "total_estimated_duration_seconds": 112,
+  "audience": "Claude",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "channel": "NikBearBrown",
+  "assignment_tieins": [
+   "A1 + A2 — the prediction-lock is a graded honesty component in both (10 pts each): 'predictions on the record before probing'",
+   "Pairs with every other candidate as its opening beat — lock first, then probe"
+  ],
+  "build": {
+   "at": "2026-07-27T22:39:50",
+   "cut": "master",
+   "filled": 13,
+   "of": 13,
+   "slates": [],
+   "skin_warnings": []
+  },
+  "clifix_at": "2026-07-19T21:48:38"
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "INTRO",
+   "narration_text": "Shalom — this is Liam, in for Bear. If you can edit your prediction after seeing the result — is it still a prediction?",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "command": "If you can edit your prediction after seeing the result — is it still a prediction?",
+      "topic": "COMPUTATIONAL SKEPTICISM",
+      "segment": "Prediction-Lock Harness, taken apart.",
+      "greeting": "Shalom, Liam",
+      "runningText": "building the hash-locked prediction…",
+      "output": [
+       "SHA-256 timestamp: prediction locked before probe runs",
+       "Tamper attempt: hash mismatch caught immediately",
+       "Gap between prediction and outcome IS the audit value",
+       "Backdated edits: impossible with the immutable lock"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 5,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   },
+   "actual_duration_s": 0
+  },
+  {
+   "beat_id": "B01",
+   "act": "PROBLEM — why care",
+   "role_note": "the stakes BEFORE the build begins — no terminal yet",
+   "narration_text": "You run a probe on your model and write down what you expected afterward. That's not a prediction — it's a reconstruction. The gap between what you predicted and what happened is where the learning lives. Leave the prediction editable and the gap collapses to zero: you learn nothing and the grade knows it. A SHA-256 hash and thirty lines of Python take the edit away.",
+   "visual_intent": "title card: 'a prediction you can edit after the result is worth nothing — hash it first'; PROBLEM beat, no terminal yet",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "command": "a prediction you can edit after the result is worth nothing — hash it first",
+      "topic": "COMPUTATIONAL SKEPTICISM",
+      "segment": "Prediction-Lock Harness, taken apart.",
+      "greeting": "The ask,",
+      "runningText": "framing the problem…",
+      "output": [],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 16,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "ASK",
+   "role_note": "terminal (Onda) — the command typed",
+   "narration_text": "In the terminal: ask Claude to write a Python CLI called predlock with two subcommands. Lock takes a text string, appends the UTC timestamp, the text, and its SHA-256 hash as a JSON line to predlock.log, and prints the hash. Resolve takes a hash prefix and an outcome text, finds the locked prediction by hash, appends the outcome, and prints prediction and outcome side by side plus 'HASH VERIFIED' if the stored text still hashes to the given hash.",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "command": "claude \"Write a Python CLI 'predlock' with two subcommands:\n(1) 'lock <text>' — append\n    {utc_timestamp, text, sha256(text)}\n    as JSON line to predlock.log, print the hash\n(2) 'resolve <hash> <outcome_text>' — find locked\n    prediction by hash, append outcome, print\n    prediction vs outcome + HASH VERIFIED or MISMATCH\"",
+      "topic": "COMPUTATIONAL SKEPTICISM — HONESTY",
+      "segment": "PREDICTION-LOCK HARNESS",
+      "greeting": "The ask,",
+      "runningText": "generating prediction-lock CLI…",
+      "output": [],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 15,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "CODE",
+   "role_note": "terminal (Onda) — read the output before running",
+   "narration_text": "Read the two functions before running. Lock does three things: compute SHA-256 of the text, build a JSON record with the timestamp, and append it to the log — one line, append-only, never overwritten. Resolve does one verification: it reads the stored text back from the log and hashes it again. If the hash still matches, the prediction was not edited. If it doesn't, it was. The tamper-evidence is not cryptographic; it's structural. The log is the audit trail.",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeCodeBeat",
+     "props": {
+      "title": "predlock.py",
+      "code": "# predlock.py — Claude Code output\nimport hashlib, json, datetime\nfrom pathlib import Path\n\nLOG = Path(\"predlock.log\")\n\ndef lock(text: str) -> str:\n    h = hashlib.sha256(text.encode()).hexdigest()\n    record = {\n        \"utc\": datetime.datetime.utcnow().isoformat(),\n        \"text\": text,\n        \"sha256\": h,\n    }\n    with LOG.open(\"a\") as f:\n        f.write(json.dumps(record) + \"\\n\")\n    return h  # print this; you can't re-derive it later\n\ndef resolve(hash_prefix: str, outcome: str):\n    for line in LOG.read_text().splitlines():\n        r = json.loads(line)\n        if r[\"sha256\"].startswith(hash_prefix):\n            verified = (\n                hashlib.sha256(r[\"text\"].encode()).hexdigest()\n                == r[\"sha256\"]\n            )\n            print(f\"PREDICTION: {r['text']}\")\n            print(f\"OUTCOME:    {outcome}\")\n            print(\"HASH VERIFIED\" if verified else \"HASH MISMATCH\")",
+      "sparkLine": "PREDICTION-LOCK HARNESS"
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 17,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "OUTPUT — run",
+   "role_note": "screen-recording — lock before probe, resolve after, then tamper test",
+   "narration_text": "Lock a prediction before running the probe: 'I expect ECE on the shifted slice to be under point-one.' Hash prints. Run the probe — ECE comes back at point-nineteen. Resolve with the hash: prediction prints, outcome prints, HASH VERIFIED. The gap is visible and real. Now edit the locked line in the log — change 'under point-one' to 'around point-two' — and resolve again. HASH MISMATCH. The edit is detectable.",
+   "visual_intent": "screen-recording: predlock lock (hash prints) → probe runs (ECE=0.19) → predlock resolve (HASH VERIFIED, gap visible) → log edited manually → predlock resolve again (HASH MISMATCH)",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeCodeBeat",
+     "props": {
+      "title": "terminal: predlock demo",
+      "code": "$ python predlock.py lock \"ECE on shifted slice < 0.10\"\nHash: a3f7c2d1\n\n[...probe runs, ECE = 0.19...]\n\n$ python predlock.py resolve a3f7c2d1 \"ECE = 0.19\"\nPREDICTION: ECE on shifted slice < 0.10\nOUTCOME:    ECE = 0.19\nHASH VERIFIED\n\n[...manually edit log line...]\n\n$ python predlock.py resolve a3f7c2d1 \"ECE = 0.19\"\nHASH MISMATCH  ← edit detected",
+      "sparkLine": "PREDICTION-LOCK HARNESS"
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 16,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B04.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "CHANGE — check and revise",
+   "role_note": "terminal (Onda) — wire as pre-step to any instrument script",
+   "narration_text": "Wire the lock as the first line of any instrument script so no probe runs without a locked prediction. Ask Claude to add a --require flag: if predlock.log has no locked entry in the last twenty-four hours, exit with code one and print 'No prediction locked — run predlock lock first.' Then show a bash wrapper that enforces it before every probe runs.",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "command": "claude \"Update predlock.py: add --require flag.\nIf predlock.log has no entry in last 24 hours,\nexit code 1: 'No prediction locked. Run: predlock lock'\nAdd a bash wrapper run_probe.sh that runs\n  python predlock.py --require &&\n  python $1\nso no probe script runs without a locked prediction.\"",
+      "topic": "COMPUTATIONAL SKEPTICISM — HONESTY",
+      "segment": "PREDICTION-LOCK HARNESS",
+      "greeting": "The ask,",
+      "runningText": "wiring lock as mandatory pre-step…",
+      "output": [],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/B05.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 13,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B05.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "SUMMARY",
+   "role_note": "the lesson — one beat",
+   "narration_text": "The information in an audit lives in the gap between prediction and outcome. Leave the prediction editable and the gap collapses to zero — you learn nothing and the grade knows it. The lock is thirty lines of Python and a SHA-256 hash. Wire it as the first step in every probe and it stops being a rule you might forget and becomes a step you can't skip. A surprise you predicted against beats a confirmation you assumed — and you can only know which one you got if the prediction was locked before you looked.",
+   "visual_intent": "recap card: 'locked prediction → real gap → real learning'; HASH VERIFIED as the honesty floor",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeCodeBeat",
+     "props": {
+      "title": "lesson.md",
+      "code": "# KEY LESSON\n#\n# The information in an audit lives in the gap between prediction and\n# outcome. Leave the prediction editable and the gap collapses to zero —\n# you learn nothing and the grade knows it. The lock is thirty lines of\n# Python and a SHA-256 hash.\n#\n# → HASH VERIFIED as the honesty floor",
+      "sparkLine": "Prediction-Lock Harness, taken apart."
+     },
+     "rendered": {
+      "out": "media/B06.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 15,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B06.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "NEXT STEPS",
+   "role_note": "what to do next",
+   "narration_text": "Your move: before you run any other candidate's instrument script — calibration curve, distribution shift, confusion matrix — run predlock lock with your expected finding first. Then resolve it after. The gap between what you guessed and what you got is the only number that measures your model intuition, and you can only measure it if you can't change it.",
+   "visual_intent": "next-steps card: 1) predlock lock before any probe, 2) run the probe, 3) predlock resolve — read the gap",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeCodeBeat",
+     "props": {
+      "title": "next_steps.md",
+      "code": "# YOUR MOVE\n#\n# 1. predlock lock before any probe\n# 2. run the probe\n# 3. predlock resolve — read the gap\n#\n# → run it  →  audit the gap  →  report what you find",
+      "sparkLine": "YOUR MOVE"
+     },
+     "rendered": {
+      "out": "media/B07.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 12,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B07.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   }
+  },
+  {
+   "beat_id": "B08",
+   "act": "EXTRA",
+   "role_note": "slate — optional b-roll",
+   "narration_text": "The complete source is in the video description. Fork it, swap in your own data, and see what you find. If your numbers break the pattern, that is the interesting result.",
+   "visual_intent": "slate placeholder",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeCodeBeat",
+     "props": {
+      "title": "fork_it.md",
+      "code": "# FORK IT\n#\n# → clone the source (link in description)\n# → swap in your own data\n# → run it\n# → the interesting result is when your numbers break the pattern",
+      "sparkLine": "Prediction-Lock Harness, taken apart."
+     },
+     "rendered": {
+      "out": "media/B08.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 12,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B08.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   },
+   "audio_file": "mp3/beat-B08.mp3",
+   "actual_duration_s": 9.09
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict",
+   "narration_text": "Let's recap with Claude. You run a probe on your model and write down what you expected afterward. A SHA-256 hash and thirty lines of Python take the edit away. Lock takes a text string, appends the UTC timestamp, the text, and its SHA-256 hash as a JSON line to predlock.log, and prints the hash.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 12,
+   "actual_duration_s": 0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact",
+     "props": {
+      "artifactTitle": "Prediction-Lock Harness: The Edit-Proof ",
+      "artifactHeading": "CLAUDE LIAM CLI PREDICTION LOC: WHAT IT BUILDS",
+      "artifactLines": [
+       "You run a probe on your model and write down what you expected afterwa",
+       "Read the two functions before running.",
+       "Wire the lock as the first line of any instrument script so no probe r",
+       "Your move: before you run any other candidate's instrument script — ca"
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BVDT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn",
+   "narration_text": "Your turn. I'm studying Prediction-Lock Harness: The Edit-Proof Prediction using Claude CLI. I understand You run a probe on your model and write down what you expected afterward.. Paste this into Claude: 'I want to a prediction you can edit after the result is worth nothing . Walk me through (1) how to set up the script, (2) how to run it and verify the output, (3) how to interpret the result.'",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 20,
+   "actual_duration_s": 0,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN — PREDICTION-LOCK HARNESS: THE EDIT-PROOF PREDICTION",
+      "segment": "Prediction-Lock Harness: The Edit-Proof Prediction",
+      "command": "I'm studying Prediction-Lock Harness: The Edit-Proof Prediction using Claude CLI. I understand You run a probe on your model and write down what you expected afterward.. Paste this into Claude: 'I wan",
+      "runningText": "thinking…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   }
+  },
+  {
+   "beat_id": "B09",
+   "act": "OUTRO",
+   "narration_text": "Prediction-Lock Harness: The Edit-Proof Prediction. I'm Liam, in for Bear.",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "remotion",
+    "motion": "fade",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Prediction-Lock Harness: The Edit-Proof Prediction",
+      "handle": "@NikBearBrown",
+      "subline": "the information lives in the gap",
+      "slug": "claude-liam-cli-prediction-lock-harness"
+     },
+     "rendered": {
+      "out": "media/B09.mp4",
+      "at": ""
+     }
+    }
+   },
+   "estimated_duration_s": 8,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B09.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   },
+   "actual_duration_s": 0
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "BOUT",
+   "estimated_duration_s": 8.0,
+   "actual_duration_s": null,
+   "narration_text": "",
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T22:39:50"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Prediction-Lock Harness: The Edit-Proof Prediction",
+      "slug": "claude-liam-cli-prediction-lock-harness",
+      "handle": "@NikBearBrown",
+      "subline": ""
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   }
+  }
+ ]
+}

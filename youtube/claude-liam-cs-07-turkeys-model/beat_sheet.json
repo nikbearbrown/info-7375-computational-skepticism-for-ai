@@ -1,0 +1,552 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-07-turkeys-model",
+    "title": "Why the Turkey's Model Was Perfect Until Thanksgiving",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show how a model's competence is bounded by its training data's regime — evidence sampled inside a smooth period raises confidence monotonically while saying nothing about a regime-ending event that the data never contained. Source: books/computational-skepticism-for-ai/chapters/14-the-limits-of-ai-what-the-tools-cannot-do.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = confidence / the rising curve; CRIMSON = true risk / the hidden divergence; GOLD = day 1001 / the cliff; SLATE = training data days",
+    "note": "EXCLUSIONS: no Mediocristan/Extremistan taxonomy, no Hume/induction history, no distribution-shift formalism, no medical-AI second example — one turkey, one curve, one cliff",
+    "total_estimated_duration_seconds": 191,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 7,
+    "build": {
+      "at": "2026-07-19T02:24:53",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why the Turkey's Model Was Perfect Until Thanksgiving",
+            "greeting": "Jambo, Liam.",
+            "command": "Every single day of data made the turkey more confident — and more wrong.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "Every single day of data made the turkey more confident — and more wrong.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why the Turkey's Model Was Perfect Until Thanksgiving",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why the Turkey's Model\nWas Perfect Until Thanksgiving"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 4.48,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "Imagine you are a turkey. Every morning for a thousand days, a human appears and feeds you. Day one, you have no idea what happens next. Day ten, you notice a pattern. Day one hundred, you are confident. Day five hundred, you are very confident. Day one thousand, your model of the world is: humans appear, food arrives. The pattern has never broken. Your confidence is at its all-time high. It is day one thousand and one. It is the fourth Thursday of November. Your model was correct a thousand times. That is not enough.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B02_TurkeyConfidenceCurve",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 25.07,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: Imagine you are a turkey. Every morning for a thousand days, a human appears and feeds you. Day one, you have no idea what happens next. Day ten, you notice a p"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When every observation inside a stable regime reinforces a model's confidence, what does that confidence actually say about the event that ends the regime?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What does regime-bound confidence say about the event",
+              "that ends the regime?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What does in-regime confidence\nsay about the cliff?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 9.54,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:53"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A model learns from evidence. Evidence is observations of the past. The past the model saw was a smooth regime — a thousand days of consistent feeding. Each observation updated the model toward higher confidence that the pattern would continue. This is correct statistical reasoning inside the regime. The problem is that the regime is not the world. The world contains events the regime never generated — events that are invisible in the training data because the training data was sampled before they happened.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B04_RegimeSamplingProblem",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 27.48,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: A model learns from evidence. Evidence is observations of the past. The past the model saw was a smooth regime — a thousand days of consistent feeding. Each obs"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The confidence curve has a specific shape. It rises monotonically as data accumulates — not because the world is getting safer, but because the model's uncertainty about the observed pattern is shrinking. The true risk curve has a completely different shape. It is flat or declining during the regime, then it spikes at the boundary event. The two curves diverge — and they diverge silently, because the regime-ending event is not in the data. The model's confidence and the true risk are running in opposite directions by day one thousand.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B05_ConfidenceRiskDivergence",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 27.61,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The confidence curve has a specific shape. It rises monotonically as data accumulates — not because the world is getting safer, but because the model's uncertai"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "A model's competence is over its data, not the world — and a confident model trained inside a smooth regime is maximally silent about what ends it.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Competence is over training data, not the world.",
+              "Confidence tracks the data."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A single rising teal line traced day by day across a dark calendar grid, climbing confidently toward upper right — then a vertical crimson cliff edge at day 1001 where the line drops off into void, the gold day marker glowing at the cliff point, the rising teal curve still climbing on the left side as if unaware of what comes next — stark, simple, and final",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 9.0,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:53"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here is the timeline. Horizontal axis: days. The slate grid marks each feeding day. The teal confidence curve traces upward — slowly at first, then more steeply as data accumulates. Day one hundred: solid pattern. Day five hundred: high confidence. Day one thousand: the curve is near its ceiling. The crimson true-risk line runs separately — near zero through the regime, invisible to the model, growing quietly toward the gold cliff. At day one thousand and one, the confidence curve and the true-risk curve swap positions. One peaks. One drops to zero. Permanently.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B07_ConfidenceCliffTrace",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 29.95,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Here is the timeline. Horizontal axis: days. The slate grid marks each feeding day. The teal confidence curve traces upward — slowly at first, then more steeply"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The mechanism is that the model's evidence base and the regime-ending event are structurally separate. No amount of data from inside the regime tells you anything about when or how the regime ends — because the regime-ending event is, by definition, not in the regime. The turkey's thousand feeding observations are genuinely strong evidence for the feeding hypothesis. They are zero evidence about Thanksgiving. These are orthogonal claims and the model conflates them.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B08_RegimeOrthogonalityMechanism",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 23.47,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The mechanism is that the model's evidence base and the regime-ending event are structurally separate. No amount of data from inside the regime tells you anythi"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For AI systems, the turkey problem appears wherever the training distribution was sampled from a period of structural stability that ended before deployment. A credit risk model trained on 2004-2006 data was confident, well-validated, and correctly predicting defaults in its regime. Then 2008 happened. A demand forecasting model trained on pre-pandemic purchasing patterns was excellent — until the regime changed. The model's confidence reflected its in-regime calibration, not its vulnerability to regime change.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B09_AIRegimeChangeCases",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 29.57,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: For AI systems, the turkey problem appears wherever the training distribution was sampled from a period of structural stability that ended before deployment. A "
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The problem is not solvable by better modeling inside the regime. More data from inside the regime produces a better in-regime model. It says nothing about what's outside. The only available tool is external reasoning — asking: what are the ways this regime could end? What structural forces are not captured in the training data? Are there known boundary conditions, seasonal cycles, policy changes, or geopolitical shifts that the model has never seen? These are questions for domain experts, not for the model.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B10_ExternalReasoningRequirement",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 26.82,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The problem is not solvable by better modeling inside the regime. More data from inside the regime produces a better in-regime model. It says nothing about what"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The practical posture is: treat a model's high confidence inside its training regime as a conditional statement. The model is confident given that the regime continues. Your job is to ask how likely the regime is to continue — and that question requires knowledge the model does not have. A high-confidence model in a domain with known structural instability is a high-confidence model with an undisclosed assumption. Surface the assumption. Then decide if you trust it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_ConditionalConfidencePosture",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 23.74,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The practical posture is: treat a model's high confidence inside its training regime as a conditional statement. The model is confident given that the regime co"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 13.0,
+      "narration_text": "A logistics company deploys a route optimization model trained on five years of delivery data. The model is excellent — it knows traffic patterns by time of day, day of week, seasonal variation, and local event schedules. It is the best-performing model the company has ever fielded. Then a major highway construction project begins, blocking several arterial routes for eighteen months. The model's predictions degrade immediately. Not gradually — immediately, because the construction event created a structural shift the model had never seen. The model was not wrong about the world it was trained on. It was wrong about the world it was deployed into. Its high confidence was confidence about a road network that no longer existed.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B12_LogisticsRegimeChangeExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 37.67,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:53",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A logistics company deploys a route optimization model trained on five years of delivery data. The model is excellent — it knows traffic patterns by time of day"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A model's confidence is over its training data, not the world — and in a stable regime, evidence accumulates monotonically toward higher confidence while saying nothing about the event that ends the regime; the confidence curve and the true-risk curve run in opposite directions until the cliff. For AI systems, high in-regime confidence should be read as a conditional statement — confident given that the regime continues — and domain experts must separately assess whether the regime is likely to hold.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Confident in the regime. Silent about what ends it."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Confident in the regime.\nSilent about what ends it.",
+        "sub": "High confidence is conditional. Ask if the regime will hold.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 26.43,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:53"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why the Turkey's Model Was Perfect Until Thanksgiving",
+            "artifactHeading": "Key findings — Why the Turkey's Model Was Perfect Until Thanksgiving",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "The problem is not solvable by better modeling inside the regime."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:53"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY THE TURKEY'S MODEL WAS PERFECT UNTIL THANKSGIVING",
+            "segment": "Why the Turkey's Model Was Perfect Until Thanksgiving",
+            "greeting": "Namaste, Liam.",
+            "command": "Ask Claude: Why the Turkey's Model Was Perfect Until Thanksgiving",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:53"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why the Turkey's Model Was Perfect Until Thanksgiving",
+            "slug": "claude-liam-cs-07-turkeys-model",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

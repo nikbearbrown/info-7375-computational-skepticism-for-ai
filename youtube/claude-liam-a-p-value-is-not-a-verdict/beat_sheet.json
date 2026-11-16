@@ -1,0 +1,1535 @@
+{
+  "metadata": {
+    "slug": "claude-liam-a-p-value-is-not-a-verdict",
+    "title": "A P-Value Is Not a Verdict",
+    "topic": "LLM TEXT WATERMARKING — WHAT THE STATISTIC CAN AND CANNOT SAY",
+    "purpose": "LLM text watermarking works. KGW's green-list boost and SynthID's tournament sampling do exactly what their papers claim at a single generation pass, and the film says so for a full act before it says anything else. The failure is one layer up: the institutional inference built on top of a valid statistic. Three things get confused — what a positive says, what a negative does NOT say, and how often the thing being hunted actually occurs in the population being screened. The base rate is the beat that breaks it: the same detector is excellent forensics and terrible screening, purely by prevalence. The film closes on the research brief that generated it, which wrote its own correction document — and on the film's own production process, which initially marked the addendum's cited figures as absent before a human opened the abstract and found them there. The reel demonstrates its thesis on itself.",
+    "aspect_ratio": "16:9",
+    "style_preset": "claude",
+    "register": "Teardown",
+    "audience": "Claude",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "palette": "claude",
+    "ground": "#FAF9F5",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "clock": "narration",
+    "series": "deep-explainer",
+    "source": "Nik Bear Brown, 'Practical and Epistemic Failure Modes of LLM Text Watermarking' (research brief) + its self-issued 'Addendum: Corrections'. Every claim in BOTH documents independently verified against primary sources — see FACTCHECK.md. Nine claims needed correction or narrowing; four failed entirely (all from the original brief). The addendum's cited AUC figures ARE in Kirchenbauer et al. ICLR 2024 abstract — the initial FACTCHECK.md finding was wrong; confirmed by human checking the published PDF 2026-08-13.",
+    "color_semantics": "TERRACOTTA = the inference the statistic does not license; INK = everything the mechanism actually does and every finding that was verified. Act V: terracotta = the interim wrong factcheck result (query divergence before the abstract was opened); ink = both corrections that went to the source and confirmed.",
+    "note": "AUDIO-FIRST. Kokoro is free — audio before any compile. ZERO TIER-1 PUNTS BY CONSTRUCTION: all five VOX beats are real published artifacts (Nature paper, EU Code of Practice text, Patterns paper, ICML paper, the source brief itself) — tier 2, real referent, drawn fallback written for each. No gen-AI still is requested anywhere in this sheet. ACT I establishes that the mechanism WORKS before any criticism lands; a reel that strawmans the thing it audits has no standing to audit it. B20 GATE RESOLVED 2026-08-13: figures ARE in the published abstract of Kirchenbauer et al. ICLR 2024 — 'ROC-AUC remains above 0.85 when T=200 tokens are available, and above 0.9 with T=600 tokens.' B20 redesigned as the film's own factcheck correction: the reel demonstrates its thesis on its own production process.",
+    "lane_mix_target": "VOX 5/20 = 25.0% | MANIM 8/20 = 40.0% | REMOTION 7/20 = 35.0% (body beats only; B00, B10, BVDT, BHTF, BOUT exempt)",
+    "gate_note": "GATE B20 RESOLVED 2026-08-13. Figures ARE present in Kirchenbauer et al. ICLR 2024 abstract: 'ROC-AUC remains above 0.85 when T=200 tokens are available, and above 0.9 with T=600 tokens.' Beat redesigned to show the reel's own factcheck correction. No gate blocks remaining.",
+    "total_estimated_duration_seconds": 415,
+    "build": {
+      "at": "2026-08-31T12:40:38",
+      "cut": "master",
+      "filled": 25,
+      "of": 25,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 23,
+      "narration_text": "Jambo — this is Liam, in for Bear. Here are two true statements about the same AI-text detector. It is wrong about one time in a hundred thousand. And when it fires, it is wrong about ninety-two percent of the time. Both of those are correct, and the gap between them is where institutions are about to make very expensive mistakes.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "ClaudeComposerAsk: greeting 'Jambo, Liam.' in EB Garamond above the composer"
+          },
+          {
+            "at": 0.24,
+            "event": "command types: 'How often is an AI-text detector wrong when it fires?'"
+          },
+          {
+            "at": 0.58,
+            "event": "send arms, running indicator spins — 'checking the base rate…'"
+          },
+          {
+            "at": 0.74,
+            "event": "three output lines land; the third lands on 'ninety-two percent'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Jambo, Liam.",
+            "topic": "LLM TEXT WATERMARKING",
+            "segment": "A P-Value Is Not a Verdict",
+            "command": "How often is an AI-text detector wrong when it fires?",
+            "runningText": "checking the base rate…",
+            "output": [
+              "False-positive rate: 1 in 100,000.",
+              "Both numbers describe the same detector.",
+              "Wrong ~92% of the times it fires."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "COLD OPEN LAW — the ask lands answered, and the answer is a contradiction the viewer wants resolved.",
+      "actual_duration_s": 17.3,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "EXECUTIVE SUMMARY",
+      "lane": "REMOTION",
+      "estimated_duration_s": 18,
+      "narration_text": "The whole thing in one breath. The watermark is real engineering and it does what its papers say. The failure is one layer up — in what a university, a court, or a newsroom concludes from the number it gets back. A valid statistic does not license the verdict.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "two stacked bands draw on: THE MECHANISM (lower) and THE INFERENCE (upper)"
+          },
+          {
+            "at": 0.4,
+            "event": "the lower band fills solid ink and receives a tick on 'does what its papers say'"
+          },
+          {
+            "at": 0.62,
+            "event": "the upper band stays hollow terracotta on 'one layer up'"
+          },
+          {
+            "at": 0.85,
+            "event": "the thesis line sets between them: 'valid statistic ≠ licensed verdict'"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "Two layers, one confusion",
+            "left": {
+              "label": "The mechanism",
+              "note": "Green-list boosting, tournament sampling. Peer-reviewed, reproducible, works."
+            },
+            "right": {
+              "label": "The inference",
+              "note": "\"This proves a human didn't write it.\" — unsupported."
+            },
+            "note": "A valid detector does not license the verdict it enables.",
+            "sparkLine": "The gap is the subject."
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "EXECUTIVE-SUMMARY LAW — the whole shape before any specific; the two layers are separated visually before either is examined.",
+      "actual_duration_s": 13.99,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ACT I — THE MECHANISM IS REAL",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "Start by giving it its due. Kirchenbauer's scheme takes the previous token, hashes it, and uses that hash to split the whole vocabulary into a green list and a red list. Then it quietly adds a constant to every green token's score.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "one token sits at centre; a hash arrow leaves it on 'hashes it'"
+          },
+          {
+            "at": 0.5,
+            "event": "the vocabulary block below splits into two bands — GREEN LIST and RED LIST — on 'green list and a red list'"
+          },
+          {
+            "at": 0.78,
+            "event": "every green bar grows by the same small increment on 'adds a constant', tagged δ = 2.0"
+          },
+          {
+            "at": 0.92,
+            "event": "parameters set small: 'γ = 0.25 · δ = 2.0 — Kirchenbauer et al., ICML 2023'"
+          }
+        ],
+        "graphic": {
+          "manim": "B02_GreenListBoost",
+          "scene_class": "B02_GreenListBoost",
+          "engine": "manim",
+          "production_viz": {
+            "label": "the previous token seeds a vocabulary split; every green logit rises by a fixed amount",
+            "mechanic": "Cream canvas. A single ink token at centre-top. A hash arrow drops from it into a wide horizontal vocabulary strip that splits into two labelled bands: GREEN LIST (γ = 0.25 of the vocabulary) and RED LIST. Below, a row of logit bars: every bar belonging to the green band rises by an identical increment, tagged δ = 2.0 in TERRACOTTA. Citation small: 'Kirchenbauer, Geiping, Wen, Katz, Miers, Goldstein — ICML 2023, PMLR 202'.",
+            "colors": [
+              "#3D3929",
+              "#D97757"
+            ],
+            "note": "γ = 0.25, NOT 0.5 — the authors' own repo default. Do not use green/red as literal colours; this is the fidelity palette. Label the bands by NAME, ink and terracotta only."
+          }
+        }
+      },
+      "motion_claim": "The split happens on the spoken word and the bars rise together — the viewer sees a bias applied, not a diagram of one.",
+      "actual_duration_s": 13.21,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "ACT I — THE MECHANISM IS REAL",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "Detection is then just counting. Unwatermarked, about a quarter of tokens land green by chance. Count many more than a quarter and the odds of an accident collapse. That is a one-proportion z-test — ordinary, sound statistics, and not in dispute.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "a token strip runs across the frame; green-band hits tick upward one at a time"
+          },
+          {
+            "at": 0.42,
+            "event": "a chance line draws at 25% on 'about a quarter'"
+          },
+          {
+            "at": 0.62,
+            "event": "the observed count climbs well past the line on 'count many more'"
+          },
+          {
+            "at": 0.8,
+            "event": "the z statistic sets beneath: z = (|s|_G − γT) / √(Tγ(1−γ))"
+          },
+          {
+            "at": 0.93,
+            "event": "a p-value counter falls and settles small"
+          }
+        ],
+        "graphic": {
+          "manim": "B03_OneProportionZ",
+          "scene_class": "B03_OneProportionZ",
+          "engine": "manim",
+          "production_viz": {
+            "label": "counting green hits against chance, and the z-test that follows",
+            "mechanic": "Cream canvas. A long horizontal token strip; green-band tokens tick up as small ink marks accumulating into a running count. A dashed chance line sits at γ = 0.25. The observed count climbs visibly above it. The z statistic sets large in EB Garamond beneath: z = (|s|_G − γT) / √(Tγ(1−γ)). A p-value counter falls from 1 toward a small number and settles. TERRACOTTA marks ONLY the gap between observed and chance — that gap is the evidence.",
+            "colors": [
+              "#3D3929",
+              "#D97757"
+            ],
+            "note": "This beat is sympathetic. Nothing here is being undermined. The film earns its later criticism by drawing this one straight."
+          }
+        }
+      },
+      "motion_claim": "The count visibly outruns the chance line and the p-value falls with it — the evidence is watched being made.",
+      "actual_duration_s": 13.44,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "ACT I — THE MECHANISM IS REAL",
+      "lane": "REMOTION",
+      "estimated_duration_s": 15,
+      "narration_text": "There is a second family that works differently, and people flatten them together. SynthID never touches the scores. It runs a tournament between candidate tokens using pseudorandom functions, so in its non-distortionary setting the output distribution is preserved.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "REMOTION",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "left column: KGW — a logit bar visibly rises (the boost from B02, recalled)"
+          },
+          {
+            "at": 0.4,
+            "event": "right column: SynthID — candidate tokens pair off and a bracket resolves, no bar changes height"
+          },
+          {
+            "at": 0.72,
+            "event": "on 'distribution is preserved', the right column's distribution outline is shown unchanged"
+          },
+          {
+            "at": 0.9,
+            "event": "citation sets small: 'Dathathri et al., Nature 634, 818–823 (2024)'"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Two families, not one",
+            "left": {
+              "label": "Green-list boosting",
+              "note": "KGW — adds δ to green-list logits. Alters the distribution by design."
+            },
+            "right": {
+              "label": "Tournament sampling",
+              "note": "SynthID-Text — a bracket over candidates. Non-distortionary configuration preserves the distribution."
+            },
+            "note": "Dathathri et al., Nature 634, 818–823 (2024).",
+            "sparkLine": "Same goal. Different machinery."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "The left bar rises and the right bracket resolves with no bar moving — the mechanical difference is shown, not asserted.",
+      "actual_duration_s": 15.15,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "ACT I — THE MECHANISM IS REAL",
+      "lane": "MANIM",
+      "estimated_duration_s": 15,
+      "narration_text": "And it was validated at real scale. Roughly twenty million live Gemini responses, watermarked and not, compared on user feedback. Thumbs-up rates differed by one hundredth of a percent. A genuine result — hold on to what it measured.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "MANIM",
+        "source": "archive",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.4
+        ],
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0,
+            "event": "pantry still — the Nature paper's first page — treated, holding; the annotation is the motion"
+          },
+          {
+            "at": 0.35,
+            "event": "a terracotta editor's box draws around the live-experiment passage on 'twenty million'"
+          },
+          {
+            "at": 0.62,
+            "event": "the two deltas set beside it as read: thumbs-up 0.01% · thumbs-down 0.02%"
+          },
+          {
+            "at": 0.86,
+            "event": "a serif underline strikes under the words 'user feedback' — the thing that was actually measured"
+          }
+        ],
+        "vox": {
+          "still": "pantry/B05.png",
+          "treatment": "desaturate-80 · contrast-1.15 · cream seat · warm vignette",
+          "motion": "drawon-annotate",
+          "shopping": {
+            "tier": 2,
+            "what": "first page of Dathathri et al., 'Scalable watermarking for identifying large language model outputs', Nature 634 (2024) — REAL published artifact",
+            "min_px": 1600,
+            "rights": "tier 2 — read the article's own licence line (Nature 2024 is open access); escalate to human",
+            "fallback": "Convert to GRAPHIC/own, scene_class B05_TwentyMillion: two large bars, watermarked vs not, differing by a hair, captioned with the two deltas and 'measured: user feedback' — cited to Nature 634, 818–823 (2024)."
+          }
+        },
+        "rendered": {
+          "out": "manim/B05.mp4",
+          "at": "2026-08-13"
+        }
+      },
+      "motion_claim": "Held plate, annotated — the underline under 'user feedback' plants the beat that Act II detonates.",
+      "actual_duration_s": 13.23,
+      "scene_class": "B05_TwentyMillion",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "ACT II — WHAT A NEGATIVE DOESN'T SAY",
+      "lane": "REMOTION",
+      "estimated_duration_s": 18,
+      "narration_text": "Now the asymmetry, the first thing institutions get wrong. A positive result is real evidence — a bias matching a secret key does not happen by accident. A negative result is not its opposite. It is compatible with five situations, and only one is a human at a keyboard.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "REMOTION",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "left: a single arrow from POSITIVE to one conclusion — clean, one-to-one"
+          },
+          {
+            "at": 0.45,
+            "event": "right: NEGATIVE fans into five branches as they are counted off"
+          },
+          {
+            "at": 0.78,
+            "event": "four branches set in ink; only the fifth — 'a human wrote it' — takes terracotta"
+          },
+          {
+            "at": 0.92,
+            "event": "spark line: 'one of five, not one of one'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "Negative result — five readings",
+            "chips": [
+              "The model predates watermarking",
+              "The text was paraphrased or translated",
+              "The passage is too short to test",
+              "A second model rewrote it",
+              "A human wrote it"
+            ],
+            "sparkLine": "One of five, not one of one.",
+            "cols": 2
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "The positive stays one-to-one while the negative visibly fans out — the asymmetry is a shape, not a sentence.",
+      "actual_duration_s": 15.87,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "ACT II — WHAT A NEGATIVE DOESN'T SAY",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "Be careful with the popular version, though, because it is too strong. People say one paraphrase kills the watermark. It doesn't. Run a strong paraphraser over watermarked text and detection falls from a hundred percent to about fifty-seven. A gradient, not a switch.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "a bar stands at 100% detection"
+          },
+          {
+            "at": 0.42,
+            "event": "on 'one paraphrase kills it', a terracotta switch tries to snap the bar to zero — and is struck through"
+          },
+          {
+            "at": 0.66,
+            "event": "the bar instead descends smoothly and halts at 57.2% on the spoken figure"
+          },
+          {
+            "at": 0.85,
+            "event": "the setting sets small beneath: 'at 1% false-positive rate · Krishna et al., NeurIPS 2023 (DIPPER)'"
+          },
+          {
+            "at": 0.95,
+            "event": "a second short line: 'strong human paraphrase — still detectable near 800 tokens'"
+          }
+        ],
+        "graphic": {
+          "manim": "B07_GradientNotSwitch",
+          "scene_class": "B07_GradientNotSwitch",
+          "engine": "manim",
+          "production_viz": {
+            "label": "the claimed kill-switch struck through; the real curve descends and stops partway",
+            "mechanic": "Cream canvas. A tall ink bar at 100% labelled DETECTION. A TERRACOTTA switch element attempts to snap it to zero and is visibly struck through — the popular claim, refused on screen. The bar then descends smoothly and halts at 57.2%, labelled. Small beneath: 'at 1% FPR · Krishna, Song, Karpinska, Wieting, Iyyer — NeurIPS 2023'. A second serif line: 'strong human paraphrase — still detectable near 800 tokens (Kirchenbauer et al., ICLR 2024)'.",
+            "colors": [
+              "#3D3929",
+              "#D97757"
+            ],
+            "note": "The struck-through switch IS the beat — the film is correcting the critique's own overstatement. Do not put an AUC figure on this card; see FACTCHECK.md."
+          }
+        }
+      },
+      "motion_claim": "The kill-switch is drawn and refused; the bar descends to a real measured number instead.",
+      "actual_duration_s": 14.42,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "ACT II — WHAT A NEGATIVE DOESN'T SAY",
+      "lane": "MANIM",
+      "estimated_duration_s": 17,
+      "narration_text": "The bigger limit is length, and the regulator conceded it in writing. The EU's code of practice applies watermarking to free-form text longer than two hundred tokens, and exempts what's shorter. Not as a favour — below that there is nothing for the statistic to say.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B08.mp3",
+      "shot": {
+        "type": "MANIM",
+        "source": "archive",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0,
+            "event": "pantry still — the EU Code of Practice page carrying the free-form-text threshold — treated, holding"
+          },
+          {
+            "at": 0.4,
+            "event": "terracotta editor's box draws around the 200-token line on its spoken number"
+          },
+          {
+            "at": 0.7,
+            "event": "a short serif gloss sets beneath: 'the exemption is an admission'"
+          },
+          {
+            "at": 0.9,
+            "event": "attribution small: 'EU Code of Practice on marking and labelling AI-generated content'"
+          }
+        ],
+        "vox": {
+          "still": "pantry/B08.png",
+          "treatment": "desaturate-80 · contrast-1.15 · cream seat · warm vignette",
+          "motion": "drawon-annotate",
+          "shopping": {
+            "tier": 2,
+            "what": "the page of the EU Code of Practice stating the free-form-text token threshold — REAL statutory/soft-law document",
+            "min_px": 1600,
+            "rights": "tier 2 — EU document; verify the specific reproduction's terms, escalate to human",
+            "fallback": "Convert to GRAPHIC/own, scene_class B08_TokenFloor: a length axis with a hard floor drawn at 200 tokens, everything below it greyed and captioned 'no statistical power', cited to the Code of Practice."
+          }
+        },
+        "rendered": {
+          "out": "manim/B08.mp4",
+          "at": "2026-08-13"
+        }
+      },
+      "motion_claim": "The regulator's own threshold is read off the page — the concession is in the source, not in the narration.",
+      "actual_duration_s": 14.36,
+      "scene_class": "B08_TokenFloor",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "ACT II — WHAT A NEGATIVE DOESN'T SAY",
+      "lane": "REMOTION",
+      "estimated_duration_s": 15,
+      "narration_text": "One more confusion worth killing. A text watermark is not metadata. Screenshot the page, convert the file, strip every tag — the words are still the words, and the signal lives in the words. Only changing tokens touches it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B09.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "REMOTION",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "left: a file with a provenance tag attached; a screenshot action detaches the tag and it falls away"
+          },
+          {
+            "at": 0.5,
+            "event": "right: the same passage of text; the same screenshot action changes nothing — the token sequence holds"
+          },
+          {
+            "at": 0.75,
+            "event": "on 'only changing the tokens', a word in the right passage is swapped and the signal indicator drops"
+          },
+          {
+            "at": 0.92,
+            "event": "labels set: 'SIGNED METADATA — dies on conversion' · 'LEXICAL WATERMARK — dies on rewriting'"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Two provenance systems, routinely confused",
+            "left": {
+              "label": "Signed metadata",
+              "note": "Lives beside the content. Defeated by a screenshot or a format conversion."
+            },
+            "right": {
+              "label": "Lexical watermark",
+              "note": "In the token sequence. A screenshot does nothing; only rewriting matters."
+            },
+            "note": "Stripping metadata defeats metadata, not the token sequence.",
+            "sparkLine": "The words are still the words."
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "The same action is applied to both panels and only one loses its signal — the distinction is demonstrated, not defined.",
+      "actual_duration_s": 12.84,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "ASK — the number that breaks it",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 7,
+      "narration_text": "Which brings us to the number that does more damage than every attack in the literature combined.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B10.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "ClaudeComposerAsk, spark line only — command already typed"
+          },
+          {
+            "at": 0.5,
+            "event": "runningText: 'applying Bayes…'"
+          },
+          {
+            "at": 0.8,
+            "event": "one output line lands: 'Depends what you are screening.'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "base rate",
+            "topic": "ACT III — THE BASE RATE",
+            "segment": "How Often Is It Wrong When It Fires?",
+            "command": "If a detector is 99.999% specific, how often is a positive result correct?",
+            "runningText": "applying Bayes…",
+            "output": [
+              "Depends what you are screening."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "ASK→RESULT — the answer refuses the question's framing, which is the act's whole argument.",
+      "actual_duration_s": 5.44,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "ACT III — THE BASE RATE",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "Take a detector that catches ninety percent of watermarked text and false-alarms once in a hundred thousand. Excellent by any stated metric. Now point it where the thing it hunts occurs once in a million. Of every hundred alarms, about ninety-two are innocent.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B11.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "two spec lines set: sensitivity 90% · false-positive rate 1 in 100,000 — both marked GOOD"
+          },
+          {
+            "at": 0.45,
+            "event": "a prevalence marker drops to 1 in 1,000,000 on its spoken figure"
+          },
+          {
+            "at": 0.66,
+            "event": "a hundred alarm marks fill the frame"
+          },
+          {
+            "at": 0.82,
+            "event": "eight resolve to ink (true) and ninety-two turn TERRACOTTA (false), sorting themselves apart"
+          },
+          {
+            "at": 0.94,
+            "event": "the figure sets: 'positive predictive value ≈ 8%'"
+          }
+        ],
+        "graphic": {
+          "manim": "B11_PositivePredictiveValue",
+          "scene_class": "B11_PositivePredictiveValue",
+          "engine": "manim",
+          "production_viz": {
+            "label": "an excellent detector's alarms sorting into 8 true and 92 false",
+            "mechanic": "Cream canvas. Two spec lines set top, each ticked: SENSITIVITY 90% and FALSE-POSITIVE RATE 1 in 100,000. A prevalence marker then drops in: 1 in 1,000,000. A 10×10 grid of alarm marks fills the safe area; on the spoken figure they SORT — 8 settle as solid ink, 92 turn TERRACOTTA and drift to the other side. Serif figure beneath: 'positive predictive value ≈ 8%'. No formula on screen; the sort carries it.",
+            "colors": [
+              "#3D3929",
+              "#D97757"
+            ],
+            "note": "Exact PPV is 8.26% at sens 0.90 / FPR 1e-5 / prevalence 1e-6 — verified arithmetic. Round to 8% on screen. The grid must physically sort; a static 8/92 split is a slide."
+          }
+        }
+      },
+      "motion_claim": "A hundred alarms sort themselves in front of the viewer and ninety-two of them are wrong — the film's central number is watched, not stated.",
+      "actual_duration_s": 14.59,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "ACT III — THE BASE RATE",
+      "lane": "MANIM",
+      "estimated_duration_s": 17,
+      "narration_text": "And the same detector is excellent somewhere else. Point it at one suspicious document with a real prior and it is good forensics. Point it at every submission a university receives and it accuses ten innocent people per million pages. Same instrument. Opposite reliability.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B12.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.18,
+            "event": "one document sits alone under a magnifier — labelled FORENSICS, ticked"
+          },
+          {
+            "at": 0.48,
+            "event": "the frame pulls to a field of a million page marks — labelled SCREENING"
+          },
+          {
+            "at": 0.7,
+            "event": "ten marks flare terracotta across the field on the spoken figure"
+          },
+          {
+            "at": 0.88,
+            "event": "the identical detector glyph sits over both, unchanged; caption: 'same instrument'"
+          }
+        ],
+        "graphic": {
+          "manim": "B12_ForensicsVersusScreening",
+          "scene_class": "B12_ForensicsVersusScreening",
+          "engine": "manim",
+          "production_viz": {
+            "label": "one instrument, two populations, opposite reliability",
+            "mechanic": "Cream canvas, two states in one continuous move. State one: a single document under a magnifier, labelled FORENSICS — ONE DOCUMENT, A REAL PRIOR, ticked. The camera then pulls back to state two: a dense field of page marks labelled SCREENING — 1,000,000 PAGES. Ten marks flare TERRACOTTA. The SAME detector glyph sits above both states, visibly unchanged. Serif caption: 'same instrument'.",
+            "colors": [
+              "#3D3929",
+              "#D97757"
+            ],
+            "note": "Ten is exact arithmetic: 1e-5 × 1,000,000 = 10. The unchanged detector glyph across the pull-back is the argument — do not restyle it between states."
+          }
+        }
+      },
+      "motion_claim": "The pull-back keeps the instrument identical while the verdict quality inverts — the population is shown to be the variable.",
+      "actual_duration_s": 15.47,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "ACT III — THE BASE RATE",
+      "lane": "MANIM",
+      "estimated_duration_s": 18,
+      "narration_text": "And those ten are not drawn evenly. A twenty twenty-three study in Patterns ran seven commercial detectors over essays by non-native English writers. Average false-positive rate: sixty-one percent. Eighteen of ninety-one essays were flagged by all seven at once. The same detectors were near-perfect on US eighth-graders.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B13.mp3",
+      "shot": {
+        "type": "MANIM",
+        "source": "archive",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.42
+        ],
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0,
+            "event": "pantry still — the Liang et al. Patterns paper page carrying the TOEFL result — treated, holding"
+          },
+          {
+            "at": 0.36,
+            "event": "terracotta box draws around the 61.22% figure on its spoken number"
+          },
+          {
+            "at": 0.62,
+            "event": "the unanimity line sets beside it: '18 of 91 flagged by all seven'"
+          },
+          {
+            "at": 0.85,
+            "event": "the control comparison sets small and ink-only: 'US 8th-grade essays — near-perfect'"
+          },
+          {
+            "at": 0.95,
+            "event": "attribution: 'Liang, Yuksekgonul, Mao, Wu & Zou — Patterns (Cell Press), 2023'"
+          }
+        ],
+        "vox": {
+          "still": "pantry/B13.png",
+          "treatment": "desaturate-80 · contrast-1.15 · cream seat · warm vignette",
+          "motion": "drawon-annotate",
+          "shopping": {
+            "tier": 2,
+            "what": "page from Liang et al., 'GPT detectors are biased against non-native English writers', Patterns (2023) — REAL published artifact, open access",
+            "min_px": 1600,
+            "rights": "tier 2 — Patterns is open access; read the article's own licence line, escalate to human",
+            "fallback": "Convert to GRAPHIC/own, scene_class B13_UnevenBurden: two false-positive bars side by side — non-native writers at 61%, US 8th-grade near zero — with the unanimity figure set beside, cited to Patterns 2023."
+          }
+        },
+        "motion_claim": "The figures are read off the published page; the near-perfect control sits beside them so the disparity is visible in one frame.",
+        "rendered": {
+          "out": "manim/B13.mp4",
+          "at": "2026-08-13"
+        }
+      },
+      "actual_duration_s": 17.88,
+      "scene_class": "B13_UnevenBurden",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "ACT IV — WHO HOLDS THE KEY",
+      "lane": "REMOTION",
+      "estimated_duration_s": 17,
+      "narration_text": "Then the auditing problem. Detection is symmetric — the key that writes the watermark is the key that reads it. So every public detector is a box you post text into. You cannot check which key ran, which model version, or what threshold was used.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B14.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "REMOTION",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "one key glyph sits between GENERATE and DETECT, wired to both — the symmetry"
+          },
+          {
+            "at": 0.45,
+            "event": "a closed box draws around the detect side; text posts in, a p-value comes out"
+          },
+          {
+            "at": 0.7,
+            "event": "three audit questions try to enter the box and are turned back: which key · which model version · which threshold"
+          },
+          {
+            "at": 0.9,
+            "event": "the closing line sets in terracotta: 'a reference, not a signature'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "What you cannot check about a detection result",
+            "chips": [
+              "Which key was used",
+              "Which model version it was tested against",
+              "Which threshold was applied",
+              "Whether the detector is calibrated for this population"
+            ],
+            "sparkLine": "A reference, not a signature.",
+            "cols": 1
+          },
+          "rendered": {
+            "out": "media/B14.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "The audit questions physically bounce off the closed box — opacity is staged, not described.",
+      "actual_duration_s": 13.59,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "ACT IV — WHO HOLDS THE KEY",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "But be precise, because the strong version is wrong. This is not a wall in the mathematics. Publicly verifiable constructions exist — public-key schemes, and zero-knowledge proofs that confirm a private detector ran correctly without revealing the secret. None of them ship.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B15.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "a wall labelled 'IMPOSSIBLE' draws across the frame"
+          },
+          {
+            "at": 0.45,
+            "event": "two doors open in it as they are named — PUBLIC-KEY VERIFICATION and ZERO-KNOWLEDGE PROOF"
+          },
+          {
+            "at": 0.72,
+            "event": "on 'none of them ship', both doors receive a small terracotta seal: NOT IN PRODUCTION"
+          },
+          {
+            "at": 0.9,
+            "event": "the wall's label restrikes to 'UNBUILT'; citations small: 'Fairoze et al. · PVMark, USENIX Security 2026'"
+          }
+        ],
+        "graphic": {
+          "manim": "B15_WallWithDoors",
+          "scene_class": "B15_WallWithDoors",
+          "engine": "manim",
+          "production_viz": {
+            "label": "a wall that turns out to have doors nobody has opened",
+            "mechanic": "Cream canvas. A heavy ink wall draws across the safe area, labelled IMPOSSIBLE. Two doorways then open within it as they are spoken: PUBLIC-KEY VERIFICATION and ZERO-KNOWLEDGE PROOF. Each receives a small TERRACOTTA seal reading NOT IN PRODUCTION. The wall's label then strikes through and resets to UNBUILT. Citations small: 'Fairoze et al., Publicly-Detectable Watermarking' and 'PVMark — USENIX Security 2026'.",
+            "colors": [
+              "#3D3929",
+              "#D97757"
+            ],
+            "note": "The relabel IMPOSSIBLE → UNBUILT is the beat. This is the film correcting its own source's overstatement for the second time; keep the move visible."
+          }
+        }
+      },
+      "motion_claim": "The wall is drawn, then opened, then renamed — the critique is downgraded on screen from impossible to merely unshipped.",
+      "actual_duration_s": 15.13,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "ACT IV — WHO HOLDS THE KEY",
+      "lane": "MANIM",
+      "estimated_duration_s": 17,
+      "narration_text": "Meanwhile the secret is not holding well. One team showed that for under fifty dollars an attacker can forge and scrub several deployed schemes, succeeding over eighty percent of the time. Against SynthID, forgery mostly fails — but scrubbing still works over ninety percent.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B16.mp3",
+      "shot": {
+        "type": "MANIM",
+        "source": "archive",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.38
+        ],
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0,
+            "event": "pantry still — the watermark-stealing paper's first page — treated, holding"
+          },
+          {
+            "at": 0.3,
+            "event": "terracotta box draws around the cost figure on 'under fifty dollars'"
+          },
+          {
+            "at": 0.55,
+            "event": "the success rate sets beside it: '>80% spoof and scrub'"
+          },
+          {
+            "at": 0.78,
+            "event": "a second short block sets below for SynthID: 'spoof ≈ 4% · scrub >90%' — the scrub figure in terracotta"
+          },
+          {
+            "at": 0.93,
+            "event": "attribution: 'Jovanović, Staab & Vechev — ICML 2024'"
+          }
+        ],
+        "vox": {
+          "still": "pantry/B16.png",
+          "treatment": "desaturate-80 · contrast-1.15 · cream seat · warm vignette",
+          "motion": "drawon-annotate",
+          "shopping": {
+            "tier": 2,
+            "what": "first page of Jovanović, Staab & Vechev, 'Watermark Stealing in Large Language Models', ICML 2024 (PMLR 235) — REAL published artifact",
+            "min_px": 1600,
+            "rights": "tier 2 — PMLR is open access; read the paper's own licence line, escalate to human",
+            "fallback": "Convert to GRAPHIC/own, scene_class B16_CheapAttack: a cost figure under $50 set large, with two paired bars — SPOOF and SCRUB — for deployed schemes and for SynthID, cited to ICML 2024."
+          }
+        },
+        "rendered": {
+          "out": "manim/B16.mp4",
+          "at": "2026-08-13"
+        }
+      },
+      "motion_claim": "The cost and the two success rates are read off the paper; the asymmetry between spoof and scrub is visible in one frame.",
+      "actual_duration_s": 15.32,
+      "scene_class": "B16_CheapAttack",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B16.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "ACT IV — WHO HOLDS THE KEY",
+      "lane": "REMOTION",
+      "estimated_duration_s": 16,
+      "narration_text": "And the legal map is narrower than the conversation assumes. For text, with a machine-readable duty, the list is one entry long: the European Union. China requires a visible label and metadata. Korea requires a notice with no format. California's rules are audio-visual.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B17.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "REMOTION",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "five jurisdiction chips set across the frame, all lit equally"
+          },
+          {
+            "at": 0.34,
+            "event": "on 'one entry long', the EU chip holds and takes the single terracotta accent"
+          },
+          {
+            "at": 0.55,
+            "event": "China dims to a partial state as its actual duty is read"
+          },
+          {
+            "at": 0.7,
+            "event": "Korea dims"
+          },
+          {
+            "at": 0.82,
+            "event": "California dims"
+          },
+          {
+            "at": 0.92,
+            "event": "US federal empties entirely; one line sets beneath: 'for TEXT, machine-readable'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "Binding, machine-readable, and reaching TEXT",
+            "chips": [
+              "EU — Art. 50(2), text, Aug 2026",
+              "CHINA — visible label + metadata",
+              "KOREA — AI output notice",
+              "CALIFORNIA — A/V duties only",
+              "US FEDERAL — no enacted statute"
+            ],
+            "sparkLine": "One entry long.",
+            "cols": 2
+          },
+          "rendered": {
+            "out": "media/B17.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "Four of five jurisdictions visibly dim as their real duties are read — the map narrows on screen to a single entry.",
+      "actual_duration_s": 15.74,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B17.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "ACT IV — WHO HOLDS THE KEY",
+      "lane": "MANIM",
+      "estimated_duration_s": 16,
+      "narration_text": "Which leaves the incentive, stated carefully. OpenAI built a text watermark and did not release it. Its published reasons were two: the signal breaks under translation and rewriting, and it risked disproportionately flagging people who don't write in English natively. Both are real.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B18.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "two principals draw at opposite sides: REGULATOR WANTS DETECTION · PROVIDER BUILDS IT"
+          },
+          {
+            "at": 0.42,
+            "event": "the two stated reasons set as ink cards on their spoken clauses — robustness, and disparate impact"
+          },
+          {
+            "at": 0.66,
+            "event": "each card is ticked — the film grants both"
+          },
+          {
+            "at": 0.84,
+            "event": "one terracotta arrow then draws from the provider back to its own interest, unlabelled by motive"
+          },
+          {
+            "at": 0.94,
+            "event": "caption: 'principal–agent, not conspiracy'"
+          }
+        ],
+        "graphic": {
+          "manim": "B18_PrincipalAgent",
+          "scene_class": "B18_PrincipalAgent",
+          "engine": "manim",
+          "production_viz": {
+            "label": "two honest reasons and one unstated interest, drawn without accusing anyone",
+            "mechanic": "Cream canvas. Left: REGULATOR — WANTS DETECTION. Right: PROVIDER — BUILDS THE DETECTOR. Two ink cards set between them as spoken: 'breaks under translation and rewriting' and 'risks disproportionately flagging non-native English writers'. Each receives a tick — the film concedes both are real and documented. Then a single TERRACOTTA arrow curves from the provider back to its own interest, carrying no motive label. Serif caption: 'principal–agent, not conspiracy'.",
+            "colors": [
+              "#3D3929",
+              "#D97757"
+            ],
+            "note": "DO NOT put 99.9% or 'held for two years' on screen — those are press reporting from internal documents, not OpenAI's own statements (FACTCHECK #13). Only the two published reasons are attributed. The unlabelled arrow is deliberate: the film declines to assert motive."
+          }
+        }
+      },
+      "motion_claim": "Both stated reasons are ticked before the incentive arrow is drawn — the concession comes first, so the arrow is not an accusation.",
+      "actual_duration_s": 15.77,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B18.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "ACT V — THE BRIEF DID IT TO ITSELF",
+      "lane": "MANIM",
+      "estimated_duration_s": 17,
+      "narration_text": "Now the part that earns this film its ending. The brief behind it did something rare — it published a correction to itself, retracting a claim about Californian law that was flatly wrong. That is the behaviour it spends nine thousand words demanding of everyone else.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B19.mp3",
+      "shot": {
+        "type": "MANIM",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0,
+            "event": "pantry still — the source brief's addendum, its retraction heading visible — treated, slow ease-out push"
+          },
+          {
+            "at": 0.42,
+            "event": "the retraction heading highlights in terracotta and lifts slightly off the plate"
+          },
+          {
+            "at": 0.72,
+            "event": "one verbatim clause sets beneath: 'I stated it as fact and it wasn't'"
+          },
+          {
+            "at": 0.9,
+            "event": "attribution small: the brief's own addendum"
+          }
+        ],
+        "vox": {
+          "still": "pantry/B19.png",
+          "treatment": "desaturate-80 · contrast-1.15 · cream seat · warm vignette",
+          "motion": "kenburns-ease-out",
+          "shopping": {
+            "tier": 1,
+            "what": "the source brief's own addendum, retraction section visible — the author's own document, no external referent",
+            "min_px": 1800,
+            "rights": "the author's own text — no escalation",
+            "fallback": "Convert to GRAPHIC/own, scene_class B19_SelfRetraction: the retraction heading and the verbatim clause set large on cream with the terracotta highlight, attributed to the brief's addendum."
+          }
+        },
+        "rendered": {
+          "out": "manim/B19.mp4",
+          "at": "2026-08-13"
+        }
+      },
+      "motion_claim": "The self-retraction is read in the source's own words — the film grants the credit before it spends it.",
+      "actual_duration_s": 14.31,
+      "scene_class": "B19_SelfRetraction",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B19.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B20",
+      "act": "ACT V — THE BRIEF DID IT TO ITSELF",
+      "lane": "MANIM",
+      "estimated_duration_s": 17,
+      "narration_text": "The reel nearly shipped the same mistake. A research pass marked those numbers absent from the paper. Queries primed with the figures confirmed the finding. The neutral-framed query disagreed. A human opened the abstract. The numbers are in the first paragraph. The addendum got it right. This film's factcheck did not — until someone went and looked.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B20.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "lane": "MANIM",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "a central serif question: 'Are these figures in the paper?' — the addendum's two numbers set above it"
+          },
+          {
+            "at": 0.3,
+            "event": "two query paths diverge: PRIMED QUERY returns a card stamped ABSENT; NEUTRAL QUERY returns a card marked UNCERTAIN in terracotta"
+          },
+          {
+            "at": 0.5,
+            "event": "a third action drops from centre: OPEN ABSTRACT — an abstract band reveals"
+          },
+          {
+            "at": 0.68,
+            "event": "the figures set solid ink in the abstract: 'ROC-AUC remains >0.85 at T=200 · >0.9 at T=600'"
+          },
+          {
+            "at": 0.82,
+            "event": "the ABSENT card's text strikes through and resets to PRESENT — ABSTRACT, FIRST PARAGRAPH; it receives a tick"
+          },
+          {
+            "at": 0.94,
+            "event": "caption small: 'the addendum was right; the factcheck was not — until checked'"
+          }
+        ],
+        "graphic": {
+          "manim": "B20_TheCheckThatCorrectedItself",
+          "scene_class": "B20_TheCheckThatCorrectedItself",
+          "engine": "manim",
+          "production_viz": {
+            "label": "a factcheck query divergence that catches the reel's own error before it ships",
+            "mechanic": "Cream canvas. A serif question at top-centre: 'Are these figures in Kirchenbauer et al., ICLR 2024?' The addendum's two numbers sit above it as a pull-quote. Two query paths branch left and right via next_to() arrows: LEFT (label: PRIMED QUERY) returns a result card stamped ABSENT in ink; RIGHT (label: NEUTRAL QUERY) returns a result card stamped UNCERTAIN in TERRACOTTA. A third arrow drops from centre: OPEN ABSTRACT. An abstract band VGroup reveals below the query layer. Inside it the two figures set SOLID in ink: 'ROC-AUC remains >0.85 when T=200 tokens available · >0.9 with T=600 tokens.' The ABSENT card then gets a StrikeThrough and its text morphs to PRESENT — ABSTRACT, FIRST PARAGRAPH; a terracotta tick resolves to ink on the card. Caption small: 'the addendum was right; the factcheck was not — until checked.' Layout law: all labels placed with next_to(target, DIR, buff=0.15); no hardcoded move_to([x,y,0]); abstract band is a VGroup arranged below query layer with arrange(DOWN, buff=0.4); bbox-overlap assertion at end of construct().",
+            "colors": [
+              "#3D3929",
+              "#D97757"
+            ],
+            "note": "GATE B20 RESOLVED 2026-08-13. Figures ARE in the paper's abstract verbatim. This beat shows the reel's own factcheck process: two query strategies diverged, the neutral query flagged uncertainty, a human opened the abstract, and the accusation died before it shipped. The addendum's citation is accurate. TERRACOTTA marks only the UNCERTAIN card (the wrong interim result) — not the final confirmed finding."
+          }
+        }
+      },
+      "motion_claim": "Two query strategies diverge and disagree — the neutral query's uncertainty triggers the check; the abstract resolves it on screen; the ABSENT card corrects itself.",
+      "actual_duration_s": 18.01,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B20.mp4",
+        "filled_by": "manim",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "B21",
+      "act": "ACT V — THE BRIEF DID IT TO ITSELF",
+      "lane": "REMOTION",
+      "estimated_duration_s": 16,
+      "narration_text": "Which is the thesis, caught in this reel's own production. A research pass marked those numbers absent. They are in the abstract. The disagreement between two query strategies was the signal; a human resolved it; the accusation died before it shipped. That is what going to look means — and it is the whole difference between a p-value and a verdict.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B21.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "lane": "REMOTION",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "three exhibits recall as small marks: the 10×10 alarm grid (B11), the retraction heading (B19), the corrected factcheck card (B20)"
+          },
+          {
+            "at": 0.42,
+            "event": "each receives the same question stamped on its spoken clause: 'who checked?'"
+          },
+          {
+            "at": 0.65,
+            "event": "the alarm grid stays TERRACOTTA — the institutional inference without checking is the failure this film is about"
+          },
+          {
+            "at": 0.78,
+            "event": "the retraction (B19) and the factcheck correction (B20) both resolve to solid INK — both were checked and corrected"
+          },
+          {
+            "at": 0.9,
+            "event": "the closing line sets: 'evidence is what survives being looked at'"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "The difference, stated plainly",
+            "left": {
+              "label": "A p-value",
+              "note": "A statement about how surprising a pattern is under one assumption."
+            },
+            "right": {
+              "label": "A verdict",
+              "note": "Requires prior, population, chain of custody, and a check."
+            },
+            "note": "The reel caught its own error before it shipped.",
+            "sparkLine": "Evidence is what survives being looked at."
+          },
+          "rendered": {
+            "out": "media/B21.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "Three exhibits sort by whether they were verified — the institutional inference without checking stays terracotta; both corrections that went to the source resolve to ink.",
+      "actual_duration_s": 17.49,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B21.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 19,
+      "narration_text": "So — the mechanism is sound and the papers are honest. A negative result is weak evidence for gradient reasons, not because one edit kills it. A positive result is weak in exactly the population most people want to screen. And the auditing gap is a governance failure, not a mathematical one.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "ClaudeVerdictArtifact opens on cream"
+          },
+          {
+            "at": 0.25,
+            "event": "verdict lines land one by one"
+          },
+          {
+            "at": 0.85,
+            "event": "artifact holds"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "A P-Value Is Not a Verdict",
+            "artifactHeading": "What the evidence supports",
+            "artifactLines": [
+              "The mechanism works as published — KGW and SynthID both do what their papers claim.",
+              "A negative result is weak for five separate reasons; \"one paraphrase kills it\" overstates a real gradient.",
+              "A positive result is ~8% reliable in mass screening and lands hardest on non-native English writers.",
+              "Independent verification is unbuilt, not impossible — public-key and ZKP schemes exist and none ship.",
+              "For text, one jurisdiction has a binding machine-readable duty: the EU."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "OUTRO spine — verdict recap per the your-turn standard.",
+      "actual_duration_s": 16.87,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 29,
+      "narration_text": "Your turn. Paste this into Claude: find my institution's written policy on AI-detection evidence, and tell me whether it states a base rate, a threshold, and who may appeal. Not whether it uses a detector — most do. The three things nobody writes down are the prevalence assumed, the number that triggers a case, and the route back. If all three are missing, the policy is not a policy. It is a vibe with a p-value attached. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "ClaudeComposerAsk: greeting 'Your turn.' above the composer"
+          },
+          {
+            "at": 0.15,
+            "event": "the prompt types itself in"
+          },
+          {
+            "at": 0.48,
+            "event": "runningText: 'paste this into Claude…'"
+          },
+          {
+            "at": 0.68,
+            "event": "composer holds while the narration reads the prompt and names the three things to look for"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — READ YOUR OWN POLICY",
+            "segment": "A P-Value Is Not a Verdict",
+            "command": "Find my institution's policy on AI-detection evidence. Does it state a base rate, a threshold that triggers a case, and who may appeal?",
+            "runningText": "paste this into Claude…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "HANDOFF LAW — the prompt is read verbatim, then discussed (the three missing things) before the invitation.",
+      "actual_duration_s": 21.08,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 8,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "tail_silence_s": 1.0,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "A P-Value Is Not a Verdict",
+            "slug": "claude-liam-a-p-value-is-not-a-verdict",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "OUTRO LAW — title restate, locked @NikBearBrown card, no subline.",
+      "actual_duration_s": 8.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-31T12:40:38"
+      }
+    }
+  ]
+}

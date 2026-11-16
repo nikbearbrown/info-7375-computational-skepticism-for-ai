@@ -1,0 +1,23 @@
+A. A biased estimator does not improve with n
+   true rate 0.30; keeps 40% of positives, 80% of negatives
+   the estimate converges to 0.1765, not 0.30
+   n=    10  mean estimate=0.1764  spread (sd)=0.1158
+   n=   100  mean estimate=0.1766  spread (sd)=0.0382
+   n=  1000  mean estimate=0.1763  spread (sd)=0.0120
+   n= 10000  mean estimate=0.1765  spread (sd)=0.0037
+B. IPW: naive=0.1797  weighted=0.3047  true=0.30
+C. Cohen's kappa: blinded=0.6  unblinded=0.2
+D. Meta-analysis, true effect 0.20: all 90 studies mean=0.206
+   published 74 studies mean=0.228
+E. Weights: {'Credentialed': 0.5, 'Other office': 1.67, 'Other': 2.0}
+F. PPV 0.6 and TPR 0.7 in both groups, so the FPR is forced:
+   group one (base rate 0.30): FPR 0.2000
+   group two (base rate 0.50): FPR 0.4667
+G. 10 paths from attribute to outcome; fix -> paths blocked:
+   model (team one): 6
+   training sample (team two): 2
+   labels: 2
+   reviewer (team three): 5
+   threshold and appeals: 5
+   proxies: 4
+   reviewer and threshold together: 10

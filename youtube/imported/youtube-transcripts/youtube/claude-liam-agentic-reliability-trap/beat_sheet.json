@@ -1,0 +1,331 @@
+{
+  "metadata": {
+    "title": "The Agentic Reliability Trap: Why Routines Fail in Ways Agents Won't Tell You",
+    "slug": "claude-liam-agentic-reliability-trap",
+    "topic": "CLAUDE · AI",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "audience": "Claude",
+    "channel": "NikBearBrown",
+    "chassis": "cli-explainer",
+    "build": {
+      "at": "2026-08-04T13:47:16",
+      "cut": "master",
+      "filled": 9,
+      "of": 9,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "role": "COLD_OPEN",
+      "narration": "You set up a routine. Claude watches GitHub, checks on Monday mornings, files the report before you're awake. It ran last week. You have no idea if it actually worked.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B00.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "ROUTINE: Every Monday 6am — check for new PRs, summarize, send report to Slack.",
+            "topic": "CLAUDE · AI",
+            "segment": "Agentic Reliability Trap",
+            "greeting": "The Agentic Reliability Trap",
+            "runningText": "Why routines fail in ways agents won't tell you",
+            "output": [
+              "Monday 6:00am — Routine triggered.",
+              "Checking GitHub... 3 PRs found.",
+              "Summary generated. Sending to Slack...",
+              "✓ Slack webhook: 200 OK",
+              "→ Report delivered.",
+              "→ You will not know the Slack channel was archived last Tuesday."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "You set up a routine. Claude watches GitHub, checks on Monday mornings, files the report before you're awake. It ran last week. You have no idea if it actually worked.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:47:16"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "role": "PROBLEM",
+      "narration": "Reactive vs. proactive agent behavior is not just a feature difference — it is a failure mode difference. A reactive agent waits for your input and responds. If it fails, you notice immediately — you asked, it broke. A proactive agent initiates work without your prompt. If it fails, the failure is invisible until something downstream breaks. Routines shift Claude from reactive to proactive. That is the power. It is also the trap.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "manim": {
+          "scene_class": "B01_ReactiveVsProactive",
+          "file": "scenes.py",
+          "description": "Spectrum diagram. Left: REACTIVE — human sends prompt, agent responds, failure is immediately visible (green check or red X visible to human). Right: PROACTIVE — agent fires on event/schedule, human not present, failure may produce a '200 OK' but wrong output (red X hidden, green check on API call). Middle: failure visibility scale from 'Always visible (reactive)' to 'Often invisible (proactive).' Label: 'The power and the trap are the same shift.'"
+        }
+      },
+      "narration_text": "Reactive vs. proactive agent behavior is not just a feature difference — it is a failure mode difference. A reactive agent waits for your input and responds. If it fails, you notice immediately — you asked, it broke. A proactive agent initiates work without your prompt. If it fails, the failure is invisible until something downstream breaks. Routines shift Claude from reactive to proactive. That is the power. It is also the trap.",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim:B01_ReactiveVsProactive",
+        "at": "2026-08-04T13:47:16"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "role": "CLI",
+      "narration": "Three routine failure modes that won't surface automatically. First: the routine fires on the wrong event — a webhook misconfiguration, a schedule timezone error, a false positive trigger. The agent does its job faithfully on a bad input. Second: the output is delivered to a dead channel — the Slack channel was archived, the email address bounced, the Airtable base was renamed. The API call returns success but nobody reads it. Third: the task completed but the content was subtly wrong — the PR summary included a merged PR from two months ago, or missed a repo that was added after the routine was set up. Each of these is silent.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "Routine: check for new security alerts in org repositories. Alert if severity >= HIGH.",
+            "topic": "CLAUDE · AI",
+            "segment": "Agentic Reliability Trap",
+            "greeting": "Silent failure modes",
+            "runningText": "Three ways routines fail without telling you",
+            "output": [
+              "Scanning repositories... done.",
+              "HIGH severity alerts found: 0",
+              "→ Routine complete. No alert sent.",
+              "→ What the routine didn't know: 3 repos added to org last week",
+              "→ are not in its repository list (set up before they existed).",
+              "→ Those repos have 2 HIGH severity CVEs. Not scanned. Not reported."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "Three routine failure modes that won't surface automatically. First: the routine fires on the wrong event — a webhook misconfiguration, a schedule timezone error, a false positive trigger. The agent does its job faithfully on a bad input. Second: the output is delivered to a dead channel — the Slack channel was archived, the email address bounced, the Airtable base was renamed. The API call returns success but nobody reads it. Third: the task completed but the content was subtly wrong — the PR summary included a merged PR from two months ago, or missed a repo that was added after the routine was set up. Each of these is silent.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:47:16"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "role": "CODE",
+      "narration": "Steerability is not a reliability guarantee. When people hear that Claude Code is 'steerable,' they often assume this means the agent will surface problems and ask for direction. Steerability means the agent will adjust when you give it feedback in a session. It does not mean the agent will audit its own behavior between sessions, notice that conditions have changed, or understand that a '200 OK' does not mean the right person read the report. Steerability operates within a session. Silent failure operates between sessions.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "code": "# What steerability guarantees:\n# - Agent adjusts when you provide feedback WITHIN a session\n# - Agent follows updated instructions going forward\n# - Agent will clarify ambiguities when asked\n\n# What steerability does NOT guarantee:\n# - Agent notices conditions changed between sessions\n# - Agent audits its own prior outputs for correctness\n# - '200 OK' = task actually completed as intended\n# - Routine output reached the right recipient\n# - Scope creep as org structure changes\n\n# Steerability is a within-session property.\n# Silent failure is a between-session property.\n# These are orthogonal.",
+            "language": "python",
+            "filename": "steerability_vs_reliability.md",
+            "caption": "Steerability and reliability are different axes. Check both."
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "Steerability is not a reliability guarantee. When people hear that Claude Code is 'steerable,' they often assume this means the agent will surface problems and ask for direction. Steerability means the agent will adjust when you give it feedback in a session. It does not mean the agent will audit its own behavior between sessions, notice that conditions have changed, or understand that a '200 OK' does not mean the right person read the report. Steerability operates within a session. Silent failure operates between sessions.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:47:16"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "role": "OUTPUT",
+      "narration": "The audit checklist. For any proactive routine you run, there are four things that need to be true on an ongoing basis, not just at setup: the trigger condition is correct and still valid; the scope of the task matches the current state of the world; the output destination is alive and reaching the right person; and someone reviews a sample of routine outputs on a regular schedule. The fourth item is the one almost nobody does. Sampling two or three routine outputs per month and reading them is the only way to catch the 'technically completed, actually wrong' failure mode.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "manim": {
+          "scene_class": "B04_RoutineAuditChecklist",
+          "file": "scenes.py",
+          "description": "Four-item checklist card. Item 1: 'Trigger: is the event condition still valid?' (checkbox, clock icon). Item 2: 'Scope: does task definition match current world state?' (checkbox, globe icon). Item 3: 'Destination: is the output reaching the right person/place?' (checkbox, message icon). Item 4 (highlighted in red): 'Sample review: did someone READ a routine output this month?' (checkbox, eye icon). Label next to Item 4: 'This one. Almost nobody does this.' Below checklist: 'Review cadence: 2-3 samples per month per active routine.'"
+        }
+      },
+      "narration_text": "The audit checklist. For any proactive routine you run, there are four things that need to be true on an ongoing basis, not just at setup: the trigger condition is correct and still valid; the scope of the task matches the current state of the world; the output destination is alive and reaching the right person; and someone reviews a sample of routine outputs on a regular schedule. The fourth item is the one almost nobody does. Sampling two or three routine outputs per month and reading them is the only way to catch the 'technically completed, actually wrong' failure mode.",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim:B04_RoutineAuditChecklist",
+        "at": "2026-08-04T13:47:16"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "role": "CHANGE",
+      "narration": "How to structure a routine that tells you when it's failing. The fix is auditable output, not just completed output. Every routine should log its own assumptions — what repository list it used, what date range it covered, what destination it sent to — and include that log in the output. When a human reads the output, they can verify the assumptions. When the log shows a list of three repositories and you know there are five, the failure is visible. This is not automated error detection — it is making the human audit tractable.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "ROUTINE UPDATE: After generating PR summary, append an audit block: repos scanned, date range used, Slack channel confirmed live, total PRs found vs. expected range.",
+            "topic": "CLAUDE · AI",
+            "segment": "Agentic Reliability Trap",
+            "greeting": "Auditable output structure",
+            "runningText": "Make failures visible, not just logged",
+            "output": [
+              "--- ROUTINE AUDIT LOG ---",
+              "Repos scanned: frontend, backend, infra (3 of 5 in org)",
+              "⚠ WARNING: 'mobile' and 'ml-ops' repos not in routine scope",
+              "Date range: 2026-07-24 to 2026-07-31",
+              "PRs found: 7 (expected range: 4-12, OK)",
+              "Slack destination: #eng-weekly (confirmed active, last message 2h ago)",
+              "→ The warning line makes the scope gap visible."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "How to structure a routine that tells you when it's failing. The fix is auditable output, not just completed output. Every routine should log its own assumptions — what repository list it used, what date range it covered, what destination it sent to — and include that log in the output. When a human reads the output, they can verify the assumptions. When the log shows a list of three repositories and you know there are five, the failure is visible. This is not automated error detection — it is making the human audit tractable.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:47:16"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "role": "VERDICT",
+      "narration": "Agentic routines fail silently. The audit is your only reliable signal.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Reliability Trap",
+            "artifactHeading": "Silent failure is proactive agents' default",
+            "artifactLines": [
+              "200 OK is not task success.",
+              "Proactive agents fail without alerting you.",
+              "Routine review: 2-3 samples per month.",
+              "The audit is the only reliable signal."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "Agentic routines fail silently. The audit is your only reliable signal.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:47:16"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "role": "HANDOFF",
+      "narration": "Your turn. List every proactive routine you have running — Claude, n8n, Zapier, cron jobs, anything that fires without you asking. For each one, answer: when did I last read an output? What are the assumptions baked into the scope? If the world changed since setup, would this routine know? Pick one and add an audit block to its output. That block is the canary. When the canary looks wrong, the routine has drifted.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "List all my active routines and for each: last output date, scope assumptions, destination status, last time I read an output.",
+            "topic": "YOUR TURN · CLAUDE · AI",
+            "segment": "Your turn.",
+            "greeting": "Your turn.",
+            "runningText": "Audit your active routines",
+            "output": [
+              "Active routines found: 4",
+              "1. PR summary (Monday): last read — 3 weeks ago ⚠",
+              "2. Security scan (daily): destination email bounced since 7/15 ⚠",
+              "3. Expense report (monthly): scope assumes 2 repos — org has 5 ⚠",
+              "4. Meeting notes (after calls): working, reviewed last week ✓",
+              "→ 3 of 4 routines have silent drift. Start with security scan."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "Your turn. List every proactive routine you have running — Claude, n8n, Zapier, cron jobs, anything that fires without you asking. For each one, answer: when did I last read an output? What are the assumptions baked into the scope? If the world changed since setup, would this routine know? Pick one and add an audit block to its output. That block is the canary. When the canary looks wrong, the routine has drifted.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:47:16"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "role": "OUTRO",
+      "narration": "The Agentic Reliability Trap. Why routines fail in ways agents won't tell you.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Agentic Reliability Trap: Why Routines Fail in Ways Agents Won't Tell You",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "The Agentic Reliability Trap. Why routines fail in ways agents won't tell you.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:47:16"
+      }
+    }
+  ]
+}

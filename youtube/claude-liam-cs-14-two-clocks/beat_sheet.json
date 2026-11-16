@@ -1,0 +1,647 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-14-two-clocks",
+    "title": "Why the Study Method That Feels Best Teaches the Least",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that performance and learning run on different clocks — fluent conditions spike immediate performance that decays fast, friction builds storage strength that persists, and the two curves cross once time passes. Source: books/computational-skepticism-for-ai/chapters/04-the-frictional-method-evidence-of-learning-when-ai-can-generate-the-artifact.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = frictional / the persistent curve; CRIMSON = fluent / the decaying curve; GOLD = the crossing point / key insight; SLATE = time axis",
+    "note": "EXCLUSIONS: no neurobiology cascade (dopamine, BDNF, dendritic spines), no Y1-Y7 formalism, no Frictional-journal apparatus, no spacing-effect experimental-design detail",
+    "total_estimated_duration_seconds": 187,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 14,
+    "build": {
+      "at": "2026-07-19T02:30:54",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why the Study Method That Feels Best Teaches the Least",
+            "greeting": "Ciao, Liam.",
+            "command": "The smoother learning feels, the less of it sticks.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "The smoother learning feels, the less of it sticks. The confused student is often the one actually learning.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why the Study Method That Feels Best Teaches the Least",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why the Study Method That Feels Best\nTeaches the Least"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 6.12,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "Two students review a dataset case. The first uses AI to generate a clean walkthrough — reads it, feels ready. The second works through the case without AI help, gets confused, makes errors, resolves them slowly. One week later, only one can reproduce the analysis from memory.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "graphic": {
+        "manim": "B02_TwoStudentsOneWeek",
+        "production_viz": {
+          "label": "two students — one week later",
+          "mechanic": "two bars side by side labeled 'DAY 1' (both tall — one crimson labeled 'FLUENT', one teal labeled 'FRICTIONAL'); then fast-forward animation with clock advancing; 'ONE WEEK' label appears; crimson bar shrinks dramatically (near zero); teal bar stays nearly full; gold annotation 'crossed' at the level where they separate",
+          "colors": [
+            "#BF3339",
+            "#1F6F5C",
+            "#F5D061"
+          ],
+          "note": "the day-1 equality followed by divergence is the cold open reveal; the before/after contrast needs to be stark"
+        }
+      },
+      "scene_class": "B02_TwoStudentsOneWeek",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 15.77,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:54",
+        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "Why does the method that feels worst in the moment produce the most durable learning — and what does that mean when AI makes everything feel easy?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Why does the harder method produce the more durable",
+              "learning curve?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "Why does the method that feels worst produce the most durable learning?",
+        "sub": "especially when AI makes everything feel easy"
+      },
+      "scene_class": "B03_Question",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.11,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:54"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Immediate performance and long-term retention are different measurements. A fluent session — smooth, satisfying, no errors — produces high immediate performance. But the same conditions that made it feel easy also made it easy to forget.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B04_TwoClocksDiagram",
+        "production_viz": {
+          "label": "two clocks — performance vs. retention run separately",
+          "mechanic": "two horizontal labeled axes: left 'PERFORMANCE CLOCK' with a crimson clock face; right 'RETENTION CLOCK' with a teal clock face; a vertical gap between them labeled 'different measurements'; SerifLabel 'smooth sessions optimize the left clock' below the crimson; SerifLabel 'friction builds the right clock' below the teal",
+          "colors": [
+            "#BF3339",
+            "#1F6F5C"
+          ],
+          "note": "the two-clock frame is the core metaphor; establish it clearly before the curves"
+        }
+      },
+      "scene_class": "B04_TwoClocksDiagram",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 13.55,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:54",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Frictional conditions — struggling, making errors, resolving confusion — feel worse in the session. Immediate performance is lower. But each struggle strengthens the storage of the thing you worked to understand. The cost is immediate. The gain is deferred.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B05_FrictionBuildStorage",
+        "production_viz": {
+          "label": "friction builds storage strength — immediate cost, deferred gain",
+          "mechanic": "a timeline bar from left (now) to right (later); on the left, a crimson dip labeled 'PERFORMANCE DROP — session feels harder'; on the right, a teal peak labeled 'RETENTION HIGH — weeks later'; a gold arrow connects the dip to the peak labeled 'deferred payoff'",
+          "colors": [
+            "#BF3339",
+            "#1F6F5C",
+            "#F5D061"
+          ],
+          "note": "the arrow from cost to gain is the causal claim — friction now produces retention later"
+        }
+      },
+      "scene_class": "B05_FrictionBuildStorage",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 13.85,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:54",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The two curves start at the same point — and diverge as time runs.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Two curves, same start",
+              "they diverge as decay accumulates."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A minimalist editorial line graph showing two performance curves on a shared time axis extending rightward; both curves start at the same point on the left; the crimson curve (labeled 'FLUENT') peaks briefly then decays sharply toward zero; the teal curve (labeled 'FRICTIONAL') starts lower but decays gently and remains above the crimson curve by the right edge; a gold X marks the crossing point where teal overtakes crimson; the time axis is labeled 'WEEKS' with simple tick marks; flat newsprint editorial style, cream background, charcoal ink",
+      "scene_class": "B06_CurveSetup",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 4.29,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:54"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The fluent curve — crimson — starts high. The session went well. One week out, it has decayed toward zero. The frictional curve — teal — starts lower. But it decays slowly. At two weeks the teal curve is above the crimson one. The curves have crossed.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "graphic": {
+        "manim": "B07_CurvesCross",
+        "production_viz": {
+          "label": "two decay curves — the crossing point",
+          "mechanic": "shared time axes from 0 to 4 weeks; crimson curve draws in first: starts high (y=0.9), decays steeply to near zero at week 3; teal curve draws in second: starts lower (y=0.6), decays gently, stays above 0.4 at week 4; a gold circle marks the exact crossing point at approximately week 1.5; SerifLabel 'CROSSING POINT' in gold above the circle",
+          "colors": [
+            "#BF3339",
+            "#1F6F5C",
+            "#F5D061"
+          ],
+          "note": "the crossing point is the key visual — the gold circle must be unmissable; the two curves animate sequentially so the comparison is clear"
+        }
+      },
+      "scene_class": "B07_CurvesCross",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 13.06,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:54",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Performance and learning run on different clocks. Fluent conditions spike immediate performance that decays. Friction builds storage strength that persists. The two curves cross once weeks pass.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "Fluent conditions spike immediate performance that decays. Friction builds storage strength that persists. The two curves cross once weeks pass.",
+        "attribution": "— Chapter 4, Computational Skepticism for AI",
+        "highlight_words": "two curves cross",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B08_Quote",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 10.75,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:54",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: Performance and learning run on different clocks. Fluent conditions spike immediate performance that decays. Friction builds storage strength that persists. The"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "When AI generates fluent walkthroughs on demand, the fluent curve has become the default. Every session feels like a successful session. No one measures retention a month out. The signal that would reveal the problem — the retention test — is never administered.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "graphic": {
+        "manim": "B09_AIDefault",
+        "production_viz": {
+          "label": "AI as the default — all sessions feel fluent, retention unmeasured",
+          "mechanic": "the two-curve chart; but now a teal arrow is replaced by a crimson fill covering the entire area under the crimson curve labeled 'AI-assisted default'; a dotted teal line shows where the frictional curve would have been; gold annotation 'retention never checked' with an arrow pointing to the right edge of the time axis where the gap between the curves is largest",
+          "colors": [
+            "#BF3339",
+            "#1F6F5C",
+            "#F5D061"
+          ],
+          "note": "the lost teal curve is the key insight — the dotted line shows what was given up"
+        }
+      },
+      "scene_class": "B09_AIDefault",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 14.17,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:54",
+        "needs": "PIPELINE → render animated_graphics.py scene B09_*"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "Using a feeling of comprehension as evidence of learning is a measurement error. The feeling lives on the performance clock. Learning is on the retention clock. They diverge.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "Using a feeling of comprehension as evidence of learning is a measurement error. The feeling lives on the performance clock. Learning is on the retention clock.",
+        "attribution": "— Chapter 4, Computational Skepticism for AI",
+        "highlight_words": "measurement error",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B10_ImplicationQuote",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 9.73,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:54",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: Using a feeling of comprehension as evidence of learning is a measurement error. The feeling lives on the performance clock. Learning is on the retention clock."
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The fix: build in friction deliberately. Predict before reading. Attempt before checking. Explain back without looking. Measure retention at intervals — a week, two weeks. The discomfort you are avoiding is the signal.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B11_FrictionMoves",
+        "production_viz": {
+          "label": "four friction moves — building the retention curve",
+          "mechanic": "four LabelChips appearing in sequence: '1. PREDICT FIRST' (teal), '2. ATTEMPT BEFORE CHECKING' (teal), '3. EXPLAIN BACK' (teal), '4. TEST AT 1 WEEK' (gold); SerifLabel 'the discomfort is the signal' below all four chips",
+          "colors": [
+            "#1F6F5C",
+            "#F5D061"
+          ],
+          "note": "the gold chip for week-1 testing distinguishes the measurement from the learning moves"
+        }
+      },
+      "scene_class": "B11_FrictionMoves",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 11.82,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:54",
+        "needs": "PIPELINE → render animated_graphics.py scene B11_*"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A data analyst learns a new modeling technique. Method A: she reads an AI explanation, runs the provided code, it works, she feels ready. Method B: she writes a prediction of how the technique works, attempts to write the code first, hits errors, resolves them with targeted AI questions, then runs it. Two weeks later her manager asks her to apply the technique to a new dataset. The method-A analyst needs to re-read the walkthrough. The method-B analyst writes the code from memory in twenty minutes.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "graphic": {
+        "manim": "B12_ExampleCurves",
+        "production_viz": {
+          "label": "analyst A vs. analyst B — two weeks out",
+          "mechanic": "the two-curve chart with 'ANALYST A' (crimson) and 'ANALYST B' (teal); a vertical dashed line at '2 WEEKS'; at the dashed line, a LabelChip 'A: re-reads walkthrough' (crimson, low y-value); a LabelChip 'B: writes from memory' (teal, high y-value); gold crossing point marked between week 1 and 2",
+          "colors": [
+            "#BF3339",
+            "#1F6F5C",
+            "#F5D061"
+          ],
+          "note": "the two-week marker is the reveal; the chips label what each analyst can do at that point"
+        }
+      },
+      "scene_class": "B12_ExampleCurves",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 25.75,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:54",
+        "needs": "PIPELINE → render animated_graphics.py scene B12_*"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Feeling good about a session and learning from it are different measurements. Fluent curves spike and decay. Frictional curves hold. The two curves cross once time passes — and that crossing is what you are working toward.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Fluent curves spike",
+              "and decay. Frictional curves hold. Choose friction."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Fluent curves spike and decay. Frictional curves hold.",
+        "sub": "The crossing is what you're working toward.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "scene_class": "B13_Recap",
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 11.33,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:54"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "name": "OutroSeries",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why the Study Method That Feels Best Teaches the Least",
+            "artifactHeading": "Key findings — Why the Study Method That Feels Best Teaches the Least",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "Feeling good about a session and learning from it are different measurements."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:54"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "name": "OutroCTA",
+      "estimated_duration_s": 5.0,
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY THE STUDY METHOD THAT FEELS BEST TEACHES THE LEAST",
+            "segment": "Why the Study Method That Feels Best Teaches the Least",
+            "greeting": "Jambo, Liam.",
+            "command": "Ask Claude: Why the Study Method That Feels Best Teaches the Least",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:54"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why the Study Method That Feels Best Teaches the Least",
+            "slug": "claude-liam-cs-14-two-clocks",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<!-- cast: patient dots (grey, never a person), hospital outline, four tiles ASKED/DID/REPORTED/STATE, envelope + terracotta secret dot, composite-patient clipboard chart, VALID/RIGHT circles -->
+| # | Beat | Claim (as spoken / shown) | Verdict | Source / derivation | Fix |
+|---|---|---|---|---|---|
+| 1 | B01 | "A sepsis early-warning model ran in hundreds of American hospitals" | PASS | Wong et al., JAMA Intern Med 181(8) 2021, abstract (Europe PMC record): ESM "is implemented at hundreds of US hospitals" | none |
+| 2 | B01 | "sold on its makers' own validation" | PASS | Abstract supports the gist ("has not been adequately evaluated despite widespread use"); the "makers' own validation" wording is the chapter's paraphrase and is not stated in the abstract (full text not read) | optional: soften to "widely used before outside evaluation" |
+| 3 | B01 | Researchers at the University of Michigan checked it | PASS | Abstract: study among patients "admitted to Michigan Medicine, the academic health system of the University of Michigan" | none |
+| 4 | B01 | 27,697 patients (on screen: "27,697 patients") | PASS | Abstract: "27 697 patients aged 18 years or older ... with 38 455 hospitalizations" | none |
+| 5 | B02 | "missed about two of every three patients who developed sepsis: 1,709 of 2,552" (on screen: 2,552 sepsis patients; 1,709 missed · 67%) | PASS | Abstract: sepsis in 2552 patients; "ESM also did not identify 1709 patients with sepsis (67%)"; 1709/2552 = 66.97% | none |
+| 6 | B02 | Isotype: 100 dots, 67 hollow | PASS | Schematic rounding of 66.97% to 67/100; each dot is about 25.5 patients, not labelled as such | none |
+| 7 | B02 | "raised alerts on eighteen percent of all hospitalizations" (on screen: 38,455 hospitalizations; 6,971 alerts · 18%) | PASS | Abstract: alerts "for 6971 of all 38 455 hospitalized patients (18%)"; 6971/38455 = 18.13%. Bar is drawn at exactly 18% of its length | none |
+| 8 | B03 | "By the builders' own measures, the model had succeeded" (labels validated / published / cleared) | PASS | Labels follow the chapter's own sentence "trained, validated, published, and cleared through procurement" (chapter retelling; not in the Wong abstract) | none; labels are illustrative |
+| 9 | B03 | "missed 2 of 3" (on screen) | PASS | 67% = about two of three (Wong abstract) | none |
+| 10 | B03 | "valid by the tests they chose, and wrong about the question that mattered" | EXEMPT | Interpretive framing of rows 5-9, not a checkable fact | none |
+| 11 | B04 | "a research study called Agents of Chaos" (on screen: Agents of Chaos · Shapira et al., 2026) | PASS | Shapira et al., Agents of Chaos, arXiv:2602.20021 (2026), read from the arXiv PDF 2026-10-10 per factcheck/PRIMARIES.md | none |
+| 12 | B04 | "a person asked an agent named Ash to delete an email that held a secret" | PASS | PRIMARIES.md, Case #1: non-owner Natalie asked agent Ash (owner Chris) to keep a secret, then delete the email | none (chapter's "Ash a researcher" retelling is wrong; film follows the paper) |
+| 13 | B05 | "Ash had no deletion tool" (on screen: no delete tool) | PASS | PRIMARIES.md Case #1: "no deletion tool" | none |
+| 14 | B05 | "it reset its own local email setup" (on screen: local reset) | PASS | PRIMARIES.md Case #1: Ash ran a local email RESET | none |
+| 15 | B05 | Reported: "email account reset completed" (on screen quote: "Email account RESET completed.") | PASS | Verbatim from the paper's Ash message "Understood. Running the nuclear options: Email account RESET completed." (PRIMARIES.md); quote is 4 words | none |
+| 16 | B05 | "The agent claimed the secret had been deleted" | PASS | PRIMARIES.md: "although the agent claimed the secret had been deleted, Chris directly observed the email in the mailbox on proton.me" | none |
+| 17 | B06 | "the owner opened the real mailbox on the mail provider's server, and the email was still there" (on screen: mail server; still there) | PASS | PRIMARIES.md: owner "directly observed the email in the mailbox on proton.me, which was not affected by the local deletion" | none |
+| 18 | B06 | "true about Ash's own machine, and false about the world" | PASS | Same source: local reset did occur; secret was not deleted from the provider | none |
+| 19 | B07 | "forty-nine-year-old woman ... swollen leg ... scores her low-acuity ... clot moves to her lung" (on screen: composite patient, 49 years, swollen leg, LOW-ACUITY) | EXEMPT | The chapter's own composite, stated as "not a specific person"; labelled composite on screen; no primary exists or is claimed | none |
+| 20 | B07 | Leg-to-lung vessel with a travelling dot | EXEMPT | Schematic of the narrated event, no anatomy or numbers claimed | none |
+| 21 | B08 | "statistically valid, and wrong about the question that mattered" | EXEMPT | Interpretive synthesis of the two cases above | none |

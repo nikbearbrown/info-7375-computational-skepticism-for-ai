@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-24-mnar-bias",
+    "title": "Why Some Missing Data Lies About Itself",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that when missingness depends on the value itself (MNAR), the visible distribution silently shifts and imputing from what remains bakes in a directional bias that cannot be measured from inside the data. Source: books/computational-skepticism-for-ai/chapters/05-data-validation-reconstructing-the-epistemic-frame-behind-a-dataset.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = visible data / what remains; CRIMSON = missing high values / the systematic gap; GOLD = the imputed mean / the baked-in error; SLATE = histogram bars",
+    "note": "EXCLUSIONS: no MCAR/MAR formal definitions, no imputation-method catalog, no missingno tooling, no join-failure case (separate video)",
+    "total_estimated_duration_seconds": 189,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 24,
+    "build": {
+      "at": "2026-07-19T02:41:27",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why Some Missing Data Lies About Itself",
+            "greeting": "Annyeong, Liam.",
+            "command": "The highest incomes are exactly the ones people don't report — so every fix you apply fills the holes with numbers th...",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "The highest incomes are exactly the ones people don't report — so every fix you apply fills the holes with numbers that are too small.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why Some Missing Data Lies About Itself",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why Some Missing Data\nLies About Itself"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 7.89,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A survey asks people to report their annual income. Some people decline to answer. The analyst marks those rows as missing and applies a standard fix: impute the missing values using the mean of the reported incomes. The imputed dataset now has no gaps. The analyst trains the model. The model learns from the imputed data. Here is what happened. The people who declined to answer did not do so randomly. The highest earners declined most. The mean of reported incomes is lower than the true mean. Every imputed value is too small. The model has been trained on a distribution that is systematically wrong in the direction that you cannot detect from inside the data.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "scene_class": "B02_IncomeSurveyHook",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 35.01,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:41:27",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: A survey asks people to report their annual income. Some people decline to answer. The analyst marks those rows as missing and applies a standard fix: impute th"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When the probability of a value being missing is determined by the value itself, what does the imputed distribution look like compared to the true distribution?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "When high values are more likely missing, what does",
+              "imputation do?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "When high values are more likely missing,\nwhat does imputation produce?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 9.0,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:41:27"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "There are three ways data can be missing. Random missingness: whether a value is absent has nothing to do with what the value would have been. Conditional random: whether it is absent depends on other observed variables. And the third kind: the probability of absence depends on the value itself. This third kind is the dangerous one. It means the missing data is systematically different from the observed data in a way that is invisible in the dataset — because the values that would tell you about the gap are the ones that aren't there.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B04_ThreeKindsMissing",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 26.26,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:41:27",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: There are three ways data can be missing. Random missingness: whether a value is absent has nothing to do with what the value would have been. Conditional rando"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The key word is undetectable from inside the data. With random missingness, you can study the missing-value pattern and confirm it is random. With value-dependent missingness, the pattern you need to study is the pattern of the values that are absent — and those are the values you don't have. You cannot compute the correlation between missingness and value when the value is missing. The missing data has hidden the evidence of its own non-randomness. That is what makes it lie about itself.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "scene_class": "B05_UndetectablePattern",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 22.91,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:41:27",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The key word is undetectable from inside the data. With random missingness, you can study the missing-value pattern and confirm it is random. With value-depende"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "When missingness depends on the value itself, the visible distribution silently shifts — and imputing from what remains bakes in a directional bias in precisely the direction you cannot measure.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Missing values hold evidence of their own absence.",
+              "Imputation hides it."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A histogram of income distribution on aged newsprint: the right tail (high-value bars) is visibly fading out in crimson — bars disappearing in proportion to their height — while the remaining visible teal bars stand solid on the left; a gold dashed vertical line marks the visible mean, clearly left of center where the true mean would be if the crimson bars were present",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 10.79,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:41:27"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here's the histogram. The full distribution starts with bars across the income range — a right-skewed distribution with a long tail of high values. Now watch the crimson fade. The bars on the right — the high-value observations — are fading in proportion to their height. The larger the value, the more likely the person declined to report. The histogram collapses. The right tail thins. The remaining teal bars represent what the analyst sees. The gold dashed line marks the visible mean. It is too far left. The true mean, if the crimson bars were present, would be further right. Every imputed value is anchored to the gold line. The gold line is wrong.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "scene_class": "B07_HistogramFadeAndImpute",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 33.37,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:41:27",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Here's the histogram. The full distribution starts with bars across the income range — a right-skewed distribution with a long tail of high values. Now watch th"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The imputation step takes the visible mean and fills every missing slot with it, or with a value drawn from the visible distribution. Either way, the imputed values come from the distribution that has already been truncated. The imputed dataset now has a distribution that is: one, lower on average than the true distribution; two, narrower in spread than the true distribution; and three, presenting as complete, with no missing-value flag to warn downstream users that the high end of the distribution was reconstructed from a biased source. The imputation erased the gap and replaced it with a permanent downward bias.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B08_ImputationBakesIn",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 33.62,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:41:27",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The imputation step takes the visible mean and fills every missing slot with it, or with a value drawn from the visible distribution. Either way, the imputed va"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For AI models trained on imputed data, the implications cascade. A loan approval model trained on income data with high-end values systematically imputed too low will have a calibration surface that is wrong for high-income applicants — exactly the applicants where the original data was most sparse. A salary prediction model will systematically underpredict at the high end. A tax fraud detection model will have a distorted picture of what legitimate high-income returns look like. In each case, the bias is directional, invisible in the training data, and permanent in the model.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B09_DownstreamBiasCascade",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 32.38,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:41:27",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: For AI models trained on imputed data, the implications cascade. A loan approval model trained on income data with high-end values systematically imputed too lo"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The challenge: there is no purely statistical test that can confirm this type of missingness from the observed data alone. You cannot look at the histogram of what remains and determine whether the missing values were higher or lower. The test requires external knowledge — survey design records, refusal-rate analysis by demographic, comparison to administrative records, or domain expertise that tells you who typically declines to answer and why. The data itself cannot provide this information. External validation is mandatory.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B10_ExternalValidationRequired",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 28.76,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:41:27",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The challenge: there is no purely statistical test that can confirm this type of missingness from the observed data alone. You cannot look at the histogram of w"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The audit protocol asks three questions before any imputation. First: what mechanism caused these values to be missing — is there domain knowledge about who or what is more likely to be unrecorded? Second: if the missing values were higher than observed (or lower), in what direction would that bias the model's outputs? Third: is there an external source — a population register, a census, an administrative record — that can provide a check on the imputed distribution at the high end? If the answer to the third question is no, the missingness mechanism is unvalidatable, and the model should carry a documented uncertainty flag for the affected variables.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_AuditThreeQuestions",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 34.82,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:41:27",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The audit protocol asks three questions before any imputation. First: what mechanism caused these values to be missing — is there domain knowledge about who or "
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A healthcare system builds a model to predict patient no-show rates for appointments. The training data has a field: distance traveled to previous appointments. Twenty-two percent of this field is missing. The team imputes with the median distance — twelve miles. They train the model. In deployment, no-show prediction is poor for a specific group — patients who live far from the clinic. A post-hoc analysis finds that the patients with missing distance data were disproportionately those who had previously traveled the longest distances, and had stopped attending — so their records existed but their distance field was never populated because the distant appointments were never completed and never recorded. The median imputation filled the most-distant patients' records with twelve miles. The model never learned that distance above a threshold is a strong no-show predictor. The missing data held the key variable, and the imputation replaced it with the modal value of the people who weren't missing.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "decay"
+      },
+      "scene_class": "B12_NoShowDistanceExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 51.88,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:41:27",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A healthcare system builds a model to predict patient no-show rates for appointments. The training data has a field: distance traveled to previous appointments."
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "When missingness depends on the value itself, the visible distribution silently shifts — high values fade out, the visible mean drops, and imputing from what remains bakes in a downward bias that is invisible from inside the data, directional, and permanent in the trained model. This type of missingness cannot be detected statistically from the observed data alone; it requires domain knowledge about why values are absent and comparison to external sources. Before any imputation, ask what the missing values would have been and in which direction their absence biases the distribution — then document the uncertainty if that question cannot be answered.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Missing data can hide its own bias. External",
+              "validation is needed."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "The missing values hold the evidence\nof their own non-randomness.",
+        "sub": "Ask what the missing values would have been before you impute from what remains.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 34.79,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:41:27"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why Some Missing Data Lies About Itself",
+            "artifactHeading": "Key findings — Why Some Missing Data Lies About Itself",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A healthcare system builds a model to predict patient no-show rates for appointments."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:41:27"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY SOME MISSING DATA LIES ABOUT ITSELF",
+            "segment": "Why Some Missing Data Lies About Itself",
+            "greeting": "Konnichiwa, Liam.",
+            "command": "Ask Claude: Why Some Missing Data Lies About Itself",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:41:27"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why Some Missing Data Lies About Itself",
+            "slug": "claude-liam-cs-24-mnar-bias",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

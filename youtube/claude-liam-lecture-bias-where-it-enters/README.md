@@ -1,0 +1,8 @@
+# Bias: Where It Enters and Who Is Responsible — Lecture 6, INFO 7375 Computational Skepticism for AI
+
+**What.** One whole-chapter lecture film (Video 6 of 13 in "INFO 7375 — Computational Skepticism for AI (Lectures)"), narrated by Liam in for Bear (Kokoro `am_onyx`), greeting Namaste, built with the `lecture` skill. It teaches where bias enters an AI pipeline (ten mechanisms, three flavors, how they compound), why a dataset is not the world (COMPAS and the fairness impossibility, with the real records shown), Pearl's ladder rungs 1 and 2, leverage analysis, and who owns a bias, including the upstream limit case.
+**Why.** Bear's instruction of 2026-10-10: the first three lecture films for the course, from the lecture decks and the updated chapters. For Lecture 6 the deck folder is empty, so Chapter 6 is the whole source.
+**Found.** Master and gate state: see `BUILD-LOG.md` and `RESUME.md`. Nothing is staged, published, committed or pushed. Eight unresolved merge blocks in the chapter were resolved to the HEAD side, each logged in `ACTS.md`; the chapter file itself is untouched and still needs Bear's resolution. Corrections to the chapter: Gallup's "50,000" is not spoken (unverified); the chapter's `[verify]` on Agents of Chaos Case #6 is resolved against the paper's page 20.
+
+## Files
+`beat_sheet.json` (the heart) · `make_sheet.py` · `scenes.py` (74 Manim scenes; evidence embedded) · `ACTS.md` · `SHOTLIST.md` · `FACTCHECK.md` · `CHECKS-REPORT.md` · `SOURCES.md` · `PROMPTS.md` · `BUILD-PROMPT.md` · `BUILD-LOG.md` · `RESUME.md` · `build_srt.py` · `evidence/` · `captures/` · `opening/` · `mp3/` · `media/` · `exports/landscape/` (the master)

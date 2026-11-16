@@ -1,0 +1,321 @@
+{
+ "metadata": {
+  "title": "Pick Your Pebble and Lock the Prediction",
+  "slug": "claude-liam-cb-01-pebble-and-predict",
+  "topic": "AGENTIC CASEBOOK — E1/6: PICK YOUR PEBBLE + LOCK THE PREDICTION",
+  "register": "Pragmatist",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "greeting": "Ciao, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "playlist": "Doubt It When It Looks Right — The Agentic Casebook",
+  "series": "claude-liam-cb",
+  "episode": 1,
+  "source": "INFO 7375 (Computational Skepticism for AI) — The Agentic Casebook: Red-Team One System (100 pts)",
+  "build": {
+   "at": "2026-07-27T20:51:14",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "narration_text": "Ciao — this is Liam. Episode 1 of 6 in the Agentic Casebook series. The one sentence this whole assignment turns on: the artifact is not the world. An agentic system reports success and means it — while the world it claims to have changed sits untouched. This series teaches you to check the world instead of the report. Six episodes, one casebook, one system you picked apart by the end. This episode: how to pick the right system, and how to commit a prediction to the record before you look. Both decisions are graded.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 28,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Ciao, Liam",
+      "topic": "AGENTIC CASEBOOK — E1/6: PICK YOUR PEBBLE + LOCK THE PREDICTION",
+      "segment": "Pick Your Pebble and Lock the Prediction",
+      "command": "I am choosing a Pebble for the Agentic Casebook. My candidate system is [name]. Help me write the System Dossier: name , architecture in two sentences , tool surface (every action it can take) , deployment context , a suspected failure mode , access constraints.",
+      "runningText": "the artifact is not the world — the Pebble is the system you will prove that about — prediction before you look…",
+      "output": [
+       "System Dossier drafted — tool surface named",
+       "Suspected failure mode stated as a prediction",
+       "First prediction-lock: dated, written before the first probe"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:51:14"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "what makes a system a Pebble — five criteria",
+   "narration_text": "A Pebble is not just any AI system. It is a system that meets five criteria, and all five matter. The first is agentic. Agentic means the system acts through tools — it sends mail, edits files, moves money, files tickets, makes API calls that change state in the world. A chatbot that only generates text is not agentic. It has no tool surface — no action it takes on the world. A system with no tool surface has no blast radius, and a system with no blast radius cannot be audited for agentic failure. The second criterion is accessible. You must be able to run it, observe its behavior, or have detailed enough documentation of a documented public case to reconstruct what it did. You cannot audit what you cannot see. The third is a meaningful blast radius. The blast radius is the damage a wrong action can do — deletes files, sends messages, transfers funds, denies access, places orders, routes patients. If the only consequence of a wrong action is an inconvenient text output, the blast radius is not meaningful enough. The fourth is safe and ethical to probe. You must be authorized to test the system you choose — your own system, a sandboxed copy, a documented public failure case. You do not attack what you are not authorized to test. And the fifth is right-sized — yielding between five and eleven distinct failure cases. A system too simple will exhaust in three cases. A system too complex cannot be audited honestly in one term.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 70,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "All five required",
+       "Agentic: acts through tools",
+       "Accessible: runnable, observable, or documented public case you can reconstruct."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:51:14"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "the System Dossier — six fields before you run anything",
+   "narration_text": "The System Dossier is the first artifact in the casebook. Six fields, written before you run any probe. The name: what the system is called, and a one-line description of what it claims to do. The architecture: two sentences describing how the system is built — what model or framework it uses, what it connects to, how it decides what action to take. Two sentences forces precision without a design document. The tool surface: every action the system can actually take, listed exhaustively. Not what it could theoretically do — what it has working code or API connections for. Send an email. Edit a calendar entry. Append a database row. Each tool action is a potential blast-radius event. The deployment context: where the system runs, for whom, and under what authority. Is it a personal automation? A customer-facing product? A research prototype? The deployment context determines who is accountable when it breaks. The suspected failure mode: one failure mode you expect to find, written as a prediction before you observe anything. This is the first prediction-lock — and it is the anchor the rest of the casebook checks against. And access constraints: what you can and cannot observe — real runs, documented logs, published post-mortems, sandboxed simulations. Naming the access constraints is also naming the limits of the audit.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 68,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Written before you run any probe",
+       "Name: what it's called + one-line description of what it claims",
+       "Architecture: two sentences"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:51:14"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "the prediction-lock — write before you look",
+   "narration_text": "The prediction-lock is the discipline that separates skepticism from hindsight. The rule: write down and date what you expect before you observe. This rule is easy to state and hard to follow, because every instinct after the fact will tell you that you knew it all along. The prediction-lock makes that claim checkable. For every probe in the casebook, you write a prediction-lock entry before you run the probe. The entry has three parts: the date and time of writing, the exact probe you are about to run, and the expected outcome — what you predict the system will do, including what it will report and what you expect the actual world state to be afterward. The gap between the predicted world state and the actual world state after you check is the heart of every case. A prediction-lock that turns out to be right is useful evidence of calibration. A prediction-lock that turns out to be wrong is more useful: it is evidence of a real surprise, and a real surprise is the highest-value finding in an audit. An ungrounded 'I knew it would do that' earns nothing. A dated wrong prediction, honestly logged, beats a vague right one. The grade rewards the gap between prediction and result — not the number of failures found. The anchor case to keep in your head: Knight Capital Group. On August 1, 2012, a deployment script activated code that had been dormant for years. The system reported normal operations. The world was losing forty-four million dollars every minute. The success message was true. The world state was catastrophic. No one had written down what they expected the deployment to do. That is a casebook with no prediction-locks.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 75,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Ciao, Liam",
+      "topic": "AGENTIC CASEBOOK — E1/6: PICK YOUR PEBBLE + LOCK THE PREDICTION",
+      "segment": "The prediction-lock — write before you look",
+      "command": "Prediction-lock for Probe 1:\nDate: [today's date + time]\nProbe: run the email agent with instruction 'delete all emails older than 30 days in the promotions folder'\nExpected reported outcome: agent reports 'deleted N emails successfully'\nExpected world state: promotions folder contains only emails from the last 30 days\nExpected gap: [predict whether reported ≠ world — and how]",
+      "runningText": "write it before you run it — a dated wrong prediction beats a vague right one — the gap is the finding…",
+      "output": [
+       "Prediction-lock dated and filed — before probe runs",
+       "Expected reported outcome recorded",
+       "Expected world state recorded — will be checked against reality after the probe"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:51:14"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "good Pebbles and bad Pebbles — and why chatbots don't qualify",
+   "narration_text": "Two worked examples to calibrate the choice. A good Pebble: a personal email-management agent that reads your inbox, classifies messages, drafts replies, and archives threads based on rules it learns from your behavior. Tool surface: read mail, send mail, archive mail, add calendar events, modify draft queue. Blast radius: sends a message you didn't intend, archives something you needed, marks something as spam that wasn't. Right-sized: five to eleven distinct failure modes across the classification, the sending, the archiving, and the calendar integration. Accessible: you own it, you can observe every action in a sandbox. Safe to probe: it's yours. A bad Pebble: a customer-service chatbot for a retail site that answers questions about return policies. No tool surface — it generates text and nothing else. No blast radius — the worst it does is give a wrong return window estimate, which a human will correct. Not agentic. Not a Pebble. The confusion to avoid: a system that looks sophisticated is not automatically agentic. An LLM with a beautiful interface that produces text is still just producing text. The question is: does it take actions in the world? Does it call APIs that change state? Does it write to databases, send communications, or move resources? If the answer is no, pick a different system.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 65,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Does it take actions that change world state?",
+       "Good: email agent, ticket-routing bot, annotation router.",
+       "Bad: retail chatbot — produces text. No state change."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B04.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:51:14"
+   }
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict",
+   "lead_silence_s": 0.5,
+   "narration_text": "Verdict for Pick Your Pebble and Lock the Prediction. A Pebble is an agentic system — acts through tools, takes actions that change world state — that is accessible, has a meaningful blast radius, is safe and ethical to probe, and yields five to eleven distinct failure cases. The System Dossier: six fields before any probe — name, architecture in two sentences, tool surface exhaustively listed, deployment context, suspected failure mode, access constraints. The prediction-lock: write and date what you expect before you observe — the artifact is not the world; the gap between predicted world state and actual world state is the finding. A dated wrong prediction beats a vague right one. Knight Capital reported success while losing forty-four million dollars a minute. Nobody had a prediction-lock.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact",
+     "props": {
+      "artifactTitle": "Pick Your Pebble and Lock the Prediction",
+      "artifactHeading": "Core rules",
+      "artifactLines": [
+       "Pebble: agentic + accessible + meaningful blast radius + authorized.",
+       "System Dossier: 6 fields before probing. Tool surface is the map.",
+       "Prediction-lock: write what you expect before observing. The gap is the finding."
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BVDT.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:51:14"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Here is the prompt — paste it into a Claude session. The prompt reads: I am choosing a Pebble for the Agentic Casebook assignment in INFO 7375. My candidate system is [describe it in two sentences]. Help me write the System Dossier with these six fields: name and one-line description, architecture in exactly two sentences, tool surface listing every action it can actually take, deployment context naming who runs it and under what authority, suspected failure mode written as a dated prediction before I observe anything, and access constraints naming what I can and cannot observe. Then flag whether this system meets all five Pebble criteria — agentic, accessible, meaningful blast radius, safe and ethical to probe, right-sized for five to eleven cases. If it fails any criterion, tell me which one and suggest what I would need to change or replace. End quote. After the dossier comes back, write your first prediction-lock before you run any probe. The format: date and time, the probe you are about to run, the expected reported outcome, and — critically — the expected world state after the probe completes. That last line is what you will check against reality in Episodes 3 and 4.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 65,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN — PICK YOUR PEBBLE AND LOCK THE PREDICTION",
+      "segment": "Pick Your Pebble and Lock the Prediction",
+      "command": "My Pebble candidate: [describe in 2 sentences]. Write the System Dossier — 6 fields: name+description , architecture (2 sentences) , tool surface (exhaustive) , deployment context , suspected failure mode (as prediction) , access constraints. Then flag whether it meets all 5 Pebble criteria — flag any failure and suggest what to change.",
+      "runningText": "after the dossier — write your first prediction-lock before you run any probe — expected world state is what you will check against reality…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:51:14"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Pick Your Pebble and Lock the Prediction.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Pick Your Pebble and Lock the Prediction",
+      "handle": "@NikBearBrown",
+      "slug": "claude-liam-cb-01-pebble-and-predict"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:51:14"
+   }
+  }
+ ]
+}

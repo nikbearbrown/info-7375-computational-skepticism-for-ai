@@ -1,0 +1,1223 @@
+{
+ "meta": {
+  "slug": "claude-liam-do-chatbots-pass",
+  "title": "Do Chatbots Pass the Turing Test?",
+  "kicker": "Sixty years of machines learning to fool us",
+  "book": "computational-skepticism-for-ai",
+  "channel": "claude-liam",
+  "persona": "Liam (in for Professor Bear)",
+  "voice": "kokoro:am_onyx",
+  "register": "deep-explainer / documentary",
+  "pov": "Empirical/historical companion to the Chinese Room episode: the machines pass Turing's behavioral bar — but 'fooled you' was never 'understood you.' Bear's skeptic turn preserved as his stated view.",
+  "brand": "CLAUDE (cream #FAF9F5 / #F2F0E9 stage, warm ink #3D3929, terracotta #D97757 spark)",
+  "est_runtime_s": 350,
+  "est_note": "estimate at ~2.9 wps; measured audio is the only clock",
+  "render": {
+   "resolution": "3840x2160",
+   "fps": 30,
+   "rule": "BASE RULE — EVERY beat native 4K. Author ALL compositions at 1920x1080 (x scale=2 => 3840x2160). No 1280x720 comps. No ffmpeg bicubic upscaling.",
+   "qc": "ffprobe every beat clip: reject any beat whose native stream is not 3840x2160."
+  },
+  "content_rules": {
+   "no_text_slides": "HARD RULE (Bear) — no beat may display a sentence of narration as an on-screen text slide. Concept beats are DOODLE (rough.js sketch animation) or VOX (pantry still, machine-animated). Narration is voiceover, never a caption card.",
+   "remotion_scope": "REMOTION is reserved for the Claude UI bookends ONLY (B00, C1, C2, C3) — ILLUSTRATE LAW. Never a body concept beat.",
+   "manim_scope": "MANIM only where there is real data to animate (the fool-rate meter, the PARRY chance bar). Every Manim beat must have an AUTHORED scene in scenes.py. No toolkit default scene, no placeholder text — an unauthored Manim beat FAILS qc.",
+   "qc_placeholder": "VISUAL QC: scan every rendered beat for placeholder/template text ('Claude Code', 'Manim', default slate titles). Any hit is a FAIL.",
+   "no_current_model_names": "DOUBLE-CHECK LAW — historical years (1950, 1966, 1972, 1990, 2014, 2025) ARE the subject and stay. Current vendor/model names do NOT appear in narration ('the strongest model tested', not a product name); the exact model + study are cited in FACTCHECK/SOURCES for provenance only."
+  },
+  "gate_state": "PLAN — awaiting Bear's approval before factcheck-lock / GATE P audio / render.",
+  "lane_mix_body": {
+   "CARD": 5,
+   "VOX": 7,
+   "MANIM": 4,
+   "DOODLE": 13,
+   "note": "Follows this book's house pattern (per Bear's no-text-slide rule, same as claude-liam-chinese-room): concepts are DOODLE/VOX, Remotion is bookends only, Manim is data only. Intentionally deviates from the skill's default Remotion-heavy deep-explainer mix."
+  }
+ },
+ "bookends": {
+  "cold_open": "B00",
+  "closing": [
+   "C1",
+   "C2",
+   "C3"
+  ]
+ },
+ "beats": [
+  {
+   "lane": "REMOTION",
+   "act": "COLD OPEN",
+   "exempt": true,
+   "scene": "ClaudeComposerAsk",
+   "shot": {
+    "type": "UI",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "topic": "COMPUTATIONAL SKEPTICISM · AI",
+      "segment": "Do Chatbots Pass the Turing Test?",
+      "command": "Sixty years of chatbots trying to fool us — ELIZA, PARRY, a fake teenager. So do the machines finally pass the Turing test?",
+      "greeting": "Hola, Liam",
+      "runningText": "reading the history…",
+      "modelLabel": "Claude",
+      "effortLabel": "Deep"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "Claude UI bookend (allowed Remotion). Ask lands answered; Liam signs in for Bear.",
+   "beat_id": "B00",
+   "narration_text": "Hey Claude — for sixty years we built machines whose whole job was to fool us into thinking they're human. A fake typewriter-therapist. A paranoid chatbot. A program pretending to be a teenager. So after all that — do the machines finally pass the test? Liam here, in for Professor Bear.",
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": 15.66,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "I — exec summary",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "FormBCard",
+     "props": {
+      "title": "Do Chatbots Pass the Turing Test?",
+      "items": [
+       {
+        "label": "Key point one",
+        "sub": "",
+        "icon": "target",
+        "cueFrame": 20
+       },
+       {
+        "label": "Key point two",
+        "sub": "",
+        "icon": "list-checks",
+        "cueFrame": 55
+       },
+       {
+        "label": "Key point three",
+        "sub": "",
+        "icon": "zap",
+        "cueFrame": 90
+       }
+      ]
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "I",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A1_ActTitle"
+    }
+   },
+   "note": "Act title card (structural, not a narration slide).",
+   "beat_id": "A1",
+   "narration_text": "Act one. The bar.",
+   "audio_file": "mp3/beat-A1.mp3",
+   "actual_duration_s": 1.79,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A1.mp4",
+    "filled_by": "manim:A1_ActTitle",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "VOX",
+   "act": "I",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "archive",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.42
+    ]
+   },
+   "pantry": "A2.png",
+   "tier": 3,
+   "note": "Archival Alan Turing portrait; rights check to human. (Bear may reuse the still sourced for claude-liam-chinese-room A2.)",
+   "beat_id": "A2",
+   "narration_text": "Alan Turing, 1950. He threw out 'can a machine think' as too vague to settle, and swapped in a question you can actually run: put a machine and a person behind a screen — can you tell which is which just by typing to them?",
+   "audio_file": "mp3/beat-A2.mp3",
+   "actual_duration_s": 12.63,
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T08:59:19",
+    "needs": "YOU → drop a historical image at media/A2.png (or .mp4)",
+    "suggested": "find: Alan Turing, 1950. He threw out 'can a machine think' as too vague to settle, and swapped in a question you can actually run: put a machine and a person behind "
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "I",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A3_ImitationGame"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "judge-terminal",
+     "curtain",
+     "person",
+     "robot",
+     "speech-bubble"
+    ],
+    "sketch": "a judge at a terminal; two curtained doors, one hiding a person, one a machine; identical speech bubbles crossing; a crossed-out eye over the doors ('no peeking')",
+    "build": "both speech bubbles draw in identically; the crossed-out eye scratches on 'no peeking'"
+   },
+   "note": "The imitation-game setup as doodle (narration is VO, not a caption).",
+   "beat_id": "A3",
+   "narration_text": "The imitation game. A judge, two hidden partners — one human, one machine. Type to both; if the judge can't reliably tell which is which, the machine passes. No peeking inside. Behavior is the entire test.",
+   "audio_file": "mp3/beat-A3.mp3",
+   "actual_duration_s": 11.99,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A3.mp4",
+    "filled_by": "manim:A3_ImitationGame",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "I",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A4_TwoVariables"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "machine-box",
+     "human-head",
+     "equals-fooled",
+     "pointing-finger"
+    ],
+    "sketch": "a balance with the machine on one side and a human judge on the other; a label 'what's measured?' with an arrow that swings AWAY from the machine and onto the judge; the judge circled",
+    "build": "the arrow swings from machine to judge and the judge circles on 'one of them is us'"
+   },
+   "note": "Seeds the whole thesis: the test measures the human, not the machine.",
+   "beat_id": "A4",
+   "narration_text": "But notice what that actually measures. Not whether the machine thinks — whether a human gets fooled. Every test has two variables, and one of them is us. Hold onto that — it's the whole story.",
+   "audio_file": "mp3/beat-A4.mp3",
+   "actual_duration_s": 10.22,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A4.mp4",
+    "filled_by": "manim:A4_TwoVariables",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "I",
+   "scene": "FoolRateMeter",
+   "shot": {
+    "type": "GRAPH",
+    "source": "own",
+    "manim": {
+     "scene_class": "A5_TuringLine"
+    }
+   },
+   "viz": {
+    "kind": "threshold_meter",
+    "axis": "share of judges fooled (%)",
+    "elements": [
+     "a dashed horizontal 'Turing line' at 30%",
+     "a 5-minute clock icon"
+    ],
+    "point": "establish the recurring fool-rate meter and the 30% / 5-minute threshold"
+   },
+   "manim_scene": "AUTHOR REQUIRED: draw a vertical percent meter 0-100 with a dashed terracotta 'Turing line' at 30% and a small 5-minute clock. This meter recurs in A17 (33%) and A26 (73%). No placeholder text.",
+   "note": "Genuine data (Turing's stated 1950 prediction). Introduces the meter motif.",
+   "beat_id": "A5",
+   "narration_text": "Turing even placed a bet: by the year 2000, a machine would fool an average judge at least thirty percent of the time in a five-minute chat. Thirty percent, five minutes — remember that line.",
+   "audio_file": "mp3/beat-A5.mp3",
+   "actual_duration_s": 10.75,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A5.mp4",
+    "filled_by": "manim:A5_TuringLine",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "II",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A6_ActTitle"
+    }
+   },
+   "beat_id": "A6",
+   "narration_text": "Act two. The first impostors.",
+   "audio_file": "mp3/beat-A6.mp3",
+   "actual_duration_s": 2.47,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A6.mp4",
+    "filled_by": "manim:A6_ActTitle",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "VOX",
+   "act": "II",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.45,
+     0.5
+    ]
+   },
+   "pantry": "A7.png",
+   "tier": 1,
+   "note": "Generic 1960s mainframe / teletype terminal (ELIZA era). No real person needed; stock or AI-gen with disclosure sidecar.",
+   "beat_id": "A7",
+   "narration_text": "1966, MIT. Joseph Weizenbaum writes ELIZA — a program that plays therapist. Its trick is almost insultingly simple: take what you type and reflect it back as a question. Say you're sad, and it asks why you're sad.",
+   "audio_file": "mp3/beat-A7.mp3",
+   "actual_duration_s": 13.59,
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T08:59:19",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A7.mp4)",
+    "suggested": "suggested prompt: 1966, MIT. Joseph Weizenbaum writes ELIZA — a program that plays therapist. Its trick is almost insultingly simple: take what you type and reflect it back as a "
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "II",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A8_ElizaReflect"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "input-card",
+     "mirror",
+     "rulebook-thin",
+     "question-bubble"
+    ],
+    "sketch": "a typed line 'my mother hates me' hits a small mirror and bounces back as 'tell me more about your mother'; a very thin rulebook beside it; an empty thought bubble where a mind would be",
+    "build": "the sentence reflects across the mirror on 'reflect it back'; the thought bubble stays empty"
+   },
+   "note": "How ELIZA works, drawn not captioned.",
+   "beat_id": "A8",
+   "narration_text": "That's it. A few pages of pattern-matching rules. 'My mother hates me' becomes 'Tell me more about your mother.' No model of you, no idea what a mother even is. Shapes in, shapes out.",
+   "audio_file": "mp3/beat-A8.mp3",
+   "actual_duration_s": 10.09,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A8.mp4",
+    "filled_by": "manim:A8_ElizaReflect",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "VOX",
+   "act": "II",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "archive",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.4
+    ],
+    "vox_run": "R1",
+    "handoff": {
+     "camera": {
+      "x": 0.5,
+      "y": 0.4,
+      "scale": 1.5
+     },
+     "objects": [
+      {
+       "id": "portrait-weizenbaum",
+       "x": 0.5,
+       "y": 0.4,
+       "scale": 1.0,
+       "opacity": 1
+      }
+     ]
+    }
+   },
+   "pantry": "A9.png",
+   "tier": 3,
+   "note": "Archival Joseph Weizenbaum portrait; rights check to human. vox run R1 (pans to Colby in A10).",
+   "beat_id": "A9",
+   "narration_text": "And people fell for it. Weizenbaum watched his own secretary — who knew it was just a program — ask him to leave the room so she could talk to ELIZA in private. He was horrified.",
+   "audio_file": "mp3/beat-A9.mp3",
+   "actual_duration_s": 9.98,
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T08:59:19",
+    "needs": "YOU → drop a historical image at media/A9.png (or .mp4)",
+    "suggested": "find: And people fell for it. Weizenbaum watched his own secretary — who knew it was just a program — ask him to leave the room so she could talk to ELIZA in private."
+   }
+  },
+  {
+   "lane": "VOX",
+   "act": "II",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "archive",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.42
+    ],
+    "vox_run": "R1",
+    "handoff": {
+     "camera": {
+      "x": 0.5,
+      "y": 0.42,
+      "scale": 1.5
+     },
+     "objects": [
+      {
+       "id": "portrait-colby",
+       "x": 0.5,
+       "y": 0.42,
+       "scale": 1.0,
+       "opacity": 1
+      }
+     ]
+    }
+   },
+   "pantry": "A10.png",
+   "tier": 3,
+   "note": "Archival Kenneth Colby portrait; rights check to human. Scarce imagery — AI fallback must carry a disclosure sidecar. End of vox run R1 (hard cut into A11).",
+   "beat_id": "A10",
+   "narration_text": "1972, Stanford. Psychiatrist Kenneth Colby builds PARRY — ELIZA with attitude, simulating a man with paranoia who keeps steering every conversation back to his own obsessions.",
+   "audio_file": "mp3/beat-A10.mp3",
+   "actual_duration_s": 11.63,
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T08:59:19",
+    "needs": "YOU → drop a historical image at media/A10.png (or .mp4)",
+    "suggested": "find: 1972, Stanford. Psychiatrist Kenneth Colby builds PARRY — ELIZA with attitude, simulating a man with paranoia who keeps steering every conversation back to his "
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "II",
+   "scene": "ParryChanceBar",
+   "shot": {
+    "type": "GRAPH",
+    "source": "own",
+    "manim": {
+     "scene_class": "A11_ParryChance"
+    }
+   },
+   "viz": {
+    "kind": "accuracy_vs_chance",
+    "bars": [
+     {
+      "label": "psychiatrists' correct IDs",
+      "value": 48
+     }
+    ],
+    "reference_line": {
+     "label": "coin flip",
+     "value": 50
+    },
+    "point": "48% is at/below chance — they couldn't tell PARRY from real patients"
+   },
+   "manim_scene": "AUTHOR REQUIRED: a single bar at 48% under a dashed 50% 'coin flip' line; the bar lands just below the line. Real data. No placeholder.",
+   "note": "Genuine data (Colby-era transcript study).",
+   "beat_id": "A11",
+   "narration_text": "Then the real test. Psychiatrists read transcripts — some from PARRY, some from actual patients — and guessed which was which. They were right forty-eight percent of the time. A coin flip does better.",
+   "audio_file": "mp3/beat-A11.mp3",
+   "actual_duration_s": 10.41,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A11.mp4",
+    "filled_by": "manim:A11_ParryChance",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "II",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A12_MindForFree"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "two-tiny-machines",
+     "human-hand",
+     "mind-sticker",
+     "giveaway-tag"
+    ],
+    "sketch": "two tiny, almost-empty machine boxes; a human hand slapping a glowing 'MIND' sticker onto each one; a little 'FREE' price tag dangling",
+    "build": "the hand stamps 'MIND' on both boxes on 'we hand out mind for free'"
+   },
+   "note": "The recurring lesson: the weakness is in the judge, not the machine.",
+   "beat_id": "A12",
+   "narration_text": "Sit with that. Two toy programs, almost no machinery, and trained clinicians couldn't tell. The weakness the test keeps exposing isn't in the machine. It's in us — we hand out 'mind' for free.",
+   "audio_file": "mp3/beat-A12.mp3",
+   "actual_duration_s": 10.71,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A12.mp4",
+    "filled_by": "manim:A12_MindForFree",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "III",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A13_ActTitle"
+    }
+   },
+   "beat_id": "A13",
+   "narration_text": "Act three. Gaming the judge.",
+   "audio_file": "mp3/beat-A13.mp3",
+   "actual_duration_s": 2.26,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A13.mp4",
+    "filled_by": "manim:A13_ActTitle",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "III",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A14_LoebnerRing"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "trophy",
+     "calendar-annual",
+     "judge-panel",
+     "machine-label"
+    ],
+    "sketch": "a small contest trophy; a panel of judges now wearing 'I KNOW one of you is a bot' badges; two doors, both tagged with a tiny warning label",
+    "build": "the judges' badges flip up on 'they knew ahead of time'"
+   },
+   "note": "Loebner Prize as doodle. Historical dates are the subject — kept.",
+   "beat_id": "A14",
+   "narration_text": "In 1990 the test got formal. The Loebner Prize — an annual contest, real judges, and this time they knew ahead of time that some of their partners were machines. Fooling them should have been harder.",
+   "audio_file": "mp3/beat-A14.mp3",
+   "actual_duration_s": 11.5,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A14.mp4",
+    "filled_by": "manim:A14_LoebnerRing",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "III",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A15_SteerAndDodge"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "conversation-rail",
+     "topic-magnet",
+     "dodge-arrows",
+     "newspaper"
+    ],
+    "sketch": "a conversation drawn as a train track; the bot yanks the track toward a single 'headline of the day' magnet; questions off that track get dodged with little swerve-arrows",
+    "build": "the track bends to the magnet on 'steer the topic'; swerve-arrows flick away the rest"
+   },
+   "note": "The Loebner winners kept using ELIZA/PARRY-style misdirection.",
+   "beat_id": "A15",
+   "narration_text": "Except the winners kept winning the old way. One year's champion held a sharp conversation — but mainly if you wanted to talk about the politician in that year's headlines. Steer the topic, dodge the rest.",
+   "audio_file": "mp3/beat-A15.mp3",
+   "actual_duration_s": 11.05,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A15.mp4",
+    "filled_by": "manim:A15_SteerAndDodge",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "VOX",
+   "act": "III",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.5
+    ]
+   },
+   "pantry": "A16.png",
+   "tier": 1,
+   "note": "Generic period chat window / a boyish avatar (the Eugene Goostman persona) — NOT a specific copyrighted screenshot. Stock or AI-gen with disclosure sidecar.",
+   "beat_id": "A16",
+   "narration_text": "Then 2014, and the most famous stunt of all. A chatbot named Eugene Goostman, dressed in a persona: a thirteen-year-old boy from Odessa, joking around in second-language English.",
+   "audio_file": "mp3/beat-A16.mp3",
+   "actual_duration_s": 11.48,
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T08:59:19",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A16.mp4)",
+    "suggested": "suggested prompt: Then 2014, and the most famous stunt of all. A chatbot named Eugene Goostman, dressed in a persona: a thirteen-year-old boy from Odessa, joking around in second"
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "III",
+   "scene": "FoolRateMeter",
+   "shot": {
+    "type": "GRAPH",
+    "source": "own",
+    "manim": {
+     "scene_class": "A17_GoostmanBar"
+    }
+   },
+   "viz": {
+    "kind": "threshold_meter",
+    "axis": "share of judges fooled (%)",
+    "bars": [
+     {
+      "label": "Eugene Goostman, 2014",
+      "value": 33
+     }
+    ],
+    "reference_line": {
+     "label": "Turing line",
+     "value": 30
+    },
+    "point": "33% just clears the 30% line — organizers claimed a 'pass'"
+   },
+   "manim_scene": "AUTHOR REQUIRED: reuse the A5 meter; grow a 33% bar that just crosses the dashed 30% Turing line. Real data. No placeholder.",
+   "note": "Genuine data (2014 Royal Society event). 'Passed' is presented as the organizers' contested claim.",
+   "beat_id": "A17",
+   "narration_text": "At a Royal Society event, judges ran five-minute chats. Thirty-three percent came away believing Eugene was human — just over Turing's thirty-percent line. The organizers announced the Turing test had been passed.",
+   "audio_file": "mp3/beat-A17.mp3",
+   "actual_duration_s": 12.18,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A17.mp4",
+    "filled_by": "manim:A17_GoostmanBar",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "III",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A18_PersonaWasTheTrick"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "boy-mask",
+     "lowered-bar",
+     "excuse-notes",
+     "shrug"
+    ],
+    "sketch": "a boy-shaped mask held up over a blank machine; a bar labelled 'expectations' being physically dragged DOWN; little sticky-notes reading 'he's just a kid', 'English isn't his first language' pinned over each awkward answer",
+    "build": "the expectations bar drops on 'lowered what you expected'; excuse-notes stick over the gaps"
+   },
+   "note": "The debunk: the persona lowered the judges' bar rather than raising the bot's game.",
+   "beat_id": "A18",
+   "narration_text": "But read the fine print. The persona WAS the trick. A kid fumbling a foreign language is supposed to be odd, to dodge, to misfire. Eugene didn't rise to meet you — it lowered what you expected.",
+   "audio_file": "mp3/beat-A18.mp3",
+   "actual_duration_s": 10.99,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A18.mp4",
+    "filled_by": "manim:A18_PersonaWasTheTrick",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "IV",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A19_ActTitle"
+    }
+   },
+   "beat_id": "A19",
+   "narration_text": "Act four. The machines that stopped cheating.",
+   "audio_file": "mp3/beat-A19.mp3",
+   "actual_duration_s": 2.92,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A19.mp4",
+    "filled_by": "manim:A19_ActTitle",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "IV",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A20_NextChunk"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "globe-of-text",
+     "model-blob",
+     "next-chunk",
+     "chain"
+    ],
+    "sketch": "a faint globe made of words feeding into a soft 'model' blob; the blob emits one chunk of text at a time, chained left to right; no script, no costume rack (a costume rack drawn crossed out)",
+    "build": "chunks pop out one by one on each 'over and over'; the costume rack is crossed out"
+   },
+   "note": "No vendor/model names. The mechanism, drawn.",
+   "beat_id": "A20",
+   "narration_text": "Then something genuinely different shows up. Not a script, not a costume. Train a model on writing at the scale of the whole internet, and have it do one thing: predict the next chunk of text, over and over.",
+   "audio_file": "mp3/beat-A20.mp3",
+   "actual_duration_s": 10.86,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A20.mp4",
+    "filled_by": "manim:A20_NextChunk",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "VOX",
+   "act": "IV",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.45
+    ]
+   },
+   "pantry": "A21.png",
+   "tier": 1,
+   "note": "Generic modern chat window with a fluent, on-topic reply (no product branding). Stock or AI-gen with disclosure sidecar.",
+   "beat_id": "A21",
+   "narration_text": "And the old tells just evaporate. Ask it about anything — it stays with you. There's no secret obsession to hide behind, no 'let's change the subject.' It simply keeps talking, on topic.",
+   "audio_file": "mp3/beat-A21.mp3",
+   "actual_duration_s": 10.47,
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T08:59:19",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A21.mp4)",
+    "suggested": "suggested prompt: And the old tells just evaporate. Ask it about anything — it stays with you. There's no secret obsession to hide behind, no 'let's change the subject.' It simpl"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "IV",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A22_JuiceSentence"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "fridge",
+     "juice",
+     "two-people",
+     "tangled-arrow",
+     "world-globe"
+    ],
+    "sketch": "the sentence acted out: juice leaves a fridge, passes to a second figure ('him'), a calendar with a question mark ('the date'); a tangled arrow from 'him' back to the right person; a tiny world-globe labelled 'knowledge you already have'",
+    "build": "the tangled pronoun-arrow snaps straight on 'they parse it now'"
+   },
+   "note": "Callback to the classic hard sentence (pronoun + world-knowledge). Concept, drawn.",
+   "beat_id": "A22",
+   "narration_text": "Remember the sentence that used to break them? 'I took the juice out of the fridge and gave it to him, but forgot to check the date.' Who's 'him'? What 'date'? Parsing that takes a model of the world. They parse it now.",
+   "audio_file": "mp3/beat-A22.mp3",
+   "actual_duration_s": 11.01,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A22.mp4",
+    "filled_by": "manim:A22_JuiceSentence",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "IV",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A23_NoGimmick"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "empty-hands",
+     "dropped-mask",
+     "open-lane",
+     "clock-5min"
+    ],
+    "sketch": "a machine with open, empty hands; the boy-mask from A18 lying dropped on the floor; a wide-open road instead of a narrow rail; a five-minute clock ticking calmly",
+    "build": "the mask drops and the narrow rail widens to open road on 'it just answers'"
+   },
+   "note": "Pays off the 'stopped cheating' act title. Callback to A15's rail and A18's mask.",
+   "beat_id": "A23",
+   "narration_text": "For the first time, the machine isn't leaning on a gimmick to survive five minutes. No teenager, no dodging, no narrow lane it has to keep you in. It just answers.",
+   "audio_file": "mp3/beat-A23.mp3",
+   "actual_duration_s": 9.41,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A23.mp4",
+    "filled_by": "manim:A23_NoGimmick",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "CARD",
+   "act": "V",
+   "scene": "SegmentCard",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own",
+    "manim": {
+     "scene_class": "A24_ActTitle"
+    }
+   },
+   "beat_id": "A24",
+   "narration_text": "Act five. Did they pass?",
+   "audio_file": "mp3/beat-A24.mp3",
+   "actual_duration_s": 2.13,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A24.mp4",
+    "filled_by": "manim:A24_ActTitle",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "V",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A25_ThreeParty"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "judge",
+     "human-partner",
+     "machine-partner",
+     "five-min-clock",
+     "pick-hand"
+    ],
+    "sketch": "one judge in the middle, two live chats open at once — a human on the left, a machine on the right; a five-minute clock; a hand about to point at who's human",
+    "build": "the two chat panels open simultaneously; the clock starts on 'five minutes'"
+   },
+   "note": "Setup for the 2025 controlled three-party study. Contrasts with the informal stunts before.",
+   "beat_id": "A25",
+   "narration_text": "So in 2025, researchers ran the real thing — not a stunt, a controlled study. A three-party test: the judge chats with a human AND a machine at the same time, five minutes, then names which one is the human.",
+   "audio_file": "mp3/beat-A25.mp3",
+   "actual_duration_s": 12.37,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A25.mp4",
+    "filled_by": "manim:A25_ThreeParty",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "MANIM",
+   "act": "V",
+   "scene": "FoolRateMeter",
+   "shot": {
+    "type": "GRAPH",
+    "source": "own",
+    "manim": {
+     "scene_class": "A26_PassBar"
+    }
+   },
+   "viz": {
+    "kind": "threshold_meter",
+    "axis": "share of judges who called it the human (%)",
+    "bars": [
+     {
+      "label": "strongest model, 2025",
+      "value": 73
+     }
+    ],
+    "reference_lines": [
+     {
+      "label": "Turing line",
+      "value": 30
+     },
+     {
+      "label": "the actual human",
+      "value": 50
+     }
+    ],
+    "point": "73% is above chance AND above the real human — the model was picked as human more often than the person"
+   },
+   "manim_scene": "AUTHOR REQUIRED: the meter again; a 73% bar rockets past the 30% Turing line and past a ~50% 'the actual human' marker. Terracotta highlight on the crossing. Real data. No placeholder.",
+   "note": "Genuine data (Jones & Bergen 2025, three-party test, strongest model in persona condition). Model named only in FACTCHECK/SOURCES.",
+   "beat_id": "A26",
+   "narration_text": "The strongest model was picked as the human seventy-three percent of the time — chosen more often than the actual people were. Not thirty. Not thirty-three. Seventy-three — above the humans themselves.",
+   "audio_file": "mp3/beat-A26.mp3",
+   "actual_duration_s": 11.09,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A26.mp4",
+    "filled_by": "manim:A26_PassBar",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "V",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A27_YesTheyPass"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "checkmark-stamp",
+     "five-min-clock",
+     "cant-tell-faces"
+    ],
+    "sketch": "a firm hand-drawn check stamps down over the imitation-game doors from A3; the '?' door swings to reveal a machine; a row of judge faces all shrugging 'can't tell'",
+    "build": "the check stamps on 'the machines pass'"
+   },
+   "note": "Straight answer to the title, before the skeptic turn.",
+   "beat_id": "A27",
+   "narration_text": "So by Turing's own rule — five minutes, can't tell — the answer is yes. The machines pass. That part is no longer up for debate.",
+   "audio_file": "mp3/beat-A27.mp3",
+   "actual_duration_s": 7.47,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A27.mp4",
+    "filled_by": "manim:A27_YesTheyPass",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "DOODLE",
+   "act": "V",
+   "scene": "DoodleBeat",
+   "shot": {
+    "type": "DOODLE",
+    "source": "own",
+    "manim": {
+     "scene_class": "A28_HandsItBack"
+    }
+   },
+   "doodle": {
+    "icons": [
+     "swap-arrows",
+     "hard-question-box",
+     "fool-test-box",
+     "return-arrow"
+    ],
+    "sketch": "Turing swapping a heavy box labelled 'can it think?' for a lighter one labelled 'can it fool you?'; the machine clears the light box; the heavy box slides right back into frame with a return-arrow",
+    "build": "the heavy 'can it think?' box slides back in on 'hands it back'"
+   },
+   "note": "Bear's skeptic turn, voiced explicitly as his claim.",
+   "beat_id": "A28",
+   "narration_text": "Here's Professor Bear's catch. Turing traded 'can it think' for 'can it fool you' precisely because the first question was too hard. Passing the fool-test doesn't answer it. It just hands it back.",
+   "audio_file": "mp3/beat-A28.mp3",
+   "actual_duration_s": 10.33,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/A28.mp4",
+    "filled_by": "manim:A28_HandsItBack",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "VOX",
+   "act": "V",
+   "scene": "VoxStill",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.45
+    ]
+   },
+   "pantry": "A29.png",
+   "tier": 1,
+   "note": "Generic close shot of a person at a glowing screen, absorbed — the 'feeling understood' beat. Callback texture to A7. Stock or AI-gen with disclosure sidecar.",
+   "beat_id": "A29",
+   "narration_text": "Because the ELIZA effect never left. In 1966, a single sentence bounced back at us was enough to feel understood. From the very first impostor to the last, we were always the easy half of this test.",
+   "audio_file": "mp3/beat-A29.mp3",
+   "actual_duration_s": 12.25,
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T08:59:19",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A29.mp4)",
+    "suggested": "suggested prompt: Because the ELIZA effect never left. In 1966, a single sentence bounced back at us was enough to feel understood. From the very first impostor to the last, we w"
+   }
+  },
+  {
+   "lane": "REMOTION",
+   "act": "CLOSING",
+   "exempt": true,
+   "scene": "ClaudeComposerAsk",
+   "shot": {
+    "type": "UI",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "COMPUTATIONAL SKEPTICISM · AI",
+      "segment": "Do Chatbots Pass the Turing Test?",
+      "command": "Run me a mini Turing test: play both a human and an AI, let me guess which is which — then tell me honestly whether passing proves you understand, or only that you fooled me.",
+      "runningText": "thinking about it…",
+      "modelLabel": "Claude",
+      "effortLabel": "Deep"
+     },
+     "rendered": {
+      "out": "media/C2.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "Claude UI bookend: your-turn, prompt read in full.",
+   "beat_id": "C2",
+   "narration_text": "Your turn. Paste this into Claude: 'Run me a mini Turing test — you play both a human and an AI, and I'll guess which is which. Then tell me honestly: does passing prove you understand, or just that you fooled me?' Then argue with the answer. That's where the thinking starts.",
+   "audio_file": "mp3/beat-C2.mp3",
+   "actual_duration_s": 13.89,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/C2.mp4",
+    "filled_by": "media",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "lane": "REMOTION",
+   "act": "CLOSING",
+   "exempt": true,
+   "scene": "ClaudeTitleOutro",
+   "shot": {
+    "type": "UI",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "rendered": {
+      "out": "media/C3.mp4",
+      "at": ""
+     }
+    }
+   },
+   "note": "Claude UI bookend: title re-read.",
+   "beat_id": "C3",
+   "narration_text": "Do Chatbots Pass the Turing Test? They do — and that's the least interesting thing about them. Professor Bear's channel, Liam sitting in. Take care.",
+   "audio_file": "mp3/beat-C3.mp3",
+   "actual_duration_s": 8.13,
+   "build": {
+    "status": "SLATE",
+    "src": "media/C3.mp4",
+    "filled_by": "media",
+    "at": "2026-07-24T08:59:19"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "BHTF",
+   "estimated_duration_s": 15.0,
+   "actual_duration_s": null,
+   "narration_text": "",
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "SLATE"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "topic": "YOUR TURN — DO CHATBOTS PASS THE TURING TEST?",
+      "segment": "Do Chatbots Pass the Turing Test?",
+      "greeting": "Annyeong, Liam.",
+      "command": "Ask Claude: Do Chatbots Pass the Turing Test?",
+      "runningText": "running…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "BOUT",
+   "estimated_duration_s": 8.0,
+   "actual_duration_s": null,
+   "narration_text": "",
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "SLATE"
+   },
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Do Chatbots Pass the Turing Test?",
+      "slug": "claude-liam-do-chatbots-pass",
+      "handle": "@NikBearBrown",
+      "subline": ""
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   }
+  }
+ ],
+ "metadata": {
+  "voice_kokoro": "am_onyx",
+  "engine": "kokoro",
+  "palette": "claude",
+  "title": "Do Chatbots Pass the Turing Test?",
+  "slug": "claude-liam-do-chatbots-pass",
+  "playlist": "Computational Skepticism",
+  "hashtags": [
+   "AI",
+   "TuringTest",
+   "Chatbots",
+   "ELIZA",
+   "LLM",
+   "ComputationalSkepticism",
+   "ArtificialIntelligence"
+  ],
+  "build": {
+   "at": "2026-07-24T08:59:19",
+   "cut": "master",
+   "filled": 26,
+   "of": 35,
+   "slates": [
+    "A2",
+    "A7",
+    "A9",
+    "A10",
+    "A16",
+    "A21",
+    "A29"
+   ],
+   "skin_warnings": []
+  },
+  "voice": "kokoro:am_onyx",
+  "verdict_stripped": "BVDT removed: all 0 lines are placeholders; placeholder heading. A placeholder verdict is worse than none."
+ }
+}

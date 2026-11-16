@@ -1,0 +1,355 @@
+#!/usr/bin/env python3
+"""make_sheet.py — writes beat_sheet.json for tldr-gru-validated-not-attempted.
+
+tldr skill (brutalist.art/skills/make/tldr). Section S1 of
+youtube/tldr-sections-gru-persona.md: Gru's phase gates — no valid output from
+the next phase until this one is validated, not attempted. Source: the Gru
+persona Bear pasted on 2026-09-24 (SOURCE.md, verbatim). No equation lands, so
+there is no TANGENT.
+
+The representation: the five phases in a row, a gate in front of each. A vague
+need is drawn as a fog that any component's trace can land in; a validated
+(falsifiable) need is a single point. The case — a checkout design, a
+single-page address form, a "we might as well add" recommendation widget, a
+2 a.m. page — is CONSTRUCTED around the paste's own examples and captioned
+"constructed example" on screen.
+
+After ANY re-run of this file, run lock_cards.py (it restores the audio lock).
+"""
+import json
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+
+SLUG = "tldr-gru-validated-not-attempted"
+TITLE = "Gru's Phase Gates: Validated, Not Attempted"
+COURSE = "INFO 7375 · Computational Skepticism · Gru"
+
+# ── the paste's structure (asserted — FACTCHECK rows 3–9) ──
+PHASES = ["problem", "needs", "principles", "components", "SDD"]
+assert len(PHASES) == 5
+GOOD_NEED = "Reduce checkout abandonment caused by the 3-step address form"   # the paste's passing example
+BAD_NEED = "Improve user experience"                                          # the paste's failing example
+assert "3-step address form" in GOOD_NEED and BAD_NEED.split()[0] == "Improve"
+
+
+def beat(bid, act, narration, shot, role=None, section=None, learn=None, lane="manim", proof="SHOW", **extra):
+    b = {"beat_id": bid, "act": act, "lane": lane, "proof_gate": proof}
+    if section is not None: b["section"] = section
+    if role: b["role"] = role
+    if learn: b["learn"] = learn
+    b.update({"narration_text": narration, "estimated_duration_s": round(len(narration.split()) / 2.5, 1),
+              "voice": "am_onyx", "engine": "kokoro", "shot": shot})
+    b.update(extra); return b
+
+
+def manim(cls, intent, show, claim):
+    return {"type": "GRAPHIC", "source": "own", "visual_intent": intent, "show": show, "manim": {"class": cls}, "motion_claim": claim}
+
+
+def remotion(pattern, props, show):
+    return {"type": "REMOTION", "source": "own", "show": show, "remotion": {"pattern": pattern, "props": props}}
+
+
+beats = []
+
+B00_N = ("Olá. This is Liam, in for Bear, with INFO 7375, Computational Skepticism for AI, at Northeastern. "
+         "This film is about Gru, a persona that conducts Claude through a software design. "
+         "Gru runs a design in five phases, and no phase starts until the one before it is validated. "
+         "You'll watch that rule catch a component nobody asked for. "
+         "The trap: a document with words in every section looks finished.")
+B00_EST = round(len(B00_N.split()) / 2.5, 1)
+beats.append(beat("B00", "tldr · what", B00_N,
+    remotion("ClaudeTldrWhat", {
+        "eyebrow": "TL;DR", "heading": "What This Film Is About", "greeting": "Olá, Liam", "topic": COURSE,
+        "question": "What does Gru make you decide before Claude writes a design?",
+        "lines": ["Gru runs a design in five phases; no phase starts until the one before it is validated.",
+                  "You'll watch that rule catch a component nobody asked for.",
+                  "The trap: a document with words in every section looks finished."],
+        "cues": [round(B00_EST * f, 1) for f in (0.05, 0.5, 0.72, 0.86)], "durationSeconds": B00_EST, "folderLabel": "@NikBearBrown"},
+        [{"at": 0.0, "event": "'TL;DR.' wordmark; 'Olá, Liam'; the course line; heading"},
+         {"at": 0.05, "event": "the question writes on"},
+         {"at": 0.5, "event": "line 1 lands on 'Gru runs a design'"},
+         {"at": 0.72, "event": "line 2 lands on 'You'll watch'"},
+         {"at": 0.86, "event": "line 3 lands on 'The trap'"}]),
+    lane="bookend"))
+
+B01_N = ("Why should you care? Ask Claude for a design and it will write a polished one, even for the wrong problem. "
+         "In Gru's telling, the outage doesn't come from bad code. It comes from a decision nobody made explicitly. "
+         "Vague needs upstream turn into mush in every section downstream. "
+         "The gates force each decision into the open before Claude starts typing.")
+B01_EST = round(len(B01_N.split()) / 2.5, 1)
+beats.append(beat("B01", "tldr · why", B01_N,
+    remotion("ClaudeTldrWhy", {
+        "eyebrow": "TL;DR", "heading": "Why You Should Care", "topic": COURSE,
+        "lead": "Ask Claude for a design, and it will write a polished one — even for the wrong problem.",
+        "lines": ["In Gru's telling, outages come from decisions nobody made explicitly — not from bad code.",
+                  "Vague needs upstream turn into mush in every section downstream.",
+                  "The gates force each decision into the open before Claude starts typing."],
+        "cues": [round(B01_EST * f, 1) for f in (0.05, 0.4, 0.66, 0.84)], "durationSeconds": B01_EST, "folderLabel": "@NikBearBrown"},
+        [{"at": 0.0, "event": "page turn: same header, heading 'Why You Should Care'"},
+         {"at": 0.05, "event": "the stake writes on"},
+         {"at": 0.4, "event": "dash 1 on 'In Gru's telling'"},
+         {"at": 0.66, "event": "dash 2 on 'Vague needs upstream'"},
+         {"at": 0.84, "event": "dash 3 on 'The gates force'"}]),
+    lane="bookend", qc={"sparse_by_design": True, "sparse_reason": "TL;DR card two — text lands on cues by design."}))
+
+beats.append(beat("B02", "the question",
+    "The real question: how does Gru stop Claude from writing the wrong design? Not how it writes one faster. "
+    "Gru says it outright: I'm not here to build your rocket faster.",
+    remotion("BrutalistHesitantWriter", {
+        "text": "How does Gru get Claude to\nwrite the design faster?",
+        "triggerWords": "write the design faster", "replacementWords": "stop writing the wrong design",
+        "fontSize": 70, "charMs": 22, "hesitateBetween": 6, "hesitateWithin": 1, "mistakeRate": 2, "jitter": 20,
+        "seed": SLUG, "banner": ""},
+        [{"at": 0.0, "event": "types 'How does Gru get Claude to'"},
+         {"at": 0.3, "event": "types the rest; backspaces 'write the design faster' → 'stop writing the wrong design' on the spoken correction"},
+         {"at": 0.85, "event": "caret holds on the corrected question"}]),
+    lane="bookend", lead_silence_s=0.8,
+    motion_claim="The writer types the naive speed question and corrects the phrase that makes it the wrong question.",
+    qc={"sparse_by_design": True, "sparse_reason": "Hesitant-writer bookend: the correction is the motion."}))
+
+B03_N = ("Four terms. An SDD: a software design document, the written record of what a system does, and why. "
+         "A need: a user or business requirement that a component exists to serve. "
+         "A component: a named part of the system with its own job. "
+         "And falsifiable: stated so that it could turn out to be wrong.")
+B03_EST = round(len(B03_N.split()) / 2.5, 1)
+beats.append(beat("B03", "terms", B03_N,
+    remotion("ClaudeDefinitions", {
+        "title": "Terms In This Film",
+        "terms": [{"term": "SDD", "meaning": "software design document — the written record of what a system does, and why"},
+                  {"term": "need", "meaning": "a user or business requirement that a component exists to serve"},
+                  {"term": "component", "meaning": "a named part of the system with its own job"},
+                  {"term": "falsifiable", "meaning": "stated so that it could turn out to be wrong"}],
+        "durationSeconds": B03_EST, "folderLabel": "@NikBearBrown"},
+        [{"at": 0.12, "event": "'SDD' lands, terracotta"}, {"at": 0.4, "event": "'need' lands; first settles"},
+         {"at": 0.62, "event": "'component' lands"}, {"at": 0.82, "event": "'falsifiable' lands"}]),
+    lane="bookend", proof="CARD",
+    qc={"sparse_by_design": True, "sparse_reason": "TERMS card: prerequisites only — 'phase gate' (the film's answer) is earned in B17."}))
+
+# ── LEARN section 1 (B10–B19) ────────────────────────────────────────────────
+beats.append(beat("B10", "learn 1",
+    "Here's a design document for a checkout page. Five sections: the problem, the needs, the principles, the components, and the assembled design. "
+    "Every one of them has words in it. "
+    "Two months later, at two in the morning, checkout breaks inside a recommendation widget. "
+    "The on-call engineer opens the document and asks one thing: why does this exist? "
+    "Every section has words. None of them says why.",
+    manim("B10_LooksFinished",
+          "Five phase squares land in a row on their spoken names (problem · needs · principles · components · SDD), each filled ink with a check mark beneath — a finished-looking document; a component dot 'recommendation widget' appears below on '2 a.m.'; the question 'why does this exist?' lands in the bottom band with a terracotta dot; caption 'constructed example'.",
+          [{"at": 0.1, "event": "five squares land on their names"}, {"at": 0.4, "event": "five check marks: every section has words"},
+           {"at": 0.6, "event": "the widget appears"}, {"at": 0.8, "event": "'why does this exist?' with a dot"}],
+          "The five squares and the widget are the persistent objects; the question is unsolved."),
+    role="HOOK", section=1,
+    learn={"question": "How does a design where every section has words fail to say why a component exists?",
+           "action": "Lay out the five sections, all written; drop a component into them; ask why it exists.",
+           "observation": "Every section is checked off, and none of them answers the question.",
+           "inference": "Having words in every section is not the same as having decided anything.",
+           "next_question": "What would a component need, to carry its own why?"}))
+
+beats.append(beat("B11", "learn 1",
+    "Gru's fourth phase has one rule: every component has to trace to a need from phase two. "
+    "Take the need Gru itself offers as a good one: reduce checkout abandonment caused by the three-step address form. "
+    "Now propose a component, a single-page address form. Draw its line back. It lands. "
+    "That component has a reason to exist, and the reason is written down.",
+    manim("B11_TracesToANeed",
+          "The checks and the widget fade; a need dot lands under phase 2 with its three-line label (reduce abandonment / caused by the 3-step / address form); a component dot 'single-page address form' lands under phase 4; an ink trace line draws from the component back to the need; a terracotta dot lands on the need; 'its reason is written down' lands in the band.",
+          [{"at": 0.2, "event": "the need lands"}, {"at": 0.5, "event": "the component lands"},
+           {"at": 0.65, "event": "the trace draws and lands"}, {"at": 0.85, "event": "'its reason is written down'"}],
+          "First instance: a component whose trace lands on a specific need."),
+    role="INSTANCE", section=1,
+    learn={"question": "What makes a component's reason visible?",
+           "action": "Trace a proposed component back to a specific need from phase two.",
+           "observation": "The address form's line lands on the need.",
+           "inference": "A component that traces to a need carries its own why.",
+           "next_question": "What happens to a component with no need behind it?"}))
+
+beats.append(beat("B12", "learn 1",
+    "Vary one thing. Someone says, we might as well add recommendations. "
+    "Propose a recommendation widget, and try to draw its line back. "
+    "Nothing in phase two is about recommendations. The line has nowhere to land. "
+    "Gru stops right here and asks which need it serves, or calls it scope creep.",
+    manim("B12_NowhereToLand",
+          "The widget dot returns under phase 4; its trace line reaches back toward phase 2 and stops in empty space short of the need; a terracotta X at the line's loose end; 'which need does it serve?' in the band; caption 'otherwise: scope creep'.",
+          [{"at": 0.3, "event": "the widget returns"}, {"at": 0.45, "event": "its line reaches and stops"},
+           {"at": 0.65, "event": "X at the loose end"}, {"at": 0.85, "event": "'which need does it serve?'"}],
+          "Second instance: the same rule, one parameter changed, and the trace has nowhere to land."),
+    role="INSTANCE", section=1,
+    learn={"question": "What happens to a component with no need behind it?",
+           "action": "Propose the widget and try to trace it back.",
+           "observation": "The line stops in empty space; nothing in phase two is about recommendations.",
+           "inference": "The trace rule catches an orphan, as long as the needs are specific.",
+           "next_question": "So how did the widget get into the finished document?"}))
+
+beats.append(beat("B13", "learn 1",
+    "Now the obvious approach. Skip the phases: ask Claude for the whole design in one pass, then review it at the end. "
+    "All five sections fill at once, and the needs section says what first drafts often say: improve user experience. "
+    "Watch what that does. The address form traces to it. So does the widget. "
+    "Everything traces to a need that vague. Every check passes, and the widget ships.",
+    manim("B13_OnePass",
+          "The X and the loose line clear; all five squares pulse at once; the specific need's label fades and 'improve user experience' replaces it while a pale fog grows around the need; the address form's line still lands; the widget's line now reaches into the fog and lands there too; 'every component traces. every check passes.' in the band; a terracotta dot beside the widget.",
+          [{"at": 0.1, "event": "one pass: all five pulse at once"}, {"at": 0.35, "event": "'improve user experience' + the fog"},
+           {"at": 0.55, "event": "the address form still traces"}, {"at": 0.65, "event": "the widget's line lands in the fog"},
+           {"at": 0.85, "event": "'every check passes'"}],
+          "The natural wrong turn, walked to where it breaks: a vague need is a target every trace can hit."),
+    role="NAIVE", section=1,
+    learn={"question": "How did the widget get into the finished document?",
+           "action": "Write all five sections in one pass; watch the needs come out vague; re-run the trace check.",
+           "observation": "With 'improve user experience' as the need, every component traces — the widget included.",
+           "inference": "The trace rule is only as strong as the need it lands on.",
+           "next_question": "What stops the needs from coming out vague?"}))
+
+beats.append(beat("B14", "learn 1",
+    "Change the picture. Put a gate in front of every phase. "
+    "Gru's rule: you cannot get a valid output from the next phase until this one has been validated. Not attempted. Not mentioned earlier in the chat. Validated. "
+    "The problem passes. Now the needs gate asks its one question: could this need turn out to be wrong? "
+    "Improve user experience can't be wrong. It fails the gate.",
+    manim("B14_FiveGates",
+          "Five open gates (thin ghost uprights) draw in front of the five squares; squares 2–5 empty to outlines and everything below dims — not yet valid; 'validated — not attempted' in the band; gate 1 closes (a thick ink upright); the band asks 'gate 2: could this need turn out wrong?'; a terracotta X under 'improve user experience'.",
+          [{"at": 0.1, "event": "five gates draw"}, {"at": 0.3, "event": "squares 2–5 empty; downstream dims"},
+           {"at": 0.5, "event": "'validated — not attempted'"}, {"at": 0.62, "event": "gate 1 closes"},
+           {"at": 0.78, "event": "the gate-2 question"}, {"at": 0.92, "event": "X under the vague need"}],
+          "The representation arrives: a gate in front of each phase, and a test the need must pass."),
+    role="SHIFT", section=1,
+    learn={"question": "What stops the needs from coming out vague?",
+           "action": "Put a gate in front of each phase; nothing downstream is valid until the gate before it closes.",
+           "observation": "The needs gate tests one thing — could the need be wrong — and the vague need fails.",
+           "inference": "Validation happens at the gate, before the next phase can produce anything.",
+           "next_question": "Once the need is specific, what happens to the widget's line?"}))
+
+beats.append(beat("B15", "learn 1",
+    "Before it moves, commit. Gate two is about to force that need into something specific. "
+    "When it does, where does the widget's line land? Pick your answer.",
+    manim("B15_Commit",
+          "The X clears; the band reads 'gate 2 will make the need specific'; a terracotta dot grows on the widget; the band asks 'where does the widget's line land?'; nothing else moves.",
+          [{"at": 0.2, "event": "'gate 2 will make the need specific'"}, {"at": 0.6, "event": "dot on the widget; the question"},
+           {"at": 0.8, "event": "HOLD"}],
+          "The predict-before-reveal beat."),
+    role="INSTANCE", section=1, predict=True,
+    learn={"question": "Where does the widget's line land once the need is specific?",
+           "action": "Hold the picture; ask the viewer to commit.",
+           "observation": "The viewer commits a guess.",
+           "inference": "A committed prediction turns the reveal into evidence.",
+           "next_question": "Close the gate."}))
+
+beats.append(beat("B16", "learn 1",
+    "It doesn't land anywhere. The need becomes specific, and the fog it sat in collapses to one point. "
+    "The address form's line finds it. The widget's line finds nothing. "
+    "Gate four holds, and the widget goes back with a question instead of into the design.",
+    manim("B16_FogCollapses",
+          "'improve user experience' fades and the specific need's label returns; gate 2 closes and square 2 fills; the fog shrinks onto the need's single point; the address form's line brightens — still landed; the widget's line is left hanging in empty space and dims, a terracotta X at its end; gates 3 and 4 close, squares 3 and 4 fill; the widget, its line and its X slide right and fade; 'gate 4: back with a question'.",
+          [{"at": 0.1, "event": "the need becomes specific; gate 2 closes"}, {"at": 0.25, "event": "the fog collapses to a point"},
+           {"at": 0.45, "event": "address form still lands"}, {"at": 0.6, "event": "widget's line hangs; X"},
+           {"at": 0.8, "event": "gates 3 and 4 close; the widget leaves"}],
+          "The collision: the fog from the one-pass draft collapses under gate 2, and the same trace check now catches the widget."),
+    role="TRANSFORM", section=1,
+    learn={"question": "What happens to the widget's line once the need is specific?",
+           "action": "Close gate 2: collapse the fog to the specific need, then re-run the trace at gate 4.",
+           "observation": "The address form still lands; the widget's line hangs in empty space and gate 4 turns it back.",
+           "inference": "The gate at phase two is what makes the check at phase four mean anything.",
+           "next_question": "What is the general rule?"}))
+
+beats.append(beat("B17", "learn 1",
+    "This deserves a name. A phase gate: no valid output from the next phase until this one is validated, not just attempted. "
+    "Skip one, and Gru names exactly what's missing and holds the line. "
+    "Because a decision made without its prerequisite is, in Gru's words, a guess wearing a decision's clothes.",
+    manim("B17_PhaseGate",
+          "The band clears; the title becomes 'A Phase Gate'; two rule lines land in the band — 'phase gate: no valid output from the next phase' / 'until this one is validated — not attempted' — with a terracotta dot; gate 5 closes and square 5 fills; the quote caption lands: '“a guess wearing a decision's clothes” — Gru'.",
+          [{"at": 0.1, "event": "the name and the rule land"}, {"at": 0.55, "event": "gate 5 closes; square 5 fills"},
+           {"at": 0.85, "event": "the quote caption"}],
+          "The abstraction arrives last, as the name for the gates the viewer has been watching close."),
+    role="ABSTRACTION", section=1,
+    learn={"question": "What is the general rule?",
+           "action": "State the gate rule over the closed chain; name what happens when a phase is skipped.",
+           "observation": "Every closed gate is a phase that was validated, not just attempted.",
+           "inference": "A phase gate: no valid output from phase N+1 until phase N is validated.",
+           "next_question": "Back to two in the morning."}))
+
+beats.append(beat("B18", "learn 1",
+    "Back to two in the morning. Checkout breaks, but not inside a recommendation widget, because there isn't one. "
+    "The engineer points at the address form and asks the same question: why does this exist? "
+    "Follow the line. The answer is sitting in phase two, in words that could have turned out to be wrong.",
+    manim("B18_TwoAM",
+          "The rule clears; the title becomes 'Back to Two in the Morning'; a ghost ring marks where the widget would have been, captioned 'no widget: it never passed gate 4'; 'why does this exist?' in the band beside the address form; an ink dot travels the trace from the address form back to the need; a terracotta dot lands beside the need; the band answers 'the answer is in phase 2'.",
+          [{"at": 0.15, "event": "ghost ring: no widget"}, {"at": 0.45, "event": "'why does this exist?'"},
+           {"at": 0.65, "event": "a dot travels the trace to the need"}, {"at": 0.85, "event": "'the answer is in phase 2'"}],
+          "The HOOK's question returns and is answered by following the persistent trace."),
+    role="PAYOFF", section=1,
+    learn={"question": "Why does the address form exist?",
+           "action": "Return to the 2 a.m. page; follow the address form's trace back.",
+           "observation": "The widget is absent, and the address form's why sits in phase two.",
+           "inference": "A gated design answers 'why does this exist?' by construction.",
+           "next_question": "What did this leave out?"}))
+
+beats.append(beat("B19", "learn 1",
+    "Two things this film didn't cover. Silent mode skips every gate, for when you already know exactly what you want and need output, not supervision. "
+    "And slash claude, the boondoggle score, ignores the gates on purpose: it scores whatever exists, at any stage, across the five supervisory capacities. "
+    "Neither is the default. The gates are the point.",
+    manim("B19_TwoExits",
+          "The need and component clear; the title becomes 'Two Deliberate Exits'; a dashed arc sweeps under the gate row from the first gate to the last — 'silent: skips every gate'; a ring of five dots — '/claude: scores what exists, any stage' with a terracotta dot; caption 'neither is the default'.",
+          [{"at": 0.15, "event": "the silent arc bypasses the gates"}, {"at": 0.5, "event": "the five-dot ring: /claude"},
+           {"at": 0.85, "event": "'neither is the default'"}],
+          "The boundary: the two sanctioned ways around the gates, named once each."),
+    role="BOUNDARY", section=1,
+    learn={"question": "What did this leave out?",
+           "action": "Name the two ways around the gates.",
+           "observation": "Silent skips them; /claude scores at any stage without them.",
+           "inference": "The gates are the default; the exits are deliberate.",
+           "next_question": ""}))
+
+beats.append(beat("BVDT", "verdict",
+    "Let's recap with Claude. Gru conducts Claude through five phases: the problem, the needs, the principles, the components, and the assembled design. "
+    "Each phase is gated: no valid output from the next phase until this one is validated, not attempted. "
+    "Needs have to be falsifiable, and every component has to trace to one, or it's scope creep. "
+    "And a finished-looking document proves only that every section has words.",
+    remotion("ClaudeVerdictArtifact", {
+        "artifactTitle": "Verdict", "artifactHeading": TITLE,
+        "artifactLines": ["Gru conducts Claude through five phases: problem, needs, principles, components, assembly.",
+                          "Each gate: no valid output from the next phase until this one is validated — not attempted.",
+                          "Needs must be falsifiable; every component traces to one, or it is scope creep.",
+                          "A finished-looking document proves only that every section has words."]},
+        [{"at": 0.0, "event": "artifact page opens"}, {"at": 0.2, "event": "four verdict lines land"}]),
+    lane="bookend", lead_silence_s=0.5, qc={"sparse_by_design": True, "sparse_reason": "Mandated ClaudeVerdictArtifact bookend."}))
+
+YT = ("Act as Gru, a phase-gated software architect. My system, in one sentence: [describe something you are building]. "
+      "Run only the first two phases. First, restate my problem so that it could not describe ten other systems. "
+      "Then list my needs, and reject any need that could not turn out to be wrong. "
+      "Do not propose components or write any design yet.")
+beats.append(beat("BHTF", "your turn",
+    "Your turn. Paste this into Claude: " + YT + " "
+    "Before you run it, predict which of your needs gets rejected. "
+    "Then check three things. Did it refuse to design anything before the needs were fixed? "
+    "Did it reject a need you thought was fine? And could its problem statement describe ten other systems? If it could, send it back.",
+    remotion("ClaudeComposerAsk", {
+        "greeting": "Your turn.", "topic": "INFO 7375 · YOUR TURN", "segment": "Run The First Two Gates",
+        "command": YT, "runningText": "paste this into Claude…",
+        "output": ["Check: no components, no design — until the needs are fixed.",
+                   "Check: at least one need rejected as unfalsifiable."],
+        "folderLabel": "@NikBearBrown", "modelLabel": "Opus 5.5", "effortLabel": "High"},
+        [{"at": 0.0, "event": "Composer opens — 'Your turn.'"}, {"at": 0.1, "event": "the prompt types in full"}, {"at": 0.8, "event": "two rubric lines land"}]),
+    lane="bookend"))
+
+beats.append(beat("BOUT", "outro", f"{TITLE}. At Nik Bear Brown.",
+    remotion("ClaudeTitleOutro", {"title": TITLE, "slug": SLUG, "handle": "@NikBearBrown", "subline": ""},
+             [{"at": 0.0, "event": "title restates; handle; slug-seeded mascot. Liam reads the title, then 'At Nik Bear Brown'. No jingle."}]),
+    lane="bookend", kind="outro_voice", tail_silence_s=1.0,
+    hold_note="spoken outro + 1.0 s silent tail (apad into the mp3); no jingle (OUTRO-LOCK §Voice)"))
+
+sheet = {"metadata": {
+    "slug": SLUG, "title": TITLE, "topic": "INFO 7375 · TL;DR", "skill": "tldr", "style_preset": "tldr",
+    "channel": "claude-liam", "persona": "Liam (in for Bear)", "voice": "am_onyx", "voice_kokoro": "am_onyx", "engine": "kokoro",
+    "clock": "narration", "palette": "claude", "learn_canvas": "cream", "register": "Teardown",
+    "fps": 24, "aspect_ratio": "16:9", "width": 3840, "height": 2160, "caption_policy": "none",
+    "audience": "INFO 7375 students running Gru on their own designs, and anyone who asks Claude for a whole design in one pass",
+    "course": "INFO 7375 Computational Skepticism for AI · Nik Bear Brown · Northeastern University",
+    "source_doc": "The Gru persona Bear pasted 2026-09-24 (SOURCE.md): 'Phase Gates — What They Are and Why They're Non-Negotiable' (all five gates, skipping, silent, /claude), the session-start menu, and the system prompt's behavioral rules 1, 3, 5; section S1 of youtube/tldr-sections-gru-persona.md",
+    "sections": [{"n": 1, "title": TITLE, "key_case": "a one-pass checkout design whose vague need ('improve user experience') lets a 'might as well add' recommendation widget trace and ship; gate 2 makes the need falsifiable and gate 4 turns the widget back"}],
+    "greeting_language": "Portuguese (Olá)",
+    "typography": {"serif": "Tiempos/EB Garamond", "ui": "system sans", "mono": "SF Mono"},
+    "playlist": "Claude & Agentic AI", "chapter_number": 0,
+    "outro_policy": "OUTRO-LOCK §Voice: spoken title + 'At Nik Bear Brown', 1.0 s silent tail padded into the mp3, no jingle.",
+    "bookloop_policy": "Course film: carries the INFO 7375 course credit (spoken in B00, on the cards' course line).",
+    "tags": ["Gru", "phase gates", "software design document", "AI-assisted design", "boondoggling", "INFO 7375", "3Blue1Brown style", "Claude", "Nik Bear Brown"]},
+    "beats": beats}
+out = HERE / "beat_sheet.json"
+out.write_text(json.dumps(sheet, indent=2, ensure_ascii=False) + "\n")
+print(f"{len(beats)} beats → {out}")

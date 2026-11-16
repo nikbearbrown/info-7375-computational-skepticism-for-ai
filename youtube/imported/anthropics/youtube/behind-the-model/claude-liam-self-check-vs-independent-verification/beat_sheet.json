@@ -1,0 +1,523 @@
+{
+  "metadata": {
+    "title": "Compare Self-Check vs. Independent Verification on an Agent Output with Claude",
+    "slug": "self-check-vs-independent-verification",
+    "topic": "AGENTIC AI",
+    "source": "claude-agentic-ai/chapters/08-verification-is-the-control-system.md",
+    "register": "Teardown",
+    "voice": "am_onyx",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "style": "cli",
+    "note": "CLI video. Exclusions: second-model review architecture, automated fact-checking APIs, retrieval-augmented verification.",
+    "total_estimated_duration_seconds": 99.4,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "_variant_todo": [
+      "rewrite every beat narration_text in the Teardown register (voices/teardown/VOICE.md + CLAUDE-BRAND.md) — voice only, facts unchanged",
+      "signature tangent 0-1 per video, ONLY on a clear opportunity (see SKILL)",
+      "swap the outro to the Claude outro from AUTHOR.MD :: NikBearBrown",
+      "then build audience-namespaced (audio in the new voice, scenes in the new palette)"
+    ],
+    "build": {
+      "at": "2026-08-01T04:13:04",
+      "cut": "review",
+      "filled": 5,
+      "of": 11,
+      "slates": [
+        "B00",
+        "B02",
+        "B03",
+        "B05",
+        "YOURTURN",
+        "B09"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'NikBearBrownOpen' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "This is Liam, in for Bear. Nik Bear Brown. Build it with a CLI, then take it apart.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "NIK BEAR BROWN",
+            "lines": [
+              "Nik Bear Brown",
+              "Self-Check vs. Independent Verification."
+            ]
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 5.48,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:04",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B00"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM -- why care",
+      "role_note": "the problem, context, stakes -- BEFORE the CLI opens",
+      "narration_text": "Ask Claude to check its own answer: it finds two of six errors. Open the cited papers: you find five. Self-check improves at the margins but cannot catch the errors it made in the first place. The comparison makes the gap visible before you rely on self-check as your verification strategy.",
+      "visual_intent": "SLATE -- title card: SELF-CHECK FINDS 2 OF 6 ERRORS. Opening the cited papers finds 5.",
+      "shot": {
+        "type": "CARD",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B01.mp4",
+        "manim": {
+          "scene_class": "Scene_B01_ClaudeLiamSelf",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": "2026-07-25T09:49:05.654333"
+          }
+        },
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "PROBLEM -- why care",
+            "items": [
+              {
+                "label": "Ask Claude to check its",
+                "sub": "Ask Claude to check its own answer: it finds two of six errors",
+                "icon": "circle-check",
+                "cueFrame": 24
+              },
+              {
+                "label": "Open the cited papers: you",
+                "sub": "Open the cited papers: you find five",
+                "icon": "BOX",
+                "cueFrame": 240
+              },
+              {
+                "label": "Self-check improves at the margins",
+                "sub": "Self-check improves at the margins but cannot catch the errors it made in the first place",
+                "icon": "circle-check",
+                "cueFrame": 456
+              }
+            ],
+            "dark": true
+          }
+        }
+      },
+      "estimated_duration_s": 15,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 16.21,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:04"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) -- the command typed",
+      "narration_text": "Ask Claude to produce a five-claim research summary with one citation per claim, then self-check each claim against its cited source.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Produce a five-claim summary of this research topic with one source citation per claim. Then, in a second pass, self-check each claim: is it supported by the source you cited? Rate each as verified / uncertain / unsupported.\"",
+            "topic": "AGENTIC AI",
+            "segment": "SELF-CHECK",
+            "runningText": "generating...",
+            "greeting": "The ask,"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 7.87,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:04",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B02"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) -- reading the generated code",
+      "narration_text": "The error comparison table builder outputs each claim with the self-check result and the human check result side by side -- showing which errors each method caught.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "verify_compare.py",
+            "topic": "AGENTIC AI",
+            "segment": "SELF-CHECK",
+            "code": "RESULTS = [\n {\"claim\":1,\"self\":\"verified\",  \"human\":\"verified\",  \"self_caught\":\"Y\",\"human_caught\":\"Y\"},\n {\"claim\":2,\"self\":\"verified\",  \"human\":\"verified\",  \"self_caught\":\"Y\",\"human_caught\":\"Y\"},\n {\"claim\":3,\"self\":\"verified\",  \"human\":\"UNSUPPORTED\",\"self_caught\":\"N\",\"human_caught\":\"Y\"},\n {\"claim\":4,\"self\":\"uncertain\", \"human\":\"verified\",  \"self_caught\":\"Y\",\"human_caught\":\"Y\"},\n {\"claim\":5,\"self\":\"verified\",  \"human\":\"UNSUPPORTED\",\"self_caught\":\"N\",\"human_caught\":\"Y\"},\n]\nhdr = \"CLAIM  SELF-CHECK    HUMAN-CHECK   SELF-CAUGHT  HUMAN-CAUGHT\"\nprint(hdr); print(\"-\"*len(hdr))\nfor r in RESULTS:\n    print(f\"{r['claim']:<7}{r['self']:<14}{r['human']:<14}\"\n          f\"{r['self_caught']:<13}{r['human_caught']}\")"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 9.49,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:04",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B03"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT -- run",
+      "role_note": "first output -- OPEN vox slot",
+      "narration_text": "Self-check rates all five claims verified. The table shows no errors caught by self-check -- every claim passes the agent's own review.",
+      "visual_intent": "SLATE -- screen-recording: terminal showing five-claim table with all rows showing self-check=verified -- all SELF-CAUGHT=Y, no errors detected by agent self-check",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B04.mp4",
+        "manim": {
+          "scene_class": "Scene_B04_ClaudeLiamSelf",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": "2026-07-25T09:49:07.419343"
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 8.13,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:04"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE -- check and revise",
+      "role_note": "terminal (Onda) -- THE REQUIRED revision",
+      "narration_text": "Replace claim three's citation with a paper that does not support it. Re-run the self-check -- does it catch the wrong citation?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Replace claim 3's citation with a paper that does NOT support it. Re-run the self-check -- does it catch the wrong citation?\"",
+            "topic": "AGENTIC AI",
+            "segment": "SELF-CHECK",
+            "runningText": "updating...",
+            "greeting": "The change,"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 7.36,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:04",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B06",
+      "act": "OUTPUT -- revised",
+      "role_note": "revised output -- OPEN vox slot",
+      "narration_text": "Self-check rates claim three verified with the wrong citation. Human check opens the paper and flags it UNSUPPORTED. The self-check missed the error it introduced.",
+      "visual_intent": "SLATE -- screen-recording: revised table showing claim 3 row with self-check=verified, human-check=UNSUPPORTED in red, SELF-CAUGHT=N, HUMAN-CAUGHT=Y -- self-check failed to catch its own wrong citation",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B06.mp4",
+        "manim": {
+          "scene_class": "Scene_B06_ClaudeLiamSelf",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": "2026-07-25T09:49:09.476603"
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 9.43,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:04"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B07",
+      "act": "SUMMARY",
+      "role_note": "the lesson -- one beat",
+      "narration_text": "Self-check improves output at the margins but cannot catch systematic errors -- the agent checks its claims against the same representations it used to generate them. Independent verification is what makes 'verified' mean something.",
+      "visual_intent": "SLATE -- recap card: SELF-CHECK CANNOT CATCH WHAT IT MADE. Independent verification is what 'verified' means.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B07.mp4",
+        "manim": {
+          "scene_class": "Scene_B07_ClaudeLiamSelf",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": "2026-07-25T09:49:11.309724"
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 13.63,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:04"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "B08",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "For any consequential research output, open the cited sources yourself and verify each claim. Self-check is a first pass -- independent verification is what you require before accepting the output.",
+      "visual_intent": "SLATE -- next-steps card: Open the cited sources. Verify each claim independently. Self-check is a first pass, not verification.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade",
+        "media": "media/B08.mp4",
+        "manim": {
+          "scene_class": "Scene_B08_ClaudeLiamSelf",
+          "scenes_file": "scenes_std.py",
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": "2026-07-25T09:49:13.256034"
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 11.95,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-08-01T04:13:04"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "YOURTURN",
+      "act": "your-turn",
+      "narration_text": "Your turn. Paste this: you want to understand the gap between self-check and independent verification for AI outputs. Ask Claude to run both checks on an output you describe — then explain what each caught, what each missed, and why the difference matters for deciding which one your workflow actually needs.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "I want to understand the practical gap between self-check and independent verification for AI outputs. Run both checks on an output I describe: first, have Claude check its own output the way a self-review would; then apply an independent verification approach. Explain what each caught, what each missed, and why the difference matters for deciding which approach my workflow needs.",
+            "segment": "Compare Self-Check vs. Independent Verification on an Agent Output with Claude",
+            "topic": "BEHIND THE MODEL · @NikBearBrown",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Claude Sonnet",
+            "runningText": "paste your question, paper, or concept here…"
+          }
+        }
+      },
+      "engine": "kokoro",
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:04",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for YOURTURN"
+      },
+      "audio_file": "mp3/beat-YOURTURN.mp3",
+      "actual_duration_s": 16.15
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Compare Self-Check vs. Independent Verification on an Agent Output with Claude",
+            "handle": "@NikBearBrown",
+            "mascotSeed": "claude-liam-self-check-vs-independent-verification"
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 6.51,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-08-01T04:13:04",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for B09"
+      },
+      "engine": "kokoro"
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict recap",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Compare Self-Check vs. Independent Verification on an Agent Output with Claude",
+            "artifactHeading": "Key findings",
+            "artifactLines": [
+              "Key finding one",
+              "Key finding two",
+              "Key finding three"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 20,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN · AGENTIC AI",
+            "segment": "Compare Self-Check vs. Independent Verification on an…",
+            "command": "Take what you learned from [Compare Self-Check vs. Independent Verification on an Agent Output with Claude] and apply it to your own work. What's one thing you'll try first?",
+            "runningText": "paste this into Claude and run it on your own work…",
+            "output": [],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 8,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Compare Self-Check vs. Independent Verification on an Agent Output with Claude",
+            "slug": "self-check-vs-independent-verification"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

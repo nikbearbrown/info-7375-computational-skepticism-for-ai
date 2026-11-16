@@ -8,7 +8,7 @@ The exam is **100 points, all cases**: 10 of the 13 chapters, chosen at random, 
 
 1. a **scenario** with a stakeholder and a goal,
 2. the **instruction** that was given to an AI analyst or agent,
-3. the **agent's output**, confident and plausible, with **one flaw** seeded on a concept from a chapter,
+3. the **agent's output**, confident and plausible, with **at least one flaw** seeded on a concept from a chapter (there may be more; any real defect a student justifies earns credit),
 4. **four probes** (10 points in all), answered in short written form.
 
 The question the case asks: can the student use the course's exact terms to *audit* an agent and to *direct* it again? Every output on these pages is **author-written for illustration, not a sampled run** of any model, and says so.

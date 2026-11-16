@@ -1,0 +1,552 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-04-clean-but-broken",
+    "title": "Why the Missing-Values Check Ran Clean on a Broken Dataset",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show how a silent join drop concentrates in one subpopulation, creating a dataset that passes all standard EDA checks while the model catastrophically fails on the missing group in production. Source: books/computational-skepticism-for-ai/chapters/05-data-validation-reconstructing-the-epistemic-frame-behind-a-dataset.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = matched rows / data that survives the join; CRIMSON = dropped rows / the invisible subpopulation; GOLD = the join key / the point of failure; SLATE = raw source tables",
+    "note": "EXCLUSIONS: no SQL join taxonomy (inner/left/outer), no MCAR/MAR/MNAR definitions, no six-step interrogation procedure, no imputation methods",
+    "total_estimated_duration_seconds": 192,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 4,
+    "build": {
+      "at": "2026-07-19T02:24:28",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why the Missing-Values Check Ran Clean on a Broken Dataset",
+            "greeting": "Ciao, Liam.",
+            "command": "The EDA ran clean.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "The EDA ran clean. The model still failed. The broken rows were never there to look missing.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why the Missing-Values Check Ran Clean on a Broken Dataset",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why the Missing-Values Check\nRan Clean on a Broken Dataset"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 5.89,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A data scientist runs every standard check. No nulls. No duplicates. Column distributions look right. The train-test split is clean. The model trains beautifully — high accuracy on the holdout. Deploys to production. Within two weeks, the fraud team notices the model is missing every case from one regional office. They dig. The training data never included that region — not as a null, not as an outlier, not as a flag. Just as an absence. The rows fell out of a join before EDA ever ran. Silence looks clean.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B02_SilentDropParadox",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 27.5,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: A data scientist runs every standard check. No nulls. No duplicates. Column distributions look right. The train-test split is clean. The model trains beautifull"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When rows silently drop from a data pipeline before any checks run, how does the surviving dataset look — and what happens to the model built on it?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "When rows drop silently before checks run, what does",
+              "the model learn?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "When rows drop silently,\nwhat does the model learn?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.6,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:28"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A data pipeline joins three tables: customer records, transaction logs, and regional branch codes. The join key is a customer identifier that looks like a string — but one of the three tables uses a slightly different encoding for identifiers from a region that was onboarded after the original schema was written. Those identifiers fail to match. The join drops those rows silently. No error. No warning. The output table is smaller than it should be — but if you don't know the expected row count, you have no idea.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B04_JoinFunnelDrop",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 26.97,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: A data pipeline joins three tables: customer records, transaction logs, and regional branch codes. The join key is a customer identifier that looks like a strin"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Now EDA runs on the surviving dataset. The null check passes — there are no nulls, because the rows with nullified keys were dropped entirely, not filled with null values. The distribution check passes — the surviving records are internally consistent. The coverage check passes — every branch code present in the data has records. The branch codes not present in the data are simply absent, and EDA has no baseline of what should be there to detect the absence. The dataset is not corrupted. It is amputated.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B05_EDAPassesOnAmputatedData",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 27.43,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: Now EDA runs on the surviving dataset. The null check passes — there are no nulls, because the rows with nullified keys were dropped entirely, not filled with n"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "A join that drops rows doesn't corrupt the surviving data — it erases a subpopulation before any audit can see it was ever there.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Silent join drop erases a subpopulation before audit."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "Three slate-colored tables flowing like rivers into a gold funnel from above — teal rows passing through cleanly into a wide output stream below, while a stream of crimson rows hit the funnel wall and fall off into empty white space beneath, the crimson rows becoming invisible against the white, the gold join-key point glowing at the pinch — dramatic overhead perspective with stark industrial shadows",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 8.04,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:28"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here are three source tables — each a column of slate rows. They flow into the join funnel at the top. The gold join key processes them. Rows with matching keys — teal — pass through and land in the output table below. Watch the crimson rows: they arrive at the join, fail to match on the key, and fall sideways out of the funnel into blank space. They don't appear in the output. They don't appear as nulls. They simply aren't there. The output table is teal throughout — it looks complete because the crimson rows are already gone.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B07_JoinFunnelAnimation",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 26.09,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Here are three source tables — each a column of slate rows. They flow into the join funnel at the top. The gold join key processes them. Rows with matching keys"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The drop concentrates in a subpopulation because the encoding inconsistency is systematic — not random. The affected region's identifiers all follow a pattern that differs from the base schema. So the drop is not random noise spread across all groups: it is the entire subpopulation, removed cleanly and invisibly. The model that trains on the surviving data learns that subpopulation does not exist. Then that subpopulation shows up in production.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B08_SystematicDropConcentration",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 23.3,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The drop concentrates in a subpopulation because the encoding inconsistency is systematic — not random. The affected region's identifiers all follow a pattern t"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Standard data validation checks are post-join audits. They check properties of what arrived, not whether what arrived is complete. To catch silent drops you need pre-join row counts for each source table, a expected-row-count assertion after the join, and coverage checks against a ground-truth list of which subpopulations should be present. Most pipelines have none of these. Most EDA notebooks assume the data frame they were handed is the full picture.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B09_PreJoinRowCountCheck",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 22.44,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: Standard data validation checks are post-join audits. They check properties of what arrived, not whether what arrived is complete. To catch silent drops you nee"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The production failure is the logical consequence of the training gap. The model was never trained on the dropped subpopulation's feature distribution, so its predictions on that subpopulation are extrapolations outside its training domain — and extrapolations in models trained on structured data have no reliability guarantees. The model isn't wrong because it learned badly. It's wrong because it never learned this group at all.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B10_ProductionExtrapolationFail",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 21.44,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The production failure is the logical consequence of the training gap. The model was never trained on the dropped subpopulation's feature distribution, so its p"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The audit that would have caught this is a pipeline lineage trace — not a dataset audit. Before trusting a dataset, trace every upstream join and transformation, check row counts at each step against expected volumes, and confirm every subgroup that should appear in the final dataset is actually there. This is data archaeology, not statistics. The question is not whether the data looks right — it's whether the right data is in there.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_PipelineLineageAudit",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 21.87,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The audit that would have caught this is a pipeline lineage trace — not a dataset audit. Before trusting a dataset, trace every upstream join and transformation"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A hospital deploys a patient readmission risk model. Training data comes from five years of discharge records joined to the billing system. The billing system uses a numeric patient ID. The discharge records, for patients admitted via the emergency department, use a different identifier format introduced two years ago. The join drops all ED-originated admissions from the past two years — systematically. The model trains on non-ED patients only. EDA shows excellent coverage across age, diagnosis, and payer type — because within the surviving population, all those dimensions are well-covered. The model deploys. It performs well on elective admissions. It performs at chance on ED patients, who are systematically sicker and have completely different readmission drivers. The join key was fourteen characters versus twelve. Nobody checked the row count before and after.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B12_HospitalReadmissionExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 44.91,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A hospital deploys a patient readmission risk model. Training data comes from five years of discharge records joined to the billing system. The billing system u"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A silent join drop removes a subpopulation before any EDA runs — the surviving dataset passes every standard check because the problem rows are already gone, invisible, not null. The model trained on the surviving data learns the surviving population only, then fails specifically on the missing subpopulation when it appears in production. The fix is not a better EDA check — it's a pre-join and post-join row count assertion, and a coverage audit against a known list of who should be there.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "EDA checks what arrived. It cannot check what was",
+              "erased."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "EDA checks what arrived —\nnot what was erased.",
+        "sub": "Count rows before and after every join.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 26.94,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:28"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why the Missing-Values Check Ran Clean on a Broken Dataset",
+            "artifactHeading": "Key findings — Why the Missing-Values Check Ran Clean on a Broken Dataset",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A hospital deploys a patient readmission risk model."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:28"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY THE MISSING-VALUES CHECK RAN CLEAN ON A BROKEN DATA",
+            "segment": "Why the Missing-Values Check Ran Clean on a Broken Dataset",
+            "greeting": "Jambo, Liam.",
+            "command": "Ask Claude: Why the Missing-Values Check Ran Clean on a Broken Dataset",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:28"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why the Missing-Values Check Ran Clean on a Broken Dataset",
+            "slug": "claude-liam-cs-04-clean-but-broken",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

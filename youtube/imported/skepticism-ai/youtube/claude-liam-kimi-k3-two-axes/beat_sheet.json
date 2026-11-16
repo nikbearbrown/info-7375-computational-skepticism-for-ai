@@ -1,0 +1,1028 @@
+{
+ "metadata": {
+  "slug": "claude-liam-kimi-k3-two-axes",
+  "title": "Two Axes, One Curve",
+  "topic": "CLAUDE · RESEARCH",
+  "channel": "claude-liam",
+  "voice": "am_onyx",
+  "voice_kokoro": "am_onyx",
+  "engine": "kokoro",
+  "clock": "narration",
+  "style_preset": "deep-explainer",
+  "source_doc": "books/skepticism-ai/papers/Kimi-K3-main/k3_tech_report.pdf + kimi-k3-skeptical-read.md",
+  "build": {
+   "at": "2026-08-01T04:01:37",
+   "cut": "review",
+   "filled": 20,
+   "of": 34,
+   "slates": [
+    "B03",
+    "B04",
+    "B05",
+    "B07",
+    "B11",
+    "B15",
+    "B19",
+    "B20",
+    "B23",
+    "B25",
+    "B26",
+    "B28",
+    "B29",
+    "B30"
+   ],
+   "skin_warnings": []
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "shot": {
+    "type": "REMOTION",
+    "show": [
+     {
+      "at": 0.0,
+      "event": "Composer opens on cream ground — spark + greeting appears"
+     },
+     {
+      "at": 0.25,
+      "event": "Command types in"
+     },
+     {
+      "at": 0.65,
+      "event": "Send button arms (terracotta); running indicator fires"
+     },
+     {
+      "at": 0.8,
+      "event": "Output lines appear"
+     }
+    ],
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Hola, Liam",
+      "topic": "KIMI K3 · ARCHITECTURE",
+      "segment": "Two Axes, One Curve",
+      "command": "What's actually new in Kimi K3's architecture — and what does the 2.5× efficiency claim actually mean?",
+      "runningText": "reading the architecture section…",
+      "output": [
+       "2.8T parameters, 104B active — MoE with Latent MoE.",
+       "Two attention types: KDA (decoder) + FullAttRes (encoder-style).",
+       "The 2.5× figure bundles four changes — attribution is unsupported."
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Opus 4.8",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "narration_text": "What's actually new in Kimi K3's architecture — and what does the 2.5× efficiency claim actually mean? 2.8 trillion parameters, 104 billion active. Two attention types. One curve that bundles four changes. Here's the architecture — and here's what the 2.5× figure can and can't tell you.",
+   "estimated_duration_s": 35,
+   "actual_duration_s": 17.19,
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:01:37"
+   },
+   "voice": "am_onyx",
+   "engine": "kokoro"
+  },
+  {
+   "beat_id": "B01",
+   "act": "ACT I: THE MACHINE",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "label": "ACT I",
+     "headline": "The Machine"
+    }
+   },
+   "narration_text": "",
+   "estimated_duration_s": 4,
+   "actual_duration_s": 4.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B01.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "ACT I: THE MACHINE",
+   "new_visual_element": "B02_ExpertActivationGrid",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own"
+   },
+   "graphic": {
+    "scene": "B02_ExpertActivationGrid",
+    "mechanic": "Isotype grid of 2.8T squares — 104B lit gold, rest dark grey. Label: '2.8T total / 104B active'. Animate: gold squares pulse on each 'token' tick.",
+    "colors": [
+     "#D97757",
+     "#2E3440",
+     "#ECEFF4"
+    ]
+   },
+   "narration_text": "2.8 trillion parameters. 104 billion active per token. MoE sparsity means most of the model sits dark — you're only paying for 104B of thinking on any given word.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 11.33,
+   "audio_file": "mp3/beat-B02.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B02.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "ACT I: THE MACHINE",
+   "shot": {
+    "type": "STILL",
+    "source": "archive"
+   },
+   "vox_run": "R1",
+   "vox_run_position": "start",
+   "narration_text": "896 experts. Each token picks 16. The rest sit idle. That's how you run a 3T-parameter brain at 100B-parameter cost.",
+   "estimated_duration_s": 10,
+   "prompt": "Extract from kimi-demo-long.mp4 at t=18s (frame 540). ffmpeg -ss 18 -i kimi-demo-long.mp4 -frames:v 1 pantry/B03-expert-grid.png. Credit: Moonshot AI / Kimi K3 technical demo.",
+   "pantry": "pantry/B03-expert-grid.png",
+   "credit": "Moonshot AI / Kimi K3 technical demo",
+   "actual_duration_s": 9.17,
+   "audio_file": "mp3/beat-B03.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "YOU → drop a historical image at media/B03.png (or .mp4)",
+    "suggested": "find: Extract from kimi-demo-long.mp4 at t=18s (frame 540). ffmpeg -ss 18 -i kimi-demo-long.mp4 -frames:v 1 pantry/B03-expert-grid.png. Credit: Moonshot AI / Kimi K3 technical demo."
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "ACT I: THE MACHINE",
+   "shot": {
+    "type": "STILL",
+    "source": "archive"
+   },
+   "vox_run": "R1",
+   "vox_run_position": "end",
+   "handoff": {
+    "camera": "moves from grid detail to full grid",
+    "note": "end of R1 — camera pulls out from expert load bars to show full grid overview"
+   },
+   "narration_text": "The lineage: MoE sparsity from DeepSeek; MLA key-value compression also from DeepSeek; Kimi's own additions on top — KDA and Attention Residuals.",
+   "estimated_duration_s": 10,
+   "prompt": "Extract from kimi-demo-long.mp4 at t=36s (frame 1080). ffmpeg -ss 36 -i kimi-demo-long.mp4 -frames:v 1 pantry/B04-expert-load.png. Credit: Moonshot AI / Kimi K3 technical demo.",
+   "pantry": "pantry/B04-expert-load.png",
+   "credit": "Moonshot AI / Kimi K3 technical demo",
+   "actual_duration_s": 9.92,
+   "audio_file": "mp3/beat-B04.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "YOU → drop a historical image at media/B04.png (or .mp4)",
+    "suggested": "find: Extract from kimi-demo-long.mp4 at t=36s (frame 1080). ffmpeg -ss 36 -i kimi-demo-long.mp4 -frames:v 1 pantry/B04-expert-load.png. Credit: Moonshot AI / Kimi K3 technical demo."
+   }
+  },
+  {
+   "beat_id": "B05",
+   "act": "ACT I: THE MACHINE",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "headline": "Vocabulary: 160K tokens. Context: 1,048,576. Vision encoder: MoonViT-V2.",
+     "body": "Native multimodal — text and images in the same weights, no bolt-on adapter."
+    }
+   },
+   "narration_text": "Vocabulary: 160K tokens. Context: 1,048,576. Vision encoder: MoonViT-V2. Native multimodal — text and images in the same weights, no bolt-on adapter.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 13.5,
+   "audio_file": "mp3/beat-B05.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B05"
+   }
+  },
+  {
+   "beat_id": "B06",
+   "act": "ACT II: TWO AXES",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "label": "ACT II",
+     "headline": "Two Axes"
+    }
+   },
+   "narration_text": "",
+   "estimated_duration_s": 4,
+   "actual_duration_s": 4.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B06.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B07",
+   "act": "ACT II: TWO AXES",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "LayerSplit",
+    "props": {
+     "total_layers": 93,
+     "group_a_label": "Kimi Delta Attention",
+     "group_a_count": 69,
+     "group_b_label": "Gated MLA",
+     "group_b_count": 24,
+     "headline": "93 layers. Two families."
+    }
+   },
+   "narration_text": "93 layers. 69 run Kimi Delta Attention. 24 run Gated MLA. Two families. Both have a job.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 7.98,
+   "audio_file": "mp3/beat-B07.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B07"
+   }
+  },
+  {
+   "beat_id": "B08",
+   "act": "ACT II: TWO AXES",
+   "new_visual_element": "B08_AttentionScaling",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own"
+   },
+   "graphic": {
+    "scene": "B08_AttentionScaling",
+    "mechanic": "Big-O quadratic growth curve. X-axis: sequence length 0→1M tokens. Y-axis: compute ops (log scale). Red zone shaded past 1M tokens. Label: 'O(n²)'. Animate: curve sweeps left to right, red zone fills in at the end.",
+    "colors": [
+     "#D97757",
+     "#2E3440",
+     "#ECEFF4"
+    ]
+   },
+   "narration_text": "Standard attention scales as O(n²). A million tokens means a trillion attention operations per layer. Something has to give.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 8.34,
+   "audio_file": "mp3/beat-B08.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B08.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B09",
+   "act": "ACT II: TWO AXES",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "manim",
+    "motion": "drawon"
+   },
+   "narration_text": "Delta attention is a hybrid. A linear recurrent pass — cheap, linear in n — is woven into the standard attention formula. Long context gets cheaper. Retrieval stays sharp.",
+   "estimated_duration_s": 10,
+   "prompt": "SHOPPING: Tier 1 — KDA hybrid architecture diagram, any clear diagram showing delta-net / linear RNN + attention fusion. Search: 'delta attention hybrid architecture diagram'. No real person.",
+   "pantry": "pantry/B09-kda-diagram.png",
+   "actual_duration_s": 10.28,
+   "audio_file": "mp3/beat-B09.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B09.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B10",
+   "act": "ACT II: TWO AXES",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "manim",
+    "motion": "drawon"
+   },
+   "vox_run": "R2",
+   "vox_run_position": "standalone",
+   "narration_text": "Gated MLA compresses the KV cache. Instead of one key-value pair per head per layer, it stores a latent vector and decompresses at inference. That's how 1M context fits.",
+   "estimated_duration_s": 10,
+   "prompt": "SHOPPING: Tier 1 — KV cache compression / MLA latent compression diagram. Search: 'multi-head latent attention KV cache compression diagram'. No real person.",
+   "pantry": "pantry/B10-mla-kv-cache.png",
+   "actual_duration_s": 11.01,
+   "audio_file": "mp3/beat-B10.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B10.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B11",
+   "act": "ACT II: TWO AXES",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "headline": "NoPE: no positional encoding.",
+     "body": "Standard rotary encodings anchor a model to training positions. Remove them and the model can extrapolate to context lengths it never saw."
+    }
+   },
+   "narration_text": "NoPE: no positional encoding. Standard rotary encodings anchor a model to training positions. Remove them and the model can extrapolate to context lengths it never saw.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 10.39,
+   "audio_file": "mp3/beat-B11.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B11"
+   }
+  },
+  {
+   "beat_id": "B12",
+   "act": "ACT II: TWO AXES",
+   "new_visual_element": "B12_TwoAxisLayers",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own"
+   },
+   "graphic": {
+    "scene": "B12_TwoAxisLayers",
+    "mechanic": "Side-by-side bar comparison. Left bar: KDA — labeled 'Linear Cost / Long Range', height proportional to 69 layers, color #6fb0d6. Right bar: Gated MLA — labeled 'Retrieval Quality / Precise', height proportional to 24 layers, color #e0b341. Arrow connecting both: 'Complementary strengths'.",
+    "colors": [
+     "#6fb0d6",
+     "#e0b341",
+     "#2E3440"
+    ]
+   },
+   "narration_text": "69 cheap, long-range layers. 24 precise retrieval layers. Two axes, complementary strengths, one architecture.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 8.15,
+   "audio_file": "mp3/beat-B12.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B12.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B13",
+   "act": "ACT III: THE CURVE",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "label": "ACT III",
+     "headline": "The Curve"
+    }
+   },
+   "narration_text": "",
+   "estimated_duration_s": 4,
+   "actual_duration_s": 4.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B13.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B14",
+   "act": "ACT III: THE CURVE",
+   "new_visual_element": "B14_IsoLossCurves",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own"
+   },
+   "graphic": {
+    "scene": "B14_IsoLossCurves",
+    "mechanic": "Two descending exponential loss curves. X-axis: Training FLOPs (log scale). Y-axis: Validation Loss. K2 curve: blue (#6fb0d6), shifted right. K3 curve: gold (#e0b341), shifted left. Horizontal dashed iso-loss line crosses both curves. Horizontal gap between crossing points labeled '2.5× fewer FLOPs for same loss'. Animate: curves draw in left to right, then iso-loss line slides in, then gap bracket appears.",
+    "colors": [
+     "#6fb0d6",
+     "#e0b341",
+     "#d9704e"
+    ]
+   },
+   "narration_text": "Fig. 7, animated. Training FLOPs on x, validation loss on y. Two curves — K2 in blue, K3 in gold. K3 shifted left. The iso-loss gap: the same loss at 2.5× fewer FLOPs.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 12.18,
+   "audio_file": "mp3/beat-B14.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B14.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B15",
+   "act": "ACT III: THE CURVE",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "headline": "2.5× scaling efficiency.",
+     "body": "K3 reaches the same validation loss as K2 using 60% less compute. Read the curve on its own — it's a real gain."
+    }
+   },
+   "narration_text": "2.5× scaling efficiency: K3 reaches the same validation loss as K2 using 60% less compute. Read the curve on its own — it's a real gain.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 10.6,
+   "audio_file": "mp3/beat-B15.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B15"
+   }
+  },
+  {
+   "beat_id": "B16",
+   "act": "ACT III: THE CURVE",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "manim",
+    "motion": "drawon"
+   },
+   "narration_text": "Here's what rides on that single curve: a new attention architecture. Attention Residuals. A new load-balancing algorithm. And a new data recipe. Four changes. One measurement.",
+   "estimated_duration_s": 10,
+   "prompt": "SHOPPING: Tier 2 — Screenshot of k3_tech_report.pdf §3.2 listing the four K3 components (KDA, AttnRes, LatentMoE, data recipe). Render from PDF locally: pdftopdf page ~8. Rights: Moonshot AI / CC-BY or fair use for citation still.",
+   "pantry": "pantry/B16-tech-report-sec3-2.png",
+   "drawon": "ring on the list of four components",
+   "actual_duration_s": 10.58,
+   "audio_file": "mp3/beat-B16.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B16.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B17",
+   "act": "ACT III: THE CURVE",
+   "new_visual_element": "B17_BundledComponents",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own"
+   },
+   "graphic": {
+    "scene": "B17_BundledComponents",
+    "mechanic": "Four component boxes arranged left: 'KDA', 'AttnRes', 'LatentMoE', 'DataRecipe'. Each feeds into a single right-pointing arrow labeled '2.5× (total)'. Each connection arrow has a '?' label for weight. Colors: component boxes #ECEFF4 with #2E3440 text; combined arrow #D97757; question marks #e0b341.",
+    "colors": [
+     "#D97757",
+     "#2E3440",
+     "#ECEFF4",
+     "#e0b341"
+    ]
+   },
+   "narration_text": "No ablation removes any piece. You cannot read this figure and say 'KDA contributed X percent.' The 2.5× is the bundled effect of everything together.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 10.26,
+   "audio_file": "mp3/beat-B17.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B17.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B18",
+   "act": "ACT IV: THE BUNDLE",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "label": "ACT IV",
+     "headline": "The Bundle"
+    }
+   },
+   "narration_text": "",
+   "estimated_duration_s": 4,
+   "actual_duration_s": 4.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B18.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B19",
+   "act": "ACT IV: THE BUNDLE",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "headline": "The validation loss is Moonshot's own OOD held-out set.",
+     "body": "Not an external benchmark. Not downstream capability. A private metric on a private split."
+    }
+   },
+   "narration_text": "Also: the validation loss is Moonshot's own OOD held-out set. Not an external benchmark. Not downstream capability. A private metric on a private split.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 9.86,
+   "audio_file": "mp3/beat-B19.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B19"
+   }
+  },
+  {
+   "beat_id": "B20",
+   "act": "ACT IV: THE BUNDLE",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "headline": "The responsible read.",
+     "body": "The full K3 redesign — architecture plus data — is roughly 2.5× more efficient than K2. Full stop. Nothing more specific than that."
+    }
+   },
+   "narration_text": "The responsible read: the full K3 redesign — architecture plus data — is roughly 2.5× more efficient than K2. Full stop. Nothing more specific than that.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 10.13,
+   "audio_file": "mp3/beat-B20.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B20"
+   }
+  },
+  {
+   "beat_id": "B21",
+   "act": "ACT IV: THE BUNDLE",
+   "new_visual_element": "B21_AttributionFailure",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own"
+   },
+   "graphic": {
+    "scene": "B21_AttributionFailure",
+    "mechanic": "Four-component Venn / overlap diagram. All four overlap zones shade to produce a combined gain arrow. Then one component (e.g. KDA) begins to glow with a 'headline' label and '?' mark. Final state: headline component lit, others dim. Caption below: 'The figure doesn't support that headline.'",
+    "colors": [
+     "#D97757",
+     "#2E3440",
+     "#ECEFF4",
+     "#e0b341"
+    ]
+   },
+   "narration_text": "Attribution failure looks like this: combine four innovations, measure the combined gain, then write a headline about one of them. The figure doesn't support that headline. The headline is what gets remembered.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 11.26,
+   "audio_file": "mp3/beat-B21.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B21.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B22",
+   "act": "ACT V: STABLE LATENTMOE",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "label": "ACT V",
+     "headline": "Stable LatentMoE"
+    }
+   },
+   "narration_text": "",
+   "estimated_duration_s": 4,
+   "actual_duration_s": 4.0,
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B22.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B23",
+   "act": "ACT V: STABLE LATENTMOE",
+   "shot": {
+    "type": "STILL",
+    "source": "archive"
+   },
+   "vox_run": "R3",
+   "vox_run_position": "start",
+   "narration_text": "The load-balancing problem. 896 experts, most tokens route to a few popular ones. Those experts become bottlenecks. The others go idle. Wasted compute, wasted training.",
+   "estimated_duration_s": 10,
+   "prompt": "Extract from kimi-demo-long.mp4 at t=72s (frame 2160). ffmpeg -ss 72 -i kimi-demo-long.mp4 -frames:v 1 pantry/B23-expert-imbalance.png. Credit: Moonshot AI / Kimi K3 technical demo.",
+   "pantry": "pantry/B23-expert-imbalance.png",
+   "drawon": "highlight tall bars on left (overloaded experts)",
+   "credit": "Moonshot AI / Kimi K3 technical demo",
+   "actual_duration_s": 10.84,
+   "audio_file": "mp3/beat-B23.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "YOU → drop a historical image at media/B23.png (or .mp4)",
+    "suggested": "find: Extract from kimi-demo-long.mp4 at t=72s (frame 2160). ffmpeg -ss 72 -i kimi-demo-long.mp4 -frames:v 1 pantry/B23-expert-imbalance.png. Credit: Moonshot AI / Kimi K3 technical demo."
+   }
+  },
+  {
+   "beat_id": "B24",
+   "act": "ACT V: STABLE LATENTMOE",
+   "new_visual_element": "B24_StableLatentMoE",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own"
+   },
+   "graphic": {
+    "scene": "B24_StableLatentMoE",
+    "mechanic": "Expert bar chart. Initial state: some bars very tall (overloaded), some near zero (idle). Animate: β arrows nudge each bar — tall bars receive downward pressure labeled '-β', short bars receive upward boost labeled '+β'. Final state: bars approach equilibrium. Label: 'Iterative bias term β'.",
+    "colors": [
+     "#D97757",
+     "#2E3440",
+     "#ECEFF4"
+    ]
+   },
+   "narration_text": "Fix: a per-expert capacity quota and an iterative bias term β. Overloaded experts get penalized. Underloaded ones get a bonus. The system finds balance.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 9.98,
+   "audio_file": "mp3/beat-B24.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B24.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B25",
+   "act": "ACT V: STABLE LATENTMOE",
+   "shot": {
+    "type": "STILL",
+    "source": "archive"
+   },
+   "vox_run": "R3",
+   "vox_run_position": "end",
+   "handoff": {
+    "camera": "moves from imbalance chart to converged histogram",
+    "note": "end of R3 — camera pans from skewed bar chart to balanced histogram showing fair share convergence"
+   },
+   "narration_text": "The target: mk/n — tokens times top-k selections divided by expert count. Each expert earns its fair share of the computation. The iterative algorithm converges in a few steps.",
+   "estimated_duration_s": 10,
+   "prompt": "Extract from kimi-demo-long.mp4 at t=180s (frame 5400). ffmpeg -ss 180 -i kimi-demo-long.mp4 -frames:v 1 pantry/B25-fair-share.png. Credit: Moonshot AI / Kimi K3 technical demo.",
+   "pantry": "pantry/B25-fair-share.png",
+   "credit": "Moonshot AI / Kimi K3 technical demo",
+   "actual_duration_s": 11.93,
+   "audio_file": "mp3/beat-B25.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "YOU → drop a historical image at media/B25.png (or .mp4)",
+    "suggested": "find: Extract from kimi-demo-long.mp4 at t=180s (frame 5400). ffmpeg -ss 180 -i kimi-demo-long.mp4 -frames:v 1 pantry/B25-fair-share.png. Credit: Moonshot AI / Kimi K3 technical demo."
+   }
+  },
+  {
+   "beat_id": "B26",
+   "act": "ACT V: STABLE LATENTMOE",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "FormACard",
+    "props": {
+     "headline": "Why balance matters.",
+     "body": "A 2.8T model with imbalanced expert loads wastes GPU time proportional to the load variance. Fix the balance and you recover that compute for actual learning."
+    }
+   },
+   "narration_text": "Why balance matters: a 2.8T model with imbalanced expert loads wastes GPU time proportional to the load variance. Fix the balance and you recover that compute for actual learning.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 11.43,
+   "audio_file": "mp3/beat-B26.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B26"
+   }
+  },
+  {
+   "beat_id": "B27",
+   "act": "ACT V: STABLE LATENTMOE",
+   "new_visual_element": "B27_ExpertUtilization",
+   "shot": {
+    "type": "GRAPHIC",
+    "source": "own"
+   },
+   "graphic": {
+    "scene": "B27_ExpertUtilization",
+    "mechanic": "Before/after side-by-side bar charts. Left ('Before'): highly variable bar heights, variance gap labeled with bracket and 'Δ variance'. Right ('After'): bars near uniform height, variance bracket labeled 'Δ ≈ 0'. Caption: 'Balanced loading = recovered compute'. Colors: before bars #D97757; after bars #6fb0d6.",
+    "colors": [
+     "#D97757",
+     "#6fb0d6",
+     "#2E3440",
+     "#ECEFF4"
+    ]
+   },
+   "narration_text": "Before vs. after. Balanced loading changes training efficiency in a way you can measure. This is the most mechanistically transparent piece of the entire efficiency claim.",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 10.33,
+   "audio_file": "mp3/beat-B27.mp3",
+   "build": {
+    "status": "MANIM",
+    "src": "manim/B27.mp4",
+    "filled_by": "manim",
+    "at": "2026-08-01T04:01:37"
+   }
+  },
+  {
+   "beat_id": "B28",
+   "act": "CLOSE",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "ClaudeVerdictArtifact",
+    "props": {
+     "verdict": "The 2.8T architecture is solid. The Stable LatentMoE design is well-documented and mechanistically coherent. The 2.5× efficiency number is plausible but causally opaque — it bundles four changes without isolating any. The validation loss is a private metric, not a downstream capability score. When someone cites the 2.5×: 'the full redesign together is ~2.5× more efficient than K2.' Never attribute it to one component."
+    }
+   },
+   "narration_text": "The 2.8T architecture is solid. The Stable LatentMoE design is well-documented and mechanistically coherent. The 2.5× efficiency number is plausible but causally opaque — it bundles four changes without isolating any. The validation loss is a private metric, not a downstream capability score. When someone cites the 2.5×: 'the full redesign together is ~2.5× more efficient than K2.' Never attribute it to one component.",
+   "estimated_duration_s": 35,
+   "actual_duration_s": 25.94,
+   "audio_file": "mp3/beat-B28.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B28"
+   }
+  },
+  {
+   "beat_id": "B29",
+   "act": "CLOSE",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "ClaudeComposerAsk",
+    "props": {
+     "mode": "your_turn",
+     "prompt": "Take K3 and give it a genuine 1M-token task — something that requires real long-range recall across a huge document. Does the theoretical efficiency advantage show up in practice? That's where the architecture story meets the ground truth."
+    }
+   },
+   "narration_text": "Your turn. Take K3 and give it a genuine 1M-token task — something that requires real long-range recall across a huge document. Does the theoretical efficiency advantage show up in practice? That's where the architecture story meets the ground truth.",
+   "estimated_duration_s": 20,
+   "actual_duration_s": 14.7,
+   "audio_file": "mp3/beat-B29.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B29"
+   }
+  },
+  {
+   "beat_id": "B30",
+   "act": "CLOSE",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "component": "ClaudeTitleOutro",
+    "props": {
+     "title": "Two Axes, One Curve",
+     "handle": "@NikBearBrown"
+    }
+   },
+   "narration_text": "",
+   "estimated_duration_s": 10,
+   "actual_duration_s": 10.0,
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-08-01T04:01:37",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for B30"
+   }
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict",
+   "narration_text": "Verdict. Two Axes, One Curve. The architecture is real innovation: KDA combined with FullAttRes in one model, Latent MoE with a pooled capacity quota, and a two-stage training recipe. The two-point-five times fewer FLOPs claim bundles all four changes into one headline. The attribution figure in the paper does not support the claim that KDA alone delivered the efficiency gain. Architecture: genuine. Efficiency attribution: unsupported. The innovations are meaningful — the specific credit allocation is not.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 30,
+   "shot": {
+    "type": "REMOTION",
+    "show": [
+     {
+      "at": 0.0,
+      "event": "Artifact panel opens"
+     },
+     {
+      "at": 0.2,
+      "event": "Lines reveal sequentially"
+     }
+    ],
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact",
+     "props": {
+      "artifactTitle": "Verdict",
+      "artifactHeading": "Two Axes, One Curve",
+      "artifactLines": [
+       "KDA + FullAttRes: genuinely novel.",
+       "2.5× fewer FLOPs: four factors bundled.",
+       "Ablation doesn't isolate KDA alone.",
+       "Architecture real. Attribution shaky."
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:01:37"
+   },
+   "actual_duration_s": 27.56,
+   "audio_file": "mp3/beat-BVDT.mp3"
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn",
+   "narration_text": "Your turn. Ask Claude to explain KDA — Knowledge-Distilled Attention — and what problem it solves at inference time. Then ask Kimi K3 the same question. Compare which answer is more specific about the trade-off between training cost and inference cost. Watch for either model conflating fewer parameters with fewer FLOPs.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 25,
+   "shot": {
+    "type": "REMOTION",
+    "show": [
+     {
+      "at": 0.0,
+      "event": "Composer opens on cream ground — spark + greeting appears"
+     },
+     {
+      "at": 0.25,
+      "event": "Command types in"
+     },
+     {
+      "at": 0.65,
+      "event": "Send button arms (terracotta); running indicator fires"
+     },
+     {
+      "at": 0.8,
+      "event": "Output lines appear"
+     }
+    ],
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your Turn",
+      "topic": "KIMI K3 · YOUR TURN",
+      "segment": "Architecture",
+      "command": "Explain KDA (Knowledge-Distilled Attention) — what problem does it solve, and what is the training-time vs. inference-time trade-off?",
+      "runningText": "paste this into both models and compare…",
+      "output": [
+       "Expected: a clear distinction between training-time distillation and inference-time cost",
+       "Watch for: conflating 'fewer parameters' with 'fewer FLOPs'",
+       "Red flag: either model claiming KDA alone explains the 2.5× efficiency gain"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Opus 4.8",
+      "effortLabel": "High"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:01:37"
+   },
+   "actual_duration_s": 17.62,
+   "audio_file": "mp3/beat-BHTF.mp3"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Two Axes, One Curve. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "REMOTION",
+    "show": [
+     {
+      "at": 0.0,
+      "event": "Title fades in on cream ground"
+     },
+     {
+      "at": 0.5,
+      "event": "Handle appears below"
+     }
+    ],
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Two Axes, One Curve",
+      "handle": "@NikBearBrown",
+      "subline": ""
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:01:37"
+   },
+   "actual_duration_s": 3.2,
+   "audio_file": "mp3/beat-BOUT.mp3"
+  }
+ ]
+}

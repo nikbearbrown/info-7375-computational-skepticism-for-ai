@@ -1,0 +1,1057 @@
+{
+  "metadata": {
+    "slug": "tldr-features-entering-a-room",
+    "title": "Features Entering a Room",
+    "topic": "INFO 7375 · TL;DR",
+    "skill": "tldr",
+    "style_preset": "tldr",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "learn_canvas": "cream",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "audience": "INFO 7375 students reading chapter 5, and anyone who has read a SHAP bar chart and taken one bar as 'the' contribution",
+    "course": "INFO 7375 Computational Skepticism for AI · Nik Bear Brown · Northeastern University",
+    "source_doc": "chapters/05-model-explainability-distinguishing-explanation-from-the-appearance-of-explanation.md, §'The mathematics of Shapley values' (value function, marginal contribution, Shapley value, Efficiency) and §'A worked example' (Figures 5.2–5.4, HEAD side); exercises W4, W5; section S1 of youtube/tldr-sections-05-explainability.md",
+    "sections": [
+      {
+        "n": 1,
+        "title": "Features Entering a Room",
+        "key_case": "one loan applicant: f̂(x) = 0.72, E[f̂] = 0.55, payout 0.17; income's six orderings +0.08 +0.08 +0.07 +0.09 +0.06 +0.06 → φ = 0.073; φ_debt 0.062, φ_zip 0.035; Efficiency 0.17 — the chapter's constructed ('Suppose') example, captioned so"
+      }
+    ],
+    "greeting_language": "Filipino (Kumusta)",
+    "typography": {
+      "serif": "Tiempos/EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "outro_policy": "OUTRO-LOCK §Voice: spoken title + 'At Nik Bear Brown', 1.0 s silent tail padded into the mp3, no jingle.",
+    "bookloop_policy": "Course film: carries the INFO 7375 course credit (spoken in B00, on the cards' course line).",
+    "tags": [
+      "Shapley values",
+      "SHAP",
+      "explainability",
+      "feature attribution",
+      "efficiency axiom",
+      "INFO 7375",
+      "computational skepticism",
+      "3Blue1Brown style",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-23T13:55:35",
+      "cut": "master",
+      "filled": 17,
+      "of": 17,
+      "slates": [],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'ClaudeTldrWhat' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "tldr · what",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Kumusta. This is Liam, in for Bear, with chapter five of INFO 7375, Computational Skepticism for AI, at Northeastern. This film is about splitting one loan prediction fairly among three features. A feature's fair share is its average bump over every order it could have entered the room. You'll watch six orders fill a table, then three bars fill the gap. The trap: measuring once, and calling that the contribution.",
+      "estimated_duration_s": 28.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "'TL;DR.' wordmark; 'Kumusta, Liam'; the course line; heading"
+          },
+          {
+            "at": 0.05,
+            "event": "the question writes on"
+          },
+          {
+            "at": 0.45,
+            "event": "line 1 lands on 'a feature's fair share'"
+          },
+          {
+            "at": 0.68,
+            "event": "line 2 lands on 'you'll watch'"
+          },
+          {
+            "at": 0.85,
+            "event": "line 3 lands on 'the trap'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTldrWhat",
+          "props": {
+            "eyebrow": "TL;DR",
+            "heading": "What This Film Is About",
+            "greeting": "Kumusta, Liam",
+            "topic": "INFO 7375 · Computational Skepticism · Chapter 5",
+            "question": "How do you split one prediction fairly among three features?",
+            "lines": [
+              "A feature's fair share is its average bump over every order it could enter the room.",
+              "Watch six orders fill a table, then three bars fill the 0.17 gap exactly.",
+              "The trap: measure once, first in or last in, and call that the contribution."
+            ],
+            "cues": [
+              1.5,
+              10.26,
+              15.22,
+              18.89
+            ],
+            "durationSeconds": 22.42,
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": "2026-09-23T17:28:24.161056+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 22.42,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 22.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "remotion:ClaudeTldrWhat",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "tldr · why",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Why should you care? Every SHAP bar in a model report estimates this average. Read one bump as the answer, and you're arguing over a number that depends on who walked in first. Know the average, and you can check any SHAP chart: the bars must add up to the gap. It unlocks the harder question: what a share does not tell you.",
+      "estimated_duration_s": 25.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "page turn: same header, heading 'Why You Should Care'"
+          },
+          {
+            "at": 0.05,
+            "event": "the stake writes on"
+          },
+          {
+            "at": 0.28,
+            "event": "dash 1 on 'read one bump'"
+          },
+          {
+            "at": 0.58,
+            "event": "dash 2 on 'know the average'"
+          },
+          {
+            "at": 0.82,
+            "event": "dash 3 on 'unlocks'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTldrWhy",
+          "props": {
+            "eyebrow": "TL;DR",
+            "heading": "Why You Should Care",
+            "topic": "INFO 7375 · Computational Skepticism · Chapter 5",
+            "lead": "Every SHAP bar in a model report estimates this average.",
+            "lines": [
+              "Read one bump as the answer, and you argue over a number that depends on who walked in first.",
+              "Know the average, and you can check any SHAP chart: the bars must add up to the gap.",
+              "It unlocks the harder question: what a share does not tell you."
+            ],
+            "cues": [
+              0.8,
+              3.69,
+              8.75,
+              13.1
+            ],
+            "durationSeconds": 16.62,
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": "2026-09-23T17:29:44.003460+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TL;DR card two — text lands on cues by design."
+      },
+      "actual_duration_s": 16.62,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 16.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "remotion:ClaudeTldrWhy",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "The question this film is really asking: what is income's fair share? Not how much did income add. That has a different answer depending on who was already in the room.",
+      "estimated_duration_s": 12.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types the naive question"
+          },
+          {
+            "at": 0.25,
+            "event": "types 'How much did income add?'; backspaces the phrase → 'What is income's fair share?' on the spoken correction"
+          },
+          {
+            "at": 0.85,
+            "event": "caret holds on the corrected question"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "How much did income add?",
+            "triggerWords": "How much did income add",
+            "replacementWords": "What is income's fair share",
+            "fontSize": 78,
+            "charMs": 22,
+            "hesitateBetween": 5,
+            "hesitateWithin": 1,
+            "mistakeRate": 0,
+            "jitter": 20,
+            "seed": "tldr-features-entering-a-room",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": "2026-09-23T17:50:12.303804+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive 'how much did it add' and corrects the phrase that makes it the wrong question.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 9.05,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 9.083333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Four words you'll hear. A feature: one input the model reads; here, income, debt-to-income ratio, and zip code. A prediction: the model's output for one person; here, her chance of approval. The baseline: the model's average prediction across the data. A coalition: the set of features already in the room.",
+      "estimated_duration_s": 20.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "'feature' lands, terracotta"
+          },
+          {
+            "at": 0.4,
+            "event": "'prediction' lands; first settles"
+          },
+          {
+            "at": 0.62,
+            "event": "'baseline' lands"
+          },
+          {
+            "at": 0.8,
+            "event": "'coalition' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Film",
+            "terms": [
+              {
+                "term": "feature",
+                "meaning": "one input the model reads: income, debt-to-income ratio, zip code"
+              },
+              {
+                "term": "prediction",
+                "meaning": "the model's output for one person; here, her chance of approval"
+              },
+              {
+                "term": "baseline",
+                "meaning": "the model's average prediction across the data"
+              },
+              {
+                "term": "coalition",
+                "meaning": "the set of features already in the room when another arrives"
+              }
+            ],
+            "durationSeconds": 15.89,
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": "2026-09-23T17:32:27.090040+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: prerequisites only — the Shapley value (the film's answer) is earned in B16."
+      },
+      "actual_duration_s": 15.89,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 15.916666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "HOOK",
+      "learn": {
+        "question": "One prediction sits 0.17 above the average. How much of that is income's?",
+        "action": "Place her score and the average on one line; shade the gap; name the three features.",
+        "observation": "One gap, three contributors, no split shown.",
+        "inference": "The split has to come from somewhere the model does not print.",
+        "next_question": "What does income add if it's the first thing the model learns about her?"
+      },
+      "narration_text": "One loan applicant. The model gives her a zero point seven two chance of approval. Across everyone, it averages zero point five five. So there's a gap of zero point one seven, and three features put it there: income, debt-to-income, zip code. How much of that gap is income's? It sounds like it should have one answer.",
+      "estimated_duration_s": 22.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The three feature names write across the top; a prediction line draws along the bottom with ticks at 0.55 (average) and 0.72 (her score); an ink dot slides from 0.55 to 0.72; a ghost span bar fills the gap above the line, labelled '0.17 to split'; the question 'how much of the 0.17 is income's?' writes centre; a terracotta dot lands beside 'income'; 'constructed example' caption bottom-left.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "the prediction line and the 0.55 tick"
+          },
+          {
+            "at": 0.2,
+            "event": "the dot slides to 0.72 on 'zero point seven two'"
+          },
+          {
+            "at": 0.45,
+            "event": "the span '0.17 to split' and the three feature names"
+          },
+          {
+            "at": 0.75,
+            "event": "the question; dot beside 'income'"
+          }
+        ],
+        "manim": {
+          "class": "B10_OneApplicant"
+        },
+        "motion_claim": "The line, the dot and the span are the persistent objects: the span is what the three bars fill in B15 and B19."
+      },
+      "actual_duration_s": 17.02,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 17.041666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "INSTANCE",
+      "learn": {
+        "question": "What does income add when it walks into an empty room?",
+        "action": "Income arrives first; the prediction moves from the average to 0.63.",
+        "observation": "A bump of +0.08, recorded in row one.",
+        "inference": "A contribution can be measured as the bump a feature makes on arrival.",
+        "next_question": "Is that bump the same if income arrives last?"
+      },
+      "narration_text": "Picture the features walking into a room, one at a time. With nobody inside, the model knows nothing about her, so it predicts the average: zero point five five. Income walks in first. Now it knows her income, with the other two still averaged over the data, and the score climbs to zero point six three. Income added zero point zero eight.",
+      "estimated_duration_s": 24.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The feature names move up into a table header ('arrival order · already in · income adds'); row one: 'income' slides into seat one; on the prediction line the dot climbs 0.55 → 0.63 and an ink bump bar grows over that stretch, labelled '+0.08'; the row records 'nobody' and '+0.08' with a small ink bar; debt and zip slide into seats two and three; terracotta dot beside the row's +0.08.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "table header; the room is empty — dot at 0.55"
+          },
+          {
+            "at": 0.4,
+            "event": "'income' slides into seat one on 'walks in first'"
+          },
+          {
+            "at": 0.65,
+            "event": "dot climbs to 0.63; bump bar grows; '+0.08'"
+          },
+          {
+            "at": 0.85,
+            "event": "row records +0.08; dot beside it"
+          }
+        ],
+        "manim": {
+          "class": "B11_IncomeFirst"
+        },
+        "motion_claim": "The first instance: an arrival and its bump, shown as motion on the line and recorded as a row."
+      },
+      "actual_duration_s": 18.24,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 18.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "NAIVE",
+      "learn": {
+        "question": "Can't we just remove income from the full model and see what changes?",
+        "action": "Take income out of the full room: 0.72 → 0.66.",
+        "observation": "+0.06, not +0.08. Both bars sit on the same line.",
+        "inference": "'Drop it and see' measures one room, and a different room gives a different answer.",
+        "next_question": "What about the rooms in between?"
+      },
+      "narration_text": "The obvious way to measure income: start from the full room and take income out. Her score is zero point seven two. Without income, zero point six six. So income is worth zero point zero six. That's the same as income walking in last. But a moment ago it was worth zero point zero eight. Same feature, same applicant, two answers. Which one is income's?",
+      "estimated_duration_s": 26.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Row six fills: 'debt', 'zip', then 'income' last; on the line the dot sits at 0.72, drops to 0.66 as income leaves, and the stretch 0.66–0.72 becomes a second ink bump bar labelled '+0.06'; B11's +0.08 bar dims to the foil; '+0.08 or +0.06?' writes at right with a terracotta X beside it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "row six: debt and zip arrive"
+          },
+          {
+            "at": 0.3,
+            "event": "the dot drops 0.72 → 0.66 on 'take income out'"
+          },
+          {
+            "at": 0.55,
+            "event": "bump bar 0.66–0.72, '+0.06'; the first bar dims"
+          },
+          {
+            "at": 0.85,
+            "event": "'+0.08 or +0.06?' and the X"
+          }
+        ],
+        "manim": {
+          "class": "B12_DropItAndSee"
+        },
+        "motion_claim": "The natural wrong turn walked to its limit: 'drop it and see' is a real measurement, and it disagrees with the first one on screen."
+      },
+      "actual_duration_s": 19.33,
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 19.333333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "INSTANCE",
+      "learn": {
+        "question": "What does income add when it arrives in the middle?",
+        "action": "Fill the rows where income arrives second, after debt and after zip.",
+        "observation": "+0.07 and +0.09: four rooms, four bumps.",
+        "inference": "A feature's bump depends on the coalition it joins.",
+        "next_question": "If no single room is the answer, what is?"
+      },
+      "narration_text": "So try the seats in between. Debt walks in, then income: income adds zero point zero seven. Zip code first, then income: zero point zero nine. Every room income walks into gives it a different bump. The contribution isn't a property of income alone. It depends on who got there first.",
+      "estimated_duration_s": 20.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Rows three and four fill: 'debt' then 'income' (+0.07), 'zip' then 'income' (+0.09); each row's small ink bar grows to its bump; the '+0.08 or +0.06?' line clears; a terracotta dot beside +0.09; caption 'one bump per room'.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "row three: debt, then income, +0.07"
+          },
+          {
+            "at": 0.45,
+            "event": "row four: zip, then income, +0.09"
+          },
+          {
+            "at": 0.75,
+            "event": "four bars of four lengths; dot beside +0.09"
+          }
+        ],
+        "manim": {
+          "class": "B13_MiddleSeats"
+        },
+        "motion_claim": "The second parametrized instance: vary who is already in the room, replay the arrival."
+      },
+      "actual_duration_s": 15.59,
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 15.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "SHIFT",
+      "learn": {
+        "question": "If no room is privileged, which rooms count?",
+        "action": "Fill all 3! = 6 orderings, one row each.",
+        "observation": "Six bumps: 0.08, 0.08, 0.07, 0.09, 0.06, 0.06.",
+        "inference": "The fair share should weigh every order equally. Predict: will the three averages fill 0.17?",
+        "next_question": "Average them — where do the three bars stop?"
+      },
+      "narration_text": "Here's the move. Don't pick a room. Take every order the three could arrive in. That's three factorial: six orders, each equally likely. Two start with income, two end with it, two put it in the middle. Six bumps. Before we average them, commit. When we do this for all three features, do their averages fill the zero point one seven exactly, overshoot, or fall short?",
+      "estimated_duration_s": 26.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The remaining rows two and five fill (income, zip, debt: +0.08; debt, zip, income: +0.06); 'six orders, each equally likely' writes as the header note; the two bump bars on the prediction line fade and the ghost span returns with a '?' beside '0.17 to split'; a terracotta dot beside the '?'; caption 'fill it exactly, or not? commit'.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "rows two and five fill"
+          },
+          {
+            "at": 0.35,
+            "event": "'six orders, each equally likely'"
+          },
+          {
+            "at": 0.6,
+            "event": "the line clears to the span; '?' beside it"
+          },
+          {
+            "at": 0.8,
+            "event": "HOLD — nothing moves on 'commit'"
+          }
+        ],
+        "manim": {
+          "class": "B14_EveryOrder"
+        },
+        "motion_claim": "The representation arrives complete: every ordering, one row each; the predict hold sits on the span the bars must fill."
+      },
+      "predict": true,
+      "actual_duration_s": 18.05,
+      "audio_file": "mp3/beat-B14.mp3",
+      "render_duration_s": 18.083333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "TRANSFORM",
+      "learn": {
+        "question": "Where do the three averaged bars stop?",
+        "action": "Merge income's six bumps; add debt's and zip's averages end to end from 0.55.",
+        "observation": "0.073 + 0.062 + 0.035 ends exactly at 0.72.",
+        "inference": "Averaging over every order both settles the split and uses up the whole gap.",
+        "next_question": "What is this average, as a rule?"
+      },
+      "narration_text": "Six bumps, one average: zero point zero seven three. The same six-order average for debt gives zero point zero six two. For zip code, zero point zero three five. Now lay them end to end, starting at the average. Look where they stop.",
+      "estimated_duration_s": 17.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The six small bars slide together and merge into one bar of length 0.073, which travels down onto the span at 0.55; the debt bar (0.062) and the zip bar (0.035) grow on after it; the three stop exactly at the 0.72 tick; the ink dot sits at the end; terracotta dot beside '0.72'; caption 'nothing left over'.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "six bars merge into one on 'one average'"
+          },
+          {
+            "at": 0.3,
+            "event": "the averaged bar lands on the span at 0.55"
+          },
+          {
+            "at": 0.5,
+            "event": "debt, then zip, grow on after it"
+          },
+          {
+            "at": 0.85,
+            "event": "they stop at 0.72; 'nothing left over'"
+          }
+        ],
+        "manim": {
+          "class": "B15_AverageThem"
+        },
+        "motion_claim": "The aha is the morph: the table's six bumps become one bar, and three bars fill the HOOK's span exactly."
+      },
+      "actual_duration_s": 14.14,
+      "audio_file": "mp3/beat-B15.mp3",
+      "render_duration_s": 14.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "ABSTRACTION",
+      "learn": {
+        "question": "What is the six-order average, as a rule?",
+        "action": "Group the orderings by coalition, weight each bump, sum; generalize; name it.",
+        "observation": "The weights 2/6, 1/6, 1/6, 2/6 reproduce 0.073; the bars' sum is a second equation.",
+        "inference": "The Shapley value is the average marginal contribution over every ordering; Efficiency says the shares sum to f̂(x) − E[f̂].",
+        "next_question": "What does each symbol in the formula mean?"
+      },
+      "narration_text": "This thing we keep pointing at deserves a name. Group the six rows by who was already in the room: nobody twice, debt once, zip once, both twice. Weight each bump by its share of the six orders, add, and you get the same zero point zero seven three. That's the Shapley value. And what you just watched the bars do has a name too: efficiency. The shares add up to the gap.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The table's coalition and bump columns fold into one weighted sum, 2/6·0.08 + 1/6·0.07 + 1/6·0.09 + 2/6·0.06 = 0.073 (MathTex); beneath it the general Shapley formula writes; the force plot's value labels morph into the efficiency equation φ_income + φ_debt + φ_zip = f̂(x) − E[f̂]; the title becomes 'The Shapley Value'; terracotta dot beside 0.073.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "rows fold into the weighted sum on 'group the six rows'"
+          },
+          {
+            "at": 0.45,
+            "event": "'= 0.073'; the general formula writes"
+          },
+          {
+            "at": 0.7,
+            "event": "title → 'The Shapley Value' on the name"
+          },
+          {
+            "at": 0.85,
+            "event": "labels morph into the efficiency line"
+          }
+        ],
+        "manim": {
+          "class": "B16_NameIt"
+        },
+        "motion_claim": "The abstraction arrives as an endpoint: the table the viewer filled folds into the formula; the force plot's labels become the efficiency sum."
+      },
+      "actual_duration_s": 18.9,
+      "audio_file": "mp3/beat-B16.mp3",
+      "render_duration_s": 18.916666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B16.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "TANGENT",
+      "learn": {
+        "question": "What does each symbol in the Shapley formula mean?",
+        "action": "Translate each side to a sentence; gloss φ, S, F, v(S); compute one weight.",
+        "observation": "|F| = 3, |S| = 1 gives 1!·1!/3! = 1/6, the share of orders with one feature before income.",
+        "inference": "The formula is the ordering average written by coalition.",
+        "next_question": "And the second line, the sum?"
+      },
+      "narration_text": "Read the line. Left side: income's share, phi. Right side: every room income could walk into, the bump it makes there, times a weight. The equals sign says the share is exactly that weighted average, nothing else. S is who's already in the room. F is all three features. v of S is the score knowing only S. And the weight is the fraction of orders where S arrives first: with one feature ahead of income and one behind, one factorial times one factorial over three factorial. One sixth. Back to the bars.",
+      "estimated_duration_s": 37.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Split stage: the Shapley formula persists at the top; the left band writes 'left: income's fair share', 'right: each room's bump, weighted', '=: exactly that average'; the right band writes a glossary (φᵢ · i's fair share; S · who's already in; |F| · all features, 3; v(S) · score knowing only S); the worked weight 1!·1!/3! = 1/6 and 0!·2!/3! = 2/6 writes at the bottom (MathTex); a terracotta dot moves to the symbol being read.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "LHS / RHS sentences"
+          },
+          {
+            "at": 0.3,
+            "event": "'=' claim"
+          },
+          {
+            "at": 0.45,
+            "event": "glossary rows land one at a time"
+          },
+          {
+            "at": 0.75,
+            "event": "worked weight = 1/6"
+          }
+        ],
+        "manim": {
+          "class": "B17_ReadTheFormula"
+        },
+        "motion_claim": "The equation tangent (five zones, explain never derive): sentences before symbols, a glossary, one worked value."
+      },
+      "actual_duration_s": 25.34,
+      "audio_file": "mp3/beat-B17.mp3",
+      "render_duration_s": 25.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "TANGENT",
+      "learn": {
+        "question": "What does the efficiency line claim?",
+        "action": "Read each side as a sentence; gloss f̂(x) and E[f̂]; plug in the three shares.",
+        "observation": "0.073 + 0.062 + 0.035 = 0.17 = 0.72 − 0.55.",
+        "inference": "The force plot is this equation drawn: the gap is fully accounted for.",
+        "next_question": "So, how much of the gap is income's?"
+      },
+      "narration_text": "Now the second line. Left side: the three shares, added. Right side: her score minus the average. The equals sign is the promise: nothing left over, nothing counted twice. f-hat of x is her score, zero point seven two. The expected f-hat is the baseline, zero point five five. Plug in: zero point zero seven three, plus zero point zero six two, plus zero point zero three five, is zero point one seven. It holds. That's what a force plot is: efficiency, drawn.",
+      "estimated_duration_s": 33.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The efficiency equation rises to the top; the force plot's bars stay on the line; the left band writes 'left: the three shares, added', 'right: her score minus the average', '=: nothing left, nothing twice'; the right band glosses f̂(x) · her score, 0.72 and E[f̂] · the average, 0.55; the plugged-in sum 0.073 + 0.062 + 0.035 = 0.17 = 0.72 − 0.55 writes over the bars (MathTex); a terracotta dot beside the final 0.17.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "the equation rises; sentences write"
+          },
+          {
+            "at": 0.35,
+            "event": "the two glossary rows"
+          },
+          {
+            "at": 0.6,
+            "event": "the plugged-in sum writes over the bars"
+          },
+          {
+            "at": 0.85,
+            "event": "dot beside 0.17 on 'it holds'"
+          }
+        ],
+        "manim": {
+          "class": "B18_ReadTheSum"
+        },
+        "motion_claim": "The second tangent: the sum read as a claim, plugged in on the same bars it describes."
+      },
+      "actual_duration_s": 26.47,
+      "audio_file": "mp3/beat-B18.mp3",
+      "render_duration_s": 26.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B18.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "learn 1",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "section": 1,
+      "role": "PAYOFF",
+      "learn": {
+        "question": "So, how much of the 0.17 is income's?",
+        "action": "Put the two single-room answers beside the average; move to zip's bar.",
+        "observation": "0.073 sits between 0.06 and 0.08; zip's 0.035 is on the same plot.",
+        "inference": "The fair share is the average; the plot is precise about the model, and silent about the world.",
+        "next_question": ""
+      },
+      "narration_text": "Back to her score. How much of the zero point one seven is income's? Not the zero point zero eight from the empty room, not the zero point zero six from the full one: zero point zero seven three, its average over every order. What this film didn't do: say what zip code's zero point zero three five means in the world. It's a real number about the model. Whether zip stands in for something else is another question.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The sum morphs back into the force plot's labels; the question from B10 returns; the ghost +0.08 and +0.06 bars flash back above income's bar and fold into it; a terracotta dot travels along the income bar, then to the zip bar; boundary caption 'not taught: what 0.035 means'.",
+        "show": [
+          {
+            "at": 0.05,
+            "event": "labels return; the question returns"
+          },
+          {
+            "at": 0.3,
+            "event": "the +0.08 and +0.06 ghosts fold into 0.073"
+          },
+          {
+            "at": 0.6,
+            "event": "dot to the zip bar on 'zip code's 0.035'"
+          },
+          {
+            "at": 0.85,
+            "event": "boundary caption"
+          }
+        ],
+        "manim": {
+          "class": "B19_Payoff"
+        },
+        "motion_claim": "The HOOK's line, span and question resolve against the filled force plot; the boundary is one dim line."
+      },
+      "actual_duration_s": 21.29,
+      "audio_file": "mp3/beat-B19.mp3",
+      "render_duration_s": 21.291666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B19.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Let's recap with Claude. How much of a prediction belongs to one feature has no single-room answer: its bump depends on who's already there. The Shapley value averages that bump over every order the features could arrive in. The shares then add up exactly to the gap between the prediction and the average. And that precision is about the model. Zip code's share is a real number, not a fact about the world.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact page opens"
+          },
+          {
+            "at": 0.2,
+            "event": "four verdict lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "Features Entering a Room",
+            "artifactLines": [
+              "A feature's bump depends on who is already in the room: 0.08 first, 0.06 last.",
+              "The Shapley value averages that bump over every arrival order: 0.073 for income.",
+              "Efficiency: the shares add up exactly to the gap, 0.72 − 0.55 = 0.17.",
+              "The precision is about the model; zip's 0.035 is not a fact about the world."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": "2026-09-23T17:34:20.680468+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.5,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Mandated ClaudeVerdictArtifact bookend."
+      },
+      "actual_duration_s": 19.99,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "render_duration_s": 20.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "remotion:ClaudeVerdictArtifact",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Paste this into Claude: Build me a tiny model with three features, one of them zip code, and write out its value function v(S) for all eight coalitions. Before computing anything, predict which feature gets the biggest Shapley value, and why. Then, for each feature, list all six arrival orders with the bump it adds on arrival, average them, and check that the three Shapley values add up to v(all) minus v(none). Finally, zip code has a positive share: tell me what that number does not tell me about the world. Two things to look for. Is every bump read off the eight values of v, and none made up mid-table? And did it call zip code's share a fact about the model, not a cause in the world?",
+      "estimated_duration_s": 52.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two rubric lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "INFO 7375 · YOUR TURN",
+            "segment": "Split Your Own Prediction",
+            "command": "Build me a tiny model with three features, one of them zip code, and write out its value function v(S) for all eight coalitions. Before computing anything, predict which feature gets the biggest Shapley value, and why. Then, for each feature, list all six arrival orders with the bump it adds on arrival, average them, and check that the three Shapley values add up to v(all) minus v(none). Finally, zip code has a positive share: tell me what that number does not tell me about the world.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: every bump is read off the eight v(S) values, none made up mid-table.",
+              "Check: it called zip code's share a fact about the model, not the world."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-23T17:35:53.527201+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 35.65,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 35.666666666666664,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-23T13:55:35"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Features Entering a Room. At Nik Bear Brown.",
+      "estimated_duration_s": 3.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; slug-seeded mascot. Liam reads the title, then 'At Nik Bear Brown'. No jingle."
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Features Entering a Room",
+            "slug": "tldr-features-entering-a-room",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-23T17:36:13.656322+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "hold_note": "spoken outro + 1.0 s silent tail (apad into the mp3); no jingle (OUTRO-LOCK §Voice)",
+      "actual_duration_s": 4.2,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.208333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-23T13:55:35"
+      }
+    }
+  ]
+}

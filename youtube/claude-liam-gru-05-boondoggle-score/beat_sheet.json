@@ -1,0 +1,315 @@
+{
+  "metadata": {
+    "title": "The Boondoggle Score: Who Builds What, and the Handoff",
+    "slug": "claude-liam-gru-05-boondoggle-score",
+    "topic": "WHAT IS GRU? \u2014 E5/6: THE BOONDOGGLE SCORE (/claude)",
+    "register": "Pragmatist",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Ciao, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "What Is Gru? \u2014 Computational Skepticism for AI",
+    "series": "claude-liam-gru",
+    "episode": 5,
+    "source": "INFO 7375 (Computational Skepticism for AI) \u2014 Gru Helper Series"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Ciao \u2014 this is Liam. Episode 5 of 6. This is the payoff command. You have run /v0 through your SDD. Now you type /claude, and Gru turns your design into a conductor's score \u2014 every step in the build, labeled Claude or human, in dependency order, with an explicit handoff condition between each one. This is what the Boondoggle Report requires. This episode reads every part of the score, teaches the prompt-writing rule behind the MINION column, and shows what a bad handoff condition looks like versus a testable one. Seven minutes.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E5/6: THE BOONDOGGLE SCORE (/claude)",
+            "segment": "The Boondoggle Score: Who Builds What, and the Handoff",
+            "command": "/claude",
+            "runningText": "every step labeled Claude or human \u2014 in dependency order \u2014 with a testable handoff condition between each\u2026",
+            "output": [
+              "MINION column: complete Claude prompts in dependency order",
+              "GRU column: human tasks each labeled with a supervisory capacity + action",
+              "Score summary: critical path , highest-risk handoffs , capacity distribution"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "B01",
+      "act": "the two parts of the score",
+      "narration_text": "The /claude command returns a score in two parts. The MINION part is the Claude side of the build. Every step Claude will perform is listed as a complete, copy-pasteable prompt \u2014 not a description of a task, but the actual prompt you would paste into a Claude session to complete that step. The GRU part is the human side. Every step you must perform is listed with three elements: the supervisory capacity label from Episode 2, the specific action you must take, and the handoff condition \u2014 the testable check that determines whether the next step in the sequence can start. The two parts interleave in dependency order. You do not get all the Claude steps first and all the human steps second. You get them in the order the build actually runs: Claude produces something, you verify it, you make a decision, Claude produces the next thing. The score is the dependency graph of the build \u2014 and every handoff condition is a node in that graph that only you can close.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 58,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "MINION column , GRU column \u2014 interleaved in dependency order",
+              "MINION: complete copy-pasteable Claude prompts \u2014 not descriptions, actual prompts.",
+              "GRU: human steps each with [capacity label] , specific action"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "the MINION part \u2014 the prompt-writing principle",
+      "narration_text": "The MINION column is where Gru's prompt-writing principle lives. Every Claude prompt in the score follows a five-field structure: context required, the prompt itself, expected output, handoff condition, and dependency \u2014 the specific earlier step whose output this prompt requires as input. The context-required field matters because Claude has no memory between prompts. If your Claude session is fresh when you paste a MINION step, the context required field tells you exactly what to paste in before the prompt itself. The prompt-writing principle is this: every prompt is a complete specification, not a delegation. 'Write the user model' fails \u2014 it names a task without a spec. 'Follow the SDD' fails \u2014 Claude has no memory; pasting 'follow the SDD' gives Claude a string of text, not the SDD. The MINION steps Gru generates are fully self-contained: they include the relevant sections of the SDD, the principle constraints, the expected output format, and the failure mode they must avoid. When you run a MINION step that Gru wrote, you should be able to paste it into a cold Claude session and get a correct output without any further context.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 65,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Every prompt is a complete specification, not a delegation",
+              "Five fields per MINION step: CONTEXT REQUIRED , PROMPT , EXPECTED",
+              "CONTEXT REQUIRED: what to paste before the prompt in a cold"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "the GRU part \u2014 handoff conditions",
+      "narration_text": "The GRU column is where the quality of the Boondoggle Score is most visible \u2014 and where students most commonly underperform. Every human step has a handoff condition: the specific testable check that determines whether the next step can start. A bad handoff condition says 'looks good' or 'output is acceptable' or 'review complete.' These are not testable \u2014 they name a feeling, not a check. A good handoff condition says exactly what you will examine, what a passing result looks like, and what a failing result would trigger. Examples. Bad: 'review the data model for correctness.' Good: 'Verify that every entity in /s2 has a corresponding table in the migration schema, that every required field maps to a /v4 need, and that the invoice_id field is indexed. Failure: missing field or un-indexed foreign key returns you to /s2.' The difference is not formality. The difference is that the bad handoff condition cannot be done by someone who doesn't know what a passing result looks like. The good one can. Handoff conditions are the most direct expression of interpretive judgment in the score \u2014 and Gru flags vague ones.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 65,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A testable check, not a feeling",
+              "Every GRU step: [capacity label] , action , handoff condition.",
+              "Bad handoff: 'looks good' , 'review complete' , 'output acceptable.' Names"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "the score summary \u2014 capacity distribution + the Minion Brief",
+      "narration_text": "The /claude command also returns a score summary at the bottom. The summary has three elements. The critical path: the longest dependency chain in the score \u2014 the sequence of steps where delay in any one step delays the whole build. The highest-risk handoffs: the two or three handoff conditions in the score that Gru assessed as most likely to fail silently \u2014 usually the ones where domain knowledge is required and the failure mode is invisible without that knowledge. And the capacity distribution: how many GRU steps carry each of the five supervisory-capacity labels. Any capacity at zero is flagged explicitly \u2014 a build with no Plausibility Auditing steps assumes Claude is always right. That is a boondoggle. Finally, the Minion Brief. After the score, Gru generates a Minion Brief \u2014 a single document that a new engineer could hand to a Claude session to complete the MINION column in sequence. The Minion Brief contains every context-required field, every prompt in order, and every expected output \u2014 formatted for a Claude session that starts cold. It is the handoff artifact from you to whoever runs the build. For the Boondoggle Report, the Minion Brief is the evidence that the MINION column is real \u2014 not described, but executable.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 68,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Critical path , highest-risk handoffs , capacity distribution , Minion Brief",
+              "Score summary: critical path (longest dependency chain) + highest-risk handoffs",
+              "Capacity at zero = Gru flags it"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "live demo \u2014 /claude on the Invoice Integrity Checker",
+      "narration_text": "Live demo. I run /claude on the Invoice Integrity Checker SDD from Episodes 3 and 4. The score returns twelve steps \u2014 five MINION, seven GRU. First MINION step: generate the database migration schema for the invoice and flag tables. Context required: the /s2 data model and the /d3 data contract. Prompt: generate a PostgreSQL migration that creates these tables with these fields and these indexes. Expected output: a migration file with all required fields, indexes on invoice_id and status, a created_at timestamp. Handoff condition: migration runs without error on a fresh Postgres instance; all required fields present; invoice_id index confirmed via EXPLAIN. First GRU step: [PF] Confirm that the scope boundary in /p1 explicitly excludes automated flag resolution \u2014 the system flags; humans resolve. Action: read /p1 out-of-scope list; confirm 'automated resolution' appears there. Handoff condition: out-of-scope list updated to include 'automated flag resolution with no human review.' Fail: add it before proceeding. That is the first two steps. The score then continues through twelve steps in dependency order. The capacity distribution at the bottom shows three PA steps, two PF steps, one TO step, one IJ step, and zero EI steps \u2014 which Gru flags as a potential gap for a system with downstream approval flows.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 72,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E5/6: THE BOONDOGGLE SCORE (/claude)",
+            "segment": "Demo: /claude on Invoice Integrity Checker \u2014 12 steps, score summary, EI=0 flag",
+            "command": "/claude",
+            "runningText": "12 steps returned \u2014 5 MINION / 7 GRU \u2014 capacity distribution: PA\u00d73 PF\u00d72 TO\u00d71 IJ\u00d71 EI\u00d70 \u2014 EI flagged\u2026",
+            "output": [
+              "MINION Step 1: generate migration schema \u2014 context, prompt, expected output, handoff condition listed",
+              "GRU Step 1: [PF] confirm scope boundary excludes automated resolution \u2014 testable handoff condition",
+              "Score summary: critical path 7 steps , 2 highest-risk handoffs , EI=0 flagged as potential gap"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lead_silence_s": 0.5,
+      "narration_text": "Verdict for The Boondoggle Score. /claude turns your SDD into a conductor's score \u2014 two parts interleaved in dependency order. MINION: complete self-contained Claude prompts with context required, expected output, and handoff condition. GRU: human steps with a supervisory-capacity label and a testable handoff condition \u2014 not 'looks good,' a specific check with a failure branch. Score summary: critical path, highest-risk handoffs, capacity distribution. Any capacity at zero is flagged \u2014 a zero-PA score assumes Claude is always right. The Minion Brief is the executable evidence the score is real. Find the one handoff condition you cannot test \u2014 that is the step most likely to ship a silent failure.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 42,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Boondoggle Score: Who Builds What, and the Handoff",
+            "artifactHeading": "Core rules",
+            "artifactLines": [
+              "MINION column: self-contained paste-ready prompts \u2014 context, prompt, expected output, handoff condition, dependency.",
+              "GRU column: [capacity label] , action , testable handoff condition (not 'looks good').",
+              "Good handoff: what you examine + what pass looks like + what fail triggers.",
+              "Score summary: critical path , highest-risk handoffs , capacity distribution.",
+              "Capacity at zero = Gru flags it. Zero PA = assumes Claude is always right = boondoggle.",
+              "Minion Brief = executable handoff artifact. One untestable handoff = one silent-failure risk."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "narration_text": "Your turn. Here is the prompt \u2014 paste it into your Gru session after you have run at least /v1 through /v3. The prompt reads: I am ready to generate the Boondoggle Score. Run /claude on my current SDD. After returning the score, generate the Minion Brief. End quote. When the score comes back, do two things. First, find the GRU step with the weakest handoff condition \u2014 the one that says 'review' or 'verify' without naming what a pass or fail looks like. Rewrite it. Second, find the capacity with the lowest count in the distribution summary. If it's zero, Gru already flagged it \u2014 read the flag and add at least one step to address it before submitting the Boondoggle Report. The score and the Minion Brief together are your two primary deliverables. The score proves you thought through the delegation. The Minion Brief proves the MINION column is real.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 62,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 THE BOONDOGGLE SCORE: WHO BUILDS WHAT, AND THE HANDOFF",
+            "segment": "The Boondoggle Score: Who Builds What, and the Handoff",
+            "command": "I am ready to generate the Boondoggle Score. Run /claude on my current SDD. After returning the score, generate the Minion Brief.",
+            "runningText": "find the weakest handoff condition and rewrite it \u2014 find the zero-count capacity and add a step \u2014 then submit\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "The Boondoggle Score: Who Builds What, and the Handoff. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Boondoggle Score: Who Builds What, and the Handoff",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-gru-05-boondoggle-score"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

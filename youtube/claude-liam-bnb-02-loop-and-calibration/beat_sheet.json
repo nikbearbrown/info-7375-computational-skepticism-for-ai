@@ -1,0 +1,317 @@
+{
+ "metadata": {
+  "title": "Break Your Own Build: the Loop + Calibration",
+  "slug": "claude-liam-bnb-02-loop-and-calibration",
+  "topic": "INFO 7375 SKEPTIC'S PORTFOLIO — LOOP & CALIBRATION (E2/6)",
+  "register": "Pragmatist",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "greeting": "Ciao, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "playlist": "Break Your Own Build — A Skeptic's Portfolio",
+  "series": "claude-liam-bnb",
+  "episode": 2,
+  "source": "INFO 7375 (Computational Skepticism for AI) — Build It Then Break It: A Skeptic's Portfolio (100 pts)",
+  "build": {
+   "at": "2026-08-01T04:17:10",
+   "cut": "review",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "narration_text": "Ciao — Liam. Episode 2 of 6. The break-your-own-build loop is four steps, always in this order: predict what the instrument will find before you run it; run the instrument as the chapter defines it on your own work, not on a toy example; report what it exposed — especially the unwelcome finding, because that is the finding; note the fix and the residual risk that remains after the fix. That loop is the assignment. And the instrument for this episode is calibration. Calibration asks one question: does the confidence your build reports mean anything? If your model says ninety percent confident on a prediction, does that prediction come true ninety percent of the time, or is that number a number you attached without testing it? Most builds never ask. This one will.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 54,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Ciao, Liam",
+      "topic": "INFO 7375 SKEPTIC'S PORTFOLIO — LOOP & CALIBRATION (E2/6)",
+      "segment": "Break Your Own Build: the Loop + Calibration",
+      "command": "Run the four-step loop on calibration: predict — run reliability diagram + ECE + Brier — report unwelcome finding — fix + residual risk.",
+      "runningText": "does the confidence your build reports mean anything — or is it a number you attached without testing it…",
+      "output": [
+       "The four-step loop: predict / run / report (unwelcome finding) / fix + residual risk",
+       "Calibration instrument: reliability diagram, ECE, Brier score, temperature scaling",
+       "Shifted-distribution re-plot: the in-sample curve is not enough"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": 38.25,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:10"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "reliability diagram — what calibration looks like",
+   "narration_text": "Every prediction in your build needs a stated confidence — a number, not just a label. If your build does not produce confidence scores, you are not done with the build. Once you have confidence scores, here is how the reliability diagram works. Bin the predictions into ten bins by their stated confidence: the zero-to-ten percent bin, the ten-to-twenty percent bin, all the way to the ninety-to-one hundred percent bin. For each bin, compute the fraction of predictions in that bin that were actually correct — the fraction positive. Plot fraction positive on the vertical axis against the mean confidence of the bin on the horizontal axis. A perfectly calibrated model lies on the diagonal: if the model said 80 percent confident, 80 percent of those predictions came true. A bar sitting above the diagonal means the model is underconfident in that bin — it was more right than it claimed. A bar sitting below the diagonal means the model is overconfident — it was less right than it claimed. The overconfident tail is the usual finding. That is not a coincidence: training loss rewards the model for matching labels, not for being honest about uncertainty. The reliability diagram is how you see that.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 70,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Bin by stated confidence , plot fraction positive vs. mean confidence",
+       "10 bins of 0.1 each (0–0.1, 0.1–0.2, … 0.9–1.0).",
+       "Per bin: fraction of predictions that were actually correct = fraction positive."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": 61.33,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:10"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "Brier score + ECE + temperature scaling",
+   "narration_text": "Three numbers to compute alongside the diagram. The Brier score: the mean squared error of the probability estimates. Lower is better. It summarizes the calibration in a single number without telling you where the error lives — that is what the diagram is for. The Expected Calibration Error, or ECE: the weighted average of the calibration error across all bins. Weight each bin by how many predictions fell in it. A smaller ECE means the model's confidence tracks its accuracy more closely. ECE tells you magnitude; the diagram tells you shape. Temperature scaling: if your model is overconfident — and most are — you can divide the logits by a temperature parameter T greater than one to soften the confidence outputs. You fit T on a held-out validation set, then re-plot. T is a single scalar; it shifts the whole distribution without retraining. The critical trap: a good in-sample calibration curve is not evidence of good calibration. Re-plot on a shifted slice — a different time window, a different demographic, a subgroup the training set underrepresented. Report what moved. The in-sample result goes in the report for completeness. The shifted-distribution result is the finding.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 72,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Three numbers — then the shifted re-plot",
+       "Brier score: mean squared error of the probability",
+       "ECE: weighted average calibration error across bins (weight by bin count)."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": 61.67,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:10"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "Descartes and Hume inward",
+   "narration_text": "Two classical moves that turn the calibration numbers into questions worth asking. Descartes inward: how could my ninety percent confident prediction be false? What would a systematic deceiver have done to my training data to produce overconfidence in exactly that bin? This is not skepticism as philosophy — it is a specific diagnostic question. If you imagine a deceiver who contaminated your training data with label noise concentrated in the high-confidence region, you know exactly which slice to re-plot. Hume inward: is the ECE I computed a fact about the world, or only a fact about my sample? What population is my reliability diagram actually characterizing? If the diagram was computed on the population that happened to appear in my data window, and my data window was not representative, then the curve describes a historical accident, not the deployment environment. These two questions together produce the shifted-distribution re-plot. Descartes identifies the bin where contamination is most plausible. Hume identifies the population the diagram is not characterizing. Together they define the slice you need to test. The re-plot is not extra work — it is the answer to both questions at once.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 66,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Two questions that drive the shifted re-plot",
+       "Descartes: how could my 90%-confident prediction be false? What did",
+       "/ Identifies the bin where contamination is most plausible."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "actual_duration_s": 63.3,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:10"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "the loop report for calibration",
+   "narration_text": "The loop report for the calibration instrument has four fields, all required. Field one: the dated prediction-lock. This is what you wrote before you ran anything. Include it verbatim — do not rewrite it to match what you found. Field two: the method. Reliability diagram, computed how, on what data. ECE and Brier computed from how many predictions. Temperature scaling, T value fitted on what held-out set. Shifted re-plot on what slice, and why that slice. Field three: the result. The unwelcome finding goes here, explicitly. Not 'the model performed reasonably.' The overconfident tail, if there was one. The ECE before and after temperature scaling. What moved on the shifted re-plot, and by how much. If the shift was large, that is the finding — it means your calibration was population-specific, not general. Field four: the fix applied and the residual risk that remains after the fix. Every calibration fix leaves something. Temperature scaling softens the whole distribution but cannot fix calibration that varies by subgroup — that residual risk goes in field four. Naming what you could not close is not a weakness. It is the honest report of a build you understood well enough to know its limits.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 72,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Four fields, all required",
+       "Field 1: dated prediction-lock — verbatim, not rewritten to match findings.",
+       "Field 2: method"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "actual_duration_s": 61.1,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B04.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:10"
+   }
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict",
+   "lead_silence_s": 0.5,
+   "narration_text": "Verdict for Break Your Own Build: the Loop and Calibration. The loop: predict before running, run the instrument, report the unwelcome finding, name the fix and the residual risk. The calibration instrument: reliability diagram on your own predictions — binned, plotted, compared to the diagonal. ECE and Brier computed. Temperature scaling applied with a held-out T, then re-plotted. Descartes and Hume are the two questions that drive the shifted-distribution re-plot: Descartes names the suspect bin, Hume names the population the diagram is not characterizing. The shifted re-plot is the finding, not the in-sample result. Loop report has four fields: dated prediction-lock verbatim, method, result including the unwelcome finding, fix and residual risk. 'No mistakes found' is graded as not-looking.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 52,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact",
+     "props": {
+      "artifactTitle": "Break Your Own Build: the Loop + Calibration",
+      "artifactHeading": "Episode 2 key rules",
+      "artifactLines": [
+       "Loop: predict / run / report unwelcome finding / fix + residual risk.",
+       "Reliability diagram: 10 bins, fraction positive vs. mean confidence, compare to diagonal.",
+       "ECE + Brier + temperature scaling (T fitted on held-out) + shifted re-plot.",
+       "Descartes: suspect bin. Hume: population the diagram doesn't characterize.",
+       "Four-field loop report: prediction-lock verbatim , method , unwelcome finding , fix + residual."
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BVDT.mp3",
+   "actual_duration_s": 41.94,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:10"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Here is the prompt. The prompt reads: I have a [artifact type — for example: a logistic regression classifier for loan default prediction] that produces confidence scores. Here are ten sample predictions with their confidence scores: [list ten predictions, each with the predicted label and the stated confidence as a decimal between zero and one]. Here is a sample of my binned results: [paste or describe what you have — for each bin you have data for, give the bin range, the number of predictions in that bin, and the fraction that were actually correct]. Help me compute ECE from these bins: give me the formula, the per-bin calibration error, and the weighted sum. Then tell me what shifted-distribution re-plot I should run given that my training data came from [describe your data source and time window — for example: loan applications from January 2022 to December 2023 from a single regional lender]. Be specific about what slice to test and why that slice is the right one to expose population-specific calibration error. After you get the ECE and the re-plot prescription, run both. Compute the ECE yourself — do not report Claude's number as your result without verifying it on your actual data. The re-plot result — not the in-sample result — is the one to put in your instrument report.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 72,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN — BREAK YOUR OWN BUILD: THE LOOP + CALIBRATION",
+      "segment": "Break Your Own Build: the Loop + Calibration",
+      "command": "I have a [artifact type]. 10 sample predictions with confidence scores: [list]. Binned results: [paste bins — range, count, fraction correct]. Compute ECE. Tell me: what shifted re-plot should I run given [data source + time window]? Specify the slice and why.",
+      "runningText": "compute ECE yourself — don't report Claude's number without verifying it on your actual data; the re-plot result is the finding…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "actual_duration_s": 68.25,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:10"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "Break Your Own Build: the Loop + Calibration. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "Break Your Own Build: the Loop + Calibration",
+      "handle": "@NikBearBrown",
+      "subline": "Liam, in for Bear.",
+      "slug": "claude-liam-bnb-02-loop-and-calibration"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "actual_duration_s": 4.39,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-08-01T04:17:10"
+   }
+  }
+ ]
+}

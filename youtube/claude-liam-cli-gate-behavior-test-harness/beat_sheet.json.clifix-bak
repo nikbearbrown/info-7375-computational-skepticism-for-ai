@@ -1,0 +1,367 @@
+{
+  "metadata": {
+    "title": "Gate-Behavior Test Harness: A Gate Is Not a Vote",
+    "slug": "claude-liam-cli-gate-behavior-test-harness",
+    "topic": "COMPUTATIONAL SKEPTICISM — AGENTIC SYSTEMS",
+    "register": "Teardown",
+    "voice": "NikBearBrown",
+    "voice_id": "${ELEVENLABS_VOICE_NIKBEARBROWN}",
+    "palette": "claude",
+    "style_preset": "claude",
+    "style": "cli",
+    "note": "CLI video: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(screen-recording) · B05 CHANGE · B06 SUMMARY · B07 NEXT STEPS · B08 extra-slate · B09 outro",
+    "total_estimated_duration_seconds": 122,
+    "audience": "Claude",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "channel": "NikBearBrown",
+    "assignment_tieins": [
+      "CAP250 — gate-behavior unit-test harness is a named contribution to the Reallocation Engine",
+      "A1 — Ch 8/Ch 9 lens: prove the handoff condition is testable; a gate with no failure path is decoration",
+      "A2 — models the pre-registered suspect move: specify what failure looks like before the probe"
+    ],
+    "build": {
+      "at": "2026-07-19T17:35:56",
+      "cut": "master",
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": [
+        "B01: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B02: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B05: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\")."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "What is the difference between a scoring gate and a scoring vote — and how do you prove which one you have?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "What is the difference between a scoring gate and a scoring vote — and how do you prove which one you have?",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Gate-Behavior Test Harness, taken apart.",
+            "greeting": "Ciao, Bear",
+            "runningText": "generating gate-behavior tests…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM — why care",
+      "role_note": "the stakes BEFORE the build begins — no terminal yet",
+      "narration_text": "Most scoring pipelines claim to have gates. A gate — the real thing — zeros the composite when it trips. No partial credit, no dampening, no weighted deduction. But most pipelines implement a vote dressed as a gate: the dead posting shaves forty points off the composite, and the candidate with the highest score sometimes wins a job that no longer exists. A single pytest fixture tells the two apart — and it runs red before you fix the scorer, green after. This video shows you how to write it.",
+      "visual_intent": "title card: 'gate vs vote — the job that doesn't exist'; PROBLEM beat, no terminal yet",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "gate vs vote — the job that doesn't exist",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Gate-Behavior Test Harness, taken apart.",
+            "greeting": "",
+            "runningText": "framing the problem…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 22,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) — the command typed",
+      "narration_text": "In the terminal: ask Claude to write a pytest suite for a job-scoring function that must treat two conditions as hard gates — posting live being false, and months to start exceeding the OPT window. Three fixtures: a live role that passes, a dead posting that must be zeroed, a role past the OPT window that must be zeroed. Include one intentionally wrong gate-as-vote implementation and show the suite failing on it, then the correct gate implementation passing.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Write a pytest suite for score(role)\nwith two hard gates:\n  posting_live==False → score must be 0\n  months_to_start>opt_window → score must be 0\nThree fixtures: live+in-window; dead posting;\npast OPT window. Assert score()==0 on gate fail.\nInclude a gate-as-vote implementation (will fail)\nand a correct gate implementation (will pass).\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — AGENTIC SYSTEMS",
+            "segment": "GATE-BEHAVIOR TEST HARNESS",
+            "greeting": "",
+            "runningText": "generating gate-behavior test harness…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) — read the output before running",
+      "narration_text": "Read the critical lines before running. The gate implementation has one shape: if posting underscore live is false, return zero immediately — not score minus forty, not score times zero-point-three, zero. And the test assertion has one shape: assert score of dead equals exactly zero. Not less than ten. Not less than threshold. Equals zero. Both lines together state the behavioral contract more precisely than any documentation.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "gate_behavior_test.py",
+            "code": "# gate_behavior_test.py — Claude Code output\n\n# CORRECT gate implementation\ndef score_gate(role):\n    if not role[\"posting_live\"]:        # hard gate 1\n        return 0\n    if role[\"months_to_start\"] > role[\"opt_window\"]:  # hard gate 2\n        return 0\n    return compute_base_score(role)\n\n# WRONG vote implementation (will fail the test)\ndef score_vote(role):\n    s = compute_base_score(role)\n    if not role[\"posting_live\"]:\n        s -= 40   # dampening, not a gate\n    return max(s, 0)\n\n# The test — assertion is == 0, not < threshold\ndef test_dead_posting_is_zero():\n    dead = {\"posting_live\": False, \"months_to_start\": 3,\n            \"opt_window\": 12}\n    assert score(dead) == 0  # not: < 10",
+            "sparkLine": "GATE-BEHAVIOR TEST HARNESS"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT — run",
+      "role_note": "screen-recording — pytest red then green",
+      "narration_text": "Run pytest on the vote implementation first. The dead-posting fixture fails: score returns forty-two, the assertion expects zero, the test turns red. Now swap in the gate implementation. Run again. All three fixtures pass. Green. The test didn't change — the dead job still has the same data. The only thing that changed is whether zero is enforced or approximated.",
+      "visual_intent": "screen-recording: pytest run on vote scorer → red (dead posting returns 42, not 0); swap implementation → pytest run on gate scorer → green; one assertion line highlighted",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "terminal: pytest gate_behavior_test.py",
+            "code": "$ pytest gate_behavior_test.py -v\n\n# --- vote implementation ---\nFAILED test_dead_posting_is_zero\n  AssertionError: assert 42 == 0\n\n# --- gate implementation ---\nPASSED test_live_role_scores_positive\nPASSED test_dead_posting_is_zero\nPASSED test_past_opt_window_is_zero\n\n3 passed in 0.04s",
+            "sparkLine": "GATE-BEHAVIOR TEST HARNESS"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 18,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE — check and revise",
+      "role_note": "terminal (Onda) — extend to unknown gate state",
+      "narration_text": "Now the harder case: liveness is not false, it's unknown — the liveness checker errored, returned nothing. Ask Claude to add a fourth fixture where posting underscore live is None and assert the scorer raises ValueError rather than guessing. A scorer that treats unknown liveness as true is worse than one that refuses to score.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Add a fourth fixture to gate_behavior_test.py:\nposting_live=None (checker errored, not empty).\nAssert score() raises ValueError — refuse to\nscore on unknown gate state. Show a 'guess True'\nimplementation failing the new fixture.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — AGENTIC SYSTEMS",
+            "segment": "GATE-BEHAVIOR TEST HARNESS",
+            "greeting": "",
+            "runningText": "extending to unknown gate state…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 13,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "SUMMARY",
+      "role_note": "the lesson — one beat",
+      "narration_text": "A gate that doesn't fail loudly isn't a gate — it's a vote with a better name. The test formalizes the difference in nine lines: the assertion is equals zero, not less than threshold, not less than ten. Write the test before the scorer and it specifies the behavior faster than any design document. And the unknown-state fixture is the test the vote implementation will always miss: 'I couldn't check' is not the same as 'it passed.'",
+      "visual_intent": "recap card: 'gate == 0 enforced; vote ≈ 0 approximated'; the one assertion line as a static code block",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "lesson.md",
+            "code": "# KEY LESSON\n#\n# A gate that doesn't fail loudly isn't a gate — it's a vote with a\n# better name. The test formalizes the difference in nine lines: the\n# assertion is equals zero, not less than threshold, not less than ten.\n# Write the test before the scorer and it specifies the behavior faster\n# than any design document.\n#\n# → the one assertion line as a static code block",
+            "sparkLine": "Gate-Behavior Test Harness, taken apart."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Your move: find the hardest gate in your pipeline. Write the fixture that fails on a vote implementation first — before you touch the scorer. If you can't write the failing test, you don't yet know what your gate is supposed to do. That gap in your knowledge is more valuable to find now than after the pipeline ships.",
+      "visual_intent": "next-steps card: 1) find the hardest gate, 2) write the failing fixture first, 3) fix the scorer to make it pass",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "next_steps.md",
+            "code": "# YOUR MOVE\n#\n# 1. find the hardest gate\n# 2. write the failing fixture first\n# 3. fix the scorer to make it pass\n#\n# → run it  →  audit the gap  →  report what you find",
+            "sparkLine": "YOUR MOVE"
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 13,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "EXTRA",
+      "role_note": "slate — optional b-roll",
+      "narration_text": "The complete source is in the video description. Fork it, swap in your own data, and see what you find. If your numbers break the pattern, that is the interesting result.",
+      "visual_intent": "slate placeholder",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "fork_it.md",
+            "code": "# FORK IT\n#\n# → clone the source (link in description)\n# → swap in your own data\n# → run it\n# → the interesting result is when your numbers break the pattern",
+            "sparkLine": "Gate-Behavior Test Harness, taken apart."
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 9.09
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Gate-Behavior Test Harness: A Gate Is Not a Vote",
+            "handle": "@NikBearBrown",
+            "subline": "a gate zeroes — it does not dampen"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:35:56"
+      }
+    }
+  ]
+}

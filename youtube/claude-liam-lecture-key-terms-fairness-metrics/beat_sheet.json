@@ -1,0 +1,2992 @@
+{
+  "metadata": {
+    "slug": "claude-liam-lecture-key-terms-fairness-metrics",
+    "title": "Key Terms: Fairness Metrics",
+    "skill": "lecture",
+    "style_preset": "lecture",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "neu",
+    "channel_handle": "@NikBearBrown",
+    "register": "Teardown",
+    "fps": 24,
+    "width": 3840,
+    "height": 2160,
+    "aspect_ratio": "16:9",
+    "caption_policy": "sidecar",
+    "greeting_language": "German (Hallo)",
+    "source_doc": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/youtube/claude-liam-lecture-key-terms-fairness-metrics/SOURCES.md",
+    "playlist": "Computational Skepticism, Exam Prep",
+    "series_title": "Computational Skepticism, Exam Prep",
+    "series_numbered": false,
+    "course": "INFO 7375 Computational Skepticism for AI",
+    "lecture_opening_description": "31 terms for defending a fairness definition.",
+    "lecture_opening_title_lines": [
+      "Key Terms:",
+      "Fairness Metrics"
+    ],
+    "tags": [
+      "Computational Skepticism",
+      "INFO 7375",
+      "Key terms",
+      "Exam prep",
+      "Fairness Metrics",
+      "Glossary",
+      "Liam",
+      "Lecture"
+    ],
+    "deck_file": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html",
+    "deck_note": "Body beats are the terminology deck filmed live; see exam-prep-deck-films/tools/deck_capture.py",
+    "on_exam": true,
+    "pronounce": {
+      "COMPAS": "kˈʌmpəs",
+      "Lipschitz": "lˈɪpʃɪts",
+      "A-I": "ˈeɪaɪ",
+      "A-I's": "ˈeɪaɪz",
+      "Group A and": "ɡɹˈuːp ˈeɪ ænd"
+    },
+    "bookends": {
+      "idea": {
+        "text": "Which fairness metric to use\nis a technical question.",
+        "triggerWords": "is a technical question",
+        "replacementWords": "is a choice you must defend"
+      },
+      "labels": [
+        {
+          "key": "in the book text",
+          "kind": "tag",
+          "meaning": "the course text uses and explains the term"
+        },
+        {
+          "key": "in the glossary",
+          "kind": "tag",
+          "meaning": "on the course term list; the text does not explain it"
+        },
+        {
+          "key": "Computed",
+          "kind": "badge",
+          "meaning": "numbers worked out on screen from stated inputs"
+        },
+        {
+          "key": "Simulation (seeded)",
+          "kind": "badge",
+          "meaning": "a made-up run with a fixed seed, the same every time"
+        },
+        {
+          "key": "Illustrative data",
+          "kind": "badge",
+          "meaning": "numbers chosen to show the idea, not measured"
+        },
+        {
+          "key": "Conceptual illustration",
+          "kind": "badge",
+          "meaning": "a drawing of the idea, with no data behind it"
+        }
+      ],
+      "defs_parts": [
+        "Six labels sit in the corners of the pictures that follow.",
+        "In the book text: the course text uses and explains the term.",
+        "In the glossary: the term is on the course term list, but the text does not explain it.",
+        "Computed: the numbers are worked out on screen from stated inputs.",
+        "Simulation: a made-up run with a fixed seed, so it comes out the same every time.",
+        "Illustrative data: numbers chosen to show the idea, not measured.",
+        "Conceptual: a drawing of the idea, with no data behind it."
+      ],
+      "recap_lead": "Let's recap.",
+      "recap_lines": [
+        "Demographic parity, equalized odds and calibration parity are different tests.",
+        "With unequal base rates, the impossibility theorem says they cannot all hold.",
+        "Each metric carries a values claim, so the deliverable is a defended choice.",
+        "Individual fairness depends entirely on the similarity metric d.",
+        "Dropping a column is unawareness, and a proxy can bring the attribute back.",
+        "The GE Index splits total unfairness into within-group and between-group parts."
+      ],
+      "segment": "Name The Metric, Rule Out Its Twin",
+      "command": "Quiz me on fairness metrics. Give me one short case at a time, with made-up numbers for two groups. I must name the exact term, from demographic parity, equalized odds, calibration parity, base rate, proxy, individual fairness, direct effect and indirect effect, and say why its closest look-alike is wrong. Do not show the answer until I reply. After six cases, tell me which terms I mixed up.",
+      "checks": [
+        "Check: Did each case make you name the exact term before the answer appeared?",
+        "Check: Did you explain why the look-alike term was wrong each time?"
+      ]
+    },
+    "build": {
+      "at": "2026-11-12T07:34:19",
+      "cut": "master",
+      "filled": 58,
+      "of": 58,
+      "slates": [],
+      "skin_warnings": [
+        "NO RENDERABLE BEATS: no beat carries a shot.remotion.pattern or Manim annotation — the pipeline will render NOTHING and every slot becomes a YOU-slate. The sheet was authored without the scene contract."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BOPEN",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Computational Skepticism, Exam Prep. Key Terms: Fairness Metrics. Thirty-one terms for saying what fair means for a yes-or-no model, and for showing why arithmetic alone cannot settle it. With them you can name which fairness you are claiming, and which you gave up.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide. Playlist name as Bear gave it.",
+      "routing": {
+        "about": "Playlist, exact film title, payoff",
+        "runner_up": "Writer-first opening",
+        "reason": "The lecture skill requires the narrated portrait/title card before the writer."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "template": "neu-bookend-title",
+        "narration_contract": "playlist-title-summary-v1",
+        "visual_intent": "Named opening fields visible from frame zero",
+        "motion_claim": "Playlist, title, portrait, credits and handle, visible from frame zero; held for the measured narration.",
+        "show": [
+          {
+            "at": 0,
+            "event": "Complete portrait/title/series card visible"
+          }
+        ],
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Identity card in the deck's look: a still hold is the design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame.",
+        "typography_fill": "#FFFFFF",
+        "typography_reason": "Lecture identity card: the portrait slot is a photograph, not typography; all text fields are listed.",
+        "typography_regions": [
+          {
+            "label": "playlist",
+            "box": [
+              0.0625,
+              0.08,
+              0.8,
+              0.135
+            ]
+          },
+          {
+            "label": "title, rule and summary",
+            "box": [
+              0.41,
+              0.26,
+              0.95,
+              0.72
+            ]
+          },
+          {
+            "label": "presenter and narrator credits",
+            "box": [
+              0.0625,
+              0.73,
+              0.4,
+              0.845
+            ]
+          },
+          {
+            "label": "channel handle",
+            "box": [
+              0.74,
+              0.895,
+              0.945,
+              0.95
+            ]
+          }
+        ]
+      },
+      "voice_key": "3720c5c0e0fe",
+      "audio_file": "mp3/beat-BOPEN.mp3",
+      "actual_duration_s": 14.78,
+      "render_duration_s": 14.791666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOPEN.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. A newcomer thinks that which fairness metric to use is a technical question, something the math settles. It does not. When groups differ in how often the outcome is truly positive, the reasonable definitions cannot all hold, so picking one is a choice you must defend. This film goes through the terms for that choice, each one shown.",
+      "estimated_duration_s": 26.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json idea; the deck's own framing",
+      "routing": {
+        "about": "Core framing correction",
+        "runner_up": "Overview card",
+        "reason": "One phrase is revised; the terms that follow earn the correction."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Core framing correction",
+        "motion_claim": "The assumption is typed, one phrase is struck and replaced in NU red.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types the assumption"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'is a technical question', types 'is a choice you must defend'"
+          }
+        ],
+        "template": "neu-bookend-writer",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.8,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Typing builds the line on an empty page; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "3d95167fabce",
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "actual_duration_s": 18.52,
+      "render_duration_s": 18.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "Terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Six labels sit in the corners of the pictures that follow. In the book text: the course text uses and explains the term. In the glossary: the term is on the course term list, but the text does not explain it. Computed: the numbers are worked out on screen from stated inputs. Simulation: a made-up run with a fixed seed, so it comes out the same every time. Illustrative data: numbers chosen to show the idea, not measured. Conceptual: a drawing of the idea, with no data behind it.",
+      "estimated_duration_s": 35.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "The deck's opening speaker note (what each tag means) and the evidence badge on every slide",
+      "routing": {
+        "about": "The labels printed on every slide",
+        "runner_up": "The deck's own title slide",
+        "reason": "Prerequisite vocabulary only: the tags and badges the viewer will see in every picture. The terms the film teaches arrive in the body."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Prerequisite labels",
+        "motion_claim": "Each tag or badge, drawn as the deck draws it, rises as it is spoken.",
+        "show": [
+          {
+            "at": 0.08,
+            "event": "'In the book text' lands"
+          },
+          {
+            "at": 0.22,
+            "event": "'In the glossary' lands"
+          },
+          {
+            "at": 0.36,
+            "event": "'Computed' lands"
+          },
+          {
+            "at": 0.5,
+            "event": "'Simulation' lands"
+          },
+          {
+            "at": 0.64,
+            "event": "'Illustrative data' lands"
+          },
+          {
+            "at": 0.78,
+            "event": "'Conceptual' lands"
+          }
+        ],
+        "template": "neu-bookend-labels",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The label rows rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "ca082400414a",
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "actual_duration_s": 24.75,
+      "render_duration_s": 24.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0101",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This is a map of thirty-one terms in four groups. The first group, Definitions and the theorem, holds base rate, the error rates, and three yardsticks of fairness, demographic parity, equalized odds and calibration parity. The impossibility theorem says those three cannot all hold when base rates differ.",
+      "estimated_duration_s": 19.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 2 step 1. Source: Chapter 7; docs/Exam terms - compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "GROUP; TERMS; WHAT IT IS ABOUT; Definitions and the theorem",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-one terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: GROUP; TERMS; WHAT IT IS ABOUT; Definitions and the theorem"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "7da5fbbacf59",
+      "audio_file": "mp3/beat-B0101.mp3",
+      "actual_duration_s": 16.73,
+      "render_duration_s": 16.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0102",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The second group, Choosing and defending, is about what the choice means. COMPAS is the public case. A values claim is what each metric carries. A defended choice is what you hand in. Pre-processing, in-processing and post-processing are the tools that carry it out.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 2 step 2. Source: Chapter 7; docs/Exam terms - compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Choosing and defending; What the choice means, and what tools implement it",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-one terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Choosing and defending; What the choice means, and what tools implement it"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "e480baf2d3dd",
+      "audio_file": "mp3/beat-B0102.mp3",
+      "actual_duration_s": 14.55,
+      "render_duration_s": 14.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0103",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The third group, Beyond groups, moves from whole groups to single people. It holds group fairness and individual fairness, the Lipschitz condition, the similarity metric d, awareness, unawareness and proxy. The choice does not go away here. It moves.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 2 step 3. Source: Chapter 7; docs/Exam terms - compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Beyond groups; Person-level checks, and where the choice moves",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-one terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Beyond groups; Person-level checks, and where the choice moves"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "d1908dd6e8a4",
+      "audio_file": "mp3/beat-B0103.mp3",
+      "actual_duration_s": 13.87,
+      "render_duration_s": 13.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0104",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The fourth group, Causal fairness and the GE Index, is about paths and one summary number. It holds the structural causal model, direct effect, indirect effect, spurious effect and counterfactual fairness, then benefit, the GE Index, short for generalized entropy index, alpha and decomposition.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 2 step 4. Source: Chapter 7; docs/Exam terms - compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Causal fairness and the GE Index; Paths, counterfactuals and a single number",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-one terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Causal fairness and the GE Index; Paths, counterfactuals and a single number"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d5c3c88930c1",
+      "audio_file": "mp3/beat-B0104.mp3",
+      "actual_duration_s": 16.43,
+      "render_duration_s": 16.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0201",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two tables of two hundred people each. The top row, outlined in red, is everyone truly positive. Their share is the base rate, zero point six in Group A and zero point three in Group B in this worked example. For example, a résumé screener sees two applicant pools for a data analyst opening. The share in each pool who would truly do well in the job is that pool's base rate, and the two shares can differ before any model runs.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 3 step 1. Source: Chapter 7, “The arithmetic” and its calibration-satisfying table. Badge: Computed.",
+      "routing": {
+        "about": "Base rate; in the book text; prevalence; The share of a group that truly has the positive outcome.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Rates from a confusion matrix: Two two-by-two tables of 200 people each. Each step highlights the cells that make one rate and shows the rate for both groups.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Base rate; in the book text; prevalence; The share of a group that truly has the positive outcome."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "aa96ed0a7acf",
+      "audio_file": "mp3/beat-B0201.mp3",
+      "actual_duration_s": 22.04,
+      "render_duration_s": 22.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0202",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Stay inside that top row. The true-positive rate is the share of the truly positive that the model catches. In Group A, seventy-two caught and forty-eight missed gives zero point six. In Group B it is zero point seven. For example, take the applicants who really are qualified for a role. The true-positive rate is the share of them an applicant-tracking system passes on to the recruiter. Every qualified person it screens out lowers it.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 3 step 2. Source: Chapter 7, “The arithmetic” and its calibration-satisfying table. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; True-positive rate; 72 / (72 + 48) = 0.60; 42 / (42 + 18) = 0.70",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Rates from a confusion matrix: Two two-by-two tables of 200 people each. Each step highlights the cells that make one rate and shows the rate for both groups.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; True-positive rate; 72 / (72 + 48) = 0.60; 42 / (42 + 18) = 0.70"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d2fad3f4fee4",
+      "audio_file": "mp3/beat-B0202.mp3",
+      "actual_duration_s": 22.91,
+      "render_duration_s": 22.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0203",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the bottom row, people who are truly not positive. The false-positive rate is the share of them the model flags anyway. In Group A, twenty-four false alarms against fifty-six correct calls gives zero point three. In Group B it is zero point one. For example, picture an agent that tells a job seeker which listings fit. Among the listings that truly do not fit, the false-positive rate is the share it recommends anyway, each one a wasted application.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 3 step 3. Source: Chapter 7, “The arithmetic” and its calibration-satisfying table. Badge: Computed.",
+      "routing": {
+        "about": "False-positive rate; in the book text; 24 / (24 + 56) = 0.30; 14 / (14 + 126) = 0.10",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Rates from a confusion matrix: Two two-by-two tables of 200 people each. Each step highlights the cells that make one rate and shows the rate for both groups.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: False-positive rate; in the book text; 24 / (24 + 56) = 0.30; 14 / (14 + 126) = 0.10"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "59521a0927a5",
+      "audio_file": "mp3/beat-B0203.mp3",
+      "actual_duration_s": 24.18,
+      "render_duration_s": 24.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0204",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the left column, everyone the model flagged. Predictive value, or PPV, positive predictive value, also called precision, is the share of the flagged who are truly positive, zero point seven five in both groups. True-positive rate starts from the truly positive. Predictive value starts from the flagged. For example, a recruiter looks only at the shortlist an AI screener produced. Predictive value is the share of that shortlist who are truly qualified. It says nothing about qualified people left off the list.",
+      "estimated_duration_s": 33.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 3 step 4. Source: Chapter 7, “The arithmetic” and its calibration-satisfying table. Badge: Computed.",
+      "routing": {
+        "about": "Predictive value (PPV); in the book text; precision; 72 / (72 + 24) = 0.75",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Rates from a confusion matrix: Two two-by-two tables of 200 people each. Each step highlights the cells that make one rate and shows the rate for both groups.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Predictive value (PPV); in the book text; precision; 72 / (72 + 24) = 0.75"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "11c06d9c245d",
+      "audio_file": "mp3/beat-B0204.mp3",
+      "actual_duration_s": 27.27,
+      "render_duration_s": 27.291666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0204.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0301",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Bars for the same two groups. Demographic parity, also called statistical parity, asks that the model says yes at the same rate in every group. The yes rates here are zero point four eight and zero point two eight. Not met. For example, an interview-prediction model meets demographic parity if it invites the same share of older and younger applicants to interview, whether or not the two pools are equally qualified.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 4 step 1. Source: Chapter 7, “Three definitions”. Badge: Computed.",
+      "routing": {
+        "about": "Demographic parity; in the book text; statistical parity; The model says yes at the same rate in every group.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Demographic parity, equalized odds, calibration parity: Paired bars for groups A and B. Positive-prediction rate differs, true-positive and false-positive rates differ, and predictive value is equal.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (917 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Demographic parity; in the book text; statistical parity; The model says yes at the same rate in every group."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 1,
+        "anim_ms": 917
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f1a7b2ed73be",
+      "audio_file": "mp3/beat-B0301.mp3",
+      "actual_duration_s": 20.84,
+      "render_duration_s": 20.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0302",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Equalized odds asks for the same error rates in every group, both TPR, true-positive rate, and FPR, false-positive rate. Here they are zero point six against zero point seven, and zero point three against zero point one. Neither matches, so equalized odds is not met. For example, a résumé screener meets equalized odds only if qualified applicants with and without a disability pass at the same rate, and unqualified applicants from both groups are wrongly passed at the same rate too.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 4 step 2. Source: Chapter 7, “Three definitions”. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; equal TPR and FPR; Both error rates match across groups.; Equalized odds",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Demographic parity, equalized odds, calibration parity: Paired bars for groups A and B. Positive-prediction rate differs, true-positive and false-positive rates differ, and predictive value is equal.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; equal TPR and FPR; Both error rates match across groups.; Equalized odds"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f1e8f5cec10f",
+      "audio_file": "mp3/beat-B0302.mp3",
+      "actual_duration_s": 27.18,
+      "render_duration_s": 27.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0303",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Calibration parity, also called predictive parity, asks that a stated probability means the same observed rate in every group. For a yes or no score that is equal PPV, zero point seven five in both bars. One model, calibration parity met, the other two broken. For example, a model scores how likely each applicant is to get an offer. Calibration parity holds if, among applicants given the same score, the same share actually get offers in every group.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 4 step 3. Source: Chapter 7, “Three definitions”. Badge: Computed.",
+      "routing": {
+        "about": "Calibration parity; in the book text; predictive parity; CALIBRATION PARITY",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Demographic parity, equalized odds, calibration parity: Paired bars for groups A and B. Positive-prediction rate differs, true-positive and false-positive rates differ, and predictive value is equal.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (917 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Calibration parity; in the book text; predictive parity; CALIBRATION PARITY"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 3,
+        "anim_ms": 917
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "77f73f07151b",
+      "audio_file": "mp3/beat-B0303.mp3",
+      "actual_duration_s": 25.95,
+      "render_duration_s": 25.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0401",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A short proof in two bars. The impossibility theorem says that with unequal base rates, calibration parity and equalized odds cannot both hold. Equal precision forces the ratio of true-positive rate to false-positive rate to be two for Group A and seven for Group B. Equalized odds needs one ratio. For example, if more of one applicant pool is truly qualified, a hiring screen cannot keep its yes meaning the same in both pools and also make its mistakes at the same rates. One must give.",
+      "estimated_duration_s": 34.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 5 step 1. Source: Chapter 7, “The arithmetic”; docs/Exam terms - compact list (threshold). Badge: Computed.",
+      "routing": {
+        "about": "Impossibility theorem; in the book text; TELL THESE APART; Calibration parity",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The impossibility theorem and the threshold: First bars of the required true-positive to false-positive ratio, then a curve of the gap factor against base rate, then two score densities with a cutoff whose position changes the rates.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Impossibility theorem; in the book text; TELL THESE APART; Calibration parity"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 1,
+        "anim_ms": 1000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "0e51c234d166",
+      "audio_file": "mp3/beat-B0401.mp3",
+      "actual_duration_s": 27.88,
+      "render_duration_s": 27.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0401.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0402",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The curve is the factor between those two ratios as the base rate of Group B changes. It equals one only at the black dot, where the base rates are equal. The only other escape from the impossibility theorem is perfect prediction.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 5 step 2. Source: Chapter 7, “The arithmetic”; docs/Exam terms - compact list (threshold). Badge: Computed.",
+      "routing": {
+        "about": "c = p_b(1−p_a) / (p_a(1−p_b)), p_a = 0.60; 0.25; 1; 4",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The impossibility theorem and the threshold: First bars of the required true-positive to false-positive ratio, then a curve of the gap factor against base rate, then two score densities with a cutoff whose position changes the rates.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1583 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: c = p_b(1−p_a) / (p_a(1−p_b)), p_a = 0.60; 0.25; 1; 4"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 2,
+        "anim_ms": 1583
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f0bf3b0e056f",
+      "audio_file": "mp3/beat-B0402.mp3",
+      "actual_duration_s": 13.06,
+      "render_duration_s": 13.083333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0402.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0403",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two score curves from an illustrative model, one per group. The threshold is the score cutoff above which the model says yes, the red line at zero point five. One threshold for both, and the false-positive rates still differ, zero point five against zero point zero nine. For example, an applicant-tracking system gives each résumé a score, and only résumés above the cutoff reach a recruiter. Move that cutoff and you change who gets seen.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 5 step 3. Source: Chapter 7, “The arithmetic”; docs/Exam terms - compact list (threshold). Badge: Computed.",
+      "routing": {
+        "about": "Threshold; in the glossary; The score cutoff above which the model says yes.; GROUP A · BASE RATE 0.60",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The impossibility theorem and the threshold: First bars of the required true-positive to false-positive ratio, then a curve of the gap factor against base rate, then two score densities with a cutoff whose position changes the rates.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (750 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Threshold; in the glossary; The score cutoff above which the model says yes.; GROUP A · BASE RATE 0.60"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 3,
+        "anim_ms": 750
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "7951add65813",
+      "audio_file": "mp3/beat-B0403.mp3",
+      "actual_duration_s": 22.57,
+      "render_duration_s": 22.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0403.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0404",
+      "act": "Definitions and the theorem",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The threshold for Group B now drops to zero point two two. False-positive rates match at zero point five, but precision splits, zero point seven one against zero point four two. A threshold picks which gap you keep. It never removes both.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 5 step 4. Source: Chapter 7, “The arithmetic”; docs/Exam terms - compact list (threshold). Badge: Computed.",
+      "routing": {
+        "about": "τ = 0.22; TPR 0.84; FPR 0.50; PPV 0.42",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The impossibility theorem and the threshold: First bars of the required true-positive to false-positive ratio, then a curve of the gap factor against base rate, then two score densities with a cutoff whose position changes the rates.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (2625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: τ = 0.22; TPR 0.84; FPR 0.50; PPV 0.42"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 4,
+        "anim_ms": 2625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "878a0080129c",
+      "audio_file": "mp3/beat-B0404.mp3",
+      "actual_duration_s": 14.54,
+      "render_duration_s": 14.541666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0404.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0501",
+      "act": "Choosing and defending",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two bars from a real audit. COMPAS is a tool that scores the risk of re-arrest. ProPublica reported that among people never re-arrested, about forty-five percent of Black defendants were labeled high risk, against about twenty-three and a half percent of white defendants. That violates equalized odds.",
+      "estimated_duration_s": 19.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 6 step 1. Source: Chapter 7, “The COMPAS case”; “Each metric is a values claim”; “The defense as deliverable”; “Who should have decided”. Badge: Computed.",
+      "routing": {
+        "about": "COMPAS; in the book text; TELL THESE APART; Equalized odds",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "COMPAS, values claims and the defended choice: Bars of the false-positive rates ProPublica reported, bars of equal re-arrest rates at each score, three values claims, and six numbered steps.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: COMPAS; in the book text; TELL THESE APART; Equalized odds"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 1,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8903cdf97797",
+      "audio_file": "mp3/beat-B0501.mp3",
+      "actual_duration_s": 16.79,
+      "render_duration_s": 16.791666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0501.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0502",
+      "act": "Choosing and defending",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Ten pairs of bars, one per risk score. Northpointe, the maker of COMPAS, answered that each score meant about the same re-arrest rate in both groups. That is calibration parity. The bars are illustrative. Both claims are true.",
+      "estimated_duration_s": 15.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 6 step 2. Source: Chapter 7, “The COMPAS case”; “Each metric is a values claim”; “The defense as deliverable”; “Who should have decided”. Badge: Computed.",
+      "routing": {
+        "about": "RE-ARREST RATE AT EACH RISK SCORE; Black; White; 1",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "COMPAS, values claims and the defended choice: Bars of the false-positive rates ProPublica reported, bars of equal re-arrest rates at each score, three values claims, and six numbered steps.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: RE-ARREST RATE AT EACH RISK SCORE; Black; White; 1"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3b15953f4c22",
+      "audio_file": "mp3/beat-B0502.mp3",
+      "actual_duration_s": 12.57,
+      "render_duration_s": 12.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0502.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0503",
+      "act": "Choosing and defending",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three boxes, one per metric. A values claim is the belief about who should bear the errors, carried by the choice of metric. Equalized odds says your group should not change your risk of being wrongly flagged. Calibration parity protects the meaning of the score. None is the obvious one. For example, a company that picks equalized odds for its résumé screen is claiming that being wrongly rejected should not depend on your group. That is a value, not a calculation.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 6 step 3. Source: Chapter 7, “The COMPAS case”; “Each metric is a values claim”; “The defense as deliverable”; “Who should have decided”. Badge: Computed.",
+      "routing": {
+        "about": "Values claim; in the book text; Demographic parity; measured by neither side",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "COMPAS, values claims and the defended choice: Bars of the false-positive rates ProPublica reported, bars of equal re-arrest rates at each score, three values claims, and six numbered steps.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1167 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Values claim; in the book text; Demographic parity; measured by neither side"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 3,
+        "anim_ms": 1167
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "0c21cb034416",
+      "audio_file": "mp3/beat-B0503.mp3",
+      "actual_duration_s": 22.51,
+      "render_duration_s": 22.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0503.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0504",
+      "act": "Choosing and defending",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Six numbered steps. A defended choice is the deliverable, a chosen metric with written reasons, ending with what would change your mind. A number alone is not enough. For COMPAS the court system should have decided, and said so in writing. For example, a team running an interview-prediction model writes down which metric it chose, why, who pays when it misses a qualified applicant, and what result would make it switch.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 6 step 4. Source: Chapter 7, “The COMPAS case”; “Each metric is a values claim”; “The defense as deliverable”; “Who should have decided”. Badge: Computed.",
+      "routing": {
+        "about": "Defended choice; in the book text; 1; Specify the deployment",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "COMPAS, values claims and the defended choice: Bars of the false-positive rates ProPublica reported, bars of equal re-arrest rates at each score, three values claims, and six numbered steps.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1708 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Defended choice; in the book text; 1; Specify the deployment"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 4,
+        "anim_ms": 1708
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "6c5c323e3bcc",
+      "audio_file": "mp3/beat-B0504.mp3",
+      "actual_duration_s": 20.91,
+      "render_duration_s": 20.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0504.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0601",
+      "act": "Beyond groups",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Eight squares, one per applicant, and filled means approved. Group fairness judges a model by comparing rates across whole groups. In this made-up example each group has two of four approved, zero point five each, so the group check passes. For example, an employer checks that its screening agent passes the same share of each group to the interview stage, and looks no further.",
+      "estimated_duration_s": 25.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 7 step 1. Source: Chapter 7, “Beyond group metrics: individual fairness”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Group fairness; in the book text; TELL THESE APART; Group fairness",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Group fairness and individual fairness: Two rows of four applicants with equal approval rates and one similar pair treated differently, then a bar check of the difference in treatment against the distance d.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Group fairness; in the book text; TELL THESE APART; Group fairness"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f64e8f234816",
+      "audio_file": "mp3/beat-B0601.mp3",
+      "actual_duration_s": 19.29,
+      "render_duration_s": 19.291666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0601.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0602",
+      "act": "Beyond groups",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two squares are now outlined, applicants x and y. Same income, history and debt ratio, yet x is approved and y is denied. Individual fairness says similar people should be treated similarly. The totals still balance, so a group audit sees nothing. For example, two applicants with the same degree, the same experience and the same skills should get similar fit scores from a résumé screener, whatever happens to the group totals.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 7 step 2. Source: Chapter 7, “Beyond group metrics: individual fairness”. Badge: Illustrative data.",
+      "routing": {
+        "about": "in the book text; Individual fairness; x and y: same income, history and debt ratio",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Group fairness and individual fairness: Two rows of four applicants with equal approval rates and one similar pair treated differently, then a bar check of the difference in treatment against the distance d.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Individual fairness; x and y: same income, history and debt ratio"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "e0030648848d",
+      "audio_file": "mp3/beat-B0602.mp3",
+      "actual_duration_s": 22.19,
+      "render_duration_s": 22.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0602.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0603",
+      "act": "Beyond groups",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The Lipschitz condition makes that a test. The difference in treatment may not exceed the distance between the two people. Here the treatment gap is zero point one four and the distance, on financial variables only, is zero point zero two. So the condition is violated. For example, if two résumés are nearly identical, the condition lets their interview scores differ only a little. A large gap in scores for a tiny gap in résumés breaks it.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 7 step 3. Source: Chapter 7, “Beyond group metrics: individual fairness”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Lipschitz condition; in the book text; (D, d)-Lipschitz; THE (D, d) CHECK FOR APPLICANTS x AND y",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Group fairness and individual fairness: Two rows of four applicants with equal approval rates and one similar pair treated differently, then a bar check of the difference in treatment against the distance d.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Lipschitz condition; in the book text; (D, d)-Lipschitz; THE (D, d) CHECK FOR APPLICANTS x AND y"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 3,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d2e788bac3aa",
+      "audio_file": "mp3/beat-B0603.mp3",
+      "actual_duration_s": 22.12,
+      "render_duration_s": 22.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0603.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0604",
+      "act": "Beyond groups",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The similarity metric d measures how alike two people are, and someone has to choose it. Count zip-code distance and it grows to zero point three two, so the same treatment gap now passes. Same equation, opposite guarantee. Choosing it is a values choice. For example, a team comparing applicants must decide whether a gap in employment history makes two people less alike. Count it, and the screener may treat them differently. Leave it out, and they must be treated alike.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 7 step 4. Source: Chapter 7, “Beyond group metrics: individual fairness”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Similarity metric d; in the book text; d(x, y), zip-code distance included; 0.32",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Group fairness and individual fairness: Two rows of four applicants with equal approval rates and one similar pair treated differently, then a bar check of the difference in treatment against the distance d.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Similarity metric d; in the book text; d(x, y), zip-code distance included; 0.32"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 4,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "294ea1a8c00e",
+      "audio_file": "mp3/beat-B0604.mp3",
+      "actual_duration_s": 24.94,
+      "render_duration_s": 24.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0604.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0701",
+      "act": "Beyond groups",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A table of what the model is given, with the race column boxed in red and marked removed. Unawareness, or FTU, fairness through unawareness, means dropping the sensitive attribute and calling the model fair. Notice the zip column is still there. For example, a vendor strips the name and gender fields from every résumé before its screener scores them, and calls the screener fair for that reason alone.",
+      "estimated_duration_s": 27.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 8 step 1. Source: Chapter 7, “Fairness through awareness vs. unawareness”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Unawareness (FTU); in the book text; fairness through unawareness; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Awareness, unawareness and proxy: A table of five people with the race column struck out, then stacked bars showing group shares within each zip code, then distance bars with and without a group weight.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (875 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Unawareness (FTU); in the book text; fairness through unawareness; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 1,
+        "anim_ms": 875
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1bf5623344b9",
+      "audio_file": "mp3/beat-B0701.mp3",
+      "actual_duration_s": 20.59,
+      "render_duration_s": 20.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0701.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0702",
+      "act": "Beyond groups",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two bars show who is in each zip code, in a simulated run. A proxy is a feature that reveals group membership indirectly. Guessing the group from zip code alone is right eighty-five percent of the time. Only direct use was blocked. For example, a résumé screener that never sees an applicant's age can still work it out from the year their degree was earned.",
+      "estimated_duration_s": 26.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 8 step 2. Source: Chapter 7, “Fairness through awareness vs. unawareness”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Proxy; in the book text; GROUP SHARE WITHIN EACH ZIP CODE (200 PEOPLE); zip Z1",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Awareness, unawareness and proxy: A table of five people with the race column struck out, then stacked bars showing group shares within each zip code, then distance bars with and without a group weight.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Proxy; in the book text; GROUP SHARE WITHIN EACH ZIP CODE (200 PEOPLE); zip Z1"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 2,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "91cda82ffdca",
+      "audio_file": "mp3/beat-B0702.mp3",
+      "actual_duration_s": 18.62,
+      "render_duration_s": 18.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0702.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0703",
+      "act": "Beyond groups",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Awareness, or FTA, fairness through awareness, means stating openly how much group membership counts when judging similarity. With a group weight of zero point three, the distance goes from zero point zero two to zero point three two. Uncomfortable, because it names the thing. For example, the team behind a résumé screener writes into its rule for comparing applicants exactly how much being in a different group adds, so anyone can see that weight and challenge it.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 8 step 3. Source: Chapter 7, “Fairness through awareness vs. unawareness”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Awareness (FTA); in the book text; fairness through awareness; HOW MUCH DOES GROUP COUNT IN d?",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Awareness, unawareness and proxy: A table of five people with the race column struck out, then stacked bars showing group shares within each zip code, then distance bars with and without a group weight.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Awareness (FTA); in the book text; fairness through awareness; HOW MUCH DOES GROUP COUNT IN d?"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 3,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1a3b3ae96028",
+      "audio_file": "mp3/beat-B0703.mp3",
+      "actual_duration_s": 25.41,
+      "render_duration_s": 25.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0703.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0801",
+      "act": "Causal fairness",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Four circles joined by arrows. A structural causal model is exactly this, variables with arrows for which causes which. The red arrow runs straight from the attribute to the prediction. That is the direct effect, also called disparate treatment, strength zero point three in this made-up example. For example, a structural causal model of an interview predictor draws arrows from age, experience and skills to the score. If the score drops just because the applicant is older, nothing else changed, that is a direct effect.",
+      "estimated_duration_s": 33.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 9 step 1. Source: Chapter 7, “Causal fairness: what the data cannot tell you”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Structural causal model; in the book text; Variables with arrows for which causes which.; Direct effect",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Causal paths and counterfactual fairness: A graph with the attribute A, prediction Y-hat, mediator M and confounder C. Each step lights one path and adds its share to a bar. The last step shows abduction, action and prediction for one person.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (667 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Structural causal model; in the book text; Variables with arrows for which causes which.; Direct effect"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 1,
+        "anim_ms": 667
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "859b39526ccb",
+      "audio_file": "mp3/beat-B0801.mp3",
+      "actual_duration_s": 27.29,
+      "render_duration_s": 27.291666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0801.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0802",
+      "act": "Causal fairness",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the upper path is red. The attribute moves a mediator, such as education, and the mediator moves the prediction. That is the indirect effect, also called disparate impact. Zero point four times zero point five, so this path adds zero point two. For example, if one group has had less chance to finish a degree, and an interview model rewards degrees, the group moves the score through the degree. That is an indirect effect.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 9 step 2. Source: Chapter 7, “Causal fairness: what the data cannot tell you”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Indirect effect; in the book text; disparate impact; Attribute moves a mediator, which moves prediction.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Causal paths and counterfactual fairness: A graph with the attribute A, prediction Y-hat, mediator M and confounder C. Each step lights one path and adds its share to a bar. The last step shows abduction, action and prediction for one person.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (667 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Indirect effect; in the book text; disparate impact; Attribute moves a mediator, which moves prediction."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 2,
+        "anim_ms": 667
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "e4b336eca98d",
+      "audio_file": "mp3/beat-B0802.mp3",
+      "actual_duration_s": 21.23,
+      "render_duration_s": 21.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0802.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0803",
+      "act": "Causal fairness",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "On the lower path the first arrow points into the attribute. A confounder drives both the attribute and the prediction. That is the spurious effect, a link with no causal path between them. Data alone shows only the total of all three paths, zero point eight. For example, take first-generation graduates as the group. Family income shapes who is a first-generation graduate, and it also pays for the unpaid internships a résumé screener rewards. Group and score move together with no arrow between them.",
+      "estimated_duration_s": 33.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 9 step 3. Source: Chapter 7, “Causal fairness: what the data cannot tell you”. Badge: Illustrative data.",
+      "routing": {
+        "about": "in the book text; A confounder links them with no causal path.; Spurious effect; via C 0.30",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Causal paths and counterfactual fairness: A graph with the attribute A, prediction Y-hat, mediator M and confounder C. Each step lights one path and adds its share to a bar. The last step shows abduction, action and prediction for one person.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (667 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; A confounder links them with no causal path.; Spurious effect; via C 0.30"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 3,
+        "anim_ms": 667
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ad1c2c0562af",
+      "audio_file": "mp3/beat-B0803.mp3",
+      "actual_duration_s": 26.39,
+      "render_duration_s": 26.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0803.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0804",
+      "act": "Causal fairness",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three boxes follow one person. Counterfactual fairness asks whether this same person would get the same decision in the other group. Abduction infers their background, action flips the attribute, prediction runs the model again. The score moves by zero point two, so it fails. For example, take one applicant an interview model turned down. Keep her background, flip only her group, and run the model again. If she would now be invited, the model is not counterfactually fair.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 9 step 4. Source: Chapter 7, “Causal fairness: what the data cannot tell you”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Counterfactual fairness; in the book text; Same decision for this person in another group.; 1 Abduction: infer the background U",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Causal paths and counterfactual fairness: A graph with the attribute A, prediction Y-hat, mediator M and confounder C. Each step lights one path and adds its share to a bar. The last step shows abduction, action and prediction for one person.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (2375 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Counterfactual fairness; in the book text; Same decision for this person in another group.; 1 Abduction: infer the background U"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 4,
+        "anim_ms": 2375
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "94f878f60805",
+      "audio_file": "mp3/beat-B0804.mp3",
+      "actual_duration_s": 25.01,
+      "render_duration_s": 25.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0804.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0901",
+      "act": "Measuring unfairness",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Eight bars, one per person, with a dashed line at the mean. Benefit is the number per person whose spread gets measured, a score, a probability or an error flag. In these made-up scores the mean is zero point five five. For example, in an interview-prediction model the benefit could be each applicant's predicted chance of an interview, or a flag for whether the model got that applicant wrong. Someone has to pick which.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 10 step 1. Source: Chapter 7, “The Generalized Entropy Index”; exercise 10. Badge: Computed.",
+      "routing": {
+        "about": "Benefit; in the book text; TELL THESE APART; Within-group",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The Generalized Entropy Index: Eight benefit bars with their mean, then the same bars with deviations and the index, then how alpha reacts to a change at the bottom or the top, then a bar split into within-group and between-group parts.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1292 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Benefit; in the book text; TELL THESE APART; Within-group"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 1,
+        "anim_ms": 1292
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "49aad11bbd57",
+      "audio_file": "mp3/beat-B0901.mp3",
+      "actual_duration_s": 20.91,
+      "render_duration_s": 20.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0901.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0902",
+      "act": "Measuring unfairness",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Red lines now mark how far each bar is from the mean. The GE Index, generalized entropy index, is one number for how unequally benefit is spread across people, as with income inequality. Here it is zero point zero six two. More spread, larger index. For example, a job-matching agent gives some users many strong listings and others almost none. The GE Index puts one number on how unevenly those match scores are spread across all its users.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 10 step 2. Source: Chapter 7, “The Generalized Entropy Index”; exercise 10. Badge: Computed.",
+      "routing": {
+        "about": "GE Index; in the book text; generalized entropy index; DISTANCE FROM THE MEAN, SQUARED, AVERAGED",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The Generalized Entropy Index: Eight benefit bars with their mean, then the same bars with deviations and the index, then how alpha reacts to a change at the bottom or the top, then a bar split into within-group and between-group parts.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: GE Index; in the book text; generalized entropy index; DISTANCE FROM THE MEAN, SQUARED, AVERAGED"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 2,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d1f82585581b",
+      "audio_file": "mp3/beat-B0902.mp3",
+      "actual_duration_s": 25.11,
+      "render_duration_s": 25.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0902.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0903",
+      "act": "Measuring unfairness",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Alpha is the dial in the GE Index that sets whose unfairness counts more. Low alpha weights the bottom, high alpha the top. When the lowest benefit falls, the index rises far more at alpha zero than at alpha two. For example, an auditor of a résumé screener who worries most about the applicants scored lowest picks a low alpha. One who worries about a few applicants scored far above the rest picks a high alpha.",
+      "estimated_duration_s": 30.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 10 step 3. Source: Chapter 7, “The Generalized Entropy Index”; exercise 10. Badge: Computed.",
+      "routing": {
+        "about": "Alpha (α); in the book text; CHANGE IN THE INDEX; lowest benefit falls 0.2 → 0.1",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The Generalized Entropy Index: Eight benefit bars with their mean, then the same bars with deviations and the index, then how alpha reacts to a change at the bottom or the top, then a bar split into within-group and between-group parts.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Alpha (α); in the book text; CHANGE IN THE INDEX; lowest benefit falls 0.2 → 0.1"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 3,
+        "anim_ms": 1208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ea48cca8e121",
+      "audio_file": "mp3/beat-B0903.mp3",
+      "actual_duration_s": 21.35,
+      "render_duration_s": 21.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0903.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B0904",
+      "act": "Measuring unfairness",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The bar is split in two colours. GE decomposition says total unfairness equals the within-group part plus the between-group part. In this worked example seventy-five percent sits inside the groups and twenty-five percent between them. A group audit sees only the red part. For example, an audit of a hiring model's scores finds most of the unevenness among applicants inside the same group. Evening out the group averages would leave most of it untouched.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 10 step 4. Source: Chapter 7, “The Generalized Entropy Index”; exercise 10. Badge: Computed.",
+      "routing": {
+        "about": "GE decomposition; in the book text; SPLIT OF GE(2): TWO GROUPS OF 200; Group A: n = 200, mean 0.65, GE 0.05",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The Generalized Entropy Index: Eight benefit bars with their mean, then the same bars with deviations and the index, then how alpha reacts to a change at the bottom or the top, then a bar split into within-group and between-group parts.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: GE decomposition; in the book text; SPLIT OF GE(2): TWO GROUPS OF 200; Group A: n = 200, mean 0.65, GE 0.05"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 4,
+        "anim_ms": 1208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "5bd7a9904044",
+      "audio_file": "mp3/beat-B0904.mp3",
+      "actual_duration_s": 23.46,
+      "render_duration_s": 23.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0904.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1001",
+      "act": "The toolkit",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three boxes in a row, training data, model training, predictions. Pre-processing changes the training data before training, for example by reweighting. Here the positive share becomes zero point four five in both groups. That equalizes base rates, not errors. For example, before an interview predictor learns from past hiring records, the team gives extra weight to past hires from a group that was rarely hired, so the records it learns from are more balanced.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 11 step 1. Source: Chapter 7, “The toolkit and what it cannot do”. Badge: Computed.",
+      "routing": {
+        "about": "Pre-processing; in the book text; Change the training data first, for example by reweighting.; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Pre-, in- and post-processing: Three boxes in a row: training data, model training, predictions. Each step highlights one box and shows a computed example: reweighted positive shares, a penalised loss at four weights, and a lowered cutoff for one group.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Pre-processing; in the book text; Change the training data first, for example by reweighting.; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 1,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4b66464e2ba3",
+      "audio_file": "mp3/beat-B1001.mp3",
+      "actual_duration_s": 22.66,
+      "render_duration_s": 22.666666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1001.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1002",
+      "act": "The toolkit",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the middle box. In-processing changes the training objective, for example by adding a fairness penalty. In this illustrative model, a bigger penalty shrinks the false-positive gap to zero, while the error rises from zero point two nine to zero point three six. For example, a résumé-scoring model is trained to be accurate, but loses points during training whenever it wrongly passes unqualified applicants from one group more often than from the other.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 11 step 2. Source: Chapter 7, “The toolkit and what it cannot do”. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; In-processing; loss = error + λ · (false-positive-rate gap); λ = 0",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Pre-, in- and post-processing: Three boxes in a row: training data, model training, predictions. Each step highlights one box and shows a computed example: reweighted positive shares, a penalised loss at four weights, and a lowered cutoff for one group.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; In-processing; loss = error + λ · (false-positive-rate gap); λ = 0"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 2,
+        "anim_ms": 1417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9e1dfb9b7fb5",
+      "audio_file": "mp3/beat-B1002.mp3",
+      "actual_duration_s": 23.7,
+      "render_duration_s": 23.708333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1002.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1003",
+      "act": "The toolkit",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The last box. Post-processing leaves the model frozen and changes predictions afterwards, for example with a threshold per group. A lower cutoff for Group B equalizes the share flagged, but its false-positive rate goes from zero point zero nine to zero point six. For example, a company keeps the résumé screener it bought exactly as it is, and only sets a different pass score for each group. That needs each applicant's group at the moment of screening.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 11 step 3. Source: Chapter 7, “The toolkit and what it cannot do”. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; Post-processing; SHARE OF EACH GROUP FLAGGED; one cutoff 0.50 for both",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Pre-, in- and post-processing: Three boxes in a row: training data, model training, predictions. Each step highlights one box and shows a computed example: reweighted positive shares, a penalised loss at four weights, and a lowered cutoff for one group.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1167 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; Post-processing; SHARE OF EACH GROUP FLAGGED; one cutoff 0.50 for both"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 3,
+        "anim_ms": 1167
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "054e27d96478",
+      "audio_file": "mp3/beat-B1003.mp3",
+      "actual_duration_s": 24.21,
+      "render_duration_s": 24.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1003.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1101",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two terms side by side. Demographic parity compares one thing, the share of each group that is flagged. Equalized odds compares two error rates, and those need the true outcomes. If a case mentions only who got a yes, it is demographic parity.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 12 step 1. Source: Chapter 7. Badge: Computed.",
+      "routing": {
+        "about": "PAIR 1 · LEFT; Demographic parity; The same share of each group is flagged.; A",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: PAIR 1 · LEFT; Demographic parity; The same share of each group is flagged.; A"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 1,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8a5cec17f63e",
+      "audio_file": "mp3/beat-B1101.mp3",
+      "actual_duration_s": 13.99,
+      "render_duration_s": 14.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1102",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Group fairness on the left, individual fairness on the right. Group fairness checks that rates match across whole groups. Individual fairness checks, pair by pair, that similar people get similar treatment. A model can pass the first and fail the second.",
+      "estimated_duration_s": 16.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 12 step 2. Source: Chapter 7. Badge: Computed.",
+      "routing": {
+        "about": "PAIR 2 · LEFT; Group fairness; Rates match across whole groups.; totals: 0.50 and 0.50",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: PAIR 2 · LEFT; Group fairness; Rates match across whole groups.; totals: 0.50 and 0.50"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 2,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "c9968b3d1265",
+      "audio_file": "mp3/beat-B1102.mp3",
+      "actual_duration_s": 13.93,
+      "render_duration_s": 13.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1103",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Awareness on the left, unawareness on the right. Awareness names how much group counts in the similarity metric d. Unawareness drops the column and hopes. In the simulated run, zip code still named the group eighty-five percent of the time.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 12 step 3. Source: Chapter 7. Badge: Computed.",
+      "routing": {
+        "about": "PAIR 3 · LEFT; Awareness; Name how much group counts in d.; finance 0.02 + group w 0.30",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: PAIR 3 · LEFT; Awareness; Name how much group counts in d.; finance 0.02 + group w 0.30"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 3,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b12b59942504",
+      "audio_file": "mp3/beat-B1103.mp3",
+      "actual_duration_s": 13.35,
+      "render_duration_s": 13.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1104",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Disparate treatment on the left, disparate impact on the right. Disparate treatment is the direct effect, where the attribute itself moves the prediction. Disparate impact is the indirect effect, where the attribute acts through a mediator. Look for the middle circle.",
+      "estimated_duration_s": 16.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 12 step 4. Source: Chapter 7. Badge: Computed.",
+      "routing": {
+        "about": "PAIR 4 · LEFT; Disparate treatment; The attribute itself moves the prediction.; A",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: PAIR 4 · LEFT; Disparate treatment; The attribute itself moves the prediction.; A"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 4,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f477d5dc18b0",
+      "audio_file": "mp3/beat-B1104.mp3",
+      "actual_duration_s": 14.01,
+      "render_duration_s": 14.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1201",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A vague request with the exact version under it, and a chart on the right. Make the model fair is not an instruction. Report each gap and name what is given up. Here the precision gap is zero, so calibration parity is met, and the other two are not.",
+      "estimated_duration_s": 19.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 13 step 1. Source: Chapter 7. Badge: Computed.",
+      "routing": {
+        "about": "“make the model fair”; WHAT THE INSTRUCTION DOES; yes-rate gap; 0.20",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction does.",
+        "motion_claim": "The deck's own animation for step 1 of 5 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: “make the model fair”; WHAT THE INSTRUCTION DOES; yes-rate gap; 0.20"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 1,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4bf7ac1e9640",
+      "audio_file": "mp3/beat-B1201.mp3",
+      "actual_duration_s": 13.59,
+      "render_duration_s": 13.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1202",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "It is accurate, so it is fair. No, accuracy is a different question. In the worked example the model is right for zero point six four of Group A and zero point eight four of Group B. The overall figure hides that gap. Report accuracy per group.",
+      "estimated_duration_s": 19.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 13 step 2. Source: Chapter 7. Badge: Computed.",
+      "routing": {
+        "about": "“it is accurate, so it is fair”; group A; 0.64; group B",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction does.",
+        "motion_claim": "The deck's own animation for step 2 of 5 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: “it is accurate, so it is fair”; group A; 0.64; group B"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8a6ae93c8577",
+      "audio_file": "mp3/beat-B1202.mp3",
+      "actual_duration_s": 13.7,
+      "render_duration_s": 13.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1203",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Just drop the race column. That is unawareness, and it fails when a proxy remains. The exact instruction is to test the remaining features. In the simulated run, zip code alone names the group right eighty-five percent of the time.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 13 step 3. Source: Chapter 7. Badge: Computed.",
+      "routing": {
+        "about": "“just drop the race column”; coin flip; 0.50; zip code alone",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction does.",
+        "motion_claim": "The deck's own animation for step 3 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: “just drop the race column”; coin flip; 0.50; zip code alone"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 3,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "e3ece4436bb0",
+      "audio_file": "mp3/beat-B1203.mp3",
+      "actual_duration_s": 13.16,
+      "render_duration_s": 13.166666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1204",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Treat similar people alike. That is individual fairness, and it is empty until you define the similarity metric d. In the made-up example the same treatment gap fails at a distance of zero point zero two and passes at zero point three two.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 13 step 4. Source: Chapter 7. Badge: Computed.",
+      "routing": {
+        "about": "“treat similar people alike”; D(M(x), M(y)); 0.14; d, finance only",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction does.",
+        "motion_claim": "The deck's own animation for step 4 of 5 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: “treat similar people alike”; D(M(x), M(y)); 0.14; d, finance only"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 4,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "dbeeb9ea3330",
+      "audio_file": "mp3/beat-B1204.mp3",
+      "actual_duration_s": 14.38,
+      "render_duration_s": 14.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1204.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1205",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "How unfair is it overall. Define the benefit, compute the GE Index, then split it with the GE decomposition. In the worked example, zero point zero four eight sits within groups and zero point zero one seven between them.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 13 step 5. Source: Chapter 7. Badge: Computed.",
+      "routing": {
+        "about": "“how unfair is it overall?”; total 0.065; within 0.048 (75%); between 0.017 (25%)",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart of what the exact instruction does.",
+        "motion_claim": "The deck's own animation for step 5 of 5 plays as the narration starts (1208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: “how unfair is it overall?”; total 0.065; within 0.048 (75%); between 0.017 (25%)"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 5,
+        "anim_ms": 1208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1598482dd538",
+      "audio_file": "mp3/beat-B1205.mp3",
+      "actual_duration_s": 14.01,
+      "render_duration_s": 14.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1205.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1301",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A checklist of six questions to answer before you defend a fairness metric. First, which of the three definitions are you reporting, demographic parity, equalized odds or calibration parity, and which two do you give up? You cannot keep all three.",
+      "estimated_duration_s": 16.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 14 step 1. Source: Chapter 7, “The defense as deliverable”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Do the base rates differ, and by how much?; Who bears the cost of each kind of error here?; Is a dropped column really gone, or do proxies remain?",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you defend a fairness metric: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 1 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Do the base rates differ, and by how much?; Who bears the cost of each kind of error here?; Is a dropped column really gone, or do proxies remain?"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "51ef3de8211d",
+      "audio_file": "mp3/beat-B1301.mp3",
+      "actual_duration_s": 13.72,
+      "render_duration_s": 13.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1302",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second, do the base rates differ, and by how much? The base rate is the share of each group that is truly positive. If the base rates are equal, the impossibility theorem does not bite. If they differ, a trade is forced.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 14 step 2. Source: Chapter 7, “The defense as deliverable”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you defend a fairness metric",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you defend a fairness metric: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 2 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Before you defend a fairness metric"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "896ac8debe96",
+      "audio_file": "mp3/beat-B1302.mp3",
+      "actual_duration_s": 12.25,
+      "render_duration_s": 12.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1303",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third, who bears the cost of each kind of error here? A false alarm and a missed case fall on different people. Answering this is how you find the values claim behind your metric.",
+      "estimated_duration_s": 13.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 14 step 3. Source: Chapter 7, “The defense as deliverable”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you defend a fairness metric",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you defend a fairness metric: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 3 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Before you defend a fairness metric"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3da62751da35",
+      "audio_file": "mp3/beat-B1303.mp3",
+      "actual_duration_s": 9.94,
+      "render_duration_s": 9.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1304",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fourth, what does the similarity metric d, or the causal graph, say about who counts as comparable? Individual fairness depends on that metric. Counterfactual fairness depends on the structural causal model. Both are choices someone has to sign.",
+      "estimated_duration_s": 15.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 14 step 4. Source: Chapter 7, “The defense as deliverable”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you defend a fairness metric",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you defend a fairness metric: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 4 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Before you defend a fairness metric"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8982965f88c4",
+      "audio_file": "mp3/beat-B1304.mp3",
+      "actual_duration_s": 13.59,
+      "render_duration_s": 13.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1304.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1305",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fifth, is a dropped column really gone, or do proxies remain? Unawareness removes only the direct use of an attribute. A proxy such as zip code can bring it back, so test the features that are left.",
+      "estimated_duration_s": 15.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 14 step 5. Source: Chapter 7, “The defense as deliverable”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you defend a fairness metric",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you defend a fairness metric: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 5 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: Before you defend a fairness metric"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 5,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b637ae1fd13c",
+      "audio_file": "mp3/beat-B1305.mp3",
+      "actual_duration_s": 11.65,
+      "render_duration_s": 11.666666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1305.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "B1306",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Sixth, who should have decided, and is the choice written down along with what would change it? That is the defended choice. Then say it exactly. Not make it fair, but equal error rates, calibration given up.",
+      "estimated_duration_s": 15.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/07 Fairness metrics.html slide 14 step 6. Source: Chapter 7, “The defense as deliverable”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you defend a fairness metric",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you defend a fairness metric: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 6 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 6 animates: Before you defend a fairness metric"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 6,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "359e6ca67c28",
+      "audio_file": "mp3/beat-B1306.mp3",
+      "actual_duration_s": 11.39,
+      "render_duration_s": 11.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1306.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "Recap",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Let's recap. Demographic parity, equalized odds and calibration parity are different tests. With unequal base rates, the impossibility theorem says they cannot all hold. Each metric carries a values claim, so the deliverable is a defended choice. Individual fairness depends entirely on the similarity metric d. Dropping a column is unawareness, and a proxy can bring the attribute back. The GE Index splits total unfairness into within-group and between-group parts.",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "This film's body beats; nothing new is asserted",
+      "routing": {
+        "about": "Six things the terms established",
+        "runner_up": "Summary drawing",
+        "reason": "Restates only what the body showed."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Six earned conclusions",
+        "motion_claim": "Six recap lines rise in narration order.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact page opens"
+          },
+          {
+            "at": 0.2,
+            "event": "six lines land in narration order"
+          }
+        ],
+        "template": "neu-bookend-recap",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.5,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Recap lines rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "82025960a25a",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 26.15,
+      "render_duration_s": 26.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "Your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Quiz me on fairness metrics. Give me one short case at a time, with made-up numbers for two groups. I must name the exact term, from demographic parity, equalized odds, calibration parity, base rate, proxy, individual fairness, direct effect and indirect effect, and say why its closest look-alike is wrong. Do not show the answer until I reply. After six cases, tell me which terms I mixed up.",
+      "estimated_duration_s": 27.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json your_turn (a practice prompt composed from this film's terms; not a run we made)",
+      "routing": {
+        "about": "Practice: name the exact term and defend it",
+        "runner_up": "Worksheet",
+        "reason": "The spoken prompt makes the viewer use the terms; two checks let them judge the result. Not a run we made."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Practice prompt",
+        "motion_claim": "The practice prompt types into a box marked for Claude, then two checks land.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens - 'Your turn.'"
+          },
+          {
+            "at": 0.12,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.85,
+            "event": "two check lines land"
+          }
+        ],
+        "template": "neu-bookend-your-turn",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The prompt types into an empty box; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "c4eae4dd63ec",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 20.39,
+      "render_duration_s": 20.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "Outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Key Terms: Fairness Metrics. At Nik Bear Brown.",
+      "estimated_duration_s": 3.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "OUTRO-LOCK.md",
+      "routing": {
+        "about": "Locked sign-off",
+        "runner_up": "None",
+        "reason": "Exact title and channel, slug-seeded mascot."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "template": "neu-bookend-outro",
+        "motion_claim": "Exact title and channel handle in the deck's look; held.",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Closing card: title and handle only, by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "8023e9134686",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 4.01,
+      "render_duration_s": 4.041666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:34:19"
+      }
+    }
+  ]
+}

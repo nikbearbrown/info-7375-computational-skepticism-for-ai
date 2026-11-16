@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-n3-number-source",
+    "title": "Every Number Has to Come From Somewhere",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that in an evidence system every printed number is either traceable to a record or it is a model judgment that must be labeled as one — an unlabeled invented number is the exact failure the system exists to prevent. Source: the-reallocation-engine/chapters/03-the-verified-data-contract.md + Ch11 uncertainty",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = traced numbers / records; CRIMSON = dangling thread / the unlabeled inference; GOLD = the stamp INFERRED / key insight; SLATE = the report page",
+    "note": "EXCLUSIONS: no full contract text, no repo structure, no linter code — one page, threads to sources",
+    "total_estimated_duration_seconds": 185,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 31,
+    "build": {
+      "at": "2026-07-19T02:52:07",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Every Number Has to Come From Somewhere",
+            "greeting": "Annyeong, Liam.",
+            "command": "A report says coverage improved to 82%.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "A report says coverage improved to 82%. Where did 82 come from?",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Every Number Has to Come From Somewhere",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Every Number Has to\nCome From Somewhere"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 5.1,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "The report has numbers on every line. Coverage improved to 82%. Match rate held at 67%. Candidate pool expanded by 14%. Each number sits in a cell, formatted, aligned, confident. One of them was counted from a database query. One was the output of a script that ran against a verified log. One was typed by the person who wrote the report because it sounded about right. Which one? You cannot tell from the formatting. The report page does not show you where the numbers came from. It only shows you the numbers. And one of them is wearing a costume.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B02_ReportPageWithDanglingThread",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 29.59,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:52:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: The report has numbers on every line. Coverage improved to 82%. Match rate held at 67%. Candidate pool expanded by 14%. Each number sits in a cell, formatted, a"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "In a system built on verified data, what is the minimum required for a number to appear in a report — and what happens when a number that doesn't meet that minimum shows up anyway?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What must a number prove before a verified-data system",
+              "trusts it?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What does a number need\nbefore it appears in a report —\nand what happens when one shows up without it?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 10.11,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:52:07"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "In an evidence system — a system built to make decisions from verified facts — every number is one of two things. A record: something counted, queried, or output by a script running against a verified data source. Or a model judgment: an estimate, a projection, an inference drawn from data but not directly read from it. These are not equivalent. A record is verifiable — trace the thread and you reach a row in a database, a log file, an API response with a timestamp. A model judgment is not directly verifiable in the same way — it is the model's conclusion, not the data's direct readout. Both can appear in a report. But they must be labeled differently, because the reader cannot distinguish them from formatting alone.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B04_RecordVsModelJudgment",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 37.76,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:52:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: In an evidence system — a system built to make decisions from verified facts — every number is one of two things. A record: something counted, queried, or outpu"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The failure is unlabeled inference. A number that is a model judgment — an estimate that someone produced without counting — printed in a report as if it were a record. Not flagged. Not labeled. Not noted as inferred. The reader treats it as a count. Decisions are made against it. When the number is later questioned, the thread is pulled and it dangles in the air — no source, no query, no script output, no timestamp. It was typed. It was not small. It was the 82% that justified expanding the candidate pool. The system exists to prevent exactly this. The unlabeled inference is not a small error in an otherwise honest report. It is the failure mode the system was built to detect.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B05_UnlabeledInferenceFailure",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 35.65,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:52:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The failure is unlabeled inference. A number that is a model judgment — an estimate that someone produced without counting — printed in a report as if it were a"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The mechanism is traceability: every number in a verified-data report must have a thread — a path to its source. Threads that reach records are teal. Threads that dangle must be stamped INFERRED before they are printed.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Every number must trace to a record. A dangling thread",
+              "invalidates."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A report page in slate — five numbers visible in a formatted table. From each number, a fine thread extends downward. Four threads reach anchors: a database icon, a script output box, a log file timestamp, an API response — all in teal. The fifth thread — attached to '82%' — extends downward and ends in open air, nothing beneath it. At the thread's dangling end, a gold rectangular stamp descends and presses the word INFERRED onto the number. The stamped number does not disappear — it remains but now carries its label",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 12.14,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:52:07"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The trace animation. Report page, five numbers. Thread from number one traces back — database query, row count, timestamp, verified. Teal. Thread from number two traces back — script output from a verified data run, timestamped. Teal. Thread from number three: an API call log, JSON response, the number reads directly from the 'total' field. Teal. Thread from number four: a verified upload log showing a file count. Teal. Thread from 82%: the thread extends downward, reaches nothing. No query. No script. No log. No API call. The thread ends in open air. The stamp comes down: INFERRED — say so. The number does not become wrong. It becomes labeled. The report can print it — but now the reader knows it is a model judgment, not a count. The distinction is now visible.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B07_ThreadTraceAnimation",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 41.09,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:52:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: The trace animation. Report page, five numbers. Thread from number one traces back — database query, row count, timestamp, verified. Teal. Thread from number tw"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The Ch11 verb audit applies the same check to language. Numbers are one way unlabeled inference appears in a report. Verbs are another. 'Coverage improved' — is that a counted change from a query, or a subjective assessment? 'Candidate pool expanded' — by count, or by feel? 'Match rate held steady' — computed from a log, or estimated from experience? The verb audit asks: can this sentence be traced to a record, or is it a judgment? If a judgment, it needs a judgment verb: 'we estimate,' 'the model projects,' 'based on qualitative review.' The same traceability requirement applies to language as to numbers. Both leave threads. Both threads must reach something.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B08_VerbAuditTraceability",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 34.24,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:52:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The Ch11 verb audit applies the same check to language. Numbers are one way unlabeled inference appears in a report. Verbs are another. 'Coverage improved' — is"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The CAP250 verified-data attestation implication: every number in your submitted report must be traceable. Before you submit, pull the thread on each one. Where did it come from? Name the source — the query, the script, the log, the API response. If you cannot name it, the number is an inference and must be labeled as one. This is not a style preference. It is the structural guarantee the verified-data contract exists to provide. An unlabeled inference in a verified-data report is not an oversight — it is the failure mode the attestation is designed to prevent.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B09_CAP250AttestationImplication",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 30.19,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:52:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: The CAP250 verified-data attestation implication: every number in your submitted report must be traceable. Before you submit, pull the thread on each one. Where"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The PR25 record-versus-inference boundary for the Reallocation Engine: when you report the output of a scoring run, the scores must come from the engine's actual output log, not from your recollection of how it ran. The log is the record. The log is the thread. A report that says 'the engine scored this candidate 84' must be traceable to a line in the engine's output file at a timestamp. A report that paraphrases what the engine 'generally did' is a judgment. Label it as one.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B10_PR25RecordBoundary",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 25.45,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:52:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The PR25 record-versus-inference boundary for the Reallocation Engine: when you report the output of a scoring run, the scores must come from the engine's actua"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The epistemic implication: a report that mixes labeled records and unlabeled inferences is not a smaller version of an honest report. It is a different kind of object — one that presents a uniform surface of apparent fact while containing pockets of inference the reader cannot identify. The damage is not in the individual numbers being wrong. The damage is in the reader's inability to know which numbers to trust and which to question. An unlabeled inference does not just misrepresent one number. It poisons the reader's relationship with every number on the page.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B11_UniformSurfacePoison",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 29.82,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:52:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The epistemic implication: a report that mixes labeled records and unlabeled inferences is not a smaller version of an honest report. It is a different kind of "
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 13.0,
+      "narration_text": "A team submits a progress report for their Reallocation Engine build. The report has six numbers. A reviewer pulls the thread on each one. Five threads reach verified sources: the engine's output log from two specific runs, a verified candidate database query, a script that counted files in a specified directory, a timestamped API response from the job listing source. The sixth number — 'the engine's precision improved to 78% on the test set' — the reviewer pulls the thread. There is no test run log for that date. There is no script output file. There is no confusion matrix in the repo. The reviewer asks where 78% came from. The team member who wrote it says: 'I estimated it based on how the results felt.' The reviewer writes: this is an inference. It must be labeled as one or removed. The team runs the actual evaluation script, gets 71%, logs the output, and resubmits with the sourced number and the source file path. The estimate was not malicious. It was just wearing the costume of a count. The thread pulled it into the light.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "trace"
+      },
+      "scene_class": "B12_TeamReportThreadPullExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 55.23,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:52:07",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A team submits a progress report for their Reallocation Engine build. The report has six numbers. A reviewer pulls the thread on each one. Five threads reach ve"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "In a verified-data system, every number is either traceable to a record — a count, a script output, a log entry, an API response — or it is a model judgment that must be labeled as one before it prints. Pull the thread on each number before you submit. Threads that reach records are verified. Threads that dangle must be stamped INFERRED. An unlabeled inference in a verified-data report is not a small error — it is the failure the system exists to prevent.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Pull every thread to a record",
+              "or stamp the number unverified."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Thread reaches a record: verified.\nThread dangles: stamp INFERRED.",
+        "sub": "An unlabeled inference poisons every number on the page.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 23.02,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:52:07"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Every Number Has to Come From Somewhere",
+            "artifactHeading": "Key findings — Every Number Has to Come From Somewhere",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A team submits a progress report for their Reallocation Engine build."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:52:07"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — EVERY NUMBER HAS TO COME FROM SOMEWHERE",
+            "segment": "Every Number Has to Come From Somewhere",
+            "greeting": "Konnichiwa, Liam.",
+            "command": "Ask Claude: Every Number Has to Come From Somewhere",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:52:07"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Every Number Has to Come From Somewhere",
+            "slug": "claude-liam-cs-n3-number-source",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

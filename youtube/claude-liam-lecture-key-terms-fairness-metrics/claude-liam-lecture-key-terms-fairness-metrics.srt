@@ -1,0 +1,1771 @@
+1
+00:00:00,000 --> 00:00:01,297
+Computational Skepticism, Exam Prep.
+
+2
+00:00:01,347 --> 00:00:02,644
+Key Terms: Fairness Metrics.
+
+3
+00:00:02,694 --> 00:00:07,022
+Thirty-one terms for saying what fair
+means for a yes-or-no model, and for
+
+4
+00:00:07,072 --> 00:00:09,379
+showing why arithmetic alone cannot settle
+it.
+
+5
+00:00:09,429 --> 00:00:14,430
+With them you can name which fairness you
+are claiming, and which you gave up.
+
+6
+00:00:15,580 --> 00:00:15,798
+Hallo.
+
+7
+00:00:15,848 --> 00:00:17,406
+This is Liam, in for Bear.
+
+8
+00:00:17,456 --> 00:00:20,890
+A newcomer thinks that which fairness
+metric to use is a technical question,
+
+9
+00:00:20,940 --> 00:00:21,962
+something the math settles.
+
+10
+00:00:22,012 --> 00:00:22,766
+It does not.
+
+11
+00:00:22,816 --> 00:00:26,250
+When groups differ in how often the
+outcome is truly positive, the reasonable
+
+12
+00:00:26,300 --> 00:00:29,734
+definitions cannot all hold, so picking
+one is a choice you must defend.
+
+13
+00:00:29,784 --> 00:00:32,950
+This film goes through the terms for that
+choice, each one shown.
+
+14
+00:00:33,300 --> 00:00:36,272
+Six labels sit in the corners of the
+pictures that follow.
+
+15
+00:00:36,322 --> 00:00:39,569
+In the book text: the course text uses and
+explains the term.
+
+16
+00:00:39,619 --> 00:00:44,239
+In the glossary: the term is on the course
+term list, but the text does not explain
+
+17
+00:00:44,289 --> 00:00:44,513
+it.
+
+18
+00:00:44,563 --> 00:00:47,535
+Computed: the numbers are worked out on
+screen from stated inputs.
+
+19
+00:00:47,585 --> 00:00:51,931
+Simulation: a made-up run with a fixed
+seed, so it comes out the same every time.
+
+20
+00:00:51,981 --> 00:00:54,678
+Illustrative data: numbers chosen to show
+the idea, not measured.
+
+21
+00:00:54,728 --> 00:00:57,700
+Conceptual: a drawing of the idea, with no
+data behind it.
+
+22
+00:00:58,050 --> 00:01:01,423
+This is a map of thirty-one terms in four
+groups.
+
+23
+00:01:01,473 --> 00:01:05,873
+The first group, Definitions and the
+theorem, holds base rate, the error rates,
+
+24
+00:01:05,923 --> 00:01:09,296
+and three yardsticks of fairness,
+demographic parity, equalized odds and
+
+25
+00:01:09,346 --> 00:01:09,980
+calibration parity.
+
+26
+00:01:10,030 --> 00:01:14,430
+The impossibility theorem says those three
+cannot all hold when base rates differ.
+
+27
+00:01:14,780 --> 00:01:18,530
+The second group, Choosing and defending,
+is about what the choice means.
+
+28
+00:01:18,580 --> 00:01:20,113
+COMPAS is the public case.
+
+29
+00:01:20,163 --> 00:01:22,647
+A values claim is what each metric
+carries.
+
+30
+00:01:22,697 --> 00:01:25,180
+A defended choice is what you hand in.
+
+31
+00:01:25,230 --> 00:01:28,663
+Pre-processing, in-processing and post-
+processing are the tools that carry it
+
+32
+00:01:28,713 --> 00:01:28,980
+out.
+
+33
+00:01:29,330 --> 00:01:33,455
+The third group, Beyond groups, moves from
+whole groups to single people.
+
+34
+00:01:33,505 --> 00:01:37,283
+It holds group fairness and individual
+fairness, the Lipschitz condition, the
+
+35
+00:01:37,333 --> 00:01:39,718
+similarity metric d, awareness,
+unawareness and proxy.
+
+36
+00:01:39,768 --> 00:01:42,154
+The choice does not go away here.
+
+37
+00:01:42,204 --> 00:01:42,850
+It moves.
+
+38
+00:01:43,200 --> 00:01:48,649
+The fourth group, Causal fairness and the
+GE Index, is about paths and one summary
+
+39
+00:01:48,699 --> 00:01:49,015
+number.
+
+40
+00:01:49,065 --> 00:01:53,048
+It holds the structural causal model,
+direct effect, indirect effect, spurious
+
+41
+00:01:53,098 --> 00:01:57,080
+effect and counterfactual fairness, then
+benefit, the GE Index, short for
+
+42
+00:01:57,130 --> 00:01:59,280
+generalized entropy index, alpha and
+decomposition.
+
+43
+00:01:59,630 --> 00:02:01,436
+Two tables of two hundred people each.
+
+44
+00:02:01,486 --> 00:02:04,087
+The top row, outlined in red, is everyone
+truly positive.
+
+45
+00:02:04,137 --> 00:02:08,594
+Their share is the base rate, zero point
+six in Group A and zero point three in
+
+46
+00:02:08,644 --> 00:02:10,185
+Group B in this worked example.
+
+47
+00:02:10,235 --> 00:02:13,631
+For example, a résumé screener sees two
+applicant pools for a data analyst
+
+48
+00:02:13,681 --> 00:02:13,897
+opening.
+
+49
+00:02:13,947 --> 00:02:18,669
+The share in each pool who would truly do
+well in the job is that pool's base rate,
+
+50
+00:02:18,719 --> 00:02:21,320
+and the two shares can differ before any
+model runs.
+
+51
+00:02:21,670 --> 00:02:23,108
+Stay inside that top row.
+
+52
+00:02:23,158 --> 00:02:27,272
+The true-positive rate is the share of the
+truly positive that the model catches.
+
+53
+00:02:27,322 --> 00:02:31,140
+In Group A, seventy-two caught and forty-
+eight missed gives zero point six.
+
+54
+00:02:31,190 --> 00:02:33,520
+In Group B it is zero point seven.
+
+55
+00:02:33,570 --> 00:02:37,090
+For example, take the applicants who
+really are qualified for a role.
+
+56
+00:02:37,140 --> 00:02:40,660
+The true-positive rate is the share of
+them an applicant-tracking system passes
+
+57
+00:02:40,710 --> 00:02:41,850
+on to the recruiter.
+
+58
+00:02:41,900 --> 00:02:44,230
+Every qualified person it screens out
+lowers it.
+
+59
+00:02:44,580 --> 00:02:47,553
+Now the bottom row, people who are truly
+not positive.
+
+60
+00:02:47,603 --> 00:02:51,180
+The false-positive rate is the share of
+them the model flags anyway.
+
+61
+00:02:51,230 --> 00:02:54,807
+In Group A, twenty-four false alarms
+against fifty-six correct calls gives zero
+
+62
+00:02:54,857 --> 00:02:55,412
+point three.
+
+63
+00:02:55,462 --> 00:02:57,830
+In Group B it is zero point one.
+
+64
+00:02:57,880 --> 00:03:01,760
+For example, picture an agent that tells a
+job seeker which listings fit.
+
+65
+00:03:01,810 --> 00:03:06,294
+Among the listings that truly do not fit,
+the false-positive rate is the share it
+
+66
+00:03:06,344 --> 00:03:08,410
+recommends anyway, each one a wasted
+application.
+
+67
+00:03:08,760 --> 00:03:11,310
+Now the left column, everyone the model
+flagged.
+
+68
+00:03:11,360 --> 00:03:14,559
+Predictive value, or PPV, positive
+predictive value, also called precision,
+
+69
+00:03:14,609 --> 00:03:19,758
+is the share of the flagged who are truly
+positive, zero point seven five in both
+
+70
+00:03:19,808 --> 00:03:20,083
+groups.
+
+71
+00:03:20,133 --> 00:03:22,357
+True-positive rate starts from the truly
+positive.
+
+72
+00:03:22,407 --> 00:03:24,307
+Predictive value starts from the flagged.
+
+73
+00:03:24,357 --> 00:03:28,531
+For example, a recruiter looks only at the
+shortlist an AI screener produced.
+
+74
+00:03:28,581 --> 00:03:32,431
+Predictive value is the share of that
+shortlist who are truly qualified.
+
+75
+00:03:32,481 --> 00:03:35,680
+It says nothing about qualified people
+left off the list.
+
+76
+00:03:36,030 --> 00:03:37,716
+Bars for the same two groups.
+
+77
+00:03:37,766 --> 00:03:40,609
+Demographic parity, also called
+statistical parity, asks that the model
+
+78
+00:03:40,659 --> 00:03:43,212
+says yes at the same rate in every group.
+
+79
+00:03:43,262 --> 00:03:47,263
+The yes rates here are zero point four
+eight and zero point two eight.
+
+80
+00:03:47,313 --> 00:03:47,841
+Not met.
+
+81
+00:03:47,891 --> 00:03:51,313
+For example, an interview-prediction model
+meets demographic parity if it invites the
+
+82
+00:03:51,363 --> 00:03:55,652
+same share of older and younger applicants
+to interview, whether or not the two pools
+
+83
+00:03:55,702 --> 00:03:56,520
+are equally qualified.
+
+84
+00:03:56,870 --> 00:04:01,409
+Equalized odds asks for the same error
+rates in every group, both TPR, true-
+
+85
+00:04:01,459 --> 00:04:03,376
+positive rate, and FPR, false-positive
+rate.
+
+86
+00:04:03,426 --> 00:04:08,293
+Here they are zero point six against zero
+point seven, and zero point three against
+
+87
+00:04:08,343 --> 00:04:09,277
+zero point one.
+
+88
+00:04:09,327 --> 00:04:11,899
+Neither matches, so equalized odds is not
+met.
+
+89
+00:04:11,949 --> 00:04:15,505
+For example, a résumé screener meets
+equalized odds only if qualified
+
+90
+00:04:15,555 --> 00:04:19,766
+applicants with and without a disability
+pass at the same rate, and unqualified
+
+91
+00:04:19,816 --> 00:04:23,700
+applicants from both groups are wrongly
+passed at the same rate too.
+
+92
+00:04:24,050 --> 00:04:27,617
+Calibration parity, also called predictive
+parity, asks that a stated probability
+
+93
+00:04:27,667 --> 00:04:30,248
+means the same observed rate in every
+group.
+
+94
+00:04:30,298 --> 00:04:35,838
+For a yes or no score that is equal PPV,
+zero point seven five in both bars.
+
+95
+00:04:35,888 --> 00:04:38,798
+One model, calibration parity met, the
+other two broken.
+
+96
+00:04:38,848 --> 00:04:43,402
+For example, a model scores how likely
+each applicant is to get an offer.
+
+97
+00:04:43,452 --> 00:04:47,348
+Calibration parity holds if, among
+applicants given the same score, the same
+
+98
+00:04:47,398 --> 00:04:49,650
+share actually get offers in every group.
+
+99
+00:04:50,000 --> 00:04:51,852
+A short proof in two bars.
+
+100
+00:04:51,902 --> 00:04:55,656
+The impossibility theorem says that with
+unequal base rates, calibration parity and
+
+101
+00:04:55,706 --> 00:04:57,241
+equalized odds cannot both hold.
+
+102
+00:04:57,291 --> 00:05:01,679
+Equal precision forces the ratio of true-
+positive rate to false-positive rate to be
+
+103
+00:05:01,729 --> 00:05:04,533
+two for Group A and seven for Group B.
+
+104
+00:05:04,583 --> 00:05:06,118
+Equalized odds needs one ratio.
+
+105
+00:05:06,168 --> 00:05:10,873
+For example, if more of one applicant pool
+is truly qualified, a hiring screen cannot
+
+106
+00:05:10,923 --> 00:05:15,945
+keep its yes meaning the same in both
+pools and also make its mistakes at the
+
+107
+00:05:15,995 --> 00:05:16,579
+same rates.
+
+108
+00:05:16,629 --> 00:05:17,530
+One must give.
+
+109
+00:05:17,880 --> 00:05:22,691
+The curve is the factor between those two
+ratios as the base rate of Group B
+
+110
+00:05:22,741 --> 00:05:22,995
+changes.
+
+111
+00:05:23,045 --> 00:05:27,248
+It equals one only at the black dot, where
+the base rates are equal.
+
+112
+00:05:27,298 --> 00:05:30,286
+The only other escape from the
+impossibility theorem is perfect
+
+113
+00:05:30,336 --> 00:05:30,590
+prediction.
+
+114
+00:05:30,940 --> 00:05:33,820
+Two score curves from an illustrative
+model, one per group.
+
+115
+00:05:33,870 --> 00:05:38,509
+The threshold is the score cutoff above
+which the model says yes, the red line at
+
+116
+00:05:38,559 --> 00:05:39,388
+zero point five.
+
+117
+00:05:39,438 --> 00:05:43,197
+One threshold for both, and the false-
+positive rates still differ, zero point
+
+118
+00:05:43,247 --> 00:05:44,955
+five against zero point zero nine.
+
+119
+00:05:45,005 --> 00:05:48,472
+For example, an applicant-tracking system
+gives each résumé a score, and only
+
+120
+00:05:48,522 --> 00:05:50,523
+résumés above the cutoff reach a
+recruiter.
+
+121
+00:05:50,573 --> 00:05:53,160
+Move that cutoff and you change who gets
+seen.
+
+122
+00:05:53,510 --> 00:05:57,529
+The threshold for Group B now drops to
+zero point two two.
+
+123
+00:05:57,579 --> 00:06:01,597
+False-positive rates match at zero point
+five, but precision splits, zero point
+
+124
+00:06:01,647 --> 00:06:03,970
+seven one against zero point four two.
+
+125
+00:06:04,020 --> 00:06:06,344
+A threshold picks which gap you keep.
+
+126
+00:06:06,394 --> 00:06:07,700
+It never removes both.
+
+127
+00:06:08,050 --> 00:06:10,105
+Two bars from a real audit.
+
+128
+00:06:10,155 --> 00:06:13,614
+COMPAS is a tool that scores the risk of
+re-arrest.
+
+129
+00:06:13,664 --> 00:06:16,771
+ProPublica reported that among people
+never re-arrested, about forty-five
+
+130
+00:06:16,821 --> 00:06:20,981
+percent of Black defendants were labeled
+high risk, against about twenty-three and
+
+131
+00:06:21,031 --> 00:06:23,087
+a half percent of white defendants.
+
+132
+00:06:23,137 --> 00:06:24,490
+That violates equalized odds.
+
+133
+00:06:24,840 --> 00:06:27,307
+Ten pairs of bars, one per risk score.
+
+134
+00:06:27,357 --> 00:06:31,712
+Northpointe, the maker of COMPAS, answered
+that each score meant about the same re-
+
+135
+00:06:31,762 --> 00:06:33,285
+arrest rate in both groups.
+
+136
+00:06:33,335 --> 00:06:34,543
+That is calibration parity.
+
+137
+00:06:34,593 --> 00:06:35,802
+The bars are illustrative.
+
+138
+00:06:35,852 --> 00:06:37,060
+Both claims are true.
+
+139
+00:06:37,410 --> 00:06:38,731
+Three boxes, one per metric.
+
+140
+00:06:38,781 --> 00:06:42,844
+A values claim is the belief about who
+should bear the errors, carried by the
+
+141
+00:06:42,894 --> 00:06:43,667
+choice of metric.
+
+142
+00:06:43,717 --> 00:06:47,505
+Equalized odds says your group should not
+change your risk of being wrongly flagged.
+
+143
+00:06:47,555 --> 00:06:49,699
+Calibration parity protects the meaning of
+the score.
+
+144
+00:06:49,749 --> 00:06:51,070
+None is the obvious one.
+
+145
+00:06:51,120 --> 00:06:54,634
+For example, a company that picks
+equalized odds for its résumé screen is
+
+146
+00:06:54,684 --> 00:06:57,651
+claiming that being wrongly rejected
+should not depend on your group.
+
+147
+00:06:57,701 --> 00:06:59,570
+That is a value, not a calculation.
+
+148
+00:06:59,920 --> 00:07:00,729
+Six numbered steps.
+
+149
+00:07:00,779 --> 00:07:04,450
+A defended choice is the deliverable, a
+chosen metric with written reasons, ending
+
+150
+00:07:04,500 --> 00:07:06,168
+with what would change your mind.
+
+151
+00:07:06,218 --> 00:07:07,885
+A number alone is not enough.
+
+152
+00:07:07,935 --> 00:07:11,606
+For COMPAS the court system should have
+decided, and said so in writing.
+
+153
+00:07:11,656 --> 00:07:15,328
+For example, a team running an interview-
+prediction model writes down which metric
+
+154
+00:07:15,378 --> 00:07:19,621
+it chose, why, who pays when it misses a
+qualified applicant, and what result would
+
+155
+00:07:19,671 --> 00:07:20,480
+make it switch.
+
+156
+00:07:20,830 --> 00:07:23,450
+Eight squares, one per applicant, and
+filled means approved.
+
+157
+00:07:23,500 --> 00:07:26,714
+Group fairness judges a model by comparing
+rates across whole groups.
+
+158
+00:07:26,764 --> 00:07:31,462
+In this made-up example each group has two
+of four approved, zero point five each, so
+
+159
+00:07:31,512 --> 00:07:32,649
+the group check passes.
+
+160
+00:07:32,699 --> 00:07:36,803
+For example, an employer checks that its
+screening agent passes the same share of
+
+161
+00:07:36,853 --> 00:07:39,770
+each group to the interview stage, and
+looks no further.
+
+162
+00:07:40,120 --> 00:07:42,806
+Two squares are now outlined, applicants x
+and y.
+
+163
+00:07:42,856 --> 00:07:47,063
+Same income, history and debt ratio, yet x
+is approved and y is denied.
+
+164
+00:07:47,113 --> 00:07:49,799
+Individual fairness says similar people
+should be treated similarly.
+
+165
+00:07:49,849 --> 00:07:52,839
+The totals still balance, so a group audit
+sees nothing.
+
+166
+00:07:52,889 --> 00:07:57,096
+For example, two applicants with the same
+degree, the same experience and the same
+
+167
+00:07:57,146 --> 00:08:01,352
+skills should get similar fit scores from
+a résumé screener, whatever happens to the
+
+168
+00:08:01,402 --> 00:08:01,960
+group totals.
+
+169
+00:08:02,310 --> 00:08:04,244
+The Lipschitz condition makes that a test.
+
+170
+00:08:04,294 --> 00:08:07,928
+The difference in treatment may not exceed
+the distance between the two people.
+
+171
+00:08:07,978 --> 00:08:11,895
+Here the treatment gap is zero point one
+four and the distance, on financial
+
+172
+00:08:11,945 --> 00:08:13,878
+variables only, is zero point zero two.
+
+173
+00:08:13,928 --> 00:08:15,295
+So the condition is violated.
+
+174
+00:08:15,345 --> 00:08:18,696
+For example, if two résumés are nearly
+identical, the condition lets their
+
+175
+00:08:18,746 --> 00:08:20,396
+interview scores differ only a little.
+
+176
+00:08:20,446 --> 00:08:24,080
+A large gap in scores for a tiny gap in
+résumés breaks it.
+
+177
+00:08:24,430 --> 00:08:28,943
+The similarity metric d measures how alike
+two people are, and someone has to choose
+
+178
+00:08:28,993 --> 00:08:29,247
+it.
+
+179
+00:08:29,297 --> 00:08:33,506
+Count zip-code distance and it grows to
+zero point three two, so the same
+
+180
+00:08:33,556 --> 00:08:34,723
+treatment gap now passes.
+
+181
+00:08:34,773 --> 00:08:35,940
+Same equation, opposite guarantee.
+
+182
+00:08:35,990 --> 00:08:37,765
+Choosing it is a values choice.
+
+183
+00:08:37,815 --> 00:08:41,719
+For example, a team comparing applicants
+must decide whether a gap in employment
+
+184
+00:08:41,769 --> 00:08:43,544
+history makes two people less alike.
+
+185
+00:08:43,594 --> 00:08:46,282
+Count it, and the screener may treat them
+differently.
+
+186
+00:08:46,332 --> 00:08:49,020
+Leave it out, and they must be treated
+alike.
+
+187
+00:08:49,370 --> 00:08:54,393
+A table of what the model is given, with
+the race column boxed in red and marked
+
+188
+00:08:54,443 --> 00:08:54,691
+removed.
+
+189
+00:08:54,741 --> 00:08:57,675
+Unawareness, or FTU, fairness through
+unawareness, means dropping the sensitive
+
+190
+00:08:57,725 --> 00:08:59,465
+attribute and calling the model fair.
+
+191
+00:08:59,515 --> 00:09:01,554
+Notice the zip column is still there.
+
+192
+00:09:01,604 --> 00:09:06,029
+For example, a vendor strips the name and
+gender fields from every résumé before its
+
+193
+00:09:06,079 --> 00:09:09,610
+screener scores them, and calls the
+screener fair for that reason alone.
+
+194
+00:09:09,960 --> 00:09:13,574
+Two bars show who is in each zip code, in
+a simulated run.
+
+195
+00:09:13,624 --> 00:09:16,392
+A proxy is a feature that reveals group
+membership indirectly.
+
+196
+00:09:16,442 --> 00:09:20,338
+Guessing the group from zip code alone is
+right eighty-five percent of the time.
+
+197
+00:09:20,388 --> 00:09:21,748
+Only direct use was blocked.
+
+198
+00:09:21,798 --> 00:09:25,975
+For example, a résumé screener that never
+sees an applicant's age can still work it
+
+199
+00:09:26,025 --> 00:09:28,230
+out from the year their degree was earned.
+
+200
+00:09:28,580 --> 00:09:32,117
+Awareness, or FTA, fairness through
+awareness, means stating openly how much
+
+201
+00:09:32,167 --> 00:09:34,074
+group membership counts when judging
+similarity.
+
+202
+00:09:34,124 --> 00:09:39,291
+With a group weight of zero point three,
+the distance goes from zero point zero two
+
+203
+00:09:39,341 --> 00:09:40,922
+to zero point three two.
+
+204
+00:09:40,972 --> 00:09:42,879
+Uncomfortable, because it names the thing.
+
+205
+00:09:42,929 --> 00:09:47,118
+For example, the team behind a résumé
+screener writes into its rule for
+
+206
+00:09:47,168 --> 00:09:51,357
+comparing applicants exactly how much
+being in a different group adds, so anyone
+
+207
+00:09:51,407 --> 00:09:53,640
+can see that weight and challenge it.
+
+208
+00:09:53,990 --> 00:09:55,528
+Four circles joined by arrows.
+
+209
+00:09:55,578 --> 00:09:59,656
+A structural causal model is exactly this,
+variables with arrows for which causes
+
+210
+00:09:59,706 --> 00:09:59,973
+which.
+
+211
+00:10:00,023 --> 00:10:03,466
+The red arrow runs straight from the
+attribute to the prediction.
+
+212
+00:10:03,516 --> 00:10:07,276
+That is the direct effect, also called
+disparate treatment, strength zero point
+
+213
+00:10:07,326 --> 00:10:08,864
+three in this made-up example.
+
+214
+00:10:08,914 --> 00:10:12,992
+For example, a structural causal model of
+an interview predictor draws arrows from
+
+215
+00:10:13,042 --> 00:10:15,214
+age, experience and skills to the score.
+
+216
+00:10:15,264 --> 00:10:19,342
+If the score drops just because the
+applicant is older, nothing else changed,
+
+217
+00:10:19,392 --> 00:10:20,930
+that is a direct effect.
+
+218
+00:10:21,280 --> 00:10:22,904
+Now the upper path is red.
+
+219
+00:10:22,954 --> 00:10:26,532
+The attribute moves a mediator, such as
+education, and the mediator moves the
+
+220
+00:10:26,582 --> 00:10:26,811
+prediction.
+
+221
+00:10:26,861 --> 00:10:29,323
+That is the indirect effect, also called
+disparate impact.
+
+222
+00:10:29,373 --> 00:10:33,230
+Zero point four times zero point five, so
+this path adds zero point two.
+
+223
+00:10:33,280 --> 00:10:37,416
+For example, if one group has had less
+chance to finish a degree, and an
+
+224
+00:10:37,466 --> 00:10:40,765
+interview model rewards degrees, the group
+moves the score through the degree.
+
+225
+00:10:40,815 --> 00:10:42,160
+That is an indirect effect.
+
+226
+00:10:42,510 --> 00:10:45,836
+On the lower path the first arrow points
+into the attribute.
+
+227
+00:10:45,886 --> 00:10:48,599
+A confounder drives both the attribute and
+the prediction.
+
+228
+00:10:48,649 --> 00:10:52,589
+That is the spurious effect, a link with
+no causal path between them.
+
+229
+00:10:52,639 --> 00:10:56,579
+Data alone shows only the total of all
+three paths, zero point eight.
+
+230
+00:10:56,629 --> 00:10:59,035
+For example, take first-generation
+graduates as the group.
+
+231
+00:10:59,085 --> 00:11:03,332
+Family income shapes who is a first-
+generation graduate, and it also pays for
+
+232
+00:11:03,382 --> 00:11:05,481
+the unpaid internships a résumé screener
+rewards.
+
+233
+00:11:05,531 --> 00:11:08,550
+Group and score move together with no
+arrow between them.
+
+234
+00:11:08,900 --> 00:11:10,434
+Three boxes follow one person.
+
+235
+00:11:10,484 --> 00:11:14,552
+Counterfactual fairness asks whether this
+same person would get the same decision in
+
+236
+00:11:14,602 --> 00:11:15,503
+the other group.
+
+237
+00:11:15,553 --> 00:11:18,987
+Abduction infers their background, action
+flips the attribute, prediction runs the
+
+238
+00:11:19,037 --> 00:11:19,621
+model again.
+
+239
+00:11:19,671 --> 00:11:22,789
+The score moves by zero point two, so it
+fails.
+
+240
+00:11:22,839 --> 00:11:25,957
+For example, take one applicant an
+interview model turned down.
+
+241
+00:11:26,007 --> 00:11:29,758
+Keep her background, flip only her group,
+and run the model again.
+
+242
+00:11:29,808 --> 00:11:33,560
+If she would now be invited, the model is
+not counterfactually fair.
+
+243
+00:11:33,910 --> 00:11:37,202
+Eight bars, one per person, with a dashed
+line at the mean.
+
+244
+00:11:37,252 --> 00:11:40,823
+Benefit is the number per person whose
+spread gets measured, a score, a
+
+245
+00:11:40,873 --> 00:11:42,215
+probability or an error flag.
+
+246
+00:11:42,265 --> 00:11:45,279
+In these made-up scores the mean is zero
+point five five.
+
+247
+00:11:45,329 --> 00:11:48,343
+For example, in an interview-prediction
+model the benefit could be each
+
+248
+00:11:48,393 --> 00:11:51,963
+applicant's predicted chance of an
+interview, or a flag for whether the model
+
+249
+00:11:52,013 --> 00:11:53,077
+got that applicant wrong.
+
+250
+00:11:53,127 --> 00:11:54,470
+Someone has to pick which.
+
+251
+00:11:54,820 --> 00:11:58,587
+Red lines now mark how far each bar is
+from the mean.
+
+252
+00:11:58,637 --> 00:12:03,040
+The GE Index, generalized entropy index,
+is one number for how unequally benefit is
+
+253
+00:12:03,090 --> 00:12:05,267
+spread across people, as with income
+inequality.
+
+254
+00:12:05,317 --> 00:12:07,811
+Here it is zero point zero six two.
+
+255
+00:12:07,861 --> 00:12:09,083
+More spread, larger index.
+
+256
+00:12:09,133 --> 00:12:13,218
+For example, a job-matching agent gives
+some users many strong listings and others
+
+257
+00:12:13,268 --> 00:12:13,855
+almost none.
+
+258
+00:12:13,905 --> 00:12:18,308
+The GE Index puts one number on how
+unevenly those match scores are spread
+
+259
+00:12:18,358 --> 00:12:19,580
+across all its users.
+
+260
+00:12:19,930 --> 00:12:23,758
+Alpha is the dial in the GE Index that
+sets whose unfairness counts more.
+
+261
+00:12:23,808 --> 00:12:26,250
+Low alpha weights the bottom, high alpha
+the top.
+
+262
+00:12:26,300 --> 00:12:30,682
+When the lowest benefit falls, the index
+rises far more at alpha zero than at alpha
+
+263
+00:12:30,732 --> 00:12:30,959
+two.
+
+264
+00:12:31,009 --> 00:12:34,560
+For example, an auditor of a résumé
+screener who worries most about the
+
+265
+00:12:34,610 --> 00:12:36,498
+applicants scored lowest picks a low
+alpha.
+
+266
+00:12:36,548 --> 00:12:40,653
+One who worries about a few applicants
+scored far above the rest picks a high
+
+267
+00:12:40,703 --> 00:12:40,930
+alpha.
+
+268
+00:12:41,280 --> 00:12:43,392
+The bar is split in two colours.
+
+269
+00:12:43,442 --> 00:12:46,788
+GE decomposition says total unfairness
+equals the within-group part plus the
+
+270
+00:12:46,838 --> 00:12:47,406
+between-group part.
+
+271
+00:12:47,456 --> 00:12:51,112
+In this worked example seventy-five
+percent sits inside the groups and twenty-
+
+272
+00:12:51,162 --> 00:12:52,347
+five percent between them.
+
+273
+00:12:52,397 --> 00:12:54,817
+A group audit sees only the red part.
+
+274
+00:12:54,867 --> 00:12:59,449
+For example, an audit of a hiring model's
+scores finds most of the unevenness among
+
+275
+00:12:59,499 --> 00:13:00,993
+applicants inside the same group.
+
+276
+00:13:01,043 --> 00:13:04,390
+Evening out the group averages would leave
+most of it untouched.
+
+277
+00:13:04,740 --> 00:13:07,712
+Three boxes in a row, training data, model
+training, predictions.
+
+278
+00:13:07,762 --> 00:13:10,733
+Pre-processing changes the training data
+before training, for example by
+
+279
+00:13:10,783 --> 00:13:11,035
+reweighting.
+
+280
+00:13:11,085 --> 00:13:14,661
+Here the positive share becomes zero point
+four five in both groups.
+
+281
+00:13:14,711 --> 00:13:16,474
+That equalizes base rates, not errors.
+
+282
+00:13:16,524 --> 00:13:20,402
+For example, before an interview predictor
+learns from past hiring records, the team
+
+283
+00:13:20,452 --> 00:13:24,935
+gives extra weight to past hires from a
+group that was rarely hired, so the
+
+284
+00:13:24,985 --> 00:13:27,050
+records it learns from are more balanced.
+
+285
+00:13:27,400 --> 00:13:28,632
+Now the middle box.
+
+286
+00:13:28,682 --> 00:13:31,838
+In-processing changes the training
+objective, for example by adding a
+
+287
+00:13:31,888 --> 00:13:32,479
+fairness penalty.
+
+288
+00:13:32,529 --> 00:13:36,325
+In this illustrative model, a bigger
+penalty shrinks the false-positive gap to
+
+289
+00:13:36,375 --> 00:13:41,134
+zero, while the error rises from zero
+point two nine to zero point three six.
+
+290
+00:13:41,184 --> 00:13:45,301
+For example, a résumé-scoring model is
+trained to be accurate, but loses points
+
+291
+00:13:45,351 --> 00:13:49,147
+during training whenever it wrongly passes
+unqualified applicants from one group more
+
+292
+00:13:49,197 --> 00:13:50,750
+often than from the other.
+
+293
+00:13:51,100 --> 00:13:51,982
+The last box.
+
+294
+00:13:52,032 --> 00:13:55,087
+Post-processing leaves the model frozen
+and changes predictions afterwards, for
+
+295
+00:13:55,137 --> 00:13:56,950
+example with a threshold per group.
+
+296
+00:13:57,000 --> 00:14:01,297
+A lower cutoff for Group B equalizes the
+share flagged, but its false-positive rate
+
+297
+00:14:01,347 --> 00:14:04,402
+goes from zero point zero nine to zero
+point six.
+
+298
+00:14:04,452 --> 00:14:09,060
+For example, a company keeps the résumé
+screener it bought exactly as it is, and
+
+299
+00:14:09,110 --> 00:14:11,855
+only sets a different pass score for each
+group.
+
+300
+00:14:11,905 --> 00:14:14,960
+That needs each applicant's group at the
+moment of screening.
+
+301
+00:14:15,310 --> 00:14:16,852
+Two terms side by side.
+
+302
+00:14:16,902 --> 00:14:20,991
+Demographic parity compares one thing, the
+share of each group that is flagged.
+
+303
+00:14:21,041 --> 00:14:24,811
+Equalized odds compares two error rates,
+and those need the true outcomes.
+
+304
+00:14:24,861 --> 00:14:28,950
+If a case mentions only who got a yes, it
+is demographic parity.
+
+305
+00:14:29,300 --> 00:14:32,574
+Group fairness on the left, individual
+fairness on the right.
+
+306
+00:14:32,624 --> 00:14:35,566
+Group fairness checks that rates match
+across whole groups.
+
+307
+00:14:35,616 --> 00:14:39,556
+Individual fairness checks, pair by pair,
+that similar people get similar treatment.
+
+308
+00:14:39,606 --> 00:14:42,880
+A model can pass the first and fail the
+second.
+
+309
+00:14:43,230 --> 00:14:45,790
+Awareness on the left, unawareness on the
+right.
+
+310
+00:14:45,840 --> 00:14:49,379
+Awareness names how much group counts in
+the similarity metric d.
+
+311
+00:14:49,429 --> 00:14:51,336
+Unawareness drops the column and hopes.
+
+312
+00:14:51,386 --> 00:14:56,230
+In the simulated run, zip code still named
+the group eighty-five percent of the time.
+
+313
+00:14:56,580 --> 00:14:59,874
+Disparate treatment on the left, disparate
+impact on the right.
+
+314
+00:14:59,924 --> 00:15:03,887
+Disparate treatment is the direct effect,
+where the attribute itself moves the
+
+315
+00:15:03,937 --> 00:15:04,221
+prediction.
+
+316
+00:15:04,271 --> 00:15:08,234
+Disparate impact is the indirect effect,
+where the attribute acts through a
+
+317
+00:15:08,284 --> 00:15:08,568
+mediator.
+
+318
+00:15:08,618 --> 00:15:10,240
+Look for the middle circle.
+
+319
+00:15:10,590 --> 00:15:14,608
+A vague request with the exact version
+under it, and a chart on the right.
+
+320
+00:15:14,658 --> 00:15:16,778
+Make the model fair is not an instruction.
+
+321
+00:15:16,828 --> 00:15:19,219
+Report each gap and name what is given up.
+
+322
+00:15:19,269 --> 00:15:23,016
+Here the precision gap is zero, so
+calibration parity is met, and the other
+
+323
+00:15:23,066 --> 00:15:23,830
+two are not.
+
+324
+00:15:24,180 --> 00:15:26,126
+It is accurate, so it is fair.
+
+325
+00:15:26,176 --> 00:15:27,836
+No, accuracy is a different question.
+
+326
+00:15:27,886 --> 00:15:32,683
+In the worked example the model is right
+for zero point six four of Group A and
+
+327
+00:15:32,733 --> 00:15:34,679
+zero point eight four of Group B.
+
+328
+00:15:34,729 --> 00:15:36,390
+The overall figure hides that gap.
+
+329
+00:15:36,440 --> 00:15:37,530
+Report accuracy per group.
+
+330
+00:15:37,880 --> 00:15:39,438
+Just drop the race column.
+
+331
+00:15:39,488 --> 00:15:42,653
+That is unawareness, and it fails when a
+proxy remains.
+
+332
+00:15:42,703 --> 00:15:45,546
+The exact instruction is to test the
+remaining features.
+
+333
+00:15:45,596 --> 00:15:50,369
+In the simulated run, zip code alone names
+the group right eighty-five percent of the
+
+334
+00:15:50,419 --> 00:15:50,690
+time.
+
+335
+00:15:51,040 --> 00:15:52,300
+Treat similar people alike.
+
+336
+00:15:52,350 --> 00:15:56,557
+That is individual fairness, and it is
+empty until you define the similarity
+
+337
+00:15:56,607 --> 00:15:57,211
+metric d.
+
+338
+00:15:57,261 --> 00:16:02,450
+In the made-up example the same treatment
+gap fails at a distance of zero point zero
+
+339
+00:16:02,500 --> 00:16:05,070
+two and passes at zero point three two.
+
+340
+00:16:05,420 --> 00:16:07,128
+How unfair is it overall.
+
+341
+00:16:07,178 --> 00:16:12,049
+Define the benefit, compute the GE Index,
+then split it with the GE decomposition.
+
+342
+00:16:12,099 --> 00:16:16,971
+In the worked example, zero point zero
+four eight sits within groups and zero
+
+343
+00:16:17,021 --> 00:16:19,080
+point zero one seven between them.
+
+344
+00:16:19,430 --> 00:16:23,635
+A checklist of six questions to answer
+before you defend a fairness metric.
+
+345
+00:16:23,685 --> 00:16:27,236
+First, which of the three definitions are
+you reporting, demographic parity,
+
+346
+00:16:27,286 --> 00:16:31,163
+equalized odds or calibration parity, and
+which two do you give up?
+
+347
+00:16:31,213 --> 00:16:32,800
+You cannot keep all three.
+
+348
+00:16:33,150 --> 00:16:35,945
+Second, do the base rates differ, and by
+how much?
+
+349
+00:16:35,995 --> 00:16:39,644
+The base rate is the share of each group
+that is truly positive.
+
+350
+00:16:39,694 --> 00:16:43,058
+If the base rates are equal, the
+impossibility theorem does not bite.
+
+351
+00:16:43,108 --> 00:16:45,050
+If they differ, a trade is forced.
+
+352
+00:16:45,400 --> 00:16:48,469
+Third, who bears the cost of each kind of
+error here?
+
+353
+00:16:48,519 --> 00:16:51,588
+A false alarm and a missed case fall on
+different people.
+
+354
+00:16:51,638 --> 00:16:54,990
+Answering this is how you find the values
+claim behind your metric.
+
+355
+00:16:55,340 --> 00:17:00,536
+Fourth, what does the similarity metric d,
+or the causal graph, say about who counts
+
+356
+00:17:00,586 --> 00:17:01,236
+as comparable?
+
+357
+00:17:01,286 --> 00:17:03,334
+Individual fairness depends on that
+metric.
+
+358
+00:17:03,384 --> 00:17:06,132
+Counterfactual fairness depends on the
+structural causal model.
+
+359
+00:17:06,182 --> 00:17:08,580
+Both are choices someone has to sign.
+
+360
+00:17:08,930 --> 00:17:12,254
+Fifth, is a dropped column really gone, or
+do proxies remain?
+
+361
+00:17:12,304 --> 00:17:15,015
+Unawareness removes only the direct use of
+an attribute.
+
+362
+00:17:15,065 --> 00:17:20,230
+A proxy such as zip code can bring it
+back, so test the features that are left.
+
+363
+00:17:20,580 --> 00:17:25,026
+Sixth, who should have decided, and is the
+choice written down along with what would
+
+364
+00:17:25,076 --> 00:17:25,625
+change it?
+
+365
+00:17:25,675 --> 00:17:27,124
+That is the defended choice.
+
+366
+00:17:27,174 --> 00:17:28,323
+Then say it exactly.
+
+367
+00:17:28,373 --> 00:17:31,620
+Not make it fair, but equal error rates,
+calibration given up.
+
+368
+00:17:32,470 --> 00:17:33,144
+Let's recap.
+
+369
+00:17:33,194 --> 00:17:36,766
+Demographic parity, equalized odds and
+calibration parity are different tests.
+
+370
+00:17:36,816 --> 00:17:41,111
+With unequal base rates, the impossibility
+theorem says they cannot all hold.
+
+371
+00:17:41,161 --> 00:17:45,819
+Each metric carries a values claim, so the
+deliverable is a defended choice.
+
+372
+00:17:45,869 --> 00:17:49,079
+Individual fairness depends entirely on
+the similarity metric d.
+
+373
+00:17:49,129 --> 00:17:53,786
+Dropping a column is unawareness, and a
+proxy can bring the attribute back.
+
+374
+00:17:53,836 --> 00:17:57,770
+The GE Index splits total unfairness into
+within-group and between-group parts.
+
+375
+00:17:58,120 --> 00:17:59,547
+Quiz me on fairness metrics.
+
+376
+00:17:59,597 --> 00:18:03,683
+Give me one short case at a time, with
+made-up numbers for two groups.
+
+377
+00:18:03,733 --> 00:18:06,933
+I must name the exact term, from
+demographic parity, equalized odds,
+
+378
+00:18:06,983 --> 00:18:09,888
+calibration parity, base rate, proxy,
+individual fairness, direct effect and
+
+379
+00:18:09,938 --> 00:18:12,842
+indirect effect, and say why its closest
+look-alike is wrong.
+
+380
+00:18:12,892 --> 00:18:15,206
+Do not show the answer until I reply.
+
+381
+00:18:15,256 --> 00:18:18,160
+After six cases, tell me which terms I
+mixed up.
+
+382
+00:18:18,510 --> 00:18:20,315
+Key Terms: Fairness Metrics.
+
+383
+00:18:20,365 --> 00:18:22,170
+At Nik Bear Brown.

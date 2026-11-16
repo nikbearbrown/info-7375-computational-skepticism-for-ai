@@ -1,0 +1,693 @@
+{
+  "metadata": {
+    "slug": "show-tell-a-test-that-cant-fail",
+    "title": "A Test That Can't Fail Isn't a Test",
+    "topic": "INFO 7375 · COMPUTATIONAL SKEPTICISM",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Hindi (Namaste, voiced from the respelling 'Namastay')",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "course": "INFO 7375 Computational Skepticism for AI · Nik Bear Brown · Northeastern University",
+    "audience": "INFO 7375 students (Fall 2026) and anyone who relies on a test, a claim or an agent's report of success",
+    "bookloop_policy": "Course film (Bear, 2026-09-27, SHOW-TELL-THREE-MOVES.md Film 3): carries the INFO 7375 credit, spoken in BIDEA and on screen in the BDEFS title and the BHTF composer topic; not a numbered lecture. Outro stays OUTRO-LOCK.",
+    "source_doc": "info-7375-computational-skepticism-for-ai/chapters/01-the-skeptics-toolkit.md lines 33-97, 'What I mean by skepticism' (the Popper move and its rhetoric table), plus Bear's words of 2026-09-27 in youtube/SHOW-TELL-THREE-MOVES.md (SOURCE.md, verbatim)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "computational skepticism",
+      "INFO 7375",
+      "Karl Popper",
+      "falsifiability",
+      "falsifiable",
+      "Logic of Scientific Discovery",
+      "Conjectures and Refutations",
+      "1919 eclipse",
+      "software testing",
+      "test design",
+      "reward hacking",
+      "AI agents",
+      "AI evaluation",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T18:43:07",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Namastay. This is Liam, in for Bear, with a short film for INFO seventy-three seventy-five, Computational Skepticism for AI. You might think a good test is one that passes. But a pass only means something if the test could have failed.",
+      "estimated_duration_s": 14.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'Is a good test one that passes?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'one that passes' -> 'one that could fail' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Is a good test\none that passes?",
+            "triggerWords": "one that passes",
+            "replacementWords": "one that could fail",
+            "fontSize": 72,
+            "charMs": 24,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-a-test-that-cant-fail",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T20:03:55.403417+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (is a good test one that passes) and corrects it to the real one (is a good test one that could fail).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 13.461,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 13.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Three terms. Falsifiable: some possible result could prove it wrong. Fail condition: the result that counts as failure, written down before you look. And risky prediction: a forecast the world could contradict.",
+      "estimated_duration_s": 11.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'falsifiable' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'fail condition' lands"
+          },
+          {
+            "at": 0.75,
+            "event": "'risky prediction' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "INFO 7375 · Terms In This Film",
+            "terms": [
+              {
+                "term": "falsifiable",
+                "meaning": "some possible result could prove it wrong"
+              },
+              {
+                "term": "fail condition",
+                "meaning": "what counts as failure, written before you look"
+              },
+              {
+                "term": "risky prediction",
+                "meaning": "a forecast the world could contradict"
+              }
+            ],
+            "folderLabel": "@NikBearBrown",
+            "durationSeconds": 11.776
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T20:04:26.416346+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 11.776,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 11.791666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The move comes from Karl Popper, in The Logic of Scientific Discovery, first published in German in nineteen thirty-four. A claim is scientific only if some possible result could prove it wrong. In his words: it must be possible for an empirical scientific system to be refuted by experience.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white claim page on a dark plinth ('Popper, 1934'); a row of kraft outcome tiles drops in beside it ('possible results'); one tile turns white and an ink cross lands over it ('refutes it'); a terracotta dot lights on the claim.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the claim and 'Popper, 1934'"
+          },
+          {
+            "at": 0.45,
+            "event": "possible results drop in"
+          },
+          {
+            "at": 0.8,
+            "event": "one result would refute it: a cross"
+          }
+        ],
+        "manim": {
+          "class": "B00_Criterion"
+        },
+        "motion_claim": "A white claim page on a dark plinth ('Popper, 1934'); a row of kraft outcome tiles drops in beside it ('possible results'); one tile turns white and an ink cross lands over it ('refutes it'); a terracotta dot lights on the claim."
+      },
+      "actual_duration_s": 16.875,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 16.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Popper noticed theories in his day that could explain any case at all. Whatever happened, it counted as a confirmation. Their admirers called that strength. Popper decided it was their weakness: a theory that no possible event could refute isn't scientific.",
+      "estimated_duration_s": 14.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The claim page again; outcome tiles of opposite shapes (a flat slab, a tall bar, a cube) slide into it one by one and each one adds an ink check to a row above it ('fits all'); the checks pulse; then an empty slot outline appears where a refuting result would go ('can't fail').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "any case slides in"
+          },
+          {
+            "at": 0.45,
+            "event": "every case adds a check"
+          },
+          {
+            "at": 0.85,
+            "event": "the refuting slot is empty: can't fail"
+          }
+        ],
+        "manim": {
+          "class": "B01_FitsAll"
+        },
+        "motion_claim": "The claim page again; outcome tiles of opposite shapes (a flat slab, a tall bar, a cube) slide into it one by one and each one adds an ink check to a row above it ('fits all'); the checks pulse; then an empty slot outline appears where a refuting result would go ('can't fail')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.144,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 14.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Einstein's theory was different. It said starlight passing the sun would bend, by a definite amount. The eclipse expeditions of nineteen nineteen set out to tell three answers apart: no shift, a small shift, or Einstein's larger one. They reported his. But what impressed Popper was the risk: had the shift been clearly absent, the theory was simply refuted.",
+      "estimated_duration_s": 21.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A dark eclipse disc with a ghost halo; a terracotta star and a kraft camera; an ink ray bends past the disc; a kraft ruler ('1919') gets three ticks as each answer is named ('0', 'Newton', 'Einstein'); a pointer slides from 0 to the Einstein tick; a ghost star at '0' with an ink cross marks the result that would have refuted it.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the eclipse"
+          },
+          {
+            "at": 0.4,
+            "event": "three answers marked in advance"
+          },
+          {
+            "at": 0.65,
+            "event": "the ray bends; the star lands on 'Einstein'"
+          },
+          {
+            "at": 0.9,
+            "event": "the risk: a cross at '0'"
+          }
+        ],
+        "manim": {
+          "class": "B02_Eclipse"
+        },
+        "motion_claim": "A dark eclipse disc with a ghost halo; a terracotta star and a kraft camera; an ink ray bends past the disc; a kraft ruler ('1919') gets three ticks as each answer is named ('0', 'Newton', 'Einstein'); a pointer slides from 0 to the Einstein tick; a ghost star at '0' with an ink cross marks the result that would have refuted it."
+      },
+      "actual_duration_s": 18.709,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 18.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Now a test in code. This one checks only that the function returned something. Feed it working code: it passes. Feed it broken code: it passes. A test that always passes isn't testing anything. It can't tell you which one you had.",
+      "estimated_duration_s": 15.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft tester machine with a lamp and a belt ('test'); a sound kraft code crate rides in and an ink check lands on the pass tray; a cracked crate rides in and the same check lands ('always passes').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the tester"
+          },
+          {
+            "at": 0.4,
+            "event": "working code: pass"
+          },
+          {
+            "at": 0.65,
+            "event": "broken code: pass"
+          },
+          {
+            "at": 0.85,
+            "event": "always passes"
+          }
+        ],
+        "manim": {
+          "class": "B03_AlwaysPasses"
+        },
+        "motion_claim": "A kraft tester machine with a lamp and a belt ('test'); a sound kraft code crate rides in and an ink check lands on the pass tray; a cracked crate rides in and the same check lands ('always passes')."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.48,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 12.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Rewrite it with a fail condition, written first: for this input, the answer must match the known result, or the test fails. Popper said it plainly: criteria of refutation have to be laid down beforehand. Now broken code fails, and a pass means something.",
+      "estimated_duration_s": 15.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Before anything moves, a white fail-condition card with lines drops onto the tester and a terracotta seal lands on it ('written first'); a fail chute opens; the sound crate passes with a check; the cracked crate drops into the fail chute with an ink cross ('fail').",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the card is written first"
+          },
+          {
+            "at": 0.45,
+            "event": "a fail chute opens"
+          },
+          {
+            "at": 0.8,
+            "event": "broken code fails; working code passes"
+          }
+        ],
+        "manim": {
+          "class": "B04_FailCondition"
+        },
+        "motion_claim": "Before anything moves, a white fail-condition card with lines drops onto the tester and a terracotta seal lands on it ('written first'); a fail chute opens; the sound crate passes with a check; the cracked crate drops into the fail chute with an ink cross ('fail')."
+      },
+      "actual_duration_s": 14.229,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 14.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Claims work the same way. The system is robust. What result would count against that? None is named, so it can't fail. Popper called vagueness like that a soothsayer's trick. Rewrite it: error rate on unfamiliar inputs stays under two percent, over any thirty days. Now a bad month proves it wrong.",
+      "estimated_duration_s": 18.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The claim page reads 'robust' with no result attached; then a daily error chart builds beside it: thirty grey day bars under an ink threshold line ('2%', '30 days'); a run of bars rises over the line, and a terracotta dot and an ink cross land on it.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "'robust': nothing could count against it"
+          },
+          {
+            "at": 0.55,
+            "event": "rewritten: 2%, 30 days"
+          },
+          {
+            "at": 0.85,
+            "event": "a bad month crosses the line: it can fail"
+          }
+        ],
+        "manim": {
+          "class": "B05_Robust"
+        },
+        "motion_claim": "The claim page reads 'robust' with no result attached; then a daily error chart builds beside it: thirty grey day bars under an ink threshold line ('2%', '30 days'); a run of bars rises over the line, and a terracotta dot and an ink cross land on it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 15.616,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 15.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Agents make claims too: done, success. Picture an agent that grades its own work. It stacks the blocks: success. It knocks them over: success. It does nothing at all: success. An agent that succeeds no matter what it does isn't succeeding. It's just doing stuff.",
+      "estimated_duration_s": 16.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A dark agent block with its white report page ('agent', 'report'); kraft blocks stack into a tower, a check lands on the report; the tower tumbles, another check; nothing moves, a third check; the checks stack up whatever happened.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the agent and its report"
+          },
+          {
+            "at": 0.35,
+            "event": "stacked: check"
+          },
+          {
+            "at": 0.55,
+            "event": "knocked over: check"
+          },
+          {
+            "at": 0.75,
+            "event": "nothing: check"
+          }
+        ],
+        "manim": {
+          "class": "B06_SelfGrader"
+        },
+        "motion_claim": "A dark agent block with its white report page ('agent', 'report'); kraft blocks stack into a tower, a check lands on the report; the tower tumbles, another check; nothing moves, a third check; the checks stack up whatever happened."
+      },
+      "actual_duration_s": 13.931,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 13.958333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "This happens with real models. Anthropic's system card for Claude three point seven Sonnet reports that, after repeated failures, it occasionally special-cased tests in agentic coding: it returned the exact values the tests expected, or edited the tests to match its code. The tests passed. The general solution never got written.",
+      "estimated_duration_s": 18.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The tester with its fail-condition card and a cracked crate; the agent block beside it; the crate fails (cross); the agent slides the card out and slides an edited card in ('test edited'); the cracked crate goes through and a check lands; the label 'per Anthropic, 2025'.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the agent's code fails the test"
+          },
+          {
+            "at": 0.5,
+            "event": "the test card is swapped"
+          },
+          {
+            "at": 0.8,
+            "event": "the broken crate passes"
+          }
+        ],
+        "manim": {
+          "class": "B07_SpecialCase"
+        },
+        "motion_claim": "The tester with its fail-condition card and a cracked crate; the agent block beside it; the crate fails (cross); the agent slides the card out and slides an edited card in ('test edited'); the cracked crate goes through and a check lands; the label 'per Anthropic, 2025'."
+      },
+      "actual_duration_s": 18.688,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 18.708333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So write down, before anything runs, the result that would count as failure, and check it from outside the agent, not in its own report. If we don't design things beforehand so they could be wrong, we're asserting they'll always work, no matter what.",
+      "estimated_duration_s": 15.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white fail-condition card with a terracotta seal lands first ('written first'); two slots appear ('pass', 'fail'); the agent stacks its blocks; an outside checker ('outside') sweeps them with a terracotta scan line; a check lands over 'pass' while the 'fail' slot stays open and pulses: it could have failed.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the fail condition, written first"
+          },
+          {
+            "at": 0.45,
+            "event": "the agent works"
+          },
+          {
+            "at": 0.75,
+            "event": "checked from outside: it could have failed"
+          }
+        ],
+        "manim": {
+          "class": "B08_Outside"
+        },
+        "motion_claim": "A white fail-condition card with a terracotta seal lands first ('written first'); two slots appear ('pass', 'fail'); the agent stacks its blocks; an outside checker ('outside') sweeps them with a terracotta scan line; a check lands over 'pass' while the 'fail' slot stays open and pulses: it could have failed."
+      },
+      "actual_duration_s": 12.821,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 12.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Take one claim, test, or agent success check you rely on, and paste this into Claude: Here is a claim, test, or agent success check I rely on: paste it. Before I run it, help me write the specific result that would prove it wrong: what I would observe, how I would measure it, and the threshold. If no possible result could prove it wrong, say so, and rewrite it so one could. Then check two things yourself. Did you write the fail condition before you ran anything? And could that result really happen? If you can't name one, it isn't a check yet.",
+      "estimated_duration_s": 37.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "INFO 7375 COMPUTATIONAL SKEPTICISM · YOUR TURN",
+            "segment": "A Test That Can't Fail Isn't a Test",
+            "command": "Here is a claim, test, or agent success check I rely on: [paste it]. Before I run it, help me write the specific result that would prove it wrong: what I would observe, how I would measure it, and the threshold. If no possible result could prove it wrong, say so, and rewrite it so one could.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: did you write it before running?",
+              "Check: could that result really happen?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T20:05:32.026010+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 27.328,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 27.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T18:43:07"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "A Test That Can't Fail Isn't a Test. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "A Test That Can't Fail Isn't a Test",
+            "slug": "show-tell-a-test-that-cant-fail",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T20:05:52.505512+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.883,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 4.916666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T18:43:07"
+      }
+    }
+  ]
+}

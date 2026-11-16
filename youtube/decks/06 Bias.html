@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bias: where it enters and who is responsible | INFO 7375 Computational Skepticism terminology deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --nu-red:#C8102E; --nu-black:#000000; --nu-white:#FFFFFF; --nu-gold:#A4804A;
+  --nu-red-hover:#A50C25; --nu-red-press:#870A1F; --nu-red-tint:#FBE7EA;
+  --nu-neutral-1:#E3E3E3; --nu-neutral-2:#C4C4C4; --nu-neutral-3:#909090; --nu-neutral-4:#787878;
+  --nu-neutral-5:#545454; --nu-neutral-6:#404040; --nu-neutral-7:#2D2926; --nu-neutral-8:#1A1A1A;
+  --diagram-ink:#2A1A0E; --panel-subtle:#F6F6F6;
+  --font:"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --mono:ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(0.4, 0, 0.2, 1);
+  /* viewer chrome (theme-aware; slides themselves keep fixed brand colors) */
+  --stage-bg:#E9E9E9; --chrome-bg:rgba(255,255,255,0.94); --chrome-fg:#1A1A1A;
+  --chrome-line:#C4C4C4; --chrome-muted:#545454; --chrome-hover:rgba(0,0,0,0.07);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+    --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+  }
+}
+:root[data-theme="dark"]{
+  --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+  --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top, 0px)}
+body{
+  height:100%; margin:0; overflow:hidden; display:flex; flex-direction:column;
+  background:var(--stage-bg); color:var(--chrome-fg); font-family:var(--font);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+:fullscreen body, body:fullscreen{background:#000}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------- stage & scaling ---------- */
+#stage{position:relative; flex:1 1 auto; min-height:0; overflow:hidden; touch-action:pan-y}
+#deck{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0}
+
+/* ---------- slide base ---------- */
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column; overflow:hidden;
+  background:var(--nu-white); color:var(--nu-black); font-family:var(--font);
+  padding-left:120px; padding-right:120px;
+}
+.slide.is-active{display:flex}
+:where(.slide) :where(h1,h2,p,ul){margin:0}
+.s-dark{background:var(--nu-black); color:var(--nu-white)}
+.s-red{background:var(--nu-red); color:var(--nu-white)}
+.rule{position:absolute; top:0; left:0; right:0; height:8px; background:var(--nu-red)}
+.rule.r10{height:10px}
+
+.s-opening,.s-closing{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-intro{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-section{padding-top:110px; padding-bottom:110px; justify-content:center}
+.s-text{padding-top:96px; padding-bottom:96px}
+.s-diagram{padding-top:72px; padding-bottom:56px}
+.s-chart{padding-top:64px; padding-bottom:56px}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-size:22px; font-weight:700; line-height:1.2; text-transform:uppercase;
+  letter-spacing:0.16em; color:var(--nu-red); margin-bottom:28px;
+}
+.s-intro .eyebrow{font-size:24px; letter-spacing:0.18em; margin-bottom:40px}
+.s-section .eyebrow{font-size:26px; letter-spacing:0.20em; color:rgba(255,255,255,0.78); margin-bottom:36px}
+.s-chart .eyebrow,.s-diagram .eyebrow{margin-bottom:18px}
+
+.t-opening{font-size:104px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-section{font-size:108px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-closing{font-size:84px; font-weight:400; line-height:1.04; letter-spacing:-0.02em; max-width:1560px}
+.t-intro{font-size:72px; font-weight:400; line-height:1.1; letter-spacing:-0.01em; max-width:1500px}
+.t-text{font-size:66px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1500px}
+.t-chart{font-size:50px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1560px}
+.s-chart .t-chart{margin-bottom:30px}
+.s-diagram .t-chart{margin-bottom:40px}
+
+.sub-opening{font-size:38px; font-weight:400; line-height:1.3; color:var(--nu-neutral-2); max-width:1300px}
+.sub-section{font-size:34px; font-weight:400; line-height:1.3; color:rgba(255,255,255,0.92); margin-top:40px; max-width:1300px}
+.para{font-size:30px; line-height:1.4; color:var(--nu-neutral-7); max-width:1300px}
+.caption{font-size:24px; line-height:1.36; color:var(--nu-neutral-5); max-width:1400px; margin-top:22px}
+.t-opening,.t-section,.t-closing,.t-intro,.t-text,.t-chart,.sub-opening,.sub-section,.caption{text-wrap:pretty}
+.source{font-size:19px; line-height:1.4; color:var(--nu-neutral-5); margin-top:12px}
+
+.bar-120{width:120px; height:8px; background:var(--nu-red); margin:52px 0 44px}
+.bar-88{width:88px; height:6px; background:var(--nu-red); margin:40px 0 60px}
+
+.bullets{list-style:none; padding:0; max-width:1480px; display:flex; flex-direction:column; gap:26px}
+.bullets li{
+  display:grid; grid-template-columns:14px 1fr; column-gap:22px;
+  font-size:31px; line-height:1.42; color:var(--nu-neutral-7);
+}
+.bullets li::before{
+  content:""; width:14px; height:14px; background:var(--nu-red);
+  margin-top:calc((31px * 1.42 - 14px) / 2);
+}
+.bullets strong{font-weight:700; color:var(--nu-black)}
+
+/* ---------- charts ---------- */
+.chart{width:1480px; height:600px; flex:none}
+.chart svg{display:block; width:1480px; height:600px; overflow:visible}
+.chart-fallback{
+  width:100%; height:100%; display:grid; place-items:center; border:1px solid var(--nu-neutral-1);
+  font-size:24px; color:var(--nu-neutral-5); background:var(--panel-subtle)
+}
+
+/* ---------- diagram ---------- */
+.diagram{flex:0 1 auto; min-height:0; width:100%; max-width:1400px; max-height:720px}
+.diagram svg{display:block}
+
+/* ---------- evidence status: conceptual vs. illustrative vs. observed ---------- */
+.evidence{
+  position:absolute; right:120px; font-size:18px; font-weight:700; line-height:1;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--nu-neutral-5);
+  border:1px solid var(--nu-neutral-2); padding:9px 12px 8px;
+}
+.s-chart .evidence{top:58px}
+.s-diagram .evidence{top:66px}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)}}
+.slide.is-active .rise{animation:rise 550ms var(--ease) both}
+.slide.is-active .g2{animation-delay:120ms}
+.slide.is-active .g3{animation-delay:240ms}
+@media (prefers-reduced-motion: reduce){
+  .slide.is-active .rise{animation:none}
+}
+
+/* ---------- viewer chrome ---------- */
+#controls{
+  position:absolute; right:14px; bottom:14px; z-index:10;
+  display:flex; align-items:center; gap:2px; padding:4px;
+  background:var(--chrome-bg); border:1px solid var(--chrome-line); color:var(--chrome-fg);
+  opacity:0.38; transition:opacity 200ms var(--ease);
+}
+#controls:hover,#controls:focus-within,body.show-controls #controls{opacity:1}
+#controls button,#thumbs .close{
+  appearance:none; border:0; background:transparent; color:inherit; cursor:pointer;
+  width:34px; height:34px; display:grid; place-items:center; padding:0;
+}
+#controls button:hover,#thumbs .close:hover{background:var(--chrome-hover)}
+#controls button[disabled]{opacity:0.35; cursor:default}
+#controls button[aria-pressed="true"]{background:var(--chrome-hover)}
+#controls svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:square}
+#counter{
+  min-width:66px; text-align:center; font-family:var(--mono); font-size:13px;
+  font-variant-numeric:tabular-nums; color:var(--chrome-fg)
+}
+#pips{display:flex; gap:4px; padding:0 6px 0 2px}
+#pips:empty{display:none}
+.pip{width:6px; height:6px; background:var(--chrome-line)}
+.pip.on{background:var(--nu-red)}
+.sep{width:1px; height:20px; background:var(--chrome-line); margin:0 4px}
+button:focus-visible,.thumb:focus-visible{outline:3px solid var(--nu-red); outline-offset:2px}
+
+#notes{
+  display:none; flex:none; height:min(30vh, 260px); overflow:auto;
+  padding:18px 28px 20px; background:var(--chrome-bg); border-top:1px solid var(--chrome-line);
+  color:var(--chrome-fg); font-size:17px; line-height:1.55;
+}
+body.notes-open #notes{display:block}
+#notes h2{margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-muted)}
+#notes p{margin:0 0 10px; max-width:78ch}
+
+#thumbs{position:absolute; inset:0; z-index:20; display:none; overflow:auto; background:var(--stage-bg); padding:24px}
+#thumbs.open{display:block}
+#thumbs .bar{display:flex; align-items:center; justify-content:space-between; max-width:1400px; margin:0 auto 18px}
+#thumbs .bar h2{margin:0; font-size:15px; font-weight:700; color:var(--chrome-fg)}
+#thumbs .close svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75}
+#thumbs .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:18px; max-width:1400px; margin:0 auto}
+.thumb{
+  appearance:none; padding:0; margin:0; border:1px solid var(--chrome-line); background:#fff;
+  cursor:pointer; position:relative; overflow:hidden; aspect-ratio:16 / 9; width:100%; display:block
+}
+.thumb.current{outline:3px solid var(--nu-red); outline-offset:2px}
+.thumb-inner{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0; pointer-events:none; text-align:left; font:400 16px/1.2 var(--font); white-space:normal}
+.thumb-inner .slide{display:flex}
+.thumb-num{
+  position:absolute; left:0; bottom:0; padding:3px 7px; background:rgba(0,0,0,0.72); color:#fff;
+  font-family:var(--mono); font-size:12px; line-height:1.2
+}
+
+/* ---------- print: every slide, final state ---------- */
+@media print{
+  @page{size:1920px 1080px; margin:0}
+  :root{padding:0}
+  html,body{height:auto; overflow:visible; display:block; background:#fff}
+  #stage{overflow:visible; height:auto}
+  #deck{position:static; transform:none !important; width:1920px; height:auto}
+  .slide{position:relative; display:flex !important; width:1920px; height:1080px; break-after:page; page-break-after:always}
+  .slide .rise{animation:none !important; opacity:1 !important; transform:none !important}
+  #controls,#notes,#thumbs{display:none !important}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+/* ---------- review-deck additions (small; typography classes above are untouched) ---------- */
+.slide .source{font-size:24px; margin-top:10px}
+.evidence{font-size:24px; letter-spacing:0.1em}
+.diagram svg text{font-kerning:normal}
+.diagram{cursor:pointer}
+</style>
+</head>
+<body>
+
+<main id="stage" aria-roledescription="slide deck" aria-label="INFO 7375 Computational Skepticism terminology: Chapter 6, Bias">
+  <div id="deck">
+
+    <section class="slide s-dark s-opening" aria-roledescription="slide" data-title="Bias: where it enters and who is responsible">
+      <div class="rule r10"></div>
+      <p class="eyebrow rise">INFO 7375 Computational Skepticism · Terminology · Chapter 6</p>
+      <h1 class="t-opening rise g2">Bias: where it enters and who is responsible</h1>
+      <div class="bar-120 rise g2"></div>
+      <p class="sub-opening rise g3">Terms for finding where a bias lives, what a fix can reach, and who owns the node</p>
+      <div class="speaker-notes" hidden><p>33 terms from Chapter 6. Every one is tagged in the book text: the chapter uses and explains it. Base-rate difference, compound bias, the dataset as epistemic artifact and the backdoor path are left out of this deck. Numbers are computed in the slide code from stated inputs; invented inputs are labelled illustrative.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Thirty-three terms in four groups">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Map</p>
+      <h2 class="t-chart">Thirty-three terms in four groups</h2>
+      <div class="diagram build" data-build="map" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Four groups, one per click.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Estimator, bias and unbiased estimator">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">What bias means</p>
+      <h2 class="t-chart">Estimator, bias and unbiased estimator</h2>
+      <div class="diagram build" data-build="est" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “What “bias” actually means”; “Selection bias”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Patients with a lab panel within six hours: 30% critical with risk 60%, the rest risk 10%. A random sample gives 25%; the filtered sample keeps 20% of critical and 90% of stable patients and gives about 14.3%. Illustrative inputs; the estimates are seeded simulations. The 2.4 million responses figure is from the chapter (Squire 1988).</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Selection bias, sampling bias and weighting">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Ten ways in</p>
+      <h2 class="t-chart">Selection bias, sampling bias and weighting</h2>
+      <div class="diagram build" data-build="sel" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “Selection bias”; “The two that enter at the keyboard”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Sepsis filter from the chapter, with illustrative counts. Weights are 1 over the chance of being kept: 5.0 and 1.11. The survey numbers are illustrative; stratum weights use the chapter formula (N_i/N)/(n_i/n).</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Confirmation, self-report and publication bias">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Ten ways in</p>
+      <h2 class="t-chart">Confirmation, self-report and publication bias</h2>
+      <div class="diagram build" data-build="priors" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “The five that enter through the humans in the loop”; “The two that enter at the keyboard”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Evidence weights 1.5 and 0.5 are illustrative. Eighty studies with true effect 0.15; a study is published if significant or with 12% chance otherwise. Trim-and-fill is the L0 estimator on a fixed-effect pool, and it corrects only part of the distortion.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Cohen’s kappa, observer and coding bias">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Ten ways in</p>
+      <h2 class="t-chart">Cohen’s kappa, observer and coding bias</h2>
+      <div class="diagram build" data-build="lab" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “The five that enter through the humans in the loop”; “Observer bias compounds with data coding bias”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Two tables of 100 notes. Kappa is (Po − Pe) / (1 − Pe), the chapter formula. Table counts and the data-entry shares are illustrative.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Historical bias and implicit bias">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Ten ways in</p>
+      <h2 class="t-chart">Historical bias and implicit bias</h2>
+      <div class="diagram build" data-build="hist" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “Historical bias”; “Implicit bias”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Promotion rates of 30% and 18% are illustrative. The parity gap of 15 points is computed from two stated rates.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Dataset, label and structural bias">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Where it lives</p>
+      <h2 class="t-chart">Dataset, label and structural bias</h2>
+      <div class="diagram build" data-build="flav" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “Three flavors of bias, mapped to the ten types”; “The dataset as epistemic artifact”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Group shares, detection chances and access shares are illustrative. The chapter says the recidivism label is re-arrest, not crime.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Pearl’s ladder: seeing, doing, imagining">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Causes</p>
+      <h2 class="t-chart">Pearl’s ladder: seeing, doing, imagining</h2>
+      <div class="diagram build" data-build="ladder" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “Pearl’s Ladder — Rungs 1 and 2”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>The approval model is illustrative: 0.20 + 0.25 zip score + 0.10 W. The 12-point and 2-point gaps match the chapter’s exercise W2, recomputed from the model.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Causal graph, leverage and owner">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">Causes and owners</p>
+      <h2 class="t-chart">Causal graph, leverage and owner</h2>
+      <div class="diagram build" data-build="graph" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “Leverage analysis”; “A limit case: when the leverage is upstream of your pipeline — and who owns it then”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Path loads of 2, 3 and 45 points out of 50 are illustrative, chosen so the third team cuts the disparity tenfold as in the parable.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="The fairness impossibility">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Which metric</p>
+      <h2 class="t-chart">The fairness impossibility</h2>
+      <div class="diagram build" data-build="fair" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “The dataset as epistemic artifact”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>Base rates 30% and 50% are the chapter’s example. TPR 35% and FPR 10% are illustrative. Option B takes TPR from v/(1−v) = p/(1−p) × TPR/FPR. PPV stands in for calibration within a score bucket.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Look-alike pairs">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Tell them apart</p>
+      <h2 class="t-chart">Look-alike pairs</h2>
+      <div class="diagram build" data-build="pairs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6.</p>
+      <div class="speaker-notes" hidden><p>Selection and historical bias, association and intervention, calibration parity and equal error rates, dataset and label bias.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Say it exactly">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Vague claim, exact claim</p>
+      <h2 class="t-chart">Say it exactly</h2>
+      <div class="diagram build" data-build="say" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6.</p>
+      <div class="speaker-notes" hidden><p>Five claims about bias turned into exact ones, each with a number computed from the inputs shown earlier.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Before you accept a bias claim or fix">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Checklist</p>
+      <h2 class="t-chart">Before you accept a bias claim or fix</h2>
+      <div class="diagram build" data-build="closing" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 6, “Leverage analysis”.</p>
+      <div class="speaker-notes" hidden><p>Six checks.</p></div>
+    </section>
+
+  </div>
+
+  <nav id="controls" aria-label="Slide controls">
+    <button type="button" id="btn-prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="counter" aria-hidden="true">1 / 1</span>
+    <span id="pips" aria-hidden="true"></span>
+    <button type="button" id="btn-next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <span class="sep" aria-hidden="true"></span>
+    <button type="button" id="btn-thumbs" aria-label="Show all slides (G)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="7" height="5"/><rect x="13" y="5" width="7" height="5"/><rect x="4" y="14" width="7" height="5"/><rect x="13" y="14" width="7" height="5"/></svg></button>
+    <button type="button" id="btn-notes" aria-label="Speaker notes (N)" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 11h14M5 16h9"/></svg></button>
+    <button type="button" id="btn-fs" aria-label="Fullscreen (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+  </nav>
+
+  <div id="thumbs" role="dialog" aria-modal="true" aria-label="All slides">
+    <div class="bar">
+      <h2>All slides</h2>
+      <button type="button" class="close" aria-label="Close slide overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="grid"></div>
+  </div>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+</main>
+
+<aside id="notes" aria-label="Speaker notes">
+  <h2 id="notes-head">Speaker notes</h2>
+  <div id="notes-body"></div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var stage = document.getElementById("stage");
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(".slide"));
+  var total = slides.length;
+  var counter = document.getElementById("counter");
+  var pips = document.getElementById("pips");
+  var live = document.getElementById("live");
+  var notesHead = document.getElementById("notes-head");
+  var notesBody = document.getElementById("notes-body");
+  var btnPrev = document.getElementById("btn-prev");
+  var btnNext = document.getElementById("btn-next");
+  var btnNotes = document.getElementById("btn-notes");
+  var btnThumbs = document.getElementById("btn-thumbs");
+  var btnFs = document.getElementById("btn-fs");
+  var thumbs = document.getElementById("thumbs");
+  var thumbGrid = thumbs.querySelector(".grid");
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hasD3 = typeof window.d3 !== "undefined";
+  var current = -1, step = 0, lastFocus = null;
+
+  /* Recurring visual vocabulary
+     ink   = confidence / belief        red  = failure, consequence, causal break
+     gray  = familiar data, same source tint = what an inspection or failure exposes */
+  var INK = "#2A1A0E", RED = "#C8102E", TINT = "#FBE7EA", GRID = "#E3E3E3", MUTED = "#545454",
+      BASE = "#909090", FAMILIAR = "#C4C4C4", SUBTLE = "#F6F6F6", BODY = "#2D2926";
+  var MONO = 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace';
+  var SANS = '"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+
+  /* ---------------- scaling ---------------- */
+  function fit() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    var s = Math.min(w / 1920, h / 1080);
+    deck.style.transform = "translate(" + (w - 1920 * s) / 2 + "px," + (h - 1080 * s) / 2 + "px) scale(" + s + ")";
+  }
+  if ("ResizeObserver" in window) new ResizeObserver(fit).observe(stage);
+  window.addEventListener("resize", fit);
+
+  /* ---------------- drawing helpers ---------------- */
+  function svgFor(el, w, h, label, desc, fixed) {
+    el.innerHTML = "";
+    var svg = d3.select(el).append("svg").attr("viewBox", "0 0 " + w + " " + h)
+      .attr("role", "img").attr("aria-label", label);
+    if (fixed) svg.attr("width", w).attr("height", h).style("overflow", "visible");
+    else svg.attr("width", "100%").attr("height", "100%").attr("preserveAspectRatio", "xMinYMin meet");
+    svg.append("title").text(label);
+    svg.append("desc").text(desc);
+    return svg;
+  }
+  function txt(g, x, y, s, o) {
+    o = o || {};
+    var t = g.append("text").attr("x", x).attr("y", y)
+      .attr("font-family", o.family || SANS).attr("font-size", o.size || 22)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || INK);
+    if (o.anchor) t.attr("text-anchor", o.anchor);
+    if (o.ls) t.attr("letter-spacing", o.ls);
+    if (o.dy) t.attr("dy", o.dy);
+    return t.text(s);
+  }
+  function fadeIn(sel, delay, dur) {
+    sel.attr("opacity", 0).transition().delay(delay || 0).duration(dur || 400).ease(d3.easeCubicOut).attr("opacity", 1);
+    return sel;
+  }
+  function rng(seed) {
+    var s = seed >>> 0;
+    return function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  /* ================= review-deck helpers ================= */
+  var W = 1400, H = 700;
+  function A(anim, k, n) { return anim && k === n; }
+  function shuffle(a, r) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function drawIn(path, delay, dur) {
+    var L = path.node().getTotalLength();
+    if (!(L > 0)) return path;
+    path.attr("stroke-dasharray", L + " " + L).attr("stroke-dashoffset", L)
+      .transition().delay(delay || 0).duration(dur || 500).ease(d3.easeCubicOut).attr("stroke-dashoffset", 0)
+      .on("end", function () { d3.select(this).attr("stroke-dasharray", null).attr("stroke-dashoffset", null); });
+    return path;
+  }
+  function tweenNum(sel, from, to, fmt, delay, dur) {
+    sel.text(fmt(from)).transition().delay(delay || 0).duration(dur || 1000).ease(d3.easeCubicOut)
+      .tween("text", function () { var it = d3.interpolate(from, to), node = this; return function (t) { node.textContent = fmt(it(t)); }; });
+  }
+  var pct1 = function (v) { return v.toFixed(1) + "%"; };
+  function lab(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: 700, fill: o.fill || MUTED, ls: 1.2, anchor: o.anchor }); }
+  /* wrap a string into tspans; n = characters per line (estimate) */
+  function wrap(g, x, y, s, n, o) {
+    o = o || {};
+    var size = o.size || 26, lh = o.lh || Math.round(size * 1.34), words = s.split(" "), lines = [], cur = "";
+    words.forEach(function (w) { var t = (cur ? cur + " " : "") + w; if (t.length > n && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur);
+    var t = g.append("text").attr("x", x).attr("y", y).attr("font-family", SANS).attr("font-size", size)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || BODY);
+    lines.forEach(function (l, i) { t.append("tspan").attr("x", x).attr("dy", i ? lh : 0).text(l); });
+    t.node().__h = lines.length * lh;
+    return t;
+  }
+  function box(g, x, y, w, h, o) {
+    o = o || {};
+    return g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", w).attr("height", h)
+      .attr("fill", o.fill || "#FFFFFF").attr("stroke", o.stroke || FAMILIAR).attr("stroke-width", o.sw || 1.5);
+  }
+  function ppvOf(p, sens, spec) { return p * sens / (p * sens + (1 - p) * (1 - spec)); }
+  function sigmoid(z) { return 1 / (1 + Math.exp(-z)); }
+  function logit(c) { return Math.log(c / (1 - c)); }
+  function fmtInt(v) { return d3.format(",")(Math.round(v)); }
+  function check(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + y + " L" + (x - s / 3) + "," + (y + s * 0.7) + " L" + (x + s) + "," + (y - s * 0.8)).attr("fill", "none").attr("stroke", color || INK).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+  function cross(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + (y - s) + " L" + (x + s) + "," + (y + s) + " M" + (x + s) + "," + (y - s) + " L" + (x - s) + "," + (y + s)).attr("stroke", color || RED).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+
+  /* ---------- small drawing helpers ---------- */
+  function run(g, dur, fn, anim, ease) {
+    if (!anim) { fn(1); return; }
+    fn(0);
+    d3.select(g.node()).transition().duration(dur).ease(ease || d3.easeLinear)
+      .tween("run", function () { return function (t) { fn(t); }; });
+  }
+  /* keyframes through the values in a, smooth between them, t in 0..1 */
+  function kf(t, a) {
+    var n = a.length - 1, s = Math.min(n - 1e-9, Math.max(0, t) * n), i = Math.floor(s);
+    return a[i] + (a[i + 1] - a[i]) * d3.easeCubicInOut(s - i);
+  }
+  function hint(svg) { wrap(svg.append("g"), 800, 44, "Click or press → to start the animation. Each click adds one idea.", 46, { size: 28, fill: MUTED }); }
+  function cap(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 26, weight: o.weight || 400, fill: o.fill || BODY, anchor: o.anchor, family: o.family }); }
+  function sgn(v, d) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d || 0); }
+
+  /* right-hand column: one glossary entry per step, with its tag; returns the y below the last entry */
+  function entries(svg, list, k, anim) {
+    var g = svg.append("g"), y = 4;
+    list.forEach(function (it) {
+      if (it.s > k) return;
+      var t = T[it.id], cur = it.s === k, e = g.append("g");
+      txt(e, 800, y + 26, t.n, { size: 26, weight: 700, fill: cur ? RED : INK });
+      var TG = { book: ["in the book text", 212], gloss: ["in the glossary", 200], video: ["video only", 150], editor: ["editor or docs", 190], web: ["outside source", 200] }[t.tag || "video"], tg = TG[0], tw_ = TG[1], fill_ = t.tag === "book";
+      e.append("rect").attr("x", 1400 - tw_ + 0.5).attr("y", y + 3.5).attr("width", tw_ - 1).attr("height", 34)
+        .attr("fill", fill_ ? INK : "none").attr("stroke", fill_ ? INK : GREY).attr("stroke-width", 1.5);
+      txt(e, 1400 - tw_ / 2, y + 28, tg, { size: 24, anchor: "middle", fill: fill_ ? "#FFFFFF" : MUTED });
+      var yy = y + 58;
+      if (t.alias) { txt(e, 800, yy, t.alias, { size: 24, fill: MUTED }); yy += 30; }
+      var w = wrap(e, 800, yy, t.m + ".", 50, { size: 24, lh: 30, fill: BODY });
+      y = yy + w.node().__h + 6;
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    return y;
+  }
+  function pairStrip(svg, a, b) {
+    var g = svg.append("g");
+    lab(g, 0, 598, "TELL THESE APART");
+    [[0, a], [740, b]].forEach(function (p, i) {
+      box(g, p[0], 612, 660, 88, { stroke: i ? RED : INK, sw: 2 });
+      txt(g, p[0] + 20, 646, p[1][0], { size: 26, weight: 700, fill: i ? RED : INK });
+      txt(g, p[0] + 20, 682, p[1][1], { size: 24, fill: BODY });
+    });
+    txt(g, 700, 664, "≠", { size: 44, weight: 700, anchor: "middle", fill: RED });
+  }
+  function base(svg, list, k, anim, a, b) { var y = entries(svg, list, k, anim); pairStrip(svg, a, b); if (k === 0) hint(svg); return y; }
+
+  /* top-down / side-view camera pieces. ang: radians, 0 = +x, y grows downward */
+  function conePath(x, y, ang, fov, len) {
+    var h = fov * DEG / 2;
+    return "M" + x + "," + y + "L" + (x + len * Math.cos(ang - h)) + "," + (y + len * Math.sin(ang - h)) +
+      "A" + len + "," + len + " 0 0 1 " + (x + len * Math.cos(ang + h)) + "," + (y + len * Math.sin(ang + h)) + "Z";
+  }
+  function cone(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", TINT).attr("fill-opacity", 0.9).attr("stroke", RED).attr("stroke-width", 2);
+  }
+  function ghost(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 1.5).attr("stroke-dasharray", "6 6");
+  }
+  function camBody(g, x, y, ang) {
+    var c = g.append("g").attr("transform", "translate(" + x + "," + y + ") rotate(" + (ang / DEG) + ")");
+    c.append("rect").attr("x", -16).attr("y", -11).attr("width", 24).attr("height", 22).attr("fill", INK);
+    c.append("path").attr("d", "M8,-7 L22,-14 L22,14 L8,7Z").attr("fill", INK);
+  }
+  function inView(px, py, x, y, ang, fov, len) {
+    var dx = px - x, dy = py - y;
+    if (Math.hypot(dx, dy) > len) return false;
+    var da = Math.atan2(dy, dx) - ang; da = Math.atan2(Math.sin(da), Math.cos(da));
+    return Math.abs(da) <= fov * DEG / 2;
+  }
+  function post(g, x, y, on, r) {
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", r || 11).attr("fill", on ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+  }
+  function ptsInView(g, pts, cx, cy, ang, fov, len) {
+    var n = 0;
+    pts.forEach(function (p) { var on = inView(p[0], p[1], cx, cy, ang, fov, len); if (on) n++; post(g, p[0], p[1], on); });
+    return n;
+  }
+
+
+  /* ================= Bias: where it enters and who is responsible (Chapter 6) ================= */
+  var GREY = "#909090", PALE = "#C4C4C4";
+  /* tag: book = Chapter 6 uses and explains it */
+  var T = {
+    est: { n: "Estimator", tag: "book", m: "A procedure that turns data into a number, such as a mean or a risk score" },
+    unb: { n: "Unbiased estimator", tag: "book", m: "Averages out to the true value, though it may miss on any one dataset" },
+    bias: { n: "Bias", tag: "book", alias: "Bias(θ̂) = E[θ̂] − θ", m: "How far the estimate sits from the truth on average, over every dataset you might collect" },
+    sel: { n: "Selection bias", tag: "book", m: "Who ends up in the sample depends on what happened to them, so the sample average is off" },
+    samp: { n: "Sampling bias", tag: "book", m: "Some groups are underrepresented because they were hard to reach, not because of their outcomes" },
+    ipw: { n: "Inverse prob. weighting", tag: "book", alias: "Inverse probability weighting", m: "Weight each kept case by 1 over its chance of being kept, so it stands in for those dropped" },
+    conf: { n: "Confirmation bias", tag: "book", m: "The researcher's prior steers what data is collected, kept and reported" },
+    selfr: { n: "Self-report bias", tag: "book", m: "People misreport themselves in a consistent direction, such as voting more than they did" },
+    pub: { n: "Publication bias", tag: "book", m: "Significant results get published and nulls stay in drawers, so the literature looks stronger" },
+    funnel: { n: "Funnel plot", tag: "book", m: "Effect size against precision; an empty lower-left corner shows the missing small null studies" },
+    kappa: { n: "Cohen's kappa", tag: "book", m: "Agreement between two coders, corrected for the agreement chance alone would give" },
+    obs: { n: "Observer bias", tag: "book", m: "A labeler's prior leaks into the label, so labels track what the labeler already believed" },
+    code: { n: "Data-coding bias", tag: "book", m: "Systematic miscoding when judgment is needed to fit material into categories" },
+    entry: { n: "Data-entry bias", tag: "book", m: "Patterned transcription error, such as a buried code replaced by the nearest one" },
+    hist: { n: "Historical bias", tag: "book", m: "A faithful, representative record of a world you did not want to reproduce; its accuracy is the harm" },
+    impl: { n: "Implicit bias", tag: "book", m: "The unconscious associations of the people in the pipeline; the medium other biases swim in" },
+    dset: { n: "Dataset bias", tag: "book", m: "The training sample does not represent the deployment population" },
+    label: { n: "Label bias", tag: "book", m: "The labels record a biased process, so the model predicts a distorted stand-in" },
+    meas: { n: "Biased measurement", tag: "book", m: "A stand-in variable distorted on the way, such as re-arrest recorded for crime" },
+    struct: { n: "Structural bias", tag: "book", m: "Good data, accurate labels, correct model, and still unfair outcomes because of the world it is deployed into" },
+    ladder: { n: "Pearl's ladder", tag: "book", m: "Three levels of causal reasoning: seeing, doing, imagining" },
+    assoc: { n: "Association", tag: "book", m: "Seeing: P(Y | X), the chance of Y given that we observe X" },
+    interv: { n: "Intervention", tag: "book", m: "Doing: P(Y | do(X = x)), the chance of Y if we set X to a value" },
+    cf: { n: "Counterfactual", tag: "book", m: "Imagining: what would have happened to this case if X had been different" },
+    graph: { n: "Causal graph", tag: "book", m: "Nodes for variables, arrows from cause to effect" },
+    proxy: { n: "Proxy", tag: "book", m: "A feature correlated with the protected attribute" },
+    lan: { n: "Leverage analysis", tag: "book", m: "List every path; find the fix that blocks most" },
+    lev: { n: "Leverage", tag: "book", m: "How much bias-carrying flow an action blocks" },
+    owner: { n: "Accountable owner", tag: "book", m: "Whoever controls the node at the leverage point" },
+    calib: { n: "Calibration parity", tag: "book", m: "A score means the same thing in every group" },
+    eodds: { n: "Equal FPR and FNR", tag: "book", alias: "Equalized odds", m: "Wrongly flagged and missed shares match in every group" },
+    imposs: { n: "Impossibility theorem", tag: "book", m: "With unequal base rates, not all three can hold at once" },
+    values: { n: "Values claim", tag: "book", m: "Choosing a metric is choosing which error you accept" }
+  };
+
+  /* ---------- small helpers ---------- */
+  function nt(svg, anim, text) {
+    if (!text) return;
+    var g = svg.append("g"); wrap(g, 0, 500, text, 56, { size: 24, lh: 30, fill: INK });
+    if (anim) g.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+  }
+  function fade(sel, anim, delay) { if (anim) sel.attr("opacity", 0).transition().delay(delay || 0).duration(450).attr("opacity", 1); return sel; }
+  function bar(g, x, y, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("width", 0).transition().delay(delay || 0).duration(700).attr("width", w); return b; }
+  function mono(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: o.weight || 400, fill: o.fill || INK, family: MONO, anchor: o.anchor }); }
+  function pc(v, d) { return (v * 100).toFixed(d == null ? 0 : d) + "%"; }
+  function vcol(g, x, y, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", y - h).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("y", y).attr("height", 0).transition().delay(delay || 0).duration(700).attr("y", y - h).attr("height", h); return b; }
+  function arrow(g, x1, y1, x2, y2, w, color, op) {
+    var a = Math.atan2(y2 - y1, x2 - x1), hl = 14 + w * 0.6, hw = 7 + w * 0.5, bx = x2 - hl * Math.cos(a), by = y2 - hl * Math.sin(a);
+    g.append("path").attr("d", "M" + x1 + "," + y1 + " L" + bx + "," + by).attr("stroke", color).attr("stroke-width", w).attr("fill", "none").attr("opacity", op == null ? 1 : op);
+    g.append("path").attr("d", "M" + x2 + "," + y2 + " L" + (bx + hw * Math.sin(a)) + "," + (by - hw * Math.cos(a)) + " L" + (bx - hw * Math.sin(a)) + "," + (by + hw * Math.cos(a)) + "Z").attr("fill", color).attr("opacity", op == null ? 1 : op);
+  }
+
+  /* ---------- computed models used by several slides ---------- */
+  /* sepsis filter: 1000 patients, 30% critical */
+  var SEL = (function () {
+    var nc = 300, ns = 700, rc = 0.6, rs = 0.1, kc = 0.2, ks = 0.9, N = nc + ns;
+    var keptC = nc * kc, keptS = ns * ks, truth = (nc * rc + ns * rs) / N, samp = (keptC * rc + keptS * rs) / (keptC + keptS);
+    var wc = 1 / kc, ws = 1 / ks, wmean = (keptC * wc * rc + keptS * ws * rs) / (keptC * wc + keptS * ws);
+    var Np = 0.4, np = 0.8, wpro = Np / np, woth = (1 - Np) / (1 - np), sp = 0.7, so = 0.3;
+    return { nc: nc, ns: ns, rc: rc, rs: rs, kc: kc, ks: ks, keptC: keptC, keptS: keptS, truth: truth, samp: samp, wc: wc, ws: ws, wmean: wmean,
+      Np: Np, np: np, wpro: wpro, woth: woth, sp: sp, so: so, ptruth: Np * sp + (1 - Np) * so, psamp: np * sp + (1 - np) * so,
+      pw: (np * wpro * sp + (1 - np) * woth * so) / (np * wpro + (1 - np) * woth) };
+  })();
+  /* repeated estimates: unbiased = random sample, biased = only patients who pass the same filter */
+  var EST = (function () {
+    var pC = 0.3, Eb = SEL.samp;
+    function rep(r, n, biased) {
+      var s = 0, m = 0;
+      while (m < n) {
+        var c = r() < pC, y = r() < (c ? SEL.rc : SEL.rs) ? 1 : 0;
+        if (biased && r() >= (c ? SEL.kc : SEL.ks)) continue;
+        s += y; m++;
+      }
+      return s / n;
+    }
+    var out = { TH: SEL.truth, Eb: Eb, reps: {} };
+    [50, 2000].forEach(function (n) { var r = rng(n + 3); out.reps[n] = { u: d3.range(24).map(function () { return rep(r, n, false); }), b: d3.range(24).map(function () { return rep(r, n, true); }) }; });
+    return out;
+  })();
+  /* publication bias: 80 studies, true effect 0.15, published if significant or lucky; trim-and-fill (L0, fixed effect) */
+  var PUB = (function () {
+    var r = rng(13), th = 0.15, st = [];
+    function gauss() { var u = Math.max(r(), 1e-9), v = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+    for (var i = 0; i < 80; i++) { var se = 0.04 + 0.26 * r(), e = th + se * gauss(), z = e / se, p = z > 1.96 || r() < 0.12; st.push({ e: e, se: se, pub: p }); }
+    function pool(a) { var sw = 0, s = 0; a.forEach(function (x) { var w = 1 / (x.se * x.se); sw += w; s += w * x.e; }); return s / sw; }
+    var P = st.filter(function (x) { return x.pub; });
+    function tf(a) {
+      var n = a.length, k0 = 0, c = pool(a);
+      for (var it = 0; it < 50; it++) {
+        var srt = a.slice().sort(function (x, y) { return x.e - y.e; }), kept = srt.slice(0, n - k0); c = pool(kept);
+        var dev = a.map(function (x) { return { d: x.e - c }; }).sort(function (p, q) { return Math.abs(p.d) - Math.abs(q.d); }), Tn = 0;
+        dev.forEach(function (p, i) { if (p.d > 0) Tn += i + 1; });
+        var nk = Math.max(0, Math.round((4 * Tn - n * (n + 1)) / (2 * n - 1)));
+        if (nk === k0) break; k0 = nk;
+      }
+      var fill = a.slice().sort(function (x, y) { return y.e - x.e; }).slice(0, k0).map(function (x) { return { e: 2 * c - x.e, se: x.se }; });
+      return { k0: k0, c: c, fill: fill, pooled: pool(a.concat(fill)) };
+    }
+    var t = tf(P);
+    return { th: th, st: st, P: P, all: pool(st), pubm: pool(P), fill: t.fill, tfm: t.pooled, c: t.c };
+  })();
+  /* two groups, base rates 30% and 50%, FPR 10%: option A equal error rates, option B equal PPV */
+  var FAIR = (function () {
+    var n = 1000, f = 0.10, t = 0.35, p1 = 0.3, p2 = 0.5;
+    function cm(p, t, f) { var P = n * p, N = n - P, TP = P * t, FN = P - TP, FP = N * f, TN = N - FP; return { P: P, N: N, TP: TP, FN: FN, FP: FP, TN: TN, ppv: TP / (TP + FP), tpr: t, fpr: f }; }
+    var a1 = cm(p1, t, f), a2 = cm(p2, t, f), v = a1.ppv, t2 = (v / (1 - v)) * ((1 - p2) / p2) * f, b2 = cm(p2, t2, f);
+    return { p1: p1, p2: p2, f: f, t: t, v: v, t2: t2, a1: a1, a2: a2, b1: a1, b2: b2, r1: t / f, r2: t2 / f };
+  })();
+  /* approval model for the ladder: approve = 0.20 + 0.25 zip + 0.10 W, where zip and W track the group */
+  var LAD = (function () {
+    function ap(z, w) { return 0.20 + 0.25 * z + 0.10 * w; }
+    var A = ap(0.8, 0.6), B = ap(0.4, 0.4), nA = ap(0.6, 0.6), nB = ap(0.6, 0.4);
+    return { A: A, B: B, gap: A - B, nA: nA, nB: nB, ngap: nA - nB };
+  })();
+  var LOAD = { sample: 2, proxy: 3, review: 45 };
+
+  /* ---------- map ---------- */
+  var MAPROWS = [
+    ["What bias means", "estimator, bias, unbiased estimator", "A gap between estimate and truth"],
+    ["Ten ways in", "selection bias, sampling bias, inverse probability weighting, confirmation bias, self-report bias, publication bias, funnel plot, Cohen's kappa, observer bias, data-coding bias, data-entry bias, historical bias, implicit bias", "Where the gap is born, and how to see it"],
+    ["Where it lives", "dataset bias, label bias, biased measurement, structural bias", "Sample, label or structure"],
+    ["Causes and who decides", "Pearl's ladder, association, intervention, counterfactual, causal graph, proxy, leverage analysis, leverage, accountable owner, calibration parity, equal FPR and FNR, impossibility theorem, values claim", "Which fix works, which metric, whose node"]
+  ];
+  function renderMap(el, k, anim) {
+    var svg = svgFor(el, W, H, "Thirty-three terms in four groups", "A table with four rows: group, terms, what the group is about.");
+    var g = svg.append("g");
+    wrap(g, 0, 36, "33 terms from Chapter 6. Every one is about where bias enters a pipeline, what a fix can reach, and who owns the node.", 96, { size: 28, lh: 38, fill: INK });
+    var cx = [0, 290, 1060], y = 160;
+    ["GROUP", "TERMS", "WHAT IT IS ABOUT"].forEach(function (h, i) { lab(g, cx[i] + 18, y, h); });
+    g.append("path").attr("d", "M0," + (y + 14) + " H1400").attr("stroke", INK).attr("stroke-width", 2);
+    y += 24;
+    MAPROWS.forEach(function (r, i) {
+      var probe = svg.append("g"), tw = wrap(probe, 0, 0, r[1], 56, { size: 24, lh: 30 }), h = Math.max(tw.node().__h, 60) + 28; probe.remove();
+      if (i + 1 <= k) {
+        var row = g.append("g");
+        box(row, 0, y, 1400, h, { stroke: FAMILIAR });
+        row.append("rect").attr("x", 0).attr("y", y).attr("width", 10).attr("height", h + 1).attr("fill", RED);
+        wrap(row, cx[0] + 28, y + 40, r[0], 16, { size: 26, lh: 30, weight: 700, fill: RED });
+        wrap(row, cx[1] + 18, y + 34, r[1], 56, { size: 24, lh: 30, fill: INK });
+        wrap(row, cx[2] + 18, y + 34, r[2], 24, { size: 24, lh: 30 });
+        if (A(anim, k, i + 1)) row.attr("opacity", 0).attr("transform", "translate(0,18)").transition().duration(450).ease(d3.easeCubicOut).attr("opacity", 1).attr("transform", "translate(0,0)");
+      }
+      y += h + 8;
+    });
+    if (k === 0) cap(g, 0, 400, "Click or press → to add the four groups, one at a time.", { fill: MUTED });
+  }
+
+  /* ---------- 1. estimator, bias, unbiased ---------- */
+  function renderEst(el, k, anim) {
+    var svg = svgFor(el, W, H, "An estimator is biased when its average misses the truth, and more data does not move that offset", "Repeated estimates drawn as dots on a percent line. One estimator centres on the true 25 percent. The other centres at about 14 percent. With 2,000 per sample both tighten but the offset stays.");
+    var ey = base(svg, [{ id: "est", s: 1 }, { id: "unb", s: 1 }, { id: "bias", s: 2 }], k, anim, ["Bias", "gap between E[estimate] and truth"], ["Scatter", "spread of estimates around their mean"]);
+    var d = svg.append("g"), R50 = EST.reps[50], R2k = EST.reps[2000];
+    function sx(v) { return 20 + v * 1440; }
+    lab(d, 0, 30, "24 REPEATED SAMPLES, ONE ESTIMATE EACH");
+    var ax = d.append("g"), AY = 430;
+    ax.append("path").attr("d", "M20," + AY + " H740").attr("stroke", INK).attr("stroke-width", 2);
+    [0, 0.1, 0.2, 0.3, 0.4, 0.5].forEach(function (v) { ax.append("path").attr("d", "M" + sx(v) + "," + AY + " v8").attr("stroke", INK).attr("stroke-width", 2); cap(ax, sx(v), AY + 34, pc(v), { size: 24, anchor: "middle", fill: MUTED }); });
+    d.append("path").attr("d", "M" + sx(EST.TH) + ",84 V" + AY).attr("stroke", RED).attr("stroke-width", 3).attr("stroke-dasharray", "8 6");
+    cap(d, sx(EST.TH), 70, "true θ = " + pc(EST.TH, 1), { size: 24, weight: 700, fill: RED, anchor: "middle" });
+    cap(d, 0, 112, "Random sample (unbiased)", { size: 24, weight: 700 });
+    var dyn = d.append("g");
+    function row(arrA, arrB, t, yc, fill, n) {
+      var mA = d3.mean(arrA), mB = d3.mean(arrB), mx = sx(mA + (mB - mA) * t);
+      arrA.forEach(function (v, i) { var x = sx(v + (arrB[i] - v) * t); dyn.append("circle").attr("cx", x).attr("cy", yc + ((i % 5) - 2) * 12).attr("r", 7).attr("fill", fill).attr("opacity", 0.85); });
+      dyn.append("rect").attr("x", mx - 2).attr("y", yc - 40).attr("width", 4).attr("height", 80).attr("fill", fill === INK ? INK : RED).attr("opacity", 0.55);
+    }
+    function draw(t) {
+      dyn.selectAll("*").remove();
+      row(R50.u, R2k.u, t, 170, INK);
+      if (k >= 2) row(R50.b, R2k.b, t, 320, RED);
+      var nn = Math.round(50 + (2000 - 50) * t);
+      cap(dyn, 740, 112, "n = " + d3.format(",")(nn) + " each", { size: 24, anchor: "end", fill: MUTED });
+    }
+    if (k >= 2) {
+      cap(d, 0, 262, "Filtered sample (biased)", { size: 24, weight: 700, fill: RED });
+      var x1 = sx(EST.Eb), x2 = sx(EST.TH);
+      arrow(d, x1, 404, x2, 404, 3, RED);
+      cap(d, (x1 + x2) / 2, 388, "bias = −" + ((EST.TH - EST.Eb) * 100).toFixed(1) + " points", { size: 24, weight: 700, fill: RED, anchor: "middle" });
+    }
+    if (k === 3) { draw(0); run(d, 3200, draw, anim); } else draw(0);
+    nt(svg, anim, ["", "An estimator is a recipe that turns a sample into a number. A random sample gives an unbiased one: the estimates centre on the true 25%.", "Keep only patients who pass a filter and the estimates centre near 14%. The bias is the offset, " + sgn(-(EST.TH - EST.Eb) * 100, 1) + " points, not the scatter.", "With 2,000 per sample the scatter shrinks. The offset does not. The 1936 Literary Digest poll had 2.4 million responses and was still wrong."][k]);
+  }
+
+  /* ---------- 2. selection, sampling, IPW ---------- */
+  function renderSel(el, k, anim) {
+    var svg = svgFor(el, W, H, "A filter that depends on the outcome biases the sample; weights can repair it only if the cause was recorded", "Bars of kept and dropped patients. Then a survey whose respondents are mostly professionals. Then weights that put the kept cases back to full size.");
+    var ey = base(svg, [{ id: "sel", s: 1 }, { id: "samp", s: 2 }, { id: "ipw", s: 3 }], k, anim, ["Selection bias", "who is in depends on the outcome"], ["Sampling bias", "some groups were hard to reach"]);
+    var d = svg.append("g"), sc = 0.95, S = SEL;
+    function results(y0, rows, scale, x0) {
+      rows.forEach(function (r, i) { var y = y0 + i * 62; cap(d, 0, y + 22, r[0], { size: 24, weight: 700 }); var b = bar(d, x0, y, r[1] * scale, 30, r[2], anim && r[4], r[3] || 0); cap(d, x0 + r[1] * scale + 10, y + 24, pc(r[1], 1), { size: 26, weight: 700, fill: r[2] === RED ? RED : INK }); });
+    }
+    if (k === 1) {
+      lab(d, 0, 30, "1,000 PATIENTS, A 6-HOUR LAB FILTER");
+      cap(d, 0, 74, "Critical patients: 300, risk 60%", { size: 24, weight: 700 });
+      bar(d, 0, 84, S.nc * sc, 30, PALE); bar(d, 0, 84, S.keptC * sc, 30, INK, anim, 200); cap(d, S.nc * sc + 14, 108, "kept " + S.keptC + " (" + pc(S.kc) + ")", { size: 24 });
+      cap(d, 0, 164, "Stable patients: 700, risk 10%", { size: 24, weight: 700 });
+      bar(d, 0, 174, S.ns * sc, 30, PALE); bar(d, 0, 174, S.keptS * sc, 30, INK, anim, 500); cap(d, 0, 232, "kept " + S.keptS + " (" + pc(S.ks) + ")", { size: 24 });
+      results(268, [["Whole population", S.truth, PALE, 0, false], ["Kept sample", S.samp, RED, 900, true]], 1400, 250);
+    } else if (k === 2) {
+      lab(d, 0, 30, "A SURVEY SENT THROUGH ONE NETWORK");
+      [["Population", S.Np], ["Survey respondents", S.np]].forEach(function (r, i) {
+        var y = 70 + i * 90; cap(d, 0, y, r[0], { size: 24, weight: 700 });
+        var b1 = bar(d, 0, y + 10, 700 * r[1], 36, INK, anim, i * 300), b2 = bar(d, 700 * r[1], y + 10, 700 * (1 - r[1]), 36, PALE, false);
+        cap(d, 10, y + 36, "professionals " + pc(r[1]), { size: 24, weight: 700, fill: "#FFFFFF" }); cap(d, 700 * r[1] + 10, y + 36, pc(1 - r[1]), { size: 24 });
+      });
+      cap(d, 0, 266, "Weights w = (N_i / N) / (n_i / n):", { size: 24, weight: 700 });
+      cap(d, 0, 296, "professionals " + S.wpro.toFixed(1) + ", everyone else " + S.woth.toFixed(1), { size: 24 });
+      cap(d, 0, 346, "Share who want fully remote work (illustrative):", { size: 24, fill: MUTED });
+      [["True value", S.ptruth, PALE], ["Raw survey", S.psamp, RED], ["Weighted", S.pw, INK]].forEach(function (r, i) { var y = 366 + i * 40; cap(d, 0, y + 20, r[0], { size: 24, weight: 700 }); bar(d, 200, y, r[1] * 800, 28, r[2], anim, i * 300); cap(d, 200 + r[1] * 800 + 10, y + 22, pc(r[1]), { size: 24, weight: 700 }); });
+    } else {
+      lab(d, 0, 30, "WEIGHT EACH KEPT PATIENT BY 1 / P(KEPT)");
+      cap(d, 0, 74, "Critical: " + S.keptC + " kept × " + S.wc.toFixed(1) + " = " + Math.round(S.keptC * S.wc), { size: 24, weight: 700 });
+      bar(d, 0, 84, S.keptC * S.wc * sc, 30, INK, anim, 200); bar(d, 0, 84, S.keptC * sc, 30, PALE);
+      cap(d, 0, 164, "Stable: " + S.keptS + " kept × " + S.ws.toFixed(2) + " = " + Math.round(S.keptS * S.ws), { size: 24, weight: 700 });
+      bar(d, 0, 174, S.keptS * S.ws * sc, 30, INK, anim, 500); bar(d, 0, 174, S.keptS * sc, 30, PALE);
+      results(238, [["Raw sample", S.samp, RED, 0, false], ["Weighted", S.wmean, INK, 700, true], ["Population", S.truth, PALE, 1100, true]], 1400, 250);
+      cap(d, 0, 436, "Needs the cause of exclusion to be a recorded variable.", { size: 24, weight: 700, fill: RED });
+    }
+    nt(svg, anim, ["", "A reasonable query drops the sickest patients. The sample says " + pc(S.samp, 1) + " risk, the population " + pc(S.truth, 1) + ". More data from the same query only sharpens it.", "Sampling bias is the reach version: the frame left groups out. When outside data give the true group sizes, reweight so small groups count for more.", "Inverse probability weighting restores " + pc(S.wmean, 1) + ". Propensity scores do it on estimated chances. If the cause was never recorded, go collect differently."][k]);
+  }
+
+  /* ---------- 3. confirmation, self-report, publication, funnel ---------- */
+  function confPath(w1, w2) { var out = [0.5], b = 0; for (var i = 1; i <= 10; i++) { b += (i % 2 ? 1 * w1 : -1 * w2); out.push(1 / (1 + Math.pow(2, -b))); } return out; }
+  function renderPriors(el, k, anim) {
+    var svg = svgFor(el, W, H, "The prior leaks into the record: confirmation, self-report, publication and the funnel plot", "A line chart of belief as evidence arrives. A grid of people who report voting more than they did. A scatter of studies with the small null ones missing, and a trim-and-fill correction.");
+    var ey = base(svg, [{ id: "conf", s: 1 }, { id: "selfr", s: 2 }, { id: "pub", s: 3 }, { id: "funnel", s: 4 }], k, anim, ["Confirmation bias", "prior steers what is kept"], ["Publication bias", "nulls never reach the literature"]);
+    var d = svg.append("g");
+    if (k === 1) {
+      lab(d, 0, 30, "BELIEF AFTER EACH PIECE OF EVIDENCE");
+      var fair = confPath(1, 1), conf = confPath(1.5, 0.5);
+      function px(i) { return 70 + i * 65; } function py(p) { return 380 - p * 310; }
+      d.append("path").attr("d", "M70,70 V380 H720").attr("stroke", INK).attr("stroke-width", 2).attr("fill", "none");
+      [0, 0.5, 1].forEach(function (p) { cap(d, 62, py(p) + 8, pc(p), { size: 24, anchor: "end", fill: MUTED }); d.append("path").attr("d", "M70," + py(p) + " H720").attr("stroke", GRID).attr("stroke-width", 1.5); });
+      [0, 2, 4, 6, 8, 10].forEach(function (i) { cap(d, px(i), 412, i, { size: 24, anchor: "middle", fill: MUTED }); });
+      cap(d, 395, 446, "pieces of evidence: 5 for, 5 against, alternating", { size: 24, anchor: "middle", fill: MUTED });
+      var dyn = d.append("g");
+      var drawC = function (t) {
+        dyn.selectAll("*").remove(); var n = t * 10;
+        [[fair, PALE, "fair 50%"], [conf, RED, ""]].forEach(function (s) {
+          var pts = []; for (var i = 0; i <= 10; i++) { if (i <= n) pts.push([px(i), py(s[0][i])]); else if (i - 1 < n) { var f = n - (i - 1); pts.push([px(i - 1 + f), py(s[0][i - 1] + (s[0][i] - s[0][i - 1]) * f)]); } }
+          dyn.append("path").attr("d", d3.line()(pts)).attr("fill", "none").attr("stroke", s[1]).attr("stroke-width", s[1] === RED ? 5 : 4);
+        });
+        if (t >= 0.999) { cap(dyn, 712, py(conf[10]) - 12, pc(conf[10]) + " confirming", { size: 24, weight: 700, fill: RED, anchor: "end" }); cap(dyn, 712, py(fair[10]) - 12, "50% fair", { size: 24, weight: 700, fill: MUTED, anchor: "end" }); }
+      };
+      drawC(0); run(d, 3000, drawC, anim);
+    } else if (k === 2) {
+      lab(d, 0, 30, "100 PEOPLE ASKED: DID YOU VOTE?");
+      var G = d.append("g");
+      [[20, "what happened", 0], [400, "what they report", 1]].forEach(function (c) {
+        cap(G, c[0], 76, c[1], { size: 24, weight: 700 });
+        d3.range(100).forEach(function (i) {
+          var voted = i < 60, claims = i >= 60 && i < 75, on = voted || (c[2] && claims), red = c[2] && claims;
+          G.append("circle").attr("cx", c[0] + 12 + (i % 10) * 30).attr("cy", 108 + Math.floor(i / 10) * 30).attr("r", 10).attr("fill", on ? (red ? RED : INK) : "#FFFFFF").attr("stroke", on ? (red ? RED : INK) : GREY).attr("stroke-width", 2);
+        });
+      });
+      cap(d, 20, 430, "60 voted", { size: 26, weight: 700 }); cap(d, 400, 430, "75 say they voted: +15 points", { size: 26, weight: 700, fill: RED });
+    } else {
+      var P = PUB, ST = P.st; function X(e) { return 40 + (e + 0.6) * 486; } function Y(se) { return 64 + se * 1130; }
+      lab(d, 0, 30, k === 3 ? "80 STUDIES, TRUE EFFECT 0.15" : "PUBLISHED STUDIES ONLY, THEN FILLED");
+      d.append("path").attr("d", "M40,410 H720").attr("stroke", INK).attr("stroke-width", 2).attr("fill", "none"); d.append("path").attr("d", "M" + X(0) + ",64 V410").attr("stroke", PALE).attr("stroke-width", 2).attr("fill", "none");
+      d.append("path").attr("d", "M" + X(P.th) + ",64 V410").attr("stroke", RED).attr("stroke-width", 2).attr("stroke-dasharray", "8 6");
+      d.append("path").attr("d", "M" + X(P.th) + ",64 L" + X(P.th - 1.96 * 0.3) + "," + Y(0.3) + " M" + X(P.th) + ",64 L" + X(P.th + 1.96 * 0.3) + "," + Y(0.3)).attr("stroke", FAMILIAR).attr("stroke-width", 2).attr("fill", "none");
+      [-0.5, 0, 0.5].forEach(function (e) { cap(d, X(e), 440, e.toFixed(1), { size: 24, anchor: "middle", fill: MUTED }); });
+      cap(d, 4, 392, "noisy", { size: 24, fill: MUTED }); cap(d, 4, 100, "precise", { size: 24, fill: MUTED });
+      ST.forEach(function (s, i) {
+        var show = k === 3 || s.pub; if (!show) return;
+        var c = d.append("circle").attr("cx", X(s.e)).attr("cy", Y(s.se)).attr("r", 7).attr("fill", s.pub ? INK : "#FFFFFF").attr("stroke", s.pub ? INK : GREY).attr("stroke-width", 2);
+        if (anim) c.attr("opacity", 0).transition().delay(i * 14).duration(250).attr("opacity", 1);
+      });
+      if (k === 4) PUB.fill.forEach(function (s, i) { var c = d.append("circle").attr("cx", X(s.e)).attr("cy", Y(s.se)).attr("r", 8).attr("fill", "#FFFFFF").attr("stroke", RED).attr("stroke-width", 3); if (anim) c.attr("opacity", 0).transition().delay(900 + i * 200).duration(300).attr("opacity", 1); });
+      if (k === 3) { cap(d, 740, 100, "pooled: all " + P.all.toFixed(2), { size: 24, weight: 700, anchor: "end" }); cap(d, 740, 132, "published only " + P.pubm.toFixed(2), { size: 24, weight: 700, fill: RED, anchor: "end" }); }
+      if (k === 4) { cap(d, 740, 100, "published only " + P.pubm.toFixed(2), { size: 24, weight: 700, anchor: "end" }); cap(d, 740, 132, "after filling " + P.tfm.toFixed(2), { size: 24, weight: 700, fill: RED, anchor: "end" }); }
+    }
+    nt(svg, anim, ["", "Weight flattering evidence 1.5 and denting evidence 0.5 and ten fair pieces end at " + pc(confPath(1.5, 0.5)[10]) + " belief, not 50%. The weights are illustrative.", "Self-report error runs one way, toward looking good. Asking more people does not average it away; compare against records or name the direction.", "Hollow studies were never published. The published pool reads " + PUB.pubm.toFixed(2) + " against a true " + PUB.th.toFixed(2) + ".", "A funnel should be symmetric. The empty lower-left corner is the drawer. Trim-and-fill imputes " + PUB.fill.length + " studies and pulls the pool to " + PUB.tfm.toFixed(2) + "."][k]);
+  }
+
+  /* ---------- 4. kappa, observer, coding, entry ---------- */
+  function kap(t) { var n = t[0][0] + t[0][1] + t[1][0] + t[1][1], po = (t[0][0] + t[1][1]) / n, a = (t[0][0] + t[0][1]) / n, b = (t[0][0] + t[1][0]) / n, pe = a * b + (1 - a) * (1 - b); return { po: po, pe: pe, k: (po - pe) / (1 - pe) }; }
+  var BLIND = [[40, 10], [10, 40]], UNBL = [[45, 5], [35, 15]];
+  function renderLabelers(el, k, anim) {
+    var svg = svgFor(el, W, H, "Kappa shows who is disagreeing: a person (observer bias) or an item (data-coding bias)", "Two tables of two coders agreeing, with kappa. Then two grids of disagreement, one clustered on a person and one on items. Then recorded codes against true codes.");
+    var ey = base(svg, [{ id: "kappa", s: 1 }, { id: "obs", s: 2 }, { id: "code", s: 3 }, { id: "entry", s: 4 }], k, anim, ["Observer bias", "disagreement clusters on a person"], ["Data-coding bias", "disagreement clusters on an item"]);
+    var d = svg.append("g");
+    function tbl(x0, y0, t, title, red) {
+      var g = d.append("g"), cw = 130, ch = 64, kk = kap(t);
+      cap(g, x0 + 60 + cw, y0 - 40, title, { size: 24, weight: 700, anchor: "middle", fill: red ? RED : INK });
+      ["B +", "B −"].forEach(function (s, j) { cap(g, x0 + 60 + j * cw + cw / 2, y0 - 8, s, { size: 24, anchor: "middle", fill: MUTED }); });
+      ["A +", "A −"].forEach(function (s, i) { cap(g, x0, y0 + i * ch + 40, s, { size: 24, fill: MUTED }); });
+      [0, 1].forEach(function (i) { [0, 1].forEach(function (j) { box(g, x0 + 60 + j * cw, y0 + i * ch, cw, ch, { stroke: i === j ? INK : FAMILIAR, sw: 2, fill: i === j ? "#F6F6F6" : "#FFFFFF" }); cap(g, x0 + 60 + j * cw + cw / 2, y0 + i * ch + 42, t[i][j], { size: 28, weight: 700, anchor: "middle", fill: i === j ? INK : RED }); }); });
+      cap(g, x0, y0 + 2 * ch + 40, "Po " + kk.po.toFixed(2) + ", Pe " + kk.pe.toFixed(2), { size: 24 });
+      cap(g, x0, y0 + 2 * ch + 76, "κ = " + kk.k.toFixed(2), { size: 30, weight: 700, fill: red ? RED : INK });
+      return g;
+    }
+    if (k === 1) { lab(d, 0, 30, "100 NOTES, TWO BLIND CODERS"); fade(tbl(120, 130, BLIND, "agreement table", false), anim, 0); }
+    else if (k === 2) { lab(d, 0, 30, "NOW CODER B SEES THE PRIOR DIAGNOSIS"); tbl(0, 130, BLIND, "blind", false); fade(tbl(380, 130, UNBL, "unblinded", true), anim, 200); }
+    else if (k === 3) {
+      lab(d, 0, 30, "WHO DISAGREES WITH THE MAJORITY?");
+      var items = 6, coders = 4;
+      var Gi = [[0, 0, 0, 0], [0, 1, 0, 1], [0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 1, 0], [0, 0, 0, 0]], Gp = [[0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0], [0, 0, 0, 1], [1, 0, 0, 1]];
+      [[0, Gi, "on two items", "item"], [390, Gp, "on one coder", "coder"]].forEach(function (c, ci) {
+        var g = d.append("g"), x0 = c[0] + 10, y0 = 100;
+        cap(g, x0, y0 - 14, c[2], { size: 24, weight: 700, fill: ci ? RED : INK });
+        c[1].forEach(function (r, i) { r.forEach(function (v, j) { var cell = g.append("rect").attr("x", x0 + j * 46 + 0.5).attr("y", y0 + i * 40 + 0.5).attr("width", 42).attr("height", 36).attr("fill", v ? RED : "#FFFFFF").attr("stroke", FAMILIAR).attr("stroke-width", 1.5); if (anim && v) cell.attr("opacity", 0).transition().delay(300 + (i + j) * 60).duration(300).attr("opacity", 1); }); cap(g, x0 + 4 * 46 + 8, y0 + i * 40 + 28, d3.sum(r), { size: 24, fill: d3.sum(r) >= 2 ? RED : MUTED, weight: d3.sum(r) >= 2 ? 700 : 400 }); });
+        d3.range(4).forEach(function (j) { var s = d3.sum(c[1], function (r) { return r[j]; }); cap(g, x0 + j * 46 + 21, y0 + 6 * 40 + 28, s, { size: 24, anchor: "middle", fill: s >= 3 ? RED : MUTED, weight: s >= 3 ? 700 : 400 }); });
+      });
+      cap(d, 10, 446, "rows are items, columns are coders", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "100 DIAGNOSES: TRUE CODE VERSUS RECORDED");
+      var tr = [40, 30, 30], moved = 0.4 * 30, rec = [40, 30 + moved, 30 - moved];
+      ["Code A", "Code B", "Code C"].forEach(function (nm, i) {
+        var y = 80 + i * 108; cap(d, 0, y + 22, nm, { size: 24, weight: 700 });
+        cap(d, 150, y + 22, "true", { size: 24, fill: MUTED }); bar(d, 270, y, tr[i] * 11, 30, PALE, anim, 0); cap(d, 270 + tr[i] * 11 + 10, y + 24, tr[i], { size: 24, weight: 700 });
+        cap(d, 150, y + 62, "recorded", { size: 24, fill: MUTED }); bar(d, 270, y + 40, rec[i] * 11, 30, i === 0 ? INK : RED, anim, 400); cap(d, 270 + rec[i] * 11 + 10, y + 64, rec[i], { size: 24, weight: 700, fill: i === 0 ? INK : RED });
+      });
+      cap(d, 0, 430, "12 of 30 true C cases entered as B: the pattern tracks the form.", { size: 24, weight: 700, fill: RED });
+    }
+    var k1 = kap(BLIND).k, k2 = kap(UNBL).k;
+    nt(svg, anim, ["", "Kappa is agreement corrected for chance: (Po − Pe) / (1 − Pe). Two blind coders who agree on 80 of 100 notes score " + k1.toFixed(2) + ".", "Unblind one coder and agreement falls to " + k2.toFixed(2) + ". A kappa that collapses on unblinding points to observer bias: the visible prior did the work.", "If disagreement clusters on items, the category is underspecified: revise the manual. If it clusters on one coder, blind and retrain.", "Data-entry error is patterned, not random: the right code sits three menus deep, so the nearest code is entered. Check against source documents."][k]);
+  }
+
+  /* ---------- 5. historical and implicit ---------- */
+  function renderHist(el, k, anim) {
+    var svg = svgFor(el, W, H, "Historical bias is a faithful record of an unequal world; implicit bias is the medium behind several mechanisms", "Bars of promotion rates in records and in model predictions that match. Then four mechanisms fed by one source. Then two causes producing the same gap.");
+    var ey = base(svg, [{ id: "hist", s: 1 }, { id: "impl", s: 2 }], k, anim, ["Historical bias", "faithful data, unfair world"], ["Selection bias", "a filter dropped some people"]);
+    var d = svg.append("g");
+    if (k === 1) {
+      lab(d, 0, 30, "TEN YEARS OF PROMOTION RECORDS");
+      var rows = [["Men", 0.30], ["Women", 0.18]];
+      cap(d, 230, 74, "in the records", { size: 24, fill: MUTED }); cap(d, 230, 224, "model prediction", { size: 24, fill: MUTED });
+      rows.forEach(function (r, i) { var y = 90 + i * 50; cap(d, 0, y + 22, r[0], { size: 24, weight: 700 }); bar(d, 130, y, r[1] * 1500, 32, PALE, anim, i * 200); cap(d, 130 + r[1] * 1500 + 10, y + 24, pc(r[1]), { size: 24, weight: 700 });
+        var y2 = 240 + i * 50; cap(d, 0, y2 + 22, r[0], { size: 24, weight: 700 }); bar(d, 130, y2, r[1] * 1500, 32, INK, anim, 600 + i * 200); cap(d, 130 + r[1] * 1500 + 10, y2 + 24, pc(r[1]), { size: 24, weight: 700 }); });
+      cap(d, 0, 400, "Model error against the records: 0 points.", { size: 26, weight: 700 });
+      cap(d, 0, 440, "The 12-point gap it learned so well is the harm.", { size: 26, weight: 700, fill: RED });
+    } else if (k === 2) {
+      lab(d, 0, 30, "ONE SOURCE, FOUR PLACES IT SURFACES");
+      box(d, 0, 340, 740, 56, { stroke: INK, sw: 3 }); cap(d, 370, 377, "implicit bias: unconscious associations", { size: 26, weight: 700, anchor: "middle" });
+      [["Confirmation", "which hypothesis"], ["Observer", "what is observed"], ["Data coding", "how it is sorted"], ["Publication", "what is submitted"]].forEach(function (s, i) {
+        var x = 0 + i * 190, g = d.append("g"); box(g, x, 80, 170, 120, { stroke: RED, sw: 2.5 }); cap(g, x + 85, 124, s[0], { size: 24, weight: 700, anchor: "middle" }); wrap(g, x + 85, 160, s[1], 14, { size: 24, lh: 28, fill: BODY }).attr("text-anchor", "middle").selectAll("tspan").attr("x", x + 85);
+        var ln = d.append("path").attr("d", "M" + (x + 85) + ",340 V200").attr("stroke", INK).attr("stroke-width", 3); if (anim) drawIn(ln, i * 250, 500);
+      });
+      cap(d, 0, 446, "No single point to intervene on.", { size: 26, weight: 700, fill: RED });
+    } else {
+      lab(d, 0, 30, "A PARITY AUDIT: FLAG, NOT VERDICT");
+      var a0 = 0.40, a1 = 0.25;
+      [["P(ŷ = 1 | group 0)", a0, INK], ["P(ŷ = 1 | group 1)", a1, RED]].forEach(function (r, i) { var y = 70 + i * 70; cap(d, 0, y + 22, r[0], { size: 24, weight: 700 }); bar(d, 290, y, r[1] * 1000, 32, r[2], anim, i * 300); cap(d, 290 + r[1] * 1000 + 10, y + 24, pc(r[1]), { size: 24, weight: 700 }); });
+      cap(d, 0, 236, "Gap: " + ((a0 - a1) * 100).toFixed(0) + " points, ratio " + (a1 / a0).toFixed(2) + ".", { size: 26, weight: 700, fill: RED });
+      [["A: bias in the pipeline", 0], ["B: real base-rate difference", 1]].forEach(function (c) { var x = c[1] * 380; box(d, x, 280, 360, 140, { stroke: FAMILIAR, sw: 2 }); cap(d, x + 16, 324, c[0], { size: 24, weight: 700 }); cap(d, x + 16, 364, "same gap in the audit", { size: 24 }); cap(d, x + 16, 396, "different right response", { size: 24, fill: RED }); });
+    }
+    nt(svg, anim, ["", "The sample is representative and the labels are accurate, so every metric is green. The model learned the past well, and the past is the problem.", "Implicit bias is not an entry point of its own. It is the water table behind confirmation, observer, coding and publication bias, so fixes are structural.", "A parity gap is a flag, not a verdict: real base-rate differences give the same gap. Diverse teams, structured decisions and continuous audits are the handles."][k]);
+  }
+
+  /* ---------- 6. dataset, label, structural ---------- */
+  function renderFlav(el, k, anim) {
+    var svg = svgFor(el, W, H, "Dataset bias is in the sample, label bias in the measurement, structural bias in the world", "Stacked bars of training and deployment group shares. Then true offence rates against recorded re-arrest. Then a model that predicts success exactly and leaves the gap in place.");
+    var ey = base(svg, [{ id: "dset", s: 1 }, { id: "label", s: 2 }, { id: "meas", s: 2 }, { id: "struct", s: 3 }], k, anim, ["Label bias", "the label is a distorted stand-in"], ["Structural bias", "data and labels fine, world unequal"]);
+    var d = svg.append("g");
+    if (k === 1) {
+      lab(d, 0, 30, "WHO IS IN THE TRAINING SET");
+      [["Training set", 0.9], ["Deployment population", 0.5]].forEach(function (r, i) {
+        var y = 90 + i * 130; cap(d, 0, y, r[0], { size: 24, weight: 700 });
+        bar(d, 0, y + 12, 700 * r[1], 44, INK, anim, i * 400); bar(d, 700 * r[1], y + 12, 700 * (1 - r[1]), 44, RED, anim, i * 400 + 200);
+        cap(d, 10, y + 42, "group 1: " + pc(r[1]), { size: 24, weight: 700, fill: "#FFFFFF" }); cap(d, 700 * r[1] + 10, y + 42, i ? "group 2: " + pc(1 - r[1]) : pc(1 - r[1]), { size: 24, weight: 700, fill: "#FFFFFF" });
+      });
+      cap(d, 0, 400, "Fix the sample and, in principle, the bias goes.", { size: 26, weight: 700 });
+    } else if (k === 2) {
+      lab(d, 0, 30, "THE LABEL IS RE-ARREST, NOT CRIME");
+      var det = [0.5, 0.25], off = 0.2;
+      cap(d, 330, 74, "true offence rate", { size: 24, fill: MUTED }); cap(d, 330, 224, "recorded re-arrest", { size: 24, fill: MUTED });
+      ["Area A", "Area B"].forEach(function (nm, i) {
+        var y = 90 + i * 52; cap(d, 0, y + 22, nm, { size: 24, weight: 700 }); bar(d, 130, y, off * 1000, 32, PALE, anim, i * 200); cap(d, 130 + off * 1000 + 10, y + 24, pc(off), { size: 24, weight: 700 });
+        var y2 = 240 + i * 52; cap(d, 0, y2 + 22, nm, { size: 24, weight: 700 }); bar(d, 130, y2, off * det[i] * 1000, 32, RED, anim, 500 + i * 200); cap(d, 130 + off * det[i] * 1000 + 10, y2 + 24, pc(off * det[i], 1), { size: 24, weight: 700, fill: RED });
+      });
+      cap(d, 0, 400, "Detection 50% against 25%: same crime, twice the recorded rate.", { size: 24, weight: 700, fill: RED });
+      cap(d, 0, 432, "Rates and detection chances are illustrative.", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "THE MODEL IS RIGHT; THE WORLD IS UNEVEN");
+      var succ = [0.4, 0.2], acc = [0.8, 0.4];
+      [["Group 1", 0], ["Group 2", 1]].forEach(function (r, i) {
+        var y = 80 + i * 150; cap(d, 0, y, r[0], { size: 24, weight: 700 });
+        cap(d, 0, y + 40, "had mentor access", { size: 24, fill: MUTED }); bar(d, 300, y + 16, acc[i] * 450, 28, PALE, anim, i * 300); cap(d, 300 + acc[i] * 450 + 10, y + 40, pc(acc[i]), { size: 24, weight: 700 });
+        cap(d, 0, y + 90, "succeeded, as predicted", { size: 24, fill: MUTED }); bar(d, 300, y + 66, succ[i] * 450, 28, INK, anim, 500 + i * 300); cap(d, 300 + succ[i] * 450 + 10, y + 90, pc(succ[i]), { size: 24, weight: 700 });
+      });
+      cap(d, 0, 410, "Retrain the model and the 20-point gap stays.", { size: 26, weight: 700, fill: RED });
+      cap(d, 0, 442, "Access shares are illustrative.", { size: 24, fill: MUTED });
+    }
+    nt(svg, anim, ["", "Dataset bias is a sampling problem. Face recognition trained mostly on one group and deployed on everyone is the standard case. Shares are illustrative.", "Label bias is a measurement problem. The model accurately predicts re-arrest, and re-arrest is crime filtered through policing.", "Structural bias is a question about the world. No model fix and no data fix touches it: change the review, the criteria or the institution."][k]);
+  }
+
+  /* ---------- 7. Pearl's ladder ---------- */
+  function renderLadder(el, k, anim) {
+    var svg = svgFor(el, W, H, "Pearl's ladder: seeing, doing and imagining, worked on an approval gap", "Three rungs from association up to counterfactual. Then approval rates by group showing a twelve point gap. Then the same model rerun with the zip code set to a neutral value, where the gap falls to two points.");
+    var ey = base(svg, [{ id: "ladder", s: 1 }, { id: "cf", s: 1 }, { id: "assoc", s: 2 }, { id: "interv", s: 3 }], k, anim, ["Association", "P(Y | X): you watch X"], ["Intervention", "P(Y | do(X)): you set X"]);
+    var d = svg.append("g");
+    if (k === 1) {
+      [["Rung 3 · imagining", "What if X had been different for this case?", "opens in Chapter 4, closes in Chapter 12", 50, true], ["Rung 2 · doing", "What happens if we set X?", "P(Y | do(X = x))", 170, false], ["Rung 1 · seeing", "What goes with what?", "P(Y | X)", 290, false]].forEach(function (r, i) {
+        var g = d.append("g"); box(g, 0, r[3], 740, 108, { stroke: r[4] ? GREY : INK, sw: 3 }); if (r[4]) g.select("rect").attr("stroke-dasharray", "10 6");
+        cap(g, 16, r[3] + 34, r[0], { size: 26, weight: 700, fill: r[4] ? MUTED : (i === 1 ? RED : INK) }); cap(g, 16, r[3] + 68, r[1], { size: 24 }); mono(g, 16, r[3] + 98, r[2], { size: 24, fill: r[4] ? MUTED : INK });
+        fade(g, anim, (2 - i) * 350);
+      });
+    } else if (k === 2) {
+      lab(d, 0, 30, "RUNG 1: APPROVAL RATE IN THE DATA");
+      [["Group A", LAD.A, INK], ["Group B", LAD.B, RED]].forEach(function (r, i) { var y = 90 + i * 80; cap(d, 0, y + 24, r[0], { size: 24, weight: 700 }); bar(d, 130, y, r[1] * 1200, 36, r[2], anim, i * 300); cap(d, 130 + r[1] * 1200 + 10, y + 28, pc(r[1]), { size: 26, weight: 700 }); });
+      cap(d, 0, 290, "Gap: " + (LAD.gap * 100).toFixed(0) + " points. An observation, nothing more.", { size: 26, weight: 700, fill: RED });
+      cap(d, 0, 340, "approve = 0.20 + 0.25 × zip score + 0.10 × W", { size: 24, family: MONO, fill: MUTED });
+      cap(d, 0, 376, "zip score: A 0.8, B 0.4. W: A 0.6, B 0.4 (illustrative).", { size: 24, fill: MUTED });
+    } else {
+      lab(d, 0, 30, "RUNG 2: SET THE ZIP SCORE TO 0.6, RERUN");
+      [["A as observed", LAD.A, PALE], ["B as observed", LAD.B, PALE], ["A, zip set to 0.6", LAD.nA, INK], ["B, zip set to 0.6", LAD.nB, RED]].forEach(function (r, i) { var y = 78 + i * 68; cap(d, 0, y, r[0], { size: 24, weight: 700 }); bar(d, 0, y + 10, r[1] * 1300, 30, r[2], anim, i * 250); cap(d, r[1] * 1300 + 10, y + 34, pc(r[1]), { size: 24, weight: 700 }); });
+      cap(d, 0, 396, "Gap: " + (LAD.gap * 100).toFixed(0) + " points → " + (LAD.ngap * 100).toFixed(0) + " points.", { size: 28, weight: 700, fill: RED });
+      cap(d, 0, 436, "Most of the disparity flowed through the proxy.", { size: 24 });
+    }
+    nt(svg, anim, ["", "Association is what the model sees and most fairness metrics measure. Intervention sets a variable by force. Counterfactual asks about one case (Chapter 12).", "A 12-point approval gap is a Rung 1 finding. It cannot say whether group causes the gap or only goes along with it.", "Setting the zip proxy to a neutral value and rerunning is a Rung 2 move. The gap falls to 2 points: the path ran through the proxy."][k]);
+  }
+
+  /* ---------- 8. causal graph, leverage, owner ---------- */
+  function renderGraph(el, k, anim) {
+    var svg = svgFor(el, W, H, "Draw the causal graph, list the paths, block the one that carries the most bias, and name its owner", "A graph from the protected attribute to the outcome by three routes: through the sample, through proxy features into the model, and through proxies to a human reviewer who bypasses the model. The reviewer route carries 45 of 50 points.");
+    var ey = base(svg, [{ id: "graph", s: 1 }, { id: "proxy", s: 1 }, { id: "lan", s: 2 }, { id: "lev", s: 3 }, { id: "owner", s: 4 }], k, anim, ["Leverage analysis", "which path carries the bias"], ["Accountable owner", "who controls that node"]);
+    var d = svg.append("g"), total = LOAD.sample + LOAD.proxy + LOAD.review;
+    var N = { A: [0, 200, "Attribute"], S: [210, 70, "Sample"], P: [210, 330, "Proxy"], M: [420, 70, "Model"], R: [420, 330, "Reviewer"], O: [630, 200, "Outcome"] };
+    var E = [["A", "S", LOAD.sample], ["S", "M", LOAD.sample], ["A", "P", LOAD.proxy + LOAD.review], ["P", "M", LOAD.proxy], ["P", "R", LOAD.review], ["M", "O", LOAD.sample + LOAD.proxy], ["R", "O", LOAD.review]];
+    function ctr(id, side) { var n = N[id]; return [n[0] + (side > 0 ? 130 : 0), n[1] + 25]; }
+    E.forEach(function (e) { var a = ctr(e[0], 1), b = ctr(e[1], -1), w = k >= 2 ? 2 + e[2] * 0.2 : 3; arrow(d, a[0], a[1], b[0], b[1], w, k >= 2 && e[2] >= 40 ? RED : INK, k >= 2 ? 0.9 : 1); });
+    Object.keys(N).forEach(function (id) {
+      var n = N[id], hi = (id === "P" && k === 1) || (id === "R" && k === 4);
+      box(d, n[0], n[1], 130, 50, { stroke: hi ? RED : INK, sw: hi ? 4 : 2.5 }); cap(d, n[0] + 65, n[1] + 33, n[2], { size: 24, weight: 700, anchor: "middle", fill: hi ? RED : INK });
+    });
+    if (k >= 2) { cap(d, 380, 126, "" + LOAD.sample, { size: 24, weight: 700, anchor: "middle", fill: MUTED }); cap(d, 330, 228, "" + LOAD.proxy, { size: 24, weight: 700, anchor: "end", fill: MUTED }); cap(d, 380, 322, "" + LOAD.review, { size: 24, weight: 700, anchor: "middle", fill: RED }); }
+    if (k >= 3) [[380, 95, 395, 62, LOAD.sample, "middle"], [380, 225, 400, 228, LOAD.proxy, "start"], [590, 290, 612, 318, LOAD.review, "start"]].forEach(function (x, i) {
+      var g = d.append("g"); cross(g, x[0], x[1], 11, RED); cap(g, x[2], x[3] + (i === 0 ? 0 : 0), "blocks " + pc(x[4] / total), { size: 24, weight: 700, fill: RED, anchor: x[5] });
+      fade(g, A(anim, k, 3), i * 300);
+    });
+    if (k >= 4) cap(d, 485, 432, "owner: whoever runs the review process", { size: 24, weight: 700, fill: RED, anchor: "middle" });
+    if (k >= 2 && k < 4) cap(d, 0, 436, "Points of disparity carried: " + LOAD.sample + ", " + LOAD.proxy + ", " + LOAD.review + " of " + total + " (illustrative).", { size: 24, fill: MUTED });
+    nt(svg, anim, ["", "A causal graph writes down who causes what. A proxy such as zip code lets the attribute reach the outcome without being an input. The Reviewer route bypasses the model.", "Step two lists every path from attribute to outcome. Line width is the load. Two routes run through the model; the Reviewer route does not.", "Step three asks what each fix blocks. The sample fix blocks 4%, a fairness penalty 6%, changing the review 90%. That is the high-leverage point.", "A node has an owner. Naming whoever controls it is not blame. The owner can be you, the labelers, the deployer or the model provider."][k]);
+  }
+
+  /* ---------- 9. fairness ---------- */
+  function renderFair(el, k, anim) {
+    var svg = svgFor(el, W, H, "With unequal base rates, calibration and equal error rates cannot all hold, so the metric is a values choice", "Two group panels of equal calibration and equal error rates. Then dot grids with 30 and 50 positives per 100. Then two options with tables showing which rate breaks. Then the share of errors each option puts on each group.");
+    var ey = base(svg, [{ id: "calib", s: 1 }, { id: "eodds", s: 1 }, { id: "imposs", s: 3 }, { id: "values", s: 4 }], k, anim, ["Calibration parity", "a score means the same in every group"], ["Equal FPR and FNR", "errors land equally on every group"]);
+    var d = svg.append("g"), F = FAIR;
+    if (k === 1) {
+      lab(d, 0, 30, "CALIBRATION PARITY"); lab(d, 400, 30, "EQUAL FPR AND FNR");
+      var base0 = 330;
+      [[60, 0.6, INK, "g1"], [180, 0.6, RED, "g2"]].forEach(function (c, i) { vcol(d, c[0], base0, 90, c[1] * 240, c[2], anim, i * 200); cap(d, c[0] + 45, base0 - c[1] * 240 - 12, pc(c[1]), { size: 24, weight: 700, anchor: "middle" }); cap(d, c[0] + 45, base0 + 34, "group " + (i + 1), { size: 24, anchor: "middle", fill: MUTED }); });
+      cap(d, 0, 412, "positive among those flagged", { size: 24, fill: MUTED });
+      [[410, 0.1, INK], [490, 0.1, RED], [600, 0.65, INK], [680, 0.65, RED]].forEach(function (c, i) { vcol(d, c[0], base0, 66, c[1] * 240, c[2], anim, i * 150); cap(d, c[0] + 33, base0 - c[1] * 240 - 12, pc(c[1]), { size: 24, weight: 700, anchor: "middle" }); });
+      cap(d, 483, base0 + 34, "wrongly flagged", { size: 24, anchor: "middle", fill: MUTED }); cap(d, 673, base0 + 34, "missed", { size: 24, anchor: "middle", fill: MUTED });
+      cap(d, 570, 412, "dark: group 1, red: group 2", { size: 24, anchor: "middle", fill: MUTED });
+    } else if (k === 2) {
+      lab(d, 0, 30, "TRULY POSITIVE PER 100 PEOPLE");
+      [[20, F.p1, "Group 1"], [400, F.p2, "Group 2"]].forEach(function (g0, gi) {
+        d3.range(100).forEach(function (i) { var on = i < g0[1] * 100, c = d.append("circle").attr("cx", g0[0] + 12 + (i % 10) * 28).attr("cy", 76 + Math.floor(i / 10) * 28).attr("r", 9).attr("fill", on ? RED : "#FFFFFF").attr("stroke", on ? RED : GREY).attr("stroke-width", 2); if (anim && on) c.attr("opacity", 0).transition().delay(gi * 300 + i * 12).duration(200).attr("opacity", 1); });
+        cap(d, g0[0], 400, g0[2] + ": base rate " + pc(g0[1]), { size: 24, weight: 700 });
+      });
+    } else if (k === 3) {
+      lab(d, 0, 30, "SAME FPR 10%, TWO WAYS TO FIX THE REST");
+      [["A: equal TPR", 0, F.a1, F.a2, "ppv"], ["B: equal PPV", 380, F.b1, F.b2, "tpr"]].forEach(function (o) {
+        var x0 = o[1], g = d.append("g"); cap(g, x0, 80, o[0], { size: 24, weight: 700, fill: o[1] ? RED : INK });
+        ["FPR", "TPR", "PPV"].forEach(function (h, c) { cap(g, x0 + 110 + c * 85, 124, h, { size: 24, weight: 700, fill: MUTED }); });
+        [o[2], o[3]].forEach(function (m, r) { var y = 164 + r * 50; cap(g, x0, y, "Group " + (r + 1), { size: 24 }); [[m.fpr, "fpr"], [m.tpr, "tpr"], [m.ppv, "ppv"]].forEach(function (v, c) { var viol = v[1] === o[4] && r === 1; cap(g, x0 + 110 + c * 85, y, pc(v[0], viol ? 1 : 0), { size: 24, weight: viol ? 700 : 400, fill: viol ? RED : INK }); }); });
+        cap(g, x0, 280, o[4] === "ppv" ? "PPV breaks: " + pc(F.a1.ppv, 0) + " against " + pc(F.a2.ppv, 1) : "TPR breaks: " + pc(F.b1.tpr, 0) + " against " + pc(F.b2.tpr, 0), { size: 24, weight: 700, fill: RED });
+        fade(g, anim, o[1] ? 500 : 0);
+      });
+      cap(d, 0, 350, "v / (1 − v) = p / (1 − p) × TPR / FPR", { size: 24, family: MONO });
+      wrap(d, 0, 392, "At PPV 60% the ratio TPR / FPR is forced to " + F.r1.toFixed(1) + " in group 1 and " + F.r2.toFixed(1) + " in group 2.", 56, { size: 24, lh: 30, weight: 700, fill: INK });
+    } else {
+      lab(d, 0, 30, "WHO ABSORBS THE ERROR");
+      [["Option A", 0, F.a1, F.a2], ["Option B", 380, F.b1, F.b2]].forEach(function (o) {
+        var x0 = o[1], g = d.append("g"); cap(g, x0, 78, o[0] + (o[1] ? ": equal PPV" : ": equal TPR"), { size: 24, weight: 700 });
+        [["flags that are wrong", function (m) { return 1 - m.ppv; }], ["positives missed", function (m) { return 1 - m.tpr; }]].forEach(function (met, mi) { var y = 124 + mi * 130; cap(g, x0, y, met[0], { size: 24, fill: MUTED }); [o[2], o[3]].forEach(function (m, r) { var v = met[1](m); bar(g, x0, y + 10 + r * 40, v * 330, 30, r ? RED : INK, anim, mi * 200 + r * 150); cap(g, x0 + v * 330 + 8, y + 34 + r * 40, pc(v), { size: 24, weight: 700 }); }); });
+      });
+      cap(d, 0, 400, "dark: group 1, red: group 2", { size: 24, fill: MUTED });
+      cap(d, 0, 436, "No arithmetic picks between A and B.", { size: 24, weight: 700, fill: RED });
+    }
+    nt(svg, anim, ["", "Calibration parity: a score means the same in every group. Equal FPR and FNR: wrongly flagged and missed shares match. Each is reasonable alone.", "When base rates differ, 30 against 50 in 100, the groups start with different shares of positives. That is the condition that triggers the theorem.", "Equal error rates leave PPV unequal. Equal PPV leaves TPR unequal. Pick any two; the third is forced into violation.", "Option A puts more wrong flags on group 1. Option B has group 2's positives missed more often. Which error you accept is a values claim."][k]);
+  }
+
+  /* ---------- look-alike pairs ---------- */
+  function renderPairs(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four look-alike pairs from the bias chapter", "Each step shows two ideas people mix up, side by side with a small animation.");
+    var d = svg.append("g");
+    var PAIRS = [
+      [["Selection bias", "A filter drops people, so the sample misses some"], ["Historical bias", "Nobody is dropped; the record shows an unfair world"]],
+      [["Association", "You watch X and see what goes with it"], ["Intervention", "You set X by force and see if Y moves"]],
+      [["Calibration parity", "A score means the same in every group"], ["Equal error rates", "Mistakes land equally on every group"]],
+      [["Dataset bias", "The sample does not match who it is used on"], ["Label bias", "The label is a distorted stand-in for the target"]]
+    ];
+    var L = d.append("g"), R = d.append("g").attr("transform", "translate(740,0)");
+    function head(g, i, j) { lab(g, 0, 24, "PAIR " + Math.max(1, k) + " · " + (j ? "RIGHT" : "LEFT"), { fill: MUTED }); txt(g, 0, 66, PAIRS[i][j][0], { size: 32, weight: 700, fill: j ? RED : INK }); wrap(g, 0, 470, PAIRS[i][j][1] + ".", 44, { size: 26, lh: 32, fill: BODY }); }
+    function dotsAt(g, x, y, i, on, red, op) { g.append("circle").attr("cx", x).attr("cy", y).attr("r", 12).attr("fill", on ? (red ? RED : INK) : "#FFFFFF").attr("stroke", red ? RED : INK).attr("stroke-width", 2.5).attr("opacity", op == null ? 1 : op); }
+    function draw(i, t) {
+      L.selectAll("*").remove(); R.selectAll("*").remove(); head(L, i, 0); head(R, i, 1);
+      var LG = L.append("g").attr("transform", "translate(60,0)"), RG = R.append("g").attr("transform", "translate(60,0)");
+      if (i === 0) {
+        d3.range(30).forEach(function (j) { var x = 20 + (j % 10) * 30, y = 150 + Math.floor(j / 10) * 40, crit = j % 3 === 0, gone = crit && j % 6 !== 0 && t > 0.3; dotsAt(LG, x, y, j, crit, crit, gone ? 0.12 : 1); });
+        cap(LG, 20, 330, "the sickest rows vanish", { size: 24, fill: MUTED });
+        [["men", 3], ["women", 1]].forEach(function (r, ri) { d3.range(10).forEach(function (j) { dotsAt(RG, 20 + j * 30, 170 + ri * 60, j, j < r[1], true); }); cap(RG, 330, 178 + ri * 60, r[0], { size: 24, fill: MUTED }); });
+        cap(RG, 20, 330, "every row kept, accurate labels", { size: 24, fill: MUTED });
+      } else if (i === 1) {
+        var xv = t; LG.append("rect").attr("x", 20).attr("y", 250 - xv * 150).attr("width", 70).attr("height", xv * 150).attr("fill", INK); LG.append("rect").attr("x", 140).attr("y", 250 - xv * 150).attr("width", 70).attr("height", xv * 150).attr("fill", PALE);
+        cap(LG, 55, 290, "X", { size: 26, weight: 700, anchor: "middle" }); cap(LG, 175, 290, "Y", { size: 26, weight: 700, anchor: "middle" }); cap(LG, 20, 330, "Y rises with X, but why?", { size: 24, fill: MUTED });
+        var hand = Math.min(1, t * 1.6); RG.append("rect").attr("x", 20).attr("y", 250 - hand * 150).attr("width", 70).attr("height", hand * 150).attr("fill", RED); RG.append("rect").attr("x", 140).attr("y", 250 - 0.2 * 150).attr("width", 70).attr("height", 0.2 * 150).attr("fill", PALE);
+        cap(RG, 55, 290, "X", { size: 26, weight: 700, anchor: "middle" }); cap(RG, 175, 290, "Y", { size: 26, weight: 700, anchor: "middle" }); cap(RG, 20, 330, "X set by hand, Y does not move", { size: 24, fill: MUTED });
+      } else if (i === 2) {
+        var a = FAIR.b2, b = FAIR.a2;
+        [[LG, [[FAIR.v, INK], [FAIR.b2.ppv, RED]], "PPV equal", "TPR " + pc(FAIR.b1.tpr) + " against " + pc(FAIR.b2.tpr)], [RG, [[FAIR.a1.tpr, INK], [FAIR.a2.tpr, RED]], "TPR equal", "PPV " + pc(FAIR.a1.ppv) + " against " + pc(FAIR.a2.ppv, 1)]].forEach(function (c, ci) {
+          c[1].forEach(function (v, vi) { vcol(c[0], 40 + vi * 120, 280, 80, v[0] * 200 * t, v[1]); cap(c[0], 80 + vi * 120, 280 - v[0] * 200 * t - 10, pc(v[0]), { size: 24, weight: 700, anchor: "middle" }); });
+          cap(c[0], 20, 322, c[2], { size: 24, fill: MUTED }); cap(c[0], 20, 356, c[3], { size: 24, weight: 700, fill: RED });
+        });
+      } else {
+        [[LG, 0.9, "training", 0.5, "deployment"], [RG, 0.2, "true offence", 0.1, "recorded"]].forEach(function (c, ci) {
+          if (ci === 0) { bar(c[0], 20, 212, 500 * c[1] * t, 40, INK); bar(c[0], 20 + 500 * c[1] * t, 212, 500 * (1 - c[1]) * t, 40, RED); bar(c[0], 20, 302, 500 * c[3] * t, 40, INK); bar(c[0], 20 + 500 * c[3] * t, 302, 500 * (1 - c[3]) * t, 40, RED); }
+          else { bar(c[0], 20, 212, 0.2 * 2000 * t, 40, PALE); bar(c[0], 20, 302, 0.1 * 2000 * t, 40, RED); }
+          cap(c[0], 20, 200, c[2], { size: 24, fill: MUTED }); cap(c[0], 20, 290, c[4], { size: 24, fill: MUTED });
+        });
+        cap(LG, 20, 390, "group 1 is 90% against 50% (dark)", { size: 24, fill: MUTED }); cap(RG, 20, 390, "20% true, 10% on record", { size: 24, fill: MUTED });
+      }
+    }
+    if (k === 0) { draw(0, 0.5); cap(svg.append("g"), 0, 612, "Click or press → to see four pairs, one at a time.", { size: 24, fill: MUTED }); return; }
+    draw(k - 1, 0.99); run(d, 3000, function (t) { draw(k - 1, t); }, anim);
+  }
+
+  /* ---------- say it exactly ---------- */
+  var SAYSD = function (n) { var p = EST.Eb; return Math.sqrt(p * (1 - p) / n); };
+  var SAY = [
+    { v: "the model is biased", x: "Name target and estimate: sample says " + pc(SEL.samp, 1) + ", truth " + pc(SEL.truth, 1) + ", bias −" + ((SEL.truth - SEL.samp) * 100).toFixed(1) + " points" },
+    { v: "just collect more data", x: "More data narrows scatter, not offset: SD " + (SAYSD(50) * 100).toFixed(1) + " to " + (SAYSD(5000) * 100).toFixed(1) + " points, bias stays" },
+    { v: "the model is fair", x: "Name the metric: equal TPR and FPR still leave PPV " + pc(FAIR.a1.ppv) + " against " + pc(FAIR.a2.ppv, 1) },
+    { v: "check whether it is causal", x: "Set the zip proxy to a neutral value and rerun: the gap goes from " + (LAD.gap * 100).toFixed(0) + " to " + (LAD.ngap * 100).toFixed(0) + " points" },
+    { v: "fix the bias", x: "Draw the graph, list 3 paths, block the one carrying " + LOAD.review + " of " + (LOAD.sample + LOAD.proxy + LOAD.review) + " points, and name its owner" }
+  ];
+  function renderSay(el, k, anim) {
+    var svg = svgFor(el, W, H, "Say it exactly: five vague claims about bias turned into precise ones", "Five rows with a vague claim and an exact version. On the right, a chart of what the exact version shows.");
+    var g = svg.append("g");
+    SAY.forEach(function (r, i) {
+      if (i + 1 > k) return; var y = 6 + i * 128, cur = i + 1 === k, e = g.append("g");
+      e.append("rect").attr("x", 0).attr("y", y).attr("width", 8).attr("height", 114).attr("fill", cur ? RED : FAMILIAR);
+      txt(e, 24, y + 30, "“" + r.v + "”", { size: 26, fill: RED, weight: 700 });
+      wrap(e, 24, y + 64, "→ " + r.x, 50, { size: 24, lh: 30, fill: INK, weight: 700 });
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    if (k === 0) { cap(g, 0, 60, "A vague claim about bias gets a nod. An exact one can be checked.", { fill: INK }); cap(g, 0, 110, "Click or press → to turn five claims into exact ones.", { fill: MUTED }); return; }
+    var p = g.append("g").attr("transform", "translate(700,60)"), pw = 640, ph = 300, nts = "";
+    lab(p, 0, -14, "WHAT THE EXACT VERSION SHOWS", { fill: RED });
+    p.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", pw).attr("height", ph).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+    if (k === 1) { [["truth θ", SEL.truth, PALE], ["estimate", SEL.samp, RED]].forEach(function (r, i) { cap(p, 14, 56 + i * 78, r[0] + " " + pc(r[1], 1), { size: 24 }); bar(p, 14, 66 + i * 78, r[1] * 1700, 34, r[2], anim, i * 400); }); cap(p, 14, 240, "gap: −" + ((SEL.truth - SEL.samp) * 100).toFixed(1) + " points", { size: 26, weight: 700, fill: RED }); nts = "the offset is a number"; }
+    else if (k === 2) { [50, 500, 5000].forEach(function (n, i) { var y = 50 + i * 80; cap(p, 14, y, "n = " + d3.format(",")(n), { size: 24, weight: 700 }); bar(p, 150, y - 20, SAYSD(n) * 100 * 40, 24, PALE, anim, i * 250); cap(p, 150 + SAYSD(n) * 100 * 40 + 8, y, "SD " + (SAYSD(n) * 100).toFixed(1), { size: 24 }); bar(p, 150, y + 8, (EST.TH - EST.Eb) * 100 * 40, 24, RED, anim, i * 250 + 100); }); cap(p, 14, 292, "red: bias " + ((EST.Eb - EST.TH) * 100).toFixed(1).replace("-", "−") + " at every n", { size: 24, fill: RED, weight: 700 }); nts = "the scatter shrinks, the offset stays"; }
+    else if (k === 3) { [["PPV, group 1", FAIR.a1.ppv, INK], ["PPV, group 2", FAIR.a2.ppv, RED]].forEach(function (r, i) { cap(p, 14, 60 + i * 90, r[0] + " " + pc(r[1], 1), { size: 24 }); bar(p, 14, 74 + i * 90, r[1] * 560, 40, r[2], anim, i * 400); }); cap(p, 14, 260, "TPR 35% and FPR 10% in both groups", { size: 24, fill: MUTED }); nts = "equal error rates, unequal PPV"; }
+    else if (k === 4) { [["gap as observed", LAD.gap, PALE], ["zip set to 0.6", LAD.ngap, INK]].forEach(function (r, i) { cap(p, 14, 60 + i * 90, r[0] + ": " + (r[1] * 100).toFixed(0) + " points", { size: 24 }); bar(p, 14, 74 + i * 90, r[1] * 4000, 40, r[2], anim, i * 400); }); nts = "the proxy carried most of it"; }
+    else { [["via sample", LOAD.sample, PALE], ["via model", LOAD.proxy, PALE], ["via reviewer", LOAD.review, RED]].forEach(function (r, i) { cap(p, 14, 60 + i * 78, r[0] + ": " + r[1], { size: 24 }); bar(p, 14, 72 + i * 78, r[1] * 12, 30, r[2], anim, i * 300); }); nts = "block the path that carries most"; }
+    cap(p, 0, ph + 40, nts, { size: 24, weight: 700 });
+  }
+
+  var CHECKS = [
+    "Which number is the estimate, and what is the target θ?",
+    "Did who got in depend on what happened to them?",
+    "Is the data faithful to a world I did not want to copy?",
+    "Does it live in the sample, the labels or the structure?",
+    "Rung 1 or rung 2: did anyone set X, or only watch it?",
+    "Which path carries the most bias, and who owns that node?"
+  ];
+  function renderClosing(el, k, anim) {
+    var svg = svgFor(el, W, H, "Six checks before you accept a bias claim or a bias fix", "A checklist of six items drawn one at a time.");
+    var g = svg.append("g");
+    CHECKS.forEach(function (c, i) {
+      var y = 20 + i * 100, on = i + 1 <= k, row = g.append("g");
+      row.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 64).attr("height", 64).attr("fill", on ? "#FFFFFF" : "none").attr("stroke", on ? INK : FAMILIAR).attr("stroke-width", 3);
+      wrap(row, 100, y + 42, c, 78, { size: 32, lh: 36, fill: on ? INK : MUTED });
+      if (on) { var ck = check(row, 32, y + 36, 20, RED); if (A(anim, k, i + 1)) drawIn(ck, 0, 450); }
+    });
+    cap(g, 0, 660, "Then say it exactly: not “it is biased”, but “bias −" + ((SEL.truth - SEL.samp) * 100).toFixed(1) + " points against θ = " + pc(SEL.truth) + "”.", { size: 28, weight: 700 });
+  }
+
+  var BUILDS = {
+    map: { steps: 4, render: renderMap }, est: { steps: 3, render: renderEst }, sel: { steps: 3, render: renderSel },
+    priors: { steps: 4, render: renderPriors }, lab: { steps: 4, render: renderLabelers }, hist: { steps: 3, render: renderHist },
+    flav: { steps: 3, render: renderFlav }, ladder: { steps: 3, render: renderLadder }, graph: { steps: 4, render: renderGraph },
+    fair: { steps: 4, render: renderFair }, pairs: { steps: 4, render: renderPairs }, say: { steps: 5, render: renderSay }, closing: { steps: 6, render: renderClosing }
+  };
+
+
+  /* click on the stage advances one fragment (the original deck had keys and buttons only) */
+  stage.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest("#controls, #thumbs")) return;
+    nextSlide();
+  });
+  function buildEl(slide) { return slide ? slide.querySelector("[data-build]") : null; }
+  function buildOf(slide) { var el = buildEl(slide); return el ? BUILDS[el.getAttribute("data-build")] : null; }
+  function stopBuild(el) { if (hasD3 && el) d3.select(el).selectAll("*").interrupt(); }
+  function renderBuild(el, k, animate) {
+    var b = BUILDS[el.getAttribute("data-build")];
+    if (!b) return;
+    if (!hasD3) {
+      el.innerHTML = '<div class="chart-fallback">This graphic needs D3, which did not load. Check the network connection and reload.</div>';
+      return;
+    }
+    stopBuild(el);
+    b.render(el, Math.max(0, Math.min(b.steps, k)), animate && !reduceMQ.matches);
+  }
+
+  /* ---------------- navigation ---------------- */
+  function go(i, atEnd, animate) {
+    i = Math.max(0, Math.min(total - 1, i));
+    var prev = slides[current];
+    if (prev && i !== current) { stopBuild(buildEl(prev)); prev.classList.remove("is-active"); }
+    current = i;
+    var s = slides[i], b = buildOf(s);
+    step = b && atEnd ? b.steps : 0;
+    s.classList.add("is-active");
+    var el = buildEl(s);
+    if (el) renderBuild(el, step, animate);
+    updateUI(true);
+  }
+  function setStep(k, animate) {
+    step = k;
+    renderBuild(buildEl(slides[current]), step, animate);
+    updateUI(false);
+  }
+  function nextSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step < b.steps) setStep(step + 1, true);
+    else if (current < total - 1) go(current + 1, false, true);
+  }
+  function prevSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step > 0) setStep(step - 1, false);
+    else if (current > 0) go(current - 1, true, false);
+  }
+  function updateUI(newSlide) {
+    var s = slides[current], b = buildOf(s);
+    var title = s.getAttribute("data-title") || "";
+    counter.textContent = (current + 1) + " / " + total;
+    pips.innerHTML = "";
+    if (b) {
+      for (var j = 1; j <= b.steps; j++) {
+        var p = document.createElement("span");
+        p.className = "pip" + (j <= step ? " on" : "");
+        pips.appendChild(p);
+      }
+    }
+    btnPrev.disabled = current === 0 && step === 0;
+    btnNext.disabled = current === total - 1 && (!b || step === b.steps);
+    var stepTxt = b ? ", step " + step + " of " + b.steps : "";
+    live.textContent = newSlide ? "Slide " + (current + 1) + " of " + total + ": " + title + stepTxt : "Step " + step + " of " + (b ? b.steps : 0);
+    if (newSlide) {
+      var n = s.querySelector(".speaker-notes");
+      notesHead.textContent = "Speaker notes, slide " + (current + 1);
+      notesBody.innerHTML = n ? n.innerHTML : "<p>No notes for this slide.</p>";
+      try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) { /* ignore */ }
+    }
+  }
+  btnPrev.addEventListener("click", prevSlide);
+  btnNext.addEventListener("click", nextSlide);
+
+  /* ---------------- notes ---------------- */
+  function toggleNotes() {
+    var on = !document.body.classList.contains("notes-open");
+    document.body.classList.toggle("notes-open", on);
+    btnNotes.setAttribute("aria-pressed", on ? "true" : "false");
+    fit();
+  }
+  btnNotes.addEventListener("click", toggleNotes);
+
+  /* ---------------- fullscreen ---------------- */
+  var root = document.documentElement;
+  var fsEnabled = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  if (!fsEnabled) btnFs.hidden = true;
+  function toggleFullscreen() {
+    if (!fsEnabled) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      if (fsEl) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else {
+        var pr = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+        if (pr && pr.catch) pr.catch(function () {});
+      }
+    } catch (e) { /* refused */ }
+  }
+  btnFs.addEventListener("click", toggleFullscreen);
+  document.addEventListener("fullscreenchange", fit);
+  document.addEventListener("webkitfullscreenchange", fit);
+
+  /* ---------------- thumbnails (always final state) ---------------- */
+  function buildThumbs() {
+    thumbGrid.innerHTML = "";
+    slides.forEach(function (s, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "thumb" + (i === current ? " current" : "");
+      btn.setAttribute("aria-label", "Go to slide " + (i + 1) + ": " + (s.getAttribute("data-title") || ""));
+      if (i === current) btn.setAttribute("aria-current", "true");
+      var inner = document.createElement("div");
+      inner.className = "thumb-inner";
+      inner.setAttribute("aria-hidden", "true");
+      var clone = s.cloneNode(true);
+      clone.classList.remove("is-active");
+      Array.prototype.forEach.call(clone.querySelectorAll("[id]"), function (n) { n.removeAttribute("id"); });
+      var sn = clone.querySelector(".speaker-notes");
+      if (sn) sn.remove();
+      inner.appendChild(clone);
+      var num = document.createElement("span");
+      num.className = "thumb-num";
+      num.textContent = String(i + 1);
+      btn.appendChild(inner);
+      btn.appendChild(num);
+      btn.addEventListener("click", function () { closeThumbs(true); go(i, false, true); });
+      thumbGrid.appendChild(btn);
+      var cb = clone.querySelector("[data-build]");
+      if (cb) renderBuild(cb, 99, false);
+    });
+    scaleThumbs();
+  }
+  function scaleThumbs() {
+    Array.prototype.forEach.call(thumbGrid.querySelectorAll(".thumb"), function (b) {
+      b.querySelector(".thumb-inner").style.transform = "scale(" + (b.clientWidth / 1920) + ")";
+    });
+  }
+  function openThumbs() {
+    lastFocus = document.activeElement;
+    thumbs.classList.add("open");
+    buildThumbs();
+    var cur = thumbGrid.querySelector(".thumb.current");
+    if (cur) { cur.focus(); cur.scrollIntoView({ block: "nearest" }); }
+  }
+  function closeThumbs(navigating) {
+    thumbs.classList.remove("open");
+    thumbGrid.innerHTML = "";
+    if (!navigating && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  btnThumbs.addEventListener("click", openThumbs);
+  thumbs.querySelector(".close").addEventListener("click", function () { closeThumbs(false); });
+  window.addEventListener("resize", function () { if (thumbs.classList.contains("open")) scaleThumbs(); });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (thumbs.classList.contains("open")) {
+      if (e.key === "Escape" || e.key === "g" || e.key === "G") { e.preventDefault(); closeThumbs(false); }
+      return;
+    }
+    var onButton = e.target && e.target.closest && e.target.closest("button");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": e.preventDefault(); nextSlide(); break;
+      case " ": if (onButton) return; e.preventDefault(); nextSlide(); break;
+      case "ArrowLeft": case "PageUp": e.preventDefault(); prevSlide(); break;
+      case "Home": e.preventDefault(); go(0, false, true); break;
+      case "End": e.preventDefault(); go(total - 1, true, false); break;
+      case "f": case "F": e.preventDefault(); toggleFullscreen(); break;
+      case "n": case "N": e.preventDefault(); toggleNotes(); break;
+      case "g": case "G": e.preventDefault(); openThumbs(); break;
+    }
+  });
+
+  /* ---------------- touch swipe ---------------- */
+  var tx = null, ty = null;
+  stage.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) return;
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (tx === null || thumbs.classList.contains("open")) { tx = null; return; }
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) { if (dx < 0) nextSlide(); else prevSlide(); }
+    tx = null;
+  }, { passive: true });
+
+  /* ---------------- quiet controls ---------------- */
+  var idle = null;
+  document.addEventListener("mousemove", function () {
+    document.body.classList.add("show-controls");
+    clearTimeout(idle);
+    idle = setTimeout(function () { document.body.classList.remove("show-controls"); }, 2200);
+  });
+
+  /* ---------------- print: every slide in its final state ---------------- */
+  window.addEventListener("beforeprint", function () {
+    slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  });
+  window.addEventListener("afterprint", function () {
+    slides.forEach(function (s, i) { var el = buildEl(s); if (el && i !== current) renderBuild(el, 99, false); });
+    var el = buildEl(slides[current]);
+    if (el) renderBuild(el, step, false);
+  });
+
+  /* ---------------- start ---------------- */
+  slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  fit();
+  var hm = /^#(\d+)$/.exec(location.hash);
+  go(hm ? parseInt(hm[1], 10) - 1 : 0, false, true);
+  window.addEventListener("hashchange", function () {
+    var m = /^#(\d+)$/.exec(location.hash);
+    if (m && parseInt(m[1], 10) - 1 !== current) go(parseInt(m[1], 10) - 1, false, true);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

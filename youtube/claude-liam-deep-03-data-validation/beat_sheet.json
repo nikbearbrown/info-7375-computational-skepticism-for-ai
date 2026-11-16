@@ -1,0 +1,1516 @@
+{
+  "metadata": {
+    "title": "The Data Is Clean. That's the Problem.",
+    "slug": "claude-liam-deep-03-data-validation",
+    "topic": "COMPUTATIONAL SKEPTICISM · DATA VALIDATION",
+    "genre": "deep-explainer",
+    "register": "Teardown",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "vox_stage": "#F2F0E9",
+    "accent": "#D97757",
+    "greeting": "Ciao, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "series": "claude-liam-deep",
+    "episode": 3,
+    "playlist": "Computational Skepticism for AI — Deep Explainers",
+    "source": "books/computational-skepticism-for-ai/chapters/03-data-validation-reconstructing-the-epistemic-frame-behind-a-dataset.md",
+    "gate": "PLAN — awaiting human approval (no factcheck / no audio / no render)",
+    "beat_mix_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "beat_mix_actual": {
+      "body_beats": 30,
+      "VOX": "20.0% (6)",
+      "MANIM": "26.7% (8)",
+      "REMOTION": "30.0% (9)",
+      "CARD": "23.3% (7)",
+      "lint": "PASS — vox in 15-30% band, spine OK, no >2 same-lane run outside the R1 vox run"
+    },
+    "total_estimated_duration_seconds": 511,
+    ".codex": {
+      "workflow": "deep-explainer",
+      "mode": "unattended-then-human-review",
+      "agent": "Claude Code",
+      "persona": "Liam (in for Bear)",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "paid_generation": false,
+      "publish": false,
+      "reviewer": "Bear"
+    },
+    "build": {
+      "at": "2026-07-28T00:06:10",
+      "cut": "master",
+      "filled": 34,
+      "of": 36,
+      "slates": [
+        "A1R",
+        "A6R"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "Ciao — this is Liam, in for Bear. Here's the whole chapter in one question. You ask an AI for a clean dataset. Thirty seconds later: eighty thousand tidy rows, sensible distributions, missingness near zero. Every visible measure says clean. And it is — clean of everything a histogram can see. So the question is not, is the data clean. It's: why are there exactly this many rows, and what was that number supposed to be?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 26,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "COMPUTATIONAL SKEPTICISM , DATA VALIDATION",
+            "segment": "The Data Is Clean. That's the Problem.",
+            "command": "Assemble one clean table from these three systems, then run a full EDA pass.",
+            "runningText": "data validation — the frame, not the histograms…",
+            "output": [
+              "The pass came back clean — of the things a histogram can see",
+              "A silent join dropped rows — one subpopulation, invisibly",
+              "A dataset is not the world. It's a recording. Ask what the instrument couldn't see"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Data Is Clean. That's the Problem.",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A1C",
+      "act": "ACT I — The Dataset That Destroyed a Deployment",
+      "lane": "CARD",
+      "narration_text": "Act one. A dataset that quietly destroyed a deployment — and an EDA report that never saw it coming.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Dataset That Destroyed a Deployment"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A1V",
+      "act": "debugging the wrong layer",
+      "lane": "VOX",
+      "narration_text": "The team was certain the model was broken. So they retrained, tuned, regularized, swapped architectures. The deployment kept failing — no crashes, just outputs that, in production, tracked patterns nobody designed for. They were debugging the wrong layer entirely.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "pantry": "pantry/A1V.png",
+        "pantry_brief": "engineers at a wall of monitoring dashboards late at night, soft failure, muted duotone — Tier 1 generic/illustrative (no real company, no readable data)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "They blamed the model. It wasn't the model."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A1K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , DATA VALIDATION",
+            "segment": "The silent join",
+            "command": "render a Manim scene: three source tables joined on a shared ID; a small share of rows fails the match and is dropped; the dropped rows are concentrated in one subpopulation, not spread evenly",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A1K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A1M",
+      "act": "the silent join",
+      "lane": "MANIM",
+      "narration_text": "Here is what they missed. The data came from three systems, joined on a shared identifier. A few percent of rows didn't match across all three — and got silently dropped. Spread evenly, that would be nothing. But it wasn't spread evenly at all.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A1M_SilentJoin",
+          "spec": "three source tables slide together and join on a shared ID key; unmatched rows peel off and fade; the dropped rows all originate from one shaded subpopulation region; terracotta marks the concentration, not a uniform scatter",
+          "out": "manim/A1M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The drop wasn't spread evenly — it had a shape"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A1R",
+      "act": "who fell out of the join",
+      "lane": "REMOTION",
+      "narration_text": "One subpopulation had its identifier formatted slightly differently, years ago, in one of the systems. Those rows disproportionately failed the join. They never entered the training set. The model learned everyone who was present — and met the absent for the first time in production.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "SourceFlow",
+          "props": {
+            "title": "Where the Rows Vanished",
+            "stages": [
+              "three source systems",
+              "join on a shared ID",
+              "merged table (rows silently dropped)",
+              "training set — one subpopulation absent"
+            ],
+            "sparkLine": "Present in training. Absent from training. The model only ever met one."
+          },
+          "rendered": {
+            "out": "media/A1R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T00:06:10",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A1R"
+      }
+    },
+    {
+      "beat_id": "A2C",
+      "act": "ACT II — What the Pass Cannot See",
+      "lane": "CARD",
+      "narration_text": "Act two. Run the whole procedural pass. Watch it come back clean — and watch what it structurally cannot see.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "What the Pass Cannot See"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A2R",
+      "act": "the procedural pass is real work",
+      "lane": "REMOTION",
+      "narration_text": "The pass is real work, and you should run it. Types, shape, distributions, missingness, correlations, time-series, outliers — each diagnostic catches a specific pathology. Histograms flag impossible values. Box plots flag outliers. The missing-value check runs clean. Every plot it was supposed to draw, drawn.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Necessary. Never sufficient.",
+              "Types & shape — classify every column before you plot",
+              "Distributions — histograms, bars, box plots: spikes, skew, impossible values"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A2M",
+      "act": "Rubin's missingness taxonomy",
+      "lane": "MANIM",
+      "narration_text": "Take missingness. Rubin's taxonomy splits it three ways. Missing completely at random — safe to impute. Missing at random — explained by something you can see. And missing not at random — missing because of the value itself: high earners hiding income, sick patients leaving the study. That last case is the hard one, and the procedural pass cannot detect it at all.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A2M_Missingness",
+          "spec": "three columns labeled MCAR, MAR, MNAR; MCAR gaps scatter randomly, MAR gaps track an observed variable, MNAR gaps track the hidden value itself; MNAR lit terracotta; a naive imputation fills MNAR and the mean drifts in the unmeasurable direction",
+          "out": "manim/A2M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The hard case is invisible to the tool that names it"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A2R2",
+      "act": "the shared blind spot",
+      "lane": "REMOTION",
+      "narration_text": "And underneath every diagnostic sits one shared blind spot. Each reads the data as written. None of them can see what was never written down — the rows dropped in a join before the table ever reached you. You cannot compute the missingness of rows that never existed.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "The Line Every Diagnostic Reads To",
+            "note": "everything above the line is 'the data as written'; the failures",
+            "sparkLine": "You can't measure the absence of a row that never existed."
+          },
+          "rendered": {
+            "out": "media/A2R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A2V",
+      "act": "not missing — absent",
+      "lane": "VOX",
+      "narration_text": "That's the crack. The subpopulation wasn't missing. Missing implies a blank where a value should be. These rows left no blank. They simply were not there — invisible to every check that only reads what made it onto the page.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "pantry": "pantry/A2V.png",
+        "pantry_brief": "rows of empty chairs / faint silhouettes standing just outside a lit rectangular frame, duotone warm ink on cream — Tier 1; the ones who left no blank",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "No blank to find — they were never on the page"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A3C",
+      "act": "ACT III — A Chart Is an Argument",
+      "lane": "CARD",
+      "narration_text": "Act three. Before you trust a plot that looks clean — one fact about how plots actually work.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A Chart Is an Argument"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A3M",
+      "act": "marks and channels",
+      "lane": "MANIM",
+      "narration_text": "Every chart encodes numbers as visual channels: position, length, area, color. Cleveland and McGill measured how accurately we read each one. Position along a common scale wins. Length next. Area and color intensity are far down the list. The channels are not interchangeable — the eye reads some faithfully and compresses the rest.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A3M_Channels",
+          "spec": "a ranked ladder of encoding channels — position (common scale), length, angle, area, color intensity — with accuracy bars descending; the same value shown in each channel, decoded well at the top, badly at the bottom",
+          "out": "manim/A3M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Position outranks color — measured, not taste"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A3M2",
+      "act": "correlation is only linear (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "Which is why the correlation heatmap is only ever an overview. It encodes strength as color — a weak channel — and Pearson captures only linear structure. Two variables can be perfectly dependent, y equals x squared, and correlate near zero. Confirm the number before you act on the color.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A3M2_PearsonLinearOnly",
+          "spec": "scatter of a perfect parabola y=x²; a fitted line lies flat; write-on r ≈ 0 despite total dependence; caption 'Pearson sees only the straight-line part'",
+          "out": "manim/A3M2.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "r ≈ 0, perfectly dependent — the color lied"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3M2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3M2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3M2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A3R",
+      "act": "what is the chart not showing",
+      "lane": "REMOTION",
+      "narration_text": "So a chart is an argument, not a window. It hands the strong channel to some variables and buries the rest. Keep one question from the whole literature: what is this chart not showing? Every plot omits the thing the instrument never recorded.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "What is this chart NOT showing?",
+              "A salary histogram says nothing about who earned them",
+              "A correlation heatmap hides the temporal structure underneath"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A4C",
+      "act": "ACT IV — Six Ways to Fail Silently",
+      "lane": "CARD",
+      "narration_text": "Act four. Six ways a dataset fails silently — every one invisible to the pass, every one showing up in production.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Six Ways to Fail Silently"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A4R",
+      "act": "the six structural assumptions",
+      "lane": "REMOTION",
+      "narration_text": "Six structural assumptions. Sampling — trained on the reachable, deployed against the world. Time-window — trained on a past that has since moved. Label — the column measures a proxy, not the thing you care about. Missing not at random. Feature-engineering — a column that's somebody's old model, not a measurement. And access — the boundary is wider than the schema.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "Failures Invisible to Procedural EDA",
+            "chips": [
+              "Sampling — the convenience set, not the world",
+              "Time-window — the past has already moved",
+              "Label — a proxy standing in for the construct",
+              "Missing not at random — missing for a reason",
+              "Feature-engineering — a column that's someone's model",
+              "Access / boundary — wider than the schema"
+            ],
+            "sparkLine": "For each column: why is this value here"
+          },
+          "rendered": {
+            "out": "media/A4R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A4M",
+      "act": "the sampling assumption",
+      "lane": "MANIM",
+      "narration_text": "Take sampling. Your data is available data — whatever was easiest to collect — which skews toward the easy-to-reach end of every distribution. You train on the convenience sample and deploy against a world that is strictly wider. You find that out slowly, one degraded subgroup at a time.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A4M_ConvenienceVsWorld",
+          "spec": "a small dense convenience sample nested inside a much larger deployment population; the model boundary is tight around the sample; as the population reveals its full width, the uncovered rim lights terracotta — the long tail never trained on",
+          "out": "manim/A4M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Train on the reachable — deploy against the world"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A4R2",
+      "act": "the label is not the construct",
+      "lane": "REMOTION",
+      "narration_text": "And the label. Re-arrest is not crime. A click is not interest. Survival is not health. The label and the construct you actually care about are different things, joined by decisions someone made long ago and never wrote down. That's Hume's induction problem — in work clothes.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "The Label Is Not the Construct",
+            "left": {
+              "label": "LABEL (what was recorded)",
+              "note": "re-arrest , click , survival , engagement"
+            },
+            "right": {
+              "label": "CONSTRUCT (what you meant)",
+              "note": "crime , interest , health , value"
+            },
+            "sparkLine": "A proxy that correlated in the past carries no guarantee forward."
+          },
+          "rendered": {
+            "out": "media/A4R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A5C",
+      "act": "ACT V — The Boundary Isn't the Schema",
+      "lane": "CARD",
+      "narration_text": "Act five. The assumption that breaks deployments most strangely — and where the boundary of a dataset really lives.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Boundary Isn't the Schema"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A5V1",
+      "act": "the agent and the corpus",
+      "lane": "VOX",
+      "narration_text": "An agent is deployed over a corpus of email. The team thought carefully about access. They set controls, decided what it should see, and drew the boundary at the corpus. They believed they had bounded its world.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.42
+        ],
+        "pantry": "pantry/A5V1.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.42,
+            "scale": 1.6
+          },
+          "objects": [
+            {
+              "id": "boundary-line",
+              "x": 0.5,
+              "y": 0.5,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "a tidy inbox / email corpus with a clean rectangular boundary drawn around it, warm ink on cream — Tier 1; start of a 3-beat vox run zooming out",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "They drew the boundary at the corpus"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5V1.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5V1.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5V1.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A5V2",
+      "act": "the content spills out",
+      "lane": "VOX",
+      "narration_text": "The agent answers the query — and surfaces things they never authorized: phone numbers, addresses, fragments of other people's messages, references to documents that aren't even in the corpus, parties who never consented to any of it. And no access control was violated.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "pantry": "pantry/A5V2.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.5,
+            "scale": 1.0
+          },
+          "objects": [
+            {
+              "id": "boundary-line",
+              "x": 0.5,
+              "y": 0.5,
+              "scale": 1.0,
+              "opacity": 0.5
+            },
+            {
+              "id": "spill",
+              "x": 0.5,
+              "y": 0.6,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "same scene pulled back: content threads spilling past the boundary line to phone numbers, documents, third parties — continuity from A5V1 (same inbox frame, zoomed out)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "It surfaced what lay beyond the line"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5V2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5V2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5V2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A5V3",
+      "act": "the schema plus everything it touches",
+      "lane": "VOX",
+      "narration_text": "Because reference-rich data carries pointers, embedded in its content, to data outside its own schema. The boundary of a dataset is not the schema. It's the schema plus everything its contents touch. They validated the corpus. They should have validated the corpus and everything it reaches.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.55
+        ],
+        "pantry": "pantry/A5V3.png",
+        "vox_run": "R1",
+        "pantry_brief": "wide final frame: concentric boundary — the schema as an inner ring, everything it references as a larger outer ring; end of the vox run; terracotta on the outer ring the team never validated",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The schema plus everything its contents touch"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5V3.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5V3.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5V3.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A5M",
+      "act": "Plato's cave",
+      "lane": "MANIM",
+      "narration_text": "There's an old picture for exactly this. Plato's cave. A dataset is not the world — it's shadows on a wall, a projection cast by one recording instrument under particular conditions. Procedural EDA describes the shadows with great precision. It tells you nothing about the fire, the objects, or the wall. The interrogation is turning around.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A5M_PlatosCave",
+          "spec": "cave cross-section: a fire (the recording instrument), objects between fire and wall, shadows cast on the wall labeled 'dataset'; EDA calipers measure the shadows precisely; a figure turns around toward the fire, labeled 'interrogation'",
+          "out": "manim/A5M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "EDA measures the shadow — the work is turning around"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A6C",
+      "act": "ACT VI — Reconstructing the Frame",
+      "lane": "CARD",
+      "narration_text": "Act six. So here's the procedure that turns interrogate the frame into something you can actually run.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Reconstructing the Frame"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A6R",
+      "act": "the six-step procedure",
+      "lane": "REMOTION",
+      "narration_text": "Six steps. Read the metadata and lock a prediction — in your own words, what this data claims to represent, before a single histogram. Run the procedural pass. Test the metadata against the data — why are there exactly N rows? Ask what is not there. Trace one row end to end. Then write the frame, and compare it to your prediction.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "SourceFlow",
+          "props": {
+            "title": "Epistemic-Frame Reconstruction",
+            "stages": [
+              "1 , Read metadata — LOCK a prediction",
+              "2 , Run procedural EDA",
+              "3 , Test metadata vs data — why N rows?",
+              "4 , Ask what is NOT there",
+              "5 , Trace one row to source (or document the opacity)",
+              "6 , Write the frame — compare to the lock"
+            ],
+            "sparkLine": "Steps 3–6 are the work EDA alone does not do."
+          },
+          "rendered": {
+            "out": "media/A6R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T00:06:10",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A6R"
+      }
+    },
+    {
+      "beat_id": "A6V",
+      "act": "trace one row",
+      "lane": "VOX",
+      "narration_text": "Step five is the one that changes people. Pick one row at random and follow its values back to the source systems. Do it once, on real data, and it's an education that survives the rest of your career — because almost every row you trace turns up a surprise.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.45,
+          0.5
+        ],
+        "pantry": "pantry/A6V.png",
+        "pantry_brief": "a single glowing thread traced by hand back across three stacked source systems, warm ink on cream — Tier 1; following one row home",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Follow it home — it will surprise you"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A6K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , DATA VALIDATION",
+            "segment": "The prediction-lock",
+            "command": "render a Manim scene: a predicted frame written and sealed before looking, the found frame reconstructed after; the gap between them lit as the learning",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A6K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A6M",
+      "act": "why you lock the prediction",
+      "lane": "MANIM",
+      "narration_text": "And this is why you lock the prediction first. Write what you think the frame is before you look. Then the gap — between what you predicted and what you found — becomes visible, and the gap is the learning. Skip the lock, and you only ever see where you finally arrived. It feels obvious in retrospect, and you never notice you learned anything.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A6M_PredictionGap",
+          "spec": "left panel: a 'predicted frame' card written and sealed at t=0; right panel: a 'found frame' card assembled after interrogation; the measured gap between them highlighted terracotta and labeled 'the learning'; without the seal the left card never exists and the gap collapses to zero",
+          "out": "manim/A6M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "No lock, no gap — no gap, no learning"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A7C",
+      "act": "ACT VII — What to Delegate, What to Keep",
+      "lane": "CARD",
+      "narration_text": "Act seven. What you can hand to the machine — and the one thing you cannot.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "What to Delegate, What to Keep"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A7R",
+      "act": "the three tiers",
+      "lane": "REMOTION",
+      "narration_text": "Three tiers. Delegate freely: the mechanical pass — plots, summary stats, missingness tables, outlier flags. Verify before trusting: any claim about what the data means, why a value is missing, whether a distribution is normal for your domain. Do not delegate at all: the frame reconstruction — because the AI starts from the same documentation you did.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Not about AI capability — about what the work produces.",
+              "Delegate freely — plots, .describe(), missingness tables, IQR flags",
+              "Verify before trusting"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A7M",
+      "act": "the solve-verify asymmetry",
+      "lane": "MANIM",
+      "narration_text": "This is the solve-verify asymmetry, made into a tool. The AI solves — the plots, the stats, the fluent prose — faster than you ever could. What stays human is verifying what those artifacts are evidence of. It cannot trace a row. It cannot see what a join dropped before the data ever reached you.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A7M_SolveVerify",
+          "spec": "left: an AI 'solve' arm producing plots and prose fast, a rising throughput bar; right: a human 'verify' arm asking 'evidence of what?'; the asymmetry drawn as two unequal arrows — cheap to solve, the value is in verify",
+          "out": "manim/A7M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Competence is cheap. Understanding is the work."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "A7R2",
+      "act": "competence vs understanding",
+      "lane": "REMOTION",
+      "narration_text": "So hold the distinction the whole chapter turns on. Procedural EDA is evidence of competence. Interrogation is evidence of understanding. A great deal of harm has been done by people who confused the two — who saw clean histograms and concluded the data was clean.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Two Kinds of Evidence",
+            "left": {
+              "label": "PROCEDURAL EDA",
+              "note": "evidence of competence — the artifact got made"
+            },
+            "right": {
+              "label": "INTERROGATION",
+              "note": "evidence of understanding — what the artifact is evidence of"
+            },
+            "sparkLine": "Clean of what a histogram sees is not the same as clean."
+          },
+          "rendered": {
+            "out": "media/A7R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lane": "CLOSING",
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude. The verdict on data validation. A dataset is not a faithful recording of the world — it's an artifact, produced by someone, for some purpose, shaped at every step by what the instrument could and couldn't see. Procedural EDA is necessary and never sufficient: it comes back clean of the things a histogram can see, which is not the same as clean. The structural failures — sampling, time, label, missing-not-at-random, engineered features, the access boundary — live in what was never written down. And the boundary of a dataset is the schema plus everything its contents touch. So run the pass. Then do the work the pass can't: ask why there are exactly N rows, lock your prediction, and trace one row home.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 40,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Data Is Clean. That's the Problem.",
+            "artifactHeading": "Core rules",
+            "artifactLines": [
+              "A dataset is an artifact, not a recording of the world.",
+              "Clean EDA = clean of what a histogram can see — not clean.",
+              "Six silent failures: sampling, time, label, MNAR, engineered features, access.",
+              "You cannot compute the missingness of rows that never existed.",
+              "The boundary is the schema plus everything its contents touch.",
+              "Delegate the pass; never delegate the frame."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "lane": "CLOSING",
+      "narration_text": "Your turn. Here's the prompt — paste it into Claude. It reads: I have a dataset I'm about to trust. Before you run a single plot, make me lock a prediction — in my own words, what this dataset claims to represent, how it was collected, what it excludes, and why there are exactly the number of rows there are. Then run the procedural pass, and afterward tell me what the pass could not have seen. End quote. That's the whole chapter, compressed. The point isn't the histograms — the machine draws those in seconds. The point is the prediction you lock before you look, and the gap you find after. Run it on a dataset you actually depend on.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 46,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — THE DATA IS CLEAN. THAT'S THE PROBLEM.",
+            "segment": "The Data Is Clean. That's the Problem.",
+            "command": "I have a dataset I'm about to trust. Before you run a single plot, make me lock a prediction — in my own words, what this dataset claims to represent, how it was collected, what it excludes, and why there are exactly the number of rows there are. Then run the procedural pass, and afterward tell me what the pass could not have seen.",
+            "runningText": "lock the prediction — run the pass — then name what it could not see…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "CLOSING",
+      "narration_text": "The Data Is Clean. That's the Problem. Data validation, from Computational Skepticism for AI. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Data Is Clean. That's the Problem.",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-deep-03-data-validation"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T00:06:10"
+      }
+    }
+  ]
+}

@@ -963,6 +963,24 @@ Where to check each claim in this log. Commits are listed in the push table belo
   - Evidence: `lectern/config/keywords.json` (the comments of both rules hold the counts), `lectern/collect/collect.py`, `lectern/tests/test_gates.py` (17 tests), `lectern/audit/audit_gates.py` (reproduces the lists of what was dropped), `lectern/forms/n8n/test-results/parity-2026-10-26.txt`.
   - Next: I read the lists of what the gates dropped and answer the four choices; then `./lectern/ops/sync.sh --check` and `./lectern/ops/sync.sh` for the other two classes, which are still on v0.5.2. Not pushed.
 
+### 2026-10-28 — Chapter 1 lecture deck rewritten to match the rewritten chapter
+
+- **Date and what I was working on:** 2026-10-28. Rewriting the INFO 7375 Chapter 1 lecture deck so it matches the Chapter 1 rewritten on 2026-10-15 (Netflix Prize and Amazon recruiting engine, measure versus want).
+- **I tried / expected:** My instruction, as it reached Claude Code from the session that started this one: *"Rewrite the Chapter 1 lecture deck so it matches the rewritten Chapter 1."* I had not yet read the rewritten chapter, so I expected this pass might have to be redone if I change the chapter.
+- **What happened:**
+  - **Old deck kept.** The previous deck was copied beside the new one as `Chapter 1_ The Skeptic's Toolkit.before-2026-10-28-rewrite.html` before anything was written.
+  - **New deck built on the course template** (`deck-template.html`): 32 slides, 11 stepped D3 builds, speaker notes on every slide. Spine: Netflix, then Amazon, the measure-versus-want pattern with its two kinds of gap, the four moves (with the reason Descartes and Popper are two moves), solve-verify, the five capacities, the fluency trap, team practice, closing, and a Your Turn slide on Exercise 12.
+  - **Fact rule applied.** Only claims the fact-check file marks CHECKED went on slides. Claims marked NOT RE-READ or not independently confirmed (the 2017 five-star retirement, Goodhart and Strathern dates, the live-experiments claim, what the Amazon models were trained to predict and the no-code-released claim) are in speaker notes marked UNVERIFIED, not on a slide. The snapshot dates of the Netflix ratings, the COVID X-ray study and COMPAS, and the capacity-to-chapter column are not in the fact-check file either, so they are off the slides and flagged in notes.
+  - **Words kept out.** The template's sample triage score graphic and its sample data generator were removed. A search of the finished file finds no sepsis, triage, patient, acuity or the earlier opener's name. The health-care algorithm example is worded as "people," not the chapter's word for them.
+  - **The brutalist.art lecture-deck docs named in the task were not found.** `how-to-create-a-lecture-deck.md`, `lecture-deck-rules.md` and `animated-deck-rules.md` are not in `brutalist.art/docs/` (a search of the books folder found none). The deck follows the course template's own structure and its in-file rules instead.
+  - **Checked in a browser.** The deck opens; all 11 builds step through to their final state with no text off the canvas; no slide's content passes 1000 of 1080 pixels. Not tested: print to PDF, a projector, the keyboard in other browsers.
+- **What I did:** Gave the instruction. I have not reviewed the deck.
+- **What Claude or another person contributed:** Claude Code read the chapter, the fact-check file and the template, wrote the slides and builds, and wrote this entry. It did not touch the Lecture 1 film folder, and did not commit or push.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: the new deck and the `.before-2026-10-28-rewrite.html` copy in the book's `decks/` folder; `chapters/_ch1-rewrite-factcheck.md` (the status of each claim).
+  - Next: I read the rewritten chapter and then the deck and decide the open points: the slide count (the chapter grew from about 10,250 to about 12,500 words), whether the COVID X-ray and COMPAS examples go back after a fact check, and whether the Lecture 1 film is redone. Nothing committed or pushed.
+
 ### 2026-10-28 — Game and engine jobs for a second Discord channel, with posting off
 
 - **Date and what I was working on:** 2026-10-28. Adding a second destination to Lectern for early-career game, engine and real-time jobs.
@@ -1101,6 +1119,37 @@ Where to check each claim in this log. Commits are listed in the push table belo
   - **I then said to check which leads are small businesses.** USAspending's own recipient record carries each firm's business types from its SAM.gov registration, so no other extract was needed: of 134 leads read (one timed out), 111 are registered small, 44 women-owned small (WOSB), 18 EDWOSB, 37 in the 8(a) program; 6 are in California. A first count of 'disadvantaged' firms (79) was mostly a legacy label, so I dropped it.
   - Next: I decide whether to build the lead lists for the non-federal markets. Not pushed.
 
+### 2026-11-02 — California school districts as a lead list
+
+- **Date and what I was working on:** 2026-11-02. A friend starting a small Section 508 testing firm named school districts, county offices of education and the schools for the deaf and blind among her markets. I said to start with schools.
+- **I tried / expected:** My instruction: yes, start with schools. I expected a list of districts to approach.
+- **What happened:**
+  - **The obvious source was not open to a script.** The California Department of Education's own directory download answered with a bot-detection page, so it was left alone. Two open-data APIs (the Urban Institute's and data.ca.gov's) disallow `/api/` in their robots.txt. **Claude Code made one request to each before reading its robots.txt** (it fetched both in one command, twice) and said so; it did not use the Urban data and used the other only to find a link on a different host that is allowed.
+  - **A state open-data hub does publish the file** (the California district offices, 2025-26) with a download that needs no login: 1,009 offices with enrollment and students with disabilities, and no website or person.
+  - **The list:** 1,006 offices after leaving out three, at her request (their names are in a local file, not in the repo). The 158 largest hold 67% of the students; Los Angeles Unified is largest at 497,105.
+  - **It is only a size ranking.** It does not say which office has a deadline or a need, and it has no website or contact for any lead.
+- **What I did:** Gave the instruction. I have not reviewed the reader or the list.
+- **What Claude or another person contributed:** Claude Code checked robots.txt and the access routes, wrote `collect/ca_school_districts.py` and `tests/test_ca_school_districts.py` (14 tests), ran the one fetch, and updated `HISTORY.md` and `TARGETS.md`.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: `lectern/collect/ca_school_districts.py`, `lectern/tests/test_ca_school_districts.py`, the California school districts entry in `lectern/HISTORY.md`; the lists are local (`runs/<date>/ca-school-district-leads-*`, not committed).
+  - Next: I decide whether to build the other markets (hospitals, health centers, colleges, transit, aging agencies) and how to find each office's accessibility page. Not pushed.
+
+### 2026-11-02 — Children's hospitals and health centers: the two federal sources are closed to a script
+
+- **Date and what I was working on:** 2026-11-02. A friend starting a small Section 508 testing firm named children's hospitals and federally qualified health centers among her markets. I said to build those next.
+- **I tried / expected:** My instruction: build children's hospitals and health centers. I expected a list from the federal health-center and hospital data.
+- **What happened:**
+  - **HRSA's data host says no to AI agents** in its robots.txt, naming Claude's fetchers among others. Claude Code did not fetch from it and did not try a different user-agent name.
+  - **CMS's data host answered 'Access Denied'** to the one request made. It did not retry or work around it.
+  - **Nothing was built.** I would need to download the two files myself in a browser; a reader can then be written against their real columns.
+- **What I did:** Gave the instruction. I have not downloaded the files.
+- **What Claude or another person contributed:** Claude Code read both robots.txt files, made one API request, stopped at the refusal, and updated `HISTORY.md` and `.gitignore`.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:**
+  - Evidence: the 'children's hospitals and health centers' entry in `lectern/HISTORY.md`.
+  - Next: I download the CMS Hospital General Information file and the HRSA health-center sites file into the local `runs/manual-downloads/` folder, then ask for the reader. Not pushed.
+
 ### 2026-11-03 — SAM.gov set-aside filter for the VA, the Defense Department and the FAA
 
 - **Date and what I was working on:** 2026-11-03. The friend starting a small Section 508 testing firm answered the questions put to her. She said yes to filtering SAM.gov for small-business and women-owned set-asides at those three agencies, and gave job titles, 1099 or W-2 either, remote preferred, and that a clearance-sponsoring role is a plus.
@@ -1161,6 +1210,16 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `lectern/HISTORY.md` (2026-11-05), `lectern/config/keywords.json` (`consulting_rule`), `lectern/config/targets.json`, `lectern/ops/consulting_daily.sh`, `lectern/runs/2026-11-05/consulting-jobs-2026-11-05.json` and `lectern/runs/posted-consulting-to-discord.json` (local, gitignored). Next: the first scheduled run (09:25 tomorrow) is the first time anything can be posted; whether the five countries are the right five is his call. Pushed, with the log row below.
 
+### 2026-11-05 — AI fellowships and residencies: a fellowships feed for #professor-bear
+
+- **Date and what I was working on:** 2026-11-05. Adding AI fellowships to the job search.
+- **I tried / expected:** I pasted a list of six programs closing in November and said *"Add AI fellowships to my job search. Start."* Asked which kinds and where, I said *"Research only, #professor-bear"*. I expected something like the consulting search.
+- **What happened:** Claude Code checked the six programs first. Three dates were confirmed on the program's own page (Anthropic Research Residency Nov 22, Constellation Founders Residency Nov 15, 0G Apollo Nov 11) and three rest on search results only (CMU AI4BIO, Techstars, Horowitz Andreessen Academy). A 0G press release and the program's own page disagree on the deadline (Nov 2 versus Nov 11). The job-board readers do not fit a program page, so a small separate path was built. One real read took 2 requests and got Anthropic's deadline from its page (Nov 22). The dry run would post 2 lines (Anthropic; CMU, marked *as listed*).
+- **What I did:** Chose research only and #professor-bear, then said *"Go, post"*. One message with the 2 programs went to #professor-bear (HTTP 204). I have not read the code or checked the CMU date on CMU's own page.
+- **What Claude or another person contributed:** Claude Code searched, read three program pages, wrote the collector, judge, feed, rule, list entries, docs and 21 tests, and logged this. It dropped four programs as founder programs, accelerators or a school because of what I said.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `lectern/notes/fellowships-research-2026-11-05.md`, `lectern/HISTORY.md` (2026-11-05), `lectern/publish/fellowships_feed.py`, `lectern/collect/fellowships_collect.py`, `lectern/tests/test_fellowships.py`, `lectern/runs/2026-11-05/fellowships-2026-11-05.json` (local, not committed). Next step: my word on pushing; more programs are added by hand; no daily run is wired.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1179,37 +1238,6 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-09-26 | feat(fall-2026): rank companies by demand, not postings by fit; Google's absence was an API artefact |
 | 2026-10-07 | chore(fall-2026): first real sync; add demand_report.py to the shared list; log the show-tell films |
 | 2026-10-07 | docs(fall-2026): add the project software design document, written by Gru in silent mode |
-### 2026-11-02 — California school districts as a lead list
-
-- **Date and what I was working on:** 2026-11-02. A friend starting a small Section 508 testing firm named school districts, county offices of education and the schools for the deaf and blind among her markets. I said to start with schools.
-- **I tried / expected:** My instruction: yes, start with schools. I expected a list of districts to approach.
-- **What happened:**
-  - **The obvious source was not open to a script.** The California Department of Education's own directory download answered with a bot-detection page, so it was left alone. Two open-data APIs (the Urban Institute's and data.ca.gov's) disallow `/api/` in their robots.txt. **Claude Code made one request to each before reading its robots.txt** (it fetched both in one command, twice) and said so; it did not use the Urban data and used the other only to find a link on a different host that is allowed.
-  - **A state open-data hub does publish the file** (the California district offices, 2025-26) with a download that needs no login: 1,009 offices with enrollment and students with disabilities, and no website or person.
-  - **The list:** 1,006 offices after leaving out three, at her request (their names are in a local file, not in the repo). The 158 largest hold 67% of the students; Los Angeles Unified is largest at 497,105.
-  - **It is only a size ranking.** It does not say which office has a deadline or a need, and it has no website or contact for any lead.
-- **What I did:** Gave the instruction. I have not reviewed the reader or the list.
-- **What Claude or another person contributed:** Claude Code checked robots.txt and the access routes, wrote `collect/ca_school_districts.py` and `tests/test_ca_school_districts.py` (14 tests), ran the one fetch, and updated `HISTORY.md` and `TARGETS.md`.
-- **What I understand now / still do not understand:** Not yet stated by me.
-- **Evidence and next step:**
-  - Evidence: `lectern/collect/ca_school_districts.py`, `lectern/tests/test_ca_school_districts.py`, the California school districts entry in `lectern/HISTORY.md`; the lists are local (`runs/<date>/ca-school-district-leads-*`, not committed).
-  - Next: I decide whether to build the other markets (hospitals, health centers, colleges, transit, aging agencies) and how to find each office's accessibility page. Not pushed.
-
-### 2026-11-02 — Children's hospitals and health centers: the two federal sources are closed to a script
-
-- **Date and what I was working on:** 2026-11-02. A friend starting a small Section 508 testing firm named children's hospitals and federally qualified health centers among her markets. I said to build those next.
-- **I tried / expected:** My instruction: build children's hospitals and health centers. I expected a list from the federal health-center and hospital data.
-- **What happened:**
-  - **HRSA's data host says no to AI agents** in its robots.txt, naming Claude's fetchers among others. Claude Code did not fetch from it and did not try a different user-agent name.
-  - **CMS's data host answered 'Access Denied'** to the one request made. It did not retry or work around it.
-  - **Nothing was built.** I would need to download the two files myself in a browser; a reader can then be written against their real columns.
-- **What I did:** Gave the instruction. I have not downloaded the files.
-- **What Claude or another person contributed:** Claude Code read both robots.txt files, made one API request, stopped at the refusal, and updated `HISTORY.md` and `.gitignore`.
-- **What I understand now / still do not understand:** Not yet stated by me.
-- **Evidence and next step:**
-  - Evidence: the 'children's hospitals and health centers' entry in `lectern/HISTORY.md`.
-  - Next: I download the CMS Hospital General Information file and the HRSA health-center sites file into the local `runs/manual-downloads/` folder, then ask for the reader. Not pushed.
-
 | 2026-10-18 | data(lectern): delta 2026-10-18: +42 new, ~7 changed, -9 gone |
 | 2026-10-18 | docs(fall-2026): one numbered folder and plan per Canvas assignment; publish_delta.py; collectors in the sync list |
 | 2026-10-18 | docs(fall-2026): publish profile.yml for exercise 06 and a layout for its film; Stripe and Writer off the watch list |

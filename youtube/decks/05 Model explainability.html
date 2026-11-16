@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Model explainability | INFO 7375 Computational Skepticism terminology deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+:root{
+  --nu-red:#C8102E; --nu-black:#000000; --nu-white:#FFFFFF; --nu-gold:#A4804A;
+  --nu-red-hover:#A50C25; --nu-red-press:#870A1F; --nu-red-tint:#FBE7EA;
+  --nu-neutral-1:#E3E3E3; --nu-neutral-2:#C4C4C4; --nu-neutral-3:#909090; --nu-neutral-4:#787878;
+  --nu-neutral-5:#545454; --nu-neutral-6:#404040; --nu-neutral-7:#2D2926; --nu-neutral-8:#1A1A1A;
+  --diagram-ink:#2A1A0E; --panel-subtle:#F6F6F6;
+  --font:"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --mono:ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(0.4, 0, 0.2, 1);
+  /* viewer chrome (theme-aware; slides themselves keep fixed brand colors) */
+  --stage-bg:#E9E9E9; --chrome-bg:rgba(255,255,255,0.94); --chrome-fg:#1A1A1A;
+  --chrome-line:#C4C4C4; --chrome-muted:#545454; --chrome-hover:rgba(0,0,0,0.07);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+    --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+  }
+}
+:root[data-theme="dark"]{
+  --stage-bg:#141414; --chrome-bg:rgba(26,26,26,0.94); --chrome-fg:#F2F2F2;
+  --chrome-line:#404040; --chrome-muted:#909090; --chrome-hover:rgba(255,255,255,0.09);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%; scroll-padding-top:env(safe-area-inset-top, 0px)}
+body{
+  height:100%; margin:0; overflow:hidden; display:flex; flex-direction:column;
+  background:var(--stage-bg); color:var(--chrome-fg); font-family:var(--font);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+:fullscreen body, body:fullscreen{background:#000}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------- stage & scaling ---------- */
+#stage{position:relative; flex:1 1 auto; min-height:0; overflow:hidden; touch-action:pan-y}
+#deck{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0}
+
+/* ---------- slide base ---------- */
+.slide{
+  position:absolute; inset:0; display:none; flex-direction:column; overflow:hidden;
+  background:var(--nu-white); color:var(--nu-black); font-family:var(--font);
+  padding-left:120px; padding-right:120px;
+}
+.slide.is-active{display:flex}
+:where(.slide) :where(h1,h2,p,ul){margin:0}
+.s-dark{background:var(--nu-black); color:var(--nu-white)}
+.s-red{background:var(--nu-red); color:var(--nu-white)}
+.rule{position:absolute; top:0; left:0; right:0; height:8px; background:var(--nu-red)}
+.rule.r10{height:10px}
+
+.s-opening,.s-closing{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-intro{padding-top:120px; padding-bottom:120px; justify-content:center}
+.s-section{padding-top:110px; padding-bottom:110px; justify-content:center}
+.s-text{padding-top:96px; padding-bottom:96px}
+.s-diagram{padding-top:72px; padding-bottom:56px}
+.s-chart{padding-top:64px; padding-bottom:56px}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-size:22px; font-weight:700; line-height:1.2; text-transform:uppercase;
+  letter-spacing:0.16em; color:var(--nu-red); margin-bottom:28px;
+}
+.s-intro .eyebrow{font-size:24px; letter-spacing:0.18em; margin-bottom:40px}
+.s-section .eyebrow{font-size:26px; letter-spacing:0.20em; color:rgba(255,255,255,0.78); margin-bottom:36px}
+.s-chart .eyebrow,.s-diagram .eyebrow{margin-bottom:18px}
+
+.t-opening{font-size:104px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-section{font-size:108px; font-weight:400; line-height:1.0; letter-spacing:-0.02em; max-width:1560px}
+.t-closing{font-size:84px; font-weight:400; line-height:1.04; letter-spacing:-0.02em; max-width:1560px}
+.t-intro{font-size:72px; font-weight:400; line-height:1.1; letter-spacing:-0.01em; max-width:1500px}
+.t-text{font-size:66px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1500px}
+.t-chart{font-size:50px; font-weight:400; line-height:1.04; letter-spacing:-0.01em; max-width:1560px}
+.s-chart .t-chart{margin-bottom:30px}
+.s-diagram .t-chart{margin-bottom:40px}
+
+.sub-opening{font-size:38px; font-weight:400; line-height:1.3; color:var(--nu-neutral-2); max-width:1300px}
+.sub-section{font-size:34px; font-weight:400; line-height:1.3; color:rgba(255,255,255,0.92); margin-top:40px; max-width:1300px}
+.para{font-size:30px; line-height:1.4; color:var(--nu-neutral-7); max-width:1300px}
+.caption{font-size:24px; line-height:1.36; color:var(--nu-neutral-5); max-width:1400px; margin-top:22px}
+.t-opening,.t-section,.t-closing,.t-intro,.t-text,.t-chart,.sub-opening,.sub-section,.caption{text-wrap:pretty}
+.source{font-size:19px; line-height:1.4; color:var(--nu-neutral-5); margin-top:12px}
+
+.bar-120{width:120px; height:8px; background:var(--nu-red); margin:52px 0 44px}
+.bar-88{width:88px; height:6px; background:var(--nu-red); margin:40px 0 60px}
+
+.bullets{list-style:none; padding:0; max-width:1480px; display:flex; flex-direction:column; gap:26px}
+.bullets li{
+  display:grid; grid-template-columns:14px 1fr; column-gap:22px;
+  font-size:31px; line-height:1.42; color:var(--nu-neutral-7);
+}
+.bullets li::before{
+  content:""; width:14px; height:14px; background:var(--nu-red);
+  margin-top:calc((31px * 1.42 - 14px) / 2);
+}
+.bullets strong{font-weight:700; color:var(--nu-black)}
+
+/* ---------- charts ---------- */
+.chart{width:1480px; height:600px; flex:none}
+.chart svg{display:block; width:1480px; height:600px; overflow:visible}
+.chart-fallback{
+  width:100%; height:100%; display:grid; place-items:center; border:1px solid var(--nu-neutral-1);
+  font-size:24px; color:var(--nu-neutral-5); background:var(--panel-subtle)
+}
+
+/* ---------- diagram ---------- */
+.diagram{flex:0 1 auto; min-height:0; width:100%; max-width:1400px; max-height:720px}
+.diagram svg{display:block}
+
+/* ---------- evidence status: conceptual vs. illustrative vs. observed ---------- */
+.evidence{
+  position:absolute; right:120px; font-size:18px; font-weight:700; line-height:1;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--nu-neutral-5);
+  border:1px solid var(--nu-neutral-2); padding:9px 12px 8px;
+}
+.s-chart .evidence{top:58px}
+.s-diagram .evidence{top:66px}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)}}
+.slide.is-active .rise{animation:rise 550ms var(--ease) both}
+.slide.is-active .g2{animation-delay:120ms}
+.slide.is-active .g3{animation-delay:240ms}
+@media (prefers-reduced-motion: reduce){
+  .slide.is-active .rise{animation:none}
+}
+
+/* ---------- viewer chrome ---------- */
+#controls{
+  position:absolute; right:14px; bottom:14px; z-index:10;
+  display:flex; align-items:center; gap:2px; padding:4px;
+  background:var(--chrome-bg); border:1px solid var(--chrome-line); color:var(--chrome-fg);
+  opacity:0.38; transition:opacity 200ms var(--ease);
+}
+#controls:hover,#controls:focus-within,body.show-controls #controls{opacity:1}
+#controls button,#thumbs .close{
+  appearance:none; border:0; background:transparent; color:inherit; cursor:pointer;
+  width:34px; height:34px; display:grid; place-items:center; padding:0;
+}
+#controls button:hover,#thumbs .close:hover{background:var(--chrome-hover)}
+#controls button[disabled]{opacity:0.35; cursor:default}
+#controls button[aria-pressed="true"]{background:var(--chrome-hover)}
+#controls svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75; stroke-linecap:square}
+#counter{
+  min-width:66px; text-align:center; font-family:var(--mono); font-size:13px;
+  font-variant-numeric:tabular-nums; color:var(--chrome-fg)
+}
+#pips{display:flex; gap:4px; padding:0 6px 0 2px}
+#pips:empty{display:none}
+.pip{width:6px; height:6px; background:var(--chrome-line)}
+.pip.on{background:var(--nu-red)}
+.sep{width:1px; height:20px; background:var(--chrome-line); margin:0 4px}
+button:focus-visible,.thumb:focus-visible{outline:3px solid var(--nu-red); outline-offset:2px}
+
+#notes{
+  display:none; flex:none; height:min(30vh, 260px); overflow:auto;
+  padding:18px 28px 20px; background:var(--chrome-bg); border-top:1px solid var(--chrome-line);
+  color:var(--chrome-fg); font-size:17px; line-height:1.55;
+}
+body.notes-open #notes{display:block}
+#notes h2{margin:0 0 8px; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-muted)}
+#notes p{margin:0 0 10px; max-width:78ch}
+
+#thumbs{position:absolute; inset:0; z-index:20; display:none; overflow:auto; background:var(--stage-bg); padding:24px}
+#thumbs.open{display:block}
+#thumbs .bar{display:flex; align-items:center; justify-content:space-between; max-width:1400px; margin:0 auto 18px}
+#thumbs .bar h2{margin:0; font-size:15px; font-weight:700; color:var(--chrome-fg)}
+#thumbs .close svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.75}
+#thumbs .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:18px; max-width:1400px; margin:0 auto}
+.thumb{
+  appearance:none; padding:0; margin:0; border:1px solid var(--chrome-line); background:#fff;
+  cursor:pointer; position:relative; overflow:hidden; aspect-ratio:16 / 9; width:100%; display:block
+}
+.thumb.current{outline:3px solid var(--nu-red); outline-offset:2px}
+.thumb-inner{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0; pointer-events:none; text-align:left; font:400 16px/1.2 var(--font); white-space:normal}
+.thumb-inner .slide{display:flex}
+.thumb-num{
+  position:absolute; left:0; bottom:0; padding:3px 7px; background:rgba(0,0,0,0.72); color:#fff;
+  font-family:var(--mono); font-size:12px; line-height:1.2
+}
+
+/* ---------- print: every slide, final state ---------- */
+@media print{
+  @page{size:1920px 1080px; margin:0}
+  :root{padding:0}
+  html,body{height:auto; overflow:visible; display:block; background:#fff}
+  #stage{overflow:visible; height:auto}
+  #deck{position:static; transform:none !important; width:1920px; height:auto}
+  .slide{position:relative; display:flex !important; width:1920px; height:1080px; break-after:page; page-break-after:always}
+  .slide .rise{animation:none !important; opacity:1 !important; transform:none !important}
+  #controls,#notes,#thumbs{display:none !important}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+
+/* ---------- review-deck additions (small; typography classes above are untouched) ---------- */
+.slide .source{font-size:24px; margin-top:10px}
+.evidence{font-size:24px; letter-spacing:0.1em}
+.diagram svg text{font-kerning:normal}
+.diagram{cursor:pointer}
+</style>
+</head>
+<body>
+
+<main id="stage" aria-roledescription="slide deck" aria-label="INFO 7375 Computational Skepticism terminology: Model explainability">
+  <div id="deck">
+
+    <section class="slide s-dark s-opening" aria-roledescription="slide" data-title="Model explainability">
+      <div class="rule r10"></div>
+      <p class="eyebrow rise">INFO 7375 · Terminology · Chapter 5</p>
+      <h1 class="t-opening rise g2">Model explainability</h1>
+      <div class="bar-120 rise g2"></div>
+      <p class="sub-opening rise g3">Terms for telling an explanation of the model from a fact about the world</p>
+      <div class="speaker-notes" hidden><p>31 terms from Chapter 5, in the chapter order. Every term carries the tag in the book text: the chapter uses and explains it. None is gloss or outside source. The course exam lists mark LIME and SHAP as learn-them-but-not-on-the-exam; transparency, explainability, interpretability, counterfactual explanation and language game are on the exam list. Worked numbers (0.72, 0.55, 0.073, 0.062, 0.035) are the chapter’s loan example.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Thirty-one terms in four groups">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Map</p>
+      <h2 class="t-chart">Thirty-one terms in four groups</h2>
+      <div class="diagram build" data-build="map" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, all sections; Exam terms - compact list, “Explainability, transparency, interpretability”.</p>
+      <div class="speaker-notes" hidden><p>Four groups, one per click.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Fluency trap, accurate but misleading, shortcut, post-hoc explanation">
+      <div class="rule"></div>
+      <span class="evidence">Illustrative data</span>
+      <p class="eyebrow">The fluency trap</p>
+      <h2 class="t-chart">Fluency trap, accurate but misleading, shortcut, post-hoc explanation</h2>
+      <div class="diagram build" data-build="flu" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, the opening case; “Where this leaves us”.</p>
+      <div class="speaker-notes" hidden><p>The radiologist case is a composite the chapter labels as such. The 90 of 100 and 30 of 100 are invented to show a shortcut; the mechanism is cited in the chapter (Geirhos et al. 2020; DeGrave et al. 2021). The probabilities are computed from those counts.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="SHAP, internal accounting, Rung 1, Rung 2">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">What SHAP is</p>
+      <h2 class="t-chart">SHAP, internal accounting, Rung 1, Rung 2</h2>
+      <div class="diagram build" data-build="shap" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, “What SHAP is, and what SHAP isn’t”; Exam terms - compact list.</p>
+      <div class="speaker-notes" hidden><p>The loan numbers are the chapter’s. The scatter plots are a seeded simulation: a hidden Z drives X and Y, 70 points; the right plot replaces X with random values. Both r values are computed.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Value function, coalition, marginal contribution, Shapley value">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">The Shapley value</p>
+      <h2 class="t-chart">Value function, coalition, marginal contribution, Shapley value</h2>
+      <div class="diagram build" data-build="game" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, “The mathematics of Shapley values”.</p>
+      <div class="speaker-notes" hidden><p>From the chapter’s worked example. v of income is 0.55 plus the +0.08 the chapter gives for income entering an empty coalition. The six orderings and their contributions are the chapter’s; the average and the coalition-weighted average are computed.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Efficiency, Symmetry, Dummy, Additivity">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">The Shapley value</p>
+      <h2 class="t-chart">Efficiency, Symmetry, Dummy, Additivity</h2>
+      <div class="diagram build" data-build="axiom" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, “The four axioms”.</p>
+      <div class="speaker-notes" hidden><p>Efficiency uses the chapter’s loan example. Symmetry, Dummy and Additivity use small invented games whose Shapley values are computed by averaging over all orderings. The chapter names the fourth axiom Additivity in prose and Linearity in its table.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Sampling, TreeSHAP, correlated features, conditional sampling">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Computing it</p>
+      <h2 class="t-chart">Sampling, TreeSHAP, correlated features, conditional sampling</h2>
+      <div class="diagram build" data-build="comp" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, “Computational shortcuts” and “The correlated feature problem”; Aas, Jullum and Løland 2021.</p>
+      <div class="speaker-notes" hidden><p>Sampling draws from the chapter’s six orderings of income with a seeded generator. The tree is drawn to depth 3, so 2 to the power 3 leaves. The scatter uses correlation 0.9 and 140 seeded points; off the band means more than two residual standard deviations from the line. The chapter calls the sampling estimator Monte Carlo sampling (KernelSHAP).</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="LIME, instability, off-manifold, counterfactual">
+      <div class="rule"></div>
+      <span class="evidence">Simulation (seeded)</span>
+      <p class="eyebrow">Other methods</p>
+      <h2 class="t-chart">LIME, instability, off-manifold, counterfactual</h2>
+      <div class="diagram build" data-build="lime" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, “LIME, in a different shape” and “Counterfactuals are closer to what you actually want”.</p>
+      <div class="speaker-notes" hidden><p>LIME is run on an invented curve with six seeded perturbations (sd 1.0, weighted by closeness), so the slopes are computed. The loan boundary is invented for illustration; the +$5,000 example is the chapter’s.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Transparency, explainability, interpretability, Rudin">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Explainable to whom?</p>
+      <h2 class="t-chart">Transparency, explainability, interpretability, Rudin</h2>
+      <div class="diagram build" data-build="three" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, “Three words that don’t mean the same thing”; Rudin 2019.</p>
+      <div class="speaker-notes" hidden><p>The 80 percent comes from Exercise W2(c); which two cases the auditor misses is a seeded illustration. The rows of reasons are invented. The access grid follows the chapter’s failure-mode row.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Language game, mismatch, audience question">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Explainable to whom?</p>
+      <h2 class="t-chart">Language game, mismatch, audience question</h2>
+      <div class="diagram build" data-build="lang" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, “A short detour through Wittgenstein” and “Back to Ash”; Wittgenstein 1953; Shapira et al. 2026.</p>
+      <div class="speaker-notes" hidden><p>The operations listed follow the chapter’s account of Ash’s agent. The chapter marks the provider-side mechanics as to be verified against the Agents of Chaos primary source, so the user-side list is the chapter’s wording, not independently checked.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Look-alike pairs">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Tell them apart</p>
+      <h2 class="t-chart">Look-alike pairs</h2>
+      <div class="diagram build" data-build="pairs" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5.</p>
+      <div class="speaker-notes" hidden><p>Attribution and causal effect, marginal and conditional SHAP, explainable and interpretable, the model’s counterfactual and the world’s.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Say it exactly">
+      <div class="rule"></div>
+      <span class="evidence">Computed</span>
+      <p class="eyebrow">Vague request, exact instruction</p>
+      <h2 class="t-chart">Say it exactly</h2>
+      <div class="diagram build" data-build="say" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, worked example and Exercise A5.</p>
+      <div class="speaker-notes" hidden><p>Five requests and exact versions. Charts reuse numbers computed on earlier slides: the loan values, the 20 seeded LIME slopes, the auditor’s 8 of 10 and Exercise A5’s marginal and conditional values.</p></div>
+    </section>
+
+    <section class="slide s-diagram" aria-roledescription="slide" data-title="Before you trust an explanation">
+      <div class="rule"></div>
+      <span class="evidence">Conceptual illustration</span>
+      <p class="eyebrow">Checklist</p>
+      <h2 class="t-chart">Before you trust an explanation</h2>
+      <div class="diagram build" data-build="closing" style="flex-basis:700px"></div>
+      <p class="source">Source: Chapter 5, “Where this leaves us”.</p>
+      <div class="speaker-notes" hidden><p>Six checks.</p></div>
+    </section>
+
+  </div>
+
+  <nav id="controls" aria-label="Slide controls">
+    <button type="button" id="btn-prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="counter" aria-hidden="true">1 / 1</span>
+    <span id="pips" aria-hidden="true"></span>
+    <button type="button" id="btn-next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <span class="sep" aria-hidden="true"></span>
+    <button type="button" id="btn-thumbs" aria-label="Show all slides (G)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="7" height="5"/><rect x="13" y="5" width="7" height="5"/><rect x="4" y="14" width="7" height="5"/><rect x="13" y="14" width="7" height="5"/></svg></button>
+    <button type="button" id="btn-notes" aria-label="Speaker notes (N)" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 11h14M5 16h9"/></svg></button>
+    <button type="button" id="btn-fs" aria-label="Fullscreen (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+  </nav>
+
+  <div id="thumbs" role="dialog" aria-modal="true" aria-label="All slides">
+    <div class="bar">
+      <h2>All slides</h2>
+      <button type="button" class="close" aria-label="Close slide overview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="grid"></div>
+  </div>
+
+  <p id="live" class="sr-only" aria-live="polite"></p>
+</main>
+
+<aside id="notes" aria-label="Speaker notes">
+  <h2 id="notes-head">Speaker notes</h2>
+  <div id="notes-body"></div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var stage = document.getElementById("stage");
+  var deck = document.getElementById("deck");
+  var slides = Array.prototype.slice.call(deck.querySelectorAll(".slide"));
+  var total = slides.length;
+  var counter = document.getElementById("counter");
+  var pips = document.getElementById("pips");
+  var live = document.getElementById("live");
+  var notesHead = document.getElementById("notes-head");
+  var notesBody = document.getElementById("notes-body");
+  var btnPrev = document.getElementById("btn-prev");
+  var btnNext = document.getElementById("btn-next");
+  var btnNotes = document.getElementById("btn-notes");
+  var btnThumbs = document.getElementById("btn-thumbs");
+  var btnFs = document.getElementById("btn-fs");
+  var thumbs = document.getElementById("thumbs");
+  var thumbGrid = thumbs.querySelector(".grid");
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hasD3 = typeof window.d3 !== "undefined";
+  var current = -1, step = 0, lastFocus = null;
+
+  /* Recurring visual vocabulary
+     ink   = confidence / belief        red  = failure, consequence, causal break
+     gray  = familiar data, same source tint = what an inspection or failure exposes */
+  var INK = "#2A1A0E", RED = "#C8102E", TINT = "#FBE7EA", GRID = "#E3E3E3", MUTED = "#545454",
+      BASE = "#909090", FAMILIAR = "#C4C4C4", SUBTLE = "#F6F6F6", BODY = "#2D2926";
+  var MONO = 'ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace';
+  var SANS = '"Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+
+  /* ---------------- scaling ---------------- */
+  function fit() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    var s = Math.min(w / 1920, h / 1080);
+    deck.style.transform = "translate(" + (w - 1920 * s) / 2 + "px," + (h - 1080 * s) / 2 + "px) scale(" + s + ")";
+  }
+  if ("ResizeObserver" in window) new ResizeObserver(fit).observe(stage);
+  window.addEventListener("resize", fit);
+
+  /* ---------------- drawing helpers ---------------- */
+  function svgFor(el, w, h, label, desc, fixed) {
+    el.innerHTML = "";
+    var svg = d3.select(el).append("svg").attr("viewBox", "0 0 " + w + " " + h)
+      .attr("role", "img").attr("aria-label", label);
+    if (fixed) svg.attr("width", w).attr("height", h).style("overflow", "visible");
+    else svg.attr("width", "100%").attr("height", "100%").attr("preserveAspectRatio", "xMinYMin meet");
+    svg.append("title").text(label);
+    svg.append("desc").text(desc);
+    return svg;
+  }
+  function txt(g, x, y, s, o) {
+    o = o || {};
+    var t = g.append("text").attr("x", x).attr("y", y)
+      .attr("font-family", o.family || SANS).attr("font-size", o.size || 22)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || INK);
+    if (o.anchor) t.attr("text-anchor", o.anchor);
+    if (o.ls) t.attr("letter-spacing", o.ls);
+    if (o.dy) t.attr("dy", o.dy);
+    return t.text(s);
+  }
+  function fadeIn(sel, delay, dur) {
+    sel.attr("opacity", 0).transition().delay(delay || 0).duration(dur || 400).ease(d3.easeCubicOut).attr("opacity", 1);
+    return sel;
+  }
+  function rng(seed) {
+    var s = seed >>> 0;
+    return function () { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  /* ================= review-deck helpers ================= */
+  var W = 1400, H = 700;
+  function A(anim, k, n) { return anim && k === n; }
+  function shuffle(a, r) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(r() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function drawIn(path, delay, dur) {
+    var L = path.node().getTotalLength();
+    if (!(L > 0)) return path;
+    path.attr("stroke-dasharray", L + " " + L).attr("stroke-dashoffset", L)
+      .transition().delay(delay || 0).duration(dur || 500).ease(d3.easeCubicOut).attr("stroke-dashoffset", 0)
+      .on("end", function () { d3.select(this).attr("stroke-dasharray", null).attr("stroke-dashoffset", null); });
+    return path;
+  }
+  function tweenNum(sel, from, to, fmt, delay, dur) {
+    sel.text(fmt(from)).transition().delay(delay || 0).duration(dur || 1000).ease(d3.easeCubicOut)
+      .tween("text", function () { var it = d3.interpolate(from, to), node = this; return function (t) { node.textContent = fmt(it(t)); }; });
+  }
+  var pct1 = function (v) { return v.toFixed(1) + "%"; };
+  function lab(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: 700, fill: o.fill || MUTED, ls: 1.2, anchor: o.anchor }); }
+  /* wrap a string into tspans; n = characters per line (estimate) */
+  function wrap(g, x, y, s, n, o) {
+    o = o || {};
+    var size = o.size || 26, lh = o.lh || Math.round(size * 1.34), words = s.split(" "), lines = [], cur = "";
+    words.forEach(function (w) { var t = (cur ? cur + " " : "") + w; if (t.length > n && cur) { lines.push(cur); cur = w; } else cur = t; });
+    if (cur) lines.push(cur);
+    var t = g.append("text").attr("x", x).attr("y", y).attr("font-family", SANS).attr("font-size", size)
+      .attr("font-weight", o.weight || 400).attr("fill", o.fill || BODY);
+    lines.forEach(function (l, i) { t.append("tspan").attr("x", x).attr("dy", i ? lh : 0).text(l); });
+    t.node().__h = lines.length * lh;
+    return t;
+  }
+  function box(g, x, y, w, h, o) {
+    o = o || {};
+    return g.append("rect").attr("x", x + 0.5).attr("y", y + 0.5).attr("width", w).attr("height", h)
+      .attr("fill", o.fill || "#FFFFFF").attr("stroke", o.stroke || FAMILIAR).attr("stroke-width", o.sw || 1.5);
+  }
+  function ppvOf(p, sens, spec) { return p * sens / (p * sens + (1 - p) * (1 - spec)); }
+  function sigmoid(z) { return 1 / (1 + Math.exp(-z)); }
+  function logit(c) { return Math.log(c / (1 - c)); }
+  function fmtInt(v) { return d3.format(",")(Math.round(v)); }
+  function check(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + y + " L" + (x - s / 3) + "," + (y + s * 0.7) + " L" + (x + s) + "," + (y - s * 0.8)).attr("fill", "none").attr("stroke", color || INK).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+  function cross(g, x, y, s, color) { return g.append("path").attr("d", "M" + (x - s) + "," + (y - s) + " L" + (x + s) + "," + (y + s) + " M" + (x + s) + "," + (y - s) + " L" + (x - s) + "," + (y + s)).attr("stroke", color || RED).attr("stroke-width", 5).attr("stroke-linecap", "square"); }
+
+  /* ---------- small drawing helpers ---------- */
+  function run(g, dur, fn, anim, ease) {
+    if (!anim) { fn(1); return; }
+    fn(0);
+    d3.select(g.node()).transition().duration(dur).ease(ease || d3.easeLinear)
+      .tween("run", function () { return function (t) { fn(t); }; });
+  }
+  /* keyframes through the values in a, smooth between them, t in 0..1 */
+  function kf(t, a) {
+    var n = a.length - 1, s = Math.min(n - 1e-9, Math.max(0, t) * n), i = Math.floor(s);
+    return a[i] + (a[i + 1] - a[i]) * d3.easeCubicInOut(s - i);
+  }
+  function hint(svg) { wrap(svg.append("g"), 800, 44, "Click or press → to start the animation. Each click adds one idea.", 46, { size: 28, fill: MUTED }); }
+  function cap(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 26, weight: o.weight || 400, fill: o.fill || BODY, anchor: o.anchor, family: o.family }); }
+  function sgn(v, d) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d || 0); }
+
+  /* right-hand column: one glossary entry per step, with its tag; returns the y below the last entry */
+  function entries(svg, list, k, anim) {
+    var g = svg.append("g"), y = 4;
+    list.forEach(function (it) {
+      if (it.s > k) return;
+      var t = T[it.id], cur = it.s === k, e = g.append("g");
+      txt(e, 800, y + 26, t.n, { size: 26, weight: 700, fill: cur ? RED : INK });
+      var TG = { book: ["in the book text", 212], gloss: ["in the glossary", 200], video: ["video only", 150], editor: ["editor or docs", 190], web: ["outside source", 200] }[t.tag || "video"], tg = TG[0], tw_ = TG[1], fill_ = t.tag === "book";
+      e.append("rect").attr("x", 1400 - tw_ + 0.5).attr("y", y + 3.5).attr("width", tw_ - 1).attr("height", 34)
+        .attr("fill", fill_ ? INK : "none").attr("stroke", fill_ ? INK : GREY).attr("stroke-width", 1.5);
+      txt(e, 1400 - tw_ / 2, y + 28, tg, { size: 24, anchor: "middle", fill: fill_ ? "#FFFFFF" : MUTED });
+      var yy = y + 58;
+      if (t.alias) { txt(e, 800, yy, t.alias, { size: 24, fill: MUTED }); yy += 30; }
+      var w = wrap(e, 800, yy, t.m + ".", 50, { size: 24, lh: 30, fill: BODY });
+      y = yy + w.node().__h + 6;
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    return y;
+  }
+  function pairStrip(svg, a, b) {
+    var g = svg.append("g");
+    lab(g, 0, 598, "TELL THESE APART");
+    [[0, a], [740, b]].forEach(function (p, i) {
+      box(g, p[0], 612, 660, 88, { stroke: i ? RED : INK, sw: 2 });
+      txt(g, p[0] + 20, 646, p[1][0], { size: 26, weight: 700, fill: i ? RED : INK });
+      txt(g, p[0] + 20, 682, p[1][1], { size: 24, fill: BODY });
+    });
+    txt(g, 700, 664, "≠", { size: 44, weight: 700, anchor: "middle", fill: RED });
+  }
+  function base(svg, list, k, anim, a, b) { var y = entries(svg, list, k, anim); pairStrip(svg, a, b); if (k === 0) hint(svg); return y; }
+
+  /* top-down / side-view camera pieces. ang: radians, 0 = +x, y grows downward */
+  function conePath(x, y, ang, fov, len) {
+    var h = fov * DEG / 2;
+    return "M" + x + "," + y + "L" + (x + len * Math.cos(ang - h)) + "," + (y + len * Math.sin(ang - h)) +
+      "A" + len + "," + len + " 0 0 1 " + (x + len * Math.cos(ang + h)) + "," + (y + len * Math.sin(ang + h)) + "Z";
+  }
+  function cone(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", TINT).attr("fill-opacity", 0.9).attr("stroke", RED).attr("stroke-width", 2);
+  }
+  function ghost(g, x, y, ang, fov, len) {
+    g.append("path").attr("d", conePath(x, y, ang, fov, len)).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 1.5).attr("stroke-dasharray", "6 6");
+  }
+  function camBody(g, x, y, ang) {
+    var c = g.append("g").attr("transform", "translate(" + x + "," + y + ") rotate(" + (ang / DEG) + ")");
+    c.append("rect").attr("x", -16).attr("y", -11).attr("width", 24).attr("height", 22).attr("fill", INK);
+    c.append("path").attr("d", "M8,-7 L22,-14 L22,14 L8,7Z").attr("fill", INK);
+  }
+  function inView(px, py, x, y, ang, fov, len) {
+    var dx = px - x, dy = py - y;
+    if (Math.hypot(dx, dy) > len) return false;
+    var da = Math.atan2(dy, dx) - ang; da = Math.atan2(Math.sin(da), Math.cos(da));
+    return Math.abs(da) <= fov * DEG / 2;
+  }
+  function post(g, x, y, on, r) {
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", r || 11).attr("fill", on ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+  }
+  function ptsInView(g, pts, cx, cy, ang, fov, len) {
+    var n = 0;
+    pts.forEach(function (p) { var on = inView(p[0], p[1], cx, cy, ang, fov, len); if (on) n++; post(g, p[0], p[1], on); });
+    return n;
+  }
+
+
+  /* ================= Model explainability (Chapter 5) ================= */
+  var GREY = "#909090", uid = 0;
+  /* tag: book = Chapter 5 uses and explains it */
+  var T = {
+    flu: { n: "Fluency trap", tag: "book", m: "Smooth, well-formed output taken as evidence it does not carry" },
+    acc: { n: "Accurate but misleading", tag: "book", alias: "technically accurate, practically misleading", m: "True about the model, yet leaves the reader believing something false about the world" },
+    short: { n: "Shortcut", tag: "book", m: "A spurious pattern that matches the label in training and fails on new data" },
+    post: { n: "Post-hoc explanation", tag: "book", m: "A reason worked out after the model has produced its output" },
+    shap: { n: "SHAP", tag: "book", m: "A feature-attribution method from game theory: one number per feature, for one prediction" },
+    acct: { n: "Internal accounting", tag: "book", m: "How the model itself divides credit among features. Real, and not the same as the world" },
+    r1: { n: "Rung 1 (association)", tag: "book", m: "The level of seeing what goes with what, or what the model used. SHAP stays here" },
+    r2: { n: "Rung 2 (intervention)", tag: "book", m: "The level of doing: what happens if X is set to a value. SHAP cannot answer it" },
+    vf: { n: "Value function", tag: "book", m: "The expected prediction when only the features in a set S are known" },
+    coal: { n: "Coalition", tag: "book", m: "A subset of features treated as already known" },
+    marg: { n: "Marginal contribution", tag: "book", m: "What one feature adds to the prediction when it joins a coalition" },
+    shapv: { n: "Shapley value", tag: "book", m: "A feature’s marginal contribution, averaged over every order of arrival" },
+    eff: { n: "Efficiency", tag: "book", m: "The values add up exactly to the prediction minus the average" },
+    sym: { n: "Symmetry", tag: "book", m: "Features that do the same work get the same credit" },
+    dum: { n: "Dummy", tag: "book", m: "A feature that changes nothing gets zero. A non-zero zip value means the model uses zip" },
+    add: { n: "Additivity", tag: "book", alias: "also: linearity", m: "Values for two models combined are the sums of the values for each" },
+    kern: { n: "Sampling (KernelSHAP)", tag: "book", m: "Estimate the values from M random orderings instead of all of them" },
+    tree: { n: "TreeSHAP", tag: "book", m: "Exact values for tree models, found by walking the few paths that change a prediction" },
+    corr: { n: "Correlated features", tag: "book", m: "Drawing each feature on its own creates combinations that never occur in real data" },
+    cond: { n: "Conditional sampling", tag: "book", m: "Draw the missing features given the known ones. Realistic, but the Dummy axiom can fail" },
+    lime: { n: "LIME", tag: "book", m: "Fits a simple line to the model’s output around one input. The slope is the explanation" },
+    limei: { n: "LIME instability", tag: "book", m: "The perturbations are random, so the same input can give a different explanation each run" },
+    offm: { n: "Off-manifold", tag: "book", m: "Perturbed inputs that no real case resembles, where the line may describe nothing real" },
+    cfx: { n: "Counterfactual", tag: "book", alias: "also: counterfactual explanation", m: "States how the prediction would change if a feature had another value" },
+    trans: { n: "Transparency", tag: "book", m: "A property of the system: its code, weights, architecture and data can be inspected" },
+    expl: { n: "Explainability", tag: "book", m: "A property of outputs: each one comes with a stated reason" },
+    interp: { n: "Interpretability", tag: "book", m: "A person can build a mental model good enough to predict new cases" },
+    rudin: { n: "Rudin’s argument", tag: "book", m: "For high-stakes decisions, use interpretable models rather than explaining black boxes" },
+    lg: { n: "Language game", tag: "book", m: "The setting that gives a word its meaning, so one word can mean different things" },
+    mism: { n: "Language-game mismatch", tag: "book", m: "Two parties use one word for different operations, so a true report misleads" },
+    aud: { n: "Audience question", tag: "book", m: "Ask who reads the explanation, what its words mean in their game, and whether it serves that game" }
+  };
+  var LOAN = { pred: 0.72, base: 0.55, names: ["income", "debt-to-income", "zip code"], phi: [0.073, 0.062, 0.035] };
+  var ORD = [["I, D, Z", 0.08], ["I, Z, D", 0.08], ["D, I, Z", 0.07], ["Z, I, D", 0.09], ["D, Z, I", 0.06], ["Z, D, I", 0.06]];
+
+  /* ---------- helpers for this deck ---------- */
+  function fade(sel, anim, delay) { if (anim) sel.attr("opacity", 0).transition().delay(delay || 0).duration(450).attr("opacity", 1); return sel; }
+  function bar(g, x, y, w, h, fill, anim, delay) { var b = g.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("fill", fill); if (anim) b.attr("width", 0).transition().delay(delay || 0).duration(700).attr("width", w); return b; }
+  function mono(g, x, y, s, o) { o = o || {}; return txt(g, x, y, s, { size: o.size || 24, weight: o.weight || 400, fill: o.fill || INK, family: MONO, anchor: o.anchor }); }
+  function capt(g, s, y) { return wrap(g, 0, y || 510, s, 72, { size: 24, lh: 30, fill: INK }); }
+  function gauss(r) { var u = 1 - r(), v = r(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function pearson(xs, ys) { var mx = d3.mean(xs), my = d3.mean(ys), sxy = 0, sxx = 0, syy = 0; xs.forEach(function (x, i) { sxy += (x - mx) * (ys[i] - my); sxx += (x - mx) * (x - mx); syy += (ys[i] - my) * (ys[i] - my); }); return sxy / Math.sqrt(sxx * syy); }
+  function olsSlope(xs, ys) { var mx = d3.mean(xs), my = d3.mean(ys), sxy = 0, sxx = 0; xs.forEach(function (x, i) { sxy += (x - mx) * (ys[i] - my); sxx += (x - mx) * (x - mx); }); var b = sxy / sxx; return [my - b * mx, b]; }
+  function fact(n) { return n <= 1 ? 1 : n * fact(n - 1); }
+  function perms(a) { if (a.length <= 1) return [a.slice()]; var out = []; a.forEach(function (x, i) { perms(a.filter(function (_, j) { return j !== i; })).forEach(function (p) { out.push([x].concat(p)); }); }); return out; }
+  /* exact Shapley values of an n-player game; v takes a bitmask of the players present */
+  function shapley(n, v) { var P = perms(d3.range(n)), phi = d3.range(n).map(function () { return 0; }); P.forEach(function (p) { var m = 0; p.forEach(function (i) { phi[i] += v(m | (1 << i)) - v(m); m |= (1 << i); }); }); return phi.map(function (x) { return x / P.length; }); }
+  function f3(v) { return (Math.round(v * 1000) / 1000).toFixed(3); }
+  function f2(v) { return (Math.round(v * 100) / 100).toFixed(2); }
+  function pc(v) { return Math.round(v * 100) + "%"; }
+  function arrow(g, x1, y1, x2, y2, col, dash) {
+    var a = Math.atan2(y2 - y1, x2 - x1), s = 13, c = col || INK;
+    g.append("path").attr("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2).attr("stroke", c).attr("stroke-width", 3).attr("fill", "none").attr("stroke-dasharray", dash || null);
+    return g.append("path").attr("d", "M" + x2 + "," + y2 + " L" + (x2 - s * Math.cos(a - 0.45)) + "," + (y2 - s * Math.sin(a - 0.45)) + " L" + (x2 - s * Math.cos(a + 0.45)) + "," + (y2 - s * Math.sin(a + 0.45)) + "Z").attr("fill", c);
+  }
+  function ln(g, x1, y1, x2, y2, col, w, dash) { return g.append("path").attr("d", "M" + x1 + "," + y1 + " L" + x2 + "," + y2).attr("stroke", col || INK).attr("stroke-width", w || 2).attr("fill", "none").attr("stroke-dasharray", dash || null); }
+  function nb(g, x, y, w, h, label, stroke, fill) { box(g, x, y, w, h, { stroke: stroke || INK, sw: 2.5, fill: fill }); return cap(g, x + w / 2, y + h / 2 + 9, label, { size: 26, weight: 700, anchor: "middle" }); }
+
+  /* ---------- seeded data shared by several slides ---------- */
+  /* LIME on f(x) = 0.5 + 0.35 sin(1.2 x), x0 = 2.0, 6 perturbations with sd 1.0, weighted by closeness */
+  var LF = function (x) { return 0.5 + 0.35 * Math.sin(1.2 * x); }, LX0 = 2.0;
+  function limeRun(seed) {
+    var r = rng(seed), xs = [], ys = [], ws = [], i, sd = 1.0;
+    for (i = 0; i < 6; i++) { var x = LX0 + sd * gauss(r); xs.push(x); ys.push(LF(x)); ws.push(Math.exp(-Math.pow(x - LX0, 2) / (2 * sd * sd))); }
+    var sw = d3.sum(ws), mx = d3.sum(xs.map(function (x, j) { return ws[j] * x; })) / sw, my = d3.sum(ys.map(function (y, j) { return ws[j] * y; })) / sw, sxy = 0, sxx = 0;
+    xs.forEach(function (x, j) { sxy += ws[j] * (x - mx) * (ys[j] - my); sxx += ws[j] * (x - mx) * (x - mx); });
+    var b = sxy / sxx; return { xs: xs, ys: ys, ws: ws, slope: b, icpt: my - b * mx };
+  }
+  /* auditor test, Exercise W2(c): 10 new inputs, the auditor predicts 8 */
+  var AUD = (function () {
+    var r = rng(11), out = d3.range(10).map(function () { return r() < 0.5 ? 1 : 0; }), pred = out.slice(), wrong = shuffle(d3.range(10), rng(12)).slice(0, 2);
+    wrong.forEach(function (i) { pred[i] = 1 - pred[i]; });
+    return { out: out, pred: pred, hits: d3.sum(out.map(function (o, i) { return o === pred[i] ? 1 : 0; })) };
+  })();
+  /* correlated pair for the sampling slide */
+  var COR = (function () {
+    var cr = rng(21), N = 140, rho = 0.9, sdr = Math.sqrt(1 - rho * rho), xs = [], ys = [], i;
+    for (i = 0; i < N; i++) { var x = gauss(cr); xs.push(x); ys.push(rho * x + sdr * gauss(cr)); }
+    var ys2 = shuffle(ys.slice(), rng(22)), rc = rng(23), ys3 = xs.map(function (x) { return rho * x + sdr * gauss(rc); });
+    function off(x, y) { return Math.abs(y - rho * x) > 2 * sdr; }
+    function cnt(a, b) { return d3.sum(a.map(function (x, j) { return off(x, b[j]) ? 1 : 0; })); }
+    return { xs: xs, ys: ys, ys2: ys2, ys3: ys3, rho: rho, sdr: sdr, off: off, n: N, c1: cnt(xs, ys), c2: cnt(xs, ys2), c3: cnt(xs, ys3) };
+  })();
+
+  var MAPROWS = [
+    ["The fluency trap and SHAP", "fluency trap, accurate but misleading, shortcut, post-hoc explanation, SHAP, internal accounting, Rung 1, Rung 2", "Why a faithful account can still mislead about the world"],
+    ["The Shapley value", "value function, coalition, marginal contribution, Shapley value, Efficiency, Symmetry, Dummy, Additivity", "What the number is, and the four guarantees behind it"],
+    ["Computing it, and other methods", "sampling (KernelSHAP), TreeSHAP, correlated features, conditional sampling, LIME, LIME instability, off-manifold, counterfactual", "How the values are estimated and where they strain"],
+    ["Explainable to whom?", "transparency, explainability, interpretability, Rudin’s argument, language game, language-game mismatch, audience question", "Three properties that differ, and the check that serves the reader"]
+  ];
+  function renderMap(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four groups of explainability terms", "A table with four rows: group, terms, what the group is about.");
+    var g = svg.append("g");
+    wrap(g, 0, 36, "31 terms from Chapter 5. Every one is about telling an explanation of the model from a fact about the world.", 96, { size: 28, lh: 38, fill: INK });
+    var cx = [0, 380, 1010];
+    ["GROUP", "TERMS", "WHAT IT IS ABOUT"].forEach(function (h, i) { lab(g, cx[i] + 18, 152, h); });
+    g.append("path").attr("d", "M0,168 H1400").attr("stroke", INK).attr("stroke-width", 2);
+    MAPROWS.forEach(function (r, i) {
+      if (i + 1 > k) return;
+      var y = 184 + i * 120, row = g.append("g");
+      box(row, 0, y, 1400, 112, { stroke: FAMILIAR });
+      row.append("rect").attr("x", 0).attr("y", y).attr("width", 10).attr("height", 113).attr("fill", RED);
+      wrap(row, cx[0] + 28, y + 44, r[0], 22, { size: 26, lh: 30, weight: 700, fill: RED });
+      wrap(row, cx[1] + 18, y + 34, r[1], 50, { size: 24, lh: 30, fill: INK });
+      wrap(row, cx[2] + 18, y + 34, r[2], 30, { size: 24, lh: 30 });
+      if (A(anim, k, i + 1)) row.attr("opacity", 0).attr("transform", "translate(0,18)").transition().duration(450).ease(d3.easeCubicOut).attr("opacity", 1).attr("transform", "translate(0,0)");
+    });
+    if (k === 0) cap(g, 0, 430, "Click or press → to add the four groups, one at a time.", { fill: MUTED });
+  }
+
+  /* ---------- 1. fluency trap, accurate but misleading, shortcut, post-hoc ---------- */
+  function renderFlu(el, k, anim) {
+    var svg = svgFor(el, W, H, "A fluent, accurate explanation can make a wrong decision feel right", "Four pictures: a screening report with ticked reasons, a table of what is true and what is not said, two grids of cases showing a shortcut, and a post-hoc explanation built after the output.");
+    base(svg, [{ id: "flu", s: 1 }, { id: "acc", s: 2 }, { id: "short", s: 3 }, { id: "post", s: 4 }], k, anim, ["Fluency", "a coherent account"], ["Evidence", "something checked in the world"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k >= 1;
+    if (kk === 1) {
+      lab(d, 0, 30, "THE TOOL’S REPORT TO THE RADIOLOGIST");
+      box(d, 0, 52, 740, 250, { stroke: INK, sw: 2.5 });
+      cap(d, 24, 104, "High risk of malignancy · 0.84", { size: 32, weight: 700 });
+      [["Texture pattern X", "present"], ["Regional asymmetry Y", "present"]].forEach(function (r, i) {
+        var y = 170 + i * 62, g = d.append("g"); cap(g, 24, y, r[0], { size: 28 }); cap(g, 520, y, r[1], { size: 28, weight: 700 });
+        var c = check(g, 690, y - 8, 16, RED); if (an) drawIn(c, 400 + i * 600, 450);
+      });
+      cap(d, 0, 354, "The radiologist looks. X is there. Y is there.", { size: 28 });
+      var st = d.append("g"); box(st, 0, 384, 740, 76, { stroke: RED, sw: 3 }); cap(st, 370, 432, "reads as: evidence", { size: 32, weight: 700, anchor: "middle", fill: RED }); fade(st, an, 1500);
+      capt(d, "A coherent report is read as evidence. Nothing in it was checked against the world.");
+    } else if (kk === 2) {
+      lab(d, 0, 30, "WHAT THE EXPLANATION SAYS"); lab(d, 560, 30, "VERDICT");
+      var r0 = d.append("g"); box(r0, 0, 52, 740, 130, { stroke: INK, sw: 2.5 }); wrap(r0, 24, 100, "About the model: X and Y drove the score.", 36, { size: 28, lh: 34, weight: 700 });
+      check(r0, 596, 118, 18, INK); cap(r0, 628, 126, "true", { size: 28, weight: 700 }); fade(r0, an, 0);
+      var r1 = d.append("g"); box(r1, 0, 202, 740, 206, { stroke: RED, sw: 2.5 }); wrap(r1, 24, 250, "About the world: X and Y mean malignancy.", 36, { size: 28, lh: 34, weight: 700 });
+      wrap(r1, 24, 330, "They tracked a non-malignant condition the training data barely saw.", 36, { size: 24, lh: 30, fill: MUTED });
+      cross(r1, 596, 268, 14, RED); cap(r1, 622, 276, "not said", { size: 26, weight: 700, fill: RED }); fade(r1, an, 900);
+      capt(d, "Accurate about the model. Misleading about the world. Nothing in the report marks the gap.");
+    } else if (kk === 3) {
+      lab(d, 10, 30, "TRAINING"); lab(d, 410, 30, "DEPLOYMENT");
+      var gr = function (x0, nMal, col) {
+        d3.range(100).forEach(function (i) {
+          var r = d.append("rect").attr("x", x0 + (i % 10) * 28).attr("y", 52 + Math.floor(i / 10) * 28).attr("width", 26).attr("height", 26).attr("fill", i < nMal ? col : FAMILIAR);
+          if (an) r.attr("opacity", 0).transition().delay(i * 9).duration(200).attr("opacity", 1);
+        });
+      };
+      var MT = 90, MD = 30;
+      gr(10, MT, INK); gr(410, MD, RED);
+      cap(d, 10, 372, "100 cases showing X: " + MT + " malignant", { size: 24 }); cap(d, 10, 404, "P(malignant | X) = " + (MT / 100).toFixed(2), { size: 26, weight: 700 });
+      cap(d, 410, 372, "100 cases showing X: " + MD + " malignant", { size: 24 }); cap(d, 410, 404, "P(malignant | X) = " + (MD / 100).toFixed(2), { size: 26, weight: 700, fill: RED });
+      d.append("rect").attr("x", 10).attr("y", 436).attr("width", 20).attr("height", 20).attr("fill", INK); cap(d, 40, 454, "malignant", { size: 24 });
+      d.append("rect").attr("x", 200).attr("y", 436).attr("width", 20).attr("height", 20).attr("fill", FAMILIAR); cap(d, 230, 454, "not malignant", { size: 24 });
+      capt(d, "X predicts malignancy in training and not in deployment. An explanation that names X reports the shortcut faithfully.");
+    } else {
+      lab(d, 0, 30, "WHEN THE REASON IS WORKED OUT");
+      nb(d, 0, 60, 190, 80, "Input"); nb(d, 275, 60, 190, 80, "Model"); nb(d, 550, 60, 190, 80, "Output 0.84");
+      arrow(d, 192, 100, 273, 100); arrow(d, 467, 100, 548, 100);
+      var pg = d.append("g"); nb(pg, 480, 250, 260, 80, "Explanation", RED);
+      cap(pg, 630, 205, "built after the output", { size: 26, fill: RED, anchor: "end" });
+      var a = arrow(pg, 645, 144, 645, 246, RED, "8 6"); fade(pg, an, 600);
+      capt(d, "A post-hoc explanation is worked out after the output. It reports what the model did and adds nothing the model never learned.");
+    }
+  }
+
+  /* ---------- 2. SHAP, internal accounting, rung 1, rung 2 ---------- */
+  function renderShap(el, k, anim) {
+    var svg = svgFor(el, W, H, "SHAP gives one number per feature, in the model’s own accounting, on the first rung", "Four pictures: three bars for the loan example, the model’s books beside the unanswered questions about the world, a table of five questions SHAP can and cannot answer, and two scatter plots showing why setting a variable differs from watching it.");
+    base(svg, [{ id: "shap", s: 1 }, { id: "acct", s: 2 }, { id: "r1", s: 3 }, { id: "r2", s: 4 }], k, anim, ["Attribution", "what the model used"], ["Cause", "what the world would do"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k >= 1;
+    if (kk === 1) {
+      lab(d, 0, 30, "ONE NUMBER PER FEATURE, FOR THIS PREDICTION");
+      LOAN.phi.forEach(function (v, i) {
+        var y = 64 + i * 92, g = d.append("g"); cap(g, 0, y + 36, LOAN.names[i], { size: 26 });
+        bar(g, 210, y, v * 5250, 54, i === 2 ? RED : INK, an, i * 350); var t = cap(g, 210 + v * 5250 + 12, y + 36, "+" + f3(v), { size: 26, weight: 700 }); fade(t, an, i * 350 + 500);
+      });
+      cap(d, 0, 396, LOAN.phi.map(f3).join(" + ") + " = " + f3(d3.sum(LOAN.phi)), { size: 30, weight: 700 });
+      cap(d, 0, 440, "average prediction " + LOAN.base.toFixed(2) + ", this prediction " + LOAN.pred.toFixed(2) + ", gap " + f2(LOAN.pred - LOAN.base), { size: 24, fill: MUTED });
+      capt(d, "SHAP divides the gap between this prediction and the average among the features (the chapter’s loan example).");
+    } else if (kk === 2) {
+      lab(d, 0, 30, "IN THE MODEL"); lab(d, 390, 30, "IN THE WORLD");
+      var L = d.append("g"); box(L, 0, 50, 350, 310, { stroke: INK, sw: 2.5 });
+      LOAN.phi.forEach(function (v, i) { cap(L, 20, 112 + i * 76, LOAN.names[i], { size: 26 }); cap(L, 330, 112 + i * 76, "+" + f3(v), { size: 26, weight: 700, anchor: "end" }); if (i < 2) ln(L, 20, 140 + i * 76, 330, 140 + i * 76, FAMILIAR, 1.5); });
+      var R = d.append("g"); box(R, 390, 50, 350, 310, { stroke: RED, sw: 2.5 }).attr("stroke-dasharray", "8 6");
+      ["Is zip code a proxy for race?", "Would 0.035 survive a move?", "Is the effect direct or through income?"].forEach(function (q, i) { wrap(R, 410, 100 + i * 82, q, 22, { size: 26, lh: 32, fill: RED, weight: 700 }); });
+      fade(R, an, 700); cap(d, 370, 214, "≠", { size: 44, weight: 700, anchor: "middle", fill: RED });
+      capt(d, "The left side is real: it is what the model did. SHAP says nothing about the right side.");
+    } else if (kk === 3) {
+      lab(d, 0, 30, "CAN SHAP ANSWER IT?");
+      var Q = [["Additive contribution to this prediction", "Yes · Rung 1", 1], ["Causal link between feature and outcome", "No", 0], ["Whether the model is right on this case", "No", 0], ["What happens if the feature changes", "No", 0], ["Whether a feature is a confounder or a cause", "No", 0]];
+      Q.forEach(function (q, i) {
+        var g = d.append("g"), y = 52 + i * 80; box(g, 0, y, 740, 64, { stroke: q[2] ? INK : FAMILIAR, sw: q[2] ? 2.5 : 1.5 });
+        cap(g, 20, y + 41, q[0], { size: 24 }); cap(g, 722, y + 41, q[1], { size: 26, weight: 700, anchor: "end", fill: q[2] ? INK : RED }); fade(g, an, i * 400);
+      });
+      capt(d, "SHAP answers " + d3.sum(Q, function (q) { return q[2]; }) + " of these " + Q.length + " questions. It lives on Rung 1, association.");
+    } else {
+      var rr = rng(31), n = 70, zs = d3.range(n).map(function () { return gauss(rr); }), xs = zs.map(function (z) { return z + 0.5 * gauss(rr); }), ys = zs.map(function (z) { return z + 0.5 * gauss(rr); });
+      var rx = rng(32), xs2 = d3.range(n).map(function () { return gauss(rx); }), ro = pearson(xs, ys), rd = pearson(xs2, ys);
+      var panel = function (x0, xv, title, col) {
+        var g = d.append("g"), sc = d3.scaleLinear().domain([-3.5, 3.5]).range([0, 330]).clamp(true), sy = d3.scaleLinear().domain([-3.5, 3.5]).range([330, 0]).clamp(true);
+        lab(g, x0, 44, title); box(g, x0, 60, 330, 330, { stroke: FAMILIAR });
+        var fit = olsSlope(xv, ys);
+        xv.forEach(function (x, i) { var c = g.append("circle").attr("cx", x0 + sc(x)).attr("cy", 60 + sy(ys[i])).attr("r", 5).attr("fill", INK); if (an) c.attr("opacity", 0).transition().delay(i * 12).duration(200).attr("opacity", 1); });
+        ln(g, x0 + sc(-3.5), 60 + sy(fit[0] - 3.5 * fit[1]), x0 + sc(3.5), 60 + sy(fit[0] + 3.5 * fit[1]), col, 4);
+        cap(g, x0 + 165, 432, "Y against X", { size: 24, fill: MUTED, anchor: "middle" });
+      };
+      panel(20, xs, "SEEN: r = " + ro.toFixed(2).replace("-", "−"), RED); panel(400, xs2, "SET BY HAND: r = " + rd.toFixed(2).replace("-", "−"), RED);
+      capt(d, "A hidden Z drives both, so X and Y move together. Setting X by hand shows X does not move Y. Watching alone cannot tell the two apart.");
+    }
+  }
+
+  /* ---------- 3. value function, coalition, marginal contribution, Shapley value ---------- */
+  function renderGame(el, k, anim) {
+    var svg = svgFor(el, W, H, "The Shapley value averages what a feature adds across every order of arrival", "Four pictures built from the loan example: three values of the value function, the eight coalitions of three features, the four marginal contributions of income, and the six orderings averaged to 0.073.");
+    base(svg, [{ id: "vf", s: 1 }, { id: "coal", s: 2 }, { id: "marg", s: 3 }, { id: "shapv", s: 4 }], k, anim, ["Value function", "prediction from a subset"], ["Shapley value", "one feature’s average credit"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k >= 1;
+    var v0 = LOAN.base, vI = LOAN.base + ORD[0][1], vF = LOAN.pred;
+    if (kk === 1) {
+      lab(d, 0, 30, "WHAT THE MODEL PREDICTS WHEN ONLY S IS KNOWN");
+      [["v(∅)", "no feature known", v0, INK], ["v({income})", "income known", vI, INK], ["v(all)", "everything known", vF, RED]].forEach(function (r, i) {
+        var y = 56 + i * 100, g = d.append("g"); cap(g, 0, y + 24, r[0], { size: 26, weight: 700 }); cap(g, 0, y + 54, r[1], { size: 24, fill: MUTED });
+        bar(g, 240, y, r[2] * 700, 64, r[3], an, i * 400); var t = cap(g, 240 + r[2] * 700 - 14, y + 42, r[2].toFixed(2), { size: 28, weight: 700, anchor: "end", fill: "#FFFFFF" }); fade(t, an, i * 400 + 500);
+      });
+      var xa = 240 + v0 * 700, xb = 240 + vF * 700, br = d.append("g"); ln(br, xa, 366, xb, 366, RED, 4); ln(br, xa, 354, xa, 378, RED, 4); ln(br, xb, 354, xb, 378, RED, 4);
+      cap(br, xb, 414, "to distribute: " + vF.toFixed(2) + " − " + v0.toFixed(2) + " = " + f2(vF - v0), { size: 26, weight: 700, fill: RED, anchor: "end" }); fade(br, an, 1400);
+      capt(d, "v(S) is the prediction when only S is known. The total to share is v(all) − v(∅). v(income) follows from the chapter’s +0.08.");
+    } else if (kk === 2) {
+      lab(d, 0, 30, "THREE FEATURES, EIGHT COALITIONS");
+      var NM = ["I", "D", "Z"], subs = d3.range(8).map(function (m) { return { m: m, size: d3.sum(NM, function (_, i) { return (m >> i) & 1; }), hasI: m & 1 }; });
+      var rowsBy = d3.range(4).map(function (s) { return subs.filter(function (u) { return u.size === s; }); });
+      rowsBy.forEach(function (row, ri) {
+        var cw = 170, gap = 25, tot = row.length * cw + (row.length - 1) * gap, x0 = (740 - tot) / 2;
+        row.forEach(function (u, ci) {
+          var nm = NM.filter(function (_, i) { return (u.m >> i) & 1; }), label = nm.length ? "{" + nm.join(", ") + "}" : "{ }", g = d.append("g"), x = x0 + ci * (cw + gap), y = 52 + ri * 92;
+          box(g, x, y, cw, 62, { stroke: u.hasI ? FAMILIAR : RED, sw: u.hasI ? 1.5 : 3 }); cap(g, x + cw / 2, y + 40, label, { size: 28, weight: 700, anchor: "middle", fill: u.hasI ? MUTED : INK }); fade(g, an, ri * 250);
+        });
+      });
+      cap(d, 0, 444, "I = income, D = debt-to-income, Z = zip code. Red: coalitions income can join.", { size: 24, fill: MUTED });
+      capt(d, "3 features make 2³ = " + Math.pow(2, 3) + " coalitions. Income can arrive at the " + subs.filter(function (u) { return !u.hasI; }).length + " that do not already contain it.", 520);
+    } else if (kk === 3) {
+      lab(d, 0, 30, "WHAT INCOME ADDS, GIVEN WHO IS ALREADY IN");
+      var MC = [["S = { }", 0.08], ["S = {D}", 0.07], ["S = {Z}", 0.09], ["S = {D, Z}", 0.06]];
+      MC.forEach(function (r, i) {
+        var y = 60 + i * 96, g = d.append("g"); cap(g, 0, y + 38, r[0], { size: 26 });
+        bar(g, 200, y, r[1] * 5000, 56, INK, an, i * 350); var t = cap(g, 200 + r[1] * 5000 + 12, y + 38, "+" + r[1].toFixed(2), { size: 26, weight: 700 }); fade(t, an, i * 350 + 500);
+      });
+      capt(d, "The marginal contribution v(S ∪ {income}) − v(S) depends on S: here it runs from +" + d3.min(MC, function (r) { return r[1]; }).toFixed(2) + " to +" + d3.max(MC, function (r) { return r[1]; }).toFixed(2) + ".", 506);
+    } else {
+      lab(d, 0, 30, "INCOME’S CONTRIBUTION IN EACH OF THE 3! = 6 ORDERINGS");
+      var mean = d3.mean(ORD, function (o) { return o[1]; }), sx = 3800;
+      ORD.forEach(function (o, i) {
+        var y = 56 + i * 58, g = d.append("g"); mono(g, 0, y + 33, o[0], { size: 24 });
+        bar(g, 200, y, o[1] * sx, 42, INK, an, i * 250); var t = cap(g, 200 + o[1] * sx - 10, y + 32, "+" + o[1].toFixed(2), { size: 24, weight: 700, anchor: "end", fill: "#FFFFFF" }); fade(t, an, i * 250 + 400);
+      });
+      var xm = 200 + mean * sx, mg = d.append("g"); ln(mg, xm, 46, xm, 412, RED, 3, "8 6"); cap(mg, xm, 448, "average " + f3(mean), { size: 28, weight: 700, fill: RED, anchor: "middle" }); fade(mg, an, 1700);
+      var wt = function (s, n) { return fact(s) * fact(n - s - 1) / fact(n); };
+      var weighted = wt(0, 3) * 0.08 + wt(1, 3) * 0.07 + wt(1, 3) * 0.09 + wt(2, 3) * 0.06;
+      capt(d, "Shapley value of income = " + f3(mean) + ". Weighting each coalition by 1/3, 1/6, 1/6, 1/3 gives " + f3(weighted) + ", the same.", 520);
+    }
+  }
+
+  /* ---------- 4. the four axioms ---------- */
+  function renderAxiom(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four axioms: Efficiency, Symmetry, Dummy and Additivity", "Four pictures: three arrows summing to the prediction gap, two equal bars for interchangeable features, a zero bar for a feature that changes nothing, and per-tree values adding to the forest’s.");
+    base(svg, [{ id: "eff", s: 1 }, { id: "sym", s: 2 }, { id: "dum", s: 3 }, { id: "add", s: 4 }], k, anim, ["Efficiency", "the values sum to the total"], ["Correctness", "no axiom promises it"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k >= 1;
+    if (kk === 1) {
+      lab(d, 0, 30, "FORCE PLOT: EACH ARROW PUSHES FROM THE AVERAGE");
+      var gap = LOAN.pred - LOAN.base, sc = 600 / gap, x = 80, cols = [INK, "#6B6B6B", RED], sum = d3.sum(LOAN.phi);
+      cap(d, 80, 112, "average " + LOAN.base.toFixed(2), { size: 24, fill: MUTED, anchor: "middle" }); cap(d, 700, 112, "prediction " + LOAN.pred.toFixed(2), { size: 24, fill: MUTED, anchor: "end" });
+      LOAN.phi.forEach(function (v, i) {
+        var g = d.append("g"), w = v * sc;
+        bar(g, x, 140, w - 3, 72, cols[i], an, i * 600).attr("data-i", i);
+        var a = cap(g, x + w / 2, 242, "+" + f3(v), { size: 26, weight: 700, anchor: "middle" }), b = cap(g, x + w / 2, 276, LOAN.names[i], { size: 24, anchor: "middle", fill: MUTED }); fade(a, an, i * 600 + 500); fade(b, an, i * 600 + 500);
+        x += w;
+      });
+      ln(d, 80, 128, 80, 218, INK, 3); ln(d, 680, 128, 680, 218, INK, 3);
+      cap(d, 0, 346, LOAN.phi.map(f3).join(" + ") + " = " + f3(sum), { size: 30, weight: 700 });
+      cap(d, 0, 392, LOAN.pred.toFixed(2) + " − " + LOAN.base.toFixed(2) + " = " + f3(gap), { size: 30, weight: 700 });
+      cap(d, 0, 438, "left over: " + f3(Math.abs(gap - sum)), { size: 30, weight: 700, fill: RED });
+      capt(d, "Efficiency: nothing left over, nothing counted twice. The force plot draws this axiom.");
+    } else if (kk === 2) {
+      var vS = [0, 0.06, 0.06, 0.10], ph = shapley(2, function (m) { return vS[m]; });
+      lab(d, 0, 30, "TWO INTERCHANGEABLE FEATURES, A AND B");
+      mono(d, 0, 84, "v(A) = 0.06   v(B) = 0.06   v(A, B) = 0.10", { size: 24 });
+      ["A", "B"].forEach(function (nm, i) {
+        var y = 130 + i * 100, g = d.append("g"); cap(g, 0, y + 40, "feature " + nm, { size: 26 });
+        bar(g, 170, y, ph[i] * 10000, 60, INK, an, i * 300); var t = cap(g, 170 + ph[i] * 10000 + 12, y + 40, f3(ph[i]), { size: 28, weight: 700 }); fade(t, an, i * 300 + 600);
+      });
+      cap(d, 0, 370, "Swap A and B: no coalition’s value changes.", { size: 26, fill: MUTED });
+      cap(d, 0, 412, "Equal values: " + (Math.abs(ph[0] - ph[1]) < 1e-12 ? "yes" : "no"), { size: 28, weight: 700, fill: RED });
+      capt(d, "Symmetry: features that do the same work get the same credit. It says nothing about whether their causal roles match.");
+    } else if (kk === 3) {
+      var vD = function (m) { return 0.04 * (m & 1 ? 1 : 0) + 0.03 * (m & 2 ? 1 : 0); }, pd = shapley(3, vD), mx = 0;
+      d3.range(8).forEach(function (m) { if (!(m & 4)) mx = Math.max(mx, Math.abs(vD(m | 4) - vD(m))); });
+      lab(d, 0, 30, "A FEATURE THAT NEVER CHANGES THE PREDICTION");
+      cap(d, 0, 84, "Largest change feature D makes to any coalition: " + f2(mx), { size: 24 });
+      ["A", "B", "D"].forEach(function (nm, i) {
+        var y = 120 + i * 90, g = d.append("g"); cap(g, 0, y + 40, "feature " + nm, { size: 26 });
+        bar(g, 170, y, Math.max(pd[i] * 10000, 3), 60, i === 2 ? RED : INK, an, i * 300); var t = cap(g, 170 + pd[i] * 10000 + 12, y + 40, f3(pd[i]), { size: 28, weight: 700, fill: i === 2 ? RED : INK }); fade(t, an, i * 300 + 600);
+      });
+      cap(d, 0, 420, "Zero change, zero credit.", { size: 28, weight: 700 });
+      capt(d, "Dummy: an unused feature gets zero. So a non-zero zip value means the model uses zip. It does not mean the model should.");
+    } else {
+      var g1 = [0, 0.06, 0.02, 0.10], g2 = [0, 0.01, 0.05, 0.08], p1 = shapley(2, function (m) { return g1[m]; }), p2 = shapley(2, function (m) { return g2[m]; }), pc2 = shapley(2, function (m) { return g1[m] + g2[m]; });
+      lab(d, 0, 30, "TWO TREES, THEN THE FOREST THAT ADDS THEM");
+      ["A", "B"].forEach(function (nm, i) {
+        var y0 = 56 + i * 210, g = d.append("g"); cap(g, 0, y0 + 20, "feature " + nm, { size: 26, weight: 700 });
+        [["tree 1", p1[i], INK], ["tree 2", p2[i], RED]].forEach(function (r, j) { cap(g, 0, y0 + 66 + j * 48, r[0], { size: 24 }); bar(g, 130, y0 + 40 + j * 48, r[1] * 4000, 38, r[2], an, i * 600 + j * 300); cap(g, 130 + r[1] * 4000 + 10, y0 + 66 + j * 48, f2(r[1]), { size: 24, weight: 700 }); });
+        cap(g, 0, y0 + 162, "forest", { size: 24 }); bar(g, 130, y0 + 136, p1[i] * 4000, 38, INK, an, i * 600 + 600); bar(g, 130 + p1[i] * 4000, y0 + 136, p2[i] * 4000, 38, RED, an, i * 600 + 900);
+        cap(g, 130 + pc2[i] * 4000 + 10, y0 + 162, f2(pc2[i]) + " = " + f2(p1[i]) + " + " + f2(p2[i]), { size: 24, weight: 700 });
+      });
+      capt(d, "Additivity (linearity): values for combined games are sums, so a forest can be explained tree by tree.");
+    }
+  }
+
+  /* ---------- 5. sampling, TreeSHAP, correlated features, conditional sampling ---------- */
+  function renderComp(el, k, anim) {
+    var svg = svgFor(el, W, H, "Exact Shapley values are costly, so they are estimated, and correlated features strain the estimate", "Four pictures: a running estimate settling on the exact value, a decision tree whose paths are walked one by one, a scatter where independent draws leave the data band, and conditional draws that stay on it.");
+    base(svg, [{ id: "kern", s: 1 }, { id: "tree", s: 2 }, { id: "corr", s: 3 }, { id: "cond", s: 4 }], k, anim, ["Marginal sampling", "ignores correlations"], ["Conditional sampling", "respects them"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k >= 1;
+    if (kk === 1) {
+      lab(d, 0, 30, "INCOME’S VALUE, ESTIMATED FROM M RANDOM ORDERINGS");
+      var r = rng(5), M = 40, run_ = [], tot = 0, i, sx = d3.scaleLinear().domain([0, M]).range([90, 730]), sy = d3.scaleLinear().domain([0.05, 0.10]).range([360, 70]), exact = d3.mean(ORD, function (o) { return o[1]; });
+      for (i = 1; i <= M; i++) { tot += ORD[Math.floor(r() * 6)][1]; run_.push([i, tot / i]); }
+      box(d, 90, 70, 640, 290, { stroke: FAMILIAR });
+      [0.05, 0.075, 0.10].forEach(function (v) { cap(d, 80, sy(v) + 8, v.toFixed(3), { size: 24, fill: MUTED, anchor: "end" }); });
+      [0, 10, 20, 30, 40].forEach(function (v) { cap(d, sx(v), 396, "" + v, { size: 24, fill: MUTED, anchor: "middle" }); });
+      cap(d, 90, 428, "orderings sampled (M). Vertical axis starts at 0.05.", { size: 24, fill: MUTED });
+      ln(d, 90, sy(exact), 730, sy(exact), RED, 3, "8 6"); cap(d, 730, sy(exact) - 12, "exact " + f3(exact), { size: 24, fill: RED, weight: 700, anchor: "end" });
+      var pg = d.append("g"), path = pg.append("path").attr("fill", "none").attr("stroke", INK).attr("stroke-width", 4), fin = cap(d, 720, 340, "", { size: 24, weight: 700, anchor: "end" });
+      run(pg, 3000, function (t) { var n = Math.max(1, Math.round(t * M)), pts = run_.slice(0, n).map(function (p) { return sx(p[0]) + "," + sy(p[1]); }); path.attr("d", "M" + pts.join("L")); fin.text("after " + n + " draws: " + f3(run_[n - 1][1])); }, an);
+      capt(d, "Exact values need all 2³ = 8 subsets here, 1,024 for ten features and " + fmtInt(Math.pow(2, 30)) + " for thirty. Sampling trades accuracy for time.", 480);
+    } else if (kk === 2) {
+      lab(d, 0, 30, "ONE TREE, THREE SPLITS DEEP");
+      var DEP = 3, nodes = [], pos = function (L, i) { return [(i + 0.5) * 740 / Math.pow(2, L), 56 + L * 90]; }, L_, j;
+      for (L_ = 0; L_ < DEP; L_++) for (j = 0; j < Math.pow(2, L_); j++) { var p = pos(L_, j); [2 * j, 2 * j + 1].forEach(function (c) { var q = pos(L_ + 1, c); ln(d, p[0], p[1], q[0], q[1], FAMILIAR, 2.5); }); }
+      for (L_ = 0; L_ < DEP; L_++) for (j = 0; j < Math.pow(2, L_); j++) { var pp = pos(L_, j); d.append("circle").attr("cx", pp[0]).attr("cy", pp[1]).attr("r", 11).attr("fill", "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5); }
+      var ov = d.append("g"), lv = d.append("g"), leaves = Math.pow(2, DEP), cntT = cap(d, 0, 396, "", { size: 28, weight: 700 });
+      var draw = function (n) {
+        ov.selectAll("*").remove(); lv.selectAll("*").remove();
+        d3.range(leaves).forEach(function (i) {
+          var lp = pos(DEP, i); lv.append("rect").attr("x", lp[0] - 15).attr("y", lp[1] - 15).attr("width", 30).attr("height", 30).attr("fill", i < n ? RED : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5);
+          if (i < n) { for (var l = 0; l < DEP; l++) { var a = pos(l, Math.floor(i / Math.pow(2, DEP - l))), b = pos(l + 1, Math.floor(i / Math.pow(2, DEP - l - 1))); ln(ov, a[0], a[1], b[0], b[1], RED, 3.5); } }
+        });
+        cntT.text("paths walked: " + n + " of " + leaves + " (2³ leaves)");
+      };
+      var tg = d.append("g"); run(tg, 3200, function (t) { draw(Math.min(leaves, Math.floor(t * (leaves + 0.999)))); }, an);
+      cap(d, 0, 438, "Thirty features, every coalition: " + fmtInt(Math.pow(2, 30)), { size: 26, fill: MUTED });
+      capt(d, "TreeSHAP walks the few paths that change a prediction and weights them: exact values without trying every subset.", 506);
+    } else {
+      var C = COR, sc = d3.scaleLinear().domain([-3, 3]).range([0, 330]).clamp(true), sy2 = d3.scaleLinear().domain([-3, 3]).range([330, 0]).clamp(true);
+      var plot = function (x0, ys, title, flag, sub) {
+        var g = d.append("g"), id = "cp" + (uid++); lab(g, x0, 44, title);
+        svg.append("defs").append("clipPath").attr("id", id).append("rect").attr("x", x0).attr("y", 60).attr("width", 330).attr("height", 330);
+        var band = [[-3, C.rho * -3 + 2 * C.sdr], [3, C.rho * 3 + 2 * C.sdr], [3, C.rho * 3 - 2 * C.sdr], [-3, C.rho * -3 - 2 * C.sdr]];
+        g.append("path").attr("d", "M" + band.map(function (b) { return (x0 + sc(b[0])) + "," + (60 + sy2(b[1])); }).join("L") + "Z").attr("fill", TINT).attr("clip-path", "url(#" + id + ")");
+        box(g, x0, 60, 330, 330, { stroke: FAMILIAR, fill: "none" });
+        C.xs.forEach(function (x, i) { var bad = flag && C.off(x, ys[i]); var c = g.append("circle").attr("cx", x0 + sc(x)).attr("cy", 60 + sy2(ys[i])).attr("r", 5).attr("fill", bad ? RED : INK); if (an) c.attr("opacity", 0).transition().delay(i * 8).duration(200).attr("opacity", 1); });
+        cap(g, x0, 430, sub, { size: 24, weight: 700, fill: flag ? RED : INK });
+      };
+      if (kk === 3) {
+        plot(20, C.ys, "REAL DATA", false, "n = " + C.n + " real cases"); plot(400, C.ys2, "INDEPENDENT", true, pc(C.c2 / C.n) + " land off the band");
+        capt(d, "Two features with correlation " + C.rho.toFixed(1) + " live on a band. Drawing each on its own fills the whole square with cases that never occur.", 480);
+      } else {
+        plot(20, C.ys2, "MARGINAL", true, pc(C.c2 / C.n) + " off the band"); plot(400, C.ys3, "CONDITIONAL", true, pc(C.c3 / C.n) + " off the band");
+        capt(d, "Conditional draws stay on the band, but the result is no longer a classic Shapley value: Dummy can fail.", 480);
+      }
+    }
+  }
+
+  /* ---------- 6. LIME, instability, off-manifold, counterfactual ---------- */
+  function renderLime(el, k, anim) {
+    var svg = svgFor(el, W, H, "LIME fits a local line; it can move between runs and leave the data; a counterfactual changes an input", "Four pictures: a curve with ten perturbed points and a fitted line, five lines from five runs, perturbed points leaving a data arc, and a loan boundary with two different changes that flip the decision.");
+    base(svg, [{ id: "lime", s: 1 }, { id: "limei", s: 2 }, { id: "offm", s: 3 }, { id: "cfx", s: 4 }], k, anim, ["SHAP value", "additive credit for a prediction"], ["LIME slope", "local line from perturbing"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k >= 1;
+    var sx = d3.scaleLinear().domain([-1, 5]).range([70, 730]), sy = d3.scaleLinear().domain([0, 1]).range([380, 60]);
+    var curve = function (g) { var pts = d3.range(-1, 5.001, 0.05).map(function (x) { return sx(x) + "," + sy(LF(x)); }); return g.append("path").attr("d", "M" + pts.join("L")).attr("fill", "none").attr("stroke", GREY).attr("stroke-width", 4); };
+    var axes = function (g) {
+      box(g, 70, 60, 660, 320, { stroke: FAMILIAR, fill: "none" }); [0, 0.5, 1].forEach(function (v) { cap(g, 60, sy(v) + 8, v.toFixed(1), { size: 24, fill: MUTED, anchor: "end" }); });
+      [-1, 0, 1, 2, 3, 4, 5].forEach(function (v) { cap(g, sx(v), 414, (v < 0 ? "−" : "") + Math.abs(v), { size: 24, fill: MUTED, anchor: "middle" }); }); cap(g, 400, 448, "input value", { size: 24, fill: MUTED, anchor: "middle" });
+    };
+    var clipId = "lc" + (uid++); svg.append("defs").append("clipPath").attr("id", clipId).append("rect").attr("x", 70).attr("y", 60).attr("width", 660).attr("height", 320);
+    var limeLine = function (g, r, col, w, op) { g.attr("clip-path", "url(#" + clipId + ")"); return ln(g, sx(LX0 - 1.4), sy(r.icpt + r.slope * (LX0 - 1.4)), sx(LX0 + 1.4), sy(r.icpt + r.slope * (LX0 + 1.4)), col, w).attr("opacity", op || 1); };
+    if (kk === 1) {
+      var r1 = limeRun(1); lab(d, 0, 30, "MODEL OUTPUT AROUND ONE INPUT");
+      axes(d); curve(d); ln(d, sx(LX0), 60, sx(LX0), 380, RED, 2, "6 6");
+      r1.xs.forEach(function (x, i) { var c = d.append("circle").attr("cx", sx(x)).attr("cy", sy(r1.ys[i])).attr("r", 7).attr("fill", INK); if (an) c.attr("opacity", 0).transition().delay(i * 120).duration(200).attr("opacity", 1); });
+      var lg = d.append("g"); limeLine(lg, r1, RED, 5); fade(lg, an, 1500);
+      cap(d, 730, 52, "slope " + sgn(r1.slope, 2), { size: 26, weight: 700, fill: RED, anchor: "end" });
+      capt(d, "LIME perturbs the input, records the model’s output, and fits a weighted line. The slope is the explanation.", 480);
+    } else if (kk === 2) {
+      lab(d, 0, 30, "FIVE RUNS ON THE SAME INPUT");
+      axes(d); curve(d); ln(d, sx(LX0), 60, sx(LX0), 380, RED, 2, "6 6");
+      var RS = [1, 2, 3, 4, 5].map(limeRun);
+      RS.forEach(function (r, i) { var g = d.append("g"); limeLine(g, r, i === 0 ? RED : INK, 4, i === 0 ? 1 : 0.55); fade(g, an, i * 450); });
+      RS.forEach(function (r, i) { var g = d.append("g"), x = 70 + i * 134; box(g, x, 458, 124, 40, { stroke: i === 0 ? RED : FAMILIAR, sw: 2 }); cap(g, x + 62, 486, sgn(r.slope, 2), { size: 24, weight: 700, anchor: "middle", fill: i === 0 ? RED : INK }); fade(g, an, i * 450); });
+      capt(d, "Same input, five seeds, five slopes from " + sgn(d3.min(RS, function (r) { return r.slope; }), 2) + " to " + sgn(d3.max(RS, function (r) { return r.slope; }), 2) + ". Most run LIME once.", 536);
+    } else if (kk === 3) {
+      lab(d, 0, 30, "REAL INPUTS LIE ON AN ARC; PERTURBATIONS DO NOT");
+      var cx = 370, cy = 380, R = 250, rr = rng(41), data = d3.range(90).map(function () { var a = (200 + 140 * rr()) * Math.PI / 180, e = 7 * gauss(rr); return [cx + (R + e) * Math.cos(a), cy + (R + e) * Math.sin(a)]; });
+      var x0 = [cx, cy - R], pert = d3.range(40).map(function () { return [x0[0] + 80 * gauss(rr), x0[1] + 80 * gauss(rr)]; }), off = function (p) { return Math.abs(Math.hypot(p[0] - cx, p[1] - cy) - R) > 35; };
+      var nOff = d3.sum(pert, function (p) { return off(p) ? 1 : 0; });
+      data.forEach(function (p) { d.append("circle").attr("cx", p[0]).attr("cy", p[1]).attr("r", 4).attr("fill", FAMILIAR); });
+      pert.forEach(function (p, i) { var bad = off(p), c = d.append("circle").attr("cx", Math.min(735, Math.max(5, p[0]))).attr("cy", Math.min(470, Math.max(45, p[1]))).attr("r", 7).attr("fill", bad ? "#FFFFFF" : INK).attr("stroke", bad ? RED : INK).attr("stroke-width", 3); if (an) c.attr("opacity", 0).transition().delay(i * 40).duration(200).attr("opacity", 1); });
+      d.append("circle").attr("cx", x0[0]).attr("cy", x0[1]).attr("r", 11).attr("fill", RED);
+      cap(d, 0, 470, "grey: real inputs. Red rings: " + nOff + " of " + pert.length + " perturbed inputs off the arc.", { size: 24, fill: RED, weight: 700 });
+      capt(d, "LIME gives a coefficient either way. It does not flag that part of the line was fitted to inputs no real case resembles.", 510);
+    } else {
+      var X0 = 50000, D0 = 35, z = function (inc, dti) { return 0.00004 * (inc - 54000) - 0.08 * (dti - 35); }, ok = function (inc, dti) { return z(inc, dti) > 0; };
+      var ix = d3.scaleLinear().domain([40000, 70000]).range([100, 730]), iy = d3.scaleLinear().domain([25, 45]).range([400, 60]);
+      lab(d, 0, 30, "WHY THE LOAN WAS DENIED, AND TWO WAYS TO FLIP IT");
+      var pts = [40000, 70000].map(function (inc) { return [ix(inc), iy(35 + 0.0005 * (inc - 54000))]; });
+      d.append("path").attr("d", "M" + pts[0].join(",") + "L" + pts[1].join(",") + "L" + ix(70000) + "," + iy(25) + "L" + ix(40000) + "," + iy(25) + "Z").attr("fill", TINT);
+      box(d, 100, 60, 630, 340, { stroke: FAMILIAR, fill: "none" }); ln(d, pts[0][0], pts[0][1], pts[1][0], pts[1][1], RED, 3);
+      cap(d, 700, 380, "approved", { size: 24, weight: 700, fill: RED, anchor: "end" });
+      [40000, 55000, 70000].forEach(function (v) { cap(d, ix(v), 436, "$" + d3.format(",")(v), { size: 24, fill: MUTED, anchor: "middle" }); });
+      [25, 35, 45].forEach(function (v) { cap(d, 90, iy(v) + 8, "" + v, { size: 24, fill: MUTED, anchor: "end" }); });
+      cap(d, 415, 470, "horizontal: income · vertical: debt-to-income (%)", { size: 24, fill: MUTED, anchor: "middle" });
+      var A1 = [55000, D0], B1 = [X0, 32], cg = d.append("g");
+      arrow(cg, ix(X0) + 12, iy(D0), ix(A1[0]) - 4, iy(D0), INK); arrow(cg, ix(X0), iy(D0) + 12, ix(X0), iy(B1[1]) - 4, INK);
+      cap(cg, ix(X0) + 20, iy(D0) - 18, "+$5,000", { size: 24, weight: 700 }); cap(cg, ix(X0) + 18, iy(B1[1]) + 22, "−3 points", { size: 24, weight: 700 });
+      d.append("circle").attr("cx", ix(X0)).attr("cy", iy(D0)).attr("r", 11).attr("fill", INK); fade(cg, an, 500);
+      cap(d, ix(X0) - 20, iy(D0) - 18, "denied", { size: 24, weight: 700, anchor: "end" });
+      var flips = [ok(A1[0], A1[1]), ok(B1[0], B1[1])];
+      capt(d, "Both changes flip the decision (" + flips.filter(Boolean).length + " of 2 checked). The method picks one. It shows the model’s answer, not the lender’s.", 506);
+    }
+  }
+
+  /* ---------- 7. transparency, explainability, interpretability, Rudin ---------- */
+  function renderThree(el, k, anim) {
+    var svg = svgFor(el, W, H, "Transparency, explainability and interpretability are different properties", "Four pictures: a grid of open parameters, five outputs each with a ranked reason, ten new cases an auditor predicts eight of, and a grid of who each property holds for.");
+    base(svg, [{ id: "trans", s: 1 }, { id: "expl", s: 2 }, { id: "interp", s: 3 }, { id: "rudin", s: 4 }], k, anim, ["Explainable", "a reason is attached"], ["Interpretable", "a person can predict it"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k >= 1;
+    if (kk === 1) {
+      lab(d, 0, 30, "A MODEL WITH OPEN WEIGHTS");
+      d3.range(240).forEach(function (i) { var r = d.append("rect").attr("x", (i % 24) * 31).attr("y", 52 + Math.floor(i / 24) * 31).attr("width", 28).attr("height", 28).attr("fill", "#FFFFFF").attr("stroke", INK).attr("stroke-width", 1.5); if (an) r.attr("opacity", 0).transition().delay(i * 6).duration(200).attr("opacity", 1); });
+      cap(d, 0, 404, "Every tile open to inspection: transparent.", { size: 28, weight: 700 }); cap(d, 0, 446, "Understood by a person: not by that fact.", { size: 28, weight: 700, fill: RED });
+      capt(d, "Each tile stands for a share of the parameters, shown for illustration. The chapter’s example has 175 billion.");
+    } else if (kk === 2) {
+      lab(d, 0, 30, "EVERY OUTPUT COMES WITH A RANKED REASON");
+      var FE = ["income", "debt ratio", "zip code", "inquiries", "job length"], rr = rng(51);
+      d3.range(5).forEach(function (i) {
+        var g = d.append("g"), y = 52 + i * 76, top = shuffle(FE.slice(), rr).slice(0, 3); cap(g, 0, y + 40, "applicant " + (i + 1), { size: 24, weight: 700 });
+        top.forEach(function (f, j) { box(g, 190 + j * 185, y + 4, 175, 50, { stroke: j ? FAMILIAR : INK, sw: j ? 1.5 : 2.5 }); cap(g, 190 + j * 185 + 87, y + 38, f, { size: 24, anchor: "middle", weight: j ? 400 : 700 }); });
+        fade(g, an, i * 350);
+      });
+      capt(d, "Explainability is a property of outputs. The reasons here are illustrative; they may be more or less informative.", 470);
+    } else if (kk === 3) {
+      lab(d, 0, 30, "MODEL OUTPUT ON TEN NEW CASES"); lab(d, 0, 176, "AUDITOR’S PREDICTION");
+      d3.range(10).forEach(function (i) {
+        var x = i * 74, g = d.append("g");
+        box(g, x, 52, 64, 64, { stroke: INK, sw: 2, fill: AUD.out[i] ? INK : "#FFFFFF" }); cap(g, x + 32, 94, AUD.out[i] ? "yes" : "no", { size: 24, anchor: "middle", weight: 700, fill: AUD.out[i] ? "#FFFFFF" : INK });
+        box(g, x, 198, 64, 64, { stroke: INK, sw: 2, fill: AUD.pred[i] ? INK : "#FFFFFF" }); cap(g, x + 32, 240, AUD.pred[i] ? "yes" : "no", { size: 24, anchor: "middle", weight: 700, fill: AUD.pred[i] ? "#FFFFFF" : INK });
+        var hit = AUD.out[i] === AUD.pred[i]; if (hit) check(g, x + 32, 316, 14, INK); else cross(g, x + 32, 316, 12, RED);
+        fade(g, an, i * 150);
+      });
+      cap(d, 0, 400, AUD.hits + " of 10 predicted = " + pc(AUD.hits / 10), { size: 32, weight: 700 });
+      capt(d, "Interpretability is the person’s side: can they predict the system on new cases? The 80% is Exercise W2(c); the misses are illustrative.", 450);
+    } else {
+      lab(d, 0, 30, "WHO EACH PROPERTY HOLDS FOR"); lab(d, 340, 80, "DEVELOPER"); lab(d, 560, 80, "APPLICANT");
+      ["Transparency", "Explainability", "Interpretability"].forEach(function (nm, i) {
+        var g = d.append("g"), y = 100 + i * 84; cap(g, 0, y + 42, nm, { size: 26, weight: 700 });
+        box(g, 340, y, 170, 64, { stroke: INK, sw: 2 }); check(g, 425, y + 30, 18, INK); box(g, 560, y, 170, 64, { stroke: RED, sw: 2 }); cross(g, 645, y + 32, 14, RED); fade(g, an, i * 400);
+      });
+      cap(d, 0, 386, "Contract: “an explainable reason”. SHAP shipped.", { size: 26, weight: 700 }); cap(d, 0, 424, "Box ticked; the affected person still cannot act on it.", { size: 26, fill: RED, weight: 700 });
+      capt(d, "The chapter’s failure-mode row. Rudin: for high-stakes decisions, use interpretable models instead of explaining a black box.", 470);
+    }
+  }
+
+  /* ---------- 8. language game, mismatch, audience question ---------- */
+  function renderLang(el, k, anim) {
+    var svg = svgFor(el, W, H, "One word, two language games: what the agent did and what the user meant by deleted", "Three pictures: the word deleted over two lists of operations, the same lists with what was done ticked and what was not crossed, and the audience question leading to a careful report.");
+    base(svg, [{ id: "lg", s: 1 }, { id: "mism", s: 2 }, { id: "aud", s: 3 }], k, anim, ["Agent’s game", "the local state is wiped"], ["User’s game", "no one can access it"]);
+    var d = svg.append("g"), kk = Math.max(k, 1), an = anim && k >= 1;
+    var AG = ["password reset", "alias renamed", "message archived locally"], US = ["gone from backups", "recovery window closed", "gone from sync copies"];
+    if (kk <= 2) {
+      cap(d, 370, 52, "“the secret has been deleted”", { size: 30, weight: 700, anchor: "middle" });
+      [["AGENT’S GAME", AG, 0, INK], ["USER’S GAME", US, 390, RED]].forEach(function (c, ci) {
+        var g = d.append("g"), x0 = c[2]; lab(g, x0, 120, c[0]); box(g, x0, 138, 350, 270, { stroke: c[3], sw: 2.5 });
+        c[1].forEach(function (s, i) {
+          var y = 196 + i * 78; cap(g, x0 + 20, y, s, { size: 24 });
+          if (kk === 2) { var mk = ci === 0 ? check(g, x0 + 320, y - 8, 14, INK) : cross(g, x0 + 320, y - 8, 12, RED); if (an) drawIn(mk, 300 + i * 300, 400); }
+        });
+        fade(g, an && kk === 1, ci * 500);
+      });
+      if (kk === 1) cap(d, 0, 450, "Same word. Different operations behind it.", { size: 28, weight: 700 });
+      else cap(d, 0, 450, "Done: " + AG.length + " of " + AG.length + " in the agent’s game, 0 of " + US.length + " in the user’s.", { size: 28, weight: 700, fill: RED });
+      capt(d, kk === 1 ? "In the agent’s game, deleted means its own scope was wiped. For the user it means the data is out of everyone’s reach." : "The report is true in one game and false in the other. The agent did not lie.", 490);
+    } else {
+      lab(d, 0, 30, "THE CHECK, IN THREE QUESTIONS");
+      ["Who is reading this report?", "What does “deleted” mean to them?", "Does the report serve that game?"].forEach(function (q, i) {
+        var g = d.append("g"), y = 52 + i * 62; box(g, 0, y, 740, 50, { stroke: INK, sw: 2 }); cap(g, 20, y + 34, (i + 1) + ".  " + q, { size: 26, weight: 700 }); fade(g, an, i * 350);
+      });
+      var rg = d.append("g"); lab(rg, 0, 270, "THE REPORT THE USER’S GAME NEEDS"); box(rg, 0, 288, 740, 140, { stroke: RED, sw: 3 });
+      wrap(rg, 20, 330, "The local state is consistent with deletion. The data may persist on the provider’s servers. Provider-side action is required for full deletion.", 56, { size: 26, lh: 36, fill: INK }); fade(rg, an, 1500);
+      capt(d, "The failure was in the report, not the decision. No attribution method catches it: that takes modeling the audience.", 506);
+    }
+  }
+
+  /* ---------- pairs ---------- */
+  function renderPairs(el, k, anim) {
+    var svg = svgFor(el, W, H, "Four look-alike pairs from model explainability", "Each step shows two ideas people mix up, side by side with a small animation.");
+    var d = svg.append("g");
+    var PAIRS = [
+      [["Attribution", "A number about the model’s accounting"], ["Causal effect", "An effect measured by setting X"]],
+      [["Marginal SHAP", "Draws features independently"], ["Conditional SHAP", "Draws features given the known ones"]],
+      [["Explainable", "Every output comes with a reason"], ["Interpretable", "A person predicts new cases"]],
+      [["Model’s counterfactual", "What the model would decide"], ["World’s counterfactual", "What would actually happen"]]
+    ];
+    var L = d.append("g"), R = d.append("g").attr("transform", "translate(740,0)");
+    function head(g, i, j) { lab(g, 0, 24, "PAIR " + Math.max(1, k) + " · " + (j ? "RIGHT" : "LEFT"), { fill: MUTED }); txt(g, 0, 66, PAIRS[i][j][0], { size: 32, weight: 700, fill: j ? RED : INK }); wrap(g, 0, 470, PAIRS[i][j][1] + ".", 44, { size: 26, lh: 32, fill: BODY }); }
+    function draw(i, t) {
+      L.selectAll("*").remove(); R.selectAll("*").remove(); head(L, i, 0); head(R, i, 1);
+      var LG = L.append("g").attr("transform", "translate(30,0)"), RG = R.append("g").attr("transform", "translate(30,0)");
+      if (i === 0) {
+        bar(LG, 0, 220, 0.073 * 5000 * t, 64, INK, false); cap(LG, 0, 200, "income +0.073", { size: 24 }); cap(LG, 0, 330, "used by the model on this case", { size: 24, fill: MUTED });
+        box(RG, 0, 220, 365, 64, { stroke: RED, sw: 2.5 }).attr("stroke-dasharray", "8 6").attr("opacity", t); cap(RG, 182, 266, "?", { size: 40, weight: 700, anchor: "middle", fill: RED }); cap(RG, 0, 200, "effect of income", { size: 24 }); cap(RG, 0, 330, "needs an intervention", { size: 24, fill: MUTED });
+      } else if (i === 1) {
+        var MG = [["zip", 0.19], ["income", 0.31]], CD = [["zip", 0.04], ["income", 0.46]];
+        [[LG, MG], [RG, CD]].forEach(function (p) { p[1].forEach(function (r, j) { cap(p[0], 0, 214 + j * 70, r[0], { size: 24 }); bar(p[0], 100, 190 + j * 70, r[1] * 900 * t, 40, j ? INK : RED, false); if (t > 0.6) cap(p[0], 100 + r[1] * 900 + 10, 220 + j * 70, r[1].toFixed(2), { size: 24, weight: 700 }); }); });
+        cap(LG, 0, 360, "sum = " + f2(0.19 + 0.31), { size: 24, fill: MUTED }); cap(RG, 0, 360, "sum = " + f2(0.04 + 0.46), { size: 24, fill: MUTED });
+      } else if (i === 2) {
+        d3.range(5).forEach(function (j) { LG.append("rect").attr("x", j * 54).attr("y", 220).attr("width", 44).attr("height", 44).attr("fill", j / 5 < t ? INK : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5); });
+        d3.range(10).forEach(function (j) { RG.append("rect").attr("x", j * 54).attr("y", 220).attr("width", 44).attr("height", 44).attr("fill", j / 10 < t ? (AUD.out[j] === AUD.pred[j] ? INK : RED) : "#FFFFFF").attr("stroke", INK).attr("stroke-width", 2.5); });
+        cap(LG, 0, 330, "5 of 5 outputs have a reason", { size: 24, fill: MUTED }); cap(RG, 0, 330, AUD.hits + " of 10 new cases predicted", { size: 24, fill: MUTED });
+      } else {
+        var den = !ok2(50000), apr = ok2(55000);
+        nb(LG, 0, 200, 250, 70, den ? "$50,000: denied" : "?"); nb(LG, 330, 200, 250, 70, apr ? "$55,000: approved" : "?"); arrow(LG, 254, 235, 326, 235, INK);
+        nb(RG, 0, 200, 250, 70, "$50,000: denied"); box(RG, 330, 200, 250, 70, { stroke: RED, sw: 2.5 }).attr("stroke-dasharray", "8 6"); cap(RG, 455, 244, "approved?", { size: 26, weight: 700, anchor: "middle", fill: RED }); arrow(RG, 254, 235, 326, 235, RED, "8 6");
+        cap(LG, 0, 330, "checked by running the model", { size: 24, fill: MUTED }); cap(RG, 0, 330, "unknown until the lender decides", { size: 24, fill: MUTED });
+      }
+    }
+    function ok2(inc) { return 0.00004 * (inc - 54000) - 0.08 * (35 - 35) > 0; }
+    if (k === 0) { draw(0, 0.5); cap(svg.append("g"), 0, 612, "Click or press → to see four pairs, one at a time.", { size: 24, fill: MUTED }); return; }
+    draw(k - 1, 0.99); run(d, 2600, function (t) { draw(k - 1, t); }, anim);
+  }
+
+  /* ---------- say it exactly ---------- */
+  var LRUNS = d3.range(101, 121).map(function (s) { return limeRun(s).slope; });
+  var SAY = [
+    { v: "explain this prediction", x: "List each feature’s Shapley value; they must sum to 0.72 − 0.55 = 0.17" },
+    { v: "SHAP says zip code matters", x: "Say: zip code moved the model’s output 0.035 above average. That is not a causal claim" },
+    { v: "LIME gave a different answer", x: "Run LIME 20 times with recorded seeds and report the spread of the slope, not one run" },
+    { v: "the system is explainable", x: "Name the property and the audience: a reason per output, or a person who can predict it?" },
+    { v: "is zip a proxy for income?", x: "Report marginal (zip 0.19, income 0.31) and conditional (0.04, 0.46) values side by side" }
+  ];
+  function renderSay(el, k, anim) {
+    var svg = svgFor(el, W, H, "Say it exactly: five vague requests about explanations turned into precise ones", "Five rows with a vague request and an exact instruction. On the right, a chart computed from the numbers in the exact instruction.");
+    var g = svg.append("g");
+    SAY.forEach(function (r, i) {
+      if (i + 1 > k) return; var y = 6 + i * 128, cur = i + 1 === k, e = g.append("g");
+      e.append("rect").attr("x", 0).attr("y", y).attr("width", 8).attr("height", 114).attr("fill", cur ? RED : FAMILIAR);
+      txt(e, 24, y + 30, "“" + r.v + "”", { size: 26, fill: RED, weight: 700 });
+      wrap(e, 24, y + 64, "→ " + r.x, 50, { size: 24, lh: 30, fill: INK, weight: 700 });
+      if (anim && cur) e.attr("opacity", 0).transition().duration(450).attr("opacity", 1);
+    });
+    if (k === 0) { cap(g, 0, 60, "A vague request gets a guess. An exact one gets what you meant.", { fill: INK }); cap(g, 0, 110, "Click or press → to turn five requests into instructions.", { fill: MUTED }); return; }
+    var p = g.append("g").attr("transform", "translate(700,60)"), pw = 640, ph = 300, nt = "";
+    lab(p, 0, -14, "WHAT THE INSTRUCTION DOES", { fill: RED });
+    p.append("rect").attr("x", 0.5).attr("y", 0.5).attr("width", pw).attr("height", ph).attr("fill", "none").attr("stroke", FAMILIAR).attr("stroke-width", 2);
+    if (k === 1) {
+      var gap = LOAN.pred - LOAN.base, sc = 560 / gap, x = 40, cols = [INK, "#6B6B6B", RED], sum = d3.sum(LOAN.phi);
+      cap(p, 20, 70, "prediction − average", { size: 24 }); bar(p, 20, 84, gap * sc, 40, FAMILIAR, anim, 0); cap(p, 20 + gap * sc, 150, f3(gap), { size: 24, weight: 700, anchor: "end" });
+      cap(p, 20, 200, "sum of the three values", { size: 24 }); x = 20; LOAN.phi.forEach(function (v, i) { bar(p, x, 214, v * sc - 2, 40, cols[i], anim, 500 + i * 300); x += v * sc; }); cap(p, 20 + sum * sc, 280, f3(sum), { size: 24, weight: 700, anchor: "end" });
+      nt = "no gap left over";
+    } else if (k === 2) {
+      var tot = d3.sum(LOAN.phi), x2 = 20, cl = [INK, "#6B6B6B", RED];
+      LOAN.phi.forEach(function (v, i) { var w = v / tot * 600; bar(p, x2, 70, w - 2, 70, cl[i], anim, i * 300); cap(p, 20, 190 + i * 34, LOAN.names[i] + ": " + pc(v / tot), { size: 24, weight: i === 2 ? 700 : 400, fill: i === 2 ? RED : INK }); x2 += w; });
+      cap(p, 20, 60, "share of the 0.17 gap", { size: 24, fill: MUTED }); nt = "zip code: " + pc(LOAN.phi[2] / tot) + " of the gap, no causal claim";
+    } else if (k === 3) {
+      var lo = d3.min(LRUNS), hi = d3.max(LRUNS), pad = (hi - lo) * 0.1, sx3 = d3.scaleLinear().domain([lo - pad, hi + pad]).range([30, 610]);
+      ln(p, 30, 170, 610, 170, FAMILIAR, 2); LRUNS.forEach(function (s, i) { var c = p.append("circle").attr("cx", sx3(s)).attr("cy", 170).attr("r", 11).attr("fill", INK).attr("fill-opacity", 0.45); if (anim) c.attr("opacity", 0).transition().delay(i * 90).duration(200).attr("opacity", 1); });
+      ln(p, sx3(d3.mean(LRUNS)), 120, sx3(d3.mean(LRUNS)), 220, RED, 4); cap(p, sx3(lo - pad) , 90, "20 slopes, one dot per run", { size: 24 });
+      cap(p, 30, 260, sgn(lo, 2), { size: 24, weight: 700 }); cap(p, 610, 260, sgn(hi, 2), { size: 24, weight: 700, anchor: "end" }); cap(p, 320, 260, "mean " + sgn(d3.mean(LRUNS), 2), { size: 24, fill: RED, weight: 700, anchor: "middle" });
+      nt = "slopes run from " + sgn(lo, 2) + " to " + sgn(hi, 2);
+    } else if (k === 4) {
+      [["outputs with a reason", 1, "5 of 5"], ["new cases the auditor predicts", AUD.hits / 10, AUD.hits + " of 10"]].forEach(function (r, i) {
+        cap(p, 20, 76 + i * 110, r[0], { size: 24 }); bar(p, 20, 90 + i * 110, 480 * r[1], 44, i ? RED : INK, anim, i * 400); cap(p, 20 + 480 * r[1] + 12, 122 + i * 110, pc(r[1]) + " (" + r[2] + ")", { size: 24, weight: 700 });
+      });
+      nt = "the contract measures the first; safety needs the second";
+    } else {
+      [["marginal", [0.19, 0.31]], ["conditional", [0.04, 0.46]]].forEach(function (r, i) {
+        cap(p, 20, 72 + i * 110, r[0] + ": zip " + r[1][0].toFixed(2) + ", income " + r[1][1].toFixed(2), { size: 24 }); bar(p, 20, 86 + i * 110, r[1][0] * 1000, 44, RED, anim, i * 400); bar(p, 20 + r[1][0] * 1000, 86 + i * 110, r[1][1] * 1000, 44, INK, anim, i * 400 + 300);
+        cap(p, 20 + (r[1][0] + r[1][1]) * 1000 + 10, 118 + i * 110, f2(r[1][0] + r[1][1]), { size: 24, weight: 700 });
+      });
+      nt = "same total 0.50, a different split";
+    }
+    cap(p, 0, ph + 40, nt, { size: 24, weight: 700 });
+  }
+
+  var CHECKS = [
+    "Does it describe the model, or does it claim something about the world?",
+    "Which rung is it on: association (SHAP, LIME) or intervention (counterfactual)?",
+    "Do the values add up, and was the sampling marginal or conditional?",
+    "Is it stable: the same input run again, and perturbations that stay on the data?",
+    "Which property was promised, transparency, explainability or interpretability, and to whom?",
+    "Who is reading it, and what do its words mean in their language game?"
+  ];
+  function renderClosing(el, k, anim) {
+    var svg = svgFor(el, W, H, "Six checks before you trust an explanation", "A checklist of six items drawn one at a time.");
+    var g = svg.append("g");
+    CHECKS.forEach(function (c, i) {
+      var y = 20 + i * 100, on = i + 1 <= k, row = g.append("g");
+      row.append("rect").attr("x", 0.5).attr("y", y + 0.5).attr("width", 64).attr("height", 64).attr("fill", on ? "#FFFFFF" : "none").attr("stroke", on ? INK : FAMILIAR).attr("stroke-width", 3);
+      wrap(row, 100, y + 28, c, 78, { size: 32, lh: 36, fill: on ? INK : MUTED });
+      if (on) { var ck = check(row, 32, y + 36, 20, RED); if (A(anim, k, i + 1)) drawIn(ck, 0, 450); }
+    });
+    cap(g, 0, 660, "Then say it exactly: not “it explains itself”, but “zip moved the output 0.035”.", { size: 28, weight: 700 });
+  }
+
+  var BUILDS = {
+    map: { steps: 4, render: renderMap }, flu: { steps: 4, render: renderFlu }, shap: { steps: 4, render: renderShap },
+    game: { steps: 4, render: renderGame }, axiom: { steps: 4, render: renderAxiom }, comp: { steps: 4, render: renderComp },
+    lime: { steps: 4, render: renderLime }, three: { steps: 4, render: renderThree }, lang: { steps: 3, render: renderLang },
+    pairs: { steps: 4, render: renderPairs }, say: { steps: 5, render: renderSay }, closing: { steps: 6, render: renderClosing }
+  };
+
+  /* click on the stage advances one fragment (the original deck had keys and buttons only) */
+  stage.addEventListener("click", function (e) {
+    if (e.target.closest && e.target.closest("#controls, #thumbs")) return;
+    nextSlide();
+  });
+  function buildEl(slide) { return slide ? slide.querySelector("[data-build]") : null; }
+  function buildOf(slide) { var el = buildEl(slide); return el ? BUILDS[el.getAttribute("data-build")] : null; }
+  function stopBuild(el) { if (hasD3 && el) d3.select(el).selectAll("*").interrupt(); }
+  function renderBuild(el, k, animate) {
+    var b = BUILDS[el.getAttribute("data-build")];
+    if (!b) return;
+    if (!hasD3) {
+      el.innerHTML = '<div class="chart-fallback">This graphic needs D3, which did not load. Check the network connection and reload.</div>';
+      return;
+    }
+    stopBuild(el);
+    b.render(el, Math.max(0, Math.min(b.steps, k)), animate && !reduceMQ.matches);
+  }
+
+  /* ---------------- navigation ---------------- */
+  function go(i, atEnd, animate) {
+    i = Math.max(0, Math.min(total - 1, i));
+    var prev = slides[current];
+    if (prev && i !== current) { stopBuild(buildEl(prev)); prev.classList.remove("is-active"); }
+    current = i;
+    var s = slides[i], b = buildOf(s);
+    step = b && atEnd ? b.steps : 0;
+    s.classList.add("is-active");
+    var el = buildEl(s);
+    if (el) renderBuild(el, step, animate);
+    updateUI(true);
+  }
+  function setStep(k, animate) {
+    step = k;
+    renderBuild(buildEl(slides[current]), step, animate);
+    updateUI(false);
+  }
+  function nextSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step < b.steps) setStep(step + 1, true);
+    else if (current < total - 1) go(current + 1, false, true);
+  }
+  function prevSlide() {
+    var b = buildOf(slides[current]);
+    if (b && step > 0) setStep(step - 1, false);
+    else if (current > 0) go(current - 1, true, false);
+  }
+  function updateUI(newSlide) {
+    var s = slides[current], b = buildOf(s);
+    var title = s.getAttribute("data-title") || "";
+    counter.textContent = (current + 1) + " / " + total;
+    pips.innerHTML = "";
+    if (b) {
+      for (var j = 1; j <= b.steps; j++) {
+        var p = document.createElement("span");
+        p.className = "pip" + (j <= step ? " on" : "");
+        pips.appendChild(p);
+      }
+    }
+    btnPrev.disabled = current === 0 && step === 0;
+    btnNext.disabled = current === total - 1 && (!b || step === b.steps);
+    var stepTxt = b ? ", step " + step + " of " + b.steps : "";
+    live.textContent = newSlide ? "Slide " + (current + 1) + " of " + total + ": " + title + stepTxt : "Step " + step + " of " + (b ? b.steps : 0);
+    if (newSlide) {
+      var n = s.querySelector(".speaker-notes");
+      notesHead.textContent = "Speaker notes, slide " + (current + 1);
+      notesBody.innerHTML = n ? n.innerHTML : "<p>No notes for this slide.</p>";
+      try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) { /* ignore */ }
+    }
+  }
+  btnPrev.addEventListener("click", prevSlide);
+  btnNext.addEventListener("click", nextSlide);
+
+  /* ---------------- notes ---------------- */
+  function toggleNotes() {
+    var on = !document.body.classList.contains("notes-open");
+    document.body.classList.toggle("notes-open", on);
+    btnNotes.setAttribute("aria-pressed", on ? "true" : "false");
+    fit();
+  }
+  btnNotes.addEventListener("click", toggleNotes);
+
+  /* ---------------- fullscreen ---------------- */
+  var root = document.documentElement;
+  var fsEnabled = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  if (!fsEnabled) btnFs.hidden = true;
+  function toggleFullscreen() {
+    if (!fsEnabled) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    try {
+      if (fsEl) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else {
+        var pr = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+        if (pr && pr.catch) pr.catch(function () {});
+      }
+    } catch (e) { /* refused */ }
+  }
+  btnFs.addEventListener("click", toggleFullscreen);
+  document.addEventListener("fullscreenchange", fit);
+  document.addEventListener("webkitfullscreenchange", fit);
+
+  /* ---------------- thumbnails (always final state) ---------------- */
+  function buildThumbs() {
+    thumbGrid.innerHTML = "";
+    slides.forEach(function (s, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "thumb" + (i === current ? " current" : "");
+      btn.setAttribute("aria-label", "Go to slide " + (i + 1) + ": " + (s.getAttribute("data-title") || ""));
+      if (i === current) btn.setAttribute("aria-current", "true");
+      var inner = document.createElement("div");
+      inner.className = "thumb-inner";
+      inner.setAttribute("aria-hidden", "true");
+      var clone = s.cloneNode(true);
+      clone.classList.remove("is-active");
+      Array.prototype.forEach.call(clone.querySelectorAll("[id]"), function (n) { n.removeAttribute("id"); });
+      var sn = clone.querySelector(".speaker-notes");
+      if (sn) sn.remove();
+      inner.appendChild(clone);
+      var num = document.createElement("span");
+      num.className = "thumb-num";
+      num.textContent = String(i + 1);
+      btn.appendChild(inner);
+      btn.appendChild(num);
+      btn.addEventListener("click", function () { closeThumbs(true); go(i, false, true); });
+      thumbGrid.appendChild(btn);
+      var cb = clone.querySelector("[data-build]");
+      if (cb) renderBuild(cb, 99, false);
+    });
+    scaleThumbs();
+  }
+  function scaleThumbs() {
+    Array.prototype.forEach.call(thumbGrid.querySelectorAll(".thumb"), function (b) {
+      b.querySelector(".thumb-inner").style.transform = "scale(" + (b.clientWidth / 1920) + ")";
+    });
+  }
+  function openThumbs() {
+    lastFocus = document.activeElement;
+    thumbs.classList.add("open");
+    buildThumbs();
+    var cur = thumbGrid.querySelector(".thumb.current");
+    if (cur) { cur.focus(); cur.scrollIntoView({ block: "nearest" }); }
+  }
+  function closeThumbs(navigating) {
+    thumbs.classList.remove("open");
+    thumbGrid.innerHTML = "";
+    if (!navigating && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  btnThumbs.addEventListener("click", openThumbs);
+  thumbs.querySelector(".close").addEventListener("click", function () { closeThumbs(false); });
+  window.addEventListener("resize", function () { if (thumbs.classList.contains("open")) scaleThumbs(); });
+
+  /* ---------------- keyboard ---------------- */
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (thumbs.classList.contains("open")) {
+      if (e.key === "Escape" || e.key === "g" || e.key === "G") { e.preventDefault(); closeThumbs(false); }
+      return;
+    }
+    var onButton = e.target && e.target.closest && e.target.closest("button");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": e.preventDefault(); nextSlide(); break;
+      case " ": if (onButton) return; e.preventDefault(); nextSlide(); break;
+      case "ArrowLeft": case "PageUp": e.preventDefault(); prevSlide(); break;
+      case "Home": e.preventDefault(); go(0, false, true); break;
+      case "End": e.preventDefault(); go(total - 1, true, false); break;
+      case "f": case "F": e.preventDefault(); toggleFullscreen(); break;
+      case "n": case "N": e.preventDefault(); toggleNotes(); break;
+      case "g": case "G": e.preventDefault(); openThumbs(); break;
+    }
+  });
+
+  /* ---------------- touch swipe ---------------- */
+  var tx = null, ty = null;
+  stage.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) return;
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (tx === null || thumbs.classList.contains("open")) { tx = null; return; }
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) { if (dx < 0) nextSlide(); else prevSlide(); }
+    tx = null;
+  }, { passive: true });
+
+  /* ---------------- quiet controls ---------------- */
+  var idle = null;
+  document.addEventListener("mousemove", function () {
+    document.body.classList.add("show-controls");
+    clearTimeout(idle);
+    idle = setTimeout(function () { document.body.classList.remove("show-controls"); }, 2200);
+  });
+
+  /* ---------------- print: every slide in its final state ---------------- */
+  window.addEventListener("beforeprint", function () {
+    slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  });
+  window.addEventListener("afterprint", function () {
+    slides.forEach(function (s, i) { var el = buildEl(s); if (el && i !== current) renderBuild(el, 99, false); });
+    var el = buildEl(slides[current]);
+    if (el) renderBuild(el, step, false);
+  });
+
+  /* ---------------- start ---------------- */
+  slides.forEach(function (s) { var el = buildEl(s); if (el) renderBuild(el, 99, false); });
+  fit();
+  var hm = /^#(\d+)$/.exec(location.hash);
+  go(hm ? parseInt(hm[1], 10) - 1 : 0, false, true);
+  window.addEventListener("hashchange", function () {
+    var m = /^#(\d+)$/.exec(location.hash);
+    if (m && parseInt(m[1], 10) - 1 !== current) go(parseInt(m[1], 10) - 1, false, true);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

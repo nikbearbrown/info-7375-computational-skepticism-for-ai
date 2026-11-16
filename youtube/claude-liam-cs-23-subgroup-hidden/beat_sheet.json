@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-23-subgroup-hidden",
+    "title": "Why the Average That Clears the Model Hides the Patient It Harms",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that aggregate calibration is a size-weighted average — so a small subgroup's badly deviating curve gets absorbed by the large group's good one, making the aggregate look fine while the subgroup is dangerously miscalibrated. Source: books/computational-skepticism-for-ai/chapters/12-communicating-uncertainty-calibrating-claims-to-evidence.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = large group / well-calibrated curve; CRIMSON = small subgroup / the hidden failure; GOLD = the aggregate curve / the deception; SLATE = the merging motion",
+    "note": "EXCLUSIONS: no ECE formula with subscripts, no Epic Sepsis case history beyond one line, no fairness-metric taxonomy, no threshold-for-deployment-halt debate",
+    "total_estimated_duration_seconds": 190,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 23,
+    "build": {
+      "at": "2026-07-19T02:40:17",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why the Average That Clears the Model Hides the Patient It H",
+            "greeting": "Merhaba, Liam.",
+            "command": "A model can be provably well-calibrated on average and dangerously miscalibrated for the exact patient in front of you.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "A model can be provably well-calibrated on average and dangerously miscalibrated for the exact patient in front of you.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why the Average That Clears the Model Hides the Patient It Harms",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why the Average That Clears the Model\nHides the Patient It Harms"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 7.32,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "Two calibration curves. The teal one represents the large group — ninety percent of the dataset, sitting cleanly on the diagonal. The crimson one represents a small group — ten percent of the dataset, running badly off-diagonal. Predicted fifty percent, actual eighty percent. The model systematically underestimates risk for this subgroup. Now merge the two curves into one aggregate curve. The aggregate hugs the diagonal. It looks fine. The crimson curve has been absorbed. The subgroup's patients have been averaged out of visibility. The model passes. The patients in the crimson group are still miscalibrated.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "morph"
+      },
+      "scene_class": "B02_CurveMergeReveal",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 31.42,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:40:17",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: Two calibration curves. The teal one represents the large group — ninety percent of the dataset, sitting cleanly on the diagonal. The crimson one represents a s"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When aggregate calibration is a size-weighted average of subgroup curves, what does a clean aggregate number tell you about the worst-performing subgroup?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What does clean aggregate calibration hide about",
+              "subgroups?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What does clean aggregate calibration\ntell you about the worst subgroup?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.7,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:40:17"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Aggregate calibration is computed across all predictions in the dataset together. The contribution of each data point to the aggregate metric is proportional to how many cases there are from that source. A large, well-calibrated group dominates the computation. A small, badly-calibrated group contributes little weight. The aggregate metric reports the size-weighted average behavior — which, by construction, is dominated by the large group and systematically obscures what happens in the small group.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B04_SizeWeightedAverage",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 27.71,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:40:17",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: Aggregate calibration is computed across all predictions in the dataset together. The contribution of each data point to the aggregate metric is proportional to"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The problem is not that the metric is wrong. It is computing exactly what it says it computes. The problem is that clinical or operational decisions are not made on populations — they are made on individuals. The patient in front of you is not the average patient. They are a member of a specific subgroup. If the model is well-calibrated on average but badly calibrated for their subgroup, the aggregate metric has nothing to say about their case. It was measuring a different question.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B05_IndividualVsAggregate",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 24.43,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:40:17",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The problem is not that the metric is wrong. It is computing exactly what it says it computes. The problem is that clinical or operational decisions are not mad"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Aggregate calibration averages over subgroups weighted by size — a small subgroup's badly-deviating curve gets absorbed by the large group's good one, and the aggregate shows nothing wrong.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Small subgroup failure dissolves into a large group's",
+              "good average."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "Three reliability curves on the same axes on aged newsprint: a large teal curve running along the diagonal labeled LARGE GROUP (90%), a small crimson curve running far above the diagonal labeled SMALL SUBGROUP (10%), and a gold dashed curve between them labeled AGGREGATE — the gold curve sits close to the diagonal, the crimson curve still visible and ignored above it",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 11.43,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:40:17"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Watch the merge. Two curves on screen. The teal large-group curve sits cleanly on the diagonal. The crimson small-subgroup curve runs above it — when this model says fifty percent, fifty percent of the large group are positive, but eighty percent of the small subgroup are. The crimson curve has a real and dangerous offset. Now they merge into a gold aggregate curve. The gold curve is the size-weighted average. It drifts slightly above the diagonal — you can barely see it. The crimson offset is still there, baked into every prediction for small-subgroup patients. The aggregate curve is now hiding it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "morph"
+      },
+      "scene_class": "B07_ThreeCurveMergeSequence",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 30.76,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:40:17",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Watch the merge. Two curves on screen. The teal large-group curve sits cleanly on the diagonal. The crimson small-subgroup curve runs above it — when this model"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The absorption is arithmetic. If ninety percent of the data has zero calibration error and ten percent has an error of thirty percentage points, the aggregate calibration error is zero-point-nine times zero plus zero-point-one times thirty — three percent. Three percent looks like a minor miscalibration. It is actually a catastrophic thirty-percent error for ten percent of patients, made invisible by the majority's good performance. The aggregate metric has laundered the failure.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B08_AbsorptionArithmetic",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 25.83,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:40:17",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The absorption is arithmetic. If ninety percent of the data has zero calibration error and ten percent has an error of thirty percentage points, the aggregate c"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For medical AI, this matters at the point of care. If a model was validated with an aggregate calibration report and that report looked clean, the clinical team may have justifiable confidence that the model's probabilities are trustworthy. But a patient who belongs to the ten-percent subgroup is receiving systematically underestimated risk scores. The clinician who trusts the model's fifty-percent output for this patient is trusting a number that should be eighty percent. The validation report gave no signal that this group existed.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B09_ClinicalTrustMismatch",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 27.69,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:40:17",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: For medical AI, this matters at the point of care. If a model was validated with an aggregate calibration report and that report looked clean, the clinical team"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The fix is conceptually simple: compute calibration within each subgroup separately. The difficulty is deciding which subgroups to check and having enough data within each subgroup to produce a reliable curve. Small subgroups have small samples, which means subgroup curves are noisy. This is the tradeoff — aggregate metrics are stable but blind; subgroup metrics are honest but uncertain. The answer is to compute both, report both, and flag explicitly which subgroups had insufficient sample size for reliable subgroup evaluation.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B10_SubgroupSeparateAudit",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 29.01,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:40:17",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The fix is conceptually simple: compute calibration within each subgroup separately. The difficulty is deciding which subgroups to check and having enough data "
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The honest deployment protocol names the subgroups on which the model was not validated. A validation report that says 'calibrated on the full test set' and does not report subgroup curves is a report that has not answered the clinical question. The clinical question is: for the patient in front of me, who belongs to a specific subgroup, are these probabilities trustworthy? That question requires a subgroup-level answer, and the aggregate report does not provide one.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_ValidationReportGap",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 23.08,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:40:17",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The honest deployment protocol names the subgroups on which the model was not validated. A validation report that says 'calibrated on the full test set' and doe"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A sepsis prediction model is deployed in an ICU. The validation report shows calibration error of four percent across the full patient population — acceptable. Six months into deployment, a nurse flags that the model consistently underestimates risk for patients with renal failure. A subgroup analysis is run. The renal-failure patient group is twelve percent of the ICU population. Within this subgroup, the calibration error is thirty-one percent — when the model says forty percent risk, actual sepsis rate is over seventy percent. The aggregate calibration report passed at four percent. The renal-failure subgroup was never examined. Twelve percent of patients had been receiving systematically low risk scores for six months.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "morph"
+      },
+      "scene_class": "B12_SepsisSubgroupExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 39.04,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:40:17",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A sepsis prediction model is deployed in an ICU. The validation report shows calibration error of four percent across the full patient population — acceptable. "
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Aggregate calibration is a size-weighted average — a small subgroup's badly deviating curve dissolves into the large group's good one, leaving the aggregate clean and the subgroup failure invisible. Clinical and operational decisions are made on individuals who belong to specific subgroups, not on population averages. A validation report showing only aggregate calibration has not answered the per-subgroup question. Compute calibration within each clinically relevant subgroup separately, report which subgroups lacked sufficient data for reliable evaluation, and name the gap explicitly.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Aggregate calibration hides subgroup failure",
+              "compute both, report both."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "The average clears the model.\nThe subgroup absorbs the harm.",
+        "sub": "Compute calibration per subgroup — aggregate reports cannot answer per-patient questions.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 32.47,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:40:17"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why the Average That Clears the Model Hides the Patient It H",
+            "artifactHeading": "Key findings — Why the Average That Clears the Model Hides the Patient It Harms",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A sepsis prediction model is deployed in an ICU."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:40:17"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY THE AVERAGE THAT CLEARS THE MODEL HIDES THE PATIENT",
+            "segment": "Why the Average That Clears the Model Hides the Patient It H",
+            "greeting": "Olá, Liam.",
+            "command": "Ask Claude: Why the Average That Clears the Model Hides the Patient It Harms",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:40:17"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why the Average That Clears the Model Hides the Patient It Harms",
+            "slug": "claude-liam-cs-23-subgroup-hidden",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

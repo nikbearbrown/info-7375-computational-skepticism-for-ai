@@ -1,0 +1,1346 @@
+{
+ "metadata": {
+  "title": "It Ran Clean. It Was Wrong.",
+  "slug": "claude-liam-silent-sql-failures",
+  "topic": "COMPUTATIONAL SKEPTICISM · SILENT SQL FAILURES",
+  "genre": "deep-explainer",
+  "register": "Teardown",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "vox_stage": "#F2F0E9",
+  "accent": "#D97757",
+  "greeting": "Jambo, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "playlist": "Computational Skepticism for AI — Deep Explainers",
+  "source": "books/computational-skepticism-for-ai/youtube/silent-sql-failures-source.md",
+  "gate": "PLAN — audio generated; previz compile next",
+  "beat_mix_target": {
+   "VOX": "20-25%",
+   "MANIM": "25-40%",
+   "REMOTION": "30-45%",
+   "CARD": "remainder"
+  },
+  "beat_mix_actual": {
+   "body_beats": 29,
+   "VOX": "20.7% (6)",
+   "MANIM": "27.6% (8)",
+   "REMOTION": "31.0% (9)",
+   "CARD": "20.7% (6)",
+   "lint": "PASS — vox 20.7% in 15-30% band; spine OK; A3M→A3M2 consecutive Manim WARN (accepted)"
+  },
+  "total_estimated_duration_seconds": 429,
+  ".codex": {
+   "workflow": "deep-explainer",
+   "mode": "unattended-to-previz",
+   "agent": "Claude Code",
+   "persona": "Liam (in for Bear)",
+   "engine": "kokoro",
+   "voice": "am_onyx",
+   "paid_generation": false,
+   "publish": false,
+   "reviewer": "Bear"
+  },
+  "description_blurb": "Professor Bear reviews Zhenhao's final project: a verification framework for LLM-generated SQL tested on a Bitcoin blockchain database. The dangerous failure isn’t a crash — it’s a query that runs clean and returns a wrong number. Seven minutes on silent failures, two-path disagreement, property-based testing for SQL semantics, and why the likely negative result is more valuable than most positive ones.",
+  "hashtags": [
+   "ComputationalSkepticism",
+   "LLMevaluation",
+   "textToSQL",
+   "NLtoSQL",
+   "Bitcoin",
+   "UTXO",
+   "softwaretesting",
+   "AIreliability",
+   "calibration"
+  ],
+  "chapters": [
+   [
+    "B00",
+    "It Ran Clean. It Was Wrong."
+   ],
+   [
+    "A1C",
+    "Act I: The Quiet Failure"
+   ],
+   [
+    "A2C",
+    "Act II: The Bitcoin Testbed"
+   ],
+   [
+    "A3C",
+    "Act III: Five Types of Failure"
+   ],
+   [
+    "A4C",
+    "Act IV: The Benchmark"
+   ],
+   [
+    "A5C",
+    "Act V: Three Detection Strategies"
+   ],
+   [
+    "A6C",
+    "Act VI: Calibration and What Makes It Strong"
+   ],
+   [
+    "BVDT",
+    "Verdict"
+   ]
+  ],
+  "source_chapter": "Computational Skepticism for AI — Professor Bear reviews Zhenhao’s final project",
+  "build": {
+   "at": "2026-07-24T13:56:36",
+   "cut": "master",
+   "filled": 8,
+   "of": 33,
+   "slates": [
+    "B00",
+    "A1C",
+    "A1R",
+    "A1R2",
+    "A1V",
+    "A2C",
+    "A2R",
+    "A2V",
+    "A3C",
+    "A3R",
+    "A3R2",
+    "A3V",
+    "A4C",
+    "A4R",
+    "A4V",
+    "A5C",
+    "A5R",
+    "A5V",
+    "A5R2",
+    "A6C",
+    "A6R",
+    "A6V",
+    "BVDT",
+    "BHTF",
+    "BOUT"
+   ],
+   "skin_warnings": [
+    "B00: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+    "BOUT: palette=claude but the outro is 'un-annotated' — OUTRO LAW wants ClaudeTitleOutro"
+   ]
+  },
+  "verdict_stripped": "BVDT removed: all 3 lines are placeholders; placeholder heading. A placeholder verdict is worse than none."
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 19.26,
+   "narration_text": "Jambo — this is Liam, in for Bear. Zhenhao has a final project idea, and I put one question to Claude: what would Professor Bear say? The project builds a verification framework for LLM-generated SQL, tested on a Bitcoin database, where the dangerous failure isn't a crash — it's a query that runs clean and returns a wrong number. Here is Bear's answer.",
+   "new_visual_element": "ClaudeComposerAsk — Liam asks Bear’s feedback on Zhenhao’s project",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Liam",
+      "topic": "COMPUTATIONAL SKEPTICISM · SILENT SQL FAILURES",
+      "segment": "It Ran Clean. It Was Wrong.",
+      "command": "What is: It Ran Clean. It Was Wrong?",
+      "runningText": "building the answer…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "remotion": {
+    "pattern": "ClaudeComposerAsk",
+    "props": {
+     "greeting": "Jambo, Liam",
+     "topic": "COMPUTATIONAL SKEPTICISM · SILENT SQL FAILURES",
+     "segment": "It Ran Clean. It Was Wrong.",
+     "command": "What feedback would Professor Bear give Zhenhao on their Computational Skepticism final project idea?",
+     "runningText": "detecting silent failures in LLM-generated SQL over a Bitcoin blockchain database…",
+     "output": [
+      "The failure isn’t a crash — it’s a clean query returning a wrong number.",
+      "Zhenhao has the right problem. Here is Bear’s feedback.",
+      "Starting with why quiet failure is the hard case…"
+     ],
+     "folderLabel": "@NikBearBrown",
+     "modelLabel": "Fable 5",
+     "effortLabel": "Low"
+    },
+    "rendered": {
+     "out": "media/B00.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "build": {
+    "status": "SLATE"
+   },
+   "lane": "BOOKEND",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx"
+  },
+  {
+   "beat_id": "B01",
+   "act": "I — exec summary",
+   "lane": "BOOKEND",
+   "narration_text": "",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx",
+   "estimated_duration_s": 10,
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "FormBCard",
+     "props": {
+      "title": "It Ran Clean. It Was Wrong.",
+      "items": [
+       {
+        "label": "Key point one",
+        "sub": "",
+        "icon": "target",
+        "cueFrame": 20
+       },
+       {
+        "label": "Key point two",
+        "sub": "",
+        "icon": "list-checks",
+        "cueFrame": 55
+       },
+       {
+        "label": "Key point three",
+        "sub": "",
+        "icon": "zap",
+        "cueFrame": 90
+       }
+      ]
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "build": {
+    "status": "SLATE"
+   }
+  },
+  {
+   "beat_id": "A1C",
+   "act": "ACT I — The Quiet Failure",
+   "estimated_duration_s": 3,
+   "actual_duration_s": 2.28,
+   "narration_text": "Act one. The quiet failure.",
+   "new_visual_element": "SlateCard — Act I title",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "SlateCard",
+    "props": {
+     "eyebrow": "ACT I",
+     "headline": "The Quiet Failure",
+     "topic": "COMPUTATIONAL SKEPTICISM"
+    },
+    "rendered": {
+     "out": "media/A1C.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A1C.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A1C"
+   }
+  },
+  {
+   "beat_id": "A1R",
+   "act": "the query that runs clean",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 12.8,
+   "narration_text": "Here's the query. Asked for an address balance, the model sums all outputs paid to that address. It runs. It returns a number. The number has the right shape — looks like a BTC balance. It is ten BTC. The real balance is two.",
+   "new_visual_element": "ClaudeWindow — SQL query and result (gross vs balance)",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "ClaudeWindow",
+    "props": {
+     "userPrompt": "What is the current balance of address 1A1zP1...?",
+     "artifactTitle": "balance_query.sql",
+     "artifactLines": [
+      "SELECT SUM(value) FROM tx_outputs",
+      "WHERE address = '1A1zP1...'",
+      "→ 10.000 BTC",
+      "# Ran clean. 1 row. Nothing signals the error."
+     ]
+    },
+    "rendered": {
+     "out": "media/A1R.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A1R.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A1R"
+   }
+  },
+  {
+   "beat_id": "A1M",
+   "act": "UTXO: gross vs balance",
+   "estimated_duration_s": 13,
+   "actual_duration_s": 13.4,
+   "narration_text": "Bitcoin tracks outputs, not balances. Three received: five, three, two. Two later spent. Current balance: two. SQL summed everything. UTXO counts only unspent. Same question, two different answers — only one tracks the domain correctly.",
+   "new_visual_element": "Manim — UTXO diagram: outputs received, spent flags, gross vs balance",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "A1M_UTXOBalance",
+     "spec": "address node on right; three arrows arriving labeled 5 BTC, 3 BTC, 2 BTC; two arrows faded with SPENT mark; one bright (UNSPENT 2 BTC); two result boxes: SQL SUM=10.0 (terracotta, GROSS) vs UTXO balance=2.0 (green, BALANCE)",
+     "out": "manim/A1M.mp4"
+    },
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Gross Received: 10 BTC · Current Balance: 2 BTC"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-A1M.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": "manim/A1M.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-24T13:56:36"
+   }
+  },
+  {
+   "beat_id": "A1R2",
+   "act": "loud failure vs quiet failure",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 14.27,
+   "narration_text": "A loud failure is manageable. Catch the exception. Flag the empty result. Wrong shape — catchable. Quiet failure is different. The query runs. It returns rows. The shape is right. The value is wrong. And surface plausibility is exactly what's compromised.",
+   "new_visual_element": "DeckPattern — loud failure vs quiet failure",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "DeckPattern",
+    "props": {
+     "pattern": "divergence",
+     "title": "Two Kinds of Failure",
+     "left": {
+      "label": "LOUD FAILURE",
+      "note": "exception · empty result · wrong shape → catchable"
+     },
+     "right": {
+      "label": "QUIET FAILURE",
+      "note": "runs clean · returns rows · right shape · wrong value"
+     },
+     "sparkLine": "Surface plausibility is exactly what’s compromised."
+    },
+    "rendered": {
+     "out": "media/A1R2.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A1R2.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A1R2"
+   }
+  },
+  {
+   "beat_id": "A1V",
+   "act": "the hard problem",
+   "estimated_duration_s": 13,
+   "actual_duration_s": 12.14,
+   "narration_text": "A model that fails quietly needs verification that doesn't depend on surface plausibility. Because surface plausibility is the first thing to go. That's the hard part of Zhenhao's project — and it's the right problem.",
+   "new_visual_element": "VOX still — balance ledger (Tier 1, AI-generate)",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.4
+    ]
+   },
+   "prompt": "an open accounting ledger with columns of handwritten figures; balance sheet rows; detailed bookkeeping; black and white or sepia; dramatic angled lighting; no people",
+   "audio_file": "mp3/beat-A1V.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A1V.mp4)",
+    "suggested": "suggested prompt: an open accounting ledger with columns of handwritten figures; balance sheet rows; detailed bookkeeping; black and white or sepia; dramatic angled lighting; no people"
+   }
+  },
+  {
+   "beat_id": "A2C",
+   "act": "ACT II — The Bitcoin Testbed",
+   "estimated_duration_s": 3,
+   "actual_duration_s": 2.45,
+   "narration_text": "Act two. The Bitcoin testbed.",
+   "new_visual_element": "SlateCard — Act II title",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "SlateCard",
+    "props": {
+     "eyebrow": "ACT II",
+     "headline": "The Bitcoin Testbed",
+     "topic": "COMPUTATIONAL SKEPTICISM"
+    },
+    "rendered": {
+     "out": "media/A2C.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A2C.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A2C"
+   }
+  },
+  {
+   "beat_id": "A2M",
+   "act": "two-path disagreement detection",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 15.08,
+   "narration_text": "Bitcoin is a rare testbed — the same question has two independent computational paths. The SQL path queries a database. The RPC path reconstructs from a live node. When both answer the same question and disagree — that's your error flag, without a human oracle.",
+   "new_visual_element": "Manim — two-path disagreement diagram (SQL vs RPC → FLAG)",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "A2M_TwoPathDiagram",
+     "spec": "center question bubble; two branches: SQL path → database → 10.0 BTC; RPC path → node → 2.0 BTC; comparison at bottom: 10.0 ≠ 2.0 → FLAG (terracotta)",
+     "out": "manim/A2M.mp4"
+    },
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "SQL vs RPC — disagreement is the error flag"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-A2M.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": "manim/A2M.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-24T13:56:36"
+   }
+  },
+  {
+   "beat_id": "A2R",
+   "act": "the RPC subtlety",
+   "estimated_duration_s": 14,
+   "actual_duration_s": 15.72,
+   "narration_text": "Subtle gotcha: the naive RPC call makes the same mistake. 'getreceivedbyaddress' also returns gross, not balance. Ground truth requires scantxoutset — reconstructing from the UTXO set. Document exactly which calls are immune to the SQL path's failure mode.",
+   "new_visual_element": "DeckPattern — naive RPC vs rigorous ground truth",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "DeckPattern",
+    "props": {
+     "pattern": "divergence",
+     "title": "Not All RPC Calls Are Ground Truth",
+     "left": {
+      "label": "NAIVE RPC",
+      "note": "getreceivedbyaddress → gross received, not balance"
+     },
+     "right": {
+      "label": "RIGOROUS GROUND TRUTH",
+      "note": "scantxoutset → UTXO set reconstruction"
+     },
+     "sparkLine": "The cross-validation only works if the two paths fail differently."
+    },
+    "rendered": {
+     "out": "media/A2R.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A2R.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A2R"
+   }
+  },
+  {
+   "beat_id": "A2V",
+   "act": "independence is the design",
+   "estimated_duration_s": 11,
+   "actual_duration_s": 8.96,
+   "narration_text": "The independence is the design. Two paths unlikely to be wrong the same way. When they disagree, you know something is wrong — even if neither path tells you what.",
+   "new_visual_element": "VOX still — distributed network graph (Tier 1, AI-generate)",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.5
+    ]
+   },
+   "prompt": "abstract network diagram of interconnected nodes; blockchain or distributed ledger visualization; black ink lines on light background; technical illustration style; no people",
+   "audio_file": "mp3/beat-A2V.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A2V.mp4)",
+    "suggested": "suggested prompt: abstract network diagram of interconnected nodes; blockchain or distributed ledger visualization; black ink lines on light background; technical illustration style; no people"
+   }
+  },
+  {
+   "beat_id": "A3C",
+   "act": "ACT III — Five Types of Failure",
+   "estimated_duration_s": 3,
+   "actual_duration_s": 2.54,
+   "narration_text": "Act three. The error taxonomy.",
+   "new_visual_element": "SlateCard — Act III title",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "SlateCard",
+    "props": {
+     "eyebrow": "ACT III",
+     "headline": "Five Types of Failure",
+     "topic": "COMPUTATIONAL SKEPTICISM"
+    },
+    "rendered": {
+     "out": "media/A3C.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A3C.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A3C"
+   }
+  },
+  {
+   "beat_id": "A3R",
+   "act": "taxonomy overview",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 15.32,
+   "narration_text": "Run a hundred questions. Inspect every disagreement between SQL and RPC. Let the taxonomy emerge from what you actually find — don't build it top-down. Top-down risks missing the category the system fails at most. Here's what it should look like: five mechanisms.",
+   "new_visual_element": "ChipGrid — five error types",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "ChipGrid",
+    "props": {
+     "title": "Error Taxonomy — Five Mechanisms",
+     "chips": [
+      "Semantic Mismatch",
+      "Silent Aggregation",
+      "Temporal Confusion",
+      "Null Swallowing",
+      "Reference Frame"
+     ],
+     "sparkLine": "Build empirically — let cases reveal categories."
+    },
+    "rendered": {
+     "out": "media/A3R.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A3R.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A3R"
+   }
+  },
+  {
+   "beat_id": "A3M",
+   "act": "type 1: semantic misinterpretation",
+   "estimated_duration_s": 14,
+   "actual_duration_s": 15.19,
+   "narration_text": "Type one: semantic misinterpretation. The model knows SQL. It doesn't know UTXO. 'Balance' in accounting means net assets. 'Balance' in Bitcoin means unspent outputs. Right query syntax, wrong domain model — a knowledge gap disguised as a syntax success.",
+   "new_visual_element": "Manim — semantic mismatch: two definitions of balance",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "A3M_SemanticMismatch",
+     "spec": "word 'BALANCE' at top center; two branches: left box SQL/accounting SUM(all)=10.0; right box UTXO SUM(unspent)=2.0; terracotta gap line between with label 'domain model gap'",
+     "out": "manim/A3M.mp4"
+    },
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Semantic Misinterpretation — Right SQL, Wrong Domain"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-A3M.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": "manim/A3M.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-24T13:56:36"
+   }
+  },
+  {
+   "beat_id": "A3M2",
+   "act": "type 4: null swallowing",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 13.55,
+   "narration_text": "Type four: null swallowing. SQL's SUM silently skips nulls. Missing data looks like zero. For a balance, 'no data' and zero are not the same thing — one is unknown, one is a real answer. The query doesn't warn you which one it returned.",
+   "new_visual_element": "Manim — SQL SUM skips NULLs: table with null values → silent zero",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "A3M2_NullSwallowing",
+     "spec": "table with 3 rows: 5.0, NULL, 2.0; SUM arrow → 7.0 (NULL skipped, annotated); second scenario: all NULLs → SUM=0 labeled 'no data looks like zero' in terracotta",
+     "out": "manim/A3M2.mp4"
+    },
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Null Swallowing — Missing Data Looks Like Zero"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-A3M2.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": "manim/A3M2.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-24T13:56:36"
+   }
+  },
+  {
+   "beat_id": "A3R2",
+   "act": "types 3 and 5: orientation errors",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 14.59,
+   "narration_text": "Types three and five are orientation errors. Type three: a point-in-time snapshot treated as current state. Type five: the model assumed the wrong frame — satoshis versus BTC, or the address's own transactions versus where it appears as a change output.",
+   "new_visual_element": "DeckPattern — temporal confusion and reference frame errors",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "DeckPattern",
+    "props": {
+     "pattern": "divergence",
+     "title": "Orientation Errors",
+     "left": {
+      "label": "TYPE 3 — Temporal Confusion",
+      "note": "snapshot at block N ≠ current state"
+     },
+     "right": {
+      "label": "TYPE 5 — Reference Frame",
+      "note": "satoshis vs BTC · change outputs vs own txns"
+     },
+     "sparkLine": "The model assumed a frame the question didn’t specify."
+    },
+    "rendered": {
+     "out": "media/A3R2.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A3R2.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A3R2"
+   }
+  },
+  {
+   "beat_id": "A3V",
+   "act": "build empirically",
+   "estimated_duration_s": 11,
+   "actual_duration_s": 12.33,
+   "narration_text": "Build the taxonomy empirically. Run first, categorize after. A top-down taxonomy risks missing the category your system actually fails at most. Zhenhao's instinct to let the cases speak first is correct.",
+   "new_visual_element": "VOX still — hand-drawn taxonomy tree in notebook (Tier 1, AI-generate)",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.5
+    ]
+   },
+   "prompt": "hand-drawn taxonomy tree or classification branching diagram on paper; pencil or ink; scientific notebook; categories branching from a root; close-up; no people",
+   "audio_file": "mp3/beat-A3V.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A3V.mp4)",
+    "suggested": "suggested prompt: hand-drawn taxonomy tree or classification branching diagram on paper; pencil or ink; scientific notebook; categories branching from a root; close-up; no people"
+   }
+  },
+  {
+   "beat_id": "A4C",
+   "act": "ACT IV — The Benchmark",
+   "estimated_duration_s": 3,
+   "actual_duration_s": 2.13,
+   "narration_text": "Act four. The benchmark.",
+   "new_visual_element": "SlateCard — Act IV title",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "SlateCard",
+    "props": {
+     "eyebrow": "ACT IV",
+     "headline": "The Benchmark",
+     "topic": "COMPUTATIONAL SKEPTICISM"
+    },
+    "rendered": {
+     "out": "media/A4C.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A4C.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A4C"
+   }
+  },
+  {
+   "beat_id": "A4M",
+   "act": "four-tier difficulty ladder",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 15.53,
+   "narration_text": "Four tiers. One axis: how many implicit domain assumptions does the question require? Tier one — count transactions in a block. Zero domain semantics. Tier three — current address balance — that's the UTXO problem. Tier four — balance excluding your own change outputs — multi-hop.",
+   "new_visual_element": "Manim — four-tier staircase with implicit assumption counts",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "A4M_TierLadder",
+     "spec": "four rising steps left to right; T1='Count txns in block X' (0 assumptions), T2='Total ever sent to X' (1 concept), T3='Current balance of X' (UTXO, terracotta highlight), T4='Balance excl. own change outputs' (multi-hop); y-axis: implicit domain assumptions",
+     "out": "manim/A4M.mp4"
+    },
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Four Tiers of Implicit Domain Assumptions"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-A4M.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": "manim/A4M.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-24T13:56:36"
+   }
+  },
+  {
+   "beat_id": "A4R",
+   "act": "compute ground truth first",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 14.36,
+   "narration_text": "Sequencing matters. Compute the RPC ground truth before running the NL-to-SQL system — not after. If you anchor 'correct' on the SQL output first, you bias the sample toward errors that already look wrong, and miss exactly the ones that look right.",
+   "new_visual_element": "DeckPattern — wrong vs correct sequencing",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "DeckPattern",
+    "props": {
+     "pattern": "divergence",
+     "title": "Sequencing Is the Rigor",
+     "left": {
+      "label": "WRONG ORDER",
+      "note": "SQL first → anchor 'correct' on SQL → miss quiet failures"
+     },
+     "right": {
+      "label": "CORRECT ORDER",
+      "note": "RPC ground truth first → then NL-to-SQL → compare"
+     },
+     "sparkLine": "The bias enters before the first query runs."
+    },
+    "rendered": {
+     "out": "media/A4R.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A4R.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A4R"
+   }
+  },
+  {
+   "beat_id": "A4V",
+   "act": "tiers and calibration",
+   "estimated_duration_s": 11,
+   "actual_duration_s": 11.24,
+   "narration_text": "The tiers exist to find calibration patterns — not just to vary difficulty. You want to know if the model is specifically overconfident on state-tracking, not just overconfident in general.",
+   "new_visual_element": "VOX still — measurement scale or calibration instrument (Tier 1, AI-generate)",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.5
+    ]
+   },
+   "prompt": "a precision measurement instrument or calibration gauge; technical drawing or photograph; black and white; scientific; no people",
+   "audio_file": "mp3/beat-A4V.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A4V.mp4)",
+    "suggested": "suggested prompt: a precision measurement instrument or calibration gauge; technical drawing or photograph; black and white; scientific; no people"
+   }
+  },
+  {
+   "beat_id": "A5C",
+   "act": "ACT V — Three Detection Strategies",
+   "estimated_duration_s": 3,
+   "actual_duration_s": 2.9,
+   "narration_text": "Act five. Three detection strategies.",
+   "new_visual_element": "SlateCard — Act V title",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "SlateCard",
+    "props": {
+     "eyebrow": "ACT V",
+     "headline": "Three Detection Strategies",
+     "topic": "COMPUTATIONAL SKEPTICISM"
+    },
+    "rendered": {
+     "out": "media/A5C.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A5C.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A5C"
+   }
+  },
+  {
+   "beat_id": "A5R",
+   "act": "strategy 1: cross-validation backbone",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 16.19,
+   "narration_text": "Strategy one is the backbone: cross-validate against independent computation. Same question, two independent paths. Disagreement flags error. The work is documenting which RPC calls constitute ground truth for each question type — and proving they're immune to the SQL path's failure mode.",
+   "new_visual_element": "DeckPattern — SQL path vs RPC path cross-validation",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "DeckPattern",
+    "props": {
+     "pattern": "divergence",
+     "title": "Strategy 1 — Cross-Validation",
+     "left": {
+      "label": "SQL PATH",
+      "note": "NL → SQL → execute → result"
+     },
+     "right": {
+      "label": "RPC PATH",
+      "note": "same question → scantxoutset → ground truth"
+     },
+     "sparkLine": "Disagreement = error flag. Independence = rigor."
+    },
+    "rendered": {
+     "out": "media/A5R.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A5R.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A5R"
+   }
+  },
+  {
+   "beat_id": "A5M",
+   "act": "strategy 2: self-consistency and the likely negative result",
+   "estimated_duration_s": 16,
+   "actual_duration_s": 16.32,
+   "narration_text": "Strategy two: sample the model N times at temp above zero. Execute all candidates. Check agreement. Here's the likely finding — the model fails consistently. All samples make the same UTXO mistake. Self-consistency gives zero signal for the failure this project cares about most.",
+   "new_visual_element": "Manim — N samples all returning same wrong answer (self-consistency fails)",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "A5M_SelfConsistencyFail",
+     "spec": "model box at center; five arrows radiating to five output boxes all showing 10.0 BTC; agreement checkmark (5/5 agree); annotation below: 'ALL WRONG' in terracotta; caption 'consistent agreement on a wrong answer'",
+     "out": "manim/A5M.mp4"
+    },
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Self-Consistency — The Likely Negative Result"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-A5M.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": "manim/A5M.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-24T13:56:36"
+   }
+  },
+  {
+   "beat_id": "A5V",
+   "act": "negative result as finding",
+   "estimated_duration_s": 11,
+   "actual_duration_s": 12.52,
+   "narration_text": "Report that as a finding, not a failure. Sampling-based agreement is not sufficient for systematic semantic errors — that's news. It tells builders something concrete: self-consistency doesn't catch domain-model bugs.",
+   "new_visual_element": "VOX still — academic findings or research paper (Tier 1, AI-generate)",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.4
+    ]
+   },
+   "prompt": "a printed academic paper or research findings document; columns of text; abstract visible; scientific journal style; close-up; black and white; no people",
+   "audio_file": "mp3/beat-A5V.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A5V.mp4)",
+    "suggested": "suggested prompt: a printed academic paper or research findings document; columns of text; abstract visible; scientific journal style; close-up; black and white; no people"
+   }
+  },
+  {
+   "beat_id": "A5M2",
+   "act": "strategy 3: differential testing on synthetic DBs",
+   "estimated_duration_s": 14,
+   "actual_duration_s": 14.87,
+   "narration_text": "Strategy three: a synthetic database where correct and wrong queries must diverge. Three outputs, two spent. Gross received: ten. Balance: two. Run the generated query — if it returns ten, the bug is caught definitively, independent of what real data shows.",
+   "new_visual_element": "Manim — synthetic DB table: 3 outputs, 2 spent → gross=10, balance=2",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "A5M2_SyntheticDB",
+     "spec": "table: (output 1, SPENT, 5.0 BTC), (output 2, SPENT, 3.0 BTC), (output 3, UNSPENT, 2.0 BTC); two result arrows: SUM all=10.0 (terracotta, GROSS) and SUM unspent=2.0 (green, BALANCE); query returns 10.0 → FLAG 'bug caught'",
+     "out": "manim/A5M2.mp4"
+    },
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Synthetic DB",
+       "Gross 10.0 vs Balance 2.0 by Construction"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-A5M2.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": "manim/A5M2.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-24T13:56:36"
+   }
+  },
+  {
+   "beat_id": "A5R2",
+   "act": "property-based testing for SQL semantics",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 14.85,
+   "narration_text": "Frame it as property-based testing for SQL semantics — QuickCheck for SQL. The synthetic database is a property test. It's constructed so a semantic wrong answer gives a different number, not just a different shape. That's the rigor the other two strategies can't reach.",
+   "new_visual_element": "DeckPattern — property test framing (QuickCheck for SQL)",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "DeckPattern",
+    "props": {
+     "pattern": "divergence",
+     "title": "Property-Based Testing for SQL Semantics",
+     "left": {
+      "label": "THE PROPERTY",
+      "note": "correct interpretation ≠ plausible-but-wrong interpretation"
+     },
+     "right": {
+      "label": "THE TEST",
+      "note": "synthetic DB where the property is violated by construction"
+     },
+     "sparkLine": "QuickCheck for SQL — a semantic wrong answer changes the number."
+    },
+    "rendered": {
+     "out": "media/A5R2.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A5R2.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A5R2"
+   }
+  },
+  {
+   "beat_id": "A6C",
+   "act": "ACT VI — Calibration and What Makes It Strong",
+   "estimated_duration_s": 3,
+   "actual_duration_s": 3.35,
+   "narration_text": "Act six. Calibration and what makes it strong.",
+   "new_visual_element": "SlateCard — Act VI title",
+   "shot": {
+    "type": "CARD",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "SlateCard",
+    "props": {
+     "eyebrow": "ACT VI",
+     "headline": "Calibration and What Makes It Strong",
+     "topic": "COMPUTATIONAL SKEPTICISM"
+    },
+    "rendered": {
+     "out": "media/A6C.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A6C.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A6C"
+   }
+  },
+  {
+   "beat_id": "A6M",
+   "act": "calibration by tier",
+   "estimated_duration_s": 15,
+   "actual_duration_s": 15.19,
+   "narration_text": "The novel calibration angle is not aggregate overconfidence — that's already known. It's whether the model is overconfident specifically on state-tracking, even if the aggregate curve looks fine. Plot reliability diagrams by tier. A cliff at tier three is the finding.",
+   "new_visual_element": "Manim — reliability diagram: Tier 1 vs Tier 3 calibration curves",
+   "shot": {
+    "type": "MANIM",
+    "source": "own",
+    "manim": {
+     "scene": "A6M_CalibrationByTier",
+     "spec": "reliability diagram: x-axis stated confidence, y-axis actual accuracy; perfect diagonal (dashed); Tier 1 line near diagonal (green); Tier 3 line above diagonal at high confidence = overconfident (terracotta); shaded gap; legend",
+     "out": "manim/A6M.mp4"
+    },
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "By Tier, Not Aggregate — Tier 3 Is the Cliff"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-A6M.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": "manim/A6M.mp4",
+    "filled_by": "manim",
+    "at": "2026-07-24T13:56:36"
+   }
+  },
+  {
+   "beat_id": "A6R",
+   "act": "strong vs merely competent",
+   "estimated_duration_s": 14,
+   "actual_duration_s": 14.25,
+   "narration_text": "Three things separate strong from competent. Report the negative result — it's a finding, not a failure. Name one adjacent domain for the generalization claim. Justify the tolerance threshold — rounding noise can masquerade as a semantic error.",
+   "new_visual_element": "DeckPattern — merely competent vs strong (three differentiators)",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own"
+   },
+   "remotion": {
+    "pattern": "DeckPattern",
+    "props": {
+     "pattern": "divergence",
+     "title": "Strong vs Merely Competent",
+     "left": {
+      "label": "MERELY COMPETENT",
+      "note": "positive results only · vague generalization · hidden tolerance"
+     },
+     "right": {
+      "label": "STRONG",
+      "note": "negative results as findings · one named adjacent domain · justified threshold"
+     },
+     "sparkLine": "Three moves, each worth a paragraph in the paper."
+    },
+    "rendered": {
+     "out": "media/A6R.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-A6R.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "PIPELINE → fill_slates/remotion_scenes for A6R"
+   }
+  },
+  {
+   "beat_id": "A6V",
+   "act": "Bear’s final word",
+   "estimated_duration_s": 14,
+   "actual_duration_s": 14.36,
+   "narration_text": "Zhenhao has the right instincts. The project is genuinely novel, the domain is well-chosen, and the likely negative result is more valuable than most positive ones. Ship the taxonomy empirically, report what fails, and the paper writes itself.",
+   "new_visual_element": "VOX still — research desk with open notebook (Tier 1, AI-generate)",
+   "shot": {
+    "type": "STILL",
+    "source": "ai",
+    "motion": "kenburns",
+    "focus": [
+     0.5,
+     0.5
+    ]
+   },
+   "prompt": "a research desk with open notebooks and loose papers; overhead or angled view; academic workspace; warm tones; pencils; no people",
+   "audio_file": "mp3/beat-A6V.mp3",
+   "build": {
+    "status": "SLATE",
+    "src": null,
+    "filled_by": null,
+    "at": "2026-07-24T13:56:36",
+    "needs": "YOU → 5–10s gen-AI clip → pantry (as A6V.mp4)",
+    "suggested": "suggested prompt: a research desk with open notebooks and loose papers; overhead or angled view; academic workspace; warm tones; pencils; no people"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "estimated_duration_s": 20,
+   "actual_duration_s": 35.03,
+   "narration_text": "Your turn. Here's the prompt — paste it into Claude. It reads: Take Zhenhao's synthetic-database approach and apply it to a domain you know. Pick one natural-language-to-X system where a plausible-looking output can be quietly wrong — SQL, code, calendaring, anything. Design one synthetic test case where the correct interpretation and the plausible-but-wrong interpretation must produce different outputs. What property of the domain makes that construction possible? End quote. The point of that exercise is to find the property that makes quiet failure detectable — the property Zhenhao found in Bitcoin's independent RPC path. Most domains have something equivalent. Find yours.",
+   "new_visual_element": "ClaudeComposerAsk — Your Turn prompt with handoff discussion",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN · COMPUTATIONAL SKEPTICISM · SILENT SQL FAILURES",
+      "segment": "It Ran Clean. It Was Wrong.",
+      "command": "Take what you learned from [It Ran Clean. It Was Wrong.] and apply it to your own work. What's one thing you'll try first?",
+      "runningText": "paste this into Claude and run it on your own work…",
+      "output": [],
+      "folderLabel": "@NikBearBrown"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "remotion": {
+    "pattern": "ClaudeComposerAsk",
+    "props": {
+     "greeting": "Your turn.",
+     "topic": "COMPUTATIONAL SKEPTICISM · SILENT SQL FAILURES",
+     "segment": "It Ran Clean. It Was Wrong.",
+     "command": "Take Zhenhao’s synthetic-database approach and apply it to a domain you know. Pick one NL-to-X system where a plausible-looking output can be quietly wrong. Design one synthetic test case where the correct and plausible-but-wrong interpretations must produce different outputs. What property of the domain makes that construction possible?",
+     "runningText": "quiet failure · synthetic test · the domain property that makes it detectable…",
+     "folderLabel": "@NikBearBrown",
+     "modelLabel": "Fable 5",
+     "effortLabel": "Low"
+    },
+    "rendered": {
+     "out": "media/BHTF.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "build": {
+    "status": "SLATE"
+   },
+   "lane": "BOOKEND",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx"
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "estimated_duration_s": 8,
+   "actual_duration_s": 7.94,
+   "narration_text": "It Ran Clean. It Was Wrong. Professor Bear reviews Zhenhao's Computational Skepticism final project. Liam, in for Bear.",
+   "new_visual_element": "ClaudeTitleOutro — title card with handle",
+   "shot": {
+    "type": "REMOTION",
+    "source": "own",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "It Ran Clean. It Was Wrong.",
+      "slug": "claude-liam-silent-sql-failures"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "remotion": {
+    "pattern": "ClaudeTitleOutro",
+    "props": {
+     "title": "It Ran Clean. It Was Wrong.",
+     "handle": "@NikBearBrown",
+     "subline": "Liam, in for Bear."
+    },
+    "rendered": {
+     "out": "media/BOUT.mp4",
+     "at": ""
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "build": {
+    "status": "SLATE"
+   },
+   "lane": "BOOKEND",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "voice_kokoro": "am_onyx"
+  }
+ ]
+}

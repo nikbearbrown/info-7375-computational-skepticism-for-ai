@@ -1,6 +1,6 @@
 # INFO 7375 Computational Skepticism for AI: Fall 2026 exam
 
-> **Format update, 2026-11-15:** Nik specified 5 case-style questions × 10 points = 50, plus 10 multiple-answer questions × 5 points = 50. Total: 100. Existing practice papers and their keys are preserved as historical 7-case/6-multiple-answer exercises, not current-format mock exams. The new [exam generator prompt](EXAM-GENERATOR-PROMPT.md) is a draft with a representative independent assistant-agent check, not a live Claude Project test.
+> **Format update, 2026-11-15:** Nik specified 5 case-style questions × 10 points = 50, plus 10 multiple-answer questions × 5 points = 50. Total: 100. Existing practice papers and their keys are preserved as historical 7-case/6-multiple-answer exercises, not current-format mock exams. The new [exam generator prompt](EXAM-GENERATOR-PROMPT.md) is a local draft with a representative independent assistant-agent check, not a live Claude Project test.
 
 ## Executive summary
 
@@ -79,6 +79,7 @@ Every entry in the key ends with a **"Covered in:"** line. It names the chapter 
 | [practice-exam-02.md](practice-exam-02.md) | Practice exam 2: a different 7 cases and 6 questions, no answers |
 | [practice-exam-02-KEY.md](practice-exam-02-KEY.md) | Practice exam 2 key, with the questions shown and a "Covered in:" source for every entry |
 
+The question text in each key is copied from the exam file by [scripts/build-exam-with-key.py](../scripts/build-exam-with-key.py), so the two always match. Edit questions in the exam file only, then rerun the script.
 
 The two practice exams share no case and no multiple-answer question. Together they cover every case area in the course (foundations and chapters 1 to 13), one case each.
 
@@ -101,7 +102,3 @@ The exams folder's README describes an earlier plan, in which every question was
 ## How to prepare
 
 [HOW-TO-PREPARE.md](HOW-TO-PREPARE.md): a study guide for this exam: what the research says, a 14-day and a 3-day plan, how to practise the case questions and the multiple-answer questions, and the common mistakes.
-
-## Practice-generator scope caveat
-
-The broad book scope above conflicts with the narrower compact exam-term list. The [practice prompt](EXAM-GENERATOR-PROMPT.md) explicitly uses a conservative working scope until the instructor resolves that discrepancy; this does not announce a confirmed narrower examination syllabus.

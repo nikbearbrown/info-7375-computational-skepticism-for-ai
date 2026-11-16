@@ -1,0 +1,505 @@
+{
+  "video": "claude-liam-silent-sql-failures",
+  "metadata": {
+    "title": "It Ran Clean. It Was Wrong.",
+    "slug": "claude-liam-silent-sql-failures",
+    "topic": "COMPUTATIONAL SKEPTICISM \u00b7 SILENT SQL FAILURES",
+    "genre": "deep-explainer",
+    "register": "Teardown",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "vox_stage": "#F2F0E9",
+    "accent": "#D97757",
+    "greeting": "Jambo, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "Computational Skepticism for AI \u2014 Deep Explainers",
+    "source": "books/computational-skepticism-for-ai/youtube/silent-sql-failures-source.md",
+    "gate": "PLAN \u2014 audio generated; previz compile next",
+    "beat_mix_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "beat_mix_actual": {
+      "body_beats": 29,
+      "VOX": "20.7% (6)",
+      "MANIM": "27.6% (8)",
+      "REMOTION": "31.0% (9)",
+      "CARD": "20.7% (6)",
+      "lint": "PASS \u2014 vox 20.7% in 15-30% band; spine OK; A3M\u2192A3M2 consecutive Manim WARN (accepted)"
+    },
+    "total_estimated_duration_seconds": 429,
+    ".codex": {
+      "workflow": "deep-explainer",
+      "mode": "unattended-to-previz",
+      "agent": "Claude Code",
+      "persona": "Liam (in for Bear)",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "paid_generation": false,
+      "publish": false,
+      "reviewer": "Bear"
+    },
+    "description_blurb": "Professor Bear reviews Zhenhao's final project: a verification framework for LLM-generated SQL tested on a Bitcoin blockchain database. The dangerous failure isn\u2019t a crash \u2014 it\u2019s a query that runs clean and returns a wrong number. Seven minutes on silent failures, two-path disagreement, property-based testing for SQL semantics, and why the likely negative result is more valuable than most positive ones.",
+    "hashtags": [
+      "ComputationalSkepticism",
+      "LLMevaluation",
+      "textToSQL",
+      "NLtoSQL",
+      "Bitcoin",
+      "UTXO",
+      "softwaretesting",
+      "AIreliability",
+      "calibration"
+    ],
+    "chapters": [
+      [
+        "B00",
+        "It Ran Clean. It Was Wrong."
+      ],
+      [
+        "A1C",
+        "Act I: The Quiet Failure"
+      ],
+      [
+        "A2C",
+        "Act II: The Bitcoin Testbed"
+      ],
+      [
+        "A3C",
+        "Act III: Five Types of Failure"
+      ],
+      [
+        "A4C",
+        "Act IV: The Benchmark"
+      ],
+      [
+        "A5C",
+        "Act V: Three Detection Strategies"
+      ],
+      [
+        "A6C",
+        "Act VI: Calibration and What Makes It Strong"
+      ],
+      [
+        "BVDT",
+        "Verdict"
+      ]
+    ],
+    "source_chapter": "Computational Skepticism for AI \u2014 Professor Bear reviews Zhenhao\u2019s final project",
+    "build": {
+      "at": "2026-07-24T13:56:36",
+      "cut": "master",
+      "filled": 8,
+      "of": 33,
+      "slates": [
+        "B00",
+        "A1C",
+        "A1R",
+        "A1R2",
+        "A1V",
+        "A2C",
+        "A2R",
+        "A2V",
+        "A3C",
+        "A3R",
+        "A3R2",
+        "A3V",
+        "A4C",
+        "A4R",
+        "A4V",
+        "A5C",
+        "A5R",
+        "A5V",
+        "A5R2",
+        "A6C",
+        "A6R",
+        "A6V",
+        "BVDT",
+        "BHTF",
+        "BOUT"
+      ],
+      "skin_warnings": [
+        "B00: palette=claude but the cold open is 'un-annotated' \u2014 COLD OPEN LAW wants ClaudeComposerAsk",
+        "BOUT: palette=claude but the outro is 'un-annotated' \u2014 OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    }
+  },
+  "source_of_truth": "beat_sheet.json \u2014 edit the sheet, not this file",
+  "beats_total": 33,
+  "beats_open": 25,
+  "beats": [
+    {
+      "beat_id": "B00",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B00.mp4",
+      "label": "ClaudeComposerAsk \u2014 Liam asks Bear\u2019s feedback on Zhenhao\u2019s project"
+    },
+    {
+      "beat_id": "A1C",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A1C.mp4",
+      "label": "SlateCard \u2014 Act I title"
+    },
+    {
+      "beat_id": "A1R",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A1R.mp4",
+      "label": "ClaudeWindow \u2014 SQL query and result (gross vs balance)"
+    },
+    {
+      "beat_id": "A1M",
+      "status": "filled",
+      "on_disk": "manim/A1M.mp4",
+      "method": "manim",
+      "who": "pipeline",
+      "scene_hint": "animated_graphics",
+      "prompt": null,
+      "slot": "manim/A1M.mp4",
+      "label": "Manim \u2014 UTXO diagram: outputs received, spent flags, gross vs balance"
+    },
+    {
+      "beat_id": "A1R2",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A1R2.mp4",
+      "label": "DeckPattern \u2014 loud failure vs quiet failure"
+    },
+    {
+      "beat_id": "A1V",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "an open accounting ledger with columns of handwritten figures; balance sheet rows; detailed bookkeeping; black and white or sepia; dramatic angled lighting; no people",
+      "slot": "media/A1V.mp4",
+      "label": "VOX still \u2014 balance ledger (Tier 1, AI-generate)"
+    },
+    {
+      "beat_id": "A2C",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A2C.mp4",
+      "label": "SlateCard \u2014 Act II title"
+    },
+    {
+      "beat_id": "A2M",
+      "status": "filled",
+      "on_disk": "manim/A2M.mp4",
+      "method": "manim",
+      "who": "pipeline",
+      "scene_hint": "animated_graphics",
+      "prompt": null,
+      "slot": "manim/A2M.mp4",
+      "label": "Manim \u2014 two-path disagreement diagram (SQL vs RPC \u2192 FLAG)"
+    },
+    {
+      "beat_id": "A2R",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A2R.mp4",
+      "label": "DeckPattern \u2014 naive RPC vs rigorous ground truth"
+    },
+    {
+      "beat_id": "A2V",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "abstract network diagram of interconnected nodes; blockchain or distributed ledger visualization; black ink lines on light background; technical illustration style; no people",
+      "slot": "media/A2V.mp4",
+      "label": "VOX still \u2014 distributed network graph (Tier 1, AI-generate)"
+    },
+    {
+      "beat_id": "A3C",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A3C.mp4",
+      "label": "SlateCard \u2014 Act III title"
+    },
+    {
+      "beat_id": "A3R",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A3R.mp4",
+      "label": "ChipGrid \u2014 five error types"
+    },
+    {
+      "beat_id": "A3M",
+      "status": "filled",
+      "on_disk": "manim/A3M.mp4",
+      "method": "manim",
+      "who": "pipeline",
+      "scene_hint": "animated_graphics",
+      "prompt": null,
+      "slot": "manim/A3M.mp4",
+      "label": "Manim \u2014 semantic mismatch: two definitions of balance"
+    },
+    {
+      "beat_id": "A3M2",
+      "status": "filled",
+      "on_disk": "manim/A3M2.mp4",
+      "method": "manim",
+      "who": "pipeline",
+      "scene_hint": "animated_graphics",
+      "prompt": null,
+      "slot": "manim/A3M2.mp4",
+      "label": "Manim \u2014 SQL SUM skips NULLs: table with null values \u2192 silent zero"
+    },
+    {
+      "beat_id": "A3R2",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A3R2.mp4",
+      "label": "DeckPattern \u2014 temporal confusion and reference frame errors"
+    },
+    {
+      "beat_id": "A3V",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "hand-drawn taxonomy tree or classification branching diagram on paper; pencil or ink; scientific notebook; categories branching from a root; close-up; no people",
+      "slot": "media/A3V.mp4",
+      "label": "VOX still \u2014 hand-drawn taxonomy tree in notebook (Tier 1, AI-generate)"
+    },
+    {
+      "beat_id": "A4C",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A4C.mp4",
+      "label": "SlateCard \u2014 Act IV title"
+    },
+    {
+      "beat_id": "A4M",
+      "status": "filled",
+      "on_disk": "manim/A4M.mp4",
+      "method": "manim",
+      "who": "pipeline",
+      "scene_hint": "animated_graphics",
+      "prompt": null,
+      "slot": "manim/A4M.mp4",
+      "label": "Manim \u2014 four-tier staircase with implicit assumption counts"
+    },
+    {
+      "beat_id": "A4R",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A4R.mp4",
+      "label": "DeckPattern \u2014 wrong vs correct sequencing"
+    },
+    {
+      "beat_id": "A4V",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "a precision measurement instrument or calibration gauge; technical drawing or photograph; black and white; scientific; no people",
+      "slot": "media/A4V.mp4",
+      "label": "VOX still \u2014 measurement scale or calibration instrument (Tier 1, AI-generate)"
+    },
+    {
+      "beat_id": "A5C",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A5C.mp4",
+      "label": "SlateCard \u2014 Act V title"
+    },
+    {
+      "beat_id": "A5R",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A5R.mp4",
+      "label": "DeckPattern \u2014 SQL path vs RPC path cross-validation"
+    },
+    {
+      "beat_id": "A5M",
+      "status": "filled",
+      "on_disk": "manim/A5M.mp4",
+      "method": "manim",
+      "who": "pipeline",
+      "scene_hint": "animated_graphics",
+      "prompt": null,
+      "slot": "manim/A5M.mp4",
+      "label": "Manim \u2014 N samples all returning same wrong answer (self-consistency fails)"
+    },
+    {
+      "beat_id": "A5V",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "a printed academic paper or research findings document; columns of text; abstract visible; scientific journal style; close-up; black and white; no people",
+      "slot": "media/A5V.mp4",
+      "label": "VOX still \u2014 academic findings or research paper (Tier 1, AI-generate)"
+    },
+    {
+      "beat_id": "A5M2",
+      "status": "filled",
+      "on_disk": "manim/A5M2.mp4",
+      "method": "manim",
+      "who": "pipeline",
+      "scene_hint": "animated_graphics",
+      "prompt": null,
+      "slot": "manim/A5M2.mp4",
+      "label": "Manim \u2014 synthetic DB table: 3 outputs, 2 spent \u2192 gross=10, balance=2"
+    },
+    {
+      "beat_id": "A5R2",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A5R2.mp4",
+      "label": "DeckPattern \u2014 property test framing (QuickCheck for SQL)"
+    },
+    {
+      "beat_id": "A6C",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A6C.mp4",
+      "label": "SlateCard \u2014 Act VI title"
+    },
+    {
+      "beat_id": "A6M",
+      "status": "filled",
+      "on_disk": "manim/A6M.mp4",
+      "method": "manim",
+      "who": "pipeline",
+      "scene_hint": "animated_graphics",
+      "prompt": null,
+      "slot": "manim/A6M.mp4",
+      "label": "Manim \u2014 reliability diagram: Tier 1 vs Tier 3 calibration curves"
+    },
+    {
+      "beat_id": "A6R",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/A6R.mp4",
+      "label": "DeckPattern \u2014 merely competent vs strong (three differentiators)"
+    },
+    {
+      "beat_id": "A6V",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "a research desk with open notebooks and loose papers; overhead or angled view; academic workspace; warm tones; pencils; no people",
+      "slot": "media/A6V.mp4",
+      "label": "VOX still \u2014 research desk with open notebook (Tier 1, AI-generate)"
+    },
+    {
+      "beat_id": "BVDT",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/BVDT.mp4",
+      "label": "ClaudeVerdictArtifact \u2014 Bear\u2019s verdict on Zhenhao\u2019s project"
+    },
+    {
+      "beat_id": "BHTF",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/BHTF.mp4",
+      "label": "ClaudeComposerAsk \u2014 Your Turn prompt with handoff discussion"
+    },
+    {
+      "beat_id": "BOUT",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/BOUT.mp4",
+      "label": "ClaudeTitleOutro \u2014 title card with handle"
+    }
+  ]
+}

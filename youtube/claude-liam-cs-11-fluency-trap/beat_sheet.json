@@ -1,0 +1,644 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-11-fluency-trap",
+    "title": "Why Fluent Answers Make You Worse at Checking Them",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show the two-stage fluency trap: a well-formed AI answer boosts user confidence in the content, then boosts confidence in the user's own evaluation of that content — because form and substance are generated independently and the old human heuristic linking them is broken. Source: books/computational-skepticism-for-ai/chapters/01-the-skeptics-toolkit.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = genuine understanding / ground truth; CRIMSON = false confidence / the trap; GOLD = the two-stage pump / key insight; SLATE = the fluent text flowing in",
+    "note": "EXCLUSIONS: no Botspeak framework or pillar vocabulary, no LLM architecture explanation, no prompt-engineering tips, no Ash case retelling beyond one beat",
+    "total_estimated_duration_seconds": 185,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 11,
+    "build": {
+      "at": "2026-07-19T02:59:21",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why Fluent Answers Make You Worse at Checking Them",
+            "greeting": "Olá, Liam.",
+            "command": "The better an AI answer reads, the worse you become at evaluating it — and you feel yourself getting better.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "The better an AI answer reads, the worse you become at evaluating it — and you feel yourself getting better.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why Fluent Answers Make You Worse at Checking Them",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why Fluent Answers Make You\nWorse at Checking Them"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 6.23,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A researcher pastes an AI-generated literature summary into a paper. It reads perfectly — smooth transitions, confident claims, clear structure. She reviews it twice. She finds nothing wrong. Three of the eight citations do not exist.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "graphic": {
+        "manim": "B02_FluencyVsError",
+        "production_viz": {
+          "label": "fluent text, invisible errors — the setup",
+          "mechanic": "a block of flowing slate text appears (abstract lorem-style paragraph lines); three specific lines are highlighted with gold; then crimson X marks appear on those three lines; a SerifLabel 'citations do not exist' points to the X marks; the text block otherwise appears clean and well-formatted",
+          "colors": [
+            "#2D3142",
+            "#F5D061",
+            "#BF3339"
+          ],
+          "note": "the contrast between fluent appearance and hidden error is the cold open stake; gold highlights then reveal crimson errors"
+        }
+      },
+      "scene_class": "B02_FluencyVsError",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 13.53,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:59:21",
+        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "Why does a well-written answer actively degrade your ability to check it — and what does fluency actually signal in AI text?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Why does a well-written answer actively degrade your",
+              "ability to check it?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "Why does a well-written answer actively degrade your ability to check it?",
+        "sub": "and what does fluency actually signal in AI text"
+      },
+      "scene_class": "B03_Question",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 7.19,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:59:21"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "In human writing, fluency and accuracy co-vary. A person who can write clearly usually knows the material. The writing is evidence of the understanding. You have used that signal your whole life — and it is nearly always right.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B04_HumanHeuristic",
+        "production_viz": {
+          "label": "human heuristic — fluency signals accuracy",
+          "mechanic": "a simple two-node graph: 'FLUENCY' (teal) on the left and 'ACCURACY' (teal) on the right; a teal arrow labeled 'co-varies' connects them; a SerifLabel 'works for humans' below the arrow; the graph is clean and simple",
+          "colors": [
+            "#1F6F5C"
+          ],
+          "note": "establish the heuristic as legitimate and useful before showing it breaks"
+        }
+      },
+      "scene_class": "B04_HumanHeuristic",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 12.39,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:59:21",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "AI systems generate form and content through the same token-prediction process. Fluency is not a byproduct of understanding — it is a direct optimization target. The model produces fluent text whether the content is accurate or invented.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "graphic": {
+        "manim": "B05_BrokenHeuristic",
+        "production_viz": {
+          "label": "AI — fluency disconnected from accuracy",
+          "mechanic": "the same two-node graph from B04; the teal arrow between 'FLUENCY' and 'ACCURACY' is replaced with a crimson X; a new crimson arrow from 'FLUENCY' to a third node 'OPTIMIZATION TARGET' appears; SerifLabel 'no longer signals accuracy' below the X",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339"
+          ],
+          "note": "transform from B04 — same nodes, the connection breaks and new one appears; the X is the reveal"
+        }
+      },
+      "scene_class": "B05_BrokenHeuristic",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 14.08,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:59:21",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The trap is two stages. And you feel better after both of them.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Two-stage trap",
+              "you feel better after both. Neither stage helps."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A minimalist editorial doodle of a confidence gauge — a semicircular meter with a needle — shown twice in sequence: first the needle swings rightward to a high position labeled 'confident in the answer'; then a second pump motion swings it even further right labeled 'confident in my evaluation'; the gauge sits in a reader's hand illustrated in rough ink strokes; flat newsprint editorial style, cream background, charcoal ink",
+      "scene_class": "B06_TwoStageSetup",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 4.25,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:59:21"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Stage one: the fluent text arrives and raises your confidence in the output. The prose is polished, the structure is clear. It reads like expertise. Your confidence gauge moves up.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "graphic": {
+        "manim": "B07_StagePump",
+        "production_viz": {
+          "label": "stage one — fluency pumps confidence in the answer",
+          "mechanic": "a slate text block slides in on the left; an arrow points right to a crimson confidence gauge that sweeps upward; gold label 'STAGE 1' above the arrow; SerifLabel 'confident in the answer' below the gauge needle",
+          "colors": [
+            "#2D3142",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the gauge sweep is the key motion; crimson marks the false confidence reading"
+        }
+      },
+      "scene_class": "B07_StagePump",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 10.43,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:59:21",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Stage two: you review it, spot nothing wrong, and that negative result inflates your confidence in your own judgment. You did not find an error, therefore you are a good evaluator. The gauge moves up again.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "Fluency first boosts your confidence in the output, then boosts your confidence in your own judgment of the output.",
+        "attribution": "— Chapter 1, Computational Skepticism for AI",
+        "highlight_words": "your own judgment",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B08_Quote",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 11.22,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:59:21",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: Stage two: you review it, spot nothing wrong, and that negative result inflates your confidence in your own judgment. You did not find an error, therefore you a"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The errors that survive this process are not random. They are the errors that the fluent form conceals best — claims that fit the expected narrative, citations that sound plausible, numbers that fall in the right range.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "graphic": {
+        "manim": "B09_SurvivingErrors",
+        "production_viz": {
+          "label": "errors that survive — the ones fluency hides",
+          "mechanic": "a grid of small squares; most turn teal (caught errors); a cluster in the center stays crimson; a gold border around the surviving crimson cluster; SerifLabel 'these fit the story' points to the cluster; SerifLabel 'caught' above the teal group",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the surviving errors are NOT random — they are the plausible-sounding ones; the gold border makes the selection visible"
+        }
+      },
+      "scene_class": "B09_SurvivingErrors",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 12.27,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:59:21",
+        "needs": "PIPELINE → render animated_graphics.py scene B09_*"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The fix is structural, not attitudinal. Deciding to try harder does not break the trap. You need external verification — a fact that does not care how well the sentence reads.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "Deciding to try harder does not break the fluency trap. External verification is required.",
+        "attribution": "— Chapter 1, Computational Skepticism for AI",
+        "highlight_words": "External verification",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B10_ImplicationQuote",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 10.24,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:59:21",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The fix is structural, not attitudinal. Deciding to try harder does not break the trap. You need external verification — a fact that does not care how well the "
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Useful checks: before reading an answer, write your own prediction of what it should say. Check specific claims against primary sources. Ask the model to produce the same answer with one invented detail — see if you catch it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B11_CheckList",
+        "production_viz": {
+          "label": "three structural checks — breaking the trap",
+          "mechanic": "three LabelChips appear in sequence via GrowFromCenter: '1. PREDICT FIRST' (teal), '2. PRIMARY SOURCE' (teal), '3. INJECT ERROR' (teal); a SerifLabel 'structural, not attitudinal' appears below all three; each chip has a simple icon suggestion in the label area",
+          "colors": [
+            "#1F6F5C"
+          ],
+          "note": "the three checks are the actionable takeaway; simple and memorable layout"
+        }
+      },
+      "scene_class": "B11_CheckList",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 12.31,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:59:21",
+        "needs": "PIPELINE → render animated_graphics.py scene B11_*"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 13.0,
+      "narration_text": "A student uses AI to summarize a paper for class. The summary is three paragraphs, well-organized, confidently stated. She reads it twice and feels satisfied. She submits it. The instructor asks about a key finding on page fourteen. The summary never mentioned page fourteen. The AI had compressed the paper around the introduction and conclusion, skipping the main result.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "graphic": {
+        "manim": "B12_ExampleGap",
+        "production_viz": {
+          "label": "fluent summary, missing the main result",
+          "mechanic": "a paper represented as a vertical column of sections (INTRO, METHODS, RESULTS, DISCUSSION, CONCLUSION); a crimson X appears on RESULTS; a teal bracket spans INTRO and CONCLUSION with label 'summary covers these'; gold annotation 'main result: skipped' points to the crimson X",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "simple column structure; the gap between what the summary covered and what mattered is the visual"
+        }
+      },
+      "scene_class": "B12_ExampleGap",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 19.43,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:59:21",
+        "needs": "PIPELINE → render animated_graphics.py scene B12_*"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Fluency in AI text signals optimization, not understanding. It pumps your confidence twice — in the answer, then in yourself. The check you need is external.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Fluency signals optimization, not understanding.",
+              "Confidence misleads."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Fluency signals optimization, not understanding.",
+        "sub": "It pumps your confidence twice. The check you need is external.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "scene_class": "B13_Recap",
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 9.64,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:59:21"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "name": "OutroSeries",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why Fluent Answers Make You Worse at Checking Them",
+            "artifactHeading": "Key findings — Why Fluent Answers Make You Worse at Checking Them",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "Fluency in AI text signals optimization, not understanding."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:59:21"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "name": "OutroCTA",
+      "estimated_duration_s": 5.0,
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY FLUENT ANSWERS MAKE YOU WORSE AT CHECKING THEM",
+            "segment": "Why Fluent Answers Make You Worse at Checking Them",
+            "greeting": "Ciao, Liam.",
+            "command": "Ask Claude: Why Fluent Answers Make You Worse at Checking Them",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:59:21"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why Fluent Answers Make You Worse at Checking Them",
+            "slug": "claude-liam-cs-11-fluency-trap",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

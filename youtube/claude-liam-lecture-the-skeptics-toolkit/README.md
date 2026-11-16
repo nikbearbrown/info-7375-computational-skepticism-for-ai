@@ -1,0 +1,7 @@
+# Lecture 1 — The Skeptic's Toolkit (INFO 7375 Computational Skepticism for AI)
+
+## Executive summary
+**What this is.** A 12.7-minute whole-chapter lecture film (65 body beats in ten acts), Liam in for Bear, greeting "Hallo", Video 1 of 13 in the lecture series. **Why.** It is the first film of the course's lecture series, built from the updated Chapter 1 and Bear's 14-slide deck. **What was found.** The chapter has errors, corrected in the film with primaries: Knight Capital lost over $460M (not $440M) per the SEC; the sepsis model's 18% is of hospitalizations; the turkey's axe falls on day 1,001; Ash is an agent in the Agents of Chaos study, not a researcher; Zillow's "7,000 homes" is not in its filing. The chapter also has three unresolved merge blocks (see ACTS.md). **State.** Built to the verified 4K master; nothing staged, published, committed or pushed.
+
+Files (absolute): /Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/youtube/claude-liam-lecture-the-skeptics-toolkit/ — beat_sheet.json, narration.py, make_sheet.py, scenes.py (from kit.py + scenes_act1..6.py), ACTS.md, SHOTLIST.md, FACTCHECK.md, CHECKS-REPORT.md, TYPECHECK.md, SOURCES.md, PROMPTS.md, BUILD-PROMPT.md, BUILD-LOG.md, RESUME.md, build_srt.py, exports/landscape/ (master).
+Course credit strings per ../LECTURE-CREDIT.md; playlist `INFO 7375 — Computational Skepticism for AI (Lectures)`.

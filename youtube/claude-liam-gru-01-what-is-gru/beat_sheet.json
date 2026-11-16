@@ -1,0 +1,285 @@
+{
+  "metadata": {
+    "title": "What Is Gru? Programming as Conducting",
+    "slug": "claude-liam-gru-01-what-is-gru",
+    "topic": "WHAT IS GRU? \u2014 E1/6: PROGRAMMING AS CONDUCTING",
+    "register": "Pragmatist",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "greeting": "Ciao, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "playlist": "What Is Gru? \u2014 Computational Skepticism for AI",
+    "series": "claude-liam-gru",
+    "episode": 1,
+    "source": "INFO 7375 (Computational Skepticism for AI) \u2014 Gru Helper Series"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "narration_text": "Ciao \u2014 this is Liam. Episode 1 of 6 in the Gru helper series. Gru is a software-design-documentation system built for one purpose \u2014 to tell you which parts of a build belong to Claude and which parts belong only to you. This episode is the foundation: what Gru is, why it exists, and the one idea that makes every other command make sense. We will run /help on screen before this episode is over. Let's go.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 28,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E1/6: PROGRAMMING AS CONDUCTING",
+            "segment": "What Is Gru? Programming as Conducting",
+            "command": "Load Gru (Claude Project or paste the system prompt). Run /help. Confirm the Welcome Menu appears.",
+            "runningText": "a phase-gate engine for deciding more precisely \u2014 not for typing less\u2026",
+            "output": [
+              "Gru loaded and confirmed active via /help",
+              "Welcome Menu visible \u2014 phase-command list returned",
+              "Ready for /v0"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "B01",
+      "act": "the conductor metaphor",
+      "narration_text": "Here is the one idea Gru exists to teach. You are Gru. Claude is the minions. The minions are excellent and enthusiastic \u2014 they execute exactly what they understood you to mean. That last phrase is the whole thing. Not what you meant. What they understood you to mean. The gap between those two is where all the damage lives. A junior engineer who misunderstands the spec costs a sprint. Claude misunderstanding the spec costs you a demo, a grade, or a shipped product that does the wrong thing at scale. The conductor's job is not to play every instrument. The conductor's job is to specify the piece precisely enough that the orchestra can play it correctly \u2014 and then to verify that what they played is what you intended. Gru is the tool that formalizes both halves of that job: it helps you specify the build precisely, and it labels every step where only you can verify the result.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 57,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "You are Gru. Claude is the minions.",
+              "Minions execute exactly what they understood you to mean",
+              "The gap between meant and understood is where all the damage lives."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "the solve-verify asymmetry",
+      "narration_text": "The reason this gap is dangerous right now, specifically, is the solve-verify asymmetry. Claude solves faster than any human, and that speed won't change. It can iterate through solutions in seconds. But there are three things Claude cannot do regardless of speed: it cannot verify its own output against domain reality \u2014 it does not know what the real world looks like outside its training data; it cannot reframe a bad problem \u2014 if you give it the wrong mission, it will complete the wrong mission efficiently; and it cannot supply accountability \u2014 it cannot be responsible for the outcome. The asymmetry is permanent. You will never out-solve Claude on a well-specified task. You will always out-verify, out-reframe, and out-own the result. That asymmetry is not a weakness in the tool. It is the shape of the collaboration \u2014 and it is what the Boondoggle Score measures.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 55,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Claude solves fast. Only you can verify.",
+              "Claude solves faster than any human \u2014 and that speed won't change.",
+              "Cannot #1: verify its own output against domain reality."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "why Gru exists \u2014 the Irreducibly Human curriculum",
+      "narration_text": "Gru was built for the Irreducibly Human curriculum \u2014 Tier 4 of Computational Skepticism for AI. Tier 4 is the question: what are the parts of a software build that cannot be delegated to Claude even with a perfect prompt? The answer is not a list of tasks. It is a set of capacities \u2014 judgment calls that require domain knowledge, accountability, and the ability to reframe. Gru operationalizes that answer. Every time you run a command in Gru, you are either producing an artifact that Claude will help you build, or you are making a decision that only you can make. The score surfaces which is which, and labels every human step with the specific capacity it requires. The Boondoggle Report you turn in at Week 1 is the output of this system. So this series is not about Gru as software. It is about Gru as a training apparatus for the skill of deciding more precisely.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 57,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Irreducibly Human curriculum \u2014 Tier 4",
+              "Tier 4 question: what parts of a build cannot be delegated",
+              "Answer: five capacities \u2014 judgment calls requiring domain knowledge, accountability, reframing."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "the two modes + demo /help",
+      "narration_text": "Gru runs in two modes. The default is interactive \u2014 Gru pushes back, flags weak input, names assumptions, and disagrees when a decision contradicts a principle you already set. That friction is the product. The second mode is /silent, which strips the pushback and produces clean output. Silent mode is for when you already know what you're doing. It is not a shortcut past the thinking \u2014 it is a tool for practitioners who have already done the thinking. For students, default mode is almost always right. Now, the demo. You load Gru by creating a Claude Project and pasting the Gru system prompt as the project's instructions, or by pasting the system prompt directly into a new session. Then you type /help. /help returns the Welcome Menu \u2014 a list of command families and their phase order. When you see that menu, Gru is confirmed active. The command list is the map; the episodes that follow walk you through it one family at a time.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 60,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Ciao, Liam",
+            "topic": "WHAT IS GRU? \u2014 E1/6: PROGRAMMING AS CONDUCTING",
+            "segment": "Demo: Load Gru and run /help",
+            "command": "/help",
+            "runningText": "Welcome Menu returns \u2014 phase-command families listed in order\u2026",
+            "output": [
+              "Welcome Menu returned \u2014 Gru confirmed active",
+              "Command families: Problem & Vision , Systems , Domain , Scope , Compile",
+              "Interactive mode default: pushback + phase gates enabled",
+              "/silent available for practitioners who already know"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lead_silence_s": 0.5,
+      "narration_text": "Verdict for What Is Gru. Gru is a phase-gate documentation system that does one thing no other tool does: it separates what Claude builds from what only you can decide, and scores the result. The one idea: you are Gru, Claude is the minions \u2014 the gap between what you meant and what they understood is where the damage lives. The solve-verify asymmetry is permanent: Claude out-solves, you out-verify, out-reframe, out-own. Two modes: interactive with pushback is the default; /silent is for practitioners. Load Gru by pasting the system prompt into a Claude Project or a new session. Run /help. When the Welcome Menu appears, Gru is active and you are ready for /v0.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 40,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "What Is Gru? Programming as Conducting",
+            "artifactHeading": "Core rules",
+            "artifactLines": [
+              "Gru separates what Claude builds from what only you can decide \u2014 then scores the split.",
+              "One idea: meant vs. understood. The gap is where the damage lives.",
+              "Solve-verify asymmetry: Claude out-solves. You out-verify, out-reframe, out-own.",
+              "Two modes: interactive (pushback on by default) , /silent (for practitioners).",
+              "Load: paste system prompt into Claude Project or new session. Run /help to confirm.",
+              "Welcome Menu = Gru is active. You are ready for /v0."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "narration_text": "Your turn. Here is the prompt \u2014 paste it into a new session with the Gru system prompt already loaded. The prompt reads: I am starting the Boondoggle Report for INFO 7375. I have never used Gru before. Run /help and give me the Welcome Menu so I can confirm the system prompt loaded correctly. End quote. That's the full prompt. Read the menu that comes back. Find the command families. Count the phase commands. That is the architecture of every episode that follows \u2014 you are not studying it yet, just meeting it. Then type /v0 \u2014 not to pass it, just to see what Gru asks. The gate's first question is the subject of Episode 3. But seeing it now, before I explain it, will make Episode 3 sharper.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 55,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN \u2014 WHAT IS GRU? PROGRAMMING AS CONDUCTING",
+            "segment": "What Is Gru? Programming as Conducting",
+            "command": "I am starting the Boondoggle Report for INFO 7375. I have never used Gru before. Run /help and give me the Welcome Menu so I can confirm the system prompt loaded correctly.",
+            "runningText": "read the menu \u2014 find the command families \u2014 count the phase commands \u2014 then type /v0 just to see the first question\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "What Is Gru? Programming as Conducting. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "What Is Gru? Programming as Conducting",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-gru-01-what-is-gru"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE"
+      }
+    }
+  ]
+}

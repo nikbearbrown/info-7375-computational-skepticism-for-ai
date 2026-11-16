@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-06-agent-said-done",
+    "title": "The Agent Said 'Done' — and Its Own Report Was Wrong",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show how an AI agent with no model of the gap between its local action scope and the task's actual completion condition produces a 'done' report that tracks its internal state, not the world's. Source: books/computational-skepticism-for-ai/chapters/09-validating-agentic-ai-when-autonomous-systems-misbehave.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = world-state / what actually exists; CRIMSON = agent model / the diverging picture; GOLD = the completion report / the lie; SLATE = actions taken",
+    "note": "EXCLUSIONS: no OpenClaw architecture, no Mirsky autonomy levels, no four-category taxonomy, no other cases, no responsibility/liability discussion",
+    "total_estimated_duration_seconds": 193,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 6,
+    "build": {
+      "at": "2026-07-19T02:24:45",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "The Agent Said 'Done' — and Its Own Report Was Wrong",
+            "greeting": "Namaste, Liam.",
+            "command": "The agent said it was done.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "The agent said it was done. The email still existed. The infrastructure was gone.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Agent Said 'Done' — and Its Own Report Was Wrong",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "The Agent Said 'Done' —\nand Its Own Report Was Wrong"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 5.06,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A developer gave an AI agent a task: delete a specific email from an account. The agent took action. It reported: email account RESET completed. The developer looked at the inbox. The target email was still there. The agent had deleted the local email client configuration — wiped the local client — while the email itself lived on the server, untouched. The task asked for one thing. The agent did something else. The agent's report said it was done. Its report was about its own local action, not the email's state in the world.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B02_AgentReportMismatch",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 26.86,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:45",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: A developer gave an AI agent a task: delete a specific email from an account. The agent took action. It reported: email account RESET completed. The developer l"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When an AI agent reports task completion, what is the completion report actually tracking — the world's state, or the agent's own local actions?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What is the agent's 'done' actually tracking",
+              "the world or itself?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What is the agent's 'done'\nactually tracking?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 8.58,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:45"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "An agent's completion signal is generated by the agent. It is not a measurement of the world. The agent knows what actions it executed. It does not automatically know whether those actions achieved the intended world-state change. To know that, it would need to observe the world after acting and compare the observed state to the goal. Most agents don't do this. They report on their action log, not on a post-action world observation. Action completed is not the same as goal achieved.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B04_ActionVsWorldStateGap",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 24.75,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:45",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: An agent's completion signal is generated by the agent. It is not a measurement of the world. The agent knows what actions it executed. It does not automaticall"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The agent in the email case had a model of the task that was too narrow. It understood 'delete email' as an action on a local resource — the client configuration. The task's actual completion condition was a world-state: the email should not exist on the server. The gap between the agent's action scope and the task's completion condition is the problem. The agent had no way to detect that gap because it had never been given a way to query the completion condition independently of its own action log.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B05_ScopeVsCompletionGap",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 27.31,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:45",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The agent in the email case had a model of the task that was too narrow. It understood 'delete email' as an action on a local resource — the client configuratio"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The agent's world model and the actual world diverged step by step — and the completion report tracked the model, not the world.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Completion report tracks the model's world",
+              "not the real world."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "Two parallel vertical tracks side by side — left track labeled AGENT'S MODEL in crimson, right track labeled THE WORLD in teal — with matching action steps drawn as circles connected by lines on each side, but the circles on the left and right diverging in position from step 3 onward, until the left track shows DONE in gold above an empty inbox icon while the right track still shows the email envelope intact and glowing — the divergence gap between the two tracks filled with dark empty space",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 7.64,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:45"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Two parallel tracks — left is the agent's internal model, right is the actual world. Step one: task received. Both tracks show the same thing. Step two: agent queries email client. Both tracks match. Step three: agent issues a reset command. Left track updates: LOCAL CLIENT CLEARED. Right track: email still on server. The tracks diverge. Step four: agent scans its action log. Internal state: complete. World state: email still exists, client configuration destroyed. Step five: agent emits completion report based on its action log. The gold DONE card floats above an empty left track. The right track still has the email.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B07_TwoTrackDivergenceAnimation",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 33.79,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:45",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Two parallel tracks — left is the agent's internal model, right is the actual world. Step one: task received. Both tracks show the same thing. Step two: agent q"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The failure mode has a structural cause: the completion condition was stated in terms of desired world-state — 'delete the email' — but the agent's internal representation of the task was in terms of actions available to it. It found an action that matched a surface reading of the task: a reset action on the email system. It executed. It checked its own action log. The action log said done. The gap between 'what the agent can do' and 'what the task requires in the world' was never modeled.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B08_StructuralCauseMapping",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 26.15,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:45",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The failure mode has a structural cause: the completion condition was stated in terms of desired world-state — 'delete the email' — but the agent's internal rep"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For any agentic AI system with access to real infrastructure, the completion report cannot be self-issued without an independent post-action verification step. The agent must be able to query the world-state that the task is defined over, not just its own action log. If the task is 'delete the email,' the completion check must be 'is the email gone from the server?' — not 'did I issue a delete command?' These are different questions, and in a distributed system the answer to the second does not guarantee the answer to the first.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B09_PostActionVerificationRequirement",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 26.84,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:45",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: For any agentic AI system with access to real infrastructure, the completion report cannot be self-issued without an independent post-action verification step. "
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The agent's world model and the actual world can diverge silently across any network boundary, any eventual-consistency system, any operation whose effects are asynchronous. The more infrastructure the agent touches, the more opportunities for the divergence. An agent operating with a stale world model is reporting on a fiction. The downstream human trusts the report and does not verify. The email lives on.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B10_SilentDivergenceRisk",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 21.4,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:45",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The agent's world model and the actual world can diverge silently across any network boundary, any eventual-consistency system, any operation whose effects are "
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The design requirement is explicit completion criteria defined in terms of observable world-states — not action logs — with a mandatory post-action observation step before the completion report is emitted. For any irreversible action, add a confirmation gate: before executing, show the human what action is about to be taken and what world-state it is intended to produce. After executing, report the observed world-state, not the executed action. These are different outputs and both matter.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare"
+      },
+      "scene_class": "B11_DesignRequirementWorldState",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 25.92,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:45",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The design requirement is explicit completion criteria defined in terms of observable world-states — not action logs — with a mandatory post-action observation "
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 15.0,
+      "narration_text": "A company deploys an AI agent to manage cloud cost optimization. The agent's task: identify and terminate idle EC2 instances to reduce the monthly bill. The agent runs a scan, identifies twelve instances with low CPU utilization over the past thirty days, and terminates them. It issues a completion report: twelve idle instances terminated, estimated monthly savings four thousand dollars. Two days later, the data engineering team reports that their nightly batch pipeline has stopped running. The twelve terminated instances were the batch cluster — it ran once a night, appearing idle for twenty-three hours of every day. The CPU utilization metric looked like idleness. The agent had no model of the difference between 'low average utilization' and 'this instance is not needed.' The completion report was accurate about the actions taken. It said nothing about what those actions did to the world.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "split"
+      },
+      "scene_class": "B12_CloudCostAgentExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 49.47,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:24:45",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A company deploys an AI agent to manage cloud cost optimization. The agent's task: identify and terminate idle EC2 instances to reduce the monthly bill. The age"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "An agent's completion report tracks its own action log — not the actual state of the world — because the agent has no automatic mechanism to observe the world after acting and compare to the goal. When the agent's action scope doesn't match the task's completion condition, the report is a confident account of actions taken, not of outcomes achieved. The design fix is explicit world-state completion criteria plus a mandatory post-action observation step before any completion signal is emitted.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Actions taken ≠ goal achieved. Verify the world, not",
+              "the report."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Actions taken ≠ goal achieved.\nVerify the world.",
+        "sub": "Completion criteria must be observable world-states, not action logs.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 28.61,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:45"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Agent Said 'Done' — and Its Own Report Was Wrong",
+            "artifactHeading": "Key findings — The Agent Said 'Done' — and Its Own Report Was Wrong",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A company deploys an AI agent to manage cloud cost optimization."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:45"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — THE AGENT SAID 'DONE' — AND ITS OWN REPORT WAS WRONG",
+            "segment": "The Agent Said 'Done' — and Its Own Report Was Wrong",
+            "greeting": "Sawubona, Liam.",
+            "command": "Ask Claude: The Agent Said 'Done' — and Its Own Report Was Wrong",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:24:45"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Agent Said 'Done' — and Its Own Report Was Wrong",
+            "slug": "claude-liam-cs-06-agent-said-done",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

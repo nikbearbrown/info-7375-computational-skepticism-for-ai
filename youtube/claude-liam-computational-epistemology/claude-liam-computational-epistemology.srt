@@ -1,0 +1,649 @@
+1
+00:00:00,000 --> 00:00:04,679
+Yassou — this is Liam, in for Bear.
+Today's ask is the oldest question in
+
+2
+00:00:04,679 --> 00:00:08,734
+philosophy, wearing brand-new clothes: how
+do you know what's true, when a machine
+
+3
+00:00:08,734 --> 00:00:12,165
+can generate a million plausible claims a
+minute? Philosophers called this
+
+4
+00:00:12,165 --> 00:00:16,220
+epistemology. Today we rebuild it as
+software — because checking claims by hand
+
+5
+00:00:16,220 --> 00:00:17,780
+stopped scaling a while ago.
+
+6
+00:00:17,780 --> 00:00:22,782
+Act one. The problem isn't that people
+lie. It's that the volume of claims outran
+
+7
+00:00:22,782 --> 00:00:24,450
+the apparatus for checking them.
+
+8
+00:00:24,450 --> 00:00:28,698
+For centuries, this apparatus lived in
+rooms like this one. Trace the
+justification.
+
+9
+00:00:28,698 --> 00:00:33,599
+Check the source. Test the coherence.
+Slow, careful — and built for a world
+where
+
+10
+00:00:33,599 --> 00:00:35,560
+claims arrived one at a time.
+
+11
+00:00:35,560 --> 00:00:41,141
+Now claims arrive as a firehose — text,
+images, video, much of it synthetic, some
+of
+
+12
+00:00:41,141 --> 00:00:45,676
+it adversarial. One human, applying the
+classical checks by hand, against that.
+The
+
+13
+00:00:45,676 --> 00:00:47,420
+mismatch is the whole story.
+
+14
+00:00:47,420 --> 00:00:51,178
+And it's really two different problems
+wearing one coat. First: I generated this
+
+15
+00:00:51,178 --> 00:00:55,804
+with a model — is it true? Second: the
+feed is saturated with synthetic claims —
+
+16
+00:00:55,804 --> 00:01:00,140
+what do I let in? Conflate them and every
+fix lands on the wrong problem.
+
+17
+00:01:00,140 --> 00:01:06,160
+Act two. What knowledge is — and the tiny
+1963 paper that broke the definition.
+
+18
+00:01:06,160 --> 00:01:10,404
+The classical definition stacked three
+conditions. You know something if it's
+true,
+
+19
+00:01:10,404 --> 00:01:15,002
+you believe it, and you're justified in
+believing it. Justified, true, belief. For
+
+20
+00:01:15,002 --> 00:01:16,770
+two thousand years, that held.
+
+21
+00:01:16,770 --> 00:01:20,575
+Then Edmund Gettier published three pages
+that wrecked it. His counterexamples
+
+22
+00:01:20,575 --> 00:01:25,763
+showed a belief can be justified, and true
+— and still not knowledge, because the
+
+23
+00:01:25,763 --> 00:01:28,530
+justification and the truth connect only
+by accident.
+
+24
+00:01:28,530 --> 00:01:33,347
+Here's the machine version. A model cites
+a source that doesn't exist — but the
+
+25
+00:01:33,347 --> 00:01:37,521
+number happens to be right. Correct
+answer, broken path. It looks identical to
+
+26
+00:01:37,521 --> 00:01:41,374
+knowledge, and the same process fails
+silently next time. That's not knowledge.
+
+27
+00:01:41,374 --> 00:01:42,980
+That's luck wearing its costume.
+
+28
+00:01:42,980 --> 00:01:48,598
+So the fix isn't asking whether the answer
+is true. Watch — we ask Claude to check
+
+29
+00:01:48,598 --> 00:01:50,250
+whether the justification is load-bearing.
+
+30
+00:01:50,250 --> 00:01:54,858
+Two separate scores. One for truth against
+a retrieved source. One for entailment —
+
+31
+00:01:54,858 --> 00:01:59,136
+does the stated reasoning actually support
+the claim. High truth with low entailment
+
+32
+00:01:59,136 --> 00:02:03,744
+doesn't pass: it gets flagged as Gettier
+risk. Most fact-checkers only run the
+first
+
+33
+00:02:03,744 --> 00:02:05,060
+score. That's the hole.
+
+34
+00:02:05,060 --> 00:02:10,345
+You can put a number on the danger. Take
+the truth score, multiply by one minus the
+
+35
+00:02:10,345 --> 00:02:14,698
+entailment score. High truth, low
+entailment — the product spikes. That
+spike is the
+
+36
+00:02:14,698 --> 00:02:18,740
+claim most likely to burn you: right
+answer, invisible to a truth-only checker.
+
+37
+00:02:18,740 --> 00:02:23,244
+And here's what the equation commits you
+to: truth and justification stay separate
+
+38
+00:02:23,244 --> 00:02:27,402
+axes, forever. Blend them into one
+confidence score and the dangerous case
+
+39
+00:02:27,402 --> 00:02:30,520
+disappears back into the average. Back to
+the pipeline.
+
+40
+00:02:30,520 --> 00:02:35,395
+Act three. Where does justification have
+to live — inside the mind, or in the track
+
+41
+00:02:35,395 --> 00:02:35,700
+record?
+
+42
+00:02:35,700 --> 00:02:39,905
+Philosophy split on this. Internalists
+said justification must be visible to the
+
+43
+00:02:39,905 --> 00:02:44,460
+believer — you can produce your reasons.
+Show your work, from the inside.
+
+44
+00:02:44,460 --> 00:02:48,066
+Externalists said something colder: what
+matters is whether the process that
+
+45
+00:02:48,066 --> 00:02:53,639
+produced the belief is reliable — whether
+it has a track record — even if nobody can
+
+46
+00:02:53,639 --> 00:02:54,950
+articulate why it works.
+
+47
+00:02:54,950 --> 00:03:00,710
+Here's why the cold answer wins for
+machines. Ask a model to explain itself
+and it
+
+48
+00:03:00,710 --> 00:03:05,390
+produces a fluent justification — which
+often isn't the process that made the
+
+49
+00:03:05,390 --> 00:03:09,350
+answer. Interpretability work keeps
+finding that gap. Self-report is an
+internalist
+
+50
+00:03:09,350 --> 00:03:10,430
+witness that confabulates.
+
+51
+00:03:10,430 --> 00:03:15,014
+So the architecture is reliabilist at the
+spine: log every process's outcomes, and
+
+52
+00:03:15,014 --> 00:03:20,303
+let the empirical record gate the trust. A
+model that says ninety percent, but lands
+
+53
+00:03:20,303 --> 00:03:24,887
+sixty in that bucket, gets treated as a
+sixty. Calibration is just honesty,
+
+54
+00:03:24,887 --> 00:03:25,240
+measured.
+
+55
+00:03:25,240 --> 00:03:30,009
+In code it's almost embarrassingly small.
+A dictionary of track records. Under ten
+
+56
+00:03:30,009 --> 00:03:35,145
+trials, no verdict — insufficient record.
+A confident model with a bad history is
+
+57
+00:03:35,145 --> 00:03:39,180
+still not trusted. The self-report gets
+demoted to a debugging signal.
+
+58
+00:03:39,180 --> 00:03:44,480
+Act four. Every justification needs a
+justification. What stops the falling?
+
+59
+00:03:44,480 --> 00:03:49,576
+Believe A because of B, B because of C, C
+because of… this is the regress problem,
+
+60
+00:03:49,576 --> 00:03:53,473
+and philosophy offered two exits. Hit
+bedrock — a basic belief that justifies
+
+61
+00:03:53,473 --> 00:03:57,970
+itself. Or deny the bedrock, and let
+beliefs hold each other up in a web.
+
+62
+00:03:57,970 --> 00:04:01,342
+Retrieval-augmented generation is
+foundationalism with a product name: stop
+the
+
+63
+00:04:01,342 --> 00:04:07,075
+regress at a document you can point to.
+And its known failure is the classical one
+—
+
+64
+00:04:07,075 --> 00:04:12,133
+the bedrock is only as good as the rock. A
+wrong source, confidently cited, grounds
+
+65
+00:04:12,133 --> 00:04:12,470
+nothing.
+
+66
+00:04:12,470 --> 00:04:17,678
+The web has its own classic failure. A
+conspiracy wall is perfectly coherent —
+every
+
+67
+00:04:17,678 --> 00:04:21,498
+thread supports every other thread.
+Coherence measures how well beliefs fit
+
+68
+00:04:21,498 --> 00:04:24,970
+together. It cannot tell you the whole
+structure isn't floating.
+
+69
+00:04:24,970 --> 00:04:29,673
+Now the machine version of the floating
+web. Ask three models, get three
+agreements,
+
+70
+00:04:29,673 --> 00:04:34,041
+call it confirmation. But if they trained
+on overlapping data, that's not three
+
+71
+00:04:34,041 --> 00:04:38,072
+witnesses — it's one witness talking to
+itself three times. Correlated error,
+
+72
+00:04:38,072 --> 00:04:39,080
+dressed as consensus.
+
+73
+00:04:39,080 --> 00:04:43,656
+So the honest architecture uses both,
+discounted. A foundationalist anchor — one
+
+74
+00:04:43,656 --> 00:04:48,614
+real, checkable source. A coherentist
+cross-check — does it fit what you already
+
+75
+00:04:48,614 --> 00:04:53,572
+trust — with agreement explicitly
+discounted by how much the sources share
+ancestry.
+
+76
+00:04:53,572 --> 00:04:55,860
+Correlated agreement adds uncertainty, not
+confidence.
+
+77
+00:04:55,860 --> 00:05:00,267
+Formally, the shared training lineage is a
+hidden common cause behind the agreeing
+
+78
+00:05:00,267 --> 00:05:05,353
+sources — and you model it as one, instead
+of pretending your witnesses never met.
+
+79
+00:05:05,353 --> 00:05:09,421
+Ignore it, and your confidence inflates
+exactly when the sources are least
+
+80
+00:05:09,421 --> 00:05:09,760
+independent.
+
+81
+00:05:09,760 --> 00:05:13,980
+Act five. The thought experiment that
+stopped being a thought experiment.
+
+82
+00:05:13,980 --> 00:05:18,809
+Descartes imagined a demon powerful enough
+to fake your entire experience — and
+
+83
+00:05:18,809 --> 00:05:23,639
+asked how you'd ever know. For four
+centuries that was philosophy's most
+famous
+
+84
+00:05:23,639 --> 00:05:24,010
+hypothetical.
+
+85
+00:05:24,010 --> 00:05:28,153
+The demon shipped. Text, images, video —
+synthesized at scale, cheap, sometimes
+
+86
+00:05:28,153 --> 00:05:32,987
+tuned to deceive. The question 'how would
+you know if your inputs were manufactured'
+
+87
+00:05:32,987 --> 00:05:36,440
+now has a real adversary and a real cost
+function.
+
+88
+00:05:36,440 --> 00:05:41,162
+Hume's problem rides along too: past
+regularity never guaranteed the future. A
+
+89
+00:05:41,162 --> 00:05:46,277
+model's track record holds until the
+distribution shifts — new domain, new
+adversary
+
+90
+00:05:46,277 --> 00:05:50,606
+— and then yesterday's reliability quietly
+stops describing today. The induction
+
+91
+00:05:50,606 --> 00:05:52,180
+problem, running in production.
+
+92
+00:05:52,180 --> 00:05:56,825
+Nobody ever refuted the skeptic. Hume's
+own move was better: proceed on fallible,
+
+93
+00:05:56,825 --> 00:06:01,112
+revisable grounds, and build habits that
+catch errors over time. For synthetic
+
+94
+00:06:01,112 --> 00:06:06,114
+media: don't chase perfect fake-detection
+— an arms race you don't win. Build chains
+
+95
+00:06:06,114 --> 00:06:07,900
+of custody, and cheap corrections.
+
+96
+00:06:07,900 --> 00:06:12,163
+One rule worth tattooing somewhere: a
+claim's pull on your belief never exceeds
+the
+
+97
+00:06:12,163 --> 00:06:17,036
+trust you can verify in its channel. Cap
+it at the minimum of provenance and
+content
+
+98
+00:06:17,036 --> 00:06:20,690
+— because confident style is cheap to
+fake, and provenance is not.
+
+99
+00:06:20,690 --> 00:06:26,268
+Act six. The one place where old
+epistemology and working code were always
+the same
+
+100
+00:06:26,268 --> 00:06:26,640
+subject.
+
+101
+00:06:26,640 --> 00:06:31,057
+Bayesian epistemology says belief isn't
+binary — it comes in degrees, and
+
+102
+00:06:31,057 --> 00:06:35,474
+rationality is updating those degrees by
+the likelihood of the evidence.
+Calibration
+
+103
+00:06:35,474 --> 00:06:40,260
+curves and Bayesian updating in machine
+learning aren't inspired by this. They are
+
+104
+00:06:40,260 --> 00:06:42,100
+this, in a different department.
+
+105
+00:06:42,100 --> 00:06:45,945
+The pipeline consequence: your independent
+checks — retrieval match, entailment,
+
+106
+00:06:45,945 --> 00:06:50,559
+discounted consensus, track record —
+combine as sequential updates on one
+credence,
+
+107
+00:06:50,559 --> 00:06:56,711
+not as a majority vote. A vote throws away
+exactly what you know about each check's
+
+108
+00:06:56,711 --> 00:06:57,480
+differential reliability.
+
+109
+00:06:57,480 --> 00:07:02,237
+Surprise sets the revision speed. Evidence
+you already expected barely moves you. A
+
+110
+00:07:02,237 --> 00:07:06,262
+genuinely surprising observation — low
+probability under your current belief —
+
+111
+00:07:06,262 --> 00:07:11,385
+should move you a lot, and trigger a re-
+check of everything downstream. Negative
+log
+
+112
+00:07:11,385 --> 00:07:13,580
+probability: the math of paying attention.
+
+113
+00:07:13,580 --> 00:07:18,391
+The end of the pipe is a decision rule.
+Set the threshold from the cost of being
+
+114
+00:07:18,391 --> 00:07:22,635
+wrong — clinical high, trivia low. Above
+it, act. Below it, say the honest thing:
+
+115
+00:07:22,635 --> 00:07:26,880
+not confident enough — escalate to a
+human. Forcing an answer is the failure
+mode.
+
+116
+00:07:26,880 --> 00:07:30,857
+Let's recap with Claude. Knowledge needs
+the justification to be load-bearing, not
+
+117
+00:07:30,857 --> 00:07:35,828
+just the answer to be right. Trust the
+track record, not the self-report. Anchor
+in
+
+118
+00:07:35,828 --> 00:07:39,473
+a checkable source, and discount agreement
+between sources that share ancestry.
+
+119
+00:07:39,473 --> 00:07:43,450
+Don't chase certainty — build provenance
+and cheap corrections. And act on
+
+120
+00:07:43,450 --> 00:07:45,770
+calibrated credence, with the right to
+abstain.
+
+121
+00:07:45,770 --> 00:07:50,155
+Your turn. Here's the prompt: I want to
+verify a claim the way a computational
+
+122
+00:07:50,155 --> 00:07:53,955
+epistemologist would. Take this claim and
+its cited source, and walk five stages
+
+123
+00:07:53,955 --> 00:07:58,048
+explicitly — does the source actually
+entail the claim, what track record would
+I
+
+124
+00:07:58,048 --> 00:08:01,848
+need to trust the process that produced
+it, what independent anchor and what
+
+125
+00:08:01,848 --> 00:08:05,063
+correlated agreement exist, what
+provenance caps my trust, and what
+calibrated
+
+126
+00:08:05,063 --> 00:08:10,033
+credence with an abstain option do you
+land on. Run it on a claim from your own
+
+127
+00:08:10,033 --> 00:08:14,418
+field — and watch where truth and
+justification come apart. That gap is the
+whole
+
+128
+00:08:14,418 --> 00:08:14,710
+episode.
+
+129
+00:08:14,710 --> 00:08:18,790
+Knowing What's True in the Age of AI.
+Liam, in for Bear.
+

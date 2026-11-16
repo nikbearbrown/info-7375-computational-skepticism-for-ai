@@ -1,0 +1,3079 @@
+{
+  "metadata": {
+    "slug": "claude-liam-lecture-key-terms-robustness",
+    "title": "Key Terms: Robustness",
+    "skill": "lecture",
+    "style_preset": "lecture",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "neu",
+    "channel_handle": "@NikBearBrown",
+    "register": "Teardown",
+    "fps": 24,
+    "width": 3840,
+    "height": 2160,
+    "aspect_ratio": "16:9",
+    "caption_policy": "sidecar",
+    "greeting_language": "German (Hallo)",
+    "source_doc": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/youtube/claude-liam-lecture-key-terms-robustness/SOURCES.md",
+    "playlist": "Computational Skepticism, Exam Prep",
+    "series_title": "Computational Skepticism, Exam Prep",
+    "series_numbered": false,
+    "course": "INFO 7375 Computational Skepticism for AI",
+    "lecture_opening_description": "34 terms for testing what a model really learned.",
+    "lecture_opening_title_lines": [
+      "Key Terms:",
+      "Robustness"
+    ],
+    "tags": [
+      "Computational Skepticism",
+      "INFO 7375",
+      "Key terms",
+      "Exam prep",
+      "Robustness",
+      "Glossary",
+      "Liam",
+      "Lecture"
+    ],
+    "deck_file": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html",
+    "deck_note": "Body beats are the terminology deck filmed live; see exam-prep-deck-films/tools/deck_capture.py",
+    "on_exam": true,
+    "pronounce": {
+      "Lipschitz": "lˈɪpʃɪts",
+      "A-I": "ˈeɪaɪ",
+      "A-I's": "ˈeɪaɪz",
+      "Boundary A does": "bˈaʊndɚɹi ˈeɪ dˈʌz",
+      "boundary A and": "bˈaʊndɚɹi ˈeɪ ænd",
+      "boundary A between": "bˈaʊndɚɹi ˈeɪ bᵻtwˈiːn"
+    },
+    "bookends": {
+      "idea": {
+        "text": "A model that breaks on\na tiny change is fragile.",
+        "triggerWords": "is fragile",
+        "replacementWords": "learned a proxy"
+      },
+      "labels": [
+        {
+          "key": "in the book text",
+          "kind": "tag",
+          "meaning": "the course text uses and explains the term"
+        },
+        {
+          "key": "in the glossary",
+          "kind": "tag",
+          "meaning": "on the course term list; the text does not explain it"
+        },
+        {
+          "key": "Simulation (seeded)",
+          "kind": "badge",
+          "meaning": "a made-up run with a fixed seed, the same every time"
+        },
+        {
+          "key": "Illustrative data",
+          "kind": "badge",
+          "meaning": "numbers chosen to show the idea, not measured"
+        },
+        {
+          "key": "Conceptual illustration",
+          "kind": "badge",
+          "meaning": "a drawing of the idea, with no data behind it"
+        }
+      ],
+      "defs_parts": [
+        "Five labels sit in the corners of the pictures that follow.",
+        "In the book text: the course text uses and explains the term.",
+        "In the glossary: the term is on the course term list, but the text does not explain it.",
+        "Simulation: a made-up run with a fixed seed, so it comes out the same every time.",
+        "Illustrative data: numbers chosen to show the idea, not measured.",
+        "Conceptual: a drawing of the idea, with no data behind it."
+      ],
+      "recap_lead": "Let's recap.",
+      "recap_lines": [
+        "A small push flips the answer because the model learned a proxy.",
+        "FGSM takes one step, and tiny pushes add up across many inputs.",
+        "White-box, black-box and transfer attacks differ in what the attacker has.",
+        "Every defense has a limit, and an adaptive attack aims at it.",
+        "Distribution shift and natural adversarial inputs need no attacker.",
+        "A robustness claim names the attack, the budget and what was not tested."
+      ],
+      "segment": "Name The Attack, Name The Limit",
+      "command": "Quiz me on robustness terms. Give me one short case at a time. I must name the exact term and say why its look-alike is wrong. Use adversarial example, distribution shift, natural adversarial, white-box attack, transfer attack, adaptive attack, certified defense, robust accuracy and residual risk disclosure. Hold back the answer until I reply, then correct me in one sentence.",
+      "checks": [
+        "Check: each answer stayed hidden until you named a term.",
+        "Check: each correction says why the look-alike term is wrong."
+      ]
+    },
+    "build": {
+      "at": "2026-11-12T07:15:25",
+      "cut": "master",
+      "filled": 60,
+      "of": 60,
+      "slates": [],
+      "skin_warnings": [
+        "NO RENDERABLE BEATS: no beat carries a shot.remotion.pattern or Manim annotation — the pipeline will render NOTHING and every slot becomes a YOU-slate. The sheet was authored without the scene contract."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BOPEN",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Computational Skepticism, Exam Prep. Key Terms: Robustness. Thirty-four terms for asking what a model actually learned, and what a small change reveals. You will be able to name each attack and each defense, and say exactly what a robustness claim covers.",
+      "estimated_duration_s": 16.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide. Playlist name as Bear gave it.",
+      "routing": {
+        "about": "Playlist, exact film title, payoff",
+        "runner_up": "Writer-first opening",
+        "reason": "The lecture skill requires the narrated portrait/title card before the writer."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "template": "neu-bookend-title",
+        "narration_contract": "playlist-title-summary-v1",
+        "visual_intent": "Named opening fields visible from frame zero",
+        "motion_claim": "Playlist, title, portrait, credits and handle, visible from frame zero; held for the measured narration.",
+        "show": [
+          {
+            "at": 0,
+            "event": "Complete portrait/title/series card visible"
+          }
+        ],
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Identity card in the deck's look: a still hold is the design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame.",
+        "typography_fill": "#FFFFFF",
+        "typography_reason": "Lecture identity card: the portrait slot is a photograph, not typography; all text fields are listed.",
+        "typography_regions": [
+          {
+            "label": "playlist",
+            "box": [
+              0.0625,
+              0.08,
+              0.8,
+              0.135
+            ]
+          },
+          {
+            "label": "title, rule and summary",
+            "box": [
+              0.41,
+              0.26,
+              0.95,
+              0.72
+            ]
+          },
+          {
+            "label": "presenter and narrator credits",
+            "box": [
+              0.0625,
+              0.73,
+              0.4,
+              0.845
+            ]
+          },
+          {
+            "label": "channel handle",
+            "box": [
+              0.74,
+              0.895,
+              0.945,
+              0.95
+            ]
+          }
+        ]
+      },
+      "voice_key": "3c28595079f1",
+      "audio_file": "mp3/beat-BOPEN.mp3",
+      "actual_duration_s": 14.63,
+      "render_duration_s": 14.666666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOPEN.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. A tiny change flips a model's answer, and people say the model is fragile, so harden it. The better reading is that the model learned a proxy, a signal that went with the right label without being the thing itself. This film goes through thirty-four terms for that, each one shown on screen.",
+      "estimated_duration_s": 24.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json idea; the deck's own framing",
+      "routing": {
+        "about": "Core framing correction",
+        "runner_up": "Overview card",
+        "reason": "One phrase is revised; the terms that follow earn the correction."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Core framing correction",
+        "motion_claim": "The assumption is typed, one phrase is struck and replaced in NU red.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types the assumption"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'is fragile', types 'learned a proxy'"
+          }
+        ],
+        "template": "neu-bookend-writer",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.8,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Typing builds the line on an empty page; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "e8e4828b0aeb",
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "actual_duration_s": 17.13,
+      "render_duration_s": 17.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "Terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Five labels sit in the corners of the pictures that follow. In the book text: the course text uses and explains the term. In the glossary: the term is on the course term list, but the text does not explain it. Simulation: a made-up run with a fixed seed, so it comes out the same every time. Illustrative data: numbers chosen to show the idea, not measured. Conceptual: a drawing of the idea, with no data behind it.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "The deck's opening speaker note (what each tag means) and the evidence badge on every slide",
+      "routing": {
+        "about": "The labels printed on every slide",
+        "runner_up": "The deck's own title slide",
+        "reason": "Prerequisite vocabulary only: the tags and badges the viewer will see in every picture. The terms the film teaches arrive in the body."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Prerequisite labels",
+        "motion_claim": "Each tag or badge, drawn as the deck draws it, rises as it is spoken.",
+        "show": [
+          {
+            "at": 0.08,
+            "event": "'In the book text' lands"
+          },
+          {
+            "at": 0.25,
+            "event": "'In the glossary' lands"
+          },
+          {
+            "at": 0.42,
+            "event": "'Simulation' lands"
+          },
+          {
+            "at": 0.58,
+            "event": "'Illustrative data' lands"
+          },
+          {
+            "at": 0.75,
+            "event": "'Conceptual' lands"
+          }
+        ],
+        "template": "neu-bookend-labels",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The label rows rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "2539417a28de",
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "actual_duration_s": 21.23,
+      "render_duration_s": 21.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0101",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This is a map of thirty-four terms in four groups. The first group asks why a small change flips the answer. It holds adversarial example, proxy, robust features, non-robust features, FGSM, the Fast Gradient Sign Method, perturbation budget, linearity hypothesis, low-variance direction and boundary tilting.",
+      "estimated_duration_s": 18.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 2 step 1. Source: Chapter 4; exam terms, compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "GROUP; TERMS; WHAT IT IS ABOUT; Why a small change flips the answer",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-four terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: GROUP; TERMS; WHAT IT IS ABOUT; Why a small change flips the answer"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "42d864c96c99",
+      "audio_file": "mp3/beat-B0101.mp3",
+      "actual_duration_s": 18.18,
+      "render_duration_s": 18.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0102",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The second group is the ways in. White-box attack, black-box attack, transfer attack, patch attack, natural adversarial and prompt injection. Each one is defined by what the attacker has, and by what it exploits in the model.",
+      "estimated_duration_s": 15.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 2 step 2. Source: Chapter 4; exam terms, compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Ways in; What the attacker has, and what each attack exploits",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-four terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Ways in; What the attacker has, and what each attack exploits"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "5fb4184f886a",
+      "audio_file": "mp3/beat-B0102.mp3",
+      "actual_duration_s": 13.01,
+      "render_duration_s": 13.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0103",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The third group is defenses and their limits. PGD, Projected Gradient Descent, adversarial training, robustness trade-off, randomized smoothing, Lipschitz constant, formal verification, detection, preprocessing and adaptive attack. For each tool, know what it buys and what it cannot do.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 2 step 3. Source: Chapter 4; exam terms, compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Defenses and their limits; What each tool buys, and what it cannot do",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-four terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Defenses and their limits; What each tool buys, and what it cannot do"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "066c8fe6d788",
+      "audio_file": "mp3/beat-B0103.mp3",
+      "actual_duration_s": 16.11,
+      "render_duration_s": 16.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0104",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The last group is saying what you know. Distribution shift, semantic invariance, prompt sensitivity, adversarial testing, robustness profile, residual risk, monitoring, Pearl's ladder, counterfactual and governance question. These are the terms for reporting robustness honestly.",
+      "estimated_duration_s": 14.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 2 step 4. Source: Chapter 4; exam terms, compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Saying what you know; How to report robustness honestly",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-four terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Saying what you know; How to report robustness honestly"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "58d7cfa05c13",
+      "audio_file": "mp3/beat-B0104.mp3",
+      "actual_duration_s": 16.04,
+      "render_duration_s": 16.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0201",
+      "act": "Why a small change flips the answer",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "One input, before and after a push. An adversarial example is an input changed on purpose, too slightly for a person to notice, so the answer flips. In this simulated run no value moves more than zero point two, and the model says gibbon. For example, an applicant slips a few invisible characters into a résumé. A recruiter sees the same page, but the screening model flips from reject to interview.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 3 step 1. Source: Chapter 4, “What adversarial examples actually expose” and “Non-robust features — the deepest account”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Adversarial example; in the book text; TELL THESE APART; Fragile model",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Adversarial examples, proxies and two kinds of feature: Two input values, shape and texture, with the share of the score each carries. A push of at most 0.2 on each flips the label. Then the two kinds of feature compared.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (2625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Adversarial example; in the book text; TELL THESE APART; Fragile model"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 1,
+        "anim_ms": 2625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "693809c5eb05",
+      "audio_file": "mp3/beat-B0201.mp3",
+      "actual_duration_s": 20.78,
+      "render_duration_s": 20.791666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0202",
+      "act": "Why a small change flips the answer",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the original input. The red texture bar carries ninety-three percent of the score. Texture is a proxy, a signal that tracked the label in training without being the thing itself. So inspect what the model relies on. Do not just patch it. For example, a résumé screener trained on past hires leans on a few buzzwords those hires happened to use. The words went with good hires, but they are not the skill.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 3 step 2. Source: Chapter 4, “What adversarial examples actually expose” and “Non-robust features — the deepest account”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Proxy; in the book text; WHERE THE SCORE COMES FROM; value 0.90",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Adversarial examples, proxies and two kinds of feature: Two input values, shape and texture, with the share of the score each carries. A push of at most 0.2 on each flips the label. Then the two kinds of feature compared.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Proxy; in the book text; WHERE THE SCORE COMES FROM; value 0.90"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "568ac37c87fb",
+      "audio_file": "mp3/beat-B0202.mp3",
+      "actual_duration_s": 20.33,
+      "render_duration_s": 20.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0203",
+      "act": "Why a small change flips the answer",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two kinds of feature. Shape is one of the robust features, tied to the label and hard to move. A push of zero point two is ten percent of the class gap. Texture shows the non-robust features. It predicts the label too, but the same push is sixty-seven percent of the gap. For example, in a résumé screener, the projects someone actually built are robust features. The exact wording of the skills line is non-robust. It predicted hires in training, and a single swapped word moves it.",
+      "estimated_duration_s": 34.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 3 step 3. Source: Chapter 4, “What adversarial examples actually expose” and “Non-robust features — the deepest account”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Robust features; in the book text; Non-robust features; in the book text",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Adversarial examples, proxies and two kinds of feature: Two input values, shape and texture, with the share of the score each carries. A push of at most 0.2 on each flips the label. Then the two kinds of feature compared.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Robust features; in the book text; Non-robust features; in the book text"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 3,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4381eef9040d",
+      "audio_file": "mp3/beat-B0203.mp3",
+      "actual_duration_s": 25.51,
+      "render_duration_s": 25.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0301",
+      "act": "Why a small change flips the answer",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A table of weights, and the step each input gets. FGSM, the Fast Gradient Sign Method, takes one step of size epsilon on every input, along the sign of the gradient. Every step helps the attacker, so in this simulated run they total zero point four seven. For example, picture a model that predicts interviews from numeric fields such as years of experience. FGSM nudges every field by the same small amount, up or down as the gradient says, in one step.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 4 step 1. Source: Chapter 4, “The linearity hypothesis”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "FGSM; in the book text; Fast Gradient Sign Method; One step of size ε along the sign of the loss gradient.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "FGSM, the budget and the linearity hypothesis: Eight weights with the step each gets, then three ways to spend the same budget, then how the shift grows with the number of inputs.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1500 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: FGSM; in the book text; Fast Gradient Sign Method; One step of size ε along the sign of the loss gradient."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 1,
+        "anim_ms": 1500
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "19ec76e1f02b",
+      "audio_file": "mp3/beat-B0301.mp3",
+      "actual_duration_s": 25.41,
+      "render_duration_s": 25.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0302",
+      "act": "Why a small change flips the answer",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three ways to spend the same budget. The perturbation budget, epsilon, is the most any single input value may change, also called the L infinity budget. It caps each value, not the total. The red bar follows the sign of every weight and spends all of it. For example, someone auditing a résumé screener lets each field, such as a test score, move by at most a small fixed amount. Every field may use the full amount, so the total change can be large.",
+      "estimated_duration_s": 33.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 4 step 2. Source: Chapter 4, “The linearity hypothesis”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Perturbation budget (ε); in the book text; The most any one input value may change (the L∞ budget).; THREE WAYS TO SPEND THE SAME BUDGET, ε = 0.1",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "FGSM, the budget and the linearity hypothesis: Eight weights with the step each gets, then three ways to spend the same budget, then how the shift grows with the number of inputs.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Perturbation budget (ε); in the book text; The most any one input value may change (the L∞ budget).; THREE WAYS TO SPEND THE SAME BUDGET, ε = 0.1"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3e8369e116c9",
+      "audio_file": "mp3/beat-B0302.mp3",
+      "actual_duration_s": 23.38,
+      "render_duration_s": 23.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0303",
+      "act": "Why a small change flips the answer",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The same tiny step, zero point zero one, on every input value. The linearity hypothesis says such pushes add up when the score is locally linear. Ten inputs barely move it. About one hundred fifty thousand inputs move it by fifty-nine point nine, past the red tick. Picture a screener that reads a scanned résumé as an image of many thousands of pixels. Shading each pixel by an invisible amount barely moves the score, but summed over every pixel it can flip the call.",
+      "estimated_duration_s": 33.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 4 step 3. Source: Chapter 4, “The linearity hypothesis”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Linearity hypothesis; in the book text; SCORE SHIFT FROM ε = 0.01 ON EVERY INPUT VALUE; 10 inputs: 0.004",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "FGSM, the budget and the linearity hypothesis: Eight weights with the step each gets, then three ways to spend the same budget, then how the shift grows with the number of inputs.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1708 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Linearity hypothesis; in the book text; SCORE SHIFT FROM ε = 0.01 ON EVERY INPUT VALUE; 10 inputs: 0.004"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 3,
+        "anim_ms": 1708
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "905a758305e3",
+      "audio_file": "mp3/beat-B0303.mp3",
+      "actual_duration_s": 25.78,
+      "render_duration_s": 25.791666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0401",
+      "act": "Why a small change flips the answer",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two groups of points, wide from side to side and thin up and down, with boundary A between them. A low-variance direction is one where the training data barely varies, here up and down. Training said almost nothing about it. For example, every résumé in a screener's training set used almost the same font size. Font size barely varied, so training taught the model almost nothing about what it should mean.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 5 step 1. Source: Chapter 4, “The boundary-tilting perspective”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Low-variance direction; in the book text; TELL THESE APART; Decision boundary",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Boundary tilting and low-variance directions: Two classes spread wide left to right and thin up and down. A vertical boundary keeps a large margin; a tilted one nearly touches the data. A tiny upward step crosses the tilted one only.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Low-variance direction; in the book text; TELL THESE APART; Decision boundary"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "399bfed50ee2",
+      "audio_file": "mp3/beat-B0401.mp3",
+      "actual_duration_s": 20.61,
+      "render_duration_s": 20.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0401.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0402",
+      "act": "Why a small change flips the answer",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Boundary tilting means a boundary that runs almost alongside the data, like the red line, boundary B. In this simulated run both boundaries get all sixty points right, but the nearest point is zero point eight from boundary A and zero point zero seven from boundary B. For example, a screener's boundary sorts every past résumé correctly, yet runs almost alongside them, a hair away in the font-size direction. A résumé in slightly larger type lands on the other side.",
+      "estimated_duration_s": 32.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 5 step 2. Source: Chapter 4, “The boundary-tilting perspective”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Boundary tilting; in the book text; TWO BOUNDARIES, BOTH PERFECT ON TRAINING DATA; boundary B",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Boundary tilting and low-variance directions: Two classes spread wide left to right and thin up and down. A vertical boundary keeps a large margin; a tilted one nearly touches the data. A tiny upward step crosses the tilted one only.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Boundary tilting; in the book text; TWO BOUNDARIES, BOTH PERFECT ON TRAINING DATA; boundary B"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1e97c60b3439",
+      "audio_file": "mp3/beat-B0402.mp3",
+      "actual_duration_s": 25.92,
+      "render_duration_s": 25.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0402.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0403",
+      "act": "Why a small change flips the answer",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The ringed point steps zero point zero nine in the quiet, low-variance direction and crosses boundary B. Boundary A does not change. Keep these apart. The decision boundary is where the answer changes. The data manifold is where the training data sits.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 5 step 3. Source: Chapter 4, “The boundary-tilting perspective”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "A STEP OF 0.09 IN THE QUIET DIRECTION; B now says the other class. A does not change.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Boundary tilting and low-variance directions: Two classes spread wide left to right and thin up and down. A vertical boundary keeps a large margin; a tilted one nearly touches the data. A tiny upward step crosses the tilted one only.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: A STEP OF 0.09 IN THE QUIET DIRECTION; B now says the other class. A does not change."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 3,
+        "anim_ms": 1417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8eb1bc8a41db",
+      "audio_file": "mp3/beat-B0403.mp3",
+      "actual_duration_s": 14.75,
+      "render_duration_s": 14.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0403.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0501",
+      "act": "Ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A chart of how many correct predictions each attack flips. In a white-box attack, also called gradient-based, the attacker has the model's weights and gradients, so the best direction comes straight from them. In this simulated run it flips eighty-five point four percent. For example, someone gets a copy of a company's résumé screener, weights included, and reads off it exactly which words raise the score most.",
+      "estimated_duration_s": 26.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 6 step 1. Source: Chapter 4, “A taxonomy of attacks”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "White-box attack; in the book text; gradient-based; The attacker has the weights and gradients.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "White-box, black-box and transfer attacks: Three rows. Each names what the attacker needs, how many queries it sends to the target, and the share of correctly classified inputs it flips.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (708 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: White-box attack; in the book text; gradient-based; The attacker has the weights and gradients."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 1,
+        "anim_ms": 708
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "84329e8366ba",
+      "audio_file": "mp3/beat-B0501.mp3",
+      "actual_duration_s": 20.86,
+      "render_duration_s": 20.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0501.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0502",
+      "act": "Ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A black-box attack, also called query-based, has no weights. The attacker sees only outputs and estimates the gradient by probing, nudging each input value up and down. Here that takes forty queries per input, and it flips the same share. For example, an applicant can only upload résumés to a job portal and see the fit score it returns. They change a line, upload again, and watch the score move.",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 6 step 2. Source: Chapter 4, “A taxonomy of attacks”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Black-box attack; in the book text; query-based; Black-box",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "White-box, black-box and transfer attacks: Three rows. Each names what the attacker needs, how many queries it sends to the target, and the share of correctly classified inputs it flips.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (708 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Black-box attack; in the book text; query-based; Black-box"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 2,
+        "anim_ms": 708
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "7f6d715f019c",
+      "audio_file": "mp3/beat-B0502.mp3",
+      "actual_duration_s": 20.61,
+      "render_duration_s": 20.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0502.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0503",
+      "act": "Ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A transfer attack never touches the target. The push is built on a surrogate, a stand-in model trained on similar data, and it still flips eighty-four point seven percent. Similar data teaches similar proxies. Black-box queries the target. Transfer does not. For example, a job seeker trains a practice screener on public job posts and résumés, finds edits that fool it, then sends that résumé to a company screener they never queried.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 6 step 3. Source: Chapter 4, “A taxonomy of attacks”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Transfer attack; in the book text; Transfer; needs: a surrogate trained on similar data",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "White-box, black-box and transfer attacks: Three rows. Each names what the attacker needs, how many queries it sends to the target, and the share of correctly classified inputs it flips.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (708 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Transfer attack; in the book text; Transfer; needs: a surrogate trained on similar data"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 3,
+        "anim_ms": 708
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "42389fbe8b40",
+      "audio_file": "mp3/beat-B0503.mp3",
+      "actual_duration_s": 22.95,
+      "render_duration_s": 22.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0503.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0601",
+      "act": "Ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two pixel grids with the same score drop. Left, every pixel changes a little. Right, a patch attack, a big change in a small region, like a sticker. In this simulated run it touches six percent of the pixels, and it survives printing. For example, an applicant prints a small, bold block in one corner of a résumé that will be scanned. The rest of the page is untouched, yet the screener's call flips.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 7 step 1. Source: Chapter 4, “A taxonomy of attacks” and “Distribution shift, returning from Chapter 2”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Patch attack; in the book text; patch / physical; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Patch, natural adversarial and prompt injection: A patch attack against a diffuse one, a typical against a long-tail accuracy, and a table of which lines an agent obeys when instructions and data share a stream.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1167 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Patch attack; in the book text; patch / physical; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 1,
+        "anim_ms": 1167
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "758bb1c2af00",
+      "audio_file": "mp3/beat-B0601.mp3",
+      "actual_duration_s": 20.46,
+      "render_duration_s": 20.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0601.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0602",
+      "act": "Ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Natural adversarial means no attacker at all, just an unusual, long-tail input that training hardly covered. Typical inputs score ninety-nine point four percent, the long tail only fifteen point nine. The overall bar still says ninety-five percent, so the average hides the failure. For example, a screener trained mostly on standard office résumés meets a career changer whose résumé is all farm work. Nobody altered anything. The input is just rare, and the model gets it wrong.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 7 step 2. Source: Chapter 4, “A taxonomy of attacks” and “Distribution shift, returning from Chapter 2”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "in the book text; Natural adversarial; ACCURACY, WITH NO ATTACKER; typical inputs",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Patch, natural adversarial and prompt injection: A patch attack against a diffuse one, a typical against a long-tail accuracy, and a table of which lines an agent obeys when instructions and data share a stream.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Natural adversarial; ACCURACY, WITH NO ATTACKER; typical inputs"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1cbaa01998a2",
+      "audio_file": "mp3/beat-B0602.mp3",
+      "actual_duration_s": 25.92,
+      "render_duration_s": 25.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0602.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0603",
+      "act": "Ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Four lines an agent sees, one from the user, three from a document. Prompt injection is an instruction hidden in data, which the agent treats as a command. In one mixed stream it obeys the hidden email line. With channels split, it obeys only the user. For example, an applicant hides a line in white text on a résumé, telling the recruiter's AI assistant to rank this candidate first. The résumé is data, but the assistant obeys the line.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 7 step 3. Source: Chapter 4, “A taxonomy of attacks” and “Distribution shift, returning from Chapter 2”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Prompt injection; in the book text; WHICH LINES DOES THE AGENT OBEY?; MIXED",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Patch, natural adversarial and prompt injection: A patch attack against a diffuse one, a typical against a long-tail accuracy, and a table of which lines an agent obeys when instructions and data share a stream.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1375 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Prompt injection; in the book text; WHICH LINES DOES THE AGENT OBEY?; MIXED"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 3,
+        "anim_ms": 1375
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3ba739429c40",
+      "audio_file": "mp3/beat-B0603.mp3",
+      "actual_duration_s": 22.92,
+      "render_duration_s": 22.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0603.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0701",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "An invented loss surface inside the budget, darker is worse. PGD, Projected Gradient Descent, takes many small gradient-sign steps, each projected back inside the budget. One FGSM step lands on a corner and stays right. Ten PGD steps reach the dark patch, and the answer flips. For example, an attacker nudges an application's numeric fields a little at a time, the way the gradient points. After each nudge, any field past the budget is pulled back inside, until the interview call flips.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 8 step 1. Source: Chapter 4, “Adversarial training and its scaling limits”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "PGD; in the book text; Projected Gradient Descent; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "PGD, adversarial training and the trade-off: A loss surface inside the budget ball with the FGSM corner and the PGD path. Then clean and robust accuracy before and after adversarial training, then the trade-off across training budgets.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (3625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: PGD; in the book text; Projected Gradient Descent; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 1,
+        "anim_ms": 3625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "db6c01426121",
+      "audio_file": "mp3/beat-B0701.mp3",
+      "actual_duration_s": 27.41,
+      "render_duration_s": 27.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0701.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0702",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Adversarial training means training on the worst push an attacker could find, at every step. In this simulated run the standard model falls to twenty-four point five percent under attack. The adversarially trained model holds seventy-four point eight. For example, a company retrains its résumé screener on the worst doctored résumés an attacker could make, found fresh at every training step, each labeled with the right decision.",
+      "estimated_duration_s": 26.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 8 step 2. Source: Chapter 4, “Adversarial training and its scaling limits”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Adversarial training; in the book text; ACCURACY ON 600 TEST INPUTS, ATTACK BUDGET ε = 0.2; standard: clean",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "PGD, adversarial training and the trade-off: A loss surface inside the budget ball with the FGSM corner and the PGD path. Then clean and robust accuracy before and after adversarial training, then the trade-off across training budgets.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Adversarial training; in the book text; ACCURACY ON 600 TEST INPUTS, ATTACK BUDGET ε = 0.2; standard: clean"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 2,
+        "anim_ms": 1625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9530b205159b",
+      "audio_file": "mp3/beat-B0702.mp3",
+      "actual_duration_s": 21.93,
+      "render_duration_s": 21.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0702.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0703",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Each point is a model trained against a different budget. The robustness trade-off, or accuracy-robustness trade-off, is the price. As the budget grows, robust accuracy climbs, while clean accuracy, the score on ordinary inputs, moves left. Adversarial training also costs several times more to run. For example, a screener trained to resist keyword stuffing gets harder to fool, but it also misjudges more ordinary, honest résumés than before.",
+      "estimated_duration_s": 27.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 8 step 3. Source: Chapter 4, “Adversarial training and its scaling limits”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Robustness trade-off; in the book text; accuracy-robustness trade-off; EACH POINT: A MODEL TRAINED WITH A DIFFERENT BUDGET",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "PGD, adversarial training and the trade-off: A loss surface inside the budget ball with the FGSM corner and the PGD path. Then clean and robust accuracy before and after adversarial training, then the trade-off across training budgets.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Robustness trade-off; in the book text; accuracy-robustness trade-off; EACH POINT: A MODEL TRAINED WITH A DIFFERENT BUDGET"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 3,
+        "anim_ms": 1458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "e257f85c1875",
+      "audio_file": "mp3/beat-B0703.mp3",
+      "actual_duration_s": 23.43,
+      "render_duration_s": 23.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0703.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0801",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A grid of one thousand noisy copies of one input. Randomized smoothing classifies every copy and takes the vote. In this simulated run nine hundred ninety-three pick the right class, which certifies a radius R of zero point two four six. For example, a screener scores many noisy copies of an application, each with small random changes to its numeric fields, and gives the majority call. A lopsided vote means no edit inside the radius can flip it.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 9 step 1. Source: Chapter 4, “Certified defenses” and “Lipschitz constraints”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Randomized smoothing; in the book text; TELL THESE APART; Empirical defense",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Randomized smoothing and Lipschitz bounds: A thousand noisy votes with the radius they give, then radius and accuracy across noise levels, then the sensitivity bound for two models.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Randomized smoothing; in the book text; TELL THESE APART; Empirical defense"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 1,
+        "anim_ms": 1625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4bfeee51ed83",
+      "audio_file": "mp3/beat-B0801.mp3",
+      "actual_duration_s": 24.04,
+      "render_duration_s": 24.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0801.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0802",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "More noise buys a bigger radius. The red bars grow from zero point one five to zero point eight two as the noise, sigma, rises. The dark bars show the cost. Accuracy of the smoothed classifier falls from one hundred percent to eighty-five.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 9 step 2. Source: Chapter 4, “Certified defenses” and “Lipschitz constraints”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "CERTIFIED RADIUS R FOR ONE INPUT; 0.15*; σ = 0.05; 0.25",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Randomized smoothing and Lipschitz bounds: A thousand noisy votes with the radius they give, then radius and accuracy across noise levels, then the sensitivity bound for two models.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1792 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: CERTIFIED RADIUS R FOR ONE INPUT; 0.15*; σ = 0.05; 0.25"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 2,
+        "anim_ms": 1792
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f6119aaaab6f",
+      "audio_file": "mp3/beat-B0802.mp3",
+      "actual_duration_s": 13.97,
+      "render_duration_s": 14.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0802.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0803",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Output change against input change. The Lipschitz constant, L, caps how fast the output can move as the input moves. The steep red line is the standard model. The flat dark line is the trained one, whose small L bounds every push. For example, a salary-estimate model with a small Lipschitz constant can only shift its estimate a little when the listed experience changes a little. With a large one, that same small edit could swing the estimate wildly.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 9 step 3. Source: Chapter 4, “Certified defenses” and “Lipschitz constraints”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Lipschitz constant; in the book text; OUTPUT CHANGE AGAINST INPUT CHANGE; input change (length of the push)",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Randomized smoothing and Lipschitz bounds: A thousand noisy votes with the radius they give, then radius and accuracy across noise levels, then the sensitivity bound for two models.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Lipschitz constant; in the book text; OUTPUT CHANGE AGAINST INPUT CHANGE; input change (length of the push)"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 3,
+        "anim_ms": 1417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "12816ec6f1da",
+      "audio_file": "mp3/beat-B0803.mp3",
+      "actual_duration_s": 22.94,
+      "render_duration_s": 22.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0803.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0901",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A small network's score as the budget grows. Formal verification proves a property for every input in a stated region. In this simulated run the grey band is proved, up to zero point one four nine. A real flip sits at zero point two one nine. Between them, unknown. For example, a team proves that, for every application in a stated range, changing only the graduation year cannot change the interview call. Outside that range, the proof says nothing.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 10 step 1. Source: Chapter 4, “Formal verification” and the toolkit table; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Formal verification; in the book text; TELL THESE APART; Detection",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Verification, detection and adaptive attacks: A proof that holds up to a budget, two score histograms with a threshold, and score shifts for a smoothing filter against a naive and an adaptive attack.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Formal verification; in the book text; TELL THESE APART; Detection"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 1,
+        "anim_ms": 1208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "eaff41e30b4c",
+      "audio_file": "mp3/beat-B0901.mp3",
+      "actual_duration_s": 24.37,
+      "render_duration_s": 24.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0901.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0902",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A detector's scores, grey for clean inputs, red for attacked ones. A detection-based defense flags inputs that look attacked and routes them to a fallback or a person. Here it catches seventy-four point five percent of attacks. It does not fix the model. For example, a job portal flags résumés that look doctored, such as ones packed with invisible characters, and sends them to a human recruiter. The screener itself is unchanged.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 10 step 2. Source: Chapter 4, “Formal verification” and the toolkit table; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Detection-based defense; in the book text; DETECTOR SCORE, 600 CLEAN AND 600 ATTACKED INPUTS; flag above",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Verification, detection and adaptive attacks: A proof that holds up to a budget, two score histograms with a threshold, and score shifts for a smoothing filter against a naive and an adaptive attack.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Detection-based defense; in the book text; DETECTOR SCORE, 600 CLEAN AND 600 ATTACKED INPUTS; flag above"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 2,
+        "anim_ms": 1208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "7f8464c79e9e",
+      "audio_file": "mp3/beat-B0902.mp3",
+      "actual_duration_s": 22.34,
+      "render_duration_s": 22.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0902.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0903",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Input preprocessing changes the input before the model sees it, by denoising, quantizing or smoothing. Here a filter averages neighbouring values. With no defense, the FGSM push shifts the score by six point four. With the filter, the alternating pushes cancel and the shift is zero. For example, a portal turns every uploaded résumé into plain visible text before screening, which strips out hidden characters and keywords hidden in white text.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 10 step 3. Source: Chapter 4, “Formal verification” and the toolkit table; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Input preprocessing; in the book text; SCORE SHIFT FROM A BUDGET ε = 0.1 ON 64 INPUTS; no defense, FGSM",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Verification, detection and adaptive attacks: A proof that holds up to a budget, two score histograms with a threshold, and score shifts for a smoothing filter against a naive and an adaptive attack.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (917 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Input preprocessing; in the book text; SCORE SHIFT FROM A BUDGET ε = 0.1 ON 64 INPUTS; no defense, FGSM"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 3,
+        "anim_ms": 917
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f800061a183a",
+      "audio_file": "mp3/beat-B0903.mp3",
+      "actual_duration_s": 23.27,
+      "render_duration_s": 23.291666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0903.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B0904",
+      "act": "Defenses and their limits",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "An adaptive attack is built by someone who knows the defense, and is designed to get past it. The new red bar pushes where the filter does not erase, and the answer flips. Against the detector, the catch rate drops to thirty-one point seven percent. For example, an applicant who knows the portal strips hidden text writes the stuffed keywords as visible, ordinary-looking phrases that the cleanup keeps.",
+      "estimated_duration_s": 27.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 10 step 4. Source: Chapter 4, “Formal verification” and the toolkit table; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Adaptive attack; in the book text; smoothing filter, adaptive; 1.02",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Verification, detection and adaptive attacks: A proof that holds up to a budget, two score histograms with a threshold, and score shifts for a smoothing filter against a naive and an adaptive attack.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Adaptive attack; in the book text; smoothing filter, adaptive; 1.02"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 4,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ddc5e407295d",
+      "audio_file": "mp3/beat-B0904.mp3",
+      "actual_duration_s": 20.43,
+      "render_duration_s": 20.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0904.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1001",
+      "act": "Models fail without an attacker",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two lines over the six months after training. Distribution shift means the inputs a deployed model meets drift away from its training inputs, with no attacker. In this simulated run accuracy, the red line, falls to sixty-five percent while confidence does not fall, ending at eighty-eight. For example, a screener trained on cover letters written before AI writing tools spread now meets letters drafted with them. Nobody attacks it. Its calls get worse while it stays just as sure.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 11 step 1. Source: Chapter 4, “Distribution shift”, “Cross-domain transfer” and “Prompt sensitivity”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Distribution shift; in the book text; TELL THESE APART; Distribution shift",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Shift, invariance and prompt sensitivity: Accuracy falling while confidence stays flat as inputs drift, four reworded pairs a surface rule answers differently, and answer styles across five paraphrases for two models.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Distribution shift; in the book text; TELL THESE APART; Distribution shift"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 1,
+        "anim_ms": 1625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9c375040bdac",
+      "audio_file": "mp3/beat-B1001.mp3",
+      "actual_duration_s": 25.28,
+      "render_duration_s": 25.291666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1001.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1002",
+      "act": "Models fail without an attacker",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Four pairs of sentences, each pair the same meaning in different words. Semantic invariance says the answer should not change when only the wording does. This toy rule adds up word scores, and gives the same answer on only one of the four pairs. For example, one résumé says managed the support team, another says was the support team's manager. A screener with semantic invariance gives both the same fit score.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 11 step 2. Source: Chapter 4, “Distribution shift”, “Cross-domain transfer” and “Prompt sensitivity”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Semantic invariance; in the book text; SAME MEANING, TWO WORDINGS, ONE WORD-SCORE RULE; “I loved this phone.”",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Shift, invariance and prompt sensitivity: Accuracy falling while confidence stays flat as inputs drift, four reworded pairs a surface rule answers differently, and answer styles across five paraphrases for two models.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1667 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Semantic invariance; in the book text; SAME MEANING, TWO WORDINGS, ONE WORD-SCORE RULE; “I loved this phone.”"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 2,
+        "anim_ms": 1667
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "deffce67093e",
+      "audio_file": "mp3/beat-B1002.mp3",
+      "actual_duration_s": 21.31,
+      "render_duration_s": 21.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1002.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1003",
+      "act": "Models fail without an attacker",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "One instruction, phrased five ways, for two made-up models. Prompt sensitivity means prompts with the same meaning get noticeably different answers. Model A's bars change a lot, a sensitivity of zero point three eight. Model B's barely move, zero point zero five. For example, a job seeker types to an AI agent, tailor my résumé to this posting. Later the same person types, adapt my résumé for this job. Same request, yet one answer trims a few lines and the other rewrites the whole page.",
+      "estimated_duration_s": 33.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 11 step 3. Source: Chapter 4, “Distribution shift”, “Cross-domain transfer” and “Prompt sensitivity”; exam terms, compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Prompt sensitivity; in the book text; Model A: sensitivity 0.38; P1",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Shift, invariance and prompt sensitivity: Accuracy falling while confidence stays flat as inputs drift, four reworded pairs a surface rule answers differently, and answer styles across five paraphrases for two models.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1500 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Prompt sensitivity; in the book text; Model A: sensitivity 0.38; P1"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 3,
+        "anim_ms": 1500
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "48d87a837e2a",
+      "audio_file": "mp3/beat-B1003.mp3",
+      "actual_duration_s": 28.05,
+      "render_duration_s": 28.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1003.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1101",
+      "act": "Saying what you know",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three test results, with clean accuracy as the outline. Adversarial testing means running inputs built to fool the model, to find what it relies on. In this made-up example clean accuracy is ninety-four percent, and every test lands below it. For example, before launch, a team feeds its résumé screener doctored résumés, with stuffed keywords, hidden text and reworded job titles, to see what it really relies on.",
+      "estimated_duration_s": 27.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 12 step 1. Source: Chapter 4, “Towards honest robustness disclosure”; exam terms, compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "Adversarial testing; in the glossary; TELL THESE APART; Profile",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Adversarial testing and the robustness profile: Three test results with clean accuracy outlined, then the same results with the average they hide, then a coverage list of attack classes, then a monitored signal crossing two thresholds.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Adversarial testing; in the glossary; TELL THESE APART; Profile"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 1,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "6164c98ecbb3",
+      "audio_file": "mp3/beat-B1101.mp3",
+      "actual_duration_s": 21.65,
+      "render_duration_s": 21.666666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1102",
+      "act": "Saying what you know",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A robustness profile says what the model resists and what it does not, by attack, budget and shift. It is a table, not one number. Average these three results and you get seventy-two percent, which hides the weakest one, the fifty-eight percent transfer attack. For example, the maker of an interview-prediction model reports a table, with a row each for ordinary résumés, keyword stuffing at a stated budget, and applications from a newer hiring season.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 12 step 2. Source: Chapter 4, “Towards honest robustness disclosure”; exam terms, compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "Robustness profile; in the book text; THE PROFILE, AND THE AVERAGE IT REPLACES; −23 pts",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Adversarial testing and the robustness profile: Three test results with clean accuracy outlined, then the same results with the average they hide, then a coverage list of attack classes, then a monitored signal crossing two thresholds.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Robustness profile; in the book text; THE PROFILE, AND THE AVERAGE IT REPLACES; −23 pts"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b3f28722e3db",
+      "audio_file": "mp3/beat-B1102.mp3",
+      "actual_duration_s": 22.09,
+      "render_duration_s": 22.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1103",
+      "act": "Saying what you know",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Six attack classes, each with a tick or a cross. Residual risk disclosure is the written list of known weaknesses that were not tested or not fixed. In this example four of the six were not tested, and each one is named. For example, an agent that sends job applications ships with a note saying it was never tested against prompt injection hidden in job listings, and that this risk is not fixed.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 12 step 3. Source: Chapter 4, “Towards honest robustness disclosure”; exam terms, compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "Residual risk disclosure; in the book text; A written list of known weaknesses that were not mitigated.; ATTACK CLASSES TESTED IN THE PROFILE",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Adversarial testing and the robustness profile: Three test results with clean accuracy outlined, then the same results with the average they hide, then a coverage list of attack classes, then a monitored signal crossing two thresholds.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1708 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Residual risk disclosure; in the book text; A written list of known weaknesses that were not mitigated.; ATTACK CLASSES TESTED IN THE PROFILE"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 3,
+        "anim_ms": 1708
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "731f79f940ce",
+      "audio_file": "mp3/beat-B1103.mp3",
+      "actual_duration_s": 20.76,
+      "render_duration_s": 20.791666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1104",
+      "act": "Saying what you know",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The share of inputs flagged each week in production. A monitoring specification names the signal being watched, and the value that triggers human review or rollback. Here review triggers at four percent, crossed in week seven. Rollback, at eight percent, is never reached. For example, a résumé screener's spec watches the weekly share of résumés flagged as doctored. Past a set level, a recruiter reviews. Past a higher level, the team rolls back to the earlier version.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 12 step 4. Source: Chapter 4, “Towards honest robustness disclosure”; exam terms, compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "Monitoring specification; in the book text; SHARE OF INPUTS FLAGGED EACH WEEK IN PRODUCTION; review at 4%",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Adversarial testing and the robustness profile: Three test results with clean accuracy outlined, then the same results with the average they hide, then a coverage list of attack classes, then a monitored signal crossing two thresholds.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1833 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Monitoring specification; in the book text; SHARE OF INPUTS FLAGGED EACH WEEK IN PRODUCTION; review at 4%"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 4,
+        "anim_ms": 1833
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "afceca2d236e",
+      "audio_file": "mp3/beat-B1104.mp3",
+      "actual_duration_s": 23.99,
+      "render_duration_s": 24.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1201",
+      "act": "Saying what you know",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three rungs for the panda case. Pearl's ladder sorts causal questions into three levels, seeing, doing and imagining. Rung one is answered by watching the model, rung two by an experiment. Rung three asks about a model that was never built, so no data answers it. For example, take a hiring model. Seeing, whom does it rank first? Doing, what if we retrain it without the school field? Imagining, would this rejected applicant have been invited had it learned real skill?",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 13 step 1. Source: Chapter 4, “Pearl’s Ladder Rung 3 — opened, not closed”; exam terms, compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Pearl's ladder; in the book text; Three levels of causal question: seeing, doing, imagining.; TELL THESE APART",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Pearl’s ladder and the governance counterfactual: Three rungs for the panda case, a table where the counterfactual model can be built only because the toy names its features, and a chain from institutions to model.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Pearl's ladder; in the book text; Three levels of causal question: seeing, doing, imagining.; TELL THESE APART"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 1,
+        "anim_ms": 1458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "aa89b50dacdd",
+      "audio_file": "mp3/beat-B1201.mp3",
+      "actual_duration_s": 22.49,
+      "render_duration_s": 22.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1202",
+      "act": "Saying what you know",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The same input, two models, before and after the push. An intervention changes something and watches what follows. A counterfactual asks about this one case, had one thing been different. In this toy, a model that learned only shape would still say panda. For example, an intervention drops the employment-gap field for everyone and watches interview rates. A counterfactual asks whether this particular applicant would have been invited had the screener ignored her gap.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 13 step 2. Source: Chapter 4, “Pearl’s Ladder Rung 3 — opened, not closed”; exam terms, compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "in the book text; Counterfactual; THE SAME INPUT, TWO MODELS; actual model",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Pearl’s ladder and the governance counterfactual: Three rungs for the panda case, a table where the counterfactual model can be built only because the toy names its features, and a chain from institutions to model.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Counterfactual; THE SAME INPUT, TWO MODELS; actual model"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 2,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "dc6c0fe4c149",
+      "audio_file": "mp3/beat-B1202.mp3",
+      "actual_duration_s": 22.25,
+      "render_duration_s": 22.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1203",
+      "act": "Saying what you know",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A chain from rules to goals to training to this model, and a dashed copy. The governance question, also called the governance counterfactual, asks whether the model would be different had the institutions around it been different. Other rules, other goals, another model. For example, would a hiring model still lean on polished keywords had the company that built it been judged on hires who stayed, not on screening speed?",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 13 step 3. Source: Chapter 4, “Pearl’s Ladder Rung 3 — opened, not closed”; exam terms, compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Governance question; in the book text; governance counterfactual; WHO MADE THE MODEL, AND UNDER WHAT RULES",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Pearl’s ladder and the governance counterfactual: Three rungs for the panda case, a table where the counterfactual model can be built only because the toy names its features, and a chain from institutions to model.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Governance question; in the book text; governance counterfactual; WHO MADE THE MODEL, AND UNDER WHAT RULES"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 3,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4cdf625d4457",
+      "audio_file": "mp3/beat-B1203.mp3",
+      "actual_duration_s": 21.57,
+      "render_duration_s": 21.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1301",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two pictures of one boundary. Left, an adversarial example. One point is pushed across, built by an attacker as the worst case inside the budget. Right, distribution shift. Every point drifts, and no attacker is involved. Ask whether someone built the change, or the world moved.",
+      "estimated_duration_s": 18.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 14 step 1. Source: Chapter 4. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 1 · LEFT; Adversarial example; Built by an attacker, worst case in the budget.; one point pushed",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: PAIR 1 · LEFT; Adversarial example; Built by an attacker, worst case in the budget.; one point pushed"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 1,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "2b30fadb368d",
+      "audio_file": "mp3/beat-B1301.mp3",
+      "actual_duration_s": 15.08,
+      "render_duration_s": 15.083333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1302",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Left, an empirical defense. Six attacks were tried and it survived all six, which says nothing about the next one. Right, a certified defense, a proof that nothing gets in, up to a stated radius. Surviving the attacks tried is not a proof.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 14 step 2. Source: Chapter 4. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 2 · LEFT; Empirical defense; Holds against the attacks that were tried.; 6 attacks tried, 6 survived",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: PAIR 2 · LEFT; Empirical defense; Holds against the attacks that were tried.; 6 attacks tried, 6 survived"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 2,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "e3718dd3603c",
+      "audio_file": "mp3/beat-B1302.mp3",
+      "actual_duration_s": 13.42,
+      "render_duration_s": 13.458333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1303",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Clean accuracy is measured on ordinary inputs. Robust accuracy is measured under a worst-case push at a stated budget. In the simulated run the same model scores one hundred percent clean and twenty-four point five percent robust. Ask which one you are shown.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 14 step 3. Source: Chapter 4. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 3 · LEFT; Clean accuracy; On ordinary inputs.; 100.0%",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: PAIR 3 · LEFT; Clean accuracy; On ordinary inputs.; 100.0%"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 3,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "06aa79f4ac52",
+      "audio_file": "mp3/beat-B1303.mp3",
+      "actual_duration_s": 15.0,
+      "render_duration_s": 15.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1304",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Left, detection. The detector flags a suspect input and routes it to review, without changing it. Right, preprocessing. The jagged grey input comes out of the filter as the flat red line. Detection sorts inputs. Preprocessing changes them before the model sees them.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 14 step 4. Source: Chapter 4. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 4 · LEFT; Detection; Flags the input and routes it to review.; detector",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: PAIR 4 · LEFT; Detection; Flags the input and routes it to review.; detector"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 4,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3adf3541fc01",
+      "audio_file": "mp3/beat-B1304.mp3",
+      "actual_duration_s": 15.34,
+      "render_duration_s": 15.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1304.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1401",
+      "act": "Vague request, exact statement",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A vague request, and the exact statement that replaces it. Make it robust becomes, name the attack and the budget. In this simulated run, under an L infinity white-box attack at epsilon zero point two, twenty-five percent are still right. The line falls as the budget grows.",
+      "estimated_duration_s": 19.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 15 step 1. Source: Chapter 4. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "“make it robust”; THE NUMBERS BEHIND IT; budget ε; 0",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact statement. On the right, a chart of the numbers behind the exact statement.",
+        "motion_claim": "The deck's own animation for step 1 of 5 plays as the narration starts (1000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: “make it robust”; THE NUMBERS BEHIND IT; budget ε; 0"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 14,
+        "step": 1,
+        "anim_ms": 1000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "df96d40bc304",
+      "audio_file": "mp3/beat-B1401.mp3",
+      "actual_duration_s": 15.89,
+      "render_duration_s": 15.916666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1401.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1402",
+      "act": "Vague request, exact statement",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The request is, the model is fragile. Fragile says nothing about why. The exact version names the proxy. Texture carries ninety-three percent of the score and shape seven percent, the long red bar against the short dark one.",
+      "estimated_duration_s": 15.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 15 step 2. Source: Chapter 4. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "“the model is fragile”; shape; texture; share of the score from each feature",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact statement. On the right, a chart of the numbers behind the exact statement.",
+        "motion_claim": "The deck's own animation for step 2 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: “the model is fragile”; shape; texture; share of the score from each feature"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 14,
+        "step": 2,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b8753119326d",
+      "audio_file": "mp3/beat-B1402.mp3",
+      "actual_duration_s": 13.25,
+      "render_duration_s": 13.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1402.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1403",
+      "act": "Vague request, exact statement",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The request is, harden it against attacks. Say how, and report both numbers. Train at epsilon zero point two. Robust accuracy rises from twenty-five to seventy-five percent, and clean accuracy falls from one hundred to eighty-four.",
+      "estimated_duration_s": 14.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 15 step 3. Source: Chapter 4. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "“harden it against attacks”; standard; clean; attacked",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact statement. On the right, a chart of the numbers behind the exact statement.",
+        "motion_claim": "The deck's own animation for step 3 of 5 plays as the narration starts (1208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: “harden it against attacks”; standard; clean; attacked"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 14,
+        "step": 3,
+        "anim_ms": 1208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d1fd58fcc8a8",
+      "audio_file": "mp3/beat-B1403.mp3",
+      "actual_duration_s": 13.57,
+      "render_duration_s": 13.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1403.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1404",
+      "act": "Vague request, exact statement",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The request is, prove it cannot be fooled. No proof covers everything, so certify a radius. With noise sigma of zero point one, the red bar, the certified radius R is zero point two five for this one input, and nothing beyond it.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 15 step 4. Source: Chapter 4. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "“prove it cannot be fooled”; 0.15; σ 0.05; 0.25",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact statement. On the right, a chart of the numbers behind the exact statement.",
+        "motion_claim": "The deck's own animation for step 4 of 5 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: “prove it cannot be fooled”; 0.15; σ 0.05; 0.25"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 14,
+        "step": 4,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f5f8764d34ae",
+      "audio_file": "mp3/beat-B1404.mp3",
+      "actual_duration_s": 13.93,
+      "render_duration_s": 13.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1404.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1405",
+      "act": "Vague request, exact statement",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The request is, check it copes with rewording. The exact version reports semantic invariance as a count. The toy rule gives the same answer on one of four reworded pairs. The crosses mark the pairs where the answer changed.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 15 step 5. Source: Chapter 4. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "“check it copes with rewording”; pair 1: positive / negative; pair 2: positive / no call; pair 3: negative / no call",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact statement. On the right, a chart of the numbers behind the exact statement.",
+        "motion_claim": "The deck's own animation for step 5 of 5 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: “check it copes with rewording”; pair 1: positive / negative; pair 2: positive / no call; pair 3: negative / no call"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 14,
+        "step": 5,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "fed3758e6527",
+      "audio_file": "mp3/beat-B1405.mp3",
+      "actual_duration_s": 13.01,
+      "render_duration_s": 13.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1405.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1501",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A checklist of six questions to ask before you trust a robustness claim. The first is, robust against what. The attack class has to be named, such as white-box, transfer or patch. Robust with nothing named is not a claim.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 16 step 1. Source: Chapter 4, “Towards honest robustness disclosure”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Robust against what? Is the attack class named?",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a robustness claim: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 1 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Robust against what? Is the attack class named?"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 15,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1634cd80c6da",
+      "audio_file": "mp3/beat-B1501.mp3",
+      "actual_duration_s": 12.91,
+      "render_duration_s": 12.916666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1501.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1502",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Next, the budget. Ask for the perturbation budget, and for the accuracy under attack reported next to the clean accuracy. A robust accuracy means nothing until you know the budget it was measured at.",
+      "estimated_duration_s": 13.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 16 step 2. Source: Chapter 4, “Towards honest robustness disclosure”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a robustness claim",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a robustness claim: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 2 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Before you trust a robustness claim"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 15,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ff5f6e804911",
+      "audio_file": "mp3/beat-B1502.mp3",
+      "actual_duration_s": 11.33,
+      "render_duration_s": 11.333333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1502.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1503",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Next, the proxy. Ask what proxy the model might lean on, and which feature a person would use that it stands in for. A model that learned a proxy needs its reliance inspected, not just a patch on the spot that broke.",
+      "estimated_duration_s": 17.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 16 step 3. Source: Chapter 4, “Towards honest robustness disclosure”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a robustness claim",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a robustness claim: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 3 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Before you trust a robustness claim"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 15,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "6892cb16e16c",
+      "audio_file": "mp3/beat-B1503.mp3",
+      "actual_duration_s": 12.39,
+      "render_duration_s": 12.416666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1503.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1504",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Then ask whether the defense is tested or certified. An empirical defense held against the attacks tried. A certified defense comes with a proof, inside a radius. Either way, ask what sits outside that radius, or outside its scope.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 16 step 4. Source: Chapter 4, “Towards honest robustness disclosure”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a robustness claim",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a robustness claim: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 4 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Before you trust a robustness claim"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 15,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "c1839b61b913",
+      "audio_file": "mp3/beat-B1504.mp3",
+      "actual_duration_s": 13.46,
+      "render_duration_s": 13.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1504.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1505",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Then ask which attacks and which shifts were not tested, and whether that is written down. That written list is the residual risk disclosure. Silence about an untested attack is not evidence that the model resists it.",
+      "estimated_duration_s": 15.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 16 step 5. Source: Chapter 4, “Towards honest robustness disclosure”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a robustness claim",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a robustness claim: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 5 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: Before you trust a robustness claim"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 15,
+        "step": 5,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d91efe96cc6c",
+      "audio_file": "mp3/beat-B1505.mp3",
+      "actual_duration_s": 11.99,
+      "render_duration_s": 12.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1505.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "B1506",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last, ask what is monitored in production, and what triggers review or rollback. That is the monitoring specification. Then say it exactly. Not, it is robust. Say, for example, seventy-one percent under an L infinity white-box attack at epsilon zero point zero three.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/04 Robustness.html slide 16 step 6. Source: Chapter 4, “Towards honest robustness disclosure”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust a robustness claim",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust a robustness claim: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 6 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 6 animates: Before you trust a robustness claim"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 15,
+        "step": 6,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "aaa21aed322f",
+      "audio_file": "mp3/beat-B1506.mp3",
+      "actual_duration_s": 15.77,
+      "render_duration_s": 15.791666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1506.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "Recap",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Let's recap. A small push flips the answer because the model learned a proxy. FGSM takes one step, and tiny pushes add up across many inputs. White-box, black-box and transfer attacks differ in what the attacker has. Every defense has a limit, and an adaptive attack aims at it. Distribution shift and natural adversarial inputs need no attacker. A robustness claim names the attack, the budget and what was not tested.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "This film's body beats; nothing new is asserted",
+      "routing": {
+        "about": "Six things the terms established",
+        "runner_up": "Summary drawing",
+        "reason": "Restates only what the body showed."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Six earned conclusions",
+        "motion_claim": "Six recap lines rise in narration order.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact page opens"
+          },
+          {
+            "at": 0.2,
+            "event": "six lines land in narration order"
+          }
+        ],
+        "template": "neu-bookend-recap",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.5,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Recap lines rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "2e155dae92ec",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 22.4,
+      "render_duration_s": 22.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "Your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Quiz me on robustness terms. Give me one short case at a time. I must name the exact term and say why its look-alike is wrong. Use adversarial example, distribution shift, natural adversarial, white-box attack, transfer attack, adaptive attack, certified defense, robust accuracy and residual risk disclosure. Hold back the answer until I reply, then correct me in one sentence.",
+      "estimated_duration_s": 24.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json your_turn (a practice prompt composed from this film's terms; not a run we made)",
+      "routing": {
+        "about": "Practice: name the exact term and defend it",
+        "runner_up": "Worksheet",
+        "reason": "The spoken prompt makes the viewer use the terms; two checks let them judge the result. Not a run we made."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Practice prompt",
+        "motion_claim": "The practice prompt types into a box marked for Claude, then two checks land.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens - 'Your turn.'"
+          },
+          {
+            "at": 0.12,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.85,
+            "event": "two check lines land"
+          }
+        ],
+        "template": "neu-bookend-your-turn",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The prompt types into an empty box; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "4e8c7d347ac4",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 20.46,
+      "render_duration_s": 20.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "Outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Key Terms: Robustness. At Nik Bear Brown.",
+      "estimated_duration_s": 3.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "OUTRO-LOCK.md",
+      "routing": {
+        "about": "Locked sign-off",
+        "runner_up": "None",
+        "reason": "Exact title and channel, slug-seeded mascot."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "template": "neu-bookend-outro",
+        "motion_claim": "Exact title and channel handle in the deck's look; held.",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Closing card: title and handle only, by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "e65a7a44327f",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 3.78,
+      "render_duration_s": 3.7916666666666665,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:25"
+      }
+    }
+  ]
+}

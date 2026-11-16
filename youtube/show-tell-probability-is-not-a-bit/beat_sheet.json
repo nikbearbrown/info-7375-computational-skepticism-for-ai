@@ -1,0 +1,792 @@
+{
+  "metadata": {
+    "slug": "show-tell-probability-is-not-a-bit",
+    "title": "Probability Is Not a Bit",
+    "topic": "INFO 7375 · COMPUTATIONAL SKEPTICISM",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "Swahili (Jambo)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "Show-tell course-film spine uses hesitant writer, terms, Your Turn, and spoken outro.",
+    "course": "INFO 7375 Computational Skepticism for AI · Nik Bear Brown · Northeastern University",
+    "audience": "INFO 7375 students",
+    "source_doc": "chapters/02-probability-uncertainty-and-the-confidence-illusion.md lines 26–65 (SOURCE.md; read only)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 2,
+    "tags": [
+      "probability",
+      "axioms",
+      "sample space",
+      "event",
+      "prior",
+      "INFO 7375"
+    ],
+    "build": {
+      "at": "2026-09-28T17:36:25",
+      "cut": "master",
+      "filled": 16,
+      "of": 16,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Jambo. This is Liam, in for Bear, with a short film for INFO seventy-three seventy-five, Computational Skepticism for AI. You might ask: is the answer true or false? Probability asks a different question. How confident should I be, given what I know?",
+      "estimated_duration_s": 12.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "types the Boolean question"
+          },
+          {
+            "at": 0.6,
+            "event": "corrects it into the probability question"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Is the answer true or false?",
+            "triggerWords": "true or false",
+            "replacementWords": "how confident should I be, given what I know",
+            "fontSize": 72,
+            "charMs": 110,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-probability-is-not-a-bit",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-28T21:28:09.694367+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer corrects a Boolean question into a conditional degree-of-belief question.",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The correction is the motion."
+      },
+      "actual_duration_s": 14.55,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 14.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Four terms. Sample space: every possible outcome. Event: a subset of those outcomes. Probability measure: a number assigned to each event under three rules. Prior: the belief you bring before new evidence arrives.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "sample space"
+          },
+          {
+            "at": 0.35,
+            "event": "event"
+          },
+          {
+            "at": 0.6,
+            "event": "probability measure"
+          },
+          {
+            "at": 0.85,
+            "event": "prior"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "INFO 7375 · Terms In This Film",
+            "terms": [
+              {
+                "term": "sample space",
+                "meaning": "every possible outcome"
+              },
+              {
+                "term": "event",
+                "meaning": "a subset of possible outcomes"
+              },
+              {
+                "term": "probability measure",
+                "meaning": "numbers assigned to events under three rules"
+              },
+              {
+                "term": "prior",
+                "meaning": "belief before new evidence arrives"
+              }
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-28T21:28:41.447529+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Four prerequisite terms, one line each."
+      },
+      "actual_duration_s": 12.5,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 12.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Most of us came up through a Boolean education. A bit is one or zero. A program runs or it does not. A test passes or fails. Even uncertainty often arrives as a small wobble around a yes-or-no answer.",
+      "estimated_duration_s": 11.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A one tile and zero tile flank a pass-fail switch; a narrow error band wobbles without changing the bit.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "A one tile and zero tile flank a pass-fail switch; a narrow error band wobbles without changing the bit."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B00_Boolean"
+        },
+        "motion_claim": "A one tile and zero tile flank a pass-fail switch; a narrow error band wobbles without changing the bit."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 12.33,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 12.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Probability is a different animal. Its output is a degree of belief: a number between zero and one that says how confident you should be, given what you currently know.",
+      "estimated_duration_s": 9.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The bit opens into a zero-to-one belief bar and a marker settles between its endpoints.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "The bit opens into a zero-to-one belief bar and a marker settles between its endpoints."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B01_Degree"
+        },
+        "motion_claim": "The bit opens into a zero-to-one belief bar and a marker settles between its endpoints."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 9.49,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 9.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Two engineers can see exactly the same evidence, assign different probabilities, and both reason correctly. They arrived with different priors. Probability is conditional on an information state.",
+      "estimated_duration_s": 8.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two engineer pegs face one evidence card; distinct prior tiles feed distinct belief bars.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "Two engineer pegs face one evidence card; distinct prior tiles feed distinct belief bars."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B02_TwoEngineers"
+        },
+        "motion_claim": "Two engineer pegs face one evidence card; distinct prior tiles feed distinct belief bars."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 11.22,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 11.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "That shift should bother you a little. Boolean instinct works in deterministic systems. It misleads when you work from a model rather than the world, and every machine learning system, AI deployment, and statistical inference is a model.",
+      "estimated_duration_s": 11.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A dark model block casts a paper silhouette toward a separate world block; a bit cannot bridge the gap.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "A dark model block casts a paper silhouette toward a separate world block; a bit cannot bridge the gap."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B03_ModelWorld"
+        },
+        "motion_claim": "A dark model block casts a paper silhouette toward a separate world block; a bit cannot bridge the gap."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 13.23,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 13.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "A sample space, omega, is every possible outcome. For a die it is one through six. An event is any subset. The event even lifts the tiles two, four, and six from the omega tray.",
+      "estimated_duration_s": 10.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An omega tray holds six numbered outcome tiles; two, four, and six lift as one event.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "An omega tray holds six numbered outcome tiles; two, four, and six lift as one event."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B04_SampleSpace"
+        },
+        "motion_claim": "An omega tray holds six numbered outcome tiles; two, four, and six lift as one event."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 11.05,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 11.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The first axiom is nonnegativity. P of A is at least zero for every event A. A probability bar can begin at the floor, but it never extends below zero.",
+      "estimated_duration_s": 9.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An event tile drives a belief bar down to its zero floor, where a stop catches it.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "An event tile drives a belief bar down to its zero floor, where a stop catches it."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B05_Nonnegative"
+        },
+        "motion_claim": "An event tile drives a belief bar down to its zero floor, where a stop catches it."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 9.71,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 9.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The second axiom is normalization. P of omega equals one. Something has to happen. Sick or healthy exhausts the patient's sample space, so together their bars fill the whole height.",
+      "estimated_duration_s": 9.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A patient peg faces sick and healthy tiles whose two stacked bars fill a single one-height frame.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "A patient peg faces sick and healthy tiles whose two stacked bars fill a single one-height frame."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B06_Normalization"
+        },
+        "motion_claim": "A patient peg faces sick and healthy tiles whose two stacked bars fill a single one-height frame."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 10.65,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 10.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The third axiom is additivity. For disjoint A and B, P of A union B equals P of A plus P of B. Even and five cannot both occur on one die roll, so their bars stack without overlap.",
+      "estimated_duration_s": 11.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Even tiles and the five tile travel in separate lanes, then their bars stack into one union bar.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "Even tiles and the five tile travel in separate lanes, then their bars stack into one union bar."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B07_Additivity"
+        },
+        "motion_claim": "Even tiles and the five tile travel in separate lanes, then their bars stack into one union bar."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 11.5,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 11.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Those three rules are the entire foundation. Conditional probability, Bayes' theorem, and the central limit theorem are derived from them. When a formula becomes mysterious, return to the three supports.",
+      "estimated_duration_s": 9.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three labeled pillars support a platform carrying conditional probability, Bayes, and central limit theorem tiles.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "Three labeled pillars support a platform carrying conditional probability, Bayes, and central limit theorem tiles."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B08_Foundation"
+        },
+        "motion_claim": "Three labeled pillars support a platform carrying conditional probability, Bayes, and central limit theorem tiles."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 11.63,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 11.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Two consequences follow. P of the empty set is zero: nothing happening has probability zero. And P of A complement is one minus P of A.",
+      "estimated_duration_s": 7.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An empty tray lands at zero; beside it, one full bar splits into A and its complement.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "An empty tray lands at zero; beside it, one full bar splits into A and its complement."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B09_Consequences"
+        },
+        "motion_claim": "An empty tray lands at zero; beside it, one full bar splits into A and its complement."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 9.0,
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 9.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "For the die, the complement of even is the three outcomes left behind: one, three, and five. The event and its complement partition the omega tray and fill the same total of one.",
+      "estimated_duration_s": 10.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Even tiles lift from omega, leaving one, three, and five; the two groups fill a complete frame.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "Even tiles lift from omega, leaving one, three, and five; the two groups fill a complete frame."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B10_Complement"
+        },
+        "motion_claim": "Even tiles lift from omega, leaving one, three, and five; the two groups fill a complete frame."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 10.5,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 10.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Every probability calculation in this book follows from these rules. The result is not a bit. It is your degree of belief given what you know, which is why two careful engineers can differ.",
+      "estimated_duration_s": 10.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The three axiom pillars turn back into two engineers with different markers on one zero-to-one bar.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "The three axiom pillars turn back into two engineers with different markers on one zero-to-one bar."
+          },
+          {
+            "at": 0.7,
+            "event": "the relationship resolves"
+          }
+        ],
+        "manim": {
+          "class": "B11_Close"
+        },
+        "motion_claim": "The three axiom pillars turn back into two engineers with different markers on one zero-to-one bar."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "One drawn isometric teaching object on a cream stage; narration carries the explanation."
+      },
+      "actual_duration_s": 10.6,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 10.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Take one yes-or-no claim your system makes and paste this into Claude: Take one yes-or-no claim your system makes. Write its sample space, name the event, and assign a number from zero to one. Add one line saying what information that number is conditional on. Then check two things yourself. Do your number and its complement sum to one? Could a colleague with different information honestly write a different number, and can you say what they would have to know?",
+      "estimated_duration_s": 24.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "composer opens"
+          },
+          {
+            "at": 0.1,
+            "event": "prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two checks land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "INFO 7375 COMPUTATIONAL SKEPTICISM · YOUR TURN",
+            "segment": "Probability Is Not a Bit",
+            "command": "Take one yes-or-no claim your system makes. Write its sample space, name the event, and assign a number from zero to one. Add one line saying what information that number is conditional on.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: do the event and its complement sum to 1?",
+              "Check: what different information could change the number?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-28T21:29:37.671473+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 21.5,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 21.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-28T17:36:25"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Probability Is Not a Bit. At Nik Bear Brown.",
+      "estimated_duration_s": 4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "title, handle, mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Probability Is Not a Bit",
+            "slug": "show-tell-probability-is-not-a-bit",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-28T21:29:53.115137+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 3.33,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 3.3333333333333335,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-28T17:36:25"
+      }
+    }
+  ]
+}

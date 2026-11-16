@@ -1,0 +1,2885 @@
+{
+  "metadata": {
+    "slug": "claude-liam-lecture-key-terms-bias",
+    "title": "Key Terms: Bias",
+    "skill": "lecture",
+    "style_preset": "lecture",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "neu",
+    "channel_handle": "@NikBearBrown",
+    "register": "Teardown",
+    "fps": 24,
+    "width": 3840,
+    "height": 2160,
+    "aspect_ratio": "16:9",
+    "caption_policy": "sidecar",
+    "greeting_language": "German (Hallo)",
+    "source_doc": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/youtube/claude-liam-lecture-key-terms-bias/SOURCES.md",
+    "playlist": "Computational Skepticism, Exam Prep",
+    "series_title": "Computational Skepticism, Exam Prep",
+    "series_numbered": false,
+    "course": "INFO 7375 Computational Skepticism for AI",
+    "lecture_opening_description": "33 terms for where bias enters and who owns it.",
+    "lecture_opening_title_lines": [
+      "Key Terms:",
+      "Bias"
+    ],
+    "tags": [
+      "Computational Skepticism",
+      "INFO 7375",
+      "Key terms",
+      "Exam prep",
+      "Bias",
+      "Glossary",
+      "Liam",
+      "Lecture"
+    ],
+    "deck_file": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html",
+    "deck_note": "Body beats are the terminology deck filmed live; see exam-prep-deck-films/tools/deck_capture.py",
+    "on_exam": true,
+    "pronounce": {
+      "A-I": "ˈeɪaɪ",
+      "A-I's": "ˈeɪaɪz",
+      "Option A gives": "ˈɑːpʃən ˈeɪ ɡˈɪvz",
+      "group A gets": "ɡɹˈuːp ˈeɪ ɡˈɛts"
+    },
+    "bookends": {
+      "idea": {
+        "text": "To fix a biased model,\nfix the model.",
+        "triggerWords": "fix the model",
+        "replacementWords": "find where the bias enters"
+      },
+      "labels": [
+        {
+          "key": "in the book text",
+          "kind": "tag",
+          "meaning": "the course text uses and explains the term"
+        },
+        {
+          "key": "Computed",
+          "kind": "badge",
+          "meaning": "numbers worked out on screen from stated inputs"
+        },
+        {
+          "key": "Simulation (seeded)",
+          "kind": "badge",
+          "meaning": "a made-up run with a fixed seed, the same every time"
+        },
+        {
+          "key": "Illustrative data",
+          "kind": "badge",
+          "meaning": "numbers chosen to show the idea, not measured"
+        },
+        {
+          "key": "Conceptual illustration",
+          "kind": "badge",
+          "meaning": "a drawing of the idea, with no data behind it"
+        }
+      ],
+      "defs_parts": [
+        "Five labels sit in the corners of the pictures that follow.",
+        "In the book text: the course text uses and explains the term.",
+        "Computed: the numbers are worked out on screen from stated inputs.",
+        "Simulation: a made-up run with a fixed seed, so it comes out the same every time.",
+        "Illustrative data: numbers chosen to show the idea, not measured.",
+        "Conceptual: a drawing of the idea, with no data behind it."
+      ],
+      "recap_lead": "Let's recap.",
+      "recap_lines": [
+        "Bias is an offset from the truth, and more data does not move it.",
+        "Selection bias drops people, historical bias copies an unfair world.",
+        "Bias can sit in the sample, the labels or the structure.",
+        "Association watches a variable, intervention sets it.",
+        "Leverage analysis finds the path, the accountable owner controls it.",
+        "With unequal base rates, choosing a fairness metric is a values claim."
+      ],
+      "segment": "Name The Bias, Defend It",
+      "command": "Quiz me on bias terms. Give me short cases, one at a time, about a data pipeline or a deployed model. For each, I must name the exact term, such as selection bias, sampling bias, historical bias, observer bias, label bias, structural bias, association, intervention, leverage or accountable owner, and say why its look-alike is wrong. Do not reveal the answer until I reply. Then correct me.",
+      "checks": [
+        "Check: each case made you name one exact term, not just say biased.",
+        "Check: Claude held the answer back until you had replied."
+      ]
+    },
+    "build": {
+      "at": "2026-11-12T07:30:07",
+      "cut": "master",
+      "filled": 56,
+      "of": 56,
+      "slates": [],
+      "skin_warnings": [
+        "NO RENDERABLE BEATS: no beat carries a shot.remotion.pattern or Manim annotation — the pipeline will render NOTHING and every slot becomes a YOU-slate. The sheet was authored without the scene contract."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BOPEN",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Computational Skepticism, Exam Prep. Key Terms: Bias. Thirty-three terms for saying where bias enters an AI pipeline, what a fix can actually reach, and who owns that fix. Useful because the word biased, on its own, cannot be tested.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide. Playlist name as Bear gave it.",
+      "routing": {
+        "about": "Playlist, exact film title, payoff",
+        "runner_up": "Writer-first opening",
+        "reason": "The lecture skill requires the narrated portrait/title card before the writer."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "template": "neu-bookend-title",
+        "narration_contract": "playlist-title-summary-v1",
+        "visual_intent": "Named opening fields visible from frame zero",
+        "motion_claim": "Playlist, title, portrait, credits and handle, visible from frame zero; held for the measured narration.",
+        "show": [
+          {
+            "at": 0,
+            "event": "Complete portrait/title/series card visible"
+          }
+        ],
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Identity card in the deck's look: a still hold is the design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame.",
+        "typography_fill": "#FFFFFF",
+        "typography_reason": "Lecture identity card: the portrait slot is a photograph, not typography; all text fields are listed.",
+        "typography_regions": [
+          {
+            "label": "playlist",
+            "box": [
+              0.0625,
+              0.08,
+              0.8,
+              0.135
+            ]
+          },
+          {
+            "label": "title, rule and summary",
+            "box": [
+              0.41,
+              0.26,
+              0.95,
+              0.72
+            ]
+          },
+          {
+            "label": "presenter and narrator credits",
+            "box": [
+              0.0625,
+              0.73,
+              0.4,
+              0.845
+            ]
+          },
+          {
+            "label": "channel handle",
+            "box": [
+              0.74,
+              0.895,
+              0.945,
+              0.95
+            ]
+          }
+        ]
+      },
+      "voice_key": "ae3be791d810",
+      "audio_file": "mp3/beat-BOPEN.mp3",
+      "actual_duration_s": 13.76,
+      "render_duration_s": 13.791666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOPEN.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. People say that to fix a biased model, you fix the model. Usually the bias came in somewhere else, in who was sampled, how labels were made, or what a reviewer does with the score. So first find where the bias enters. This film goes through thirty-three terms for doing that, each one shown.",
+      "estimated_duration_s": 24.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json idea; the deck's own framing",
+      "routing": {
+        "about": "Core framing correction",
+        "runner_up": "Overview card",
+        "reason": "One phrase is revised; the terms that follow earn the correction."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Core framing correction",
+        "motion_claim": "The assumption is typed, one phrase is struck and replaced in NU red.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types the assumption"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'fix the model', types 'find where the bias enters'"
+          }
+        ],
+        "template": "neu-bookend-writer",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.8,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Typing builds the line on an empty page; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "64a5f8d14206",
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "actual_duration_s": 16.41,
+      "render_duration_s": 16.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "Terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Five labels sit in the corners of the pictures that follow. In the book text: the course text uses and explains the term. Computed: the numbers are worked out on screen from stated inputs. Simulation: a made-up run with a fixed seed, so it comes out the same every time. Illustrative data: numbers chosen to show the idea, not measured. Conceptual: a drawing of the idea, with no data behind it.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "The deck's opening speaker note (what each tag means) and the evidence badge on every slide",
+      "routing": {
+        "about": "The labels printed on every slide",
+        "runner_up": "The deck's own title slide",
+        "reason": "Prerequisite vocabulary only: the tags and badges the viewer will see in every picture. The terms the film teaches arrive in the body."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Prerequisite labels",
+        "motion_claim": "Each tag or badge, drawn as the deck draws it, rises as it is spoken.",
+        "show": [
+          {
+            "at": 0.08,
+            "event": "'In the book text' lands"
+          },
+          {
+            "at": 0.25,
+            "event": "'Computed' lands"
+          },
+          {
+            "at": 0.42,
+            "event": "'Simulation' lands"
+          },
+          {
+            "at": 0.58,
+            "event": "'Illustrative data' lands"
+          },
+          {
+            "at": 0.75,
+            "event": "'Conceptual' lands"
+          }
+        ],
+        "template": "neu-bookend-labels",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The label rows rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "91d17468b704",
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "actual_duration_s": 20.54,
+      "render_duration_s": 20.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0101",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This is a map of the film, a table that fills in one group at a time. Thirty-three terms, all about where bias enters a pipeline, what a fix can reach, and who owns it. The first group says what bias means. Estimator, bias and unbiased estimator.",
+      "estimated_duration_s": 19.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 2 step 1. Source: Chapter 6; Exam terms - compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "GROUP; TERMS; WHAT IT IS ABOUT; What bias means",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-three terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: GROUP; TERMS; WHAT IT IS ABOUT; What bias means"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "ca2e81274d38",
+      "audio_file": "mp3/beat-B0101.mp3",
+      "actual_duration_s": 13.87,
+      "render_duration_s": 13.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0102",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The second group is ten ways in. Selection bias and sampling bias, with inverse probability weighting as the repair. Confirmation bias, self-report bias and publication bias, with the funnel plot. Cohen's kappa, observer bias, data-coding bias and data-entry bias. Then historical bias and implicit bias.",
+      "estimated_duration_s": 18.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 2 step 2. Source: Chapter 6; Exam terms - compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Ten ways in; Where the gap is born, and how to see it",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-three terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Ten ways in; Where the gap is born, and how to see it"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "98fbb88e445e",
+      "audio_file": "mp3/beat-B0102.mp3",
+      "actual_duration_s": 17.9,
+      "render_duration_s": 17.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0103",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The third group asks where the bias sits. Dataset bias sits in the sample. Label bias and biased measurement sit in the labels. Structural bias sits in the world the model is used in. Sample, label or structure.",
+      "estimated_duration_s": 15.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 2 step 3. Source: Chapter 6; Exam terms - compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Where it lives; Sample, label or structure",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-three terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Where it lives; Sample, label or structure"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "156f9d4b2945",
+      "audio_file": "mp3/beat-B0103.mp3",
+      "actual_duration_s": 12.46,
+      "render_duration_s": 12.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0104",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The last group is causes and who decides. Pearl's ladder, with association, intervention and counterfactual. The causal graph, the proxy, leverage analysis, leverage and the accountable owner. Then calibration parity, equal FPR and FNR, the false positive and false negative rates, the impossibility theorem and the values claim.",
+      "estimated_duration_s": 19.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 2 step 4. Source: Chapter 6; Exam terms - compact list. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Causes and who decides; Which fix works, which metric, whose node",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-three terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Causes and who decides; Which fix works, which metric, whose node"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3c8a12638b24",
+      "audio_file": "mp3/beat-B0104.mp3",
+      "actual_duration_s": 18.96,
+      "render_duration_s": 19.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0201",
+      "act": "What bias means",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Here is a percent line. Each dot is one estimate from one sample, in a simulated run. An estimator is the recipe that turns a sample into a number. An unbiased estimator can miss on any one sample, but its dots gather around the truth, the red dashed line at twenty-five percent. For example, an agent averages the pay in a random batch of data analyst listings. That average is an estimator. One batch may miss, but the batches center on the true pay, so it is unbiased.",
+      "estimated_duration_s": 35.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 3 step 1. Source: Chapter 6, “What “bias” actually means”; “Selection bias”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Estimator; in the book text; Unbiased estimator; in the book text",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Estimator, bias and unbiased estimator: Repeated estimates drawn as dots on a percent line. One estimator centres on the true 25 percent. The other centres at about 14 percent. With 2,000 per sample both tighten but the offset stays.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Estimator; in the book text; Unbiased estimator; in the book text"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "1c1a6a0154b7",
+      "audio_file": "mp3/beat-B0201.mp3",
+      "actual_duration_s": 25.09,
+      "render_duration_s": 25.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0202",
+      "act": "What bias means",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now red dots, from a sample that kept only patients who passed a filter. On average it lands near fourteen percent. Bias is that offset from the truth, minus ten point seven points, not the scatter of the dots. For example, an agent estimates starting pay only from offers people chose to post online. If people with good offers post more often, the estimates center too high, batch after batch. That steady gap is the bias.",
+      "estimated_duration_s": 30.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 3 step 2. Source: Chapter 6, “What “bias” actually means”; “Selection bias”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "in the book text; Bias(θ̂) = E[θ̂] − θ; Bias; Filtered sample (biased)",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Estimator, bias and unbiased estimator: Repeated estimates drawn as dots on a percent line. One estimator centres on the true 25 percent. The other centres at about 14 percent. With 2,000 per sample both tighten but the offset stays.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Bias(θ̂) = E[θ̂] − θ; Bias; Filtered sample (biased)"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4b4bcb3c5512",
+      "audio_file": "mp3/beat-B0202.mp3",
+      "actual_duration_s": 21.97,
+      "render_duration_s": 22.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0203",
+      "act": "What bias means",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now each sample grows to two thousand. Both clouds tighten, the red one around the wrong value. More data shrinks scatter, not bias. The nineteen thirty-six Literary Digest poll had two point four million responses and was still wrong.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 3 step 3. Source: Chapter 6, “What “bias” actually means”; “Selection bias”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "n = 2,000 each",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Estimator, bias and unbiased estimator: Repeated estimates drawn as dots on a percent line. One estimator centres on the true 25 percent. The other centres at about 14 percent. With 2,000 per sample both tighten but the offset stays.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (3208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: n = 2,000 each"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 3,
+        "anim_ms": 3208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b23234f8f7bf",
+      "audio_file": "mp3/beat-B0203.mp3",
+      "actual_duration_s": 14.01,
+      "render_duration_s": 14.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0301",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A thousand made-up patients and a six hour lab filter that drops most of the critical ones. Selection bias means who gets in depends on what happened to them. The kept sample shows fourteen point three percent risk, not twenty-five. Picture a résumé tool that surveys only the users still subscribed. Users who got no interviews quit early, so they never answer. Who is in the survey depends on how their job hunt went.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 4 step 1. Source: Chapter 6, “Selection bias”; “The two that enter at the keyboard”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "Selection bias; in the book text; TELL THESE APART; Selection bias",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Selection bias, sampling bias and weighting: Bars of kept and dropped patients. Then a survey whose respondents are mostly professionals. Then weights that put the kept cases back to full size.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Selection bias; in the book text; TELL THESE APART; Selection bias"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 1,
+        "anim_ms": 1625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "92e173a97966",
+      "audio_file": "mp3/beat-B0301.mp3",
+      "actual_duration_s": 21.44,
+      "render_duration_s": 21.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0302",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now a made-up survey. Professionals are forty percent of the population but eighty percent of respondents. That is sampling bias, groups missed because they were hard to reach, not because of their outcomes. Reweighting moves sixty-two percent back to forty-six. For example, a job-market report surveys seekers only through one career website. People who never use that site are hard to reach, so they barely appear, however their search went.",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 4 step 2. Source: Chapter 6, “Selection bias”; “The two that enter at the keyboard”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; Sampling bias; A SURVEY SENT THROUGH ONE NETWORK; Population",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Selection bias, sampling bias and weighting: Bars of kept and dropped patients. Then a survey whose respondents are mostly professionals. Then weights that put the kept cases back to full size.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Sampling bias; A SURVEY SENT THROUGH ONE NETWORK; Population"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "5e1c11ea357d",
+      "audio_file": "mp3/beat-B0302.mp3",
+      "actual_duration_s": 21.38,
+      "render_duration_s": 21.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0303",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This is inverse probability weighting. Weight each kept patient by one over the chance of being kept, so sixty critical patients stand in for three hundred. The estimate returns to twenty-five percent, provided the cause of exclusion was recorded. For example, say the résumé tool recorded how likely each kind of user was to keep answering. A user with no interviews who still replied gets a large weight, standing in for those like her who went silent.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 4 step 3. Source: Chapter 6, “Selection bias”; “The two that enter at the keyboard”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "Inverse prob. weighting; in the book text; Inverse probability weighting; WEIGHT EACH KEPT PATIENT BY 1 / P(KEPT)",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Selection bias, sampling bias and weighting: Bars of kept and dropped patients. Then a survey whose respondents are mostly professionals. Then weights that put the kept cases back to full size.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1833 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Inverse prob. weighting; in the book text; Inverse probability weighting; WEIGHT EACH KEPT PATIENT BY 1 / P(KEPT)"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 3,
+        "anim_ms": 1833
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ca6c0dafee2c",
+      "audio_file": "mp3/beat-B0303.mp3",
+      "actual_duration_s": 23.42,
+      "render_duration_s": 23.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0401",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A chart of belief over ten made-up pieces of evidence, five for, five against. Weighed fairly, belief ends at fifty percent. Let a prior count flattering pieces more and the red line ends at ninety-seven. That is confirmation bias. For example, a developer sure her fit-scoring agent works counts each good match as proof. Each bad match she sets aside as an odd listing, so only the good ones reach her report.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 5 step 1. Source: Chapter 6, “The five that enter through the humans in the loop”; “The two that enter at the keyboard”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Confirmation bias; in the book text; TELL THESE APART; Confirmation bias",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Confirmation, self-report and publication bias: A line chart of belief as evidence arrives. A grid of people who report voting more than they did. A scatter of studies with the small null ones missing, and a trim-and-fill correction.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Confirmation bias; in the book text; TELL THESE APART; Confirmation bias"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 1,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "773ddee05ebe",
+      "audio_file": "mp3/beat-B0401.mp3",
+      "actual_duration_s": 20.99,
+      "render_duration_s": 21.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0401.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0402",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Next, a made-up poll. One hundred people are asked whether they voted. Sixty did, seventy-five say they did. That is self-report bias, people misreport themselves in one consistent direction, toward looking good. Asking more people does not average it away. For example, a job application asks candidates to rate their own spreadsheet skills. Most round up and almost nobody rounds down, so the error leans one way.",
+      "estimated_duration_s": 26.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 5 step 2. Source: Chapter 6, “The five that enter through the humans in the loop”; “The two that enter at the keyboard”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Self-report bias; in the book text; 100 PEOPLE ASKED: DID YOU VOTE?; what happened",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Confirmation, self-report and publication bias: A line chart of belief as evidence arrives. A grid of people who report voting more than they did. A scatter of studies with the small null ones missing, and a trim-and-fill correction.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Self-report bias; in the book text; 100 PEOPLE ASKED: DID YOU VOTE?; what happened"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "93b6b0adce50",
+      "audio_file": "mp3/beat-B0402.mp3",
+      "actual_duration_s": 21.33,
+      "render_duration_s": 21.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0402.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0403",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now eighty simulated studies, true effect zero point one five. Filled dots were published, hollow ones were not. That is publication bias. Significant results get published, nulls stay in drawers, and the published pool alone shows zero point two one. For example, studies of AI résumé tools get published when the tool raised callbacks. Studies where it made no difference stay in a drawer, so the tools look stronger than they are.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 5 step 3. Source: Chapter 6, “The five that enter through the humans in the loop”; “The two that enter at the keyboard”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "in the book text; Publication bias; 80 STUDIES, TRUE EFFECT 0.15; -0.5",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Confirmation, self-report and publication bias: A line chart of belief as evidence arrives. A grid of people who report voting more than they did. A scatter of studies with the small null ones missing, and a trim-and-fill correction.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1375 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; Publication bias; 80 STUDIES, TRUE EFFECT 0.15; -0.5"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 3,
+        "anim_ms": 1375
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9126a60bda54",
+      "audio_file": "mp3/beat-B0403.mp3",
+      "actual_duration_s": 22.25,
+      "render_duration_s": 22.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0403.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0404",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Remove the unpublished studies and this is a funnel plot, effect size against precision. It should be symmetric, but the lower left corner, small null studies, is empty. Trim-and-fill adds seven stand-ins, moving the pool to zero point one nine. For example, plot every published test of whether a tailored cover letter brings more callbacks. If the small tests that found nothing never came out, the lower left of the funnel plot sits empty.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 5 step 4. Source: Chapter 6, “The five that enter through the humans in the loop”; “The two that enter at the keyboard”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Funnel plot; in the book text; PUBLISHED STUDIES ONLY, THEN FILLED; after filling 0.19",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Confirmation, self-report and publication bias: A line chart of belief as evidence arrives. A grid of people who report voting more than they did. A scatter of studies with the small null ones missing, and a trim-and-fill correction.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (2417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Funnel plot; in the book text; PUBLISHED STUDIES ONLY, THEN FILLED; after filling 0.19"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 4,
+        "anim_ms": 2417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d06da11f4bb0",
+      "audio_file": "mp3/beat-B0404.mp3",
+      "actual_duration_s": 23.17,
+      "render_duration_s": 23.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0404.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0501",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This is an agreement table. Two blind coders label one hundred notes, with made-up counts, and agree on eighty. Cohen's kappa asks how much of that beats chance. Chance alone gives zero point five, so kappa is zero point six. For example, two recruiters each mark the same résumés as qualified or not. Kappa asks how far their agreement goes beyond what two people guessing at their own rates would reach by luck.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 6 step 1. Source: Chapter 6, “The five that enter through the humans in the loop”; “Observer bias compounds with data coding bias”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "Cohen's kappa; in the book text; TELL THESE APART; Observer bias",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Cohen’s kappa, observer and coding bias: Two tables of two coders agreeing, with kappa. Then two grids of disagreement, one clustered on a person and one on items. Then recorded codes against true codes.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Cohen's kappa; in the book text; TELL THESE APART; Observer bias"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "6860717c754b",
+      "audio_file": "mp3/beat-B0501.mp3",
+      "actual_duration_s": 21.35,
+      "render_duration_s": 21.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0501.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0502",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Coder B can see each patient's prior diagnosis, and kappa falls from zero point six to zero point two. A kappa that collapses on unblinding points to observer bias. The labeler's prior belief is doing the labeling, not the note. For example, a recruiter rating interview notes can see each candidate's school, and rates notes from famous schools as stronger. The school, not the notes, is setting the label.",
+      "estimated_duration_s": 27.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 6 step 2. Source: Chapter 6, “The five that enter through the humans in the loop”; “Observer bias compounds with data coding bias”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; Observer bias; NOW CODER B SEES THE PRIOR DIAGNOSIS; blind",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Cohen’s kappa, observer and coding bias: Two tables of two coders agreeing, with kappa. Then two grids of disagreement, one clustered on a person and one on items. Then recorded codes against true codes.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (667 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Observer bias; NOW CODER B SEES THE PRIOR DIAGNOSIS; blind"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 2,
+        "anim_ms": 667
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4935803ce5d6",
+      "audio_file": "mp3/beat-B0502.mp3",
+      "actual_duration_s": 20.99,
+      "render_duration_s": 21.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0502.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0503",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Grids of who disagrees with the majority, items down, coders across. Left, marks pile up on two items. That is data-coding bias, a vague category, so revise the manual. Right, they pile up on one coder. That is observer bias. For example, taggers sorting job listings into remote, hybrid or on-site disagree mostly on listings that say remote friendly. The category is vague, not the taggers, so that is data-coding bias, and the fix is a clearer rule.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 6 step 3. Source: Chapter 6, “The five that enter through the humans in the loop”; “Observer bias compounds with data coding bias”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; Data-coding bias; WHO DISAGREES WITH THE MAJORITY?; on two items",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Cohen’s kappa, observer and coding bias: Two tables of two coders agreeing, with kappa. Then two grids of disagreement, one clustered on a person and one on items. Then recorded codes against true codes.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; Data-coding bias; WHO DISAGREES WITH THE MAJORITY?; on two items"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 3,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ae043240c698",
+      "audio_file": "mp3/beat-B0503.mp3",
+      "actual_duration_s": 23.94,
+      "render_duration_s": 23.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0503.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0504",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "One hundred diagnoses, true code against recorded. Twelve of thirty true C cases were entered as B. That is data-entry bias, a patterned error, not random noise. The right code sat three menus deep, so the nearest one was entered. For example, an agent filling in applications meets a long dropdown of job titles. When the right title sits far down the list, it keeps picking a near match at the top. The error follows the form.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 6 step 4. Source: Chapter 6, “The five that enter through the humans in the loop”; “Observer bias compounds with data coding bias”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "Data-entry bias; in the book text; 100 DIAGNOSES: TRUE CODE VERSUS RECORDED; Code A",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Cohen’s kappa, observer and coding bias: Two tables of two coders agreeing, with kappa. Then two grids of disagreement, one clustered on a person and one on items. Then recorded codes against true codes.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Data-entry bias; in the book text; 100 DIAGNOSES: TRUE CODE VERSUS RECORDED; Code A"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 4,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4071df0e5433",
+      "audio_file": "mp3/beat-B0504.mp3",
+      "actual_duration_s": 22.36,
+      "render_duration_s": 22.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0504.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0601",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Made-up promotion data beside a model's predictions. Men thirty percent, women eighteen, and the model matches both. That is historical bias. Unlike selection bias, nobody was filtered out. The data faithfully copies an unfair past, and accuracy is the harm. For example, a model that predicts who gets an interview learns from a firm's complete, correct callback records. Those records show people with gaps in their résumés were rarely called, and the model copies that past exactly.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 7 step 1. Source: Chapter 6, “Historical bias”; “Implicit bias”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "Historical bias; in the book text; TELL THESE APART; Historical bias",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Historical bias and implicit bias: Bars of promotion rates in records and in model predictions that match. Then four mechanisms fed by one source. Then two causes producing the same gap.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1542 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Historical bias; in the book text; TELL THESE APART; Historical bias"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 1,
+        "anim_ms": 1542
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "14a554bf2837",
+      "audio_file": "mp3/beat-B0601.mp3",
+      "actual_duration_s": 25.34,
+      "render_duration_s": 25.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0601.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0602",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "One box at the bottom feeds four boxes above. The bottom box is implicit bias, associations people hold without noticing. It surfaces as confirmation, observer, data coding and publication bias, so there is no single point to fix. For example, a hiring manager warms, without noticing, to candidates who share her background. That same pull shapes which résumés she opens first, how she hears their answers, and which hires she reports as successes.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 7 step 2. Source: Chapter 6, “Historical bias”; “Implicit bias”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "Implicit bias; in the book text; ONE SOURCE, FOUR PLACES IT SURFACES; implicit bias: unconscious associations",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Historical bias and implicit bias: Bars of promotion rates in records and in model predictions that match. Then four mechanisms fed by one source. Then two causes producing the same gap.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1292 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Implicit bias; in the book text; ONE SOURCE, FOUR PLACES IT SURFACES; implicit bias: unconscious associations"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 2,
+        "anim_ms": 1292
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "01b99c6f8d69",
+      "audio_file": "mp3/beat-B0602.mp3",
+      "actual_duration_s": 23.4,
+      "render_duration_s": 23.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0602.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0603",
+      "act": "Ten ways in",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now a parity audit. One group is predicted positive forty percent of the time, the other twenty-five. That gap is a flag, not a verdict. Pipeline bias and a real base-rate difference between the groups show the same gap.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 7 step 3. Source: Chapter 6, “Historical bias”; “Implicit bias”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "A PARITY AUDIT: FLAG, NOT VERDICT; P(ŷ = 1 | group 0); 40%; P(ŷ = 1 | group 1)",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Historical bias and implicit bias: Bars of promotion rates in records and in model predictions that match. Then four mechanisms fed by one source. Then two causes producing the same gap.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: A PARITY AUDIT: FLAG, NOT VERDICT; P(ŷ = 1 | group 0); 40%; P(ŷ = 1 | group 1)"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 3,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "fbe8b806edac",
+      "audio_file": "mp3/beat-B0603.mp3",
+      "actual_duration_s": 12.66,
+      "render_duration_s": 12.666666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0603.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0701",
+      "act": "Where it lives",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Stacked bars, with made-up shares. The training set is ninety percent group one. The people the model is used on are split evenly. That mismatch is dataset bias, a sampling problem. Fix the sample and, in principle, the bias goes. For example, a fit-scoring agent is trained mostly on résumés for software jobs, then used to score nurses and teachers too. The people it learned from are not the people it scores.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 8 step 1. Source: Chapter 6, “Three flavors of bias, mapped to the ten types”; “The dataset as epistemic artifact”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "Dataset bias; in the book text; TELL THESE APART; Label bias",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Dataset, label and structural bias: Stacked bars of training and deployment group shares. Then true offence rates against recorded re-arrest. Then a model that predicts success exactly and leaves the gap in place.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Dataset bias; in the book text; TELL THESE APART; Label bias"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 1,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "09df3f0ed85b",
+      "audio_file": "mp3/beat-B0701.mp3",
+      "actual_duration_s": 21.08,
+      "render_duration_s": 21.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0701.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0702",
+      "act": "Where it lives",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the label. Both areas have the same true crime rate, but detection is twice as high in one, so its recorded re-arrest rate is double. Re-arrest is a biased measurement, a distorted stand-in for crime. Train on it and you get label bias. For example, a hiring model learns what a good hire is from managers' first-year ratings. If those ratings mark some people down, the rating is a biased measurement, and the model learns the rating, not the work.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 8 step 2. Source: Chapter 6, “Three flavors of bias, mapped to the ten types”; “The dataset as epistemic artifact”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "in the book text; Biased measurement; in the book text; Label bias",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Dataset, label and structural bias: Stacked bars of training and deployment group shares. Then true offence rates against recorded re-arrest. Then a model that predicts success exactly and leaves the gap in place.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Biased measurement; in the book text; Label bias"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 2,
+        "anim_ms": 1417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4c46cff71e2d",
+      "audio_file": "mp3/beat-B0702.mp3",
+      "actual_duration_s": 22.17,
+      "render_duration_s": 22.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0702.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0703",
+      "act": "Where it lives",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The model predicts who succeeds, and it is right. But group one had eighty percent mentor access, group two forty. That is structural bias. Data, labels and model are fine, the world is unequal. Retraining leaves the twenty point gap in success. For example, an agent correctly predicts that applicants with referrals get hired more often. But referrals depend on who you already know, and that is not spread evenly. No model fix touches it.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 8 step 3. Source: Chapter 6, “Three flavors of bias, mapped to the ten types”; “The dataset as epistemic artifact”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "in the book text; Structural bias; THE MODEL IS RIGHT; THE WORLD IS UNEVEN; Group 1",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Dataset, label and structural bias: Stacked bars of training and deployment group shares. Then true offence rates against recorded re-arrest. Then a model that predicts success exactly and leaves the gap in place.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1542 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; Structural bias; THE MODEL IS RIGHT; THE WORLD IS UNEVEN; Group 1"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 3,
+        "anim_ms": 1542
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9643d8d05fe1",
+      "audio_file": "mp3/beat-B0703.mp3",
+      "actual_duration_s": 21.88,
+      "render_duration_s": 21.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0703.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0801",
+      "act": "Causes",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This is Pearl's ladder, three levels of causal reasoning drawn as rungs. Seeing, the bottom rung, asks what goes with what. Doing, the middle rung, asks what happens if we set something ourselves. Imagining, the top rung, is the counterfactual, what would have happened to this one case if something had been different. For example, seeing notices that applicants who send cover letters get more interviews. Doing adds letters to a random half of the applications. Imagining asks whether this job seeker would have got this interview without her letter.",
+      "estimated_duration_s": 35.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 9 step 1. Source: Chapter 6, “Pearl’s Ladder — Rungs 1 and 2”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "Pearl's ladder; in the book text; Three levels of causal reasoning: seeing, doing, imagining.; Counterfactual",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Pearl’s ladder: seeing, doing, imagining: Three rungs from association up to counterfactual. Then approval rates by group showing a twelve point gap. Then the same model rerun with the zip code set to a neutral value, where the gap falls to two points.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (1167 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Pearl's ladder; in the book text; Three levels of causal reasoning: seeing, doing, imagining.; Counterfactual"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 1,
+        "anim_ms": 1167
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "7923aaa6c1e3",
+      "audio_file": "mp3/beat-B0801.mp3",
+      "actual_duration_s": 26.97,
+      "render_duration_s": 27.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0801.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0802",
+      "act": "Causes",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Rung one is association, the chance of an outcome given what we observe. In this made-up approval model, group A gets forty-six percent and group B thirty-four. That twelve point gap is an observation. It cannot say what causes it. For example, job seekers who use an AI-tailored résumé get more interviews. That is association. The tool might help, or the people who use it might already apply more carefully.",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 9 step 2. Source: Chapter 6, “Pearl’s Ladder — Rungs 1 and 2”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; Seeing: P(Y | X), the chance of Y given that we observe X.; Association; RUNG 1: APPROVAL RATE IN THE DATA",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Pearl’s ladder: seeing, doing, imagining: Three rungs from association up to counterfactual. Then approval rates by group showing a twelve point gap. Then the same model rerun with the zip code set to a neutral value, where the gap falls to two points.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; Seeing: P(Y | X), the chance of Y given that we observe X.; Association; RUNG 1: APPROVAL RATE IN THE DATA"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 2,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8885e9345951",
+      "audio_file": "mp3/beat-B0802.mp3",
+      "actual_duration_s": 21.01,
+      "render_duration_s": 21.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0802.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0803",
+      "act": "Causes",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Rung two is intervention, setting a variable, not watching it. Set the zip code score to a neutral value, run the model again, and the gap falls from twelve points to two. Most of it ran through the zip code. For example, a job-search agent tailors the résumé for a random half of its listings and sends the plain one to the rest. Setting the variable by coin flip, not watching who tailors, is intervention.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 9 step 3. Source: Chapter 6, “Pearl’s Ladder — Rungs 1 and 2”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; Intervention; RUNG 2: SET THE ZIP SCORE TO 0.6, RERUN; A as observed",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Pearl’s ladder: seeing, doing, imagining: Three rungs from association up to counterfactual. Then approval rates by group showing a twelve point gap. Then the same model rerun with the zip code set to a neutral value, where the gap falls to two points.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: in the book text; Intervention; RUNG 2: SET THE ZIP SCORE TO 0.6, RERUN; A as observed"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 3,
+        "anim_ms": 1458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "de1f396e0961",
+      "audio_file": "mp3/beat-B0803.mp3",
+      "actual_duration_s": 20.94,
+      "render_duration_s": 20.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0803.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0901",
+      "act": "Causes and owners",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This diagram is a causal graph. Boxes are variables, arrows run from cause to effect, from the protected attribute to the outcome. The red box is a proxy, a feature that tracks the attribute, such as zip code. The lower route goes through a human reviewer and skips the model. For example, in a résumé screener's graph, graduation year is a proxy for age. The model never sees age, but age still reaches the score through that arrow.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 10 step 1. Source: Chapter 6, “Leverage analysis”; “A limit case: when the leverage is upstream of your pipeline — and who owns it then”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "Causal graph; in the book text; Nodes for variables, arrows from cause to effect.; Proxy",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Causal graph, leverage and owner: A graph from the protected attribute to the outcome by three routes: through the sample, through proxy features into the model, and through proxies to a human reviewer who bypasses the model. The reviewer route carries 45 of 50 points.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Causal graph; in the book text; Nodes for variables, arrows from cause to effect.; Proxy"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "8b8b9df456d2",
+      "audio_file": "mp3/beat-B0901.mp3",
+      "actual_duration_s": 22.19,
+      "render_duration_s": 22.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0901.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0902",
+      "act": "Causes and owners",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Leverage analysis lists every path from attribute to outcome and asks how much bias each carries. Line width is the load, with made-up numbers. Of fifty points, the model paths carry two and three, the thick red reviewer path forty-five. For example, a hiring gap could run through who applies, through the screener's score, or through the recruiter who works the shortlist. Leverage analysis measures how much each route carries before anyone picks a fix.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 10 step 2. Source: Chapter 6, “Leverage analysis”; “A limit case: when the leverage is upstream of your pipeline — and who owns it then”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "in the book text; List every path; find the fix that blocks most.; Leverage analysis; 2",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Causal graph, leverage and owner: A graph from the protected attribute to the outcome by three routes: through the sample, through proxy features into the model, and through proxies to a human reviewer who bypasses the model. The reviewer route carries 45 of 50 points.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: in the book text; List every path; find the fix that blocks most.; Leverage analysis; 2"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f6b1171859d6",
+      "audio_file": "mp3/beat-B0902.mp3",
+      "actual_duration_s": 22.72,
+      "render_duration_s": 22.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0902.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0903",
+      "act": "Causes and owners",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Leverage is the share of that bias one action stops. Each red cross is a fix. Repairing the sample blocks four percent. A fairness penalty blocks six. Changing the review blocks ninety. That is the high leverage point. For example, retraining a résumé screener might block a sliver of a hiring gap, while changing how recruiters break ties on the shortlist blocks most of it. The tie-break change has the higher leverage.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 10 step 3. Source: Chapter 6, “Leverage analysis”; “A limit case: when the leverage is upstream of your pipeline — and who owns it then”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "Leverage; in the book text; How much bias-carrying flow an action blocks.; blocks 4%",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Causal graph, leverage and owner: A graph from the protected attribute to the outcome by three routes: through the sample, through proxy features into the model, and through proxies to a human reviewer who bypasses the model. The reviewer route carries 45 of 50 points.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Leverage; in the book text; How much bias-carrying flow an action blocks.; blocks 4%"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 3,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "b78266969688",
+      "audio_file": "mp3/beat-B0903.mp3",
+      "actual_duration_s": 21.44,
+      "render_duration_s": 21.458333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0903.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B0904",
+      "act": "Causes and owners",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A node has an owner. The accountable owner is whoever controls the high leverage node, here whoever runs the review process. Naming them is not blame. Leverage analysis finds the path, and the accountable owner is who can change it. For example, if most of a hiring gap runs through the final interview panel, the accountable owner is whoever sets how that panel decides, not the engineer who built the screener.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 10 step 4. Source: Chapter 6, “Leverage analysis”; “A limit case: when the leverage is upstream of your pipeline — and who owns it then”; Exam terms - compact list. Badge: Illustrative data.",
+      "routing": {
+        "about": "in the book text; Whoever controls the node at the leverage point.; Accountable owner; owner: whoever runs the review process",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Causal graph, leverage and owner: A graph from the protected attribute to the outcome by three routes: through the sample, through proxy features into the model, and through proxies to a human reviewer who bypasses the model. The reviewer route carries 45 of 50 points.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: in the book text; Whoever controls the node at the leverage point.; Accountable owner; owner: whoever runs the review process"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9697fb711b2d",
+      "audio_file": "mp3/beat-B0904.mp3",
+      "actual_duration_s": 21.15,
+      "render_duration_s": 21.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0904.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1001",
+      "act": "Which metric",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "These charts show different ideas of fair, with made-up rates. Calibration parity says a score means the same in every group, here sixty percent of those flagged are truly positive in both. Equal FPR and FNR, false positive rate and false negative rate, says errors fall equally. For example, take a screener that marks applicants qualified. Calibration parity means those it marks turn out qualified just as often in every group. Equal FPR and FNR means unqualified people passed, and qualified people rejected, at the same rates in every group.",
+      "estimated_duration_s": 35.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 11 step 1. Source: Chapter 6, “The dataset as epistemic artifact”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "Calibration parity; in the book text; A score means the same thing in every group.; Equal FPR and FNR",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The fairness impossibility: Two group panels of equal calibration and equal error rates. Then dot grids with 30 and 50 positives per 100. Then two options with tables showing which rate breaks. Then the share of errors each option puts on each group.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1167 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Calibration parity; in the book text; A score means the same thing in every group.; Equal FPR and FNR"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 1,
+        "anim_ms": 1167
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "583dce816665",
+      "audio_file": "mp3/beat-B1001.mp3",
+      "actual_duration_s": 30.61,
+      "render_duration_s": 30.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1001.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1002",
+      "act": "Which metric",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now the catch. Each grid is one hundred people, filled dots are the truly positive. That share is the base rate, thirty percent in group one, fifty in group two. Unequal base rates set the fairness measures against each other.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 11 step 2. Source: Chapter 6, “The dataset as epistemic artifact”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "TRULY POSITIVE PER 100 PEOPLE; Group 1: base rate 30%; Group 2: base rate 50%",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The fairness impossibility: Two group panels of equal calibration and equal error rates. Then dot grids with 30 and 50 positives per 100. Then two options with tables showing which rate breaks. Then the share of errors each option puts on each group.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: TRULY POSITIVE PER 100 PEOPLE; Group 1: base rate 30%; Group 2: base rate 50%"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 2,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "c23c9cb7b543",
+      "audio_file": "mp3/beat-B1002.mp3",
+      "actual_duration_s": 12.29,
+      "render_duration_s": 12.291666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1002.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1003",
+      "act": "Which metric",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The impossibility theorem says that with unequal base rates, calibration parity, equal FPR and equal FNR cannot all hold. In table A, TPR, the true positive rate, is equal, so PPV, positive predictive value, breaks. In table B, PPV is equal, so TPR breaks. For example, if more of one group's applicants are qualified, a screener cannot make its yes mean the same in both groups and also make both kinds of mistake equally often in both.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 11 step 3. Source: Chapter 6, “The dataset as epistemic artifact”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "Impossibility theorem; in the book text; With unequal base rates, not all three can hold at once.; SAME FPR 10%, TWO WAYS TO FIX THE REST",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The fairness impossibility: Two group panels of equal calibration and equal error rates. Then dot grids with 30 and 50 positives per 100. Then two options with tables showing which rate breaks. Then the share of errors each option puts on each group.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (958 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Impossibility theorem; in the book text; With unequal base rates, not all three can hold at once.; SAME FPR 10%, TWO WAYS TO FIX THE REST"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 3,
+        "anim_ms": 958
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "05a060ea2b7c",
+      "audio_file": "mp3/beat-B1003.mp3",
+      "actual_duration_s": 26.75,
+      "render_duration_s": 26.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1003.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1004",
+      "act": "Which metric",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Someone absorbs the error. Option A gives group one more wrong flags, forty percent against twenty-two. Option B misses more of group two's positives, eighty-five percent against sixty-five. No arithmetic picks between them. Choosing the metric is a values claim. For example, a company picking its screener's metric is choosing between rejecting more qualified people in one group or interviewing more unqualified people in the other. That is a decision about who bears the error.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 11 step 4. Source: Chapter 6, “The dataset as epistemic artifact”; Exam terms - compact list. Badge: Computed.",
+      "routing": {
+        "about": "Values claim; in the book text; Choosing a metric is choosing which error you accept.; WHO ABSORBS THE ERROR",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "The fairness impossibility: Two group panels of equal calibration and equal error rates. Then dot grids with 30 and 50 positives per 100. Then two options with tables showing which rate breaks. Then the share of errors each option puts on each group.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Values claim; in the book text; Choosing a metric is choosing which error you accept.; WHO ABSORBS THE ERROR"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 4,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "cd95ea96f499",
+      "audio_file": "mp3/beat-B1004.mp3",
+      "actual_duration_s": 25.36,
+      "render_duration_s": 25.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1004.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1101",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now pairs that get mixed up, side by side. Left, selection bias. A filter drops people, here the sickest dots fade out, so the sample misses them. Right, historical bias. Nobody is dropped and every label is accurate. The data shows an unfair world. The test is whether anyone was filtered out.",
+      "estimated_duration_s": 21.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 12 step 1. Source: Chapter 6. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 1 · LEFT; Selection bias; A filter drops people, so the sample misses some.; the sickest rows vanish",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: PAIR 1 · LEFT; Selection bias; A filter drops people, so the sample misses some.; the sickest rows vanish"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 1,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ee4ecba9523e",
+      "audio_file": "mp3/beat-B1101.mp3",
+      "actual_duration_s": 16.51,
+      "render_duration_s": 16.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1102",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second pair. Left, association. You watch X, and Y rises with it, but you cannot tell the reason. Right, intervention. You set X by hand and see whether Y moves. Here it does not, so X was not the cause. Ask whether anyone set X, or only watched it.",
+      "estimated_duration_s": 19.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 12 step 2. Source: Chapter 6. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 2 · LEFT; Association; You watch X and see what goes with it.; X",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: PAIR 2 · LEFT; Association; You watch X and see what goes with it.; X"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 2,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "715ba2ec359f",
+      "audio_file": "mp3/beat-B1102.mp3",
+      "actual_duration_s": 13.97,
+      "render_duration_s": 14.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1103",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third pair, with made-up rates. Left, calibration parity. PPV, the share of flags that are right, is sixty percent in both groups, but TPR is thirty-five against fifteen. Right, equal error rates, the same idea as equal FPR and FNR. TPR matches, and PPV splits, sixty against seventy-seven point eight.",
+      "estimated_duration_s": 20.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 12 step 3. Source: Chapter 6. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 3 · LEFT; Calibration parity; A score means the same in every group.; 60%",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: PAIR 3 · LEFT; Calibration parity; A score means the same in every group.; 60%"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 3,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f5755b8565c1",
+      "audio_file": "mp3/beat-B1103.mp3",
+      "actual_duration_s": 18.37,
+      "render_duration_s": 18.375,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1104",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last pair. Left, dataset bias, the wrong people in the sample. Training is mostly group one, deployment is split evenly. Right, label bias, the wrong thing written down. The true rate is twenty percent, the recorded rate ten. One is a sampling problem, the other a measurement problem.",
+      "estimated_duration_s": 19.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 12 step 4. Source: Chapter 6. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 4 · LEFT; Dataset bias; The sample does not match who it is used on.; training",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (3000 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: PAIR 4 · LEFT; Dataset bias; The sample does not match who it is used on.; training"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 4,
+        "anim_ms": 3000
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "fd3c8f8bad9e",
+      "audio_file": "mp3/beat-B1104.mp3",
+      "actual_duration_s": 15.56,
+      "render_duration_s": 15.583333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1201",
+      "act": "Vague claim, exact claim",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Here vague claims become exact. First, the model is biased. Name the target and the estimate. In the made-up patient example, the sample says fourteen point three percent, the truth is twenty-five, the bias minus ten point seven points.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 13 step 1. Source: Chapter 6. Badge: Computed.",
+      "routing": {
+        "about": "“the model is biased”; WHAT THE EXACT VERSION SHOWS; truth θ 25.0%; estimate 14.3%",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact version. On the right, a chart of what the exact version shows.",
+        "motion_claim": "The deck's own animation for step 1 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: “the model is biased”; WHAT THE EXACT VERSION SHOWS; truth θ 25.0%; estimate 14.3%"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 1,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "6e489ba51f0f",
+      "audio_file": "mp3/beat-B1201.mp3",
+      "actual_duration_s": 13.48,
+      "render_duration_s": 13.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1202",
+      "act": "Vague claim, exact claim",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second, just collect more data. More data narrows scatter, not offset. SD, standard deviation, measures scatter. It shrinks from five points to zero point five as samples grow from fifty to five thousand. The red bias bar never changes.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 13 step 2. Source: Chapter 6. Badge: Computed.",
+      "routing": {
+        "about": "“just collect more data”; n = 50; SD 5.0; n = 500",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact version. On the right, a chart of what the exact version shows.",
+        "motion_claim": "The deck's own animation for step 2 of 5 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: “just collect more data”; n = 50; SD 5.0; n = 500"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3aa871746241",
+      "audio_file": "mp3/beat-B1202.mp3",
+      "actual_duration_s": 14.66,
+      "render_duration_s": 14.666666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1203",
+      "act": "Vague claim, exact claim",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third, the model is fair. Ask by which metric. Here TPR and FPR are equal across groups, thirty-five percent and ten percent. Yet PPV is sixty percent in one group, seventy-seven point eight in the other. Name the metric.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 13 step 3. Source: Chapter 6. Badge: Computed.",
+      "routing": {
+        "about": "“the model is fair”; PPV, group 1 60.0%; PPV, group 2 77.8%; TPR 35% and FPR 10% in both groups",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact version. On the right, a chart of what the exact version shows.",
+        "motion_claim": "The deck's own animation for step 3 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: “the model is fair”; PPV, group 1 60.0%; PPV, group 2 77.8%; TPR 35% and FPR 10% in both groups"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 3,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "055345e56c6b",
+      "audio_file": "mp3/beat-B1203.mp3",
+      "actual_duration_s": 13.29,
+      "render_duration_s": 13.291666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1204",
+      "act": "Vague claim, exact claim",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fourth, check whether it is causal. The exact version is an intervention. Set the zip code proxy to a neutral value and run the model again. The gap of twelve points drops to two. The proxy carried most of it.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 13 step 4. Source: Chapter 6. Badge: Computed.",
+      "routing": {
+        "about": "“check whether it is causal”; gap as observed: 12 points; zip set to 0.6: 2 points; the proxy carried most of it",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact version. On the right, a chart of what the exact version shows.",
+        "motion_claim": "The deck's own animation for step 4 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: “check whether it is causal”; gap as observed: 12 points; zip set to 0.6: 2 points; the proxy carried most of it"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 4,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "2547f9d4b3ba",
+      "audio_file": "mp3/beat-B1204.mp3",
+      "actual_duration_s": 12.05,
+      "render_duration_s": 12.083333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1204.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1205",
+      "act": "Vague claim, exact claim",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fifth, fix the bias. The exact version is a leverage analysis. Draw the causal graph, list the three paths, block the one carrying forty-five of fifty points, and name its accountable owner. It is rarely the fix nearest your hands.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 13 step 5. Source: Chapter 6. Badge: Computed.",
+      "routing": {
+        "about": "“fix the bias”; via sample: 2; via model: 3; via reviewer: 45",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague claim and an exact version. On the right, a chart of what the exact version shows.",
+        "motion_claim": "The deck's own animation for step 5 of 5 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: “fix the bias”; via sample: 2; via model: 3; via reviewer: 45"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 5,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "493e572b7c47",
+      "audio_file": "mp3/beat-B1205.mp3",
+      "actual_duration_s": 13.01,
+      "render_duration_s": 13.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1205.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1301",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A checklist to run before accepting any bias claim or fix. First, ask which number is the estimate, and what the target is, written theta. Bias is the gap between them. If nobody can name both, nothing can be tested.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 14 step 1. Source: Chapter 6, “Leverage analysis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Which number is the estimate, and what is the target θ?; Did who got in depend on what happened to them?; Is the data faithful to a world I did not want to copy?; Does it live in the sample, the labels or the structure?",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you accept a bias claim or fix: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 1 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Which number is the estimate, and what is the target θ?; Did who got in depend on what happened to them?; Is the data faithful to a world I did not want to copy?; Does it live in the "
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "bd48ed7be71e",
+      "audio_file": "mp3/beat-B1301.mp3",
+      "actual_duration_s": 12.54,
+      "render_duration_s": 12.541666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1302",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second check. Ask whether who got in depended on what happened to them. If yes, that is selection bias, and more data from the same filter sharpens the wrong answer. If groups were hard to reach, it is sampling bias.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 14 step 2. Source: Chapter 6, “Leverage analysis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you accept a bias claim or fix",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you accept a bias claim or fix: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 2 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Before you accept a bias claim or fix"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "c59526d23bab",
+      "audio_file": "mp3/beat-B1302.mp3",
+      "actual_duration_s": 11.8,
+      "render_duration_s": 11.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1303",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third check. Ask whether the data is a faithful picture of a world you did not want to copy. That is historical bias. Every quality check passes, because nothing in the data is wrong. Here accuracy is the problem.",
+      "estimated_duration_s": 15.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 14 step 3. Source: Chapter 6, “Leverage analysis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you accept a bias claim or fix",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you accept a bias claim or fix: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 3 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Before you accept a bias claim or fix"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "74976d0c7f20",
+      "audio_file": "mp3/beat-B1303.mp3",
+      "actual_duration_s": 11.82,
+      "render_duration_s": 11.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1304",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fourth check. Ask where the bias sits. In the sample, that is dataset bias. In the labels, that is label bias. In the world the model is deployed into, that is structural bias. Each needs a different fix.",
+      "estimated_duration_s": 15.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 14 step 4. Source: Chapter 6, “Leverage analysis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you accept a bias claim or fix",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you accept a bias claim or fix: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 4 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Before you accept a bias claim or fix"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "67d4edd02bb2",
+      "audio_file": "mp3/beat-B1304.mp3",
+      "actual_duration_s": 11.5,
+      "render_duration_s": 11.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1304.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1305",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fifth check. Rung one or rung two. Ask whether anyone set the variable, or only watched it. Watching gives association. Setting gives intervention. A fairness metric computed from observed data is association, so it cannot settle what causes the gap.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 14 step 5. Source: Chapter 6, “Leverage analysis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you accept a bias claim or fix",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you accept a bias claim or fix: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 5 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: Before you accept a bias claim or fix"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 5,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f967b79302f6",
+      "audio_file": "mp3/beat-B1305.mp3",
+      "actual_duration_s": 14.42,
+      "render_duration_s": 14.458333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1305.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "B1306",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last. Ask which path carries the most bias, and who owns that node. That is leverage analysis and the accountable owner. Then say it exactly, for example a bias of minus ten point seven points against a twenty-five percent target.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/06 Bias.html slide 14 step 6. Source: Chapter 6, “Leverage analysis”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you accept a bias claim or fix",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you accept a bias claim or fix: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 6 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 6 animates: Before you accept a bias claim or fix"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 13,
+        "step": 6,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "31d5a2875ff0",
+      "audio_file": "mp3/beat-B1306.mp3",
+      "actual_duration_s": 13.42,
+      "render_duration_s": 13.458333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1306.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "Recap",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Let's recap. Bias is an offset from the truth, and more data does not move it. Selection bias drops people, historical bias copies an unfair world. Bias can sit in the sample, the labels or the structure. Association watches a variable, intervention sets it. Leverage analysis finds the path, the accountable owner controls it. With unequal base rates, choosing a fairness metric is a values claim.",
+      "estimated_duration_s": 26.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "This film's body beats; nothing new is asserted",
+      "routing": {
+        "about": "Six things the terms established",
+        "runner_up": "Summary drawing",
+        "reason": "Restates only what the body showed."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Six earned conclusions",
+        "motion_claim": "Six recap lines rise in narration order.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact page opens"
+          },
+          {
+            "at": 0.2,
+            "event": "six lines land in narration order"
+          }
+        ],
+        "template": "neu-bookend-recap",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.5,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Recap lines rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "0e3b04266a6d",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 21.57,
+      "render_duration_s": 21.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "Your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Quiz me on bias terms. Give me short cases, one at a time, about a data pipeline or a deployed model. For each, I must name the exact term, such as selection bias, sampling bias, historical bias, observer bias, label bias, structural bias, association, intervention, leverage or accountable owner, and say why its look-alike is wrong. Do not reveal the answer until I reply. Then correct me.",
+      "estimated_duration_s": 26.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json your_turn (a practice prompt composed from this film's terms; not a run we made)",
+      "routing": {
+        "about": "Practice: name the exact term and defend it",
+        "runner_up": "Worksheet",
+        "reason": "The spoken prompt makes the viewer use the terms; two checks let them judge the result. Not a run we made."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Practice prompt",
+        "motion_claim": "The practice prompt types into a box marked for Claude, then two checks land.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens - 'Your turn.'"
+          },
+          {
+            "at": 0.12,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.85,
+            "event": "two check lines land"
+          }
+        ],
+        "template": "neu-bookend-your-turn",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The prompt types into an empty box; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "09a6f0e9350a",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 21.33,
+      "render_duration_s": 21.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "Outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Key Terms: Bias. At Nik Bear Brown.",
+      "estimated_duration_s": 3.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "OUTRO-LOCK.md",
+      "routing": {
+        "about": "Locked sign-off",
+        "runner_up": "None",
+        "reason": "Exact title and channel, slug-seeded mascot."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "template": "neu-bookend-outro",
+        "motion_claim": "Exact title and channel handle in the deck's look; held.",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Closing card: title and handle only, by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "48b72183aedc",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 3.43,
+      "render_duration_s": 3.4583333333333335,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:30:07"
+      }
+    }
+  ]
+}

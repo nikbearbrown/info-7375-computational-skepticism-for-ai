@@ -1,0 +1,36 @@
+# SOURCE — The fluency trap (Chapter 1)
+
+**What this is.** The verbatim source for this film: the section "The fluency trap" of `info-7375-computational-skepticism-for-ai/chapters/01-the-skeptics-toolkit.md` (Chapter 1, "The Skeptic's Toolkit", lines 182–209 as of 2026-09-28, from the heading to the line before the next `## ` heading, including the Figure 1.7 image line and caption), copied read-only. The chapter file carries Bear's uncommitted edits (` M` in git status) and unresolved merge-conflict blocks elsewhere in the file (none inside this section); it was not modified or staged. Bear's order (2026-09-28, dictated, in `../SHOW-TELL-FLUENCY-TRAP.md`): "Yes. Show and tell leads to Sonia. On the phone, we trap." (read as: a show-tell film, Liam persona, on the fluency trap). The brief says the pasted text ends with a "Figure 1.6" caption reading "The fluency trap as a two-stage mechanism"; the file on disk ends the section with a **Figure 1.7** caption ("Interrupt the fluency trap. The second confidence boost concerns your own judgment…"). The film follows the file. **Why.** Every narration line and FACTCHECK row traces to this section; the film adds no figure, case or claim the section does not contain. **Found.** The section's arc is the film's spine: two Botspeak pillars (strategic delegation, critical evaluation), neither of which protects you from the trap; stage one (fluency raises confidence in the output); stage two, the trap (confidence in the output raises confidence in your own evaluation of it; fluency boosts wrong evaluations as readily as right ones; any answer in the same shape gets accepted); the chapter's case (a fluent, well-formed report, trusted; the agent did not deceive; a non-fluent reader would have asked; the prose did the work the verification should have done); not distrust, but do not let fluency do epistemic work (stop; Descartes's move; Popper's move; artifact and world); the mechanism (form versus content: a reliable human heuristic that AI broke; a sentence can be maximally fluent and maximally wrong at once); structural, not a bug (outputs that resemble correct outputs; where resemblance and correctness diverge the output stays fluent); the Popperian anchor (specify what a wrong answer looks like before reading; the chapter's example); and the figure caption's close (neither polished nor awkward wording settles whether a claim is true).
+
+---
+
+## Chapter 1, "The fluency trap" (verbatim, lines 182–209)
+
+## The fluency trap
+
+There is an adjacent vocabulary — developed in the Botspeak framework, treated in full in Appendix A — that I will draw on throughout this book. For now I want one concept from it, because it is the single most operationally important idea in this chapter.
+
+Two Botspeak pillars are worth naming here. *Strategic delegation* is the capacity to know what to ask the AI to do, given what you understand about its strengths and failure modes on this class of task. *Critical evaluation* is the capacity to know what to do with what the AI hands back — not "review and accept," but evaluate against criteria you specified before you saw the output. Both will recur. But neither of them protects you from the trap I am about to describe, which is why the trap gets its own section.
+
+Here is how the *fluency trap* works. The more fluently an AI presents its output, the more confident the user becomes in the output. That part is not surprising. The trap is the second move: the more confident the user becomes in the output, the more confident the user becomes *in their own evaluation of the output*. Fluency is an evaluation booster. It boosts the wrong evaluations as readily as the right ones. Fluency does not just make you more likely to accept a good answer. It makes you more likely to accept *any* answer that arrives in the same shape.
+
+Ash's agent produced a fluent, well-formed report. The email had been deleted. The account had been secured. Ash trusted it. The agent did not deceive him — the agent could not have deceived a non-fluent reader, because a non-fluent reader would have asked basic questions the fluent reader felt no need to ask. *The fluency was the trap.* The well-formed prose did the epistemic work the verification should have done.
+
+The point is not to distrust fluent outputs. Fluent outputs are, on average, more useful than non-fluent ones. The point is to *not let fluency do epistemic work.* When you find yourself accepting an output because it sounds right, stop. Ask what would have to be true for it to be wrong. Run Descartes's move. Run Popper's. Look at the artifact and look at the world and ask what the relationship is.
+
+Now I want to be more specific about the mechanism, because naming it is what makes it interruptible.
+
+The fluency trap operates on a confusion between two different things: *form* and *content*. A well-formed sentence looks like a sentence produced by someone who knows what they are talking about, because in human communication, well-formed sentences usually are. This is a reliable heuristic for evaluating human speech. When your colleague says something in clear, precise, organized prose, it generally means they have thought about it. The clarity is evidence of the thinking.
+
+AI systems have broken this heuristic. An AI can produce clear, precise, organized prose about things it has no understanding of. The form is generated by a statistical process that learned what well-formed prose looks like. The content is whatever that process produces given the input. These are independent. A sentence can be maximally fluent and maximally wrong simultaneously, and there is no way to tell from the fluency alone.
+
+This is not a flaw that will be fixed in the next model. It is a structural feature of how these systems work. They learn to produce outputs that resemble correct outputs. In domains where correctness and resemblance-to-correctness track each other closely, this works well. In domains where they diverge — novel situations, edge cases, out-of-distribution inputs, anything the training data underrepresented — the system keeps producing fluent output, confidently, in exactly the shape that makes you trust it, about things it has no basis to say.
+
+The Popperian move helps here. Before you read the output: specify what a wrong answer would look like. Not vaguely — specifically. "A wrong answer would assign low risk to a patient with this combination of presenting symptoms and demographic profile." Then read the output. The prior specification is your anchor. Without it, you are reading the output with no criterion except fluency, and fluency is the trap.
+
+![The fluency trap runs from polished output to confidence in the answer and then confidence in one's own evaluation. The interruption is to define a failure condition before reading, test against evidence, and record pass, fail, or unknown.](../images/01-the-skeptics-toolkit-fig-07.png)
+
+*Figure 1.7 — Interrupt the fluency trap. The second confidence boost concerns your own judgment, not just the answer. Put the criterion before the output, then ask what evidence supports the result. Neither polished nor awkward wording settles whether a claim is true.*
+
+---
+

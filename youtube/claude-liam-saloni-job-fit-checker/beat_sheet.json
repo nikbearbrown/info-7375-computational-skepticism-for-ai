@@ -1,0 +1,1052 @@
+{
+  "metadata": {
+    "slug": "claude-liam-saloni-job-fit-checker",
+    "title": "Claude, Skeptical",
+    "subtitle": "Professor Bear's notes on Saloni's job-fit checker",
+    "channel": "claude-liam",
+    "persona": "Liam",
+    "folderLabel": "@NikBearBrown",
+    "audience": "Computational Skepticism students (INFO 7375) and anyone building decision-support tools",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "typography": {
+      "serif": "EB Garamond",
+      "ui": "system sans",
+      "mono": "SF Mono"
+    },
+    "model_chip": {
+      "model": "Fable 5",
+      "effort": "High"
+    },
+    "source": "SOURCE-PROMPT.md",
+    "derived_from": "Saloni's final-project proposal + Computational-Skepticism feedback prompt",
+    "genre": "deep-explainer",
+    "framing": "Liam asks Claude what feedback Professor Bear would give the student. FIRST NAME ONLY \u2014 'Saloni', 'Professor Bear' / 'Bear'. Never the student's surname.",
+    "one_idea": "In Computational Skepticism the skepticism has to be load-bearing, not decorative: the test of Saloni's job-fit checker is whether it names its target, gates work authorization instead of scoring it, breaks under realistic perturbation, and shows its own uncertainty.",
+    "duration_estimate_s": 300,
+    "lane_histogram_target": {
+      "VOX": "17%",
+      "MANIM": "30%",
+      "REMOTION": "26%",
+      "CARD": "26%"
+    },
+    "build": {
+      "at": "2026-07-24T08:20:24",
+      "cut": "master",
+      "filled": 25,
+      "of": 29,
+      "slates": [
+        "B04",
+        "B09",
+        "B10",
+        "B16"
+      ],
+      "skin_warnings": [
+        "B05: composer beat has an empty spark line \u2014 SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B11: composer beat has an empty spark line \u2014 SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\")."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN",
+      "lane": "ASK",
+      "greeting": "Vanakkam, Liam",
+      "narration_text": "Vanakkam \u2014 this is Liam, in for Bear. A student, Saloni, pitched her Computational Skepticism final project: a Job Application Priority Checker. I asked Claude what Professor Bear would tell her. Short version \u2014 make the skepticism load-bearing, not decorative.",
+      "spark_line": "Load-bearing, not decorative.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Vanakkam, Liam",
+            "command": "What feedback would Professor Bear give Saloni on her Computational Skepticism final project \u2014 a \"Job Application Priority Checker\"?",
+            "runningText": "thinking\u2026",
+            "output": [
+              "Make the skepticism load-bearing \u2014",
+              "name the target, gate work authorization, and let it break."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High",
+            "segment": "Saloni's Job-Fit Checker",
+            "topic": "CLAUDE \u00b7 SKEPTICAL"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 15.21,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "C01",
+      "act": "ACT I",
+      "lane": "CARD",
+      "narration_text": "First, why a good pitch is dangerous.",
+      "spark_line": "The Reasonable Trap",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Reasonable Trap"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-C01.mp3",
+      "actual_duration_s": 2.73,
+      "build": {
+        "status": "SLATE",
+        "src": "media/C01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "ACT I",
+      "lane": "REMOTION",
+      "narration_text": "The pitch is reasonable and on-theme: build a recommender that explains itself. That's the trap. It's reasonable in a way that lets you stop at 'it explains itself' without ever hitting the hard problems the course exists to teach.",
+      "show": "A tidy 'recommender that explains itself' card sits looking finished \u2014 then a crack runs through it.",
+      "spark_line": "Reasonable \u2260 done.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "MedhavyPredictCard",
+          "props": {
+            "sparkLine": "Reasonable \u2260 done.",
+            "question": "A recommender that explains itself \u2014 where does the trap hide?",
+            "commit": "It stops at 'explains itself' without hitting the hard problems the course exists to teach"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 12.67,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ACT I",
+      "lane": "MANIM",
+      "narration_text": "Three things make it harder than it looks. Work authorization isn't a neutral feature. Transparent and correct are different properties. And it overlaps Bear's own Reallocation Engine \u2014 so he knows exactly where this class of project fails.",
+      "show": "Three labels resolve in turn on the stage: work-auth \u00b7 transparent\u2260correct \u00b7 Bear's own turf.",
+      "viz": {
+        "pattern": "accumulate",
+        "steps": [
+          "Work-auth isn't neutral",
+          "Transparent \u2260 correct",
+          "Bear's own turf"
+        ]
+      },
+      "spark_line": "Three hard problems.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B02_ThreeHardProblems"
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 12.97,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-24T08:20:24"
+      },
+      "build_status": "SLATE",
+      "src": ""
+    },
+    {
+      "beat_id": "C02",
+      "act": "ACT II",
+      "lane": "CARD",
+      "narration_text": "Start where every ranking has to start.",
+      "spark_line": "Name the Target",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Name the Target"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-C02.mp3",
+      "actual_duration_s": 2.82,
+      "build": {
+        "status": "SLATE",
+        "src": "media/C02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "ACT II",
+      "lane": "MANIM",
+      "narration_text": "A ranking is a claim: jobs higher up are better bets. Better by what \u2014 interview odds? An offer? Sponsorship that actually follows through? Salary? Time-to-hire? Each target produces a different ranking. A recommendation that won't name its target isn't transparent \u2014 it's just legible.",
+      "show": "One list fans into five differently-ordered lists, one per target, as the words land.",
+      "viz": {
+        "pattern": "divergence",
+        "from": "one ranking",
+        "to": "five targets, five orders"
+      },
+      "spark_line": "Better by what?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B03_DivergenceTargets"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 15.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-24T08:20:24"
+      },
+      "build_status": "SLATE",
+      "src": ""
+    },
+    {
+      "beat_id": "B04",
+      "act": "ACT II",
+      "lane": "VOX",
+      "narration_text": "Because until Saloni writes the outcome variable down \u2014 before a line of ranking logic \u2014 the transparency she's planning is cosmetic. Legible math pointed at an unnamed goal is still a black box.",
+      "show": "A student at a screen full of job cards, no clear 'best' \u2014 slow push in.",
+      "spark_line": "Write the target first.",
+      "pantry_note": "Tier 1 illustrative: a person facing a wall of unranked job cards, documentary duotone.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ]
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 11.73,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-24T08:20:24",
+        "needs": "YOU \u2192 5\u201310s gen-AI clip \u2192 pantry (as B04.mp4)",
+        "suggested": "suggested prompt: Because until Saloni writes the outcome variable down \u2014 before a line of ranking logic \u2014 the transparency she's planning is cosmetic. Legible math pointed at an"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "ACT II",
+      "lane": "ASK",
+      "narration_text": "So the honest first version isn't an ML model with an explainability layer bolted on. Ask for this:",
+      "spark_line": "The honest ask.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "",
+            "command": "Write an explicit, inspectable priority_score \u2014 user-adjustable weights, each factor normalized 0\u20131, returns the sub-scores as the explanation.",
+            "runningText": "writing the function\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High",
+            "segment": "Make the Logic Explicit",
+            "topic": "CLAUDE \u00b7 SKEPTICAL"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 6.31,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "ACT II",
+      "lane": "REMOTION",
+      "narration_text": "An explicit weighted score. Skills, experience, location, sponsorship \u2014 each weight visible and adjustable. And it returns the sub-scores alongside the number. That dictionary is the explanation.",
+      "show": "Onda code-block types out priority_score(...) \u2014 weights line, then the returned sub-score dict highlighted.",
+      "spark_line": "Reasoning is the mechanism.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "priority_score.py",
+            "code": "def priority_score(job, profile, weights):\n    skill_match     = jaccard(job.required_skills, profile.skills)\n    experience_fit  = min(profile.years_exp / job.years_required, 1.0)\n    location_fit    = 1.0 if job.location in profile.preferred else 0.3\n    sponsorship_fit = sponsorship_compatibility(job, profile)\n    score = (\n        weights['skills']      * skill_match\n      + weights['experience']  * experience_fit\n      + weights['location']    * location_fit\n      + weights['sponsorship'] * sponsorship_fit\n    )\n    return score, {\n        'skill_match':      skill_match,\n        'experience_fit':   experience_fit,\n        'location_fit':     location_fit,\n        'sponsorship_fit':  sponsorship_fit,\n    }",
+            "sparkLine": "Reasoning is the mechanism."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 11.52,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "ACT II",
+      "lane": "MANIM",
+      "narration_text": "This beats a black box with SHAP on top, because the reasoning IS the mechanism \u2014 not a post-hoc approximation of a mechanism you can't see. Show the work by making the work simple enough to show.",
+      "show": "Two paths race: a transparent gearbox vs a black box trailing a dotted 'explanation' guess; the gearbox lands first.",
+      "viz": {
+        "pattern": "divergence",
+        "from": "explanation",
+        "to": "mechanism vs post-hoc"
+      },
+      "spark_line": "Not a bolted-on layer.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B07_MechanismVsPosthoc"
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 11.03,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-24T08:20:24"
+      },
+      "build_status": "SLATE",
+      "src": ""
+    },
+    {
+      "beat_id": "C03",
+      "act": "ACT III",
+      "lane": "CARD",
+      "narration_text": "Now the variable that breaks everything.",
+      "spark_line": "A Gate, Not a Feature",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A Gate, Not a Feature"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-C03.mp3",
+      "actual_duration_s": 2.9,
+      "build": {
+        "status": "SLATE",
+        "src": "media/C03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "ACT III",
+      "lane": "MANIM",
+      "narration_text": "Work authorization is not a preference like location. It's a hard eligibility gate with legal consequences. A job that won't sponsor isn't 'seventy percent as good' for an F-1 student whose OPT is running out \u2014 it's disqualifying. Blend it into a weighted average and you can top-rank a job she literally cannot take.",
+      "show": "A smooth score bar for 'sponsorship' snaps into a hard 0/1 cliff; a blended average floats a red job to #1.",
+      "viz": {
+        "pattern": "threshold",
+        "before": "soft score",
+        "after": "hard gate (0/1)"
+      },
+      "spark_line": "Disqualifying, not discounted.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B08_ThresholdGateVsScore"
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 17.77,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-24T08:20:24"
+      },
+      "build_status": "SLATE",
+      "src": ""
+    },
+    {
+      "beat_id": "B09",
+      "act": "ACT III",
+      "lane": "VOX",
+      "narration_text": "And it's time-bounded. OPT, CPT, STEM OPT windows change what 'good fit' even means over a single job search\u2026",
+      "show": "A visa/OPT countdown clock, hands moving; camera holds on the shrinking runway.",
+      "spark_line": "A shrinking runway.",
+      "pantry_note": "Tier 1 illustrative: a calendar/clock motif for an eligibility window; continuity into B10 (vox_run R1).",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.4,
+          0.5
+        ],
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.4,
+            "y": 0.5,
+            "scale": 1.5
+          },
+          "objects": [
+            {
+              "id": "clock",
+              "x": 0.42,
+              "y": 0.5,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        }
+      },
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 7.79,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-24T08:20:24",
+        "needs": "YOU \u2192 5\u201310s gen-AI clip \u2192 pantry (as B09.mp4)",
+        "suggested": "suggested prompt: And it's time-bounded. OPT, CPT, STEM OPT windows change what 'good fit' even means over a single job search\u2026"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "ACT III",
+      "lane": "VOX",
+      "narration_text": "\u2026so a static ranking that ignores the runway is quietly wrong. Same room, same clock \u2014 now a job she can't finish before her window closes sits at the top of her list.",
+      "show": "Continuous move from the clock to a ranked list where the #1 row is flagged 'window closes first'.",
+      "spark_line": "Static ranking, quietly wrong.",
+      "pantry_note": "Tier 1 illustrative: a ranked job list with a flagged top row; continuity from B09.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.62,
+          0.5
+        ],
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.62,
+            "y": 0.5,
+            "scale": 1.7
+          },
+          "objects": [
+            {
+              "id": "ranking",
+              "x": 0.6,
+              "y": 0.48,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        }
+      },
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 9.66,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-24T08:20:24",
+        "needs": "YOU \u2192 5\u201310s gen-AI clip \u2192 pantry (as B10.mp4)",
+        "suggested": "suggested prompt: \u2026so a static ranking that ignores the runway is quietly wrong. Same room, same clock \u2014 now a job she can't finish before her window closes sits at the top of he"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "ACT III",
+      "lane": "ASK",
+      "narration_text": "So the fix is a gate function that carries its own doubt. Ask for this:",
+      "spark_line": "Gate that carries doubt.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "",
+            "command": "Model sponsorship as a hard 0/1 gate plus a data-confidence flag (confirmed vs inferred from USCIS filings) \u2014 not a smoothed score that hides the cliff.",
+            "runningText": "writing the gate\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High",
+            "segment": "Hard Gates, Not Soft Scores",
+            "topic": "CLAUDE \u00b7 SKEPTICAL"
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 4.54,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "ACT III",
+      "lane": "REMOTION",
+      "narration_text": "A hard zero-or-one, not a penalty \u2014 and a confidence flag on the data behind it. 'Confirmed' is not the same as 'inferred from a public dataset with a one-year lag.' The flag matters more than it looks.",
+      "show": "Onda code-block types sponsorship_compatibility(...); the `confidence` line highlights terracotta.",
+      "spark_line": "Confirmed \u2260 inferred.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "sponsorship_compatibility.py",
+            "code": "def sponsorship_compatibility(job, profile):\n    if profile.requires_sponsorship:\n        if not job.sponsors_visas:\n            return 0.0              # hard disqualifier, not a penalty\n        confidence = job.sponsorship_data_source_confidence\n        return 1.0 if confidence == 'confirmed' else 0.5\n    return 1.0",
+            "sparkLine": "Confirmed \u2260 inferred."
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 11.82,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B12.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "ACT III",
+      "lane": "MANIM",
+      "narration_text": "Employer sponsorship history is a noisy proxy \u2014 three visas last year, zero this year isn't the same signal. Honest visualization means showing that doubt, not collapsing it into one clean bar. Grade the source before you trust it.",
+      "show": "A 'confirmed' bar sits solid; an 'inferred' bar redraws as hatched/uncertain with a one-year-lag tag.",
+      "viz": {
+        "pattern": "scale",
+        "from": "one clean bar",
+        "to": "graded, uncertainty-shaded"
+      },
+      "spark_line": "Grade the source.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B13_GradeTheSource"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 13.48,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-24T08:20:24"
+      },
+      "build_status": "SLATE",
+      "src": ""
+    },
+    {
+      "beat_id": "C04",
+      "act": "ACT IV",
+      "lane": "CARD",
+      "narration_text": "Robustness isn't a checkbox.",
+      "spark_line": "Make It Break",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Make It Break"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-C04.mp3",
+      "actual_duration_s": 2.62,
+      "build": {
+        "status": "SLATE",
+        "src": "media/C04.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "ACT IV",
+      "lane": "MANIM",
+      "narration_text": "'I'll do robustness testing' is easy to fake \u2014 nudge an input, watch the score wiggle, call it done. The useful test asks whether small, realistic changes flip the recommendation. If a ten-percent change in self-reported skill match reorders her top three, the ranking was a statistical tie wearing false confidence.",
+      "show": "Top-3 rows sit stable; a \u00b110% nudge on skill match swaps ranks 1 and 3 as the words land.",
+      "viz": {
+        "pattern": "threshold",
+        "before": "stable top 3",
+        "after": "reordered on a nudge"
+      },
+      "spark_line": "Does it flip?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B14_NearThresholdReorder"
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 17.69,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-24T08:20:24"
+      },
+      "build_status": "SLATE",
+      "src": ""
+    },
+    {
+      "beat_id": "B15",
+      "act": "ACT IV",
+      "lane": "REMOTION",
+      "narration_text": "Four tests worth requiring, in writing, not just code. Near-threshold: does a small change flip the top pick? Missing data: does a blank field silently tank a good match? Adversarial: can she inflate her own skill self-rating to game it? Distribution shift: does a scheme tuned on software roles misrank a hardware or research job?",
+      "show": "Four test chips resolve: Near-threshold \u00b7 Missing data \u00b7 Adversarial \u00b7 Distribution shift.",
+      "viz": {
+        "pattern": "ChipGrid",
+        "chips": [
+          "Near-threshold",
+          "Missing data",
+          "Adversarial gaming",
+          "Distribution shift"
+        ]
+      },
+      "spark_line": "Four failure modes.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "Robustness Tests",
+            "chips": [
+              "Near-threshold",
+              "Missing data",
+              "Adversarial gaming",
+              "Distribution shift"
+            ],
+            "sparkLine": "Four failure modes."
+          },
+          "rendered": {
+            "out": "media/B15.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 17.64,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "ACT IV",
+      "lane": "VOX",
+      "narration_text": "The honest move on a blank field is to surface 'insufficient data,' not default it to zero or the mean \u2014 both quietly bias the result. And a tool that trusts self-reported skills uncritically doesn't have transparency; it has a gap where the most obvious failure walks in.",
+      "show": "A form with a blank field; a terracotta ring draws on around an 'insufficient data' tag instead of a silent 0.",
+      "spark_line": "Surface the gap.",
+      "pantry_note": "Tier 1 illustrative: a partly-filled form; ring annotation added at previz.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.45
+        ]
+      },
+      "audio_file": "mp3/beat-B16.mp3",
+      "actual_duration_s": 15.36,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-24T08:20:24",
+        "needs": "YOU \u2192 5\u201310s gen-AI clip \u2192 pantry (as B16.mp4)",
+        "suggested": "suggested prompt: The honest move on a blank field is to surface 'insufficient data,' not default it to zero or the mean \u2014 both quietly bias the result. And a tool that trusts se"
+      }
+    },
+    {
+      "beat_id": "C05",
+      "act": "ACT V",
+      "lane": "CARD",
+      "narration_text": "Where tools like this usually lie.",
+      "spark_line": "Honest Pictures",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Honest Pictures"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-C05.mp3",
+      "actual_duration_s": 2.6,
+      "build": {
+        "status": "SLATE",
+        "src": "media/C05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "ACT V",
+      "lane": "MANIM",
+      "narration_text": "The classic failure is a single composite score shown as if it were measured. Bucket it \u2014 strong, moderate, weak \u2014 with the sub-scores visible. Less precise, more honest.",
+      "show": "A crisp percentage dissolves into a 'Strong' bucket with the four sub-scores fanning out beneath.",
+      "viz": {
+        "pattern": "scale",
+        "from": "single composite (false precision)",
+        "to": "strong / moderate / weak"
+      },
+      "spark_line": "Kill the fake decimal.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own"
+      },
+      "graphic": {
+        "engine": "manim",
+        "manim": "B17_FalsePrecision"
+      },
+      "audio_file": "mp3/beat-B17.mp3",
+      "actual_duration_s": 9.56,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-24T08:20:24"
+      },
+      "build_status": "SLATE",
+      "src": ""
+    },
+    {
+      "beat_id": "B18",
+      "act": "ACT V",
+      "lane": "REMOTION",
+      "narration_text": "So the visualization has to show the weights and the sub-scores, not just the output \u2014 a friendly number with a hidden recipe is still a black box. And shade the uncertainty on sponsorship specifically: tag any unconfirmed job 'data quality: inferred.'",
+      "show": "A composite bar expands to reveal weight\u00d7sub-score components; the sponsorship component carries a hatched 'inferred' shade.",
+      "spark_line": "Show the recipe.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Show the Recipe",
+            "left": {
+              "label": "Weights exposed",
+              "note": "skills \u00b7 experience \u00b7 location \u00b7 sponsorship"
+            },
+            "right": {
+              "label": "Sub-scores visible",
+              "note": "not just the composite number"
+            },
+            "sparkLine": "Show the recipe."
+          },
+          "rendered": {
+            "out": "media/B18.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B18.mp3",
+      "actual_duration_s": 14.29,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B18.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "C06",
+      "act": "ACT VI",
+      "lane": "CARD",
+      "narration_text": "The through-line under all five.",
+      "spark_line": "Load-Bearing Skepticism",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Load Bearing Skepticism"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-C06.mp3",
+      "actual_duration_s": 2.24,
+      "build": {
+        "status": "SLATE",
+        "src": "media/C06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "ACT VI",
+      "lane": "REMOTION",
+      "narration_text": "Every part points at one idea: transparent and correct are different properties. A tool can expose all its reasoning and still reason badly. The two highest-leverage moves \u2014 grade your sources, and separate the hard eligibility gate from the soft preference score \u2014 are exactly what Bear's Reallocation Engine already does. Point Saloni at those as open questions; don't hand her the solved version. The wrestling is the assignment.",
+      "show": "A 'transparent' pane and a 'correct' pane separate; a bridge labeled 'grade sources \u00b7 split the gate' connects them.",
+      "spark_line": "Transparent \u2260 correct.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "Transparent \u2260 Correct",
+            "left": {
+              "label": "Transparent",
+              "note": "exposes all reasoning"
+            },
+            "right": {
+              "label": "Correct",
+              "note": "reasons to the right answer"
+            },
+            "sparkLine": "Transparent \u2260 correct."
+          },
+          "rendered": {
+            "out": "media/B19.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B19.mp3",
+      "actual_duration_s": 21.85,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B19.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "CLOSE",
+      "lane": "REMOTION",
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude. Bear's notes for Saloni, in five: name the outcome variable before any ranking logic. Make work authorization a hard gate with a data-confidence flag, never a blended score. Test whether small, realistic changes flip the top pick. Show the weights and bucket the score instead of faking a decimal. And remember the through-line \u2014 transparent isn't correct. Strong topic. Now make the skepticism load-bearing.",
+      "spark_line": "The verdict.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactLines": [
+              "Name the target before the ranking logic",
+              "Work authorization = hard gate + confidence flag, not a score",
+              "Robustness = does a small, realistic change flip the top pick",
+              "Show weights, bucket the score, shade the uncertainty",
+              "Transparent \u2260 correct \u2014 grade sources, split gate from preference"
+            ]
+          },
+          "rendered": {
+            "out": "media/V01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-V01.mp3",
+      "actual_duration_s": 22.31,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/V01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "CLOSE",
+      "lane": "ASK",
+      "narration_text": "Your turn. Here's the reviewer's prompt Bear would use \u2014 paste it into Claude on any decision-support project like Saloni's. It makes the student name the target, turn eligibility variables into gates with graded data, run three real robustness tests, show the weights, and it ends in open questions instead of a handed-over answer. Run it on your own project before you call it transparent \u2014 and watch whether it can survive being made to break.",
+      "spark_line": "Pressure-test your own.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "You're reviewing a decision-support proposal for a Computational Skepticism course \u2014 a tool that ranks options and claims to be 'transparent' and 'explainable.' Write feedback that (1) forces the student to name the exact outcome variable the ranking optimizes for before any scoring logic; (2) flags any legally/eligibility-loaded variable that must be a hard gate with a confirmed-vs-inferred data-confidence flag, not blended into a weighted score; (3) requires three concrete robustness tests \u2014 near-threshold flip, missing-data behavior, adversarial input; (4) requires the visualization to show sub-scores and weights and avoid false precision; and (5) ends with one or two open questions, not a prescribed architecture. Tone: encouraging but exacting.",
+            "runningText": "paste this into Claude\u2026",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High",
+            "segment": "Your Turn",
+            "topic": "YOUR TURN \u2014 CLAUDE, SKEPTICAL"
+          },
+          "rendered": {
+            "out": "media/H01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-H01.mp3",
+      "actual_duration_s": 21.7,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/H01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "CLOSE",
+      "lane": "CARD",
+      "narration_text": "Claude, Skeptical.",
+      "spark_line": "Claude, Skeptical",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Claude, Skeptical.",
+            "handle": "@NikBearBrown",
+            "subline": "Professor Bear's notes on Saloni's job-fit checker",
+            "slug": "claude-liam-saloni-job-fit-checker"
+          },
+          "rendered": {
+            "out": "media/O01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-O01.mp3",
+      "actual_duration_s": 1.73,
+      "build": {
+        "status": "SLATE",
+        "src": "media/O01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-24T08:20:24"
+      }
+    }
+  ]
+}

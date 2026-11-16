@@ -1,0 +1,1150 @@
+{
+  "metadata": {
+    "slug": "claude-liam-what-is-ai-compute",
+    "title": "The Clocks Don't Match",
+    "subtitle": "What AI compute actually is — and what $500 billion is betting on",
+    "topic": "AI COMPUTE · EXPLAINED",
+    "purpose": "A definitional explainer that refuses to stop at the definition. Answers 'what is AI compute' as the whole stack (chips → CUDA), then shows why the answer matters financially: the layers age on mismatched clocks, the measured utilisation is a fraction of the believed utilisation, and $500B is being organised around a residual value nobody can price. Lands the counter-argument honestly (old chips keep earning, for physical reasons) and hands the viewer a test they can run on their own numbers.",
+    "source": [
+      "Robert J. Szczerba, 'What Is AI Compute? Why Nvidia Is Betting Billions On What It's Worth', Forbes, 2026-08-23 (commission)",
+      "NVIDIA newsroom press release, 2026-08-10 (primary — $500B, six firms, subject to final agreements)",
+      "Cast AI, 2026 State of Kubernetes Optimization Report (measured GPU utilisation 5%)",
+      "ClearML, The State of AI Infrastructure at Scale 2024 (53% believe 51–70%)",
+      "Amazon 10-K FY2025 (useful life 6→5 years; +$1.4B D&A, −$1.0B net income)",
+      "Bernie Margulies, Monitor Daily (residual assumptions 10–60%)",
+      "CoreWeave Q2 2026 earnings call, via independent trade reporting (A100 booked into 2029; rack power)"
+    ],
+    "audience": "Claude",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "folderLabel": "@NikBearBrown",
+    "register": "Teardown",
+    "palette": "claude",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "aspect_ratio": "16:9",
+    "clock": "narration",
+    "greeting_language": "Yassou (Greek)",
+    "note": "DOUBLE-CHECK: every on-screen figure re-verified against a primary or independent source (see SOURCES.md). Held back as MECHANISM ONLY, never printed: the 'two-thirds of data-center cost is semiconductors' share, the '>90% of data-center GPUs' supplier share, and the 70%/30% own-vs-rent break-even band — all narrated as orderings or dependencies, no number on screen. Margulies' conflict of interest is disclosed ON SCREEN, not only in narration. The 25% backstop is captioned as absent from the NVIDIA press release — independently checked. No model version numbers or unit GPU prices anywhere (dating risk).",
+    "gates": {
+      "plan": "PRESENTED — awaiting approval",
+      "P_narration": "PRESENTED — awaiting approval",
+      "audio": "BLOCKED until GATE P signed",
+      "anim_json": "pending (C2 pattern table at build)",
+      "typecheck": "pending (GATE T)"
+    },
+    "custom_scenes_required": [
+      "ACWordShift (B01)",
+      "ACResidualSpread (B08)",
+      "ACBackstop (B09)",
+      "ACOldChips (B10)",
+      "ACStorageBusiness (B12)",
+      "B03_TheClocks (Manim)"
+    ],
+    "build": {
+      "at": "",
+      "cut": "",
+      "filled": 0,
+      "of": 17,
+      "slates": [],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "COLD OPEN",
+      "narration_text": "Yassou — this is Liam, in for Bear. Somebody in your company said the word compute this week and everyone at the table nodded. Here is what nobody said out loud. AI compute is not the chips. It is the whole stack — silicon, memory, networking, power, cooling, and one software layer you can never leave. And half a trillion dollars of Wall Street money now depends on how long one slice of that stack keeps earning.",
+      "estimated_duration_s": 29,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk — the cold-open question, answered in three output lines",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Yassou, Liam",
+            "command": "What is AI compute, exactly — and why is Wall Street financing it like an asset?",
+            "segment": "The Clocks Don't Match",
+            "topic": "AI COMPUTE · EXPLAINED",
+            "runningText": "unpacking the stack…",
+            "output": [
+              "Not the chips. The whole stack.",
+              "Chips, memory, network, power, cooling, CUDA.",
+              "The argument is about clocks, not silicon."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer opens on cream ground — spark + 'Yassou, Liam'"
+        },
+        {
+          "at": 0.3,
+          "event": "Command types in"
+        },
+        {
+          "at": 0.62,
+          "event": "Send arms (terracotta); running indicator fires on 'not the chips'"
+        },
+        {
+          "at": 0.78,
+          "event": "Three output lines land, one per clause"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      },
+      "lane": "BOOKEND"
+    },
+    {
+      "beat_id": "B01",
+      "act": "THE WORD MOVED",
+      "narration_text": "Start with the word, because it moved twice and nobody announced it. Compute used to be a verb — to compute is to calculate. Then Amazon put processing capacity on an hourly meter in two thousand six, and it became a unit you order, priced like electricity. Then AI shrank it again, down to one narrow category of hardware. Three meanings, one word, and the speaker rarely says which. That is how somebody approves a purchase they cannot describe.",
+      "estimated_duration_s": 30,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "C3 custom — one word crossing three eras; the third card lands terracotta",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "ACWordShift",
+          "component": "ACWordShift",
+          "props": {
+            "stages": [
+              {
+                "label": "VERB",
+                "sub": "to calculate · what a machine did"
+              },
+              {
+                "label": "UNIT",
+                "sub": "by the hour · 2006, EC2"
+              },
+              {
+                "label": "ASSET",
+                "sub": "on the balance sheet · 2026",
+                "accent": true
+              }
+            ],
+            "spark": "Verb. Unit. Asset.",
+            "caption": "the same word, three jobs"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.1,
+          "event": "VERB card draws on 'compute was a verb'"
+        },
+        {
+          "at": 0.38,
+          "event": "UNIT card slides in ON 'two thousand six'"
+        },
+        {
+          "at": 0.7,
+          "event": "ASSET card lands terracotta ON 'one specific kind of hardware'"
+        },
+        {
+          "at": 0.92,
+          "event": "All three hold; caption settles"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "BASK1",
+      "act": "THE ASK — WHAT'S IN THE BOX",
+      "narration_text": "So what is actually in the box?",
+      "estimated_duration_s": 5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk micro — the ask before the stack graphic (ASK→RESULT)",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "command": "Draw what's actually inside an AI factory — every layer, and which one locks me in.",
+            "segment": "The Clocks Don't Match",
+            "topic": "AI COMPUTE · EXPLAINED",
+            "runningText": "building the stack…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BASK1.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Composer micro-beat; command already typed; running indicator arms"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      },
+      "lane": "BOOKEND"
+    },
+    {
+      "beat_id": "B02",
+      "act": "WHAT YOU'RE ACTUALLY BUYING",
+      "narration_text": "A GPU on its own is close to useless. Give it fast memory within arm's reach, networking quick enough that thousands of them behave like one machine, storage underneath, then a building you can power and cool hard enough that it does not cook itself. Nvidia calls the finished object an AI factory. But the layer that decides whether you can ever leave is the one you cannot photograph. Your engineers never touch the silicon — their code reaches it through CUDA. So what you bought was never chips. It was a toolchain your codebase is already written against.",
+      "estimated_duration_s": 37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "STRUCTURAL LayerStack — six layers, CUDA accented as the lock-in",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "LayerStack",
+          "component": "LayerStack",
+          "props": {
+            "layers": [
+              {
+                "title": "CUDA",
+                "sub": "the layer your code already assumes",
+                "accent": true
+              },
+              {
+                "title": "GPUs",
+                "sub": "the part everyone pictures"
+              },
+              {
+                "title": "Memory",
+                "sub": "fast, and right beside the chip"
+              },
+              {
+                "title": "Networking & storage",
+                "sub": "thousands of machines acting as one"
+              },
+              {
+                "title": "Power & cooling",
+                "sub": "the part that decides what fits"
+              },
+              {
+                "title": "The building",
+                "sub": "an AI factory, wrapped around the core"
+              }
+            ],
+            "caption": "the stack, not the chip",
+            "spark": "Not the chips."
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.05,
+          "event": "GPU layer draws first on 'a GPU on its own'"
+        },
+        {
+          "at": 0.25,
+          "event": "Memory / networking / storage stack under it as each is named"
+        },
+        {
+          "at": 0.45,
+          "event": "Power, cooling and the building close the box ON 'AI factory'"
+        },
+        {
+          "at": 0.72,
+          "event": "CUDA layer lands LAST and terracotta ON 'you cannot see it'"
+        },
+        {
+          "at": 0.9,
+          "event": "Caption 'that is a switching cost' settles under the stack"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE CLOCKS DON'T MATCH",
+      "narration_text": "Here is the thing that decides whether the money works, and it has nothing to do with performance. The layers do not age together. The building is good for decades. The cooling plant, years. The chips are the open question — and the chips are the largest share of what the facility cost. What is being financed is a slow object with a fast object inside it, and the fast one carries most of the value.",
+      "estimated_duration_s": 29,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "Manim — three lifespans, one short and terracotta, ending in a question mark",
+      "shot": {
+        "type": "MOTION-GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "graphic": {
+          "engine": "manim",
+          "manim": "B03_TheClocks",
+          "production_viz": {
+            "label": "TheClocks",
+            "mechanic": "Three horizontal lifespan bars on the cream stage, stacked and left-aligned to a shared zero. THE BUILDING draws out to the far right in ink (label: decades). COOLING draws to roughly a third of it (label: years). CHIPS draws short and stops in terracotta, terminating in a question mark rather than an end-cap. A thin vertical rule drops from the chip bar's end down through the other two, making the gap visible as a gap. Small ghost caption, one line: 'lifespans illustrative — chip life per Amazon 10-K, FY2025'. No numeric axis: the ordering is the claim, not a measured duration.",
+            "colors": [
+              "#3D3929",
+              "#D97757",
+              "#F2F0E9"
+            ]
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.14,
+          "event": "Building bar draws long ON 'stands for decades'"
+        },
+        {
+          "at": 0.32,
+          "event": "Cooling bar draws ON 'runs for years'"
+        },
+        {
+          "at": 0.5,
+          "event": "Chip bar draws SHORT and stops terracotta ON 'the question mark'"
+        },
+        {
+          "at": 0.68,
+          "event": "Vertical rule drops through all three — the gap becomes the picture"
+        },
+        {
+          "at": 0.86,
+          "event": "Holds under 'long-lived shell, fast-moving core'"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "TRAINING AND INFERENCE",
+      "narration_text": "The work splits in two, and the halves have opposite shapes. Training builds the model — enormous, expensive, finite. Every run has a last day. Inference is the finished model answering, and on a live product there is no last day. That difference is also the career path of a chip. Training demands the newest silicon; inference is far less fussy. So hardware retired from training usually is not retired. It has been reassigned.",
+      "estimated_duration_s": 28,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "C2 DivergentFates — one cluster, two jobs with opposite shapes",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "DivergentFates",
+          "component": "DivergentFates",
+          "props": {
+            "data": {
+              "slideMeta": "two jobs, two clocks",
+              "startLabel": "one cluster",
+              "splitLabel": "what is it doing?",
+              "tracks": [
+                {
+                  "label": "TRAINING",
+                  "outcome": "it ends",
+                  "tone": "ink",
+                  "path": "down",
+                  "notes": [
+                    "one bounded run",
+                    "wants peak performance",
+                    "the bill has a finish line"
+                  ]
+                },
+                {
+                  "label": "INFERENCE",
+                  "outcome": "it never stops",
+                  "tone": "accent",
+                  "path": "up",
+                  "notes": [
+                    "a meter that keeps turning",
+                    "will settle for older silicon",
+                    "where aged chips go to work"
+                  ]
+                }
+              ]
+            }
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.1,
+          "event": "Single track under 'compute does two different jobs'"
+        },
+        {
+          "at": 0.3,
+          "event": "Split fires ON 'training is building the model'"
+        },
+        {
+          "at": 0.48,
+          "event": "TRAINING track terminates ON 'it ends'"
+        },
+        {
+          "at": 0.66,
+          "event": "INFERENCE track runs off the right edge ON 'never stops'"
+        },
+        {
+          "at": 0.88,
+          "event": "Terracotta lands on the inference track ON 'employable in the second'"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THREE WAYS TO PAY",
+      "narration_text": "Three ways to pay. Buy the hardware, rent it by the hour, or buy nothing and pay per token through an API. They look like pricing options. They are one question asked three ways — when this machine is worth less twelve months from now, whose balance sheet takes the hit?",
+      "estimated_duration_s": 20,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "STRUCTURAL ChipGrid — three peer options, each tagged with who holds the risk",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "component": "ChipGrid",
+          "props": {
+            "items": [
+              "BUY IT\nyou own the asset — and the problem",
+              "RENT BY THE HOUR\npay a premium, hand off the aging",
+              "PER TOKEN\nown none of the depreciation"
+            ],
+            "cols": 3,
+            "caption": "same question underneath: who eats the loss?",
+            "spark": "Who eats the loss?"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.16,
+          "event": "BUY chip lands ON 'buy it'"
+        },
+        {
+          "at": 0.38,
+          "event": "RENT chip lands ON 'rent it by the hour'"
+        },
+        {
+          "at": 0.6,
+          "event": "PER TOKEN chip lands ON 'pay per token'"
+        },
+        {
+          "at": 0.84,
+          "event": "Caption underlines all three terracotta ON 'who eats the loss'"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE GAP THAT MATTERS",
+      "narration_text": "Which brings us to a number worth guessing before you hear it. Cast AI instrumented tens of thousands of production clusters and measured average GPU utilisation at five percent. Then ClearML asked companies to estimate their own, and a majority of AI leaders put themselves between fifty-one and seventy. Instrumented: five. Self-assessed: the fifties. Nobody is lying — they have never measured, and confidence moves into the space where the measurement should be. A company buys hardware for the satisfaction of owning its AI, runs it at a fraction of capacity, and never finds out, because nothing on the invoice tells you.",
+      "estimated_duration_s": 38,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "C2 ScaleComparison — the believed band vs the measured mark on one axis",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "ScaleComparison",
+          "component": "ScaleComparison",
+          "props": {
+            "data": {
+              "slideMeta": "Cast AI, 2026 (measured) · ClearML, 2024 (self-reported)",
+              "axis": {
+                "min": 0,
+                "max": 100,
+                "unit": "%"
+              },
+              "band": {
+                "from": 51,
+                "to": 70,
+                "label": "what 53% of AI/ML leaders believe theirs is"
+              },
+              "items": [
+                {
+                  "label": "Measured — tens of thousands of clusters",
+                  "value": 5,
+                  "hot": true
+                }
+              ],
+              "axisLabel": "average GPU utilization",
+              "script": "Instrumented: five. Self-assessed: the fifties."
+            }
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.06,
+          "event": "Axis draws EMPTY ON 'a number worth guessing before you hear it' — blank-axis beat so the viewer commits first"
+        },
+        {
+          "at": 0.28,
+          "event": "Measured mark lands terracotta at 5% ON 'five percent'"
+        },
+        {
+          "at": 0.52,
+          "event": "Belief band 51–70 shades in ON 'between fifty-one and seventy'"
+        },
+        {
+          "at": 0.7,
+          "event": "Distance bracketed ON 'Instrumented: five. Self-assessed: the fifties.'"
+        },
+        {
+          "at": 0.9,
+          "event": "Holds; source caption stays visible"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "WHY WALL STREET WANTS IT",
+      "narration_text": "So, the money. On the tenth of August, Nvidia and six of the biggest names in finance — Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs and KKR — signed memorandums to organise more than five hundred billion dollars of outside capital around this hardware. The logic is sound: a hall of GPUs under contract produces predictable cash, and predictable cash is what lenders lend against. Two things to hold onto. Those are memorandums, not closed deals — Nvidia's own release says the final agreements have not been executed. And the fragile part was never the cash flow. It is what the collateral is worth if you have to sell it.",
+      "estimated_duration_s": 41,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "STRUCTURAL SourceFlow — six lenders feeding capital into a rack held as collateral",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "SourceFlow",
+          "component": "SourceFlow",
+          "props": {
+            "sourceLabel": "Apollo · BlackRock · Blackstone · Brookfield · Goldman Sachs · KKR",
+            "feeds": [
+              {
+                "label": "over $500B third-party capital",
+                "tint": "accent"
+              }
+            ],
+            "destApp": "AI factory",
+            "destTitle": "GPUs as collateral",
+            "arcCaption": "MOUs — subject to execution of final agreements",
+            "settleLine": "NVIDIA, announced Aug 10 2026",
+            "spark": "Cash under contract."
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.12,
+          "event": "Six firm names assemble ON 'six of the largest firms'"
+        },
+        {
+          "at": 0.34,
+          "event": "Capital arc draws terracotta into the rack ON 'five hundred billion'"
+        },
+        {
+          "at": 0.58,
+          "event": "Rack labels itself 'GPUs as collateral' ON 'borrowed against'"
+        },
+        {
+          "at": 0.78,
+          "event": "arcCaption 'subject to execution' fades up ON 'still unsigned'"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "NOBODY KNOWS WHAT IT'S WORTH",
+      "narration_text": "Compare it with collateral that already works. A toll road is still taking money in year forty. An aircraft has decades of completed sales telling a lender what a used one goes for. A GPU cluster has neither — no long history, and no public record of what one fetches from a seller who has to sell today. Here is how that reads in the equipment-finance trade, from a man whose company insures this exact risk, so weigh him accordingly. Quote: the disagreement is whether the right number is ten percent or sixty percent. Fifty points, same asset. At ten it is a bad loan. At sixty it is a good one.",
+      "estimated_duration_s": 42,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "C3 custom — a single residual axis with two markers and the gap shaded; conflict disclosed on screen",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "ACResidualSpread",
+          "component": "ACResidualSpread",
+          "props": {
+            "axisLabel": "assumed residual value after the lease term",
+            "low": {
+              "value": 10,
+              "label": "10%"
+            },
+            "high": {
+              "value": 60,
+              "label": "60%"
+            },
+            "gapLabel": "fifty points of spread — on the same asset",
+            "quote": "The disagreement is whether the right number is 10% or 60%.",
+            "attribution": "Bernie Margulies, Monitor Daily · sells residual-value insurance — talking his book",
+            "anchors": [
+              {
+                "label": "toll road",
+                "sub": "still earning in year 40"
+              },
+              {
+                "label": "leased aircraft",
+                "sub": "decades of completed sales"
+              },
+              {
+                "label": "GPU cluster",
+                "sub": "no forced-sale benchmark",
+                "accent": true
+              }
+            ],
+            "spark": "Ten percent, or sixty."
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.08,
+          "event": "Three anchors line up: toll road, aircraft, cluster — cluster greys out"
+        },
+        {
+          "at": 0.42,
+          "event": "Residual axis draws ON 'the equipment-finance trade press'"
+        },
+        {
+          "at": 0.58,
+          "event": "10% marker lands ink; 60% marker lands ink ON the quote"
+        },
+        {
+          "at": 0.74,
+          "event": "The gap between them floods terracotta ON 'fifty points of spread'"
+        },
+        {
+          "at": 0.9,
+          "event": "Attribution + conflict line holds under the axis"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "HOW MUCH RISK IS NVIDIA TAKING?",
+      "narration_text": "So how much does Nvidia absorb? Huang's answer, announcing the platforms — Nvidia may provide residual-value support, up to twenty-five percent of an opportunity, assessed project by project. Take the hedges one at a time, because four are stacked into one sentence. May, not will. Up to, not at. Of an opportunity, not of the programme. And judged deal by deal. That commitment is also not in the press release — I checked; it was reported separately.",
+      "estimated_duration_s": 29,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "C3 custom — a full-frame risk bar with one quarter shaded and the qualifiers ticking on",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "ACBackstop",
+          "component": "ACBackstop",
+          "props": {
+            "totalLabel": "the residual-value question",
+            "coveredPct": 25,
+            "coveredLabel": "Nvidia — up to 25%, project by project",
+            "uncoveredLabel": "somebody else's problem",
+            "qualifiers": [
+              "may",
+              "up to",
+              "of an opportunity",
+              "assessed project by project"
+            ],
+            "footnote": "not in the press release — reported separately (verified: NVIDIA release contains no 25% figure)",
+            "spark": "A quarter, at most."
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.12,
+          "event": "Full risk bar draws in ink outline ON 'how much of that uncertainty'"
+        },
+        {
+          "at": 0.34,
+          "event": "A quarter fills terracotta ON 'twenty-five percent'"
+        },
+        {
+          "at": 0.52,
+          "event": "Qualifiers tick on one at a time, exactly as spoken: may / up to / of an opportunity / project by project"
+        },
+        {
+          "at": 0.8,
+          "event": "Footnote 'not in the press release' fades up ON 'I checked'"
+        },
+        {
+          "at": 0.92,
+          "event": "Remaining three quarters label themselves 'somebody else's problem'"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE COUNTER-ARGUMENT IS REAL",
+      "narration_text": "Now argue the other side properly, because it is strong. Old chips keep earning. CoreWeave has A one hundreds on its books — twenty-twenty silicon — contracted out to twenty twenty-nine, at prices its chief executive says are at or above their historical peak. Why? Not sentiment. Plumbing. An air-cooled A one hundred draws about six and a half kilowatts, and the world is full of halls built for roughly twenty per rack. The newest racks want a hundred and twenty to a hundred and forty, with liquid piped to the chip, and most existing buildings cannot feed that. Old chips have something new chips do not — somewhere to live.",
+      "estimated_duration_s": 41,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "C3 custom — two racks against the same hall envelope; the old one fits, the new one doesn't",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "ACOldChips",
+          "component": "ACOldChips",
+          "props": {
+            "caption": "CoreWeave Q2 2026 earnings call · rack power figures from trade reporting on the same disclosure",
+            "racks": [
+              {
+                "title": "A100 · 2020 architecture",
+                "draw": "~6.5 kW",
+                "cooling": "air",
+                "hall": "fits a ~20 kW/rack hall",
+                "verdict": "booked into 2029",
+                "accent": true
+              },
+              {
+                "title": "GB200 / GB300 NVL72",
+                "draw": "120–140 kW",
+                "cooling": "direct-to-chip liquid",
+                "hall": "most existing halls cannot feed it",
+                "verdict": "needs a new building"
+              }
+            ],
+            "settleLine": "silicon migrates down the ladder — it doesn't die",
+            "spark": "Old chips fit."
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.1,
+          "event": "Hall envelope draws — a dashed ~20 kW/rack ceiling"
+        },
+        {
+          "at": 0.3,
+          "event": "A100 rack sits comfortably inside it ON 'six and a half kilowatts'"
+        },
+        {
+          "at": 0.55,
+          "event": "New rack draws and BREAKS the envelope ON 'a hundred and forty kilowatts'"
+        },
+        {
+          "at": 0.74,
+          "event": "'booked into 2029' stamps terracotta on the old rack"
+        },
+        {
+          "at": 0.9,
+          "event": "Settle line: 'it migrates down the ladder'"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "RUN IT A YEAR SHORTER",
+      "narration_text": "Two things to do before you sign anything. First, find the useful life buried in your model — the years you assume this hardware earns — and rebuild the case with one year removed. Amazon shortened the assumed life on a subset of its servers from six years to five, blaming the pace of AI development. Its own filing puts that one year of assumption at one point four billion dollars of extra depreciation, and a billion off net income.",
+      "estimated_duration_s": 30,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "C2 Threshold — useful life crossing the six-to-five cutoff, with Amazon's own cost attached",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "Threshold",
+          "component": "Threshold",
+          "props": {
+            "data": {
+              "slideMeta": "Amazon 10-K, FY2025 · change effective Jan 1 2025",
+              "subject": {
+                "label": "assumed useful life",
+                "size": 6,
+                "unit": "years"
+              },
+              "modes": [
+                {
+                  "label": "six years",
+                  "sub": "the assumption the deal was written on",
+                  "limit": 6,
+                  "resolves": true
+                },
+                {
+                  "label": "five years",
+                  "sub": "+$1.4B depreciation · −$1.0B net income, one year",
+                  "limit": 5,
+                  "resolves": false
+                }
+              ],
+              "axisLabel": "years of assumed earning life",
+              "verdicts": {
+                "yes": "the deal works",
+                "no": "the deal breaks"
+              },
+              "script": "One year of assumption, $1.4B of depreciation."
+            }
+          },
+          "rendered": {
+            "out": "media/B11.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.14,
+          "event": "Six-year bar sits above the line ON 'the useful life you are assuming'"
+        },
+        {
+          "at": 0.42,
+          "event": "Cutoff drops to five ON 'from six years to five'"
+        },
+        {
+          "at": 0.62,
+          "event": "Cost figures land terracotta ON 'one point four billion'"
+        },
+        {
+          "at": 0.86,
+          "event": "'the deal breaks' resolves ON 'found the soft spot'"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE STORAGE BUSINESS",
+      "narration_text": "Second, measure your utilisation instead of estimating it. If the measured number sits under the break-even for owning, be honest about what you bought. That is not compute capacity. That is a warehouse, full of stock worth less every month it does not move.",
+      "estimated_duration_s": 18,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "C3 custom — the same rack re-labelled as the utilization line drops below break-even",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "remotion": {
+          "pattern": "ACStorageBusiness",
+          "component": "ACStorageBusiness",
+          "props": {
+            "line": "below break-even, owning is storage",
+            "left": {
+              "label": "THE COMPUTE BUSINESS",
+              "sub": "the machine earns faster than it ages"
+            },
+            "right": {
+              "label": "THE STORAGE BUSINESS",
+              "sub": "the machine ages faster than it earns",
+              "accent": true
+            },
+            "footnote": "break-even depends on what you paid and how long you assume it lasts — measure, don't estimate",
+            "spark": "Storing depreciating goods."
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.2,
+          "event": "Break-even line draws; utilization marker sits on it"
+        },
+        {
+          "at": 0.55,
+          "event": "Marker drops below the line ON 'below the break-even for owning'"
+        },
+        {
+          "at": 0.75,
+          "event": "The label flips to THE STORAGE BUSINESS, terracotta, ON the phrase"
+        },
+        {
+          "at": 0.92,
+          "event": "Footnote settles"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "narration_text": "Let's recap with Claude. AI compute is the entire stack, not the chips — and CUDA, the layer nobody photographs, is the part that keeps you. That stack ages unevenly: a building good for decades wrapped around silicon that might be repriced in five years. Measured utilisation is five percent while the industry believes it is in the fifties. And five hundred billion dollars is being arranged against a resale value serious people place anywhere between ten and sixty percent. None of which says the buildout is wrong. It says it is a bet with one unpriced leg — and that leg is holding most of the money.",
+      "estimated_duration_s": 40,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeVerdictArtifact — four-line answer to the cold-open question",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verdict",
+            "artifactHeading": "What is AI compute?",
+            "artifactLines": [
+              "The whole stack — chips, memory, network, power, cooling, CUDA.",
+              "A shell that lasts decades around a core that may last five years.",
+              "Measured utilization: 5%. Believed: 51–70%.",
+              "$500B financed against a residual nobody can price — Nvidia backstops up to 25%."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Artifact card ~84% width; lines land one per recap clause"
+        },
+        {
+          "at": 0.9,
+          "event": "Terracotta period on the last line"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      },
+      "lane": "BOOKEND",
+      "lead_silence_s": 0.5
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "narration_text": "Your turn, and run this one on something with your name on it. The prompt: Here is my AI hardware or cloud plan — paste it. Do not optimise it. Instead: one, tell me what useful life in years my numbers silently assume, then rerun the economics a year shorter and show me what breaks. Two, tell me the utilisation rate I would have to sustain for owning to beat renting, and what I would have to instrument to know whether I am there. Three, tell me what this hardware could sell for in year three, and name the evidence that number rests on. Notice what that refuses to do. It does not ask for a better plan — it asks the model to surface the assumption your plan is hiding. Watch the third one especially, and watch how thin the evidence gets the moment you ask what the hardware resells for. If Claude cannot source that number, neither can your lender.",
+      "estimated_duration_s": 59,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeComposerAsk — 'Your turn.' with the assumption-audit prompt, read aloud verbatim",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "type",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "command": "Here is my AI hardware or cloud plan: [paste it]. Do NOT optimise it. Instead: (1) tell me what useful life in years my numbers silently assume, then rerun the economics one year shorter and show me what breaks; (2) tell me the utilisation rate I would have to sustain for owning to beat renting, and exactly what I would have to instrument to know whether I am there; (3) tell me what this hardware could be sold for in year three — and name the evidence that number rests on.",
+            "segment": "The Clocks Don't Match",
+            "topic": "AI COMPUTE · EXPLAINED",
+            "runningText": "paste this into Claude before you sign anything…",
+            "output": [
+              "Don't ask for a better plan.",
+              "Ask what your plan is assuming."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "'Your turn.' greeting; prompt types while Liam reads it verbatim"
+        },
+        {
+          "at": 0.55,
+          "event": "Typing completes; discussion continues over the held frame"
+        },
+        {
+          "at": 0.8,
+          "event": "Output lines land ON 'it does not ask for a better plan'"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      },
+      "lane": "BOOKEND"
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "narration_text": "The Clocks Don't Match. Liam, in for Bear.",
+      "estimated_duration_s": 5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "new_visual_element": "ClaudeTitleOutro — title restate",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "static",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Clocks Don't Match",
+            "slug": "claude-liam-what-is-ai-compute"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "show": [
+        {
+          "at": 0.0,
+          "event": "Poster serif title, terracotta period"
+        },
+        {
+          "at": 0.5,
+          "event": "@NikBearBrown beneath; NBB mark full-size; Liam signs off"
+        }
+      ],
+      "build": {
+        "status": "PENDING",
+        "src": "",
+        "filled_by": "",
+        "at": ""
+      },
+      "lane": "BOOKEND"
+    }
+  ]
+}

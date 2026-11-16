@@ -1,0 +1,5529 @@
+{
+  "metadata": {
+    "slug": "claude-liam-lecture-bias-where-it-enters",
+    "title": "Bias: Where It Enters and Who Is Responsible",
+    "spoken_title": "Bias: Where It Enters and Who Is Responsible.",
+    "topic": "Where bias enters an AI pipeline, which fix has the leverage, and who owns it",
+    "skill": "lecture",
+    "style_preset": "lecture",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "width": 3840,
+    "height": 2160,
+    "aspect_ratio": "16:9",
+    "caption_policy": "sidecar",
+    "series_title": "Computational Skepticism for AI",
+    "playlist": "INFO 7375 — Computational Skepticism for AI (Lectures)",
+    "series_video_number": 6,
+    "series_video_count": 13,
+    "series_entry_video": "Video 1 · The Skeptic's Toolkit",
+    "course": "INFO 7375 Computational Skepticism for AI · Nik Bear Brown · Northeastern University",
+    "audience": "INFO 7375 students (Fall 2026) and Claude Code practitioners",
+    "chapter_number": 6,
+    "lecture_opening_description": "Find where bias lives, then who owns the fix",
+    "lecture_opening_title_lines": [
+      "Bias: Where It Enters",
+      "and Who Is Responsible"
+    ],
+    "lecture_opening_template": "lecture-title-slide-16x9",
+    "source_doc": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/chapters/06-bias-where-it-enters-and-who-is-responsible.md",
+    "source_sha256": "13c5d9588d8d81be31d391f3d8179a685cd931226167df0ed5dc452054e4935c",
+    "bookend_exempt": [
+      "cold-open"
+    ],
+    "bookend_exempt_reason": "lecture skill: opens on the narrated card then the hesitant writer; no composer cold open.",
+    "tags": [
+      "AI bias",
+      "fairness",
+      "causal inference",
+      "Pearl",
+      "INFO 7375",
+      "Computational Skepticism for AI",
+      "Northeastern University",
+      "Liam",
+      "Lecture"
+    ],
+    "build": {
+      "at": "2026-10-10T03:15:45",
+      "cut": "master",
+      "filled": 99,
+      "of": 99,
+      "slates": [],
+      "skin_warnings": [
+        "BOPEN: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BOPEN",
+      "act": "Opening",
+      "narration_text": "INFO seventy-three seventy-five, Computational Skepticism for AI. Lectures. Bias: Where It Enters and Who Is Responsible. Learn where bias enters an AI system, which fix has the leverage to move it, and who owns it.",
+      "estimated_duration_s": 14.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Film identity and payoff",
+        "runner_up": "Minimal title card",
+        "reason": "The lecture skill's approved first beat: portrait, playlist, film title, short payoff."
+      },
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "template": "lecture-title-slide-16x9",
+        "narration_contract": "playlist-title-summary-v1",
+        "motion": "hold",
+        "visual_intent": "Professor Bear portrait, exact film title, short payoff, series position, visible from frame zero.",
+        "show": [
+          {
+            "at": 0,
+            "event": "Complete populated lecture opener visible for the whole narration"
+          }
+        ]
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Identity card; teaching motion starts in BIDEA."
+      },
+      "audio_file": "mp3/beat-BOPEN.mp3",
+      "actual_duration_s": 13.03,
+      "render_duration_s": 13.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOPEN.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "Opening",
+      "narration_text": "Namaste. This is Liam, in for Bear, with lecture six of INFO seventy-three seventy-five, Computational Skepticism for AI, at Northeastern University. When a system is biased, the reflex is to fix the model. That's the fix nearest your hands, and very often it isn't the one that works.",
+      "estimated_duration_s": 19.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The reflex the film corrects",
+        "runner_up": "Overview card",
+        "reason": "The writer types the reflex and corrects one phrase into the film's question."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "The reflex the film corrects",
+        "motion_claim": "The writer types the reflex and corrects one phrase into the film's question.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "The system is biased,\nso fix the model",
+            "triggerWords": "fix the model",
+            "replacementWords": "find where the bias lives",
+            "fontSize": 70,
+            "charMs": 22,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "claude-liam-lecture-bias-where-it-enters",
+            "banner": "",
+            "durationSeconds": 17.29
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer opening: the correction is the motion."
+      },
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "actual_duration_s": 17.29,
+      "render_duration_s": 17.291666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "Terms",
+      "narration_text": "Six terms. An estimator is a rule that turns data into a number. A base rate is how common an outcome is in a group. A label is the answer a model learns to predict. A proxy is a feature that stands in for something else. A protected group is a group shielded from unfair treatment. And a causal graph is a set of arrows showing what causes what.",
+      "estimated_duration_s": 27.14,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Prerequisite vocabulary",
+        "runner_up": "Library icon row",
+        "reason": "Six words the acts lean on, one plain line each."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Prerequisite vocabulary",
+        "motion_claim": "Six words the acts lean on, one plain line each.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "Terms In This Lecture",
+            "terms": [
+              {
+                "term": "Estimator",
+                "meaning": "A rule that turns data into a number"
+              },
+              {
+                "term": "Base rate",
+                "meaning": "How common an outcome is in a group"
+              },
+              {
+                "term": "Label",
+                "meaning": "The answer a model learns to predict"
+              },
+              {
+                "term": "Proxy",
+                "meaning": "A feature that stands in for another"
+              },
+              {
+                "term": "Protected group",
+                "meaning": "A group shielded from unfair treatment"
+              },
+              {
+                "term": "Causal graph",
+                "meaning": "Arrows showing what causes what"
+              }
+            ],
+            "folderLabel": "@NikBearBrown",
+            "durationSeconds": 18.62
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Terms card: six prerequisites, one line each."
+      },
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "actual_duration_s": 18.62,
+      "render_duration_s": 18.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A1",
+      "act": "Three Teams, One Problem",
+      "narration_text": "Three Teams, One Problem.",
+      "estimated_duration_s": 2.14,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: Three Teams, One Problem",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: Three Teams, One Problem",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Three Teams, One Problem"
+            ],
+            "durationSeconds": 2.26
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A1.mp3",
+      "actual_duration_s": 2.26,
+      "render_duration_s": 2.2916666666666665,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "Three Teams, One Problem",
+      "narration_text": "Here's a parable, built to isolate a real pattern, not a case from any filing. A deployed AI system produces biased outcomes, reproducibly. Three engineering teams get the same job: fix it.",
+      "estimated_duration_s": 12.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A biased system and three teams, same gap",
+        "runner_up": "Isometric team figures (banned: person tokens)",
+        "reason": "Two outcome bars start unequal and three team flags land beside them."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A biased system and three teams, same gap",
+        "motion_claim": "Two outcome bars start unequal and three team flags land beside them.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B01_Parable"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 11.41,
+      "render_duration_s": 11.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "Three Teams, One Problem",
+      "narration_text": "Team one rewrites the loss function. They add a fairness penalty, a term that punishes unequal error rates across protected groups, and retrain on the same data. The gap shrinks a little. Not enough.",
+      "estimated_duration_s": 13.68,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Team one: penalty on the model, gap shrinks a little",
+        "runner_up": "Isometric box",
+        "reason": "A penalty tag clips onto the model block and the gap bars shorten slightly."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Team one: penalty on the model, gap shrinks a little",
+        "motion_claim": "A penalty tag clips onto the model block and the gap bars shorten slightly.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B02_TeamOne"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 11.37,
+      "render_duration_s": 11.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "Three Teams, One Problem",
+      "narration_text": "Team two fixes the data. They find the under-represented group, run a costly new collection, and retrain. The gap changes shape: smaller in some places, larger in others.",
+      "estimated_duration_s": 11.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Team two: data rebalanced, gap changes shape",
+        "runner_up": "Stat card",
+        "reason": "New data blocks fill the thin column and the gap bars reshuffle instead of vanishing."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Team two: data rebalanced, gap changes shape",
+        "motion_claim": "New data blocks fill the thin column and the gap bars reshuffle instead of vanishing.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B03_TeamTwo"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 10.09,
+      "render_duration_s": 10.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "Three Teams, One Problem",
+      "narration_text": "Team three touches neither the model nor the data. They look at the room the model was deployed into. A human reviewer reads its outputs, and the reviewer's own patterns amplified the bias. Team three changes the review process, and the gap falls by an order of magnitude.",
+      "estimated_duration_s": 19.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Team three: the review step, gap collapses",
+        "runner_up": "Isometric desk",
+        "reason": "The reviewer block lights up on its name and the gap bars drop to almost nothing."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Team three: the review step, gap collapses",
+        "motion_claim": "The reviewer block lights up on its name and the gap bars drop to almost nothing.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B04_TeamThree"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 14.72,
+      "render_duration_s": 14.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "Three Teams, One Problem",
+      "narration_text": "Teams one and two weren't wrong. They made real, small reductions, on real paths that carried little of the bias. Team three had leverage, and it wasn't luck. It came from a way of looking the other teams hadn't used.",
+      "estimated_duration_s": 15.98,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Three interventions, three paths of different width",
+        "runner_up": "Bar chart",
+        "reason": "Three paths draw from cause to outcome; two stay thin and one runs thick."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three interventions, three paths of different width",
+        "motion_claim": "Three paths draw from cause to outcome; two stay thin and one runs thick.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B05_ThreePaths"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 11.56,
+      "render_duration_s": 11.583333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "Three Teams, One Problem",
+      "narration_text": "That way of looking is the subject. The temptation is to fix what's nearest your hands. The leverage is usually somewhere else. So before fixing anything, ask: where does this bias live, and which intervention has the most leverage on it?",
+      "estimated_duration_s": 16.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Nearest fix versus highest-leverage fix",
+        "runner_up": "Question card",
+        "reason": "A near marker sits on the model while the question's ring travels down the chain to the real node."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Nearest fix versus highest-leverage fix",
+        "motion_claim": "A near marker sits on the model while the question's ring travels down the chain to the real node.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B06_NearVsLever"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 12.16,
+      "render_duration_s": 12.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A2",
+      "act": "What Bias Means",
+      "narration_text": "What Bias Means.",
+      "estimated_duration_s": 1.75,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: What Bias Means",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: What Bias Means",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "What Bias Means"
+            ],
+            "durationSeconds": 1.83
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A2.mp3",
+      "actual_duration_s": 1.83,
+      "render_duration_s": 1.8333333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "What Bias Means",
+      "narration_text": "In the newspapers, bias means unfair or prejudiced. That meaning is built for moral clarity, not for engineering. In statistics, bias is a property of an estimator, a rule that turns data into a number. The formal meaning gives up the moral punch and buys you something you can act on: it tells you where to intervene.",
+      "estimated_duration_s": 22.52,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Everyday meaning versus the estimator",
+        "runner_up": "Split text card",
+        "reason": "The loose word splits into two machines: one with a verdict, one with data in and a number out."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Everyday meaning versus the estimator",
+        "motion_claim": "The loose word splits into two machines: one with a verdict, one with data in and a number out.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B07_TwoMeanings"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 16.98,
+      "render_duration_s": 17.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "What Bias Means",
+      "narration_text": "Call the true quantity theta, and your estimate theta hat. Bias is the expected value of theta hat, minus theta. Zero means unbiased: maybe wrong on any one dataset, but not systematically wrong. Nonzero means systematically off, in one direction.",
+      "estimated_duration_s": 15.98,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Bias = E[θ̂] − θ with the offset on a number line",
+        "runner_up": "Equation alone",
+        "reason": "The equation assembles term by term while the cloud of estimates drifts off the true value and the offset arrow draws."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Bias = E[θ̂] − θ with the offset on a number line",
+        "motion_claim": "The equation assembles term by term while the cloud of estimates drifts off the true value and the offset arrow draws.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B08_BiasEquation"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 14.87,
+      "render_duration_s": 14.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "What Bias Means",
+      "narration_text": "Here's the consequence that matters most. More data will not fix a biased estimator. It converges, with growing confidence, to the wrong answer. More data narrows the scatter. It doesn't move the offset.",
+      "estimated_duration_s": 13.29,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Estimates narrow around the wrong value as n grows",
+        "runner_up": "Static two-curve chart",
+        "reason": "Histograms of real simulated estimates narrow at n = 10, 100, 1,000, 10,000 while staying centred off the true line."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Estimates narrow around the wrong value as n grows",
+        "motion_claim": "Histograms of real simulated estimates narrow at n = 10, 100, 1,000, 10,000 while staying centred off the true line.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B09_MoreData"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 11.41,
+      "render_duration_s": 11.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "What Bias Means",
+      "narration_text": "Here is the run behind that picture. The true rate is thirty percent, but the filter keeps four in ten positives and eight in ten negatives. Whatever the sample size, the estimate settles near seventeen and a half percent. The spread shrinks. The error stays.",
+      "estimated_duration_s": 17.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The simulation's real output",
+        "runner_up": "Manim table of the same numbers",
+        "reason": "SHOW-THE-THING / EXECUTABLE-EVIDENCE: the script's recorded stdout, line by line."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "The simulation's real output",
+        "motion_claim": "SHOW-THE-THING / EXECUTABLE-EVIDENCE: the script's recorded stdout, line by line.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "python3 evidence.py — recorded output (constructed example)",
+            "fontSize": 32,
+            "startCue": 8,
+            "lineGap": 12,
+            "lines": [
+              "A. A biased estimator does not improve with n",
+              "   true rate 0.30; keeps 40% of positives, 80% of negatives",
+              "   the estimate converges to 0.1765, not 0.30",
+              "   n=    10  mean estimate=0.1764  spread (sd)=0.1158",
+              "   n=   100  mean estimate=0.1766  spread (sd)=0.0382",
+              "   n=  1000  mean estimate=0.1763  spread (sd)=0.0120",
+              "   n= 10000  mean estimate=0.1765  spread (sd)=0.0037"
+            ],
+            "durationSeconds": 14.04
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 14.04,
+      "render_duration_s": 14.041666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "What Bias Means",
+      "narration_text": "This is exactly what happened in nineteen thirty-six. The Literary Digest magazine polled about two point four million people and predicted that Landon would beat Roosevelt. Roosevelt won with about sixty-one percent of the vote.",
+      "estimated_duration_s": 14.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A huge sample pointing the wrong way",
+        "runner_up": "VOX archival still (not needed: the numbers are the evidence)",
+        "reason": "A block of 2.4 million sample dots grows beside the result bar that points the other way."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A huge sample pointing the wrong way",
+        "motion_claim": "A block of 2.4 million sample dots grows beside the result bar that points the other way.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B11_Poll1936"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 13.01,
+      "render_duration_s": 13.041666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "What Bias Means",
+      "narration_text": "Peverill Squire's nineteen eighty-eight analysis found two problems working together. The mailing list leaned toward people with cars and telephones in the depths of the Depression, and the people who answered differed again from those who didn't. More ballots drawn the same way would have repeated the error.",
+      "estimated_duration_s": 19.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Mailing list skew then non-response, two filters",
+        "runner_up": "Funnel",
+        "reason": "The population narrows through two successive filters and the surviving tint no longer matches the whole."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Mailing list skew then non-response, two filters",
+        "motion_claim": "The population narrows through two successive filters and the surviving tint no longer matches the whole.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B12_SquireFrame"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 15.72,
+      "render_duration_s": 15.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "What Bias Means",
+      "narration_text": "So now we can say what the ten mechanisms of bias are: ten distinct ways to make that expression, the expected estimate minus the truth, nonzero. Each has its own causal structure and its own fix. Confuse them and you apply the right intervention at the wrong place.",
+      "estimated_duration_s": 19.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Ten sources of one offset",
+        "runner_up": "Chip grid",
+        "reason": "Ten dots land one by one on the offset arrow, each adding to the gap."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Ten sources of one offset",
+        "motion_claim": "Ten dots land one by one on the offset arrow, each adding to the gap.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B13_TenWays"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 14.85,
+      "render_duration_s": 14.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B13.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A3",
+      "act": "Selection Bias",
+      "narration_text": "Selection Bias.",
+      "estimated_duration_s": 1.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: Selection Bias",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: Selection Bias",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Selection Bias"
+            ],
+            "durationSeconds": 1.49
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A3.mp3",
+      "actual_duration_s": 1.49,
+      "render_duration_s": 1.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B14",
+      "act": "Selection Bias",
+      "narration_text": "Here are the ten, as places in a pipeline where the estimate can drift from the truth. Selection and sampling, when people are collected. Data entry, when they're recorded. Observer, self-report and coding, when they're measured. Confirmation, publication, historical and implicit follow.",
+      "estimated_duration_s": 16.75,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The ten entry points along one pipeline",
+        "runner_up": "FormB icon row",
+        "reason": "A pipeline draws left to right and the ten names pin to their stage as they are spoken."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The ten entry points along one pipeline",
+        "motion_claim": "A pipeline draws left to right and the ten names pin to their stage as they are spoken.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B14_TenMap"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 15.23,
+      "render_duration_s": 15.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B14.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B15",
+      "act": "Selection Bias",
+      "narration_text": "A note on counting. Later we'll meet pairs, like aggregation with subgroup masking. Those aren't an eleventh and twelfth mechanism. They're derived interactions of the ten. The ten are the alphabet, and the pairs are a short list of common words.",
+      "estimated_duration_s": 16.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Ten primitives, compounds are pairs of them",
+        "runner_up": "Text card",
+        "reason": "Two of the ten join by a bridge labelled compound; no new dot appears."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Ten primitives, compounds are pairs of them",
+        "motion_claim": "Two of the ten join by a bridge labelled compound; no new dot appears.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B15_Alphabet"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 13.29,
+      "render_duration_s": 13.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B15.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B16",
+      "act": "Selection Bias",
+      "narration_text": "Start with selection bias, and watch how it enters. You write a reasonable query: patients with a complete lab panel within six hours of admission. Nobody decides to exclude anyone. The exclusion rides in on the reasonableness.",
+      "estimated_duration_s": 14.83,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A reasonable query silently drops people",
+        "runner_up": "Isometric conveyor",
+        "reason": "Patient dots pour through the query gate; those without a timely panel fall away grey."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A reasonable query silently drops people",
+        "motion_claim": "Patient dots pour through the query gate; those without a timely panel fall away grey.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B16_QueryFilter"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B16.mp3",
+      "actual_duration_s": 13.12,
+      "render_duration_s": 13.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B16.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B17",
+      "act": "Selection Bias",
+      "narration_text": "Your estimator computes the average outcome among the people in your sample. You wanted the average in the population. Those two are equal on exactly one condition: whether you land in the sample must not depend on the outcome. The moment it does, the estimate is biased before a single parameter is fit.",
+      "estimated_duration_s": 20.98,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "E[Y | in sample] versus E[Y]",
+        "runner_up": "Equation alone",
+        "reason": "Two expectations stand side by side; the condition appears and then breaks, turning the equals sign into not-equals."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "E[Y | in sample] versus E[Y]",
+        "motion_claim": "Two expectations stand side by side; the condition appears and then breaks, turning the equals sign into not-equals.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B17_SelectionEquation"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B17.mp3",
+      "actual_duration_s": 16.0,
+      "render_duration_s": 16.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B17.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B18",
+      "act": "Selection Bias",
+      "narration_text": "Take a sepsis model, as an illustration. The patients too critical to have labs drawn on time are exactly the ones who most need the alert, and the six-hour filter drops them. The model learns what predicts sepsis among the stable, then is asked about the unstable. It underestimates their risk.",
+      "estimated_duration_s": 20.22,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Kept stable patients, dropped critical ones",
+        "runner_up": "Bar chart",
+        "reason": "The critical column is cut off by the filter; the model's risk bar for it stays low, below the true level."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Kept stable patients, dropped critical ones",
+        "motion_claim": "The critical column is cut off by the filter; the model's risk bar for it stays low, below the true level.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B18_SepsisFilter"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B18.mp3",
+      "actual_duration_s": 15.98,
+      "render_duration_s": 16.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B18.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B19",
+      "act": "Selection Bias",
+      "narration_text": "You can correct for selection you observed. Inverse probability weighting gives each kept person a weight of one over their chance of being kept, so survivors stand in for the people dropped. In the same simulation, the naive estimate is about eighteen percent. Weighted, it's about thirty.",
+      "estimated_duration_s": 18.68,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Weights restore the dropped people",
+        "runner_up": "Table",
+        "reason": "Kept dots swell by 1/P and the estimate marker slides from 0.18 to 0.30."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Weights restore the dropped people",
+        "motion_claim": "Kept dots swell by 1/P and the estimate marker slides from 0.18 to 0.30.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B19_IPW"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B19.mp3",
+      "actual_duration_s": 15.36,
+      "render_duration_s": 15.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B19.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B20",
+      "act": "Selection Bias",
+      "narration_text": "But weighting only works if the variable that drove the selection was recorded. If it wasn't, you have nothing to weight on. That isn't a modeling problem you can solve at your desk. It's a data-collection problem, and the honest answer is to collect differently.",
+      "estimated_duration_s": 17.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Unrecorded driver, nothing to weight",
+        "runner_up": "Text card",
+        "reason": "A ghosted variable shows a question mark and the weight arrow finds nothing; a new collection arrow draws instead."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Unrecorded driver, nothing to weight",
+        "motion_claim": "A ghosted variable shows a question mark and the weight arrow finds nothing; a new collection arrow draws instead.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B20_NothingToWeight"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B20.mp3",
+      "actual_duration_s": 13.78,
+      "render_duration_s": 13.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B20.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A4",
+      "act": "Judgment in the Loop",
+      "narration_text": "Judgment in the Loop.",
+      "estimated_duration_s": 2.14,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: Judgment in the Loop",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: Judgment in the Loop",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Judgment in the Loop"
+            ],
+            "durationSeconds": 1.64
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A4.mp3",
+      "actual_duration_s": 1.64,
+      "render_duration_s": 1.6666666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B21",
+      "act": "Judgment in the Loop",
+      "narration_text": "Five more mechanisms share a spine: somewhere a person exercises judgment, and their prior leaks into the record. Confirmation bias is a researcher's prior shaping what gets collected, kept and reported. Observer bias is that prior inside one measurement, like an annotator who knows the earlier diagnosis.",
+      "estimated_duration_s": 18.68,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A prior leaking down a chain of judgments",
+        "runner_up": "Isometric pipes",
+        "reason": "A terracotta dye drops into the first stage and seeps into each later stage on its name."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A prior leaking down a chain of judgments",
+        "motion_claim": "A terracotta dye drops into the first stage and seeps into each later stage on its name.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B21_PriorLeak"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B21.mp3",
+      "actual_duration_s": 17.17,
+      "render_duration_s": 17.208333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B21.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B22",
+      "act": "Judgment in the Loop",
+      "narration_text": "Self-report bias is the subject's own prior: people report voting more and drinking less than they do. Data-coding bias enters when judgment squeezes material into categories. And publication bias is the same leak across a whole literature: significant results get printed, nulls stay in drawers.",
+      "estimated_duration_s": 17.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The remaining three of the five",
+        "runner_up": "Icon row",
+        "reason": "The dye reaches three more stages and a drawer of grey papers slides shut at the end."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The remaining three of the five",
+        "motion_claim": "The dye reaches three more stages and a drawer of grey papers slides shut at the end.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B22_PriorLeak2"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B22.mp3",
+      "actual_duration_s": 17.05,
+      "render_duration_s": 17.083333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B22.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B23",
+      "act": "Judgment in the Loop",
+      "narration_text": "The diagnostic where two humans code the same thing is Cohen's kappa: agreement beyond chance. If kappa collapses when you unblind the annotators, that's direct evidence of observer bias. In a constructed example, it falls from point six to point two.",
+      "estimated_duration_s": 16.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Kappa formula with blinded vs unblinded counts",
+        "runner_up": "Table",
+        "reason": "Two agreement tables fill and the kappa bar drops from 0.6 to 0.2 on 'unblinded'."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Kappa formula with blinded vs unblinded counts",
+        "motion_claim": "Two agreement tables fill and the kappa bar drops from 0.6 to 0.2 on 'unblinded'.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B23_Kappa"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B23.mp3",
+      "actual_duration_s": 14.42,
+      "render_duration_s": 14.458333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B23.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B24",
+      "act": "Judgment in the Loop",
+      "narration_text": "Low kappa on particular items rather than particular people points at data-coding instead: the category is underspecified, not the coder. For publication bias the analogue is the funnel plot. A missing lower-left corner is the drawer of small null studies made visible.",
+      "estimated_duration_s": 16.75,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Funnel plot with a missing corner",
+        "runner_up": "Matrix of disagreement",
+        "reason": "Simulated study dots fill a funnel, then the unpublished ones fade out of the lower-left corner."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Funnel plot with a missing corner",
+        "motion_claim": "Simulated study dots fill a funnel, then the unpublished ones fade out of the lower-left corner.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B24_Funnel"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B24.mp3",
+      "actual_duration_s": 15.47,
+      "render_duration_s": 15.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B24.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B25",
+      "act": "Judgment in the Loop",
+      "narration_text": "None of these five entered through the model. They entered upstream of the data, when a human judged. So the fixes look like organizational practice: pre-registration, blinding, adversarial review. Engineers reach past them because they don't look like engineering, which is exactly why the bias survives.",
+      "estimated_duration_s": 18.29,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Model greyed, three practices on the human step",
+        "runner_up": "Isometric stamps",
+        "reason": "The model block greys out while three practice tags land on the upstream human step."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Model greyed, three practices on the human step",
+        "motion_claim": "The model block greys out while three practice tags land on the upstream human step.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B25_NotTheModel"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B25.mp3",
+      "actual_duration_s": 16.0,
+      "render_duration_s": 16.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B25.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B26",
+      "act": "Judgment in the Loop",
+      "narration_text": "Two more are quieter, and people mistake them for noise. Data-entry bias is patterned transcription error: a form that buries the accurate diagnosis code three menus deep gets the nearest code instead, and a whole class of conditions is undercoded in one direction. Verify against source documents; don't auto-correct.",
+      "estimated_duration_s": 19.45,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A buried menu choice pushes entries one way",
+        "runner_up": "Form mock",
+        "reason": "A cursor skips the deep accurate option and the tally bars lean in one direction."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A buried menu choice pushes entries one way",
+        "motion_claim": "A cursor skips the deep accurate option and the tally bars lean in one direction.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B26_DataEntry"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B26.mp3",
+      "actual_duration_s": 17.41,
+      "render_duration_s": 17.416666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B26.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B27",
+      "act": "Judgment in the Loop",
+      "narration_text": "Sampling bias is selection's accessibility cousin: some groups are under-represented because they were hard to reach, not because of their outcomes. A remote-work survey pushed through LinkedIn over-represents credentialed professionals. When outside data gives the true sizes, weight each group by its population share over its sample share.",
+      "estimated_duration_s": 19.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Population share versus sample share and the weight",
+        "runner_up": "Bar chart",
+        "reason": "Sample bars sit off the population bars; each is rescaled by the weight on its name."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Population share versus sample share and the weight",
+        "motion_claim": "Sample bars sit off the population bars; each is rescaled by the weight on its name.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B27_Reweight"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B27.mp3",
+      "actual_duration_s": 17.79,
+      "render_duration_s": 17.791666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B27.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A5",
+      "act": "Historical and Implicit Bias",
+      "narration_text": "Historical and Implicit Bias.",
+      "estimated_duration_s": 2.14,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: Historical and Implicit Bias",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: Historical and Implicit Bias",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Historical and Implicit Bias"
+            ],
+            "durationSeconds": 2.58
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A5.mp3",
+      "actual_duration_s": 2.58,
+      "render_duration_s": 2.5833333333333335,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B28",
+      "act": "Historical and Implicit Bias",
+      "narration_text": "Now the one that breaks the pattern. In every mechanism so far, something was wrong with the data: a filter, a prior, a slip. Historical bias has none of that. The sample is representative. The labels are accurate. The data is a faithful recording of the world that produced it. And it is still poison.",
+      "estimated_duration_s": 21.75,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Three ticks, and the harm remains",
+        "runner_up": "Checklist card",
+        "reason": "Three checks tick off one by one and the harm marker stays lit beside them."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three ticks, and the harm remains",
+        "motion_claim": "Three checks tick off one by one and the harm marker stays lit beside them.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B28_FaithfulData"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B28.mp3",
+      "actual_duration_s": 16.36,
+      "render_duration_s": 16.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B28.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B29",
+      "act": "Historical and Implicit Bias",
+      "narration_text": "Imagine a hiring model trained on ten years of promotion records at a company that promoted men into engineering roles at higher rates. It learns the historical outcome given the candidate, and learns it well. Every metric comes back green. But the historical outcome isn't the fair outcome. Its accuracy is the harm.",
+      "estimated_duration_s": 20.98,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "P(historical | x) is not P(fair | x)",
+        "runner_up": "Equation alone",
+        "reason": "Green metric lights come on, then the two conditional probabilities slide apart with an unequal sign."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "P(historical | x) is not P(fair | x)",
+        "motion_claim": "Green metric lights come on, then the two conditional probabilities slide apart with an unequal sign.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B29_HiringHistory"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B29.mp3",
+      "actual_duration_s": 17.75,
+      "render_duration_s": 17.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B29.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B30",
+      "act": "Historical and Implicit Bias",
+      "narration_text": "So the fixes can't be data-quality fixes; there's no defect to repair. They lower the leverage of the historical signal on today's prediction: a less-biased proxy for the outcome, a fairness constraint, or weighting recent records over records from more discriminatory periods. Each trades predictive fit for less inheritance, and a person decides how much fit to spend.",
+      "estimated_duration_s": 22.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Trade-off curve with a human-chosen point",
+        "runner_up": "Three-option card",
+        "reason": "A fit-versus-inheritance curve draws and a dial the human sets slides along it."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Trade-off curve with a human-chosen point",
+        "motion_claim": "A fit-versus-inheritance curve draws and a dial the human sets slides along it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B30_FitVsInheritance"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B30.mp3",
+      "actual_duration_s": 19.71,
+      "render_duration_s": 19.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B30.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B31",
+      "act": "Historical and Implicit Bias",
+      "narration_text": "Implicit bias, the unconscious associations of the people in the pipeline, isn't really a tenth peer. It isn't an entry point. It's the medium several of them swim in: an underground water table, with confirmation, observer, coding and publication bias as the springs where it reaches daylight.",
+      "estimated_duration_s": 18.68,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Water table with four springs",
+        "runner_up": "Icon row",
+        "reason": "A blue-grey water line draws below ground and four springs break the surface on their names."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Water table with four springs",
+        "motion_claim": "A blue-grey water line draws below ground and four springs break the surface on their names.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B31_WaterTable"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B31.mp3",
+      "actual_duration_s": 15.81,
+      "render_duration_s": 15.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B31.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B32",
+      "act": "Historical and Implicit Bias",
+      "narration_text": "Because it has no single point, it resists a point fix. One handle is a downstream audit: compare the rate of positive predictions across groups. But read a gap as a flag, not a verdict, since real differences in base rates produce the same gap. The fixes with leverage are structural: diverse teams, structured decisions, continuous auditing.",
+      "estimated_duration_s": 22.52,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "An audit flag and three structural supports",
+        "runner_up": "Three-option card",
+        "reason": "A flag rises over a gap, then three supports are set beneath the whole pipeline."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "An audit flag and three structural supports",
+        "motion_claim": "A flag rises over a gap, then three supports are set beneath the whole pipeline.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B32_Structural"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B32.mp3",
+      "actual_duration_s": 18.33,
+      "render_duration_s": 18.333333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B32.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A6",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "Three Flavors, and How They Compound.",
+      "estimated_duration_s": 2.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: Three Flavors, and How They Compound",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: Three Flavors, and How They Compound",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Three Flavors, and How They Compound"
+            ],
+            "durationSeconds": 2.84
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A6.mp3",
+      "actual_duration_s": 2.84,
+      "render_duration_s": 2.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B33",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "When people say the model is biased, they can mean three different things. Dataset bias: the training set doesn't represent the people the system is deployed on. A face system trained mostly on light-skinned faces, then used on everyone, is the textbook example. The bias is in the sample.",
+      "estimated_duration_s": 19.45,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Sample versus deployment population",
+        "runner_up": "Pie charts",
+        "reason": "Two population blocks are compared and a thin slice is missing from the training one."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Sample versus deployment population",
+        "motion_claim": "Two population blocks are compared and a thin slice is missing from the training one.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B33_FlavorDataset"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B33.mp3",
+      "actual_duration_s": 15.7,
+      "render_duration_s": 15.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B33.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B34",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "Label bias: the labels encode a biased process. A recidivism predictor trained on arrest data isn't predicting who commits crimes. It's predicting who gets re-arrested. Those are different variables, and re-arrest is a biased measurement of the thing we care about.",
+      "estimated_duration_s": 16.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Crime, policing, re-arrest: the label sits on the last",
+        "runner_up": "Text card",
+        "reason": "A policing filter draws between crime and re-arrest and the label tag lands on re-arrest."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Crime, policing, re-arrest: the label sits on the last",
+        "motion_claim": "A policing filter draws between crime and re-arrest and the label tag lands on re-arrest.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B34_FlavorLabel"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B34.mp3",
+      "actual_duration_s": 14.29,
+      "render_duration_s": 14.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B34.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B35",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "Structural bias is the hard case. The data is fine, the labels are fine, the model does its job, and the outcomes are still unfair. A hiring model perfectly predicts who succeeds at a company today, but success depends on mentorship, sponsorship and interesting projects that were never evenly distributed. The model is correct, and its correctness is the problem.",
+      "estimated_duration_s": 23.68,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Correct model on an uneven floor",
+        "runner_up": "Isometric stairs",
+        "reason": "Three green ticks appear over a staircase whose steps are uneven for two groups."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Correct model on an uneven floor",
+        "motion_claim": "Three green ticks appear over a staircase whose steps are uneven for two groups.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B35_FlavorStructural"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B35.mp3",
+      "actual_duration_s": 19.63,
+      "render_duration_s": 19.666666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B35.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B36",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "Put them side by side. Dataset bias lives in the sample, and the fix is to resample or broaden collection. Label bias lives in the labeling step: fix the process or find a better proxy. Structural bias lives in the world the model sits in, and no model or data fix reaches it.",
+      "estimated_duration_s": 20.98,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Three flavors and where each is fixed",
+        "runner_up": "Manim drawn table",
+        "reason": "Rows carry the actual compared items; the ring moves on the spoken names."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Three flavors and where each is fixed",
+        "motion_claim": "Rows carry the actual compared items; the ring moves on the spoken names.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "LectureEvidenceTable",
+          "props": {
+            "title": "Three Flavors",
+            "headers": [
+              "Flavor",
+              "Lives in",
+              "Fix"
+            ],
+            "rows": [
+              [
+                "Dataset",
+                "The sample",
+                "Resample, broaden"
+              ],
+              [
+                "Label",
+                "The labeling step",
+                "New process or proxy"
+              ],
+              [
+                "Structural",
+                "The deployment world",
+                "Change the structure"
+              ]
+            ],
+            "note": "Summary table; the mechanisms behind each are covered above",
+            "instantReveal": true,
+            "durationSeconds": 16.19
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B36.mp3",
+      "actual_duration_s": 16.19,
+      "render_duration_s": 16.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B36.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B37",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "Treat structural bias as a dataset problem and you'll spend a quarter and move the disparity nowhere. Bear calls that the most common failure in this field. That's his judgment from experience, not a measured rate.",
+      "estimated_duration_s": 14.45,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A dataset fix aimed at a structural problem",
+        "runner_up": "Stat card",
+        "reason": "A resampling arrow hits the data stage while the gap bars beyond it do not move."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A dataset fix aimed at a structural problem",
+        "motion_claim": "A resampling arrow hits the data stage while the gap bars beyond it do not move.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B37_WrongFix"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B37.mp3",
+      "actual_duration_s": 11.63,
+      "render_duration_s": 11.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B37.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B38",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "In real systems several mechanisms run at once. Selection compounds historical bias: there's less data on the under-represented group, and the data that exists was generated under discriminatory conditions. Rebalancing fixes the first, and makes the second worse. You now hold more discriminatory data, accurately represented.",
+      "estimated_duration_s": 18.29,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Rebalancing adds historical bias",
+        "runner_up": "Two-layer card",
+        "reason": "New blocks fill the thin group and each carries the historical tint, so the tint total grows."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Rebalancing adds historical bias",
+        "motion_claim": "New blocks fill the thin group and each carries the historical tint, so the tint total grows.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B38_SelectionHistorical"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B38.mp3",
+      "actual_duration_s": 18.41,
+      "render_duration_s": 18.416666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B38.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B39",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "Observer bias compounds with data coding. Annotator priors become categorical rules baked into the labels. Agreement scores capture the combined effect but can't separate the two. Disagreement clustered on items points to coding. Clustered on annotators, it points to observers.",
+      "estimated_duration_s": 15.98,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Disagreement grid: item columns versus annotator rows",
+        "runner_up": "Kappa bars",
+        "reason": "A grid of agreements lights a column for coding, then a row for observers."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Disagreement grid: item columns versus annotator rows",
+        "motion_claim": "A grid of agreements lights a column for coding, then a row for observers.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B39_ObserverCoding"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B39.mp3",
+      "actual_duration_s": 16.09,
+      "render_duration_s": 16.125,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B39.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B40",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "Confirmation compounds with publication. A team designs a study to confirm its hypothesis, gets a positive result, and publishes, while null results from other groups vanish. Trim-and-fill can correct the publication part. It cannot touch the study design.",
+      "estimated_duration_s": 15.22,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Two inflations stacked",
+        "runner_up": "Funnel",
+        "reason": "A stacked bar carries design inflation, then publication inflation; the correction removes only one slice."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two inflations stacked",
+        "motion_claim": "A stacked bar carries design inflation, then publication inflation; the correction removes only one slice.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B40_ConfirmPublish"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B40.mp3",
+      "actual_duration_s": 14.81,
+      "render_duration_s": 14.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B40.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B41",
+      "act": "Three Flavors, and How They Compound",
+      "narration_text": "Bear keeps a short working list of pairs that amplify each other: selection with historical, observer with coding, confirmation with publication, sampling with measurement, aggregation with subgroup masking, evaluation with deployment, annotation with class imbalance, and linkage with re-identification. Once you confirm one, check its partner first.",
+      "estimated_duration_s": 18.68,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Eight amplifying pairs",
+        "runner_up": "Table",
+        "reason": "Eight pairs of chips link in turn, each pair joined by a bridge."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Eight amplifying pairs",
+        "motion_claim": "Eight pairs of chips link in turn, each pair joined by a bridge.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B41_PairList"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B41.mp3",
+      "actual_duration_s": 18.58,
+      "render_duration_s": 18.583333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B41.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A7",
+      "act": "A Dataset Is Not the World",
+      "narration_text": "A Dataset Is Not the World.",
+      "estimated_duration_s": 2.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: A Dataset Is Not the World",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: A Dataset Is Not the World",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A Dataset Is Not the World"
+            ],
+            "durationSeconds": 2.5
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A7.mp3",
+      "actual_duration_s": 2.5,
+      "render_duration_s": 2.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B42",
+      "act": "A Dataset Is Not the World",
+      "narration_text": "A dataset isn't the world. It's a recording of a slice of it, made by particular people, at a particular time, with particular instruments, for particular purposes. Each leaves a fingerprint. To use a dataset responsibly, read it as a historian reads an archive: what was collected, what was excluded, who decided, and why.",
+      "estimated_duration_s": 21.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A dataset as an archive with four fingerprints",
+        "runner_up": "Text card",
+        "reason": "A box of records opens and four fingerprint tags land on it, one per spoken question."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A dataset as an archive with four fingerprints",
+        "motion_claim": "A box of records opens and four fingerprint tags land on it, one per spoken question.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B42_Archive"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B42.mp3",
+      "actual_duration_s": 17.13,
+      "render_duration_s": 17.166666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B42.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B43",
+      "act": "A Dataset Is Not the World",
+      "narration_text": "Take COMPAS, a risk-assessment tool used in Broward County, Florida. In twenty sixteen, ProPublica analyzed scores for people arrested there in twenty thirteen and twenty fourteen. Among defendants who did not re-offend, forty-four point nine percent of Black defendants had been labeled higher risk, against twenty-three point five percent of white defendants.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "ProPublica's own table, the false-positive row ringed",
+        "runner_up": "Manim chart of the same four numbers",
+        "reason": "SHOW-THE-THING rung 1: the real record is the evidence; the camera pushes to the passage the sentence names."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "ProPublica's own table, the false-positive row ringed",
+        "motion_claim": "SHOW-THE-THING rung 1: the real record is the evidence; the camera pushes to the passage the sentence names.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrowserCapture",
+          "props": {
+            "url": "https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing",
+            "image": "claude-liam-lecture-bias-where-it-enters/propublica.png",
+            "caption": "propublica.org · Machine Bias, Angwin, Larson, Mattu, Kirchner, May 23, 2016 · captured 2026-10-10",
+            "moves": [
+              {
+                "at": 0.0,
+                "x": 0.5,
+                "y": 0.2,
+                "scale": 1.2
+              },
+              {
+                "at": 0.3,
+                "x": 0.5,
+                "y": 0.2,
+                "scale": 1.7,
+                "ring": [
+                  0.229,
+                  0.168,
+                  0.542,
+                  0.065
+                ]
+              }
+            ],
+            "ringColor": "#A64A24",
+            "imageAspect": 1.7777777777777777,
+            "durationSeconds": 19.2
+          },
+          "rendered": {
+            "out": "media/B43.mp4",
+            "at": "2026-10-10T07:02:19.783425+00:00"
+          }
+        },
+        "capture": {
+          "file": "captures/propublica.png",
+          "receipt": "captures/receipts.json"
+        }
+      },
+      "audio_file": "mp3/beat-B43.mp3",
+      "actual_duration_s": 19.2,
+      "render_duration_s": 19.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B43.mp4",
+        "filled_by": "remotion:BrowserCapture",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B44",
+      "act": "A Dataset Is Not the World",
+      "narration_text": "And among defendants who did re-offend, forty-seven point seven percent of white defendants had been labeled lower risk, against twenty-eight percent of Black defendants. As ProPublica reported them, the errors fell unevenly, in opposite directions.",
+      "estimated_duration_s": 14.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "ProPublica's four published error rates as bars",
+        "runner_up": "Table capture",
+        "reason": "Four bars grow from the published rates; the two false-positive bars, then the two false-negative bars, pair up."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "ProPublica's four published error rates as bars",
+        "motion_claim": "Four bars grow from the published rates; the two false-positive bars, then the two false-negative bars, pair up.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B44_ErrorBars"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B44.mp3",
+      "actual_duration_s": 14.29,
+      "render_duration_s": 14.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B44.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B45",
+      "act": "A Dataset Is Not the World",
+      "narration_text": "The tool's maker, Northpointe, answered with a different analysis. Within each risk score, they said, about the same share of people re-offended in both groups. In their terms, the score was equally accurate for everyone: predictive parity.",
+      "estimated_duration_s": 14.83,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Within each score, equal re-offense rates (schematic)",
+        "runner_up": "Capture of the response",
+        "reason": "Two calibration lines for the two groups lie on top of one another across the score axis."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Within each score, equal re-offense rates (schematic)",
+        "motion_claim": "Two calibration lines for the two groups lie on top of one another across the score axis.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B45_Calibration"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B45.mp3",
+      "actual_duration_s": 13.14,
+      "render_duration_s": 13.166666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B45.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B46",
+      "act": "A Dataset Is Not the World",
+      "narration_text": "There's something deeper in the data. The label wasn't whether this person committed another crime. It was whether this person was re-arrested. Re-arrest depends on crime and on policing. If policing is uneven, re-arrest is an uneven measurement of crime, and every model trained on it inherits the unevenness.",
+      "estimated_duration_s": 19.45,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Crime and policing both feed the label",
+        "runner_up": "Two-arrow card",
+        "reason": "Two arrows, crime and policing, merge into the re-arrest label and the policing arrow is lit."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Crime and policing both feed the label",
+        "motion_claim": "Two arrows, crime and policing, merge into the re-arrest label and the policing arrow is lit.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B46_ReArrest"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B46.mp3",
+      "actual_duration_s": 16.49,
+      "render_duration_s": 16.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B46.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B47",
+      "act": "A Dataset Is Not the World",
+      "narration_text": "The modeler thinks they're predicting recidivism. They're actually predicting re-arrest, given recidivism, given policing, given everything that shapes both. Deployed without that frame, the model launders the unevenness through an algorithm, and makes it invisible.",
+      "estimated_duration_s": 14.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Recidivism nested inside policing inside the label",
+        "runner_up": "Layers",
+        "reason": "Nested frames close around the thing the modeler thinks they predict and the label drops in front."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Recidivism nested inside policing inside the label",
+        "motion_claim": "Nested frames close around the thing the modeler thinks they predict and the label drops in front.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B47_Nested"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B47.mp3",
+      "actual_duration_s": 14.08,
+      "render_duration_s": 14.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B47.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A8",
+      "act": "Two Fairness Claims, Both Correct",
+      "narration_text": "Two Fairness Claims, Both Correct.",
+      "estimated_duration_s": 2.52,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: Two Fairness Claims, Both Correct",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: Two Fairness Claims, Both Correct",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Two Fairness Claims, Both Correct"
+            ],
+            "durationSeconds": 2.65
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A8.mp3",
+      "actual_duration_s": 2.65,
+      "render_duration_s": 2.6666666666666665,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A8.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B48",
+      "act": "Two Fairness Claims, Both Correct",
+      "narration_text": "Both analyses were correct. They were measuring different things. When two groups have different base rates, no score can satisfy both. Kleinberg, Mullainathan and Raghavan proved it in a twenty sixteen paper, and Chouldechova showed the same incompatibility for recidivism tools.",
+      "estimated_duration_s": 16.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The theorem's own abstract",
+        "runner_up": "Manim equation card",
+        "reason": "SHOW-THE-THING rung 1: the real record is the evidence; the camera pushes to the passage the sentence names."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "The theorem's own abstract",
+        "motion_claim": "SHOW-THE-THING rung 1: the real record is the evidence; the camera pushes to the passage the sentence names.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrowserCapture",
+          "props": {
+            "url": "https://arxiv.org/abs/1609.05807",
+            "image": "claude-liam-lecture-bias-where-it-enters/kleinberg.png",
+            "caption": "arxiv.org · Kleinberg, Mullainathan, Raghavan, Sept 2016 · captured 2026-10-10",
+            "moves": [
+              {
+                "at": 0.0,
+                "x": 0.45,
+                "y": 0.2,
+                "scale": 1.0
+              },
+              {
+                "at": 0.3,
+                "x": 0.45,
+                "y": 0.2,
+                "scale": 1.3,
+                "ring": [
+                  0.012,
+                  0.115,
+                  0.83,
+                  0.165
+                ]
+              }
+            ],
+            "ringColor": "#A64A24",
+            "imageAspect": 1.7777777777777777,
+            "durationSeconds": 15.47
+          }
+        },
+        "capture": {
+          "file": "captures/kleinberg.png",
+          "receipt": "captures/receipts.json"
+        }
+      },
+      "audio_file": "mp3/beat-B48.mp3",
+      "actual_duration_s": 15.47,
+      "render_duration_s": 15.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B48.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B49",
+      "act": "Two Fairness Claims, Both Correct",
+      "narration_text": "Here's the plain version. Suppose group one has a true re-offense rate of thirty percent, and group two fifty. Make the score calibrated, so a given score means the same in both. Now to equalize false positives you'd have to put the threshold in a different place for each group, which is treating people differently by group.",
+      "estimated_duration_s": 22.52,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Two groups, one calibrated score, thresholds",
+        "runner_up": "Two histograms",
+        "reason": "Two score distributions at different base rates; one shared threshold, then a second threshold appears and equal treatment breaks."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two groups, one calibrated score, thresholds",
+        "motion_claim": "Two score distributions at different base rates; one shared threshold, then a second threshold appears and equal treatment breaks.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B49_Thresholds"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B49.mp3",
+      "actual_duration_s": 16.62,
+      "render_duration_s": 16.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B49.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B50",
+      "act": "Two Fairness Claims, Both Correct",
+      "narration_text": "Here's the algebra. For a calibrated score, the odds of being right when flagged equal the base-rate odds, times the ratio of the true positive rate to the false positive rate. Hold the first equal, with different base rates, and the ratio of the rates has to differ between groups.",
+      "estimated_duration_s": 19.83,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "v/(1-v) = p/(1-p) · t/f built term by term",
+        "runner_up": "Text card",
+        "reason": "The identity assembles term by term with each symbol named beside it, then the base-rate factor splits in two."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "v/(1-v) = p/(1-p) · t/f built term by term",
+        "motion_claim": "The identity assembles term by term with each symbol named beside it, then the base-rate factor splits in two.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B50_ImpossibilityAlgebra"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B50.mp3",
+      "actual_duration_s": 15.23,
+      "render_duration_s": 15.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B50.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B51",
+      "act": "Two Fairness Claims, Both Correct",
+      "narration_text": "Run the numbers. Fix the accuracy of a flag at sixty percent and the true positive rate at seventy percent for both groups. Then the false positive rate is forced: twenty percent in group one, and forty-six point seven in group two. That gap isn't a bug. It's arithmetic.",
+      "estimated_duration_s": 19.45,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The impossibility computed",
+        "runner_up": "Manim bars",
+        "reason": "EXECUTABLE-EVIDENCE: the script's recorded stdout, not a typed result."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "The impossibility computed",
+        "motion_claim": "EXECUTABLE-EVIDENCE: the script's recorded stdout, not a typed result.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "CCPlainShell",
+          "props": {
+            "title": "python3 evidence.py — recorded output (constructed example)",
+            "fontSize": 32,
+            "startCue": 8,
+            "lineGap": 12,
+            "lines": [
+              "F. PPV 0.6 and TPR 0.7 in both groups, so the FPR is forced:",
+              "   group one (base rate 0.30): FPR 0.2000",
+              "   group two (base rate 0.50): FPR 0.4667"
+            ],
+            "durationSeconds": 14.68
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B51.mp3",
+      "actual_duration_s": 14.68,
+      "render_duration_s": 14.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B51.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B52",
+      "act": "Two Fairness Claims, Both Correct",
+      "narration_text": "The three criteria are calibration, equal false positive rates, and equal false negative rates. With different base rates they cannot all hold at once, unless prediction is perfect. So the choice between fairness metrics isn't a technical choice. It's a values claim: which kind of error are we less willing to make?",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Three criteria that cannot all hold",
+        "runner_up": "Table",
+        "reason": "A triangle of three criteria: two corners light and the third goes dark each time one is chosen."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three criteria that cannot all hold",
+        "motion_claim": "A triangle of three criteria: two corners light and the third goes dark each time one is chosen.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B52_Triangle"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B52.mp3",
+      "actual_duration_s": 16.38,
+      "render_duration_s": 16.416666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B52.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B53",
+      "act": "Two Fairness Claims, Both Correct",
+      "narration_text": "Who bears the cost of each error, what the model is used for, and the politics of the deployment settle that choice. Engineers who treat it as pure optimization are making a values choice anyway: the one their loss function encodes, while appearing neutral. That's Professor Bear's argument. I'm presenting it as an argument, not a finding.",
+      "estimated_duration_s": 22.52,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A loss function with its hidden value revealed",
+        "runner_up": "Text card",
+        "reason": "A loss formula sits under a neutral label and a hidden tag reading 'a value choice' is revealed in it."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A loss function with its hidden value revealed",
+        "motion_claim": "A loss formula sits under a neutral label and a hidden tag reading 'a value choice' is revealed in it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B53_HiddenValues"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B53.mp3",
+      "actual_duration_s": 17.6,
+      "render_duration_s": 17.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B53.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B54",
+      "act": "Two Fairness Claims, Both Correct",
+      "narration_text": "One case to be careful with. In twenty nineteen the Apple Card's credit limits drew allegations of bias. New York's financial regulator investigated, and in March twenty twenty-one reported no evidence of unlawful discrimination: applicants with similar credit characteristics generally had similar outcomes. It did fault customer service and transparency. So treat it as a case of how a claim gets adjudicated, not a proven disparity.",
+      "estimated_duration_s": 25.98,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The regulator's own sentences, quoted",
+        "runner_up": "Capture (blocked by the site's bot protection; not bypassed)",
+        "reason": "A document card quotes the regulator's lines and the one about transparency is ringed last."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The regulator's own sentences, quoted",
+        "motion_claim": "A document card quotes the regulator's lines and the one about transparency is ringed last.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B54_AppleCard"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B54.mp3",
+      "actual_duration_s": 22.89,
+      "render_duration_s": 22.916666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B54.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B55",
+      "act": "Two Fairness Claims, Both Correct",
+      "narration_text": "So pick the audit criterion that fits the harm structure of the deployment. Calibration parity means a score means the same for every group. Equal false positive rates share the cost of being wrongly flagged. Equal false negative rates share the cost of being missed. The theorem rules out all three.",
+      "estimated_duration_s": 20.22,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The three criteria and their joint limit",
+        "runner_up": "Manim drawn table",
+        "reason": "Rows carry the actual compared items; the ring moves on the spoken names."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "The three criteria and their joint limit",
+        "motion_claim": "Rows carry the actual compared items; the ring moves on the spoken names.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "LectureEvidenceTable",
+          "props": {
+            "title": "Fairness Criteria",
+            "headers": [
+              "Criterion",
+              "What it requires"
+            ],
+            "rows": [
+              [
+                "Calibration parity",
+                "A score means the same"
+              ],
+              [
+                "Equal false positives",
+                "Wrong flags shared equally"
+              ],
+              [
+                "Equal false negatives",
+                "Misses shared equally"
+              ],
+              [
+                "All three",
+                "Only if base rates are equal"
+              ]
+            ],
+            "note": "Formal definitions: probabilities conditioned on score, outcome and group",
+            "instantReveal": true,
+            "durationSeconds": 16.09
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B55.mp3",
+      "actual_duration_s": 16.09,
+      "render_duration_s": 16.125,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B55.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A9",
+      "act": "Pearl's Ladder",
+      "narration_text": "Pearl's Ladder.",
+      "estimated_duration_s": 1.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: Pearl's Ladder",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: Pearl's Ladder",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Pearl's Ladder"
+            ],
+            "durationSeconds": 1.26
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A9.mp3",
+      "actual_duration_s": 1.26,
+      "render_duration_s": 1.2916666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A9.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B56",
+      "act": "Pearl's Ladder",
+      "narration_text": "To tell a system that merely correlates a bias from one that causes it, we need a tool from Judea Pearl: a ladder of causal reasoning, with three rungs. We'll work the first two.",
+      "estimated_duration_s": 13.68,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A three-rung ladder",
+        "runner_up": "Text card",
+        "reason": "A ladder builds rung by rung; the top rung is drawn ghosted."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A three-rung ladder",
+        "motion_claim": "A ladder builds rung by rung; the top rung is drawn ghosted.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B56_Ladder"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B56.mp3",
+      "actual_duration_s": 9.88,
+      "render_duration_s": 9.916666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B56.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B57",
+      "act": "Pearl's Ladder",
+      "narration_text": "Rung one is association: what's the probability of Y, given that we observe X? It's what most machine learning lives on. It's what calibration curves describe, and what most fairness metrics measure. It's also where most thinking about deployed AI quietly stops.",
+      "estimated_duration_s": 16.75,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "P(Y | X) as a lookup in observed data",
+        "runner_up": "Equation alone",
+        "reason": "A scatter of observed pairs and a condition bar select the slice; the conditional probability reads off it."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "P(Y | X) as a lookup in observed data",
+        "motion_claim": "A scatter of observed pairs and a condition bar select the slice; the conditional probability reads off it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B57_RungOne"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B57.mp3",
+      "actual_duration_s": 14.31,
+      "render_duration_s": 14.333333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B57.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B58",
+      "act": "Pearl's Ladder",
+      "narration_text": "Rung two is intervention: the probability of Y if we set X to a value. Pearl writes it with do. The notation does real work. Observing X can be tangled up with everything that moves with X. Making X happen severs those tangles.",
+      "estimated_duration_s": 17.14,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "do(X) cuts the arrows into X",
+        "runner_up": "Equation alone",
+        "reason": "A graph with a hidden cause behind X; on 'do' the incoming arrow is cut and X is held by hand."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "do(X) cuts the arrows into X",
+        "motion_claim": "A graph with a hidden cause behind X; on 'do' the incoming arrow is cut and X is held by hand.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B58_RungTwo"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B58.mp3",
+      "actual_duration_s": 13.23,
+      "render_duration_s": 13.25,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B58.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B59",
+      "act": "Pearl's Ladder",
+      "narration_text": "The classic illustration is the rooster and the sun. Watch roosters and sunrises, and the sun is very likely up after a crow. But prevent the rooster from crowing, and the sun rises anyway. Observation said they were associated. Intervention said the rooster isn't the cause.",
+      "estimated_duration_s": 18.29,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Crow and sunrise, observed versus intervened",
+        "runner_up": "Two probabilities",
+        "reason": "A crow and a sun rise together; the crow is blocked and the sun still rises."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Crow and sunrise, observed versus intervened",
+        "motion_claim": "A crow and a sun rise together; the crow is blocked and the sun still rises.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B59_Rooster"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B59.mp3",
+      "actual_duration_s": 15.08,
+      "render_duration_s": 15.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B59.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B60",
+      "act": "Pearl's Ladder",
+      "narration_text": "Rung three is counterfactual: what would have happened to this specific case if X had been different, holding everything else fixed? It's the hardest to reach from data alone. Here it just sits at the top of the ladder, visible, not yet climbed.",
+      "estimated_duration_s": 17.14,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The ghost rung stays at the top",
+        "runner_up": "Text card",
+        "reason": "The top rung lights with a question mark and a dashed arrow reaches toward it without arriving."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The ghost rung stays at the top",
+        "motion_claim": "The top rung lights with a question mark and a dashed arrow reaches toward it without arriving.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B60_RungThree"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B60.mp3",
+      "actual_duration_s": 12.37,
+      "render_duration_s": 12.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B60.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B61",
+      "act": "Pearl's Ladder",
+      "narration_text": "For our problem, the probability of loan denial, given race equals x, is the observational quantity. It's what the model sees in training data. The probability of denial if we set race to x, holding everything else fixed, is interventional. It asks whether the decision would change if we changed only that variable.",
+      "estimated_duration_s": 20.98,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Observed versus do-version of the same sentence",
+        "runner_up": "Equation alone",
+        "reason": "Two probability expressions sit side by side; only the second has an arrow cut into race."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Observed versus do-version of the same sentence",
+        "motion_claim": "Two probability expressions sit side by side; only the second has an arrow cut into race.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B61_DenialTwoWays"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B61.mp3",
+      "actual_duration_s": 17.37,
+      "render_duration_s": 17.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B61.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B62",
+      "act": "Pearl's Ladder",
+      "narration_text": "The two can come apart. A model can show no disparity on rung one while hiding one on rung two, if you intervene on race-correlated features. Or it can show a rung-one disparity that vanishes on rung two, because it runs entirely through legitimate features. Without telling them apart, you can't tell a fair model from one that's merely been smoothed.",
+      "estimated_duration_s": 24.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Four combinations of seen and caused",
+        "runner_up": "2x2 grid",
+        "reason": "A two-by-two fills: seen versus caused; the off-diagonal cells are ringed on their names."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Four combinations of seen and caused",
+        "motion_claim": "A two-by-two fills: seen versus caused; the off-diagonal cells are ringed on their names.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B62_ComeApart"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B62.mp3",
+      "actual_duration_s": 18.75,
+      "render_duration_s": 18.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B62.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B63",
+      "act": "Pearl's Ladder",
+      "narration_text": "Most deployed mitigation works on rung one: adjust the conditional distributions until the metric reads the way the engineer wants. That's sometimes useful and rarely sufficient, because whether a variable causes the bias is a rung-two question, and rung one can't answer it.",
+      "estimated_duration_s": 17.14,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Mitigation stuck at the first rung",
+        "runner_up": "Ladder alone",
+        "reason": "A figure climbs to rung one and stops; a gap sits between it and the do-rung."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Mitigation stuck at the first rung",
+        "motion_claim": "A figure climbs to rung one and stops; a gap sits between it and the do-rung.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B63_RungOneStops"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B63.mp3",
+      "actual_duration_s": 15.4,
+      "render_duration_s": 15.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B63.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B64",
+      "act": "Pearl's Ladder",
+      "narration_text": "Here are the same audit questions asked at each rung. For loan denial: is the rate equal across groups, or would it change if race changed and nothing else did? For hiring: is the hire rate proportional, or would two identical applicants be treated differently?",
+      "estimated_duration_s": 17.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Rung one versus rung two audit questions",
+        "runner_up": "Manim drawn table",
+        "reason": "Rows carry the actual compared items; the ring moves on the spoken names."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Rung one versus rung two audit questions",
+        "motion_claim": "Rows carry the actual compared items; the ring moves on the spoken names.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "LectureEvidenceTable",
+          "props": {
+            "title": "Same Question, Two Rungs",
+            "headers": [
+              "Question",
+              "Rung one",
+              "Rung two"
+            ],
+            "rows": [
+              [
+                "Loan denial",
+                "Equal rate by group?",
+                "Change if race changed?"
+              ],
+              [
+                "Error rates",
+                "Equal in the test set?",
+                "Change if group changed?"
+              ],
+              [
+                "Hiring",
+                "Hire rates proportional?",
+                "Same for identical applicants?"
+              ]
+            ],
+            "note": "Equal rung-one metrics do not certify causal fairness",
+            "instantReveal": true,
+            "durationSeconds": 14.08
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B64.mp3",
+      "actual_duration_s": 14.08,
+      "render_duration_s": 14.083333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B64.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A10",
+      "act": "Finding the Leverage",
+      "narration_text": "Finding the Leverage.",
+      "estimated_duration_s": 1.75,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: Finding the Leverage",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: Finding the Leverage",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Finding the Leverage"
+            ],
+            "durationSeconds": 1.64
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A10.mp3",
+      "actual_duration_s": 1.64,
+      "render_duration_s": 1.6666666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A10.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B65",
+      "act": "Finding the Leverage",
+      "narration_text": "Back to the three teams. Each intervened at a different point in the chain from the world to the decision. Team one on the model. Team two on the training data. Team three on the deployment context. All three were interventions, rung-two doings. But they had different leverage.",
+      "estimated_duration_s": 19.06,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Three intervention points on one chain",
+        "runner_up": "Isometric pipeline",
+        "reason": "A chain from world to decision lights three markers on its three stages."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three intervention points on one chain",
+        "motion_claim": "A chain from world to decision lights three markers on its three stages.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B65_ThreeTeamsGraph"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B65.mp3",
+      "actual_duration_s": 14.7,
+      "render_duration_s": 14.708333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B65.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B66",
+      "act": "Finding the Leverage",
+      "narration_text": "Draw the causal graph. The protected attribute sits at the top. Below it, proxies, then the features the model uses, then the model's output. Then the deployment context: the reviewer, the threshold, the appeal process. And finally the outcome that lands on a real person's life.",
+      "estimated_duration_s": 18.29,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The causal graph, node by node",
+        "runner_up": "Flowchart",
+        "reason": "Nodes land top to bottom, each with its arrows, on its spoken name."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The causal graph, node by node",
+        "motion_claim": "Nodes land top to bottom, each with its arrows, on its spoken name.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B66_BuildGraph"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B66.mp3",
+      "actual_duration_s": 14.83,
+      "render_duration_s": 14.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B66.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B67",
+      "act": "Finding the Leverage",
+      "narration_text": "Now list every path from the protected attribute to the outcome. In this constructed graph there are ten. Some run through the model. Some bypass it, through proxies straight into the reviewer or the threshold. Here is what each fix leaves open.",
+      "estimated_duration_s": 16.75,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Ten paths; what each intervention leaves open",
+        "runner_up": "Table",
+        "reason": "Ten paths highlight one at a time, then each intervention greys the paths it blocks."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Ten paths; what each intervention leaves open",
+        "motion_claim": "Ten paths highlight one at a time, then each intervention greys the paths it blocks.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B67_PathCount"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B67.mp3",
+      "actual_duration_s": 13.38,
+      "render_duration_s": 13.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B67.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B68",
+      "act": "Finding the Leverage",
+      "narration_text": "Team one blocked the paths through the model, and left four of ten open. Team two reshaped the sample, and left eight open. Team three, at the reviewer and the threshold, blocked all ten. Counting paths isn't measuring bias, but it shows what a fix can't reach.",
+      "estimated_duration_s": 18.68,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Open paths after each team's fix",
+        "runner_up": "Bar chart",
+        "reason": "The same graph appears three times; blocked paths grey out and the open-path counter reads 4, 8, then 0."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Open paths after each team's fix",
+        "motion_claim": "The same graph appears three times; blocked paths grey out and the open-path counter reads 4, 8, then 0.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B68_WhatIsLeftOpen"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B68.mp3",
+      "actual_duration_s": 14.29,
+      "render_duration_s": 14.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B68.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B69",
+      "act": "Finding the Leverage",
+      "narration_text": "The procedure, in working form. One: draw the causal graph, from protected attribute through proxies, features, output and decision, to the outcome. Two: list every path from the attribute to the outcome, including the ones that bypass the model.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Steps one and two on the graph",
+        "runner_up": "Numbered list (banned: bullet list)",
+        "reason": "Step markers land on the graph: arrows first, then each path traced."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Steps one and two on the graph",
+        "motion_claim": "Step markers land on the graph: arrows first, then each path traced.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B69_Procedure12"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B69.mp3",
+      "actual_duration_s": 13.74,
+      "render_duration_s": 13.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B69.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B70",
+      "act": "Finding the Leverage",
+      "narration_text": "Three: for each candidate intervention, ask which paths it blocks and which it leaves open. Four: pick the one that blocks the largest share of the bias-carrying paths, ideally without cutting paths the deployment needs for its core function.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Steps three and four as a choice",
+        "runner_up": "Numbered list",
+        "reason": "Candidate cuts slice the graph one by one; the chosen cut glows and the needed path stays open."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Steps three and four as a choice",
+        "motion_claim": "Candidate cuts slice the graph one by one; the chosen cut glows and the needed path stays open.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B70_Procedure34"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B70.mp3",
+      "actual_duration_s": 13.29,
+      "render_duration_s": 13.291666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B70.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B71",
+      "act": "Finding the Leverage",
+      "narration_text": "Underneath is Descartes' doubt, turned on a pipeline. What would have to be true for this bias to live here? Suspend the tempting explanation, the model, nearest your hands, and make each candidate location survive the question. The location that survives is where you intervene.",
+      "estimated_duration_s": 17.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Each location faces the question, one survives",
+        "runner_up": "Text card",
+        "reason": "Candidate nodes each meet the question mark and drop away until one stays."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Each location faces the question, one survives",
+        "motion_claim": "Candidate nodes each meet the question mark and drop away until one stays.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B71_DoubtFilter"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B71.mp3",
+      "actual_duration_s": 15.06,
+      "render_duration_s": 15.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B71.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B72",
+      "act": "Finding the Leverage",
+      "narration_text": "Why isn't this done more often? The model and the data are inside the engineer's house. The reviewer's behavior, the appeals process, the way the score gets read, live in someone else's. Drawing the full graph means crossing those boundaries, and the engineer who tries is often told it isn't their job.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Engineer's house versus other houses",
+        "runner_up": "Isometric rooms",
+        "reason": "House outlines draw around model and data; the graph's other nodes sit in other houses and the path crosses the walls."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Engineer's house versus other houses",
+        "motion_claim": "House outlines draw around model and data; the graph's other nodes sit in other houses and the path crosses the walls.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B72_Houses"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B72.mp3",
+      "actual_duration_s": 15.83,
+      "render_duration_s": 15.833333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B72.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "A11",
+      "act": "Who Owns the Bias",
+      "narration_text": "Who Owns the Bias.",
+      "estimated_duration_s": 2.14,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "CARD",
+      "routing": {
+        "about": "Act title: Who Owns the Bias",
+        "runner_up": "Manim title with the act's first picture",
+        "reason": "A short act marker keeps the viewer oriented."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Act title: Who Owns the Bias",
+        "motion_claim": "A short act marker keeps the viewer oriented.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Who Owns the Bias"
+            ],
+            "durationSeconds": 1.9
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Brief act-title boundary; deliberately a title, not a teaching diagram."
+      },
+      "audio_file": "mp3/beat-A11.mp3",
+      "actual_duration_s": 1.9,
+      "render_duration_s": 1.9166666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A11.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B73",
+      "act": "Who Owns the Bias",
+      "narration_text": "Professor Bear argues that the political dimension of bias is the technical dimension. Which intervention works depends on which kind of bias you have. Which kind you have depends on a structural analysis of the deployment, the part people call political. Skip it and you produce tweaks that don't move the disparity.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Structural analysis sits inside the technical chain",
+        "runner_up": "Venn",
+        "reason": "A technical chain with a structural-analysis step that cannot be removed without breaking the link to the fix."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Structural analysis sits inside the technical chain",
+        "motion_claim": "A technical chain with a structural-analysis step that cannot be removed without breaking the link to the fix.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B73_PoliticalTechnical"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B73.mp3",
+      "actual_duration_s": 16.19,
+      "render_duration_s": 16.208333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B73.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B74",
+      "act": "Who Owns the Bias",
+      "narration_text": "One of Bear's five supervisory capacities, the skills a person needs to oversee an AI, is problem formulation: seeing which question the model is really being asked, and which downstream decisions its answer feeds. That doesn't respect the line between technical and political. Keeping the line clean means handing the formulation to someone else, and any delegation can be tested.",
+      "estimated_duration_s": 23.68,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The question asked and the decisions it feeds",
+        "runner_up": "Text card",
+        "reason": "A question box feeds a row of downstream decisions; a gap opens where the formulation is delegated away."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The question asked and the decisions it feeds",
+        "motion_claim": "A question box feeds a row of downstream decisions; a gap opens where the formulation is delegated away.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B74_Formulation"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B74.mp3",
+      "actual_duration_s": 19.97,
+      "render_duration_s": 20.0,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B74.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B75",
+      "act": "Who Owns the Bias",
+      "narration_text": "Now the limit case. A twenty twenty-six study called Agents of Chaos red-teamed autonomous AI agents in a live lab. Its sixth case study, Agents Reflect Provider Values, sent benign but politically sensitive prompts to an agent backed by a model from a Chinese provider.",
+      "estimated_duration_s": 17.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "remotion",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The paper's own case summary, ringed",
+        "runner_up": "Manim reconstruction",
+        "reason": "SHOW-THE-THING rung 1: the real record is the evidence; the camera pushes to the passage the sentence names."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "The paper's own case summary, ringed",
+        "motion_claim": "SHOW-THE-THING rung 1: the real record is the evidence; the camera pushes to the passage the sentence names.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrowserCapture",
+          "props": {
+            "url": "https://www.tomerullman.org/papers/agentsOfChaos2026.pdf",
+            "image": "claude-liam-lecture-bias-where-it-enters/aoc-p20.png",
+            "caption": "arXiv:2602.20021 · Shapira et al. 2026 · page 20 · captured 2026-10-10",
+            "moves": [
+              {
+                "at": 0.0,
+                "x": 0.5,
+                "y": 0.5,
+                "scale": 1.0
+              },
+              {
+                "at": 0.3,
+                "x": 0.5,
+                "y": 0.59,
+                "scale": 1.3,
+                "ring": [
+                  0.165,
+                  0.518,
+                  0.67,
+                  0.135
+                ]
+              }
+            ],
+            "ringColor": "#A64A24",
+            "imageAspect": 0.7727272727272727,
+            "durationSeconds": 16.3
+          }
+        },
+        "capture": {
+          "file": "captures/aoc-p20.png",
+          "receipt": "captures/receipts.json"
+        }
+      },
+      "audio_file": "mp3/beat-B75.mp3",
+      "actual_duration_s": 16.3,
+      "render_duration_s": 16.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B75.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B76",
+      "act": "Who Owns the Bias",
+      "narration_text": "The authors report that the provider's API repeatedly cut off responses with a generic unknown error on those topics, silently stopping the agent from completing valid tasks. The team that deployed the agent made none of those choices, and its users could not see them.",
+      "estimated_duration_s": 17.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A reply cut off upstream with a generic error",
+        "runner_up": "Chat card",
+        "reason": "An agent's answer starts, then stops at a gate upstream and the words 'unknown error' stamp over it."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A reply cut off upstream with a generic error",
+        "motion_claim": "An agent's answer starts, then stops at a gate upstream and the words 'unknown error' stamp over it.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B76_Truncated"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B76.mp3",
+      "actual_duration_s": 15.79,
+      "render_duration_s": 15.791666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B76.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B77",
+      "act": "Who Owns the Bias",
+      "narration_text": "Draw the causal graph. The bias-carrying path doesn't run through the deploying team's data or code. It runs through the provider's training and hosting, upstream of everything that engineer controls. No intervention by the deploying team can reach it.",
+      "estimated_duration_s": 15.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "The path starts outside the team's boundary",
+        "runner_up": "Houses",
+        "reason": "The team boundary draws; the biased node sits outside it with the path crossing in."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The path starts outside the team's boundary",
+        "motion_claim": "The team boundary draws; the biased node sits outside it with the path crossing in.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B77_UpstreamGraph"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B77.mp3",
+      "actual_duration_s": 13.85,
+      "render_duration_s": 13.875,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B77.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B78",
+      "act": "Who Owns the Bias",
+      "narration_text": "The deploying engineer's options are: switch providers, which is rarely possible at organizational scale; accept the bias, which is often what happens; or add downstream filtering and validation. The procedure still applies. Sometimes its answer is that the highest-leverage point is outside your reach, which is useful to know before you spend six months on the wrong thing.",
+      "estimated_duration_s": 22.91,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Switch, accept, or filter downstream",
+        "runner_up": "Three-option card",
+        "reason": "Three doors: one locked, one open onto the bias, one with a filter gate."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Switch, accept, or filter downstream",
+        "motion_claim": "Three doors: one locked, one open onto the bias, one with a filter gate.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B78_ThreeOptions"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B78.mp3",
+      "actual_duration_s": 19.31,
+      "render_duration_s": 19.333333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B78.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B79",
+      "act": "Who Owns the Bias",
+      "narration_text": "That's the accountability move. Assigning the owner of a bias isn't assigning blame to a person. It's naming whoever sits at the leverage point. Sometimes that's you, because you chose the sample. Sometimes the labeling team, who wrote the manual. Sometimes the deployment owner, who built the review room. And sometimes the model provider.",
+      "estimated_duration_s": 21.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Four possible owners of the node",
+        "runner_up": "Icon row",
+        "reason": "The traced path ends at a node; owner tags drop onto four candidate nodes in turn."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Four possible owners of the node",
+        "motion_claim": "The traced path ends at a node; owner tags drop onto four candidate nodes in turn.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B79_FourOwners"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B79.mp3",
+      "actual_duration_s": 17.64,
+      "render_duration_s": 17.666666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B79.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B80",
+      "act": "Who Owns the Bias",
+      "narration_text": "The graph is a machine for un-diffusing responsibility. It points at a node, and a node has an owner. Bear connects this to a question Hannah Arendt asked about systems where harm is the output of many role-bound people, none of whom feels accountable: the same question, restated for a pipeline.",
+      "estimated_duration_s": 20.22,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Diffuse blame condensing onto one node",
+        "runner_up": "Text card",
+        "reason": "A cloud of small blame dots drains along the graph and gathers on one node."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Diffuse blame condensing onto one node",
+        "motion_claim": "A cloud of small blame dots drains along the graph and gathers on one node.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B80_Undiffuse"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B80.mp3",
+      "actual_duration_s": 16.47,
+      "render_duration_s": 16.5,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B80.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B81",
+      "act": "Who Owns the Bias",
+      "narration_text": "Where is Bear unsure? What would change his mind: a debiasing algorithm shown to remove structural bias, robustly, across domains and base-rate regimes, without touching the deployment context. He isn't aware of such a demonstration, and says the literature isn't finished.",
+      "estimated_duration_s": 16.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "A falsifier he would accept",
+        "runner_up": "Text card",
+        "reason": "A claim stands on a test; a dashed counter-example slot is drawn empty."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A falsifier he would accept",
+        "motion_claim": "A claim stands on a test; a dashed counter-example slot is drawn empty.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B81_ChangeMind"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B81.mp3",
+      "actual_duration_s": 15.38,
+      "render_duration_s": 15.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B81.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "B82",
+      "act": "Who Owns the Bias",
+      "narration_text": "And what he's still puzzling over: telling dataset bias from label bias when all you have is the labeled training set. They're causally distinct but observationally close. The diagnosis usually needs access to the labeling process, which other teams control. He says he doesn't know how to do this well.",
+      "estimated_duration_s": 19.83,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Two look-alike blobs and a door to the labeling process",
+        "runner_up": "Text card",
+        "reason": "Two overlapping blobs read the same from the data; a door to the labeling step opens only from outside."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Two look-alike blobs and a door to the labeling process",
+        "motion_claim": "Two overlapping blobs read the same from the data; a door to the labeling step opens only from outside.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the cast is on the stage"
+          },
+          {
+            "at": 0.5,
+            "event": "the spoken step lands as motion"
+          },
+          {
+            "at": 0.9,
+            "event": "hold the result"
+          }
+        ],
+        "manim": {
+          "class": "B82_StillPuzzling"
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Drawn diagram on the cream stage; negative space is the style, the motion carries the claim."
+      },
+      "audio_file": "mp3/beat-B82.mp3",
+      "actual_duration_s": 16.17,
+      "render_duration_s": 16.208333333333332,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B82.mp4",
+        "filled_by": "manim",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "Recap",
+      "narration_text": "Let's recap with Claude. Bias is a systematic offset in an estimator, and more data does not remove it. Ten mechanisms put that offset in at different points of the pipeline. Dataset, label and structural bias each need a different fix. Two fairness claims can both be correct; choosing between them is a values call. Pearl's first two rungs separate correlating a bias from causing it. Find the highest-leverage path, then name whoever owns that node.",
+      "estimated_duration_s": 29.83,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Six-line recap",
+        "runner_up": "Summary diagram",
+        "reason": "One bare sentence per idea; nothing new."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Six-line recap",
+        "motion_claim": "One bare sentence per idea; nothing new.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Recap",
+            "artifactHeading": "INFO 7375 · Lecture 6",
+            "artifactLines": [
+              "Bias is a systematic offset in an estimator, and more data does not remove it.",
+              "Ten mechanisms put that offset in at different points of the pipeline.",
+              "Dataset, label and structural bias each need a different fix.",
+              "Two fairness claims can both be correct; choosing between them is a values call.",
+              "Pearl's first two rungs separate correlating a bias from causing it.",
+              "Find the highest-leverage path, then name whoever owns that node."
+            ],
+            "brandLabel": "@NikBearBrown",
+            "lectureLayout": true,
+            "durationSeconds": 22.96
+          }
+        }
+      },
+      "lead_silence_s": 0.5,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 22.96,
+      "render_duration_s": 23.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "Your turn",
+      "narration_text": "Help me run a leverage analysis on an AI system I know. I'll describe a decision it makes. Ask me for the protected attribute, the training data, the labels, and who reviews the output. Then draw the causal graph, list every path from the protected attribute to the outcome, say which intervention blocks the most paths, and name who owns that node. Flag anything you are guessing.",
+      "estimated_duration_s": 26.37,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Transfer task",
+        "runner_up": "Worksheet",
+        "reason": "The viewer gets a usable prompt and two checks of their own."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Transfer task",
+        "motion_claim": "The viewer gets a usable prompt and two checks of their own.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "INFO 7375 COMPUTATIONAL SKEPTICISM · LECTURE 6",
+            "segment": "Trace One Bias to Its Owner",
+            "command": "Help me run a leverage analysis on an AI system I know. I'll describe a decision it makes. Ask me for the protected attribute, the training data, the labels, and who reviews the output. Then draw the causal graph, list every path from the protected attribute to the outcome, say which intervention blocks the most paths, and name who owns that node. Flag anything you are guessing.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: every arrow is something you can point to in the real system.",
+              "Check: the owner it names actually controls that node."
+            ],
+            "folderLabel": "@NikBearBrown",
+            "largeText": true,
+            "durationSeconds": 19.18
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 19.18,
+      "render_duration_s": 19.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "Outro",
+      "narration_text": "Bias: Where It Enters and Who Is Responsible. At Nik Bear Brown.",
+      "estimated_duration_s": 5.22,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "routing": {
+        "about": "Locked title and channel sign-off",
+        "runner_up": "None",
+        "reason": "The exact title spoken over the locked outro."
+      },
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "visual_intent": "Locked title and channel sign-off",
+        "motion_claim": "The exact title spoken over the locked outro.",
+        "show": [
+          {
+            "at": 0.12,
+            "event": "establish"
+          },
+          {
+            "at": 0.3,
+            "event": "push in to what the sentence names"
+          },
+          {
+            "at": 0.85,
+            "event": "hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Bias: Where It Enters and Who Is Responsible",
+            "slug": "claude-liam-lecture-bias-where-it-enters",
+            "subline": "",
+            "handle": "@NikBearBrown",
+            "lectureLayout": true,
+            "durationSeconds": 5.29
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Locked outro centres only title, handle and mascot."
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 5.29,
+      "render_duration_s": 5.291666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-10-10T03:15:45"
+      }
+    }
+  ]
+}

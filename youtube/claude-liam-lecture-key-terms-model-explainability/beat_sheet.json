@@ -1,0 +1,2879 @@
+{
+  "metadata": {
+    "slug": "claude-liam-lecture-key-terms-model-explainability",
+    "title": "Key Terms: Model Explainability",
+    "skill": "lecture",
+    "style_preset": "lecture",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "neu",
+    "channel_handle": "@NikBearBrown",
+    "register": "Teardown",
+    "fps": 24,
+    "width": 3840,
+    "height": 2160,
+    "aspect_ratio": "16:9",
+    "caption_policy": "sidecar",
+    "greeting_language": "German (Hallo)",
+    "source_doc": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/youtube/claude-liam-lecture-key-terms-model-explainability/SOURCES.md",
+    "playlist": "Computational Skepticism, Exam Prep",
+    "series_title": "Computational Skepticism, Exam Prep",
+    "series_numbered": false,
+    "course": "INFO 7375 Computational Skepticism for AI",
+    "lecture_opening_description": "31 terms for judging a model's explanation.",
+    "lecture_opening_title_lines": [
+      "Key Terms:",
+      "Model Explainability"
+    ],
+    "tags": [
+      "Computational Skepticism",
+      "INFO 7375",
+      "Key terms",
+      "Exam prep",
+      "Model Explainability",
+      "Glossary",
+      "Liam",
+      "Lecture"
+    ],
+    "deck_file": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html",
+    "deck_note": "Body beats are the terminology deck filmed live; see exam-prep-deck-films/tools/deck_capture.py",
+    "on_exam": true,
+    "bookends": {
+      "idea": {
+        "text": "A model's explanation tells you\nwhy the outcome happened.",
+        "triggerWords": "why the outcome happened",
+        "replacementWords": "what the model used"
+      },
+      "labels": [
+        {
+          "key": "in the book text",
+          "kind": "tag",
+          "meaning": "the course text uses and explains the term"
+        },
+        {
+          "key": "Computed",
+          "kind": "badge",
+          "meaning": "numbers worked out on screen from stated inputs"
+        },
+        {
+          "key": "Simulation (seeded)",
+          "kind": "badge",
+          "meaning": "a made-up run with a fixed seed, the same every time"
+        },
+        {
+          "key": "Illustrative data",
+          "kind": "badge",
+          "meaning": "numbers chosen to show the idea, not measured"
+        },
+        {
+          "key": "Conceptual illustration",
+          "kind": "badge",
+          "meaning": "a drawing of the idea, with no data behind it"
+        }
+      ],
+      "defs_parts": [
+        "Five labels sit in the corners of the pictures that follow.",
+        "In the book text: the course text uses and explains the term.",
+        "Computed: the numbers are worked out on screen from stated inputs.",
+        "Simulation: a made-up run with a fixed seed, so it comes out the same every time.",
+        "Illustrative data: numbers chosen to show the idea, not measured.",
+        "Conceptual: a drawing of the idea, with no data behind it."
+      ],
+      "recap_lead": "Let's recap.",
+      "recap_lines": [
+        "A fluent, accurate explanation can still mislead about the world.",
+        "SHAP reports the model's internal accounting and stays on Rung one.",
+        "A Shapley value is a marginal contribution averaged over every order of arrival.",
+        "Efficiency makes the values add up, and no axiom promises correctness.",
+        "LIME can change between runs, and a counterfactual is the model's answer.",
+        "Explainable is not interpretable, so ask who is reading the report."
+      ],
+      "segment": "Model Or World, Name The Term",
+      "command": "Give me short cases about explaining a model's prediction, one at a time. For each case I must name the exact term, chosen from fluency trap, shortcut, internal accounting, marginal contribution, Shapley value, Efficiency, LIME instability, counterfactual, interpretability and language-game mismatch, and say why its look-alike is wrong. Hold back the answer until I reply, then correct me in two sentences.",
+      "checks": [
+        "Check: each case needed one exact term, and the answer waited for you.",
+        "Check: every correction said why the look-alike term did not fit."
+      ]
+    },
+    "build": {
+      "at": "2026-11-12T07:15:19",
+      "cut": "master",
+      "filled": 56,
+      "of": 56,
+      "slates": [],
+      "skin_warnings": [
+        "NO RENDERABLE BEATS: no beat carries a shot.remotion.pattern or Manim annotation — the pipeline will render NOTHING and every slot becomes a YOU-slate. The sheet was authored without the scene contract."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BOPEN",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Computational Skepticism, Exam Prep. Key Terms: Model Explainability. Thirty-one terms for judging an explanation of a model, from the fluency trap and Shapley values to the audience question. They matter because a faithful account of the model can still mislead you about the world.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide. Playlist name as Bear gave it.",
+      "routing": {
+        "about": "Playlist, exact film title, payoff",
+        "runner_up": "Writer-first opening",
+        "reason": "The lecture skill requires the narrated portrait/title card before the writer."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "template": "neu-bookend-title",
+        "narration_contract": "playlist-title-summary-v1",
+        "visual_intent": "Named opening fields visible from frame zero",
+        "motion_claim": "Playlist, title, portrait, credits and handle, visible from frame zero; held for the measured narration.",
+        "show": [
+          {
+            "at": 0,
+            "event": "Complete portrait/title/series card visible"
+          }
+        ],
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Identity card in the deck's look: a still hold is the design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame.",
+        "typography_fill": "#FFFFFF",
+        "typography_reason": "Lecture identity card: the portrait slot is a photograph, not typography; all text fields are listed.",
+        "typography_regions": [
+          {
+            "label": "playlist",
+            "box": [
+              0.0625,
+              0.08,
+              0.8,
+              0.135
+            ]
+          },
+          {
+            "label": "title, rule and summary",
+            "box": [
+              0.41,
+              0.26,
+              0.95,
+              0.72
+            ]
+          },
+          {
+            "label": "presenter and narrator credits",
+            "box": [
+              0.0625,
+              0.73,
+              0.4,
+              0.845
+            ]
+          },
+          {
+            "label": "channel handle",
+            "box": [
+              0.74,
+              0.895,
+              0.945,
+              0.95
+            ]
+          }
+        ]
+      },
+      "voice_key": "fceb1defef15",
+      "audio_file": "mp3/beat-BOPEN.mp3",
+      "actual_duration_s": 16.26,
+      "render_duration_s": 16.291666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOPEN.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "BIDEA",
+      "act": "Opening",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear. A newcomer thinks a model's explanation tells you why the outcome happened. It does not. It tells you what the model used, and that can be true about the model while it misleads you about the world. This film goes through thirty-one terms for that gap, each one shown in a picture.",
+      "estimated_duration_s": 23.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json idea; the deck's own framing",
+      "routing": {
+        "about": "Core framing correction",
+        "runner_up": "Overview card",
+        "reason": "One phrase is revised; the terms that follow earn the correction."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Core framing correction",
+        "motion_claim": "The assumption is typed, one phrase is struck and replaced in NU red.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types the assumption"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'why the outcome happened', types 'what the model used'"
+          }
+        ],
+        "template": "neu-bookend-writer",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.8,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Typing builds the line on an empty page; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "55eaa81ab537",
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "actual_duration_s": 16.13,
+      "render_duration_s": 16.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "Terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Five labels sit in the corners of the pictures that follow. In the book text: the course text uses and explains the term. Computed: the numbers are worked out on screen from stated inputs. Simulation: a made-up run with a fixed seed, so it comes out the same every time. Illustrative data: numbers chosen to show the idea, not measured. Conceptual: a drawing of the idea, with no data behind it.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "The deck's opening speaker note (what each tag means) and the evidence badge on every slide",
+      "routing": {
+        "about": "The labels printed on every slide",
+        "runner_up": "The deck's own title slide",
+        "reason": "Prerequisite vocabulary only: the tags and badges the viewer will see in every picture. The terms the film teaches arrive in the body."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Prerequisite labels",
+        "motion_claim": "Each tag or badge, drawn as the deck draws it, rises as it is spoken.",
+        "show": [
+          {
+            "at": 0.08,
+            "event": "'In the book text' lands"
+          },
+          {
+            "at": 0.25,
+            "event": "'Computed' lands"
+          },
+          {
+            "at": 0.42,
+            "event": "'Simulation' lands"
+          },
+          {
+            "at": 0.58,
+            "event": "'Illustrative data' lands"
+          },
+          {
+            "at": 0.75,
+            "event": "'Conceptual' lands"
+          }
+        ],
+        "template": "neu-bookend-labels",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The label rows rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "91d17468b704",
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "actual_duration_s": 20.54,
+      "render_duration_s": 20.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0101",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "This table maps thirty-one terms in four groups, all about telling an explanation of the model from a fact about the world. The first group is the fluency trap and SHAP, short for Shapley additive explanations. Its terms are fluency trap, accurate but misleading, shortcut, post-hoc explanation, SHAP, internal accounting, Rung one and Rung two.",
+      "estimated_duration_s": 22.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 2 step 1. Source: Chapter 5, all sections; Exam terms - compact list, “Explainability, transparency, interpretability”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "GROUP; TERMS; WHAT IT IS ABOUT; The fluency trap and SHAP",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-one terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: GROUP; TERMS; WHAT IT IS ABOUT; The fluency trap and SHAP"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "de70711b5222",
+      "audio_file": "mp3/beat-B0101.mp3",
+      "actual_duration_s": 18.5,
+      "render_duration_s": 18.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0102",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The second row is the Shapley value, what the number is and the four guarantees behind it. The terms are value function, coalition, marginal contribution and Shapley value, then the four axioms, Efficiency, Symmetry, Dummy and Additivity.",
+      "estimated_duration_s": 15.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 2 step 2. Source: Chapter 5, all sections; Exam terms - compact list, “Explainability, transparency, interpretability”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "The Shapley value; What the number is, and the four guarantees behind it",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-one terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: The Shapley value; What the number is, and the four guarantees behind it"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "1a1aaf17316b",
+      "audio_file": "mp3/beat-B0102.mp3",
+      "actual_duration_s": 13.87,
+      "render_duration_s": 13.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0103",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The third row is computing it, and other methods, how the values are estimated and where they strain. The terms are sampling, as in KernelSHAP, then TreeSHAP, correlated features, conditional sampling, LIME, short for local interpretable model-agnostic explanations, LIME instability, off-manifold and counterfactual.",
+      "estimated_duration_s": 17.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 2 step 3. Source: Chapter 5, all sections; Exam terms - compact list, “Explainability, transparency, interpretability”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Computing it, and other methods; How the values are estimated and where they strain",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-one terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Computing it, and other methods; How the values are estimated and where they strain"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design.",
+        "sparse_by_design": true,
+        "sparse_reason": "The deck's map table adds one group row per step; the early steps show only the first rows by design."
+      },
+      "voice_key": "1fb34ddfa881",
+      "audio_file": "mp3/beat-B0103.mp3",
+      "actual_duration_s": 17.96,
+      "render_duration_s": 18.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0104",
+      "act": "Map",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The last row asks, explainable to whom. Its terms are transparency, explainability, interpretability, Rudin's argument, language game, language-game mismatch and audience question. The first three are properties that differ, and the exam expects the exact term for each.",
+      "estimated_duration_s": 15.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 2 step 4. Source: Chapter 5, all sections; Exam terms - compact list, “Explainability, transparency, interpretability”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Explainable to whom?",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Thirty-one terms in four groups: A table with four rows: group, terms, what the group is about.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Explainable to whom?"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 1,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3d88c3d54237",
+      "audio_file": "mp3/beat-B0104.mp3",
+      "actual_duration_s": 15.87,
+      "render_duration_s": 15.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0201",
+      "act": "The fluency trap",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A screening tool's report to a radiologist, from a composite case, not a real incident. Score zero point eight four, two ticked reasons. The fluency trap is taking smooth, well-formed output as evidence, when nothing in it was checked against the world. For example, an agent tells a job seeker she is a strong fit for a listing, in tidy, confident paragraphs. It reads so well that she applies without checking the listing's actual requirements.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 3 step 1. Source: Chapter 5, the opening case; “Where this leaves us”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Fluency trap; in the book text; TELL THESE APART; Fluency",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Fluency trap, accurate but misleading, shortcut, post-hoc explanation: Four pictures: a screening report with ticked reasons, a table of what is true and what is not said, two grids of cases showing a shortcut, and a post-hoc explanation built after the output.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1958 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Fluency trap; in the book text; TELL THESE APART; Fluency"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 1,
+        "anim_ms": 1958
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9636bc76ed49",
+      "audio_file": "mp3/beat-B0201.mp3",
+      "actual_duration_s": 22.7,
+      "render_duration_s": 22.708333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0202",
+      "act": "The fluency trap",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two boxes. About the model, features X and Y drove the score. True. About the world, that X and Y mean malignancy, the report says nothing. Accurate but misleading means true about the model, yet the reader ends up believing something false about the world. For example, an agent explains that a listing ranked first because it matched her keywords. That is true of the agent. She takes it to mean the job is worth applying for, but the role is already filled.",
+      "estimated_duration_s": 33.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 3 step 2. Source: Chapter 5, the opening case; “Where this leaves us”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Accurate but misleading; in the book text; technically accurate, practically misleading; WHAT THE EXPLANATION SAYS",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Fluency trap, accurate but misleading, shortcut, post-hoc explanation: Four pictures: a screening report with ticked reasons, a table of what is true and what is not said, two grids of cases showing a shortcut, and a post-hoc explanation built after the output.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1375 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Accurate but misleading; in the book text; technically accurate, practically misleading; WHAT THE EXPLANATION SAYS"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 2,
+        "anim_ms": 1375
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "fe071aae5033",
+      "audio_file": "mp3/beat-B0202.mp3",
+      "actual_duration_s": 21.7,
+      "render_duration_s": 21.708333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0203",
+      "act": "The fluency trap",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two grids of one hundred cases showing feature X, with made-up numbers. In training ninety are malignant, in deployment only thirty. A shortcut is a spurious pattern that matches the label in training and fails on new data. An explanation naming X reports the shortcut faithfully. For example, a model that predicts who gets an interview is trained at one company, where referred candidates, who mostly got interviews, used the company's own résumé template. It learns the template. At other companies, the template predicts nothing.",
+      "estimated_duration_s": 33.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 3 step 3. Source: Chapter 5, the opening case; “Where this leaves us”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Shortcut; in the book text; TRAINING; DEPLOYMENT",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Fluency trap, accurate but misleading, shortcut, post-hoc explanation: Four pictures: a screening report with ticked reasons, a table of what is true and what is not said, two grids of cases showing a shortcut, and a post-hoc explanation built after the output.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Shortcut; in the book text; TRAINING; DEPLOYMENT"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 3,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d09f713dd3fb",
+      "audio_file": "mp3/beat-B0203.mp3",
+      "actual_duration_s": 27.01,
+      "render_duration_s": 27.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0204",
+      "act": "The fluency trap",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Input, model, output, and only then, down the red dashed arrow, the explanation. A post-hoc explanation is a reason worked out after the model has produced its output. It reports what the model did and adds nothing the model never learned. For example, an applicant-tracking system rejects a résumé, and afterwards a separate tool writes, rejected for missing data analysis skills. That reason was built after the decision, out of the decision.",
+      "estimated_duration_s": 28.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 3 step 4. Source: Chapter 5, the opening case; “Where this leaves us”. Badge: Illustrative data.",
+      "routing": {
+        "about": "Post-hoc explanation; in the book text; WHEN THE REASON IS WORKED OUT; Input",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Fluency trap, accurate but misleading, shortcut, post-hoc explanation: Four pictures: a screening report with ticked reasons, a table of what is true and what is not said, two grids of cases showing a shortcut, and a post-hoc explanation built after the output.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Post-hoc explanation; in the book text; WHEN THE REASON IS WORKED OUT; Input"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 2,
+        "step": 4,
+        "anim_ms": 1083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3308762510a7",
+      "audio_file": "mp3/beat-B0204.mp3",
+      "actual_duration_s": 22.94,
+      "render_duration_s": 22.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0204.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0301",
+      "act": "What SHAP is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three bars from a made-up loan example. SHAP gives one number per feature, for one prediction. The prediction is zero point seven two, the average zero point five five, and SHAP divides that gap among income, debt-to-income and zip code. For example, a fit-scoring agent rates one listing for one job seeker. SHAP says how much the salary range, the commute and the required skills each pushed that one score above the agent's average.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 4 step 1. Source: Chapter 5, “What SHAP is, and what SHAP isn’t”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "SHAP; in the book text; TELL THESE APART; Attribution",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "SHAP, internal accounting, Rung 1, Rung 2: Four pictures: three bars for the loan example, the model’s books beside the unanswered questions about the world, a table of five questions SHAP can and cannot answer, and two scatter plots showing why setting a variable differs from watching it.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1667 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: SHAP; in the book text; TELL THESE APART; Attribution"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 1,
+        "anim_ms": 1667
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "fc5f85c20070",
+      "audio_file": "mp3/beat-B0301.mp3",
+      "actual_duration_s": 22.23,
+      "render_duration_s": 22.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0301.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0302",
+      "act": "What SHAP is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Left box, in the model. This is the internal accounting, how the model itself divides credit among features, and it is real. Right box, in the world, questions SHAP cannot touch, such as whether zip code is a proxy for race. For example, a model that predicts who gets an interview may give much of its credit to the applicant's university. That is real about the model. Whether that university makes people better at the job is a question about the world.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 4 step 2. Source: Chapter 5, “What SHAP is, and what SHAP isn’t”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Internal accounting; in the book text; IN THE MODEL; IN THE WORLD",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "SHAP, internal accounting, Rung 1, Rung 2: Four pictures: three bars for the loan example, the model’s books beside the unanswered questions about the world, a table of five questions SHAP can and cannot answer, and two scatter plots showing why setting a variable differs from watching it.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1167 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Internal accounting; in the book text; IN THE MODEL; IN THE WORLD"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 2,
+        "anim_ms": 1167
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f8d1b6cd5c5c",
+      "audio_file": "mp3/beat-B0302.mp3",
+      "actual_duration_s": 22.06,
+      "render_duration_s": 22.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0302.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0303",
+      "act": "What SHAP is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Five questions. SHAP answers only the first, the additive contribution to this prediction. That is Rung one, association, seeing what goes with what, or what the model used. Cause, correctness and what happens if a feature changes each get a red no. For example, a job-market report finds that applicants who send a cover letter get more interviews. That is Rung one. It shows the two go together, not that the letter caused the interviews.",
+      "estimated_duration_s": 30.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 4 step 3. Source: Chapter 5, “What SHAP is, and what SHAP isn’t”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Rung 1 (association); in the book text; CAN SHAP ANSWER IT?; Additive contribution to this prediction",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "SHAP, internal accounting, Rung 1, Rung 2: Four pictures: three bars for the loan example, the model’s books beside the unanswered questions about the world, a table of five questions SHAP can and cannot answer, and two scatter plots showing why setting a variable differs from watching it.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (2083 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Rung 1 (association); in the book text; CAN SHAP ANSWER IT?; Additive contribution to this prediction"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 3,
+        "anim_ms": 2083
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "2f6bba67168c",
+      "audio_file": "mp3/beat-B0303.mp3",
+      "actual_duration_s": 21.72,
+      "render_duration_s": 21.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0303.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0304",
+      "act": "What SHAP is",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two simulated scatter plots. Left, X and Y are only watched, and they rise together because a hidden Z drives both. Right, X is set by hand, and the red line goes flat. Rung two, intervention, is that level of doing. SHAP cannot answer it. For example, a job seeker flips a coin for each application to decide whether to send a cover letter, then compares interview rates. She set the letter by hand, so that is Rung two.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 4 step 4. Source: Chapter 5, “What SHAP is, and what SHAP isn’t”; Exam terms - compact list. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Rung 2 (intervention); in the book text; SEEN: r = 0.82; Y against X",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "SHAP, internal accounting, Rung 1, Rung 2: Four pictures: three bars for the loan example, the model’s books beside the unanswered questions about the world, a table of five questions SHAP can and cannot answer, and two scatter plots showing why setting a variable differs from watching it.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Rung 2 (intervention); in the book text; SEEN: r = 0.82; Y against X"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 3,
+        "step": 4,
+        "anim_ms": 1042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "0ff15ff2e6c2",
+      "audio_file": "mp3/beat-B0304.mp3",
+      "actual_duration_s": 21.92,
+      "render_duration_s": 21.958333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0304.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0401",
+      "act": "The Shapley value",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three bars from a worked loan example. The value function is the expected prediction when only some features are known. Nothing known, zero point five five. Income known, zero point six three. Everything known, zero point seven two. For example, ask an interview-prediction model about one applicant when it knows only her years of experience, with everything else filled in from typical past applicants. The average prediction it gives is the value function for that set.",
+      "estimated_duration_s": 30.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 5 step 1. Source: Chapter 5, “The mathematics of Shapley values”. Badge: Computed.",
+      "routing": {
+        "about": "Value function; in the book text; TELL THESE APART; Value function",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Value function, coalition, marginal contribution, Shapley value: Four pictures built from the loan example: three values of the value function, the eight coalitions of three features, the four marginal contributions of income, and the six orderings averaged to 0.073.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1875 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Value function; in the book text; TELL THESE APART; Value function"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 1,
+        "anim_ms": 1875
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "51a231e446aa",
+      "audio_file": "mp3/beat-B0401.mp3",
+      "actual_duration_s": 23.19,
+      "render_duration_s": 23.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0401.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0402",
+      "act": "The Shapley value",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Eight boxes, every subset of three features, income, debt-to-income and zip code. A coalition is a subset of features treated as already known. The four red boxes are the coalitions income can join, since they do not contain it yet. For example, a résumé-scoring model uses skills, experience and education. Knowing an applicant's skills and experience, with education still unknown, is one coalition.",
+      "estimated_duration_s": 25.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 5 step 2. Source: Chapter 5, “The mathematics of Shapley values”. Badge: Computed.",
+      "routing": {
+        "about": "Coalition; in the book text; A subset of features treated as already known.; THREE FEATURES, EIGHT COALITIONS",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Value function, coalition, marginal contribution, Shapley value: Four pictures built from the loan example: three values of the value function, the eight coalitions of three features, the four marginal contributions of income, and the six orderings averaged to 0.073.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Coalition; in the book text; A subset of features treated as already known.; THREE FEATURES, EIGHT COALITIONS"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 2,
+        "anim_ms": 1208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "aad4cfb6cd2b",
+      "audio_file": "mp3/beat-B0402.mp3",
+      "actual_duration_s": 21.57,
+      "render_duration_s": 21.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0402.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0403",
+      "act": "The Shapley value",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Four bars, one per coalition income can join. The marginal contribution is what one feature adds to the prediction when it joins a coalition. It depends on who is already in, here from zero point zero six to zero point zero nine. For example, adding a portfolio link may raise a hiring model's prediction a lot when it knows only the degree, and barely at all when it already knows the work history.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 5 step 3. Source: Chapter 5, “The mathematics of Shapley values”. Badge: Computed.",
+      "routing": {
+        "about": "Marginal contribution; in the book text; WHAT INCOME ADDS, GIVEN WHO IS ALREADY IN; S = { }",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Value function, coalition, marginal contribution, Shapley value: Four pictures built from the loan example: three values of the value function, the eight coalitions of three features, the four marginal contributions of income, and the six orderings averaged to 0.073.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (2042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Marginal contribution; in the book text; WHAT INCOME ADDS, GIVEN WHO IS ALREADY IN; S = { }"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 3,
+        "anim_ms": 2042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "3c2b1886f11c",
+      "audio_file": "mp3/beat-B0403.mp3",
+      "actual_duration_s": 21.18,
+      "render_duration_s": 21.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0403.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0404",
+      "act": "The Shapley value",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Six bars, one per order of arrival. The Shapley value is a feature's marginal contribution averaged over every order of arrival. The red dashed line marks it for income, zero point zero seven three. It is average credit, not a prediction from a subset. For example, a salary-estimate model's credit for job title, averaged over every order in which title, location and experience could arrive, is the title's Shapley value. The salary predicted from the title alone is not.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 5 step 4. Source: Chapter 5, “The mathematics of Shapley values”. Badge: Computed.",
+      "routing": {
+        "about": "in the book text; Shapley value; INCOME’S CONTRIBUTION IN EACH OF THE 3! = 6 ORDERINGS; I, D, Z",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Value function, coalition, marginal contribution, Shapley value: Four pictures built from the loan example: three values of the value function, the eight coalitions of three features, the four marginal contributions of income, and the six orderings averaged to 0.073.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (2167 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: in the book text; Shapley value; INCOME’S CONTRIBUTION IN EACH OF THE 3! = 6 ORDERINGS; I, D, Z"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 4,
+        "step": 4,
+        "anim_ms": 2167
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "515723ac81fa",
+      "audio_file": "mp3/beat-B0404.mp3",
+      "actual_duration_s": 26.41,
+      "render_duration_s": 26.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0404.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0501",
+      "act": "The Shapley value",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A force plot. Three blocks push from the average, zero point five five, to the prediction, zero point seven two. Efficiency, one of four axioms, means the values add up exactly to the prediction minus the average, nothing left over. It is not correctness. No axiom promises that. For example, a salary tool puts one job above its average estimate. The credit for title, location and experience adds up to exactly that difference, whether or not they are why the pay is higher.",
+      "estimated_duration_s": 33.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 6 step 1. Source: Chapter 5, “The four axioms”. Badge: Computed.",
+      "routing": {
+        "about": "Efficiency; in the book text; TELL THESE APART; Efficiency",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Efficiency, Symmetry, Dummy, Additivity: Four pictures: three arrows summing to the prediction gap, two equal bars for interchangeable features, a zero bar for a feature that changes nothing, and per-tree values adding to the forest’s.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (2167 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Efficiency; in the book text; TELL THESE APART; Efficiency"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 1,
+        "anim_ms": 2167
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d7ef10adb0bc",
+      "audio_file": "mp3/beat-B0501.mp3",
+      "actual_duration_s": 26.05,
+      "render_duration_s": 26.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0501.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0502",
+      "act": "The Shapley value",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two equal bars from a small invented game. Swapping the two features changes no coalition's value, so each gets zero point zero five. Symmetry means features that do the same work get the same credit. It says nothing about their causal roles. For example, if a résumé screener treats the phrases customer service and client service the same way in every combination, Symmetry gives the two phrases equal credit.",
+      "estimated_duration_s": 27.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 6 step 2. Source: Chapter 5, “The four axioms”. Badge: Computed.",
+      "routing": {
+        "about": "Symmetry; in the book text; Features that do the same work get the same credit.; TWO INTERCHANGEABLE FEATURES, A AND B",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Efficiency, Symmetry, Dummy, Additivity: Four pictures: three arrows summing to the prediction gap, two equal bars for interchangeable features, a zero bar for a feature that changes nothing, and per-tree values adding to the forest’s.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1375 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Symmetry; in the book text; Features that do the same work get the same credit.; TWO INTERCHANGEABLE FEATURES, A AND B"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 2,
+        "anim_ms": 1375
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "4b755fe7f792",
+      "audio_file": "mp3/beat-B0502.mp3",
+      "actual_duration_s": 22.06,
+      "render_duration_s": 22.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0502.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0503",
+      "act": "The Shapley value",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The bottom row has no bar, just a red zero. Feature D never changes the prediction, so the Dummy axiom gives it zero credit. It follows that a non-zero value for zip code means the model uses zip code. It does not mean the model should. For example, a résumé screener that never looks at a résumé's file name gives the file name zero. If graduation year gets credit, the screener uses it, and that says nothing about whether it should.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 6 step 3. Source: Chapter 5, “The four axioms”. Badge: Computed.",
+      "routing": {
+        "about": "Dummy; in the book text; A FEATURE THAT NEVER CHANGES THE PREDICTION; Largest change feature D makes to any coalition: 0.00",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Efficiency, Symmetry, Dummy, Additivity: Four pictures: three arrows summing to the prediction gap, two equal bars for interchangeable features, a zero bar for a feature that changes nothing, and per-tree values adding to the forest’s.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1667 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Dummy; in the book text; A FEATURE THAT NEVER CHANGES THE PREDICTION; Largest change feature D makes to any coalition: 0.00"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 3,
+        "anim_ms": 1667
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "163575044047",
+      "audio_file": "mp3/beat-B0503.mp3",
+      "actual_duration_s": 22.4,
+      "render_duration_s": 22.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0503.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0504",
+      "act": "The Shapley value",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two trees, then the forest that adds them. Additivity, also called linearity, means values for combined models are sums. Zero point zero seven plus zero point zero two gives the forest's zero point zero nine, so a forest can be explained tree by tree. For example, a job-match score is a skills model's score plus a location model's score. The credit for commute distance in the match score is its credit in each model, added together.",
+      "estimated_duration_s": 30.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 6 step 4. Source: Chapter 5, “The four axioms”. Badge: Computed.",
+      "routing": {
+        "about": "Additivity; in the book text; also: linearity; TWO TREES, THEN THE FOREST THAT ADDS THEM",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Efficiency, Symmetry, Dummy, Additivity: Four pictures: three arrows summing to the prediction gap, two equal bars for interchangeable features, a zero bar for a feature that changes nothing, and per-tree values adding to the forest’s.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (2208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Additivity; in the book text; also: linearity; TWO TREES, THEN THE FOREST THAT ADDS THEM"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 5,
+        "step": 4,
+        "anim_ms": 2208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "c81871321b83",
+      "audio_file": "mp3/beat-B0504.mp3",
+      "actual_duration_s": 23.66,
+      "render_duration_s": 23.666666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0504.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0601",
+      "act": "Computing it",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A line chart from a simulated run. Sampling, as in KernelSHAP, estimates the values from some random orderings instead of all of them. After forty draws the black line sits on the exact value for income, zero point zero seven three. Accuracy is traded for time. For example, an agent explaining fit scores for a whole day's job listings cannot try every order of its features on each one. It samples some random orders per listing and accepts a small error to finish in time.",
+      "estimated_duration_s": 33.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 7 step 1. Source: Chapter 5, “Computational shortcuts” and “The correlated feature problem”; Aas, Jullum and Løland 2021. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Sampling (KernelSHAP); in the book text; TELL THESE APART; Marginal sampling",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sampling, TreeSHAP, correlated features, conditional sampling: Four pictures: a running estimate settling on the exact value, a decision tree whose paths are walked one by one, a scatter where independent draws leave the data band, and conditional draws that stay on it.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (3042 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Sampling (KernelSHAP); in the book text; TELL THESE APART; Marginal sampling"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 1,
+        "anim_ms": 3042
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "a8efb8f4aca7",
+      "audio_file": "mp3/beat-B0601.mp3",
+      "actual_duration_s": 26.58,
+      "render_duration_s": 26.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0601.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0602",
+      "act": "Computing it",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "One decision tree, three splits deep, eight red leaves. TreeSHAP gives exact values for tree models by walking the tree's paths and weighting them, instead of trying every subset of features. Thirty features would mean over a billion coalitions. For example, if a job-listing ranker is a forest of decision trees splitting on salary, location and required skills, TreeSHAP gives exact credit for each listing without trying every subset.",
+      "estimated_duration_s": 27.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 7 step 2. Source: Chapter 5, “Computational shortcuts” and “The correlated feature problem”; Aas, Jullum and Løland 2021. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "TreeSHAP; in the book text; ONE TREE, THREE SPLITS DEEP; paths walked: 8 of 8 (2³ leaves)",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sampling, TreeSHAP, correlated features, conditional sampling: Four pictures: a running estimate settling on the exact value, a decision tree whose paths are walked one by one, a scatter where independent draws leave the data band, and conditional draws that stay on it.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (3208 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: TreeSHAP; in the book text; ONE TREE, THREE SPLITS DEEP; paths walked: 8 of 8 (2³ leaves)"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 2,
+        "anim_ms": 3208
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "96ea4854e07f",
+      "audio_file": "mp3/beat-B0602.mp3",
+      "actual_duration_s": 22.63,
+      "render_duration_s": 22.666666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0602.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0603",
+      "act": "Computing it",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two simulated scatter plots. Left, real cases for two strongly related features sit on a pink band. Right, each feature is drawn on its own, and half the draws, in red, land off the band. That is the correlated features problem, combinations that never occur in real data. For example, job title and years of experience move together. Drawn on their own, they produce a senior director with no experience, or an intern with decades in the field. No real résumé looks like that.",
+      "estimated_duration_s": 33.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 7 step 3. Source: Chapter 5, “Computational shortcuts” and “The correlated feature problem”; Aas, Jullum and Løland 2021. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Correlated features; in the book text; REAL DATA; n = 140 real cases",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sampling, TreeSHAP, correlated features, conditional sampling: Four pictures: a running estimate settling on the exact value, a decision tree whose paths are walked one by one, a scatter where independent draws leave the data band, and conditional draws that stay on it.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Correlated features; in the book text; REAL DATA; n = 140 real cases"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 3,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "877eb6f46532",
+      "audio_file": "mp3/beat-B0603.mp3",
+      "actual_duration_s": 25.54,
+      "render_duration_s": 25.541666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0603.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0604",
+      "act": "Computing it",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Now marginal draws on the left, conditional on the right. Conditional sampling draws the missing features given the known ones, so only four percent land off the band, against fifty percent. But the result is no longer a classic Shapley value, and the Dummy axiom can fail. For example, explaining a salary estimate, conditional sampling fills in experience to match the known title. Then the number of past employers, which the model ignores, can still get credit, because it travels with experience.",
+      "estimated_duration_s": 32.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 7 step 4. Source: Chapter 5, “Computational shortcuts” and “The correlated feature problem”; Aas, Jullum and Løland 2021. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "in the book text; Conditional sampling; MARGINAL; 50% off the band",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Sampling, TreeSHAP, correlated features, conditional sampling: Four pictures: a running estimate settling on the exact value, a decision tree whose paths are walked one by one, a scatter where independent draws leave the data band, and conditional draws that stay on it.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: in the book text; Conditional sampling; MARGINAL; 50% off the band"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 6,
+        "step": 4,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "23cdd9fb2494",
+      "audio_file": "mp3/beat-B0604.mp3",
+      "actual_duration_s": 26.58,
+      "render_duration_s": 26.583333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0604.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0701",
+      "act": "Other methods",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A simulated curve of model output, with a dashed line at one input. LIME perturbs that input, the black dots, and fits a weighted line, in red. The slope is the explanation, here plus zero point zero four. It is a local line, not SHAP's additive credit. For example, to explain one job seeker's interview score, LIME nudges her years of experience up and down, records the score each time, and fits a line. Its slope is the explanation.",
+      "estimated_duration_s": 31.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 8 step 1. Source: Chapter 5, “LIME, in a different shape” and “Counterfactuals are closer to what you actually want”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "LIME; in the book text; TELL THESE APART; SHAP value",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "LIME, instability, off-manifold, counterfactual: Four pictures: a curve with ten perturbed points and a fitted line, five lines from five runs, perturbed points leaving a data arc, and a loan boundary with two different changes that flip the decision.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1958 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: LIME; in the book text; TELL THESE APART; SHAP value"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 1,
+        "anim_ms": 1958
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d0b6ecf1ad9f",
+      "audio_file": "mp3/beat-B0701.mp3",
+      "actual_duration_s": 23.0,
+      "render_duration_s": 23.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0701.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0702",
+      "act": "Other methods",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Same input, five random seeds, five lines. The slopes run from minus zero point three one to plus zero point zero four, so even the sign changes. LIME instability means random perturbations can give a different explanation each run. Most people run it once. For example, a recruiter runs LIME on one rejected application, and keywords come out on top. Run again on the same application, a different reason comes out on top.",
+      "estimated_duration_s": 29.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 8 step 2. Source: Chapter 5, “LIME, in a different shape” and “Counterfactuals are closer to what you actually want”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "LIME instability; in the book text; FIVE RUNS ON THE SAME INPUT; +0.04",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "LIME, instability, off-manifold, counterfactual: Four pictures: a curve with ten perturbed points and a fitted line, five lines from five runs, perturbed points leaving a data arc, and a loan boundary with two different changes that flip the decision.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (2250 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: LIME instability; in the book text; FIVE RUNS ON THE SAME INPUT; +0.04"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 2,
+        "anim_ms": 2250
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "df0f49ce1d3c",
+      "audio_file": "mp3/beat-B0702.mp3",
+      "actual_duration_s": 23.04,
+      "render_duration_s": 23.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0702.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0703",
+      "act": "Other methods",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Grey dots are real inputs, on an arc. Red rings are perturbed inputs that fell off it, twenty-five of forty in this simulated run. Off-manifold means perturbed inputs that no real case resembles. LIME returns a coefficient either way, with no warning. For example, LIME explaining a cover-letter scorer deletes random words from the letter. Many of the perturbed letters are broken fragments no applicant would ever send, yet part of the line is fitted to them.",
+      "estimated_duration_s": 30.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 8 step 3. Source: Chapter 5, “LIME, in a different shape” and “Counterfactuals are closer to what you actually want”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Off-manifold; in the book text; REAL INPUTS LIE ON AN ARC; PERTURBATIONS DO NOT",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "LIME, instability, off-manifold, counterfactual: Four pictures: a curve with ten perturbed points and a fitted line, five lines from five runs, perturbed points leaving a data arc, and a loan boundary with two different changes that flip the decision.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1792 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Off-manifold; in the book text; REAL INPUTS LIE ON AN ARC; PERTURBATIONS DO NOT"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 3,
+        "anim_ms": 1792
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "49f0242af51b",
+      "audio_file": "mp3/beat-B0703.mp3",
+      "actual_duration_s": 23.04,
+      "render_duration_s": 23.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0703.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0704",
+      "act": "Other methods",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A loan chart with an invented boundary. The black dot is a denied applicant. A counterfactual states how the prediction would change if a feature had another value, here five thousand dollars more income, or three points less debt-to-income. It is the model's answer, not the lender's. For example, an agent tells a rejected applicant the screener would have passed her résumé if it listed a project management certificate. That is the screener's answer, not the hiring manager's.",
+      "estimated_duration_s": 31.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 8 step 4. Source: Chapter 5, “LIME, in a different shape” and “Counterfactuals are closer to what you actually want”. Badge: Simulation (seeded).",
+      "routing": {
+        "about": "Counterfactual; in the book text; also: counterfactual explanation; WHY THE LOAN WAS DENIED, AND TWO WAYS TO FLIP IT",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "LIME, instability, off-manifold, counterfactual: Four pictures: a curve with ten perturbed points and a fitted line, five lines from five runs, perturbed points leaving a data arc, and a loan boundary with two different changes that flip the decision.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (958 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Counterfactual; in the book text; also: counterfactual explanation; WHY THE LOAN WAS DENIED, AND TWO WAYS TO FLIP IT"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 7,
+        "step": 4,
+        "anim_ms": 958
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "9e1b3c69dbf5",
+      "audio_file": "mp3/beat-B0704.mp3",
+      "actual_duration_s": 23.03,
+      "render_duration_s": 23.041666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0704.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0801",
+      "act": "Explainable to whom?",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A grid of open tiles, each a share of a model's parameters. Transparency is a property of the system. Its code, weights, architecture and data can be inspected. Open is not understood. A model can have one hundred seventy-five billion parameters in plain sight. For example, an open-source résumé screener publishes its code, weights and training data. It is transparent. A job seeker who opens the files still cannot tell why she was rejected.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 9 step 1. Source: Chapter 5, “Three words that don’t mean the same thing”; Rudin 2019. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Transparency; in the book text; TELL THESE APART; Explainable",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Transparency, explainability, interpretability, Rudin: Four pictures: a grid of open parameters, five outputs each with a ranked reason, ten new cases an auditor predicts eight of, and a grid of who each property holds for.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (1667 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Transparency; in the book text; TELL THESE APART; Explainable"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 1,
+        "anim_ms": 1667
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "abfbc2c22261",
+      "audio_file": "mp3/beat-B0801.mp3",
+      "actual_duration_s": 23.15,
+      "render_duration_s": 23.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0801.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0802",
+      "act": "Explainable to whom?",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Five applicants, each with a ranked row of reasons, invented for illustration. Explainability is a property of outputs. Each output comes with a stated reason. The reasons may be more or less informative. For example, an applicant-tracking system attaches a reason to every rejection, such as, missing a required skill. Every output has a reason, so the system is explainable, whether or not the reason helps the applicant.",
+      "estimated_duration_s": 27.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 9 step 2. Source: Chapter 5, “Three words that don’t mean the same thing”; Rudin 2019. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Explainability; in the book text; A property of outputs: each one comes with a stated reason.; EVERY OUTPUT COMES WITH A RANKED REASON",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Transparency, explainability, interpretability, Rudin: Four pictures: a grid of open parameters, five outputs each with a ranked reason, ten new cases an auditor predicts eight of, and a grid of who each property holds for.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (1875 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Explainability; in the book text; A property of outputs: each one comes with a stated reason.; EVERY OUTPUT COMES WITH A RANKED REASON"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 2,
+        "anim_ms": 1875
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "08d9e08da108",
+      "audio_file": "mp3/beat-B0802.mp3",
+      "actual_duration_s": 21.67,
+      "render_duration_s": 21.708333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0802.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0803",
+      "act": "Explainable to whom?",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Top row, the model's output on ten new cases. Below, an auditor's prediction for each, with two red crosses. Interpretability is the person's side. A person can build a mental model good enough to predict new cases, here eight of ten, an illustrative figure. For example, a career coach who has watched a résumé screener at work can say, before a client applies, which new résumés will pass. That is interpretability.",
+      "estimated_duration_s": 28.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 9 step 3. Source: Chapter 5, “Three words that don’t mean the same thing”; Rudin 2019. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Interpretability; in the book text; MODEL OUTPUT ON TEN NEW CASES; AUDITOR’S PREDICTION",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Transparency, explainability, interpretability, Rudin: Four pictures: a grid of open parameters, five outputs each with a ranked reason, ten new cases an auditor predicts eight of, and a grid of who each property holds for.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (1833 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Interpretability; in the book text; MODEL OUTPUT ON TEN NEW CASES; AUDITOR’S PREDICTION"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 3,
+        "anim_ms": 1833
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f2cdd31fcb82",
+      "audio_file": "mp3/beat-B0803.mp3",
+      "actual_duration_s": 21.16,
+      "render_duration_s": 21.166666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0803.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0804",
+      "act": "Explainable to whom?",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "The three properties, ticked for the developer, crossed in red for the applicant. The contract asked for an explainable reason, SHAP was shipped, and the affected person still cannot act on it. Rudin's argument is, for high-stakes decisions, use interpretable models instead of explaining a black box. For example, by that argument, a résumé screener that decides who gets considered for a job should be a simple scoring rule recruiters and applicants can both follow, not a black box with SHAP added afterwards.",
+      "estimated_duration_s": 33.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 9 step 4. Source: Chapter 5, “Three words that don’t mean the same thing”; Rudin 2019. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Rudin’s argument; in the book text; WHO EACH PROPERTY HOLDS FOR; DEVELOPER",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Transparency, explainability, interpretability, Rudin: Four pictures: a grid of open parameters, five outputs each with a ranked reason, ten new cases an auditor predicts eight of, and a grid of who each property holds for.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (1250 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Rudin’s argument; in the book text; WHO EACH PROPERTY HOLDS FOR; DEVELOPER"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 8,
+        "step": 4,
+        "anim_ms": 1250
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f15a95ef0727",
+      "audio_file": "mp3/beat-B0804.mp3",
+      "actual_duration_s": 26.61,
+      "render_duration_s": 26.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0804.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0901",
+      "act": "Explainable to whom?",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "An agent's report says, the secret has been deleted, above two lists. A language game is the setting that gives a word its meaning. In the agent's game, deleted means its own local state was wiped. In the user's game, it means no one can reach the data. For example, to a résumé screener, qualified means the résumé contains the listed keywords. To a hiring manager, qualified means the person can do the job.",
+      "estimated_duration_s": 29.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 10 step 1. Source: Chapter 5, “A short detour through Wittgenstein” and “Back to Ash”; Wittgenstein 1953; Shapira et al. 2026. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Language game; in the book text; TELL THESE APART; Agent’s game",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Language game, mismatch, audience question: Three pictures: the word deleted over two lists of operations, the same lists with what was done ticked and what was not crossed, and the audience question leading to a careful report.",
+        "motion_claim": "The deck's own animation for step 1 of 3 plays as the narration starts (958 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Language game; in the book text; TELL THESE APART; Agent’s game"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 1,
+        "anim_ms": 958
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "a0da3941b634",
+      "audio_file": "mp3/beat-B0901.mp3",
+      "actual_duration_s": 21.4,
+      "render_duration_s": 21.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0901.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0902",
+      "act": "Explainable to whom?",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Ticks and crosses now. Three of three done in the agent's game, none of three in the user's, as this course tells the case. A language-game mismatch is two parties using one word for different operations, so a true report misleads. The agent did not lie. For example, a job agent reports, application submitted, because the form went through. The job seeker hears that the employer has her complete application, but the résumé upload had failed.",
+      "estimated_duration_s": 30.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 10 step 2. Source: Chapter 5, “A short detour through Wittgenstein” and “Back to Ash”; Wittgenstein 1953; Shapira et al. 2026. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Language-game mismatch; in the book text; Done: 3 of 3 in the agent’s game, 0 of 3 in the user’s.",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Language game, mismatch, audience question: Three pictures: the word deleted over two lists of operations, the same lists with what was done ticked and what was not crossed, and the audience question leading to a careful report.",
+        "motion_claim": "The deck's own animation for step 2 of 3 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Language-game mismatch; in the book text; Done: 3 of 3 in the agent’s game, 0 of 3 in the user’s."
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "d587d5238c89",
+      "audio_file": "mp3/beat-B0902.mp3",
+      "actual_duration_s": 22.59,
+      "render_duration_s": 22.625,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0902.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B0903",
+      "act": "Explainable to whom?",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Three questions, then a rewritten report in the red box. The audience question asks who is reading the explanation, what its words mean in their game, and whether it serves that game. No attribution method catches this. It takes modeling the audience. For example, a fit score marked strong was written for recruiters, where it means likely to pass screening. Before showing it to a job seeker, ask what strong will mean to her. She may hear, likely to get hired.",
+      "estimated_duration_s": 32.4,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 10 step 3. Source: Chapter 5, “A short detour through Wittgenstein” and “Back to Ash”; Wittgenstein 1953; Shapira et al. 2026. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Audience question; in the book text; THE CHECK, IN THREE QUESTIONS; 1. Who is reading this report?",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Language game, mismatch, audience question: Three pictures: the word deleted over two lists of operations, the same lists with what was done ticked and what was not crossed, and the audience question leading to a careful report.",
+        "motion_claim": "The deck's own animation for step 3 of 3 plays as the narration starts (1958 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Audience question; in the book text; THE CHECK, IN THREE QUESTIONS; 1. Who is reading this report?"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 9,
+        "step": 3,
+        "anim_ms": 1958
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "14a3ca5f096c",
+      "audio_file": "mp3/beat-B0903.mp3",
+      "actual_duration_s": 22.19,
+      "render_duration_s": 22.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B0903.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1001",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Two panels, a pair that gets mixed up. Left, Attribution, a number about the model's accounting, such as income at plus zero point zero seven three in the loan example. Right, Causal effect, an effect measured by setting the feature. It is a question mark here, because it needs an intervention.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 11 step 1. Source: Chapter 5. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 1 · LEFT; Attribution; A number about the model’s accounting.; income +0.073",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 1 of 4 plays as the narration starts (2625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: PAIR 1 · LEFT; Attribution; A number about the model’s accounting.; income +0.073"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 1,
+        "anim_ms": 2625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "cc0eba85340f",
+      "audio_file": "mp3/beat-B1001.mp3",
+      "actual_duration_s": 15.83,
+      "render_duration_s": 15.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1001.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1002",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second pair, with numbers from an exercise, not real data. Marginal SHAP draws features independently and gives zip zero point one nine. Conditional SHAP draws features given the known ones and gives zip zero point zero four. Both sets sum to zero point five. Neither is wrong, they answer different questions.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 11 step 2. Source: Chapter 5. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 2 · LEFT; Marginal SHAP; Draws features independently.; zip",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 2 of 4 plays as the narration starts (2625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: PAIR 2 · LEFT; Marginal SHAP; Draws features independently.; zip"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 2,
+        "anim_ms": 2625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "f1f71fa39788",
+      "audio_file": "mp3/beat-B1002.mp3",
+      "actual_duration_s": 17.88,
+      "render_duration_s": 17.916666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1002.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1003",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third pair. Explainable means every output comes with a reason, five of five squares here. Interpretable means a person predicts new cases, eight of ten here, with two misses in red. A system can be fully explainable and still not interpretable to the person affected. The exam expects the exact term.",
+      "estimated_duration_s": 20.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 11 step 3. Source: Chapter 5. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 3 · LEFT; Explainable; Every output comes with a reason.; 5 of 5 outputs have a reason",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 3 of 4 plays as the narration starts (2625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: PAIR 3 · LEFT; Explainable; Every output comes with a reason.; 5 of 5 outputs have a reason"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 3,
+        "anim_ms": 2625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "49922e5bbcbb",
+      "audio_file": "mp3/beat-B1003.mp3",
+      "actual_duration_s": 16.47,
+      "render_duration_s": 16.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1003.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1004",
+      "act": "Tell them apart",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last pair. The Model's counterfactual is what the model would decide. At fifty thousand dollars the loan is denied, at fifty-five thousand it is approved, and you check that by running the model. The World's counterfactual is what would actually happen, and that stays unknown until the lender decides.",
+      "estimated_duration_s": 19.8,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 11 step 4. Source: Chapter 5. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "PAIR 4 · LEFT; Model’s counterfactual; What the model would decide.; $50,000: denied",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Look-alike pairs: Each step shows two ideas people mix up, side by side with a small animation.",
+        "motion_claim": "The deck's own animation for step 4 of 4 plays as the narration starts (2625 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: PAIR 4 · LEFT; Model’s counterfactual; What the model would decide.; $50,000: denied"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 10,
+        "step": 4,
+        "anim_ms": 2625
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "40aab5f10bcd",
+      "audio_file": "mp3/beat-B1004.mp3",
+      "actual_duration_s": 16.38,
+      "render_duration_s": 16.416666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1004.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1101",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A vague request on the left, and on the right what the exact version does. Not, explain this prediction. Say, list each feature's Shapley value, and they must sum to the prediction minus the average, zero point one seven in the loan example. The two bars match.",
+      "estimated_duration_s": 19.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 12 step 1. Source: Chapter 5, worked example and Exercise A5. Badge: Computed.",
+      "routing": {
+        "about": "“explain this prediction”; WHAT THE INSTRUCTION DOES; prediction − average; 0.170",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart computed from the numbers in the exact instruction.",
+        "motion_claim": "The deck's own animation for step 1 of 5 plays as the narration starts (1833 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: “explain this prediction”; WHAT THE INSTRUCTION DOES; prediction − average; 0.170"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 1,
+        "anim_ms": 1833
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ef548a432ac9",
+      "audio_file": "mp3/beat-B1101.mp3",
+      "actual_duration_s": 14.31,
+      "render_duration_s": 14.333333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1101.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1102",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Next, SHAP says zip code matters. The exact version, zip code moved the model's output zero point zero three five above average, and that is not a causal claim. The red segment is its share of the gap, twenty-one percent.",
+      "estimated_duration_s": 16.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 12 step 2. Source: Chapter 5, worked example and Exercise A5. Badge: Computed.",
+      "routing": {
+        "about": "“SHAP says zip code matters”; income: 43%; debt-to-income: 36%; zip code: 21%",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart computed from the numbers in the exact instruction.",
+        "motion_claim": "The deck's own animation for step 2 of 5 plays as the narration starts (1333 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: “SHAP says zip code matters”; income: 43%; debt-to-income: 36%; zip code: 21%"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 2,
+        "anim_ms": 1333
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ee78c0883cbb",
+      "audio_file": "mp3/beat-B1102.mp3",
+      "actual_duration_s": 12.95,
+      "render_duration_s": 12.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1102.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1103",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Next, LIME gave a different answer. The exact version, run LIME twenty times with recorded seeds and report the spread of the slope, not one run. Each dot is one run. Here the slopes go from minus zero point three three to minus zero point one two.",
+      "estimated_duration_s": 19.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 12 step 3. Source: Chapter 5, worked example and Exercise A5. Badge: Computed.",
+      "routing": {
+        "about": "“LIME gave a different answer”; 20 slopes, one dot per run; −0.33; −0.12",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart computed from the numbers in the exact instruction.",
+        "motion_claim": "The deck's own animation for step 3 of 5 plays as the narration starts (1917 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: “LIME gave a different answer”; 20 slopes, one dot per run; −0.33; −0.12"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 3,
+        "anim_ms": 1917
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "6f6229824224",
+      "audio_file": "mp3/beat-B1103.mp3",
+      "actual_duration_s": 14.49,
+      "render_duration_s": 14.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1103.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1104",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Next, the system is explainable. The exact version names the property and the audience. The dark bar is outputs with a reason, one hundred percent. The red bar is new cases an auditor predicts, eighty percent. The contract measures the first, safety needs the second.",
+      "estimated_duration_s": 18.2,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 12 step 4. Source: Chapter 5, worked example and Exercise A5. Badge: Computed.",
+      "routing": {
+        "about": "“the system is explainable”; outputs with a reason; 100% (5 of 5); new cases the auditor predicts",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart computed from the numbers in the exact instruction.",
+        "motion_claim": "The deck's own animation for step 4 of 5 plays as the narration starts (1125 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: “the system is explainable”; outputs with a reason; 100% (5 of 5); new cases the auditor predicts"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 4,
+        "anim_ms": 1125
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "e671453657a3",
+      "audio_file": "mp3/beat-B1104.mp3",
+      "actual_duration_s": 14.46,
+      "render_duration_s": 14.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1104.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1105",
+      "act": "Vague request, exact instruction",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Last, is zip a proxy for income. Report both versions side by side. In the exercise numbers, marginal sampling gives zip zero point one nine, and conditional sampling gives zero point zero four. Same total, a different split, and neither settles the question alone.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 12 step 5. Source: Chapter 5, worked example and Exercise A5. Badge: Computed.",
+      "routing": {
+        "about": "“is zip a proxy for income?”; marginal: zip 0.19, income 0.31; 0.50; conditional: zip 0.04, income 0.46",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Say it exactly: Five rows with a vague request and an exact instruction. On the right, a chart computed from the numbers in the exact instruction.",
+        "motion_claim": "The deck's own animation for step 5 of 5 plays as the narration starts (1417 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: “is zip a proxy for income?”; marginal: zip 0.19, income 0.31; 0.50; conditional: zip 0.04, income 0.46"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 11,
+        "step": 5,
+        "anim_ms": 1417
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "130bb91e934d",
+      "audio_file": "mp3/beat-B1105.mp3",
+      "actual_duration_s": 16.06,
+      "render_duration_s": 16.083333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1105.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1201",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "A checklist of six questions to ask before you trust an explanation. First, does it describe the model, or does it claim something about the world. An attribution describes the model's internal accounting. A claim about the world needs evidence checked in the world.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 13 step 1. Source: Chapter 5, “Where this leaves us”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust an explanation",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust an explanation: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 1 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 1 animates: Before you trust an explanation"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 1,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "96157135f7b7",
+      "audio_file": "mp3/beat-B1201.mp3",
+      "actual_duration_s": 14.25,
+      "render_duration_s": 14.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1201.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1202",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Second, which rung is it on. SHAP and LIME stay on association, what goes with what. A counterfactual reaches intervention, what happens if a feature is set to another value, though only inside the model.",
+      "estimated_duration_s": 14.3,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 13 step 2. Source: Chapter 5, “Where this leaves us”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust an explanation",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust an explanation: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 2 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 2 animates: Before you trust an explanation"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 2,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "40bc06ac418d",
+      "audio_file": "mp3/beat-B1202.mp3",
+      "actual_duration_s": 11.84,
+      "render_duration_s": 11.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1202.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1203",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Third, do the values add up, and was the sampling marginal or conditional. Efficiency says the Shapley values must sum to the prediction minus the average. Marginal sampling ignores correlations between features, and conditional sampling respects them.",
+      "estimated_duration_s": 15.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 13 step 3. Source: Chapter 5, “Where this leaves us”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust an explanation",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust an explanation: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 3 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 3 animates: Before you trust an explanation"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 3,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "ee23149a9759",
+      "audio_file": "mp3/beat-B1203.mp3",
+      "actual_duration_s": 14.68,
+      "render_duration_s": 14.708333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1203.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1204",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fourth, is it stable. Run the same input again and see whether the explanation holds. Then check that the perturbations stay on the data, because an off-manifold line may describe nothing real.",
+      "estimated_duration_s": 13.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 13 step 4. Source: Chapter 5, “Where this leaves us”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust an explanation",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust an explanation: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 4 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 4 animates: Before you trust an explanation"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 4,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "82bb86a74ef1",
+      "audio_file": "mp3/beat-B1204.mp3",
+      "actual_duration_s": 11.2,
+      "render_duration_s": 11.208333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1204.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1205",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Fifth, which property was promised, transparency, explainability or interpretability, and to whom. A reason attached to every output is explainability. A person who can predict the system on new cases is interpretability.",
+      "estimated_duration_s": 13.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 13 step 5. Source: Chapter 5, “Where this leaves us”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust an explanation",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust an explanation: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 5 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 5 animates: Before you trust an explanation"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 5,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "eabca71ec9d2",
+      "audio_file": "mp3/beat-B1205.mp3",
+      "actual_duration_s": 12.93,
+      "render_duration_s": 12.958333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1205.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "B1206",
+      "act": "Checklist",
+      "lane": "screen",
+      "proof_gate": "SHOW",
+      "narration_text": "Sixth, who is reading it, and what do its words mean in their language game. Then say it exactly. Not, it explains itself, but, zip moved the output zero point zero three five.",
+      "estimated_duration_s": 13.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "/Users/bear/Documents/CoWork/bear-textbooks/books/info-7375-computational-skepticism-for-ai/glossary/decks/05 Model explainability.html slide 13 step 6. Source: Chapter 5, “Where this leaves us”. Badge: Conceptual illustration.",
+      "routing": {
+        "about": "Before you trust an explanation",
+        "runner_up": "A Manim rebuild of the same figure",
+        "reason": "The deck is the study tool being taught from, so it is shown as itself with its own animation (SHOW-THE-THING). Bear, 2026-11-11: make the glossary decks into films, use the decks and their animations, and have Liam explain each slide."
+      },
+      "shot": {
+        "type": "SCREEN",
+        "source": "capture",
+        "visual_intent": "Before you trust an explanation: A checklist of six items drawn one at a time.",
+        "motion_claim": "The deck's own animation for step 6 of 6 plays as the narration starts (458 ms), then the picture holds.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "step 6 animates: Before you trust an explanation"
+          }
+        ]
+      },
+      "deck": {
+        "slide": 12,
+        "step": 6,
+        "anim_ms": 458
+      },
+      "qc": {
+        "full_bleed": true,
+        "full_bleed_reason": "A captured deck slide shown whole; its red top rule runs edge to edge by the deck's design."
+      },
+      "voice_key": "99afcd06a497",
+      "audio_file": "mp3/beat-B1206.mp3",
+      "actual_duration_s": 10.66,
+      "render_duration_s": 10.666666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B1206.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "Recap",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Let's recap. A fluent, accurate explanation can still mislead about the world. SHAP reports the model's internal accounting and stays on Rung one. A Shapley value is a marginal contribution averaged over every order of arrival. Efficiency makes the values add up, and no axiom promises correctness. LIME can change between runs, and a counterfactual is the model's answer. Explainable is not interpretable, so ask who is reading the report.",
+      "estimated_duration_s": 28.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "This film's body beats; nothing new is asserted",
+      "routing": {
+        "about": "Six things the terms established",
+        "runner_up": "Summary drawing",
+        "reason": "Restates only what the body showed."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Six earned conclusions",
+        "motion_claim": "Six recap lines rise in narration order.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "artifact page opens"
+          },
+          {
+            "at": 0.2,
+            "event": "six lines land in narration order"
+          }
+        ],
+        "template": "neu-bookend-recap",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "lead_silence_s": 0.5,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Recap lines rise one at a time; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "e99e7ed9d488",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": 23.17,
+      "render_duration_s": 23.208333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "Your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Give me short cases about explaining a model's prediction, one at a time. For each case I must name the exact term, chosen from fluency trap, shortcut, internal accounting, marginal contribution, Shapley value, Efficiency, LIME instability, counterfactual, interpretability and language-game mismatch, and say why its look-alike is wrong. Hold back the answer until I reply, then correct me in two sentences.",
+      "estimated_duration_s": 24.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "narration.json your_turn (a practice prompt composed from this film's terms; not a run we made)",
+      "routing": {
+        "about": "Practice: name the exact term and defend it",
+        "runner_up": "Worksheet",
+        "reason": "The spoken prompt makes the viewer use the terms; two checks let them judge the result. Not a run we made."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Practice prompt",
+        "motion_claim": "The practice prompt types into a box marked for Claude, then two checks land.",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens - 'Your turn.'"
+          },
+          {
+            "at": 0.12,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.85,
+            "event": "two check lines land"
+          }
+        ],
+        "template": "neu-bookend-your-turn",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "The prompt types into an empty box; early frames are sparse by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "8fb310af99c0",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": 21.74,
+      "render_duration_s": 21.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "Outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Key Terms: Model Explainability. At Nik Bear Brown.",
+      "estimated_duration_s": 3.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "persona": "liam",
+      "source_evidence": "OUTRO-LOCK.md",
+      "routing": {
+        "about": "Locked sign-off",
+        "runner_up": "None",
+        "reason": "Exact title and channel, slug-seeded mascot."
+      },
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "template": "neu-bookend-outro",
+        "motion_claim": "Exact title and channel handle in the deck's look; held.",
+        "renderer": "exam-prep-deck-films/tools/bookends.py"
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Closing card: title and handle only, by design.",
+        "full_bleed": true,
+        "full_bleed_reason": "Deck look: the red top rule runs edge to edge by design; all text sits 120 px inside the frame."
+      },
+      "voice_key": "f58dfe24767d",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": 4.26,
+      "render_duration_s": 4.291666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-11-12T07:15:19"
+      }
+    }
+  ]
+}

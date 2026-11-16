@@ -1,0 +1,466 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-01-base-rate-trap",
+    "title": "Why a 99%-Accurate Test Is Almost Always Wrong When It Says Yes",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show how a rare base rate drowns a high-accuracy test in false positives, making a positive result almost uninformative. Source: books/computational-skepticism-for-ai/chapters/02-probability-uncertainty-and-the-confidence-illusion.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = true positives / correctly flagged; CRIMSON = false positives / noise in the bucket; GOLD = the base rate / the key number; SLATE = healthy population",
+    "note": "EXCLUSIONS: no Bayes' theorem formula or derivation, no sensitivity/specificity vocabulary, no odds-form shortcut, no second domain example",
+    "total_estimated_duration_seconds": 191,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 1,
+    "build": {
+      "at": "2026-07-27T22:56:17",
+      "cut": "master",
+      "filled": 15,
+      "of": 15,
+      "slates": [],
+      "skin_warnings": []
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 4.0,
+      "narration_text": "Your 99%-accurate test just came back positive — and you're almost certainly fine.",
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Liam",
+            "topic": "COMPUTATIONAL SKEPTICISM — BASE RATE TRAP",
+            "segment": "Why a 99%-Accurate Test Is Almost Always Wrong When It Says Yes",
+            "command": "Your 99%-accurate test just came back positive. Are you almost certainly fine?",
+            "runningText": "running the math on rare events…",
+            "output": [
+              "Base rate: 1 in 10,000 — disease is rare",
+              "Test flags 1 true case + ~99 false alarms",
+              "Positive result → ~1% chance you’re actually sick"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why a 99%-Accurate Test Is Almost Always Wrong When It Says Yes",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "Picture ten thousand people walking into a screening clinic. One of them actually has the disease. The test is 99% accurate — it misclassifies just one in a hundred. So the test flags one true case, correctly. But it also flags ninety-nine healthy people by mistake. You got flagged. You are one of those hundred flagged people. What are the odds you're the one sick one?",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "scene_class": "B02_PopulationGridSweep"
+      },
+      "scene_class": "B02_PopulationGridSweep",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 19.05,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When a rare condition meets a high-accuracy test, what does a positive result actually tell you?",
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "What does a positive result actually tell you?",
+              "When a rare condition meets a high-accuracy test,",
+              "what does a positive result actually mean?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The error rate sounds tiny at one percent. But apply it to the nine thousand nine hundred and ninety-nine healthy people in your population, and the math turns ugly. Roughly a hundred of them get flagged incorrectly. The single true case also gets flagged. So the flagged bucket — the positives pile — now holds about a hundred people, and only one of them is actually sick. That's a one-percent chance you have the disease after testing positive.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "scene_class": "B04_FlaggedBucketFill"
+      },
+      "scene_class": "B04_FlaggedBucketFill",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 21.93,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The accuracy number describes how the test behaves on any single person. The base rate describes how common the condition is before you touch anyone. These two numbers live in separate equations. A ninety-nine percent accurate test sounds like it gives you ninety-nine percent certainty. It does not. What it gives you is heavily shaped by how rare the thing you're testing for actually is. Rarity manufactures noise faster than accuracy can clean it up.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "scene_class": "B05_RarityNoiseDivergence"
+      },
+      "scene_class": "B05_RarityNoiseDivergence",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 22.17,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The base rate is the number the test's accuracy is multiplied against — and when that number is tiny, even a great test drowns in its own false alarms.",
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Base rate multiplies error",
+              "Base rate: the denominator accuracy multiplies against.",
+              "Tiny base rate? Even a great test drowns in false alarms."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "Here's the dot grid. Ten thousand people. One gold dot — that's our one sick person. The sweep passes across all ten thousand. The gold dot gets flagged correctly, teal. But one percent of the nine thousand nine hundred and ninety-nine healthy people — ninety-nine of them — get flagged wrongly, crimson. Watch the positives bucket fill. One teal dot. Ninety-nine crimson dots. The bucket is crimson. You can't see yourself in there because the bucket is overwhelmingly noise.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "scene_class": "B07_DotGridSweepAndBucket"
+      },
+      "scene_class": "B07_DotGridSweepAndBucket",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 22.46,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "This is not a flaw in the test. The test is doing exactly what it promised. The flaw is in what we hear when we read 'ninety-nine percent accurate.' We hear: if I test positive, there's a ninety-nine percent chance I'm sick. That is not what accuracy means. Accuracy tells you what happens at the individual encounter. What happens in the bucket depends on what you started with.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "scene_class": "B08_AccuracyMisreadHighlight"
+      },
+      "scene_class": "B08_AccuracyMisreadHighlight",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 18.37,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "For AI systems, this plays out in fraud detection, medical imaging, anomaly detection — any domain where the positive class is rare. A model that is ninety-nine percent accurate at flagging fraud, operating on a platform where fraud is one in ten thousand transactions, will produce a false positive rate so high that the fraud queue is swamped with legitimate purchases. The accuracy headline looks great. The operational reality is that analysts spend most of their time clearing noise.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "scene_class": "B09_FraudQueueNoise"
+      },
+      "scene_class": "B09_FraudQueueNoise",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 26.77,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B09.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The implication for how we report model performance: accuracy is not the number to lead with in rare-event domains. The question that matters is — of everything the model flagged positive, what fraction was actually positive? That is the number that tells you whether your positives pile is signal or noise.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "scene_class": "B10_PositivePrecisionHighlight"
+      },
+      "scene_class": "B10_PositivePrecisionHighlight",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 16.64,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B10.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The fix is not a better model. The fix is asking the right question before you build. How rare is the positive class? What fraction of your flagged pile will be true positives? If the base rate is one in ten thousand, a ninety-nine-percent-accurate model still puts ninety-nine false alarms next to every true hit. You need to know that before you promise anyone your model works.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "scene_class": "B11_BaseRateCheckFix"
+      },
+      "scene_class": "B11_BaseRateCheckFix",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 19.07,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B11.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 14.0,
+      "narration_text": "A hospital deploys a sepsis early-warning model. It is ninety-eight percent accurate. Sepsis affects about three patients per thousand admitted. The model flags thirty-five patients on a busy day. Nurses respond to every flag — it is sepsis, the stakes are real. Of the thirty-five flagged, two actually have early sepsis. Thirty-three are false alarms. Within a month, nurses start triaging the flags differently, quietly ignoring the bottom of the queue. The two real sepsis cases are now in the bottom half. The model is still ninety-eight percent accurate. Nobody said the base rate out loud.",
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "scene_class": "B12_HospitalSepsisExample"
+      },
+      "scene_class": "B12_HospitalSepsisExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 31.08,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B12.mp4",
+        "filled_by": "manim",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "estimated_duration_s": 9.0,
+      "narration_text": "When the condition is rare, the error rate applied to the massive healthy population manufactures far more false positives than the true-positive rate generates real cases — so the positives bucket is mostly noise. For AI systems in rare-event domains, accuracy is a misleading headline: the number to audit is what fraction of flagged cases are actually positive. Before you deploy a model, ask how rare the thing is — then count how many false alarms sit beside each true hit.",
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Base Rate Trap",
+            "artifactHeading": "The base rate trap",
+            "artifactLines": [
+              "Rare condition: false positives flood the bucket.",
+              "A tiny base rate + 99% accuracy = mostly noise.",
+              "Audit: what fraction of flagged cases are real?"
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T22:56:17"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "narration_text": "Your turn. Paste this into Claude: 'A 99%-accurate test for a condition that affects one in ten thousand people. Someone tests positive. What is the actual probability they have the condition? Show the math, name the number that matters most, and explain why accuracy is a misleading headline for rare-event classifiers.' End quote. After the answer comes back, push it one step further: what precision score would you need to make a positive result clinically useful?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 30,
+      "actual_duration_s": null,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — BASE RATE TRAP",
+            "segment": "Why a 99%-Accurate Test Is Almost Always Wrong When It Says Yes",
+            "command": "A 99%-accurate test for a 1-in-10,000 condition. Someone tests positive. Actual probability they have the condition? Show the math. Name the number that matters. Why is accuracy a misleading headline for rare-event classifiers?",
+            "runningText": "thinking about it…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T22:56:17"
+      },
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "narration_text": "Why a 99%-Accurate Test Is Almost Always Wrong When It Says Yes.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 5,
+      "actual_duration_s": null,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why a 99%-Accurate Test Is Almost Always Wrong When It Says Yes",
+            "handle": "@NikBearBrown",
+            "slug": "claude-liam-cs-01-base-rate-trap"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-27T22:56:17"
+      },
+      "voice_kokoro": "am_onyx"
+    }
+  ]
+}

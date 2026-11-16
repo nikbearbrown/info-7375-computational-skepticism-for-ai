@@ -1,0 +1,709 @@
+{
+  "metadata": {
+    "slug": "show-tell-skepticism-is-a-method",
+    "title": "Skepticism Is a Method, Not a Mood",
+    "topic": "INFO 7375 · COMPUTATIONAL SKEPTICISM",
+    "skill": "show-tell",
+    "style_preset": "show-tell",
+    "channel": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "engine": "kokoro",
+    "clock": "narration",
+    "palette": "claude",
+    "register": "Teardown",
+    "fps": 24,
+    "aspect_ratio": "16:9",
+    "width": 3840,
+    "height": 2160,
+    "caption_policy": "none",
+    "greeting_language": "German (Hallo)",
+    "bookend_exempt": [
+      "cold-open",
+      "bvdt"
+    ],
+    "bookend_exempt_reason": "show-tell style (Bear, 2026-09-26): opens on the hesitant writer + terms card (Bear, 2026-09-26: 'add hesitant writer as the first beat and key terms like tldr uses as the second'), no verdict card; Your Turn is the Claude.ai composer; spoken outro stays.",
+    "course": "INFO 7375 Computational Skepticism for AI · Nik Bear Brown · Northeastern University",
+    "audience": "INFO 7375 students (Fall 2026) and anyone who relies on confident AI output",
+    "bookloop_policy": "Course film (Bear, 2026-09-27): carries the INFO 7375 credit, spoken in BIDEA and on screen in the BDEFS title and the BHTF composer topic; not a numbered lecture. Outro stays OUTRO-LOCK.",
+    "source_doc": "info-7375-computational-skepticism-for-ai/chapters/01-the-skeptics-toolkit.md lines 33-97, 'What I mean by skepticism' (SOURCE.md, verbatim; the manuscript carries an unresolved merge conflict around the Knight Capital paragraph, HEAD side used as Bear pasted it)",
+    "playlist": "Claude & Agentic AI",
+    "chapter_number": 0,
+    "tags": [
+      "computational skepticism",
+      "INFO 7375",
+      "Descartes",
+      "Hume",
+      "Popper",
+      "falsifiability",
+      "problem of induction",
+      "radical doubt",
+      "Knight Capital",
+      "Google Flu Trends",
+      "sepsis model",
+      "black swan",
+      "AI evaluation",
+      "Claude",
+      "Nik Bear Brown"
+    ],
+    "build": {
+      "at": "2026-09-27T14:06:20",
+      "cut": "master",
+      "filled": 13,
+      "of": 13,
+      "slates": [],
+      "skin_warnings": [
+        "BIDEA: palette=claude but the cold open is 'BrutalistHesitantWriter' — COLD OPEN LAW wants ClaudeComposerAsk"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "BIDEA",
+      "act": "the question",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Hallo. This is Liam, in for Bear, with a short film for INFO seventy-three seventy-five, Computational Skepticism for AI. You might think skepticism is just doubting everything. That's a mood. Here, skepticism is a method: a set of moves you run on a claim.",
+      "estimated_duration_s": 15.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "types 'Is skepticism just doubting everything?'"
+          },
+          {
+            "at": 0.6,
+            "event": "backspaces 'just doubting everything' -> 'a set of moves on a claim' on the spoken correction"
+          }
+        ],
+        "remotion": {
+          "pattern": "BrutalistHesitantWriter",
+          "props": {
+            "text": "Is skepticism\njust doubting everything?",
+            "triggerWords": "just doubting everything",
+            "replacementWords": "a set of moves on a claim",
+            "fontSize": 72,
+            "charMs": 24,
+            "hesitateBetween": 6,
+            "hesitateWithin": 1,
+            "mistakeRate": 2,
+            "jitter": 20,
+            "seed": "show-tell-skepticism-is-a-method",
+            "banner": ""
+          },
+          "rendered": {
+            "out": "media/BIDEA.mp4",
+            "at": "2026-09-27T18:01:10.201207+00:00"
+          }
+        }
+      },
+      "lead_silence_s": 0.8,
+      "motion_claim": "The writer types the naive question (is skepticism just doubting everything) and corrects it to the real one (is skepticism a set of moves on a claim).",
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "Hesitant-writer bookend: the correction is the motion."
+      },
+      "actual_duration_s": 14.72,
+      "audio_file": "mp3/beat-BIDEA.mp3",
+      "render_duration_s": 14.75,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BIDEA.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "BDEFS",
+      "act": "terms",
+      "lane": "bookend",
+      "proof_gate": "CARD",
+      "narration_text": "Three terms. Radical doubt: asking what would make a claim wrong. Induction: trusting a pattern because it held in the past. And falsifiable: a claim that names the result that would prove it wrong.",
+      "estimated_duration_s": 12.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "'radical doubt' lands"
+          },
+          {
+            "at": 0.4,
+            "event": "'induction' lands"
+          },
+          {
+            "at": 0.75,
+            "event": "'falsifiable' lands"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeDefinitions",
+          "props": {
+            "title": "INFO 7375 · Terms In This Film",
+            "terms": [
+              {
+                "term": "radical doubt",
+                "meaning": "asking what would make a claim wrong"
+              },
+              {
+                "term": "induction",
+                "meaning": "trusting a pattern because it held in the past"
+              },
+              {
+                "term": "falsifiable",
+                "meaning": "names the result that would prove it wrong"
+              }
+            ],
+            "folderLabel": "@NikBearBrown",
+            "durationSeconds": 10.837
+          },
+          "rendered": {
+            "out": "media/BDEFS.mp4",
+            "at": "2026-09-27T18:01:34.999049+00:00"
+          }
+        }
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "TERMS card: three prerequisites, one line each."
+      },
+      "actual_duration_s": 10.837,
+      "audio_file": "mp3/beat-BDEFS.mp3",
+      "render_duration_s": 10.875,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BDEFS.mp4",
+        "filled_by": "remotion:ClaudeDefinitions",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "B00",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Not the eye roll. Not the person who is against everything. A method: a few moves you perform on a claim. They can be taught, and you can see whether someone did them. Three philosophers each donate one move.",
+      "estimated_duration_s": 13.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A white claim page on a dark plinth arrives at the right ('claim'); a kraft toolbox drops in at the left ('method'); three kraft move tags, 1, 2, 3, rise out of the toolbox one after another.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "the claim arrives"
+          },
+          {
+            "at": 0.4,
+            "event": "the toolbox drops in"
+          },
+          {
+            "at": 0.75,
+            "event": "tags 1, 2, 3 rise"
+          }
+        ],
+        "manim": {
+          "class": "B00_Method"
+        },
+        "motion_claim": "A white claim page on a dark plinth arrives at the right ('claim'); a kraft toolbox drops in at the left ('method'); three kraft move tags, 1, 2, 3, rise out of the toolbox one after another."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.179,
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 11.208333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B00.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "The hard part isn't doubting what looks suspicious. It's doubting what looks right: fluent, specific, neatly formatted. That's when the moves matter most, and when the urge to skip them is strongest. The enemy isn't laziness. It's confidence.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "The claim page fills with neat grey lines and an ink check stamps onto it ('looks right'); a grey confidence bar beside it grows segment by segment to full ('confidence'); the three move tags sink back into the toolbox.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "lines, then the check: looks right"
+          },
+          {
+            "at": 0.45,
+            "event": "the confidence bar fills"
+          },
+          {
+            "at": 0.7,
+            "event": "the tags sink back: skipped"
+          }
+        ],
+        "manim": {
+          "class": "B01_Confidence"
+        },
+        "motion_claim": "The claim page fills with neat grey lines and an ink check stamps onto it ('looks right'); a grey confidence bar beside it grows segment by segment to full ('confidence'); the three move tags sink back into the toolbox."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 12.608,
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 12.625,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B01.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Move one is from Day-cart. Take the claim and ask: what would have to be true for this to be wrong? The answers aren't a feeling. They're a checklist: the training data, the inputs, the setting it runs in. Each one, you can check.",
+      "estimated_duration_s": 15.7,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Tag 1 rises out of the toolbox to the claim ('Descartes'); three kraft crates drop into a row under the claim ('data', 'inputs', 'setting'); an ink check lands on each crate in turn.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "tag 1 goes to the claim"
+          },
+          {
+            "at": 0.45,
+            "event": "three crates: data, inputs, setting"
+          },
+          {
+            "at": 0.85,
+            "event": "a check on each"
+          }
+        ],
+        "manim": {
+          "class": "B02_Doubt"
+        },
+        "motion_claim": "Tag 1 rises out of the toolbox to the claim ('Descartes'); three kraft crates drop into a row under the claim ('data', 'inputs', 'setting'); an ink check lands on each crate in turn."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.051,
+      "audio_file": "mp3/beat-B02.mp3",
+      "render_duration_s": 11.083333333333334,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "In twenty twelve, the trading firm Knight Capital put new code on eight servers. A technician missed one, and no one noticed. On that eighth server, old code, unused since two thousand three, woke up. In about forty five minutes it made over four million trades, and Knight lost more than four hundred sixty million dollars, per the SEC. Ask what would make done wrong, and you check all eight.",
+      "estimated_duration_s": 25.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Eight dark servers in a row ('8 servers'); a white code page drops onto seven of them and each light turns terracotta; the eighth stays grey ('missed'); then the eighth's light flashes and white order slips pour out of it; a hero '$460M+' lands with 'per the SEC'; ink checks sweep over all eight.",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "code drops on seven servers"
+          },
+          {
+            "at": 0.3,
+            "event": "the eighth is missed"
+          },
+          {
+            "at": 0.5,
+            "event": "old code wakes; orders pour out"
+          },
+          {
+            "at": 0.75,
+            "event": "$460M+, per the SEC"
+          },
+          {
+            "at": 0.9,
+            "event": "check all eight"
+          }
+        ],
+        "manim": {
+          "class": "B03_Knight"
+        },
+        "motion_claim": "Eight dark servers in a row ('8 servers'); a white code page drops onto seven of them and each light turns terracotta; the eighth stays grey ('missed'); then the eighth's light flashes and white order slips pour out of it; a hero '$460M+' lands with 'per the SEC'; ink checks sweep over all eight."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 18.901,
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 18.916666666666668,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Move two is from Hume. A model that was right a thousand times has no guarantee about the next time. Picture a turkey, fed every morning for a thousand days. Each meal makes it surer of the next. On day one thousand and one, the farmer comes with an axe.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft turkey beside a feeding tray; a day counter climbs 'day 1' to 'day 1,000' while an ink confidence curve rises ('confidence'); on 'day 1,001' the grain is gone and the curve drops straight down to a terracotta dot.",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the turkey and the tray"
+          },
+          {
+            "at": 0.45,
+            "event": "days climb; the curve rises"
+          },
+          {
+            "at": 0.85,
+            "event": "day 1,001: the curve drops"
+          }
+        ],
+        "manim": {
+          "class": "B04_Turkey"
+        },
+        "motion_claim": "A kraft turkey beside a feeding tray; a day counter climbs 'day 1' to 'day 1,000' while an ink confidence curve rises ('confidence'); on 'day 1,001' the grain is gone and the curve drops straight down to a terracotta dot."
+      },
+      "actual_duration_s": 13.653,
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 13.666666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Big systems do it too. Google Flu Trends estimated flu from web searches. From August twenty eleven, it ran too high in one hundred of one hundred and eight weeks, per a paper in Science. A turkey with a spreadsheet. Its confidence belonged to the model, not to the world.",
+      "estimated_duration_s": 17.9,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A grid of 108 week tiles; 100 of them fill grey, one after another, and 8 stay pale ('weeks too high'); a hero '100 of 108' lands with 'per Science, 2014'; the turkey slides in beside the grid.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the week grid"
+          },
+          {
+            "at": 0.4,
+            "event": "100 of 108 fill: too high"
+          },
+          {
+            "at": 0.75,
+            "event": "the turkey arrives: a turkey with a spreadsheet"
+          }
+        ],
+        "manim": {
+          "class": "B05_Flu"
+        },
+        "motion_claim": "A grid of 108 week tiles; 100 of them fill grey, one after another, and 8 stay pale ('weeks too high'); a hero '100 of 108' lands with 'per Science, 2014'; the turkey slides in beside the grid."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 14.336,
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 14.375,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "Move three is from Popper. A claim that can't be wrong isn't a claim yet. And piling up successes never proves one. No count of white swans proves that all swans are white. One black swan disproves it.",
+      "estimated_duration_s": 13.6,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Tag 3 goes to the claim ('Popper'); white swans glide in one by one into a row with a count ('white swans'); the claim keeps its check; then one black swan glides in ('black swan') and the check on the claim becomes an ink cross.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "tag 3 to the claim"
+          },
+          {
+            "at": 0.45,
+            "event": "white swans pile up"
+          },
+          {
+            "at": 0.85,
+            "event": "one black swan: the check becomes a cross"
+          }
+        ],
+        "manim": {
+          "class": "B06_Swans"
+        },
+        "motion_claim": "Tag 3 goes to the claim ('Popper'); white swans glide in one by one into a row with a count ('white swans'); the claim keeps its check; then one black swan glides in ('black swan') and the check on the claim becomes an ink cross."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 11.413,
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 11.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "So hunt for the black swan. A sepsis alert model was running in hundreds of U.S. hospitals without an adequate outside test. When outside researchers ran one, on twenty seven thousand six hundred ninety seven patients, it missed about two of every three sepsis cases.",
+      "estimated_duration_s": 16.1,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "Three kraft hospital beds, each with a patient and an alert lamp ('sepsis cases'); a scan line sweeps them ('outside test'); only the first lamp lights terracotta; ink crosses land by the other two ('missed'); a hero '2 of 3' with 'per JAMA Intern Med, 2021'.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "three beds, three lamps"
+          },
+          {
+            "at": 0.5,
+            "event": "the outside test sweeps"
+          },
+          {
+            "at": 0.8,
+            "event": "two of three missed"
+          }
+        ],
+        "manim": {
+          "class": "B07_Sepsis"
+        },
+        "motion_claim": "Three kraft hospital beds, each with a patient and an alert lamp ('sepsis cases'); a scan line sweeps them ('outside test'); only the first lamp lights terracotta; ink crosses land by the other two ('missed'); a hero '2 of 3' with 'per JAMA Intern Med, 2021'."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 15.381,
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 15.416666666666666,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B07.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "show-tell",
+      "lane": "manim",
+      "proof_gate": "SHOW",
+      "narration_text": "You don't have to believe any of these philosophers. The moves are tools, like a load test on a beam. The test finds a flaw, or it comes back clean. Either way, you've learned something.",
+      "estimated_duration_s": 12.5,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "visual_intent": "A kraft beam on two dark posts ('beam'); a dark weight lowers onto it; the beam bows slightly and holds; an ink check lands ('load test'); the toolbox with its three tags sits at the left.",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "the beam and posts"
+          },
+          {
+            "at": 0.45,
+            "event": "the weight lowers: the test"
+          },
+          {
+            "at": 0.8,
+            "event": "it holds: a check"
+          }
+        ],
+        "manim": {
+          "class": "B08_Beam"
+        },
+        "motion_claim": "A kraft beam on two dark posts ('beam'); a dark weight lowers onto it; the beam bows slightly and holds; an ink check lands ('load test'); the toolbox with its three tags sits at the left."
+      },
+      "qc": {
+        "sparse_by_design": true,
+        "sparse_reason": "show-tell style (Bear, 2026-09-26): one drawn isometric scene on a cream stage per beat, minimal labels, with the voice carrying the explanation. The negative space is the style, so only underfill and clustered are waived; edge-bleed, empty-frame and contrast still apply."
+      },
+      "actual_duration_s": 9.749,
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 9.75,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B08.mp4",
+        "filled_by": "manim",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Your turn. Take one confident AI answer you rely on, and paste this into Claude: Here is an AI answer I rely on: paste it. Run three moves on it. One: what would have to be true for it to be wrong? List conditions I can check. Two: what may have changed since the evidence behind it was gathered? Three: rewrite it as a falsifiable claim that names the result that would prove it false. Then check two things yourself. Could you actually test each condition? And does the rewrite name a result that would prove it false?",
+      "estimated_duration_s": 35.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "Composer opens — 'Your turn.'"
+          },
+          {
+            "at": 0.1,
+            "event": "the prompt types in full"
+          },
+          {
+            "at": 0.8,
+            "event": "two check lines land"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "INFO 7375 COMPUTATIONAL SKEPTICISM · YOUR TURN",
+            "segment": "Skepticism Is a Method, Not a Mood",
+            "command": "Here is an AI answer I rely on: [paste it]. Run three moves on it. One: what would have to be true for it to be wrong? List conditions I can check. Two: what may have changed since the evidence behind it was gathered? Three: rewrite it as a falsifiable claim that names the result that would prove it false.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Check: could you actually test each condition?",
+              "Check: does the rewrite name what would prove it false?"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Opus 5.5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": "2026-09-27T18:02:37.084773+00:00"
+          }
+        }
+      },
+      "actual_duration_s": 25.216,
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "render_duration_s": 25.25,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-09-27T14:06:20"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "bookend",
+      "proof_gate": "SHOW",
+      "narration_text": "Skepticism Is a Method, Not a Mood. At Nik Bear Brown.",
+      "estimated_duration_s": 4.0,
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0.0,
+            "event": "title restates; handle; mascot"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Skepticism Is a Method, Not a Mood",
+            "slug": "show-tell-skepticism-is-a-method",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": "2026-09-27T18:02:52.894101+00:00"
+          }
+        }
+      },
+      "kind": "outro_voice",
+      "tail_silence_s": 1.0,
+      "actual_duration_s": 4.989,
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "render_duration_s": 5.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-09-27T14:06:20"
+      }
+    }
+  ]
+}

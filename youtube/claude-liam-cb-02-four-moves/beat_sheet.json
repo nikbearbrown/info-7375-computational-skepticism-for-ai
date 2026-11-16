@@ -1,0 +1,319 @@
+{
+ "metadata": {
+  "title": "The Four Classical Moves: Your Portable Doubt",
+  "slug": "claude-liam-cb-02-four-moves",
+  "topic": "AGENTIC CASEBOOK — E2/6: THE FOUR CLASSICAL MOVES",
+  "register": "Pragmatist",
+  "audience": "claude-liam",
+  "brand": "claude-liam",
+  "persona": "Liam (in for Bear)",
+  "voice": "am_onyx",
+  "engine": "kokoro",
+  "voice_kokoro": "am_onyx",
+  "palette": "claude",
+  "style_preset": "claude",
+  "ground": "#FAF9F5",
+  "greeting": "Ciao, Liam",
+  "folderLabel": "@NikBearBrown",
+  "in_for_bear": true,
+  "playlist": "Doubt It When It Looks Right — The Agentic Casebook",
+  "series": "claude-liam-cb",
+  "episode": 2,
+  "source": "INFO 7375 (Computational Skepticism for AI) — The Agentic Casebook: Red-Team One System (100 pts)",
+  "build": {
+   "at": "2026-07-27T20:59:29",
+   "cut": "master",
+   "filled": 8,
+   "of": 8,
+   "slates": [],
+   "skin_warnings": []
+  }
+ },
+ "beats": [
+  {
+   "beat_id": "B00",
+   "act": "cold open",
+   "narration_text": "Ciao — this is Liam. Episode 2 of 6. The four classical moves are the oldest skeptical tools in philosophy, translated into procedures you can run on a running agentic system. The assignment requires all four, labeled — so this episode makes each one a procedure, not a name you drop. The key distinction: skepticism is easy when something looks suspicious. The skill is doing it when the output looks right. The four moves are how you do that. Six minutes.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 25,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Ciao, Liam",
+      "topic": "AGENTIC CASEBOOK — E2/6: THE FOUR CLASSICAL MOVES",
+      "segment": "The Four Classical Moves: Your Portable Doubt",
+      "command": "Take my Pebble's proudest success message: [e.g., 'All 47 promotional emails deleted successfully.']. Run all four classical moves on it: Descartes (what would have to be true for this to be false in the world?), Hume (is this about the world or only about the record?), Popper (state in advance what would count as failure), Plato (name the artifact, name the world, interrogate the gap).",
+      "runningText": "skepticism is easy when something looks suspicious — the skill is doing it when the output looks right…",
+      "output": [
+       "Descartes: enumerated conditions under which message is true and world is false",
+       "Hume: identified distribution assumptions underlying the confidence",
+       "Popper: stated falsification condition in measurable terms",
+       "Plato: named the artifact, named the world state, identified the gap"
+      ],
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/B00.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B00.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B00.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:59:29"
+   }
+  },
+  {
+   "beat_id": "B01",
+   "act": "Descartes — radical doubt, run as a procedure",
+   "narration_text": "The first move is Descartes — radical doubt. The procedure: take a confident claim from your Pebble's output and enumerate every way it could be true on the screen and false in the world. Not vague ways — specific, mechanically possible ways. The email agent's success message says 'forty-seven promotional emails deleted.' The Cartesian enumeration: the API call returned a success code but the deletion was queued and the queue failed silently. The agent counted forty-seven messages but the batch operation only completed thirty-two before a timeout. The 'deleted' state is a soft delete that can be reversed — the messages are flagged as deleted but still occupy storage and can be recovered. The agent operated on the wrong folder because the classification model misidentified some primary emails as promotional. All four of these conditions leave the success message true — the agent reported what its APIs returned — while the world state is different from what was intended. The Knight Capital case is the canonical Cartesian failure: on August 1, 2012, the deployment script reported success. The 'Power Peg' code was activated. The trading system was operating. None of these claims were false. The world was losing forty-four million dollars a minute. The Cartesian move asks: name the gap between the report and the world. For an agentic system, that gap is always possible. Your job is to enumerate it before you check.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 72,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Enumerate every way the claim is true on screen and false",
+       "Claim: '47 promotional emails deleted successfully.'",
+       "Cartesian enumeration: API returned success but queue failed silently."
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B01.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B01.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B01.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:59:29"
+   }
+  },
+  {
+   "beat_id": "B02",
+   "act": "Hume — the limit of induction",
+   "narration_text": "The second move is Hume — the limit of induction. The Humean question: is this confidence about the world, or only about the record so far? And what would tell you the distribution shifted? The procedure: find the implicit assumption of regularity in the system's behavior and name what would break it. Zillow's iBuying algorithm is the working example. Zillow's model was trained on historical real estate transactions and performed well on that distribution. The model was confident because the record was good. In 2021, the housing market behaved in ways that fell outside the historical distribution — rapid price appreciation, supply constraints, pandemic-driven demand shifts. The model's confidence was about the record. The world had shifted. Zillow lost half a billion dollars and exited the business. For your Pebble, the Humean move asks: what is the distribution the system was trained or tuned on? What are the conditions under which that distribution holds? What would a distribution shift look like — a change in user behavior, a change in upstream data, a change in the environment the system operates in — and how would you detect it? A system that has succeeded every day for six months has succeeded on six months of data. That is not evidence it will succeed on month seven. The turkey's confidence on day 364 of Thanksgiving is at its historical maximum.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 68,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Confidence about the record ≠ confidence about the world",
+       "Humean question: is this confidence about the world, or only about",
+       "Zillow: model confident on historical housing data"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B02.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B02.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B02.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:59:29"
+   }
+  },
+  {
+   "beat_id": "B03",
+   "act": "Popper — falsifiability",
+   "narration_text": "The third move is Popper — falsifiability. The Popperian discipline: state, in advance and in measurable terms, what would count as failure — then go looking for exactly that. The opposite of confirmation-hunting. Most system testing is confirmation-hunting: you run the system on inputs you expect it to handle, observe that it handles them, and report success. Popperian testing is the reverse: you state the most damaging failure mode you can imagine, in measurable terms, and you deliberately probe for it. The Epic Sepsis Model is the case. The model was deployed to predict sepsis in hospital patients and was in use for years before an independent audit in 2021 found it performed far worse than its published metrics. The model had never been falsified — it had only been unrefuted. No one had gone looking for the failure mode in measurable terms. For your Pebble, the Popperian move requires you to write, before you probe, a falsification condition: the specific measurable outcome that would prove the system has failed. Not 'the agent makes an error' — that is not measurable. The falsification condition for the email agent: 'the agent sends a message to an address not in my contacts while operating in a context where I gave no explicit send instruction.' That condition is specific, in advance, and testable. If you observe it, the system has failed that condition. If you observe it repeatedly, you have falsified the safety claim. Go looking for it. If you don't find it, you have evidence — not proof — that the safety claim holds for the probes you ran.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 72,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "State the failure condition in advance + go looking for it",
+       "Popperian discipline: state what would count as failure in measurable terms",
+       "Epic Sepsis Model: deployed for years, never falsified"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B03.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B03.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B03.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:59:29"
+   }
+  },
+  {
+   "beat_id": "B04",
+   "act": "Plato's Cave — artifact vs. world",
+   "narration_text": "The fourth move is Plato's Cave — the artifact versus the world. The procedure: name the artifact, name the world, then interrogate the relationship between them. In Plato's allegory, the prisoners in the cave see shadows on the wall — the artifact — and mistake them for reality — the world. An agentic system's success report is the shadow. The world state is the wall. The COVID chest X-ray AI model is the case. The model was trained to detect COVID-19 from chest X-rays and achieved impressive benchmark performance. An audit revealed that the model had learned to detect COVID not from pathological features of the X-rays — not from the shape of the infection — but from dataset artifacts: scanner markers, hospital-specific tags embedded in the training images, even patient positioning cues that correlated with COVID patients at specific facilities. The model was reading the shadow — the dataset's metadata — rather than the wall — the actual pathology. It was accurate on the training distribution. It was reading the wrong thing. For your Pebble, the Plato move requires you to name the artifact the system is processing — what it reads, what it computes from, what its tool calls return — and to name the world state you actually care about — and then to ask what assumptions link the two. Where is the model reading metadata instead of signal? Where is the success report a proxy for the actual outcome? That gap is a case.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 68,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "FormACard",
+     "props": {
+      "lines": [
+       "Name the shadow. Name the wall. Interrogate the relationship.",
+       "Plato's Cave: the shadow on the wall (artifact) mistaken for reality (world).",
+       "COVID X-ray model: accurate on benchmarks"
+      ],
+      "dark": false
+     },
+     "rendered": {
+      "out": "media/B04.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-B04.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/B04.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:59:29"
+   }
+  },
+  {
+   "beat_id": "BVDT",
+   "act": "verdict",
+   "lead_silence_s": 0.5,
+   "narration_text": "Verdict for The Four Classical Moves. Four moves, all required, all labeled. Descartes: take the confident claim and enumerate every way it is true on screen and false in the world — Knight Capital's success message was true while the world was catastrophic. Hume: ask whether the confidence is about the world or only about the record — Zillow and Google Flu Trends were confident on historical distributions that had shifted. Popper: state the falsification condition in measurable terms before you probe, then go looking — the Epic Sepsis Model was never falsified, only unrefuted. Plato: name the artifact, name the world, interrogate the relationship — the COVID X-ray model read scanner markers, not lungs. Use each move as a procedure, not a label. The move used as decoration earns nothing.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 40,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeVerdictArtifact",
+     "props": {
+      "artifactTitle": "The Four Classical Moves: Your Portable Doubt",
+      "artifactHeading": "Core rules — all four required, all labeled",
+      "artifactLines": [
+       "[Descartes] Enumerate ways the claim is true on screen, false in the world. Knight Capital.",
+       "[Hume] Confidence about the record ≠ world. What would tell you the distribution shifted? Zillow.",
+       "[Popper] Falsification condition in advance, in measurable terms. Go looking. Epic Sepsis Model.",
+       "[Plato] Name the artifact. Name the world. Interrogate the link. COVID X-ray model.",
+       "Each move used as a procedure, not a name to drop. Decoration earns nothing.",
+       "Skepticism is easy when it looks suspicious. The skill is doing it when the output looks right."
+      ]
+     },
+     "rendered": {
+      "out": "media/BVDT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BVDT.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BVDT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:59:29"
+   }
+  },
+  {
+   "beat_id": "BHTF",
+   "act": "your turn handoff",
+   "narration_text": "Your turn. Here is the prompt — paste it with your System Dossier available. The prompt reads: I am running the four classical moves on my Pebble's most confident output. The Pebble is [name]. The output to analyze is: [paste the system's proudest success message or a sample output]. Run all four moves, each as a labeled procedure. Descartes: enumerate every specific, mechanically possible way this output is true and the world state is different from what was intended. Hume: identify the distribution assumption underlying this output's confidence, and state what a distribution shift would look like and how I would detect it. Popper: write a falsification condition in measurable terms — the specific observable outcome that would prove this system has failed this claim — then identify one probe I could run to look for it. Plato: name the artifact this system is processing, name the world state I actually care about, and name the assumptions that link them — specifically, where might the system be reading a proxy rather than the actual signal? End quote. After the four moves come back, run the Popperian probe. Before you run it, write the prediction-lock. Then check the world.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 65,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeComposerAsk",
+     "props": {
+      "greeting": "Your turn.",
+      "topic": "YOUR TURN — THE FOUR CLASSICAL MOVES: YOUR PORTABLE DOUBT",
+      "segment": "The Four Classical Moves: Your Portable Doubt",
+      "command": "Run all four moves on my Pebble's success message: [paste it]. Label each: [Descartes] enumerate true-on-screen/false-in-world conditions , [Hume] distribution assumption + what a shift looks like + how I'd detect it , [Popper] falsification condition in measurable terms + one probe to run , [Plato] artifact named + world state named + where the system might be reading proxy not signal.",
+      "runningText": "after the four moves — run the Popperian probe — write the prediction-lock first — then check the world…",
+      "folderLabel": "@NikBearBrown",
+      "modelLabel": "Fable 5",
+      "effortLabel": "Low"
+     },
+     "rendered": {
+      "out": "media/BHTF.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BHTF.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BHTF.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:59:29"
+   }
+  },
+  {
+   "beat_id": "BOUT",
+   "act": "outro",
+   "narration_text": "The Four Classical Moves: Your Portable Doubt. Liam, in for Bear.",
+   "voice": "am_onyx",
+   "engine": "kokoro",
+   "estimated_duration_s": 5,
+   "shot": {
+    "type": "REMOTION",
+    "remotion": {
+     "pattern": "ClaudeTitleOutro",
+     "props": {
+      "title": "The Four Classical Moves: Your Portable Doubt",
+      "handle": "@NikBearBrown",
+      "subline": "Liam, in for Bear.",
+      "slug": "claude-liam-cb-02-four-moves"
+     },
+     "rendered": {
+      "out": "media/BOUT.mp4",
+      "at": ""
+     }
+    }
+   },
+   "audio_file": "mp3/beat-BOUT.mp3",
+   "actual_duration_s": null,
+   "build": {
+    "status": "VIDEO",
+    "src": "media/BOUT.mp4",
+    "filled_by": "media",
+    "at": "2026-07-27T20:59:29"
+   }
+  }
+ ]
+}

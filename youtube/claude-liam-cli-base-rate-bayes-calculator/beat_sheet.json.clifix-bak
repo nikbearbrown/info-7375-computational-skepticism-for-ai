@@ -1,0 +1,374 @@
+{
+  "metadata": {
+    "title": "Base-Rate Bayes Calculator: Why High Sensitivity Isn't Enough",
+    "slug": "claude-liam-cli-base-rate-bayes-calculator",
+    "topic": "COMPUTATIONAL SKEPTICISM — BASE-RATE NEGLECT",
+    "register": "Teardown",
+    "voice": "NikBearBrown",
+    "voice_id": "${ELEVENLABS_VOICE_NIKBEARBROWN}",
+    "palette": "claude",
+    "style_preset": "claude",
+    "style": "cli",
+    "note": "CLI video: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(manim:B04_BayesHeatmap) · B05 CHANGE · B06 SUMMARY · B07 NEXT STEPS · B08 extra-slate · B09 outro",
+    "total_estimated_duration_seconds": 118,
+    "audience": "Claude",
+    "derived_from": "beat_sheet.json",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "channel": "NikBearBrown",
+    "build": {
+      "at": "2026-07-19T16:44:14",
+      "cut": "master",
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": [
+        "B01: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B02: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B05: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\")."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "Your model fires on 18 percent of patients. What's the chance any one alert is real?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "Your model fires on 18 percent of patients. What's the chance any one alert is real?",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Base Rate Neglect, taken apart.",
+            "greeting": "Jambo, Bear",
+            "runningText": "computing the base-rate reality…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": 3.97,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T16:44:14"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM — why care",
+      "role_note": "the problem, the stakes — BEFORE the CLI",
+      "narration_text": "A hospital deploys a sepsis detection model with ninety percent sensitivity and eighty-two percent specificity. The ICU team is told: when it fires, the patient probably has sepsis. But in a population where sepsis occurs in two percent of admissions, the positive predictive value — the chance the alert is real — is under ten percent. Nine out of ten alerts are false. The model is not broken. The base rate is. This video shows why sensitivity and specificity are not enough, and how Bayes' theorem tells you the number that actually matters.",
+      "visual_intent": "title card: 'sensitivity=90%, PPV=9%' — the base rate gap; PROBLEM beat, no terminal",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "sensitivity=90%, PPV=9% — the base rate gap",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Base Rate Neglect, taken apart.",
+            "greeting": "",
+            "runningText": "framing the problem…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 29.7,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T16:44:14"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) — the command typed",
+      "narration_text": "In the terminal: ask Claude to write a Bayes PPV function, then compute a five-by-five grid over prevalence and sensitivity at a fixed specificity of point-eight-two — the sepsis model's published value — and mark every cell where PPV drops below ten percent.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Write bayes_ppv(prevalence, sensitivity, specificity)\nusing Bayes' theorem. Compute 5x5 grid:\n  prevalence=[0.005,0.01,0.02,0.05,0.10]\n  sensitivity=[0.70,0.80,0.85,0.90,0.99]\n  specificity=0.82\nPrint as pandas DataFrame.\nMark cells where PPV < 0.10.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — BASE-RATE NEGLECT",
+            "segment": "BASE-RATE BAYES CALCULATOR",
+            "greeting": "",
+            "runningText": "generating Bayes PPV grid…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 14.91,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T16:44:14"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) — read the code before running",
+      "narration_text": "Read the key formula before running. PPV equals sensitivity times prevalence, divided by sensitivity times prevalence plus one-minus-specificity times one-minus-prevalence. The denominator is where the base rate lives. When prevalence is point-zero-zero-five — half a percent — that denominator is dominated by the false positive rate, and sensitivity can't save you.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "bayes_ppv.py",
+            "code": "# bayes_ppv.py  —  Claude Code output\n\ndef bayes_ppv(prevalence, sensitivity, specificity):\n    \"\"\"Positive Predictive Value via Bayes' theorem.\"\"\"\n    tp = sensitivity * prevalence\n    fp = (1 - specificity) * (1 - prevalence)\n    ppv = tp / (tp + fp)\n    return ppv\n\n# At prevalence=0.02, sensitivity=0.90, specificity=0.82:\n# ppv = (0.90 * 0.02) / (0.90*0.02 + 0.18*0.98)\n#     = 0.018 / (0.018 + 0.1764)\n#     = 0.018 / 0.1944  ≈ 0.093  <- under 10%",
+            "sparkLine": "BASE-RATE BAYES CALCULATOR"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 20.91,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T16:44:14"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT — run",
+      "role_note": "Manim animation: B04_BayesHeatmap",
+      "narration_text": "Run it. The heatmap shows twenty-five cells: prevalence on rows, sensitivity on columns. The top two rows — prevalence under one percent — are entirely crimson. Every cell is below ten percent PPV, regardless of how high sensitivity goes. The gold band in rows three and four is the transition zone. Only when prevalence reaches ten percent do you start seeing green — and even then, PPV tops out at thirty-five percent with ninety-nine percent sensitivity.",
+      "visual_intent": "Manim B04_BayesHeatmap: 5x5 PPV grid colored crimson/gold/green by threshold; sepsis operating point highlighted; 'PPV < 10% zone' annotation on top 2 rows",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "motion": "fade",
+        "manim": {
+          "scene_class": "B04_BayesHeatmap",
+          "file": "vox_scenes.py"
+        }
+      },
+      "estimated_duration_s": 17,
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 25.9,
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B04.mp4",
+        "filled_by": "manim:B04_BayesHeatmap",
+        "at": "2026-07-19T16:44:14"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE — check and revise",
+      "role_note": "terminal (Onda) — the REQUIRED revision",
+      "narration_text": "The grid is the audit. Now iterate: ask Claude to add a specificity sweep — hold sensitivity at ninety percent, vary specificity from point-seven to point-nine-nine, and show at what specificity the PPV at two-percent prevalence finally crosses the ten-percent threshold.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Update bayes_ppv.py:\n-> fix sensitivity=0.90, prevalence=0.02\n-> sweep specificity from 0.70 to 0.99\n-> find the specificity where PPV crosses 0.10\n-> print threshold and print a small table\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — BASE-RATE NEGLECT",
+            "segment": "BASE-RATE BAYES CALCULATOR",
+            "greeting": "",
+            "runningText": "sweeping specificity threshold…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 15.72,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T16:44:14"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "SUMMARY",
+      "role_note": "the lesson — one beat",
+      "narration_text": "At two-percent prevalence with ninety-percent sensitivity, you need a specificity of ninety-four percent before PPV clears ten percent. The sepsis model published at eighty-two percent never makes it. The lesson: sensitivity and specificity are properties of the test. PPV is a property of the deployment context. They are not interchangeable, and the base rate is not optional information.",
+      "visual_intent": "recap card: 'test properties vs deployment context'; specificity threshold result",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "lesson.md",
+            "code": "# KEY LESSON\n#\n# At two-percent prevalence with ninety-percent sensitivity, you need a\n# specificity of ninety-four percent before PPV clears ten percent. The\n# sepsis model published at eighty-two percent never makes it. The\n# lesson: sensitivity and specificity are properties of the test.\n#\n# → specificity threshold result",
+            "sparkLine": "Base Rate Neglect, taken apart."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 20.44,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T16:44:14"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Your move: find the base rate of the condition your model detects in the real deployment population — not the training set. Plug it into the Bayes PPV formula with the published sensitivity and specificity. If PPV is under twenty percent, your alert system needs a prevalence-enriched pre-filter before it goes clinical.",
+      "visual_intent": "next-steps card: 1) find real deployment base rate, 2) compute PPV, 3) add pre-filter if PPV < 20%",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "next_steps.md",
+            "code": "# YOUR MOVE\n#\n# 1. find real deployment base rate\n# 2. compute PPV\n# 3. add pre-filter if PPV < 20%\n#\n# → run it  →  audit the gap  →  report what you find",
+            "sparkLine": "YOUR MOVE"
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 11,
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 17.71,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T16:44:14"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "EXTRA",
+      "role_note": "slate — optional b-roll",
+      "narration_text": "The complete source is in the video description. Fork it, swap in your own data, and see what you find. If your numbers break the pattern, that is the interesting result.",
+      "visual_intent": "slate placeholder",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "fork_it.md",
+            "code": "# FORK IT\n#\n# → clone the source (link in description)\n# → swap in your own data\n# → run it\n# → the interesting result is when your numbers break the pattern",
+            "sparkLine": "Base Rate Neglect, taken apart."
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T16:44:14"
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 9.09
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Base-Rate Bayes Calculator: Why High Sensitivity Isn't Enough",
+            "handle": "@NikBearBrown",
+            "subline": "the base rate is the number the model can't know"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 6.51,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T16:44:14"
+      }
+    }
+  ]
+}

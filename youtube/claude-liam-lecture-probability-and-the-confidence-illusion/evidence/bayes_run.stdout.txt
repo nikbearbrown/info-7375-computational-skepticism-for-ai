@@ -1,0 +1,9 @@
+>>> prior, sens, fpr = 1/10000, 0.99, 0.01
+>>> num = prior * sens
+0.000099
+>>> den = num + (1 - prior) * fpr
+0.010098
+>>> num / den
+0.0098   # exactly 1/102
+>>> 1 / (1 + 0.01 * 9999)    # the head count
+0.0099

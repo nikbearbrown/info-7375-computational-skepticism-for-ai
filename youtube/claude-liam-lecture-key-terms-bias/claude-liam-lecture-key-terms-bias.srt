@@ -1,0 +1,1787 @@
+1
+00:00:00,000 --> 00:00:01,331
+Computational Skepticism, Exam Prep.
+
+2
+00:00:01,381 --> 00:00:02,366
+Key Terms: Bias.
+
+3
+00:00:02,416 --> 00:00:07,198
+Thirty-three terms for saying where bias
+enters an AI pipeline, what a fix can
+
+4
+00:00:07,248 --> 00:00:09,614
+actually reach, and who owns that fix.
+
+5
+00:00:09,664 --> 00:00:13,410
+Useful because the word biased, on its
+own, cannot be tested.
+
+6
+00:00:14,560 --> 00:00:14,761
+Hallo.
+
+7
+00:00:14,811 --> 00:00:16,267
+This is Liam, in for Bear.
+
+8
+00:00:16,317 --> 00:00:19,279
+People say that to fix a biased model, you
+fix the model.
+
+9
+00:00:19,329 --> 00:00:23,043
+Usually the bias came in somewhere else,
+in who was sampled, how labels were made,
+
+10
+00:00:23,093 --> 00:00:25,051
+or what a reviewer does with the score.
+
+11
+00:00:25,101 --> 00:00:26,808
+So first find where the bias enters.
+
+12
+00:00:26,858 --> 00:00:29,820
+This film goes through thirty-three terms
+for doing that, each one shown.
+
+13
+00:00:30,170 --> 00:00:33,256
+Five labels sit in the corners of the
+pictures that follow.
+
+14
+00:00:33,306 --> 00:00:36,677
+In the book text: the course text uses and
+explains the term.
+
+15
+00:00:36,727 --> 00:00:39,812
+Computed: the numbers are worked out on
+screen from stated inputs.
+
+16
+00:00:39,862 --> 00:00:44,374
+Simulation: a made-up run with a fixed
+seed, so it comes out the same every time.
+
+17
+00:00:44,424 --> 00:00:47,224
+Illustrative data: numbers chosen to show
+the idea, not measured.
+
+18
+00:00:47,274 --> 00:00:50,360
+Conceptual: a drawing of the idea, with no
+data behind it.
+
+19
+00:00:50,710 --> 00:00:55,568
+This is a map of the film, a table that
+fills in one group at a time.
+
+20
+00:00:55,618 --> 00:00:59,610
+Thirty-three terms, all about where bias
+enters a pipeline, what a fix can reach,
+
+21
+00:00:59,660 --> 00:01:00,765
+and who owns it.
+
+22
+00:01:00,815 --> 00:01:02,786
+The first group says what bias means.
+
+23
+00:01:02,836 --> 00:01:04,230
+Estimator, bias and unbiased estimator.
+
+24
+00:01:04,580 --> 00:01:07,268
+The second group is ten ways in.
+
+25
+00:01:07,318 --> 00:01:11,570
+Selection bias and sampling bias, with
+inverse probability weighting as the
+
+26
+00:01:11,620 --> 00:01:11,961
+repair.
+
+27
+00:01:12,011 --> 00:01:16,263
+Confirmation bias, self-report bias and
+publication bias, with the funnel plot.
+
+28
+00:01:16,313 --> 00:01:19,783
+Cohen's kappa, observer bias, data-coding
+bias and data-entry bias.
+
+29
+00:01:19,833 --> 00:01:22,130
+Then historical bias and implicit bias.
+
+30
+00:01:22,480 --> 00:01:24,990
+The third group asks where the bias sits.
+
+31
+00:01:25,040 --> 00:01:26,910
+Dataset bias sits in the sample.
+
+32
+00:01:26,960 --> 00:01:29,790
+Label bias and biased measurement sit in
+the labels.
+
+33
+00:01:29,840 --> 00:01:33,310
+Structural bias sits in the world the
+model is used in.
+
+34
+00:01:33,360 --> 00:01:34,590
+Sample, label or structure.
+
+35
+00:01:34,940 --> 00:01:38,000
+The last group is causes and who decides.
+
+36
+00:01:38,050 --> 00:01:40,721
+Pearl's ladder, with association,
+intervention and counterfactual.
+
+37
+00:01:40,771 --> 00:01:44,998
+The causal graph, the proxy, leverage
+analysis, leverage and the accountable
+
+38
+00:01:45,048 --> 00:01:45,386
+owner.
+
+39
+00:01:45,436 --> 00:01:50,440
+Then calibration parity, equal FPR and
+FNR, the false positive and false negative
+
+40
+00:01:50,490 --> 00:01:53,550
+rates, the impossibility theorem and the
+values claim.
+
+41
+00:01:53,900 --> 00:01:55,259
+Here is a percent line.
+
+42
+00:01:55,309 --> 00:01:58,639
+Each dot is one estimate from one sample,
+in a simulated run.
+
+43
+00:01:58,689 --> 00:02:02,019
+An estimator is the recipe that turns a
+sample into a number.
+
+44
+00:02:02,069 --> 00:02:06,245
+An unbiased estimator can miss on any one
+sample, but its dots gather around the
+
+45
+00:02:06,295 --> 00:02:08,499
+truth, the red dashed line at twenty-five
+percent.
+
+46
+00:02:08,549 --> 00:02:12,724
+For example, an agent averages the pay in
+a random batch of data analyst listings.
+
+47
+00:02:12,774 --> 00:02:14,133
+That average is an estimator.
+
+48
+00:02:14,183 --> 00:02:18,640
+One batch may miss, but the batches center
+on the true pay, so it is unbiased.
+
+49
+00:02:18,990 --> 00:02:22,932
+Now red dots, from a sample that kept only
+patients who passed a filter.
+
+50
+00:02:22,982 --> 00:02:24,928
+On average it lands near fourteen percent.
+
+51
+00:02:24,978 --> 00:02:29,490
+Bias is that offset from the truth, minus
+ten point seven points, not the scatter of
+
+52
+00:02:29,540 --> 00:02:30,060
+the dots.
+
+53
+00:02:30,110 --> 00:02:34,052
+For example, an agent estimates starting
+pay only from offers people chose to post
+
+54
+00:02:34,102 --> 00:02:34,337
+online.
+
+55
+00:02:34,387 --> 00:02:38,044
+If people with good offers post more
+often, the estimates center too high,
+
+56
+00:02:38,094 --> 00:02:38,899
+batch after batch.
+
+57
+00:02:38,949 --> 00:02:40,610
+That steady gap is the bias.
+
+58
+00:02:40,960 --> 00:02:43,371
+Now each sample grows to two thousand.
+
+59
+00:02:43,421 --> 00:02:46,886
+Both clouds tighten, the red one around
+the wrong value.
+
+60
+00:02:46,936 --> 00:02:48,995
+More data shrinks scatter, not bias.
+
+61
+00:02:49,045 --> 00:02:53,214
+The nineteen thirty-six Literary Digest
+poll had two point four million responses
+
+62
+00:02:53,264 --> 00:02:54,620
+and was still wrong.
+
+63
+00:02:54,970 --> 00:02:59,491
+A thousand made-up patients and a six hour
+lab filter that drops most of the critical
+
+64
+00:02:59,541 --> 00:02:59,776
+ones.
+
+65
+00:02:59,826 --> 00:03:03,205
+Selection bias means who gets in depends
+on what happened to them.
+
+66
+00:03:03,255 --> 00:03:06,347
+The kept sample shows fourteen point three
+percent risk, not twenty-five.
+
+67
+00:03:06,397 --> 00:03:09,489
+Picture a résumé tool that surveys only
+the users still subscribed.
+
+68
+00:03:09,539 --> 00:03:12,632
+Users who got no interviews quit early, so
+they never answer.
+
+69
+00:03:12,682 --> 00:03:16,060
+Who is in the survey depends on how their
+job hunt went.
+
+70
+00:03:16,410 --> 00:03:17,565
+Now a made-up survey.
+
+71
+00:03:17,615 --> 00:03:20,877
+Professionals are forty percent of the
+population but eighty percent of
+
+72
+00:03:20,927 --> 00:03:21,178
+respondents.
+
+73
+00:03:21,228 --> 00:03:25,093
+That is sampling bias, groups missed
+because they were hard to reach, not
+
+74
+00:03:25,143 --> 00:03:26,298
+because of their outcomes.
+
+75
+00:03:26,348 --> 00:03:28,406
+Reweighting moves sixty-two percent back
+to forty-six.
+
+76
+00:03:28,456 --> 00:03:32,019
+For example, a job-market report surveys
+seekers only through one career website.
+
+77
+00:03:32,069 --> 00:03:36,537
+People who never use that site are hard to
+reach, so they barely appear, however
+
+78
+00:03:36,587 --> 00:03:37,440
+their search went.
+
+79
+00:03:37,790 --> 00:03:39,241
+This is inverse probability weighting.
+
+80
+00:03:39,291 --> 00:03:43,745
+Weight each kept patient by one over the
+chance of being kept, so sixty critical
+
+81
+00:03:43,795 --> 00:03:45,547
+patients stand in for three hundred.
+
+82
+00:03:45,597 --> 00:03:48,850
+The estimate returns to twenty-five
+percent, provided the cause of exclusion
+
+83
+00:03:48,900 --> 00:03:49,450
+was recorded.
+
+84
+00:03:49,500 --> 00:03:54,254
+For example, say the résumé tool recorded
+how likely each kind of user was to keep
+
+85
+00:03:54,304 --> 00:03:54,555
+answering.
+
+86
+00:03:54,605 --> 00:03:58,758
+A user with no interviews who still
+replied gets a large weight, standing in
+
+87
+00:03:58,808 --> 00:04:00,860
+for those like her who went silent.
+
+88
+00:04:01,210 --> 00:04:05,128
+A chart of belief over ten made-up pieces
+of evidence, five for, five against.
+
+89
+00:04:05,178 --> 00:04:07,112
+Weighed fairly, belief ends at fifty
+percent.
+
+90
+00:04:07,162 --> 00:04:11,080
+Let a prior count flattering pieces more
+and the red line ends at ninety-seven.
+
+91
+00:04:11,130 --> 00:04:12,214
+That is confirmation bias.
+
+92
+00:04:12,264 --> 00:04:16,182
+For example, a developer sure her fit-
+scoring agent works counts each good match
+
+93
+00:04:16,232 --> 00:04:16,748
+as proof.
+
+94
+00:04:16,798 --> 00:04:21,567
+Each bad match she sets aside as an odd
+listing, so only the good ones reach her
+
+95
+00:04:21,617 --> 00:04:21,850
+report.
+
+96
+00:04:22,200 --> 00:04:23,406
+Next, a made-up poll.
+
+97
+00:04:23,456 --> 00:04:25,917
+One hundred people are asked whether they
+voted.
+
+98
+00:04:25,967 --> 00:04:27,800
+Sixty did, seventy-five say they did.
+
+99
+00:04:27,850 --> 00:04:31,253
+That is self-report bias, people misreport
+themselves in one consistent direction,
+
+100
+00:04:31,303 --> 00:04:32,194
+toward looking good.
+
+101
+00:04:32,244 --> 00:04:34,705
+Asking more people does not average it
+away.
+
+102
+00:04:34,755 --> 00:04:38,472
+For example, a job application asks
+candidates to rate their own spreadsheet
+
+103
+00:04:38,522 --> 00:04:38,786
+skills.
+
+104
+00:04:38,836 --> 00:04:43,180
+Most round up and almost nobody rounds
+down, so the error leans one way.
+
+105
+00:04:43,530 --> 00:04:46,529
+Now eighty simulated studies, true effect
+zero point one five.
+
+106
+00:04:46,579 --> 00:04:48,968
+Filled dots were published, hollow ones
+were not.
+
+107
+00:04:49,018 --> 00:04:50,187
+That is publication bias.
+
+108
+00:04:50,237 --> 00:04:53,845
+Significant results get published, nulls
+stay in drawers, and the published pool
+
+109
+00:04:53,895 --> 00:04:55,674
+alone shows zero point two one.
+
+110
+00:04:55,724 --> 00:04:59,638
+For example, studies of AI résumé tools
+get published when the tool raised
+
+111
+00:04:59,688 --> 00:04:59,942
+callbacks.
+
+112
+00:04:59,992 --> 00:05:04,515
+Studies where it made no difference stay
+in a drawer, so the tools look stronger
+
+113
+00:05:04,565 --> 00:05:05,430
+than they are.
+
+114
+00:05:05,780 --> 00:05:09,748
+Remove the unpublished studies and this is
+a funnel plot, effect size against
+
+115
+00:05:09,798 --> 00:05:10,057
+precision.
+
+116
+00:05:10,107 --> 00:05:14,384
+It should be symmetric, but the lower left
+corner, small null studies, is empty.
+
+117
+00:05:14,434 --> 00:05:18,092
+Trim-and-fill adds seven stand-ins, moving
+the pool to zero point one nine.
+
+118
+00:05:18,142 --> 00:05:22,110
+For example, plot every published test of
+whether a tailored cover letter brings
+
+119
+00:05:22,160 --> 00:05:22,728
+more callbacks.
+
+120
+00:05:22,778 --> 00:05:27,364
+If the small tests that found nothing
+never came out, the lower left of the
+
+121
+00:05:27,414 --> 00:05:28,600
+funnel plot sits empty.
+
+122
+00:05:28,950 --> 00:05:30,342
+This is an agreement table.
+
+123
+00:05:30,392 --> 00:05:34,379
+Two blind coders label one hundred notes,
+with made-up counts, and agree on eighty.
+
+124
+00:05:34,429 --> 00:05:36,974
+Cohen's kappa asks how much of that beats
+chance.
+
+125
+00:05:37,024 --> 00:05:40,434
+Chance alone gives zero point five, so
+kappa is zero point six.
+
+126
+00:05:40,484 --> 00:05:44,183
+For example, two recruiters each mark the
+same résumés as qualified or not.
+
+127
+00:05:44,233 --> 00:05:48,220
+Kappa asks how far their agreement goes
+beyond what two people guessing at their
+
+128
+00:05:48,270 --> 00:05:49,950
+own rates would reach by luck.
+
+129
+00:05:50,300 --> 00:05:54,448
+Coder B can see each patient's prior
+diagnosis, and kappa falls from zero point
+
+130
+00:05:54,498 --> 00:05:55,947
+six to zero point two.
+
+131
+00:05:55,997 --> 00:05:58,946
+A kappa that collapses on unblinding
+points to observer bias.
+
+132
+00:05:58,996 --> 00:06:02,244
+The labeler's prior belief is doing the
+labeling, not the note.
+
+133
+00:06:02,294 --> 00:06:06,142
+For example, a recruiter rating interview
+notes can see each candidate's school, and
+
+134
+00:06:06,192 --> 00:06:08,241
+rates notes from famous schools as
+stronger.
+
+135
+00:06:08,291 --> 00:06:10,940
+The school, not the notes, is setting the
+label.
+
+136
+00:06:11,290 --> 00:06:14,574
+Grids of who disagrees with the majority,
+items down, coders across.
+
+137
+00:06:14,624 --> 00:06:16,695
+Left, marks pile up on two items.
+
+138
+00:06:16,745 --> 00:06:20,029
+That is data-coding bias, a vague
+category, so revise the manual.
+
+139
+00:06:20,079 --> 00:06:22,151
+Right, they pile up on one coder.
+
+140
+00:06:22,201 --> 00:06:23,363
+That is observer bias.
+
+141
+00:06:23,413 --> 00:06:27,000
+For example, taggers sorting job listings
+into remote, hybrid or on-site disagree
+
+142
+00:06:27,050 --> 00:06:29,122
+mostly on listings that say remote
+friendly.
+
+143
+00:06:29,172 --> 00:06:34,274
+The category is vague, not the taggers, so
+that is data-coding bias, and the fix is a
+
+144
+00:06:34,324 --> 00:06:34,880
+clearer rule.
+
+145
+00:06:35,230 --> 00:06:37,185
+One hundred diagnoses, true code against
+recorded.
+
+146
+00:06:37,235 --> 00:06:40,050
+Twelve of thirty true C cases were entered
+as B.
+
+147
+00:06:40,100 --> 00:06:42,915
+That is data-entry bias, a patterned
+error, not random noise.
+
+148
+00:06:42,965 --> 00:06:46,640
+The right code sat three menus deep, so
+the nearest one was entered.
+
+149
+00:06:46,690 --> 00:06:50,364
+For example, an agent filling in
+applications meets a long dropdown of job
+
+150
+00:06:50,414 --> 00:06:50,651
+titles.
+
+151
+00:06:50,701 --> 00:06:55,521
+When the right title sits far down the
+list, it keeps picking a near match at the
+
+152
+00:06:55,571 --> 00:06:55,808
+top.
+
+153
+00:06:55,858 --> 00:06:57,240
+The error follows the form.
+
+154
+00:06:57,590 --> 00:06:59,816
+Made-up promotion data beside a model's
+predictions.
+
+155
+00:06:59,866 --> 00:07:03,068
+Men thirty percent, women eighteen, and
+the model matches both.
+
+156
+00:07:03,118 --> 00:07:04,369
+That is historical bias.
+
+157
+00:07:04,419 --> 00:07:06,645
+Unlike selection bias, nobody was filtered
+out.
+
+158
+00:07:06,695 --> 00:07:10,548
+The data faithfully copies an unfair past,
+and accuracy is the harm.
+
+159
+00:07:10,598 --> 00:07:15,101
+For example, a model that predicts who
+gets an interview learns from a firm's
+
+160
+00:07:15,151 --> 00:07:16,401
+complete, correct callback records.
+
+161
+00:07:16,451 --> 00:07:20,954
+Those records show people with gaps in
+their résumés were rarely called, and the
+
+162
+00:07:21,004 --> 00:07:22,580
+model copies that past exactly.
+
+163
+00:07:22,930 --> 00:07:25,728
+One box at the bottom feeds four boxes
+above.
+
+164
+00:07:25,778 --> 00:07:29,209
+The bottom box is implicit bias,
+associations people hold without noticing.
+
+165
+00:07:29,259 --> 00:07:33,006
+It surfaces as confirmation, observer,
+data coding and publication bias, so there
+
+166
+00:07:33,056 --> 00:07:34,905
+is no single point to fix.
+
+167
+00:07:34,955 --> 00:07:38,702
+For example, a hiring manager warms,
+without noticing, to candidates who share
+
+168
+00:07:38,752 --> 00:07:39,335
+her background.
+
+169
+00:07:39,385 --> 00:07:43,765
+That same pull shapes which résumés she
+opens first, how she hears their answers,
+
+170
+00:07:43,815 --> 00:07:45,980
+and which hires she reports as successes.
+
+171
+00:07:46,330 --> 00:07:47,516
+Now a parity audit.
+
+172
+00:07:47,566 --> 00:07:51,533
+One group is predicted positive forty
+percent of the time, the other twenty-
+
+173
+00:07:51,583 --> 00:07:51,842
+five.
+
+174
+00:07:51,892 --> 00:07:54,314
+That gap is a flag, not a verdict.
+
+175
+00:07:54,364 --> 00:07:58,022
+Pipeline bias and a real base-rate
+difference between the groups show the
+
+176
+00:07:58,072 --> 00:07:58,640
+same gap.
+
+177
+00:07:58,990 --> 00:08:00,383
+Stacked bars, with made-up shares.
+
+178
+00:08:00,433 --> 00:08:02,692
+The training set is ninety percent group
+one.
+
+179
+00:08:02,742 --> 00:08:05,578
+The people the model is used on are split
+evenly.
+
+180
+00:08:05,628 --> 00:08:07,887
+That mismatch is dataset bias, a sampling
+problem.
+
+181
+00:08:07,937 --> 00:08:10,484
+Fix the sample and, in principle, the bias
+goes.
+
+182
+00:08:10,534 --> 00:08:13,948
+For example, a fit-scoring agent is
+trained mostly on résumés for software
+
+183
+00:08:13,998 --> 00:08:16,545
+jobs, then used to score nurses and
+teachers too.
+
+184
+00:08:16,595 --> 00:08:19,720
+The people it learned from are not the
+people it scores.
+
+185
+00:08:20,070 --> 00:08:20,830
+Now the label.
+
+186
+00:08:20,880 --> 00:08:25,420
+Both areas have the same true crime rate,
+but detection is twice as high in one, so
+
+187
+00:08:25,470 --> 00:08:27,040
+its recorded re-arrest rate is double.
+
+188
+00:08:27,090 --> 00:08:29,740
+Re-arrest is a biased measurement, a
+distorted stand-in for crime.
+
+189
+00:08:29,790 --> 00:08:31,900
+Train on it and you get label bias.
+
+190
+00:08:31,950 --> 00:08:35,680
+For example, a hiring model learns what a
+good hire is from managers' first-year
+
+191
+00:08:35,730 --> 00:08:35,950
+ratings.
+
+192
+00:08:36,000 --> 00:08:39,730
+If those ratings mark some people down,
+the rating is a biased measurement, and
+
+193
+00:08:39,780 --> 00:08:41,890
+the model learns the rating, not the work.
+
+194
+00:08:42,240 --> 00:08:44,780
+The model predicts who succeeds, and it is
+right.
+
+195
+00:08:44,830 --> 00:08:47,945
+But group one had eighty percent mentor
+access, group two forty.
+
+196
+00:08:47,995 --> 00:08:49,096
+That is structural bias.
+
+197
+00:08:49,146 --> 00:08:51,973
+Data, labels and model are fine, the world
+is unequal.
+
+198
+00:08:52,023 --> 00:08:54,275
+Retraining leaves the twenty point gap in
+success.
+
+199
+00:08:54,325 --> 00:08:57,728
+For example, an agent correctly predicts
+that applicants with referrals get hired
+
+200
+00:08:57,778 --> 00:08:58,303
+more often.
+
+201
+00:08:58,353 --> 00:09:02,331
+But referrals depend on who you already
+know, and that is not spread evenly.
+
+202
+00:09:02,381 --> 00:09:03,770
+No model fix touches it.
+
+203
+00:09:04,120 --> 00:09:07,626
+This is Pearl's ladder, three levels of
+causal reasoning drawn as rungs.
+
+204
+00:09:07,676 --> 00:09:10,293
+Seeing, the bottom rung, asks what goes
+with what.
+
+205
+00:09:10,343 --> 00:09:13,849
+Doing, the middle rung, asks what happens
+if we set something ourselves.
+
+206
+00:09:13,899 --> 00:09:17,109
+Imagining, the top rung, is the
+counterfactual, what would have happened
+
+207
+00:09:17,159 --> 00:09:19,776
+to this one case if something had been
+different.
+
+208
+00:09:19,826 --> 00:09:23,332
+For example, seeing notices that
+applicants who send cover letters get more
+
+209
+00:09:23,382 --> 00:09:23,628
+interviews.
+
+210
+00:09:23,678 --> 00:09:26,591
+Doing adds letters to a random half of the
+applications.
+
+211
+00:09:26,641 --> 00:09:30,444
+Imagining asks whether this job seeker
+would have got this interview without her
+
+212
+00:09:30,494 --> 00:09:30,740
+letter.
+
+213
+00:09:31,090 --> 00:09:34,779
+Rung one is association, the chance of an
+outcome given what we observe.
+
+214
+00:09:34,829 --> 00:09:38,806
+In this made-up approval model, group A
+gets forty-six percent and group B thirty-
+
+215
+00:09:38,856 --> 00:09:39,094
+four.
+
+216
+00:09:39,144 --> 00:09:41,107
+That twelve point gap is an observation.
+
+217
+00:09:41,157 --> 00:09:42,833
+It cannot say what causes it.
+
+218
+00:09:42,883 --> 00:09:46,573
+For example, job seekers who use an AI-
+tailored résumé get more interviews.
+
+219
+00:09:46,623 --> 00:09:47,435
+That is association.
+
+220
+00:09:47,485 --> 00:09:51,750
+The tool might help, or the people who use
+it might already apply more carefully.
+
+221
+00:09:52,100 --> 00:09:54,802
+Rung two is intervention, setting a
+variable, not watching it.
+
+222
+00:09:54,852 --> 00:09:59,480
+Set the zip code score to a neutral value,
+run the model again, and the gap falls
+
+223
+00:09:59,530 --> 00:10:00,856
+from twelve points to two.
+
+224
+00:10:00,906 --> 00:10:03,058
+Most of it ran through the zip code.
+
+225
+00:10:03,108 --> 00:10:06,911
+For example, a job-search agent tailors
+the résumé for a random half of its
+
+226
+00:10:06,961 --> 00:10:09,388
+listings and sends the plain one to the
+rest.
+
+227
+00:10:09,438 --> 00:10:12,690
+Setting the variable by coin flip, not
+watching who tailors, is intervention.
+
+228
+00:10:13,040 --> 00:10:14,674
+This diagram is a causal graph.
+
+229
+00:10:14,724 --> 00:10:18,603
+Boxes are variables, arrows run from cause
+to effect, from the protected attribute to
+
+230
+00:10:18,653 --> 00:10:19,164
+the outcome.
+
+231
+00:10:19,214 --> 00:10:23,654
+The red box is a proxy, a feature that
+tracks the attribute, such as zip code.
+
+232
+00:10:23,704 --> 00:10:27,022
+The lower route goes through a human
+reviewer and skips the model.
+
+233
+00:10:27,072 --> 00:10:30,951
+For example, in a résumé screener's graph,
+graduation year is a proxy for age.
+
+234
+00:10:31,001 --> 00:10:34,880
+The model never sees age, but age still
+reaches the score through that arrow.
+
+235
+00:10:35,230 --> 00:10:39,066
+Leverage analysis lists every path from
+attribute to outcome and asks how much
+
+236
+00:10:39,116 --> 00:10:39,963
+bias each carries.
+
+237
+00:10:40,013 --> 00:10:42,354
+Line width is the load, with made-up
+numbers.
+
+238
+00:10:42,404 --> 00:10:46,838
+Of fifty points, the model paths carry two
+and three, the thick red reviewer path
+
+239
+00:10:46,888 --> 00:10:47,137
+forty-five.
+
+240
+00:10:47,187 --> 00:10:50,725
+For example, a hiring gap could run
+through who applies, through the
+
+241
+00:10:50,775 --> 00:10:53,714
+screener's score, or through the recruiter
+who works the shortlist.
+
+242
+00:10:53,764 --> 00:10:57,600
+Leverage analysis measures how much each
+route carries before anyone picks a fix.
+
+243
+00:10:57,950 --> 00:11:00,836
+Leverage is the share of that bias one
+action stops.
+
+244
+00:11:00,886 --> 00:11:02,598
+Each red cross is a fix.
+
+245
+00:11:02,648 --> 00:11:04,359
+Repairing the sample blocks four percent.
+
+246
+00:11:04,409 --> 00:11:05,828
+A fairness penalty blocks six.
+
+247
+00:11:05,878 --> 00:11:07,296
+Changing the review blocks ninety.
+
+248
+00:11:07,346 --> 00:11:09,057
+That is the high leverage point.
+
+249
+00:11:09,107 --> 00:11:13,168
+For example, retraining a résumé screener
+might block a sliver of a hiring gap,
+
+250
+00:11:13,218 --> 00:11:16,985
+while changing how recruiters break ties
+on the shortlist blocks most of it.
+
+251
+00:11:17,035 --> 00:11:19,040
+The tie-break change has the higher
+leverage.
+
+252
+00:11:19,390 --> 00:11:20,808
+A node has an owner.
+
+253
+00:11:20,858 --> 00:11:24,626
+The accountable owner is whoever controls
+the high leverage node, here whoever runs
+
+254
+00:11:24,676 --> 00:11:25,507
+the review process.
+
+255
+00:11:25,557 --> 00:11:26,975
+Naming them is not blame.
+
+256
+00:11:27,025 --> 00:11:31,086
+Leverage analysis finds the path, and the
+accountable owner is who can change it.
+
+257
+00:11:31,136 --> 00:11:35,491
+For example, if most of a hiring gap runs
+through the final interview panel, the
+
+258
+00:11:35,541 --> 00:11:39,603
+accountable owner is whoever sets how that
+panel decides, not the engineer who built
+
+259
+00:11:39,653 --> 00:11:40,190
+the screener.
+
+260
+00:11:40,540 --> 00:11:43,858
+These charts show different ideas of fair,
+with made-up rates.
+
+261
+00:11:43,908 --> 00:11:48,909
+Calibration parity says a score means the
+same in every group, here sixty percent of
+
+262
+00:11:48,959 --> 00:11:51,267
+those flagged are truly positive in both.
+
+263
+00:11:51,317 --> 00:11:55,982
+Equal FPR and FNR, false positive rate and
+false negative rate, says errors fall
+
+264
+00:11:56,032 --> 00:11:56,319
+equally.
+
+265
+00:11:56,369 --> 00:11:59,350
+For example, take a screener that marks
+applicants qualified.
+
+266
+00:11:59,400 --> 00:12:04,064
+Calibration parity means those it marks
+turn out qualified just as often in every
+
+267
+00:12:04,114 --> 00:12:04,401
+group.
+
+268
+00:12:04,451 --> 00:12:08,779
+Equal FPR and FNR means unqualified people
+passed, and qualified people rejected, at
+
+269
+00:12:08,829 --> 00:12:10,800
+the same rates in every group.
+
+270
+00:12:11,150 --> 00:12:11,999
+Now the catch.
+
+271
+00:12:12,049 --> 00:12:15,596
+Each grid is one hundred people, filled
+dots are the truly positive.
+
+272
+00:12:15,646 --> 00:12:20,093
+That share is the base rate, thirty
+percent in group one, fifty in group two.
+
+273
+00:12:20,143 --> 00:12:23,090
+Unequal base rates set the fairness
+measures against each other.
+
+274
+00:12:23,440 --> 00:12:27,169
+The impossibility theorem says that with
+unequal base rates, calibration parity,
+
+275
+00:12:27,219 --> 00:12:29,917
+equal FPR and equal FNR cannot all hold.
+
+276
+00:12:29,967 --> 00:12:34,726
+In table A, TPR, the true positive rate,
+is equal, so PPV, positive predictive
+
+277
+00:12:34,776 --> 00:12:35,413
+value, breaks.
+
+278
+00:12:35,463 --> 00:12:38,504
+In table B, PPV is equal, so TPR breaks.
+
+279
+00:12:38,554 --> 00:12:42,626
+For example, if more of one group's
+applicants are qualified, a screener
+
+280
+00:12:42,676 --> 00:12:48,466
+cannot make its yes mean the same in both
+groups and also make both kinds of mistake
+
+281
+00:12:48,516 --> 00:12:49,840
+equally often in both.
+
+282
+00:12:50,190 --> 00:12:51,477
+Someone absorbs the error.
+
+283
+00:12:51,527 --> 00:12:55,486
+Option A gives group one more wrong flags,
+forty percent against twenty-two.
+
+284
+00:12:55,536 --> 00:12:59,162
+Option B misses more of group two's
+positives, eighty-five percent against
+
+285
+00:12:59,212 --> 00:12:59,496
+sixty-five.
+
+286
+00:12:59,546 --> 00:13:01,166
+No arithmetic picks between them.
+
+287
+00:13:01,216 --> 00:13:03,505
+Choosing the metric is a values claim.
+
+288
+00:13:03,555 --> 00:13:07,181
+For example, a company picking its
+screener's metric is choosing between
+
+289
+00:13:07,231 --> 00:13:10,856
+rejecting more qualified people in one
+group or interviewing more unqualified
+
+290
+00:13:10,906 --> 00:13:12,193
+people in the other.
+
+291
+00:13:12,243 --> 00:13:15,200
+That is a decision about who bears the
+error.
+
+292
+00:13:15,550 --> 00:13:18,306
+Now pairs that get mixed up, side by side.
+
+293
+00:13:18,356 --> 00:13:19,241
+Left, selection bias.
+
+294
+00:13:19,291 --> 00:13:23,917
+A filter drops people, here the sickest
+dots fade out, so the sample misses them.
+
+295
+00:13:23,967 --> 00:13:24,852
+Right, historical bias.
+
+296
+00:13:24,902 --> 00:13:27,346
+Nobody is dropped and every label is
+accurate.
+
+297
+00:13:27,396 --> 00:13:29,216
+The data shows an unfair world.
+
+298
+00:13:29,266 --> 00:13:31,710
+The test is whether anyone was filtered
+out.
+
+299
+00:13:32,060 --> 00:13:32,568
+Second pair.
+
+300
+00:13:32,618 --> 00:13:33,126
+Left, association.
+
+301
+00:13:33,176 --> 00:13:37,032
+You watch X, and Y rises with it, but you
+cannot tell the reason.
+
+302
+00:13:37,082 --> 00:13:37,590
+Right, intervention.
+
+303
+00:13:37,640 --> 00:13:40,379
+You set X by hand and see whether Y moves.
+
+304
+00:13:40,429 --> 00:13:43,169
+Here it does not, so X was not the cause.
+
+305
+00:13:43,219 --> 00:13:45,680
+Ask whether anyone set X, or only watched
+it.
+
+306
+00:13:46,030 --> 00:13:47,787
+Third pair, with made-up rates.
+
+307
+00:13:47,837 --> 00:13:48,871
+Left, calibration parity.
+
+308
+00:13:48,921 --> 00:13:55,015
+PPV, the share of flags that are right, is
+sixty percent in both groups, but TPR is
+
+309
+00:13:55,065 --> 00:13:56,099
+thirty-five against fifteen.
+
+310
+00:13:56,149 --> 00:14:00,436
+Right, equal error rates, the same idea as
+equal FPR and FNR.
+
+311
+00:14:00,486 --> 00:14:04,050
+TPR matches, and PPV splits, sixty against
+seventy-seven point eight.
+
+312
+00:14:04,400 --> 00:14:04,986
+Last pair.
+
+313
+00:14:05,036 --> 00:14:07,847
+Left, dataset bias, the wrong people in
+the sample.
+
+314
+00:14:07,897 --> 00:14:10,708
+Training is mostly group one, deployment
+is split evenly.
+
+315
+00:14:10,758 --> 00:14:13,252
+Right, label bias, the wrong thing written
+down.
+
+316
+00:14:13,302 --> 00:14:16,431
+The true rate is twenty percent, the
+recorded rate ten.
+
+317
+00:14:16,481 --> 00:14:19,610
+One is a sampling problem, the other a
+measurement problem.
+
+318
+00:14:19,960 --> 00:14:21,600
+Here vague claims become exact.
+
+319
+00:14:21,650 --> 00:14:23,289
+First, the model is biased.
+
+320
+00:14:23,339 --> 00:14:25,317
+Name the target and the estimate.
+
+321
+00:14:25,367 --> 00:14:29,711
+In the made-up patient example, the sample
+says fourteen point three percent, the
+
+322
+00:14:29,761 --> 00:14:33,090
+truth is twenty-five, the bias minus ten
+point seven points.
+
+323
+00:14:33,440 --> 00:14:35,231
+Second, just collect more data.
+
+324
+00:14:35,281 --> 00:14:37,440
+More data narrows scatter, not offset.
+
+325
+00:14:37,490 --> 00:14:39,281
+SD, standard deviation, measures scatter.
+
+326
+00:14:39,331 --> 00:14:45,173
+It shrinks from five points to zero point
+five as samples grow from fifty to five
+
+327
+00:14:45,223 --> 00:14:45,541
+thousand.
+
+328
+00:14:45,591 --> 00:14:47,750
+The red bias bar never changes.
+
+329
+00:14:48,100 --> 00:14:49,715
+Third, the model is fair.
+
+330
+00:14:49,765 --> 00:14:51,048
+Ask by which metric.
+
+331
+00:14:51,098 --> 00:14:55,378
+Here TPR and FPR are equal across groups,
+thirty-five percent and ten percent.
+
+332
+00:14:55,428 --> 00:15:00,041
+Yet PPV is sixty percent in one group,
+seventy-seven point eight in the other.
+
+333
+00:15:00,091 --> 00:15:01,040
+Name the metric.
+
+334
+00:15:01,390 --> 00:15:03,103
+Fourth, check whether it is causal.
+
+335
+00:15:03,153 --> 00:15:04,865
+The exact version is an intervention.
+
+336
+00:15:04,915 --> 00:15:08,978
+Set the zip code proxy to a neutral value
+and run the model again.
+
+337
+00:15:09,028 --> 00:15:11,328
+The gap of twelve points drops to two.
+
+338
+00:15:11,378 --> 00:15:13,090
+The proxy carried most of it.
+
+339
+00:15:13,440 --> 00:15:14,661
+Fifth, fix the bias.
+
+340
+00:15:14,711 --> 00:15:16,885
+The exact version is a leverage analysis.
+
+341
+00:15:16,935 --> 00:15:21,016
+Draw the causal graph, list the three
+paths, block the one carrying forty-five
+
+342
+00:15:21,066 --> 00:15:23,558
+of fifty points, and name its accountable
+owner.
+
+343
+00:15:23,608 --> 00:15:26,100
+It is rarely the fix nearest your hands.
+
+344
+00:15:26,450 --> 00:15:29,766
+A checklist to run before accepting any
+bias claim or fix.
+
+345
+00:15:29,816 --> 00:15:34,050
+First, ask which number is the estimate,
+and what the target is, written theta.
+
+346
+00:15:34,100 --> 00:15:35,886
+Bias is the gap between them.
+
+347
+00:15:35,936 --> 00:15:38,640
+If nobody can name both, nothing can be
+tested.
+
+348
+00:15:38,990 --> 00:15:39,515
+Second check.
+
+349
+00:15:39,565 --> 00:15:42,678
+Ask whether who got in depended on what
+happened to them.
+
+350
+00:15:42,728 --> 00:15:46,990
+If yes, that is selection bias, and more
+data from the same filter sharpens the
+
+351
+00:15:47,040 --> 00:15:47,565
+wrong answer.
+
+352
+00:15:47,615 --> 00:15:50,440
+If groups were hard to reach, it is
+sampling bias.
+
+353
+00:15:50,790 --> 00:15:51,331
+Third check.
+
+354
+00:15:51,381 --> 00:15:56,352
+Ask whether the data is a faithful picture
+of a world you did not want to copy.
+
+355
+00:15:56,402 --> 00:15:57,534
+That is historical bias.
+
+356
+00:15:57,584 --> 00:16:00,783
+Every quality check passes, because
+nothing in the data is wrong.
+
+357
+00:16:00,833 --> 00:16:02,260
+Here accuracy is the problem.
+
+358
+00:16:02,610 --> 00:16:03,149
+Fourth check.
+
+359
+00:16:03,199 --> 00:16:04,623
+Ask where the bias sits.
+
+360
+00:16:04,673 --> 00:16:06,686
+In the sample, that is dataset bias.
+
+361
+00:16:06,736 --> 00:16:08,749
+In the labels, that is label bias.
+
+362
+00:16:08,799 --> 00:16:12,286
+In the world the model is deployed into,
+that is structural bias.
+
+363
+00:16:12,336 --> 00:16:13,760
+Each needs a different fix.
+
+364
+00:16:14,110 --> 00:16:14,766
+Fifth check.
+
+365
+00:16:14,816 --> 00:16:16,531
+Rung one or rung two.
+
+366
+00:16:16,581 --> 00:16:20,061
+Ask whether anyone set the variable, or
+only watched it.
+
+367
+00:16:20,111 --> 00:16:21,120
+Watching gives association.
+
+368
+00:16:21,170 --> 00:16:22,179
+Setting gives intervention.
+
+369
+00:16:22,229 --> 00:16:26,768
+A fairness metric computed from observed
+data is association, so it cannot settle
+
+370
+00:16:26,818 --> 00:16:28,180
+what causes the gap.
+
+371
+00:16:28,530 --> 00:16:28,808
+Last.
+
+372
+00:16:28,858 --> 00:16:32,744
+Ask which path carries the most bias, and
+who owns that node.
+
+373
+00:16:32,794 --> 00:16:35,368
+That is leverage analysis and the
+accountable owner.
+
+374
+00:16:35,418 --> 00:16:40,616
+Then say it exactly, for example a bias of
+minus ten point seven points against a
+
+375
+00:16:40,666 --> 00:16:41,600
+twenty-five percent target.
+
+376
+00:16:42,450 --> 00:16:43,029
+Let's recap.
+
+377
+00:16:43,079 --> 00:16:47,435
+Bias is an offset from the truth, and more
+data does not move it.
+
+378
+00:16:47,485 --> 00:16:50,582
+Selection bias drops people, historical
+bias copies an unfair world.
+
+379
+00:16:50,632 --> 00:16:54,044
+Bias can sit in the sample, the labels or
+the structure.
+
+380
+00:16:54,094 --> 00:16:56,247
+Association watches a variable,
+intervention sets it.
+
+381
+00:16:56,297 --> 00:16:59,394
+Leverage analysis finds the path, the
+accountable owner controls it.
+
+382
+00:16:59,444 --> 00:17:03,170
+With unequal base rates, choosing a
+fairness metric is a values claim.
+
+383
+00:17:03,520 --> 00:17:05,039
+Quiz me on bias terms.
+
+384
+00:17:05,089 --> 00:17:10,061
+Give me short cases, one at a time, about
+a data pipeline or a deployed model.
+
+385
+00:17:10,111 --> 00:17:14,456
+For each, I must name the exact term, such
+as selection bias, sampling bias,
+
+386
+00:17:14,506 --> 00:17:17,281
+historical bias, observer bias, label
+bias, structural bias, association,
+
+387
+00:17:17,331 --> 00:17:20,733
+intervention, leverage or accountable
+owner, and say why its look-alike is
+
+388
+00:17:20,783 --> 00:17:21,047
+wrong.
+
+389
+00:17:21,097 --> 00:17:23,558
+Do not reveal the answer until I reply.
+
+390
+00:17:23,608 --> 00:17:24,500
+Then correct me.
+
+391
+00:17:24,850 --> 00:17:26,141
+Key Terms: Bias.
+
+392
+00:17:26,191 --> 00:17:27,930
+At Nik Bear Brown.

@@ -1,0 +1,650 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-13-prediction-lock",
+    "title": "Why a Prediction You Can Edit Is Worth Nothing",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show that an unlocked prediction slides to meet the result, collapsing the gap that would have produced evidence of learning — a prediction is only evidence if it is committed before the outcome and cannot be revised after. Source: books/computational-skepticism-for-ai/chapters/04-the-frictional-method-evidence-of-learning-when-ai-can-generate-the-artifact.md",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = locked prediction / genuine evidence; CRIMSON = the sliding prediction / the cheat; GOLD = the gap / the measurement; SLATE = the outcome pin",
+    "note": "EXCLUSIONS: no seven-move framework, no GLP components, no neuroscience, no journal grading or failure-mode taxonomy",
+    "total_estimated_duration_seconds": 183,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 13,
+    "build": {
+      "at": "2026-07-19T02:30:00",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "Why a Prediction You Can Edit Is Worth Nothing",
+            "greeting": "Ni hao, Liam.",
+            "command": "Written before the result, a guess is evidence.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "Written before the result, a guess is evidence. Editable after, the identical sentence proves nothing.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Why a Prediction You Can Edit Is Worth Nothing",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "Why a Prediction You Can Edit\nIs Worth Nothing"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 6.23,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "A student checks her understanding of a proof by prompting the AI, reading its output, and then writing: 'I thought it would work exactly like that.' The sentence feels true. She did think something before reading. But she cannot recover what she actually thought — only the post-hoc version that matches what she just read.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "collapse"
+      },
+      "graphic": {
+        "manim": "B02_SlideToMatch",
+        "production_viz": {
+          "label": "prediction sliding to meet result — the problem",
+          "mechanic": "a horizontal number line; a slate pin on the right labeled 'OUTCOME'; a crimson pin on the left labeled 'PREDICTION'; after reading, the crimson pin slides rightward to stack exactly on top of the slate outcome pin; a gold gap bracket appears briefly before collapse, then disappears; SerifLabel 'gap erased' appears where the bracket was",
+          "colors": [
+            "#2D3142",
+            "#BF3339",
+            "#F5D061"
+          ],
+          "note": "the collapse motion is the key mechanic — the gap that could have measured learning disappears; gold bracket shows what was lost"
+        }
+      },
+      "scene_class": "B02_SlideToMatch",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 16.17,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:00",
+        "needs": "PIPELINE → render animated_graphics.py scene B02_*"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "What makes a prediction evidence — and why does the editable version always slide to meet the result?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "What makes a prediction evidence",
+              "why does the editable log fail?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "What makes a prediction evidence?",
+        "sub": "and why does the editable version always slide to meet the result"
+      },
+      "scene_class": "B03_Question",
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 5.67,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:00"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A prediction is only evidence when it is committed before the outcome. The information lives in the gap — the difference between what you said and what happened. That gap measures how much your model of the world differs from reality. No gap means no information.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B04_GapMeasures",
+        "production_viz": {
+          "label": "the gap as measurement — prediction vs. outcome",
+          "mechanic": "a horizontal axis; a teal pin on the left labeled 'PREDICTION'; a slate pin on the right labeled 'OUTCOME'; a gold double-headed bracket spanning the gap between them labeled 'information'; SerifLabel 'this measures what you got wrong' below the gold bracket",
+          "colors": [
+            "#1F6F5C",
+            "#2D3142",
+            "#F5D061"
+          ],
+          "note": "simple, clean — the gap is the subject; the bracket is the key visual element"
+        }
+      },
+      "scene_class": "B04_GapMeasures",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 13.53,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:00",
+        "needs": "PIPELINE → render animated_graphics.py scene B04_*"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "When AI can generate the artifact — the answer, the summary, the proof — reading it first and then reflecting is not checking your understanding. It is adopting the AI's understanding and calling it yours. The prediction is reconstructed in the light of the outcome. It always matches.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "collapse"
+      },
+      "graphic": {
+        "manim": "B05_AIContaminates",
+        "production_viz": {
+          "label": "AI output contaminates the post-hoc prediction",
+          "mechanic": "three stages: (1) slate 'AI OUTPUT' block on the right; (2) a crimson 'YOUR PREDICTION' block on the left with a question mark; (3) after reading, the crimson block morphs and slides right to match the AI output — labels swap to show they are now identical; SerifLabel 'indistinguishable' above the merged blocks",
+          "colors": [
+            "#2D3142",
+            "#BF3339",
+            "#1F6F5C"
+          ],
+          "note": "the morphing/sliding transform is the key visual — the prediction is retroactively shaped to match"
+        }
+      },
+      "scene_class": "B05_AIContaminates",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 15.13,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:00",
+        "needs": "PIPELINE → render animated_graphics.py scene B05_*"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The lock is what makes the gap real.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "hold",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "The lock is what makes the gap real."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A minimalist editorial doodle of two pins on a horizontal number line — a teal prediction pin on the left and a slate outcome pin on the right — with a gold double-headed bracket spanning the gap between them; a padlock icon sits on the teal pin, closed and locked; above the padlock a small label reads 'committed before'; the crimson ghost of an unlocked pin is shown sliding rightward toward the outcome pin with a strikethrough X; flat newsprint editorial style, cream background, charcoal ink",
+      "scene_class": "B06_LockSetup",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 2.67,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:00"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A locked prediction is committed to paper — literally or digitally — before the outcome is seen. The lock is not metaphorical. It means: timestamped, uneditable, visible to someone else, or all three. Once locked, the gap between prediction and outcome is real data.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B07_LockedPinGap",
+        "production_viz": {
+          "label": "locked prediction — gap survives, becomes data",
+          "mechanic": "a teal pin labeled 'PREDICTION' on the left with a padlock icon; a slate pin labeled 'OUTCOME' on the right; a gold bracket spans the gap; the teal pin does NOT move toward the outcome; SerifLabel 'the gap survives' below the bracket; three small LabelChips below: 'TIMESTAMPED', 'UNEDITABLE', 'WITNESSED'",
+          "colors": [
+            "#1F6F5C",
+            "#2D3142",
+            "#F5D061"
+          ],
+          "note": "the pin's stillness is the point — it does not slide; the gold bracket persists; the three chips reinforce what 'locked' means"
+        }
+      },
+      "scene_class": "B07_LockedPinGap",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 14.63,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:00",
+        "needs": "PIPELINE → render animated_graphics.py scene B07_*"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "Leave the prediction unlocked and it slides to meet the result, collapsing the gap that could have taught you to zero.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "Leave the prediction unlocked and it slides to meet the result, collapsing the gap that could have taught you to zero.",
+        "attribution": "— Chapter 4, Computational Skepticism for AI",
+        "highlight_words": "collapsing the gap",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B08_Quote",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 6.4,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:00",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: Leave the prediction unlocked and it slides to meet the result, collapsing the gap that could have taught you to zero."
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "This matters more now, not less. When AI can generate the output you are supposed to understand, the post-hoc reflection is not checking understanding — it is constructing a feeling of understanding from borrowed material.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "collapse"
+      },
+      "graphic": {
+        "manim": "B09_FeelingVsEvidence",
+        "production_viz": {
+          "label": "feeling of understanding vs. evidence of understanding",
+          "mechanic": "two side-by-side columns: 'FEELING' (crimson) — a reader reads AI output, writes reflection, reports satisfaction; 'EVIDENCE' (teal) — a reader writes prediction first, then reads AI output, the gap remains visible; SerifLabel 'the gap is the difference' between the columns",
+          "colors": [
+            "#BF3339",
+            "#1F6F5C",
+            "#F5D061"
+          ],
+          "note": "the two columns contrast process, not outcome; the gap in the teal column is the key visual"
+        }
+      },
+      "scene_class": "B09_FeelingVsEvidence",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 12.74,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:00",
+        "needs": "PIPELINE → render animated_graphics.py scene B09_*"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "A prediction written after reading is not a prediction. It is a rationalization wearing a timestamp.",
+      "shot": {
+        "type": "DOCUMENT",
+        "source": "own",
+        "motion": "highlight"
+      },
+      "document": {
+        "quote": "A prediction written after reading is not a prediction. It is a rationalization wearing a timestamp.",
+        "attribution": "— Chapter 4, Computational Skepticism for AI",
+        "highlight_words": "rationalization wearing a timestamp",
+        "highlighter": "#F5D061"
+      },
+      "scene_class": "B10_ImplicationQuote",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 6.19,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:00",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: A prediction written after reading is not a prediction. It is a rationalization wearing a timestamp."
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The friction of writing the prediction before seeing the output is not a burden — it is the mechanism that generates the evidence. Removing the friction removes the learning signal entirely.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon"
+      },
+      "graphic": {
+        "manim": "B11_FrictionAsSignal",
+        "production_viz": {
+          "label": "friction = signal — the key insight",
+          "mechanic": "a simple flow diagram: 'PREDICT FIRST' (teal) → 'SEE OUTCOME' (slate) → 'MEASURE GAP' (gold) → 'LEARNING SIGNAL' (teal); a second flow shows the frictionless path: 'SEE OUTCOME' → 'WRITE REFLECTION' → 'ZERO SIGNAL' (crimson); both flows visible side by side",
+          "colors": [
+            "#1F6F5C",
+            "#2D3142",
+            "#F5D061",
+            "#BF3339"
+          ],
+          "note": "the two flows are the whole argument; zero signal is the endpoint of the frictionless path"
+        }
+      },
+      "scene_class": "B11_FrictionAsSignal",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 10.84,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:00",
+        "needs": "PIPELINE → render animated_graphics.py scene B11_*"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 12.0,
+      "narration_text": "Two students work through the same case. Student A reads the AI summary, writes a reflection, reports full understanding. Student B writes a three-sentence prediction before reading, then compares. Student B's prediction was wrong on one key mechanism. She now knows exactly what she misunderstood. Student A does not know what she got wrong — she only has the AI's model of the case, feeling like her own.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "collapse"
+      },
+      "graphic": {
+        "manim": "B12_TwoStudents",
+        "production_viz": {
+          "label": "two students — one gap, one none",
+          "mechanic": "side-by-side: left column 'STUDENT A' — reads AI, writes reflection, teal checkmark 'reports understanding', but crimson question mark 'what did she get wrong?'; right column 'STUDENT B' — writes prediction (teal pin), reads AI (slate), gold bracket shows gap, crimson X marks 'got mechanism wrong', teal checkmark 'now she knows'; gold annotation 'this is evidence' pointing to the gap in B's column",
+          "colors": [
+            "#1F6F5C",
+            "#BF3339",
+            "#F5D061",
+            "#2D3142"
+          ],
+          "note": "the question mark under A vs. the X under B is the point — B has actionable information"
+        }
+      },
+      "scene_class": "B12_TwoStudents",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 20.16,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:30:00",
+        "needs": "PIPELINE → render animated_graphics.py scene B12_*"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A prediction is only evidence when it is locked before the outcome. Unlock it, and it slides. The gap is the learning signal. Collapse the gap, collapse the signal.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "A prediction is evidence only when locked before the",
+              "outcome."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "A prediction is only evidence when locked before the outcome.",
+        "sub": "The gap is the learning signal. Collapse it, collapse the signal.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "scene_class": "B13_Recap",
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 9.22,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:00"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "name": "OutroSeries",
+      "estimated_duration_s": 6.0,
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "Why a Prediction You Can Edit Is Worth Nothing",
+            "artifactHeading": "Key findings — Why a Prediction You Can Edit Is Worth Nothing",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "A prediction is only evidence when it is locked before the outcome."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:00"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "name": "OutroCTA",
+      "estimated_duration_s": 5.0,
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — WHY A PREDICTION YOU CAN EDIT IS WORTH NOTHING",
+            "segment": "Why a Prediction You Can Edit Is Worth Nothing",
+            "greeting": "Annyeong, Liam.",
+            "command": "Ask Claude: Why a Prediction You Can Edit Is Worth Nothing",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:30:00"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Why a Prediction You Can Edit Is Worth Nothing",
+            "slug": "claude-liam-cs-13-prediction-lock",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

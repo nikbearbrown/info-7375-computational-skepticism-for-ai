@@ -1,0 +1,1435 @@
+1
+00:00:00,000 --> 00:00:04,967
+INFO 7375, Computational Skepticism for AI. Lectures. Bias: Where It Enters and Who
+
+2
+00:00:04,987 --> 00:00:10,720
+Is Responsible. Learn where bias enters an AI system, which fix has the leverage to
+
+3
+00:00:10,740 --> 00:00:13,022
+move it, and who owns it.
+
+4
+00:00:13,842 --> 00:00:18,734
+Namaste. This is Liam, in for Bear, with lecture six of INFO 7375, Computational
+
+5
+00:00:18,754 --> 00:00:23,296
+Skepticism for AI, at Northeastern University. When a system is biased, the reflex
+
+6
+00:00:23,316 --> 00:00:29,261
+is to fix the model. That's the fix nearest your hands, and very often it isn't the
+
+7
+00:00:29,281 --> 00:00:30,313
+one that works.
+
+8
+00:00:30,333 --> 00:00:35,172
+Six terms. An estimator is a rule that turns data into a number. A base rate is how
+
+9
+00:00:35,192 --> 00:00:40,031
+common an outcome is in a group. A label is the answer a model learns to predict. A
+
+10
+00:00:40,051 --> 00:00:44,350
+proxy is a feature that stands in for something else. A protected group is a group
+
+11
+00:00:44,370 --> 00:00:48,398
+shielded from unfair treatment. And a causal graph is a set of arrows showing what
+
+12
+00:00:48,418 --> 00:00:48,938
+causes what.
+
+13
+00:00:48,958 --> 00:00:51,230
+Three Teams, One Problem.
+
+14
+00:00:51,250 --> 00:00:56,938
+Here's a parable, built to isolate a real pattern, not a case from any filing. A
+
+15
+00:00:56,958 --> 00:01:00,506
+deployed AI system produces biased outcomes, reproducibly. Three engineering teams
+
+16
+00:01:00,526 --> 00:01:02,647
+get the same job: fix it.
+
+17
+00:01:02,667 --> 00:01:07,330
+Team one rewrites the loss function. They add a fairness penalty, a term that
+
+18
+00:01:07,350 --> 00:01:11,680
+punishes unequal error rates across protected groups, and retrain on the same data.
+
+19
+00:01:11,700 --> 00:01:14,022
+The gap shrinks a little. Not enough.
+
+20
+00:01:14,042 --> 00:01:19,084
+Team two fixes the data. They find the under-represented group, run a costly new
+
+21
+00:01:19,104 --> 00:01:23,785
+collection, and retrain. The gap changes shape: smaller in some places, larger in
+
+22
+00:01:23,805 --> 00:01:24,147
+others.
+
+23
+00:01:24,167 --> 00:01:29,063
+Team three touches neither the model nor the data. They look at the room the model
+
+24
+00:01:29,083 --> 00:01:33,058
+was deployed into. A human reviewer reads its outputs, and the reviewer's own
+
+25
+00:01:33,078 --> 00:01:37,053
+patterns amplified the bias. Team three changes the review process, and the gap
+
+26
+00:01:37,073 --> 00:01:38,897
+falls by an order of magnitude.
+
+27
+00:01:38,917 --> 00:01:42,951
+Teams one and two weren't wrong. They made real, small reductions, on real paths
+
+28
+00:01:42,971 --> 00:01:47,295
+that carried little of the bias. Team three had leverage, and it wasn't luck. It
+
+29
+00:01:47,315 --> 00:01:50,480
+came from a way of looking the other teams hadn't used.
+
+30
+00:01:50,500 --> 00:01:54,931
+That way of looking is the subject. The temptation is to fix what's nearest your
+
+31
+00:01:54,951 --> 00:01:58,789
+hands. The leverage is usually somewhere else. So before fixing anything, ask: where
+
+32
+00:01:58,809 --> 00:02:02,647
+does this bias live, and which intervention has the most leverage on it?
+
+33
+00:02:02,667 --> 00:02:04,480
+What Bias Means.
+
+34
+00:02:04,500 --> 00:02:08,655
+In the newspapers, bias means unfair or prejudiced. That meaning is built for moral
+
+35
+00:02:08,675 --> 00:02:12,831
+clarity, not for engineering. In statistics, bias is a property of an estimator, a
+
+36
+00:02:12,851 --> 00:02:17,603
+rule that turns data into a number. The formal meaning gives up the moral punch and
+
+37
+00:02:17,623 --> 00:02:21,480
+buys you something you can act on: it tells you where to intervene.
+
+38
+00:02:21,500 --> 00:02:26,686
+Call the true quantity theta, and your estimate theta hat. Bias is the expected
+
+39
+00:02:26,706 --> 00:02:31,892
+value of theta hat, minus theta. Zero means unbiased: maybe wrong on any one
+
+40
+00:02:31,913 --> 00:02:35,983
+dataset, but not systematically wrong. Nonzero means systematically off, in one
+
+41
+00:02:36,003 --> 00:02:36,355
+direction.
+
+42
+00:02:36,375 --> 00:02:41,198
+Here's the consequence that matters most. More data will not fix a biased estimator.
+
+43
+00:02:41,218 --> 00:02:45,696
+It converges, with growing confidence, to the wrong answer. More data narrows the
+
+44
+00:02:45,716 --> 00:02:47,772
+scatter. It doesn't move the offset.
+
+45
+00:02:47,792 --> 00:02:52,764
+Here is the run behind that picture. The true rate is thirty percent, but the filter
+
+46
+00:02:52,784 --> 00:02:57,133
+keeps four in ten positives and eight in ten negatives. Whatever the sample size,
+
+47
+00:02:57,153 --> 00:03:01,189
+the estimate settles near seventeen and a half percent. The spread shrinks. The
+
+48
+00:03:01,209 --> 00:03:01,813
+error stays.
+
+49
+00:03:01,833 --> 00:03:06,285
+This is exactly what happened in nineteen thirty-six. The Literary Digest magazine
+
+50
+00:03:06,305 --> 00:03:11,129
+polled about two point four million people and predicted that Landon would beat
+
+51
+00:03:11,149 --> 00:03:14,855
+Roosevelt. Roosevelt won with about sixty-one percent of the vote.
+
+52
+00:03:14,875 --> 00:03:17,808
+Peverill Squire's nineteen eighty-eight analysis found two problems working
+
+53
+00:03:17,828 --> 00:03:22,074
+together. The mailing list leaned toward people with cars and telephones in the
+
+54
+00:03:22,094 --> 00:03:26,667
+depths of the Depression, and the people who answered differed again from those who
+
+55
+00:03:26,687 --> 00:03:30,605
+didn't. More ballots drawn the same way would have repeated the error.
+
+56
+00:03:30,625 --> 00:03:35,873
+So now we can say what the ten mechanisms of bias are: ten distinct ways to make
+
+57
+00:03:35,893 --> 00:03:39,902
+that expression, the expected estimate minus the truth, nonzero. Each has its own
+
+58
+00:03:39,922 --> 00:03:44,240
+causal structure and its own fix. Confuse them and you apply the right intervention
+
+59
+00:03:44,260 --> 00:03:45,480
+at the wrong place.
+
+60
+00:03:45,500 --> 00:03:46,980
+Selection Bias.
+
+61
+00:03:47,000 --> 00:03:52,790
+Here are the ten, as places in a pipeline where the estimate can drift from the
+
+62
+00:03:52,810 --> 00:03:57,147
+truth. Selection and sampling, when people are collected. Data entry, when they're
+
+63
+00:03:57,167 --> 00:04:00,415
+recorded. Observer, self-report and coding, when they're measured. Confirmation,
+
+64
+00:04:00,435 --> 00:04:02,230
+publication, historical and implicit follow.
+
+65
+00:04:02,250 --> 00:04:06,444
+A note on counting. Later we'll meet pairs, like aggregation with subgroup masking.
+
+66
+00:04:06,464 --> 00:04:10,335
+Those aren't an eleventh and twelfth mechanism. They're derived interactions of the
+
+67
+00:04:10,355 --> 00:04:15,522
+ten. The ten are the alphabet, and the pairs are a short list of common words.
+
+68
+00:04:15,542 --> 00:04:20,488
+Start with selection bias, and watch how it enters. You write a reasonable query:
+
+69
+00:04:20,508 --> 00:04:25,454
+patients with a complete lab panel within six hours of admission. Nobody decides to
+
+70
+00:04:25,474 --> 00:04:28,647
+exclude anyone. The exclusion rides in on the reasonableness.
+
+71
+00:04:28,667 --> 00:04:32,571
+Your estimator computes the average outcome among the people in your sample. You
+
+72
+00:04:32,591 --> 00:04:36,798
+wanted the average in the population. Those two are equal on exactly one condition:
+
+73
+00:04:36,818 --> 00:04:41,628
+whether you land in the sample must not depend on the outcome. The moment it does,
+
+74
+00:04:41,648 --> 00:04:44,647
+the estimate is biased before a single parameter is fit.
+
+75
+00:04:44,667 --> 00:04:49,039
+Take a sepsis model, as an illustration. The patients too critical to have labs
+
+76
+00:04:49,059 --> 00:04:54,058
+drawn on time are exactly the ones who most need the alert, and the six-hour filter
+
+77
+00:04:54,078 --> 00:04:58,451
+drops them. The model learns what predicts sepsis among the stable, then is asked
+
+78
+00:04:58,471 --> 00:05:00,647
+about the unstable. It underestimates their risk.
+
+79
+00:05:00,667 --> 00:05:04,572
+You can correct for selection you observed. Inverse probability weighting gives each
+
+80
+00:05:04,592 --> 00:05:09,806
+kept person a weight of one over their chance of being kept, so survivors stand in
+
+81
+00:05:09,826 --> 00:05:14,386
+for the people dropped. In the same simulation, the naive estimate is about eighteen
+
+82
+00:05:14,406 --> 00:05:16,022
+percent. Weighted, it's about thirty.
+
+83
+00:05:16,042 --> 00:05:20,312
+But weighting only works if the variable that drove the selection was recorded. If
+
+84
+00:05:20,332 --> 00:05:24,910
+it wasn't, you have nothing to weight on. That isn't a modeling problem you can
+
+85
+00:05:24,930 --> 00:05:29,200
+solve at your desk. It's a data-collection problem, and the honest answer is to
+
+86
+00:05:29,220 --> 00:05:29,813
+collect differently.
+
+87
+00:05:29,833 --> 00:05:31,480
+Judgment in the Loop.
+
+88
+00:05:31,500 --> 00:05:36,240
+Five more mechanisms share a spine: somewhere a person exercises judgment, and their
+
+89
+00:05:36,260 --> 00:05:41,000
+prior leaks into the record. Confirmation bias is a researcher's prior shaping what
+
+90
+00:05:41,020 --> 00:05:45,393
+gets collected, kept and reported. Observer bias is that prior inside one
+
+91
+00:05:45,413 --> 00:05:48,688
+measurement, like an annotator who knows the earlier diagnosis.
+
+92
+00:05:48,708 --> 00:05:53,624
+Self-report bias is the subject's own prior: people report voting more and drinking
+
+93
+00:05:53,644 --> 00:05:58,179
+less than they do. Data-coding bias enters when judgment squeezes material into
+
+94
+00:05:58,199 --> 00:06:02,735
+categories. And publication bias is the same leak across a whole literature:
+
+95
+00:06:02,755 --> 00:06:05,772
+significant results get printed, nulls stay in drawers.
+
+96
+00:06:05,792 --> 00:06:10,356
+The diagnostic where two humans code the same thing is Cohen's kappa: agreement
+
+97
+00:06:10,376 --> 00:06:14,588
+beyond chance. If kappa collapses when you unblind the annotators, that's direct
+
+98
+00:06:14,608 --> 00:06:19,525
+evidence of observer bias. In a constructed example, it falls from point six to
+
+99
+00:06:19,545 --> 00:06:20,230
+point two.
+
+100
+00:06:20,250 --> 00:06:24,659
+Low kappa on particular items rather than particular people points at data-coding
+
+101
+00:06:24,679 --> 00:06:29,087
+instead: the category is underspecified, not the coder. For publication bias the
+
+102
+00:06:29,107 --> 00:06:34,623
+analogue is the funnel plot. A missing lower-left corner is the drawer of small null
+
+103
+00:06:34,643 --> 00:06:35,730
+studies made visible.
+
+104
+00:06:35,750 --> 00:06:40,600
+None of these five entered through the model. They entered upstream of the data,
+
+105
+00:06:40,620 --> 00:06:44,426
+when a human judged. So the fixes look like organizational practice:
+
+106
+00:06:44,446 --> 00:06:47,556
+pre-registration, blinding, adversarial review. Engineers reach past them because
+
+107
+00:06:47,576 --> 00:06:51,730
+they don't look like engineering, which is exactly why the bias survives.
+
+108
+00:06:51,750 --> 00:06:56,351
+Two more are quieter, and people mistake them for noise. Data-entry bias is
+
+109
+00:06:56,371 --> 00:07:00,616
+patterned transcription error: a form that buries the accurate diagnosis code three
+
+110
+00:07:00,636 --> 00:07:05,592
+menus deep gets the nearest code instead, and a whole class of conditions is
+
+111
+00:07:05,612 --> 00:07:09,147
+undercoded in one direction. Verify against source documents; don't auto-correct.
+
+112
+00:07:09,167 --> 00:07:12,853
+Sampling bias is selection's accessibility cousin: some groups are under-represented
+
+113
+00:07:12,873 --> 00:07:18,042
+because they were hard to reach, not because of their outcomes. A remote-work survey
+
+114
+00:07:18,062 --> 00:07:21,008
+pushed through LinkedIn over-represents credentialed professionals. When outside
+
+115
+00:07:21,028 --> 00:07:26,568
+data gives the true sizes, weight each group by its population share over its sample
+
+116
+00:07:26,588 --> 00:07:26,938
+share.
+
+117
+00:07:26,958 --> 00:07:29,522
+Historical and Implicit Bias.
+
+118
+00:07:29,542 --> 00:07:33,988
+Now the one that breaks the pattern. In every mechanism so far, something was wrong
+
+119
+00:07:34,008 --> 00:07:38,751
+with the data: a filter, a prior, a slip. Historical bias has none of that. The
+
+120
+00:07:38,771 --> 00:07:42,622
+sample is representative. The labels are accurate. The data is a faithful recording
+
+121
+00:07:42,642 --> 00:07:45,897
+of the world that produced it. And it is still poison.
+
+122
+00:07:45,917 --> 00:07:50,920
+Imagine a hiring model trained on ten years of promotion records at a company that
+
+123
+00:07:50,940 --> 00:07:54,939
+promoted men into engineering roles at higher rates. It learns the historical
+
+124
+00:07:54,959 --> 00:07:59,628
+outcome given the candidate, and learns it well. Every metric comes back green. But
+
+125
+00:07:59,648 --> 00:08:03,647
+the historical outcome isn't the fair outcome. Its accuracy is the harm.
+
+126
+00:08:03,667 --> 00:08:08,414
+So the fixes can't be data-quality fixes; there's no defect to repair. They lower
+
+127
+00:08:08,434 --> 00:08:12,841
+the leverage of the historical signal on today's prediction: a less-biased proxy for
+
+128
+00:08:12,861 --> 00:08:16,927
+the outcome, a fairness constraint, or weighting recent records over records from
+
+129
+00:08:16,947 --> 00:08:21,013
+more discriminatory periods. Each trades predictive fit for less inheritance, and a
+
+130
+00:08:21,033 --> 00:08:23,397
+person decides how much fit to spend.
+
+131
+00:08:23,417 --> 00:08:27,439
+Implicit bias, the unconscious associations of the people in the pipeline, isn't
+
+132
+00:08:27,459 --> 00:08:32,829
+really a tenth peer. It isn't an entry point. It's the medium several of them swim
+
+133
+00:08:32,849 --> 00:08:36,535
+in: an underground water table, with confirmation, observer, coding and publication
+
+134
+00:08:36,555 --> 00:08:39,230
+bias as the springs where it reaches daylight.
+
+135
+00:08:39,250 --> 00:08:44,376
+Because it has no single point, it resists a point fix. One handle is a downstream
+
+136
+00:08:44,396 --> 00:08:49,201
+audit: compare the rate of positive predictions across groups. But read a gap as a
+
+137
+00:08:49,221 --> 00:08:54,025
+flag, not a verdict, since real differences in base rates produce the same gap. The
+
+138
+00:08:54,045 --> 00:08:57,242
+fixes with leverage are structural: diverse teams, structured decisions, continuous
+
+139
+00:08:57,262 --> 00:08:57,563
+auditing.
+
+140
+00:08:57,583 --> 00:09:00,438
+Three Flavors, and How They Compound.
+
+141
+00:09:00,458 --> 00:09:04,926
+When people say the model is biased, they can mean three different things. Dataset
+
+142
+00:09:04,946 --> 00:09:09,415
+bias: the training set doesn't represent the people the system is deployed on. A
+
+143
+00:09:09,435 --> 00:09:13,582
+face system trained mostly on light-skinned faces, then used on everyone, is the
+
+144
+00:09:13,602 --> 00:09:16,147
+textbook example. The bias is in the sample.
+
+145
+00:09:16,167 --> 00:09:20,678
+Label bias: the labels encode a biased process. A recidivism predictor trained on
+
+146
+00:09:20,698 --> 00:09:24,513
+arrest data isn't predicting who commits crimes. It's predicting who gets
+
+147
+00:09:24,533 --> 00:09:28,695
+re-arrested. Those are different variables, and re-arrest is a biased measurement of
+
+148
+00:09:28,715 --> 00:09:30,438
+the thing we care about.
+
+149
+00:09:30,458 --> 00:09:35,683
+Structural bias is the hard case. The data is fine, the labels are fine, the model
+
+150
+00:09:35,703 --> 00:09:40,272
+does its job, and the outcomes are still unfair. A hiring model perfectly predicts
+
+151
+00:09:40,292 --> 00:09:44,533
+who succeeds at a company today, but success depends on mentorship, sponsorship and
+
+152
+00:09:44,553 --> 00:09:48,466
+interesting projects that were never evenly distributed. The model is correct, and
+
+153
+00:09:48,486 --> 00:09:50,105
+its correctness is the problem.
+
+154
+00:09:50,125 --> 00:09:55,304
+Put them side by side. Dataset bias lives in the sample, and the fix is to resample
+
+155
+00:09:55,324 --> 00:09:59,585
+or broaden collection. Label bias lives in the labeling step: fix the process or
+
+156
+00:09:59,605 --> 00:10:04,478
+find a better proxy. Structural bias lives in the world the model sits in, and no
+
+157
+00:10:04,498 --> 00:10:06,313
+model or data fix reaches it.
+
+158
+00:10:06,333 --> 00:10:11,174
+Treat structural bias as a dataset problem and you'll spend a quarter and move the
+
+159
+00:10:11,194 --> 00:10:15,711
+disparity nowhere. Bear calls that the most common failure in this field. That's his
+
+160
+00:10:15,731 --> 00:10:17,980
+judgment from experience, not a measured rate.
+
+161
+00:10:18,000 --> 00:10:22,784
+In real systems several mechanisms run at once. Selection compounds historical bias:
+
+162
+00:10:22,804 --> 00:10:27,989
+there's less data on the under-represented group, and the data that exists was
+
+163
+00:10:28,009 --> 00:10:31,993
+generated under discriminatory conditions. Rebalancing fixes the first, and makes
+
+164
+00:10:32,013 --> 00:10:36,397
+the second worse. You now hold more discriminatory data, accurately represented.
+
+165
+00:10:36,417 --> 00:10:40,831
+Observer bias compounds with data coding. Annotator priors become categorical rules
+
+166
+00:10:40,851 --> 00:10:45,669
+baked into the labels. Agreement scores capture the combined effect but can't
+
+167
+00:10:45,689 --> 00:10:50,506
+separate the two. Disagreement clustered on items points to coding. Clustered on
+
+168
+00:10:50,526 --> 00:10:52,522
+annotators, it points to observers.
+
+169
+00:10:52,542 --> 00:10:57,206
+Confirmation compounds with publication. A team designs a study to confirm its
+
+170
+00:10:57,226 --> 00:11:01,890
+hypothesis, gets a positive result, and publishes, while null results from other
+
+171
+00:11:01,910 --> 00:11:06,574
+groups vanish. Trim-and-fill can correct the publication part. It cannot touch the
+
+172
+00:11:06,594 --> 00:11:07,355
+study design.
+
+173
+00:11:07,375 --> 00:11:12,890
+Bear keeps a short working list of pairs that amplify each other: selection with
+
+174
+00:11:12,910 --> 00:11:16,449
+historical, observer with coding, confirmation with publication, sampling with
+
+175
+00:11:16,469 --> 00:11:19,612
+measurement, aggregation with subgroup masking, evaluation with deployment,
+
+176
+00:11:19,632 --> 00:11:23,566
+annotation with class imbalance, and linkage with re-identification. Once you
+
+177
+00:11:23,586 --> 00:11:25,938
+confirm one, check its partner first.
+
+178
+00:11:25,958 --> 00:11:28,438
+A Dataset Is Not the World.
+
+179
+00:11:28,458 --> 00:11:33,525
+A dataset isn't the world. It's a recording of a slice of it, made by particular
+
+180
+00:11:33,545 --> 00:11:37,022
+people, at a particular time, with particular instruments, for particular purposes.
+
+181
+00:11:37,042 --> 00:11:41,472
+Each leaves a fingerprint. To use a dataset responsibly, read it as a historian
+
+182
+00:11:41,492 --> 00:11:45,605
+reads an archive: what was collected, what was excluded, who decided, and why.
+
+183
+00:11:45,625 --> 00:11:50,038
+Take COMPAS, a risk-assessment tool used in Broward County, Florida. In twenty
+
+184
+00:11:50,058 --> 00:11:54,470
+sixteen, ProPublica analyzed scores for people arrested there in twenty thirteen and
+
+185
+00:11:54,490 --> 00:11:58,534
+twenty fourteen. Among defendants who did not re-offend, forty-four point nine
+
+186
+00:11:58,554 --> 00:12:02,966
+percent of Black defendants had been labeled higher risk, against twenty-three point
+
+187
+00:12:02,986 --> 00:12:04,813
+five percent of white defendants.
+
+188
+00:12:04,833 --> 00:12:09,713
+And among defendants who did re-offend, forty-seven point seven percent of white
+
+189
+00:12:09,733 --> 00:12:14,205
+defendants had been labeled lower risk, against twenty-eight percent of Black
+
+190
+00:12:14,225 --> 00:12:18,697
+defendants. As ProPublica reported them, the errors fell unevenly, in opposite
+
+191
+00:12:18,717 --> 00:12:19,105
+directions.
+
+192
+00:12:19,125 --> 00:12:23,375
+The tool's maker, Northpointe, answered with a different analysis. Within each risk
+
+193
+00:12:23,395 --> 00:12:28,357
+score, they said, about the same share of people re-offended in both groups. In
+
+194
+00:12:28,377 --> 00:12:32,272
+their terms, the score was equally accurate for everyone: predictive parity.
+
+195
+00:12:32,292 --> 00:12:36,649
+There's something deeper in the data. The label wasn't whether this person committed
+
+196
+00:12:36,669 --> 00:12:40,690
+another crime. It was whether this person was re-arrested. Re-arrest depends on
+
+197
+00:12:40,710 --> 00:12:45,404
+crime and on policing. If policing is uneven, re-arrest is an uneven measurement of
+
+198
+00:12:45,424 --> 00:12:48,772
+crime, and every model trained on it inherits the unevenness.
+
+199
+00:12:48,792 --> 00:12:52,393
+The modeler thinks they're predicting recidivism. They're actually predicting
+
+200
+00:12:52,413 --> 00:12:56,417
+re-arrest, given recidivism, given policing, given everything that shapes both.
+
+201
+00:12:56,437 --> 00:13:01,245
+Deployed without that frame, the model launders the unevenness through an algorithm,
+
+202
+00:13:01,265 --> 00:13:02,855
+and makes it invisible.
+
+203
+00:13:02,875 --> 00:13:05,522
+Two Fairness Claims, Both Correct.
+
+204
+00:13:05,542 --> 00:13:10,058
+Both analyses were correct. They were measuring different things. When two groups
+
+205
+00:13:10,078 --> 00:13:14,595
+have different base rates, no score can satisfy both. Kleinberg, Mullainathan and
+
+206
+00:13:14,615 --> 00:13:19,509
+Raghavan proved it in a twenty sixteen paper, and Chouldechova showed the same
+
+207
+00:13:19,529 --> 00:13:21,022
+incompatibility for recidivism tools.
+
+208
+00:13:21,042 --> 00:13:25,105
+Here's the plain version. Suppose group one has a true re-offense rate of thirty
+
+209
+00:13:25,125 --> 00:13:29,480
+percent, and group two fifty. Make the score calibrated, so a given score means the
+
+210
+00:13:29,500 --> 00:13:34,147
+same in both. Now to equalize false positives you'd have to put the threshold in a
+
+211
+00:13:34,167 --> 00:13:37,647
+different place for each group, which is treating people differently by group.
+
+212
+00:13:37,667 --> 00:13:41,917
+Here's the algebra. For a calibrated score, the odds of being right when flagged
+
+213
+00:13:41,937 --> 00:13:46,492
+equal the base-rate odds, times the ratio of the true positive rate to the false
+
+214
+00:13:46,512 --> 00:13:51,067
+positive rate. Hold the first equal, with different base rates, and the ratio of the
+
+215
+00:13:51,087 --> 00:13:52,897
+rates has to differ between groups.
+
+216
+00:13:52,917 --> 00:13:57,699
+Run the numbers. Fix the accuracy of a flag at sixty percent and the true positive
+
+217
+00:13:57,719 --> 00:14:01,902
+rate at seventy percent for both groups. Then the false positive rate is forced:
+
+218
+00:14:01,922 --> 00:14:06,404
+twenty percent in group one, and forty-six point seven in group two. That gap isn't
+
+219
+00:14:06,424 --> 00:14:07,605
+a bug. It's arithmetic.
+
+220
+00:14:07,625 --> 00:14:11,393
+The three criteria are calibration, equal false positive rates, and equal false
+
+221
+00:14:11,413 --> 00:14:15,498
+negative rates. With different base rates they cannot all hold at once, unless
+
+222
+00:14:15,518 --> 00:14:19,286
+prediction is perfect. So the choice between fairness metrics isn't a technical
+
+223
+00:14:19,306 --> 00:14:24,022
+choice. It's a values claim: which kind of error are we less willing to make?
+
+224
+00:14:24,042 --> 00:14:29,278
+Who bears the cost of each error, what the model is used for, and the politics of
+
+225
+00:14:29,298 --> 00:14:33,298
+the deployment settle that choice. Engineers who treat it as pure optimization are
+
+226
+00:14:33,318 --> 00:14:37,318
+making a values choice anyway: the one their loss function encodes, while appearing
+
+227
+00:14:37,338 --> 00:14:41,337
+neutral. That's Professor Bear's argument. I'm presenting it as an argument, not a
+
+228
+00:14:41,357 --> 00:14:41,647
+finding.
+
+229
+00:14:41,667 --> 00:14:46,855
+One case to be careful with. In twenty nineteen the Apple Card's credit limits drew
+
+230
+00:14:46,875 --> 00:14:50,674
+allegations of bias. New York's financial regulator investigated, and in March
+
+231
+00:14:50,694 --> 00:14:54,147
+twenty twenty-one reported no evidence of unlawful discrimination: applicants with
+
+232
+00:14:54,167 --> 00:14:57,966
+similar credit characteristics generally had similar outcomes. It did fault customer
+
+233
+00:14:57,986 --> 00:15:03,522
+service and transparency. So treat it as a case of how a claim gets adjudicated, not
+
+234
+00:15:03,542 --> 00:15:04,563
+a proven disparity.
+
+235
+00:15:04,583 --> 00:15:08,674
+So pick the audit criterion that fits the harm structure of the deployment.
+
+236
+00:15:08,694 --> 00:15:12,784
+Calibration parity means a score means the same for every group. Equal false
+
+237
+00:15:12,804 --> 00:15:16,894
+positive rates share the cost of being wrongly flagged. Equal false negative rates
+
+238
+00:15:16,914 --> 00:15:20,688
+share the cost of being missed. The theorem rules out all three.
+
+239
+00:15:20,708 --> 00:15:21,980
+Pearl's Ladder.
+
+240
+00:15:22,000 --> 00:15:26,938
+To tell a system that merely correlates a bias from one that causes it, we need a
+
+241
+00:15:26,958 --> 00:15:31,022
+tool from Judea Pearl: a ladder of causal reasoning, with three rungs. We'll work
+
+242
+00:15:31,042 --> 00:15:31,897
+the first two.
+
+243
+00:15:31,917 --> 00:15:37,016
+Rung one is association: what's the probability of Y, given that we observe X? It's
+
+244
+00:15:37,036 --> 00:15:41,452
+what most machine learning lives on. It's what calibration curves describe, and what
+
+245
+00:15:41,472 --> 00:15:45,547
+most fairness metrics measure. It's also where most thinking about deployed AI
+
+246
+00:15:45,567 --> 00:15:46,230
+quietly stops.
+
+247
+00:15:46,250 --> 00:15:51,468
+Rung two is intervention: the probability of Y if we set X to a value. Pearl writes
+
+248
+00:15:51,488 --> 00:15:56,090
+it with do. The notation does real work. Observing X can be tangled up with
+
+249
+00:15:56,110 --> 00:15:59,480
+everything that moves with X. Making X happen severs those tangles.
+
+250
+00:15:59,500 --> 00:16:03,743
+The classic illustration is the rooster and the sun. Watch roosters and sunrises,
+
+251
+00:16:03,763 --> 00:16:08,989
+and the sun is very likely up after a crow. But prevent the rooster from crowing,
+
+252
+00:16:09,009 --> 00:16:12,924
+and the sun rises anyway. Observation said they were associated. Intervention said
+
+253
+00:16:12,944 --> 00:16:14,563
+the rooster isn't the cause.
+
+254
+00:16:14,583 --> 00:16:18,592
+Rung three is counterfactual: what would have happened to this specific case if X
+
+255
+00:16:18,612 --> 00:16:22,334
+had been different, holding everything else fixed? It's the hardest to reach from
+
+256
+00:16:22,354 --> 00:16:26,938
+data alone. Here it just sits at the top of the ladder, visible, not yet climbed.
+
+257
+00:16:26,958 --> 00:16:31,528
+For our problem, the probability of loan denial, given race equals x, is the
+
+258
+00:16:31,548 --> 00:16:35,462
+observational quantity. It's what the model sees in training data. The probability
+
+259
+00:16:35,482 --> 00:16:40,379
+of denial if we set race to x, holding everything else fixed, is interventional. It
+
+260
+00:16:40,399 --> 00:16:44,313
+asks whether the decision would change if we changed only that variable.
+
+261
+00:16:44,333 --> 00:16:49,539
+The two can come apart. A model can show no disparity on rung one while hiding one
+
+262
+00:16:49,559 --> 00:16:54,149
+on rung two, if you intervene on race-correlated features. Or it can show a rung-one
+
+263
+00:16:54,169 --> 00:16:57,838
+disparity that vanishes on rung two, because it runs entirely through legitimate
+
+264
+00:16:57,858 --> 00:17:02,141
+features. Without telling them apart, you can't tell a fair model from one that's
+
+265
+00:17:02,161 --> 00:17:03,063
+merely been smoothed.
+
+266
+00:17:03,083 --> 00:17:07,007
+Most deployed mitigation works on rung one: adjust the conditional distributions
+
+267
+00:17:07,027 --> 00:17:11,668
+until the metric reads the way the engineer wants. That's sometimes useful and
+
+268
+00:17:11,688 --> 00:17:15,970
+rarely sufficient, because whether a variable causes the bias is a rung-two
+
+269
+00:17:15,990 --> 00:17:18,480
+question, and rung one can't answer it.
+
+270
+00:17:18,500 --> 00:17:23,487
+Here are the same audit questions asked at each rung. For loan denial: is the rate
+
+271
+00:17:23,507 --> 00:17:28,182
+equal across groups, or would it change if race changed and nothing else did? For
+
+272
+00:17:28,202 --> 00:17:32,250
+hiring: is the hire rate proportional, or would two identical applicants be treated
+
+273
+00:17:32,270 --> 00:17:32,563
+differently?
+
+274
+00:17:32,583 --> 00:17:34,230
+Finding the Leverage.
+
+275
+00:17:34,250 --> 00:17:39,133
+Back to the three teams. Each intervened at a different point in the chain from the
+
+276
+00:17:39,153 --> 00:17:44,036
+world to the decision. Team one on the model. Team two on the training data. Team
+
+277
+00:17:44,056 --> 00:17:47,713
+three on the deployment context. All three were interventions, rung-two doings. But
+
+278
+00:17:47,733 --> 00:17:48,938
+they had different leverage.
+
+279
+00:17:48,958 --> 00:17:53,453
+Draw the causal graph. The protected attribute sits at the top. Below it, proxies,
+
+280
+00:17:53,473 --> 00:17:57,645
+then the features the model uses, then the model's output. Then the deployment
+
+281
+00:17:57,665 --> 00:18:01,514
+context: the reviewer, the threshold, the appeal process. And finally the outcome
+
+282
+00:18:01,534 --> 00:18:03,772
+that lands on a real person's life.
+
+283
+00:18:03,792 --> 00:18:08,244
+Now list every path from the protected attribute to the outcome. In this constructed
+
+284
+00:18:08,264 --> 00:18:12,716
+graph there are ten. Some run through the model. Some bypass it, through proxies
+
+285
+00:18:12,736 --> 00:18:17,188
+straight into the reviewer or the threshold. Here is what each fix leaves open.
+
+286
+00:18:17,208 --> 00:18:22,054
+Team one blocked the paths through the model, and left four of ten open. Team two
+
+287
+00:18:22,074 --> 00:18:26,311
+reshaped the sample, and left eight open. Team three, at the reviewer and the
+
+288
+00:18:26,331 --> 00:18:30,568
+threshold, blocked all ten. Counting paths isn't measuring bias, but it shows what a
+
+289
+00:18:30,588 --> 00:18:31,480
+fix can't reach.
+
+290
+00:18:31,500 --> 00:18:36,063
+The procedure, in working form. One: draw the causal graph, from protected attribute
+
+291
+00:18:36,083 --> 00:18:40,647
+through proxies, features, output and decision, to the outcome. Two: list every path
+
+292
+00:18:40,667 --> 00:18:45,230
+from the attribute to the outcome, including the ones that bypass the model.
+
+293
+00:18:45,250 --> 00:18:49,661
+Three: for each candidate intervention, ask which paths it blocks and which it
+
+294
+00:18:49,681 --> 00:18:54,432
+leaves open. Four: pick the one that blocks the largest share of the bias-carrying
+
+295
+00:18:54,452 --> 00:18:58,522
+paths, ideally without cutting paths the deployment needs for its core function.
+
+296
+00:18:58,542 --> 00:19:03,549
+Underneath is Descartes' doubt, turned on a pipeline. What would have to be true for
+
+297
+00:19:03,569 --> 00:19:07,907
+this bias to live here? Suspend the tempting explanation, the model, nearest your
+
+298
+00:19:07,927 --> 00:19:11,929
+hands, and make each candidate location survive the question. The location that
+
+299
+00:19:11,949 --> 00:19:13,605
+survives is where you intervene.
+
+300
+00:19:13,625 --> 00:19:18,172
+Why isn't this done more often? The model and the data are inside the engineer's
+
+301
+00:19:18,192 --> 00:19:22,131
+house. The reviewer's behavior, the appeals process, the way the score gets read,
+
+302
+00:19:22,151 --> 00:19:26,089
+live in someone else's. Drawing the full graph means crossing those boundaries, and
+
+303
+00:19:26,109 --> 00:19:29,438
+the engineer who tries is often told it isn't their job.
+
+304
+00:19:29,458 --> 00:19:31,355
+Who Owns the Bias.
+
+305
+00:19:31,375 --> 00:19:35,095
+Professor Bear argues that the political dimension of bias is the technical
+
+306
+00:19:35,115 --> 00:19:39,147
+dimension. Which intervention works depends on which kind of bias you have. Which
+
+307
+00:19:39,167 --> 00:19:43,511
+kind you have depends on a structural analysis of the deployment, the part people
+
+308
+00:19:43,531 --> 00:19:47,563
+call political. Skip it and you produce tweaks that don't move the disparity.
+
+309
+00:19:47,583 --> 00:19:52,230
+One of Bear's five supervisory capacities, the skills a person needs to oversee an
+
+310
+00:19:52,250 --> 00:19:56,563
+AI, is problem formulation: seeing which question the model is really being asked,
+
+311
+00:19:56,583 --> 00:20:00,563
+and which downstream decisions its answer feeds. That doesn't respect the line
+
+312
+00:20:00,583 --> 00:20:04,230
+between technical and political. Keeping the line clean means handing the
+
+313
+00:20:04,250 --> 00:20:07,563
+formulation to someone else, and any delegation can be tested.
+
+314
+00:20:07,583 --> 00:20:12,282
+Now the limit case. A twenty twenty-six study called Agents of Chaos red-teamed
+
+315
+00:20:12,302 --> 00:20:17,363
+autonomous AI agents in a live lab. Its sixth case study, Agents Reflect Provider
+
+316
+00:20:17,383 --> 00:20:22,445
+Values, sent benign but politically sensitive prompts to an agent backed by a model
+
+317
+00:20:22,465 --> 00:20:23,897
+from a Chinese provider.
+
+318
+00:20:23,917 --> 00:20:28,459
+The authors report that the provider's API repeatedly cut off responses with a
+
+319
+00:20:28,479 --> 00:20:32,670
+generic unknown error on those topics, silently stopping the agent from completing
+
+320
+00:20:32,690 --> 00:20:37,934
+valid tasks. The team that deployed the agent made none of those choices, and its
+
+321
+00:20:37,954 --> 00:20:39,688
+users could not see them.
+
+322
+00:20:39,708 --> 00:20:43,958
+Draw the causal graph. The bias-carrying path doesn't run through the deploying
+
+323
+00:20:43,978 --> 00:20:48,583
+team's data or code. It runs through the provider's training and hosting, upstream
+
+324
+00:20:48,603 --> 00:20:52,852
+of everything that engineer controls. No intervention by the deploying team can
+
+325
+00:20:52,872 --> 00:20:53,563
+reach it.
+
+326
+00:20:53,583 --> 00:20:57,563
+The deploying engineer's options are: switch providers, which is rarely possible at
+
+327
+00:20:57,583 --> 00:21:01,563
+organizational scale; accept the bias, which is often what happens; or add
+
+328
+00:21:01,583 --> 00:21:04,897
+downstream filtering and validation. The procedure still applies. Sometimes its
+
+329
+00:21:04,917 --> 00:21:09,563
+answer is that the highest-leverage point is outside your reach, which is useful to
+
+330
+00:21:09,583 --> 00:21:12,897
+know before you spend six months on the wrong thing.
+
+331
+00:21:12,917 --> 00:21:17,150
+That's the accountability move. Assigning the owner of a bias isn't assigning blame
+
+332
+00:21:17,170 --> 00:21:21,730
+to a person. It's naming whoever sits at the leverage point. Sometimes that's you,
+
+333
+00:21:21,750 --> 00:21:25,983
+because you chose the sample. Sometimes the labeling team, who wrote the manual.
+
+334
+00:21:26,003 --> 00:21:30,236
+Sometimes the deployment owner, who built the review room. And sometimes the model
+
+335
+00:21:30,256 --> 00:21:30,563
+provider.
+
+336
+00:21:30,583 --> 00:21:35,416
+The graph is a machine for un-diffusing responsibility. It points at a node, and a
+
+337
+00:21:35,436 --> 00:21:39,946
+node has an owner. Bear connects this to a question Hannah Arendt asked about
+
+338
+00:21:39,966 --> 00:21:44,475
+systems where harm is the output of many role-bound people, none of whom feels
+
+339
+00:21:44,495 --> 00:21:47,063
+accountable: the same question, restated for a pipeline.
+
+340
+00:21:47,083 --> 00:21:52,328
+Where is Bear unsure? What would change his mind: a debiasing algorithm shown to
+
+341
+00:21:52,348 --> 00:21:56,088
+remove structural bias, robustly, across domains and base-rate regimes, without
+
+342
+00:21:56,108 --> 00:22:00,976
+touching the deployment context. He isn't aware of such a demonstration, and says
+
+343
+00:22:00,996 --> 00:22:02,480
+the literature isn't finished.
+
+344
+00:22:02,500 --> 00:22:07,342
+And what he's still puzzling over: telling dataset bias from label bias when all you
+
+345
+00:22:07,362 --> 00:22:10,908
+have is the labeled training set. They're causally distinct but observationally
+
+346
+00:22:10,928 --> 00:22:15,122
+close. The diagnosis usually needs access to the labeling process, which other teams
+
+347
+00:22:15,142 --> 00:22:18,688
+control. He says he doesn't know how to do this well.
+
+348
+00:22:19,208 --> 00:22:23,629
+Let's recap with Claude. Bias is a systematic offset in an estimator, and more data
+
+349
+00:22:23,649 --> 00:22:28,070
+does not remove it. Ten mechanisms put that offset in at different points of the
+
+350
+00:22:28,090 --> 00:22:31,919
+pipeline. Dataset, label and structural bias each need a different fix. Two fairness
+
+351
+00:22:31,939 --> 00:22:36,063
+claims can both be correct; choosing between them is a values call. Pearl's first
+
+352
+00:22:36,083 --> 00:22:39,616
+two rungs separate correlating a bias from causing it. Find the highest-leverage
+
+353
+00:22:39,636 --> 00:22:41,688
+path, then name whoever owns that node.
+
+354
+00:22:41,708 --> 00:22:46,562
+Help me run a leverage analysis on an AI system I know. I'll describe a decision it
+
+355
+00:22:46,582 --> 00:22:50,576
+makes. Ask me for the protected attribute, the training data, the labels, and who
+
+356
+00:22:50,596 --> 00:22:54,589
+reviews the output. Then draw the causal graph, list every path from the protected
+
+357
+00:22:54,609 --> 00:22:58,603
+attribute to the outcome, say which intervention blocks the most paths, and name who
+
+358
+00:22:58,623 --> 00:23:00,897
+owns that node. Flag anything you are guessing.
+
+359
+00:23:00,917 --> 00:23:06,188
+Bias: Where It Enters and Who Is Responsible. At Nik Bear Brown.

@@ -1,0 +1,195 @@
+{
+  "video": "nbb-cli-adversarial-perturbation-detector",
+  "metadata": {
+    "slug": "cli-adversarial-perturbation-detector",
+    "variant": "nbb",
+    "title": "Adversarial Perturbation Detector: FGSM in One Epsilon",
+    "topic": "COMPUTATIONAL SKEPTICISM \u2014 ADVERSARIAL ROBUSTNESS",
+    "audience": "NikBearBrown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "palette": "teardown",
+    "register": "Teardown",
+    "derived_from": "beat_sheet.json",
+    "source_reel": "../cli-adversarial-perturbation-detector",
+    "source_video": "../cli-adversarial-perturbation-detector/cli-adversarial-perturbation-detector-cut.mp4",
+    "body_beats": [
+      "B00",
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07",
+      "B08"
+    ],
+    "body_duration_s": 101,
+    "old_outro_beats": [
+      "B09"
+    ],
+    "built_at": "2026-07-17T01:29:34.917593",
+    "build": {
+      "at": "2026-07-19T22:13:14",
+      "cut": "master",
+      "filled": 8,
+      "of": 13,
+      "slates": [
+        "B01",
+        "B04",
+        "B06",
+        "B07",
+        "B08"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "source_of_truth": "beat_sheet.json \u2014 edit the sheet, not this file",
+  "beats_total": 13,
+  "beats_open": 5,
+  "beats": [
+    {
+      "beat_id": "NBB00",
+      "status": "filled",
+      "on_disk": "media/NBB00.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/NBB00.mp4",
+      "label": "The FGSM line x_adv equals x plus epsilon times the sign of the gradient \u2014 using only the direction,"
+    },
+    {
+      "beat_id": "B00",
+      "status": "filled",
+      "on_disk": "media/B00.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B00.mp4",
+      "label": "Nik Bear Brown. Build it with a CLI, then take it apart."
+    },
+    {
+      "beat_id": "B01",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "A ResNet-50 trained on ImageNet classifies a golden retriever at ninety-eight percent confidence. Add a perturbation no human eye can detect \u2014 pixel noise bound",
+      "slot": "media/B01.mp4",
+      "label": "A ResNet-50 trained on ImageNet classifies a golden retriever at ninety-eight percent confidence. Ad"
+    },
+    {
+      "beat_id": "B02",
+      "status": "filled",
+      "on_disk": "media/B02.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B02.mp4",
+      "label": "In the terminal: ask Claude to write a PyTorch script that loads a pretrained ResNet-50, runs FGSM w"
+    },
+    {
+      "beat_id": "B03",
+      "status": "filled",
+      "on_disk": "media/B03.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B03.mp4",
+      "label": "Read the attack line. x underscore adv equals x plus epsilon times x dot grad dot sign. That sign fu"
+    },
+    {
+      "beat_id": "B04",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "Run it against a real image. You will see the top-three classifications before and after the perturbation, and the amplified noise map that the model responded ",
+      "slot": "media/B04.mp4",
+      "label": "Run it against a real image. You will see the top-three classifications before and after the perturb"
+    },
+    {
+      "beat_id": "B05",
+      "status": "filled",
+      "on_disk": "media/B05.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/B05.mp4",
+      "label": "Raise the stakes. Ask Claude to run an epsilon sweep from point-zero-zero-one to point-zero-five, re"
+    },
+    {
+      "beat_id": "B06",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "At epsilon equals point-zero-zero-five \u2014 noise bounded to half a percent of pixel range \u2014 the attack crosses fifty percent on an incorrect class. The model is n",
+      "slot": "media/B06.mp4",
+      "label": "At epsilon equals point-zero-zero-five \u2014 noise bounded to half a percent of pixel range \u2014 the attack"
+    },
+    {
+      "beat_id": "B07",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "Your move: run this script on your own model with your own images. Find the epsilon where the top-one class flips. Then ask: can an adversary control inputs to ",
+      "slot": "media/B07.mp4",
+      "label": "Your move: run this script on your own model with your own images. Find the epsilon where the top-on"
+    },
+    {
+      "beat_id": "B08",
+      "status": "needs-fill",
+      "on_disk": null,
+      "method": "ai-video-prompt",
+      "who": "human",
+      "scene_hint": null,
+      "prompt": "",
+      "slot": "media/B08.mp4",
+      "label": ""
+    },
+    {
+      "beat_id": "NBB01",
+      "status": "filled",
+      "on_disk": "media/NBB01.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/NBB01.mp4",
+      "label": "Let's recap with Claude. Here's what the body just demonstrated. Your move: run this script on your "
+    },
+    {
+      "beat_id": "NBB02",
+      "status": "filled",
+      "on_disk": "media/NBB02.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/NBB02.mp4",
+      "label": "Take this prompt, run it on your own \u2014 pick any cancer type or clinical scenario you know about and "
+    },
+    {
+      "beat_id": "NBB03",
+      "status": "filled",
+      "on_disk": "media/NBB03.mp4",
+      "method": "remotion",
+      "who": "pipeline",
+      "scene_hint": null,
+      "prompt": null,
+      "slot": "media/NBB03.mp4",
+      "label": "Adversarial Perturbation Detector: FGSM in One Epsilon"
+    }
+  ]
+}

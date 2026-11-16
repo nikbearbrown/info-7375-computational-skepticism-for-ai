@@ -1,0 +1,1459 @@
+{
+  "metadata": {
+    "title": "Fix the Room, Not the Model.",
+    "slug": "claude-liam-deep-06-bias",
+    "topic": "COMPUTATIONAL SKEPTICISM · BIAS",
+    "genre": "deep-explainer",
+    "register": "Teardown",
+    "audience": "claude-liam",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "voice": "am_onyx",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "style_preset": "claude",
+    "ground": "#FAF9F5",
+    "vox_stage": "#F2F0E9",
+    "accent": "#D97757",
+    "greeting": "Hej, Liam",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "series": "claude-liam-deep",
+    "episode": 6,
+    "playlist": "Computational Skepticism for AI — Deep Explainers",
+    "source": "books/computational-skepticism-for-ai/chapters/06-bias-where-it-enters-and-who-is-responsible.md",
+    "gate": "PLAN — awaiting human approval (no factcheck / no audio / no render)",
+    "beat_mix_target": {
+      "VOX": "20-25%",
+      "MANIM": "25-40%",
+      "REMOTION": "30-45%",
+      "CARD": "remainder"
+    },
+    "beat_mix_actual": {
+      "body_beats": 28,
+      "VOX": "21.4% (6)",
+      "MANIM": "28.6% (8)",
+      "REMOTION": "32.1% (9)",
+      "CARD": "17.9% (5)",
+      "lint": "PASS — vox in 15-30% band, spine OK, no >2 same-lane run outside the R1 vox run"
+    },
+    "total_estimated_duration_seconds": 518,
+    ".codex": {
+      "workflow": "deep-explainer",
+      "mode": "unattended-then-human-review",
+      "agent": "Claude Code",
+      "persona": "Liam (in for Bear)",
+      "engine": "kokoro",
+      "voice": "am_onyx",
+      "paid_generation": false,
+      "publish": false,
+      "reviewer": "Bear"
+    },
+    "build": {
+      "at": "2026-07-28T01:07:40",
+      "cut": "master",
+      "filled": 32,
+      "of": 34,
+      "slates": [
+        "A3R",
+        "A7R"
+      ],
+      "skin_warnings": []
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "narration_text": "Hej — this is Liam, in for Bear. Here's the whole chapter in one story. Three engineering teams, one biased system, same order: fix it. The first rewrote the loss function. The second rebuilt the dataset. Both got small, honest reductions. The third touched neither the model nor the data — they changed the room it was deployed into — and the disparity dropped by an order of magnitude. Same problem. So what did the third team see that the other two didn't?",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 26,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Hej, Liam",
+            "topic": "COMPUTATIONAL SKEPTICISM , BIAS",
+            "segment": "Fix the Room, Not the Model.",
+            "command": "Three teams, one biased system. Two fixed the model and the data — small wins. The third never touched either and cut the disparity tenfold. What did the third team see?",
+            "runningText": "bias has a location — leverage is rarely closest to your hands…",
+            "output": [
+              "Bias has a location — and it's rarely closest to your hands",
+              "The model and the data are only two of the places it lives",
+              "The third team drew the whole causal graph — and fixed the room"
+            ],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-B00.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "I — exec summary",
+      "lane": "BOOKEND",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx",
+      "estimated_duration_s": 10,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "Fix the Room, Not the Model.",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "build": {
+        "status": "SLATE"
+      }
+    },
+    {
+      "beat_id": "A1C",
+      "act": "ACT I — The Estimator, Not the Model",
+      "lane": "CARD",
+      "narration_text": "Act one. Before you can find bias, you have to know what it actually is — and the newspaper meaning won't hold the weight.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Estimator, Not the Model"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A1K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , BIAS",
+            "segment": "Bias is a property of an estimator",
+            "command": "render a Manim scene: Bias(θ̂) = E[θ̂] − θ; as sample size grows, the scatter around the estimate narrows but the offset to the true θ never moves",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A1K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A1M",
+      "act": "bias defined (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "Bias is not a property of a model or a dataset. It's a property of an estimator — any procedure that turns data into a number. Formally: the expected value of your estimate, minus the truth. And here's the blade — if that offset isn't zero, more data will not save you. The scatter narrows; the offset stays. You converge, confidently, on the wrong answer.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A1M_BiasEstimator",
+          "spec": "true value θ marked on an axis; estimator draws sampled at growing n; the cloud of estimates tightens around E[θ̂] while E[θ̂] stays offset from θ; write-on equation Bias(θ̂) = E[θ̂] − θ; terracotta on the invariant offset",
+          "out": "manim/A1M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Bias(θ̂) = E[θ̂] − θ",
+              "more data sharpens the wrong answer"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A1V",
+      "act": "the 1936 poll",
+      "lane": "VOX",
+      "narration_text": "Nineteen thirty-six. A magazine mails out millions of straw-poll ballots and gets over two million back — the largest sample anyone had ever seen — and predicts a landslide for the wrong man. Roosevelt wins in a rout. The frame was skewed: phone owners, car owners, subscribers, in the depth of the Depression. More data made the wrong answer more confident.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "pantry": "pantry/A1V.png",
+        "pantry_brief": "Depression-era still life: a stack of mailed straw-poll ballot cards beside a rotary telephone and a magazine, warm archival tone — Tier 1 generic/illustrative period scene (no real masthead, no real person)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Millions of ballots — confidently, precisely wrong"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A1V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A1R",
+      "act": "two meanings of one word",
+      "lane": "REMOTION",
+      "narration_text": "Two meanings of one word, and they trade against each other. The newspaper meaning — unfair, prejudiced — is tuned for moral clarity. The estimator meaning gives up the moral punch and buys you something you can act on: it tells you where to intervene.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 13,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Two Meanings of One Word",
+            "left": {
+              "label": "NEWSPAPER / moral clarity",
+              "note": "unfair, prejudiced — buys the punch, not the location"
+            },
+            "right": {
+              "label": "ESTIMATOR / a place to act",
+              "note": "gives up the punch, tells you where to intervene"
+            },
+            "sparkLine": "The formal definition buys you a location."
+          },
+          "rendered": {
+            "out": "media/A1R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A1R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A1R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A2C",
+      "act": "ACT II — Ten Doors, One Estimator",
+      "lane": "CARD",
+      "narration_text": "Act two. Ten distinct doors bias walks through — and they do not all respond to the same fix.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Ten Doors, One Estimator"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A2R",
+      "act": "the ten mechanisms",
+      "lane": "REMOTION",
+      "narration_text": "There isn't one bias — there's a family of ten, each a different way to make that offset nonzero. Selection. Sampling. Data entry. The five where a human's prior leaks in: confirmation, observer, self-report, data-coding, publication. Then historical. And implicit. Different causal structure, different fix. Confuse them and you patch the wrong one.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ChipGrid",
+          "props": {
+            "title": "Ten Entry Points for E[θ̂] ≠ θ",
+            "chips": [
+              "Selection — inclusion depends on outcome",
+              "Sampling — hard-to-reach subgroups",
+              "Data entry — patterned transcription error",
+              "Confirmation — the researcher's prior",
+              "Observer — the annotator's prior",
+              "Self-report — the subject's prior",
+              "Data-coding — judgment in categorizing",
+              "Publication — nulls die in drawers",
+              "Historical — faithful data, unfair world",
+              "Implicit — the medium, not a door"
+            ],
+            "sparkLine": "Ten doors, ten different fixes."
+          },
+          "rendered": {
+            "out": "media/A2R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A2M",
+      "act": "selection bias enters (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "Selection bias, watched entering. You never decide to exclude anyone — you write a reasonable query. Patients with a full lab panel within six hours. Your estimator now computes the average among the sample, not the population. They're equal on one condition: that landing in the sample is independent of the outcome. The moment inclusion depends on what happened to a person, they come apart.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A2M_Selection",
+          "spec": "population cloud E[Y]; a reasonable query carves out sample S; write-on E[Y | i∈S] vs E[Y]; they coincide only when P(i∈S) ⟂ Y; a highlighted subgroup whose inclusion tracks the outcome pulls the sample mean off the population mean; terracotta on the gap",
+          "out": "manim/A2M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "E[Y | i∈S] ≠ E[Y] the moment inclusion tracks the",
+              "outcome"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A2V",
+      "act": "the sepsis ward",
+      "lane": "VOX",
+      "narration_text": "Watch it bite. The patients too unstable to have labs drawn on time are exactly the ones the six-hour filter drops — and exactly the ones who most need the alert. So the model learns what predicts sepsis among the stable, then gets asked about the unstable. More data? Drawn by the same query, it just encodes the same blind spot, sharper.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.45,
+          0.5
+        ],
+        "pantry": "pantry/A2V.png",
+        "pantry_brief": "a generic ICU bedside — vital-sign monitor and an empty chair, no visible patient face, cool clinical light — Tier 1 illustrative (no real hospital, no identifiable person)",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "It learns sepsis among the stable",
+              "then judges the unstable"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A2R2",
+      "act": "the five humans in the loop",
+      "lane": "REMOTION",
+      "narration_text": "Five of the ten share a spine: somewhere a person judged, and their prior leaked into the record. The diagnostic, wherever two humans code the same thing, is Cohen's kappa — agreement above chance. And the leverage point is the tell: none of these entered through the model. They entered upstream, at the moment a human judged. You don't fix them with machine learning. You fix them with pre-registration, blinding, adversarial review.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A prior leaks in at the moment someone judges.",
+              "Confirmation — which data gets collected and kept",
+              "Observer — the annotator who knows the 'right' answer"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A2R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A2R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A2R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A3C",
+      "act": "ACT III — The Faithful Poison",
+      "lane": "CARD",
+      "narration_text": "Act three. Now the mechanism most engineers cannot see — because nothing about the data is wrong.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Faithful Poison"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A3M",
+      "act": "historical bias",
+      "lane": "MANIM",
+      "narration_text": "Historical bias breaks the pattern. The sample is representative. The labels are accurate. No annotator erred. And the data is still poison. A hiring model trains on ten years of promotion records and learns the historical outcome — learns it well, so every metric comes back green. But the historical distribution is not the fair one. The thing the model got right is a world you did not want to reproduce. Its accuracy is the harm.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A3M_Historical",
+          "spec": "model curve fits P(Y_historical | x) exactly — every accuracy gauge flashes green; overlay a second target P(Y_fair | x) offset from it; the model tracks the historical, not the fair; terracotta ring on 'accuracy IS the harm'",
+          "out": "manim/A3M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "P(Y_historical | x) ≠ P(Y_fair | x)",
+              "metrics are a patch."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A3V",
+      "act": "clean is the problem",
+      "lane": "VOX",
+      "narration_text": "Sit with that, because it inverts the reflex. The labels are clean, so the pipeline is clean — here the labels are clean, and clean is the problem. They faithfully record what happened, and what happened was the thing you are trying not to repeat. No data-quality fix touches it, because there is no defect to fix.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "drawon",
+        "focus": [
+          0.5,
+          0.45
+        ],
+        "pantry": "pantry/A3V.png",
+        "pantry_brief": "an archive wall of identical bound personnel/promotion ledgers, orderly and pristine, warm ink on cream — Tier 1 illustrative; terracotta underline draws on 'clean is the problem'",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Faithful data recording a world you did not want to",
+              "keep"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A3V.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3V.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A3V.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A3R",
+      "act": "implicit bias is the medium",
+      "lane": "REMOTION",
+      "narration_text": "And implicit bias isn't even a peer of the other nine — it's the medium they swim in. The unconscious prior that shapes which hypothesis you form surfaces as confirmation; what you observe, as observer bias; how you categorize, as data-coding; what you publish, as publication bias. Implicit bias is the water table. Those four are the springs. Which is why you cannot fix it at a point — it has no single point.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "SourceFlow",
+          "props": {
+            "title": "Implicit Bias — the Water Table",
+            "stages": [
+              "implicit prior (the water table)",
+              "confirmation — the hypothesis you form",
+              "observer — what you measure",
+              "data-coding — how you categorize",
+              "publication — what reaches the literature"
+            ],
+            "sparkLine": "Not an entry point — the medium several entry points swim in."
+          },
+          "rendered": {
+            "out": "media/A3R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A3R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T01:07:40",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A3R"
+      }
+    },
+    {
+      "beat_id": "A4R",
+      "act": "ACT IV — Three Flavors of Bias",
+      "lane": "REMOTION",
+      "narration_text": "Act four. Step up one level of abstraction. The model is biased can mean three structurally different things. Dataset bias — the training set didn't represent the world it's deployed into; a sampling problem. Label bias — the labels encoded a biased process; a measurement problem. Structural bias — data fine, labels fine, model correct, outcome still unfair; a problem in the world the model lives in. Different locations. Different fixes.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Which part of the pipeline does it operate on?",
+              "Dataset bias — the sample; a sampling problem (selection, sampling, data-entry)",
+              "Label bias"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A4M",
+      "act": "the compound trap",
+      "lane": "MANIM",
+      "narration_text": "And they compound. The most common pair: selection stacked on historical. Rebalance the sample to fix underrepresentation and you've helped the first — while making the second worse. You now have more data from a discriminatory period, faithfully represented. Two paths, and the intervention that blocks one feeds the other.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A4M_Compound",
+          "spec": "two bias-carrying paths from a source to the outcome: 'selection' and 'historical'; a rebalancing intervention shrinks the selection path while visibly thickening the historical path; net disparity barely moves; terracotta on the thickening arrow",
+          "out": "manim/A4M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Fix one path, feed the other"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A4M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A4M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A4M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A5C",
+      "act": "ACT V — The Dataset Is Not the World",
+      "lane": "CARD",
+      "narration_text": "Act five. To find where bias lives, you have to read the dataset the way a historian reads an archive.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Dataset Is Not the World"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A5R",
+      "act": "read it like an archive",
+      "lane": "REMOTION",
+      "narration_text": "A dataset is not the world. It's a recording of a slice of it — made by particular people, at a particular time, with particular instruments, for particular purposes. Every one of those leaves a fingerprint. To use it responsibly you ask an archivist's questions: what was collected, what was excluded, who decided, and why.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A dataset is a recording, not the world.",
+              "What was collected? — the slice someone chose to record",
+              "What was excluded? — the fingerprint of the frame"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A5V1",
+      "act": "the risk score — the number",
+      "lane": "VOX",
+      "narration_text": "Here it is at human scale. A courtroom. A defendant is handed a number — a risk score meant to predict who will re-offend. The court reads the number as fact.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 12,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.42
+        ],
+        "pantry": "pantry/A5V1.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.42,
+            "scale": 1.6
+          },
+          "objects": [
+            {
+              "id": "risk-score",
+              "x": 0.5,
+              "y": 0.4,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "close crop of a printed risk-assessment sheet with a single large score number on a courtroom bench, warm ink on cream — Tier 1 illustrative (generic silhouette only, no real defendant, no real court); start of a 3-beat vox run zooming out",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "A number the court reads as fact"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5V1.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5V1.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5V1.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A5V2",
+      "act": "two correct readings",
+      "lane": "VOX",
+      "narration_text": "Then two analyses of that same number, and both are correct. One shows the errors fall unevenly by race — people who never re-offended flagged high-risk at different rates across groups. The tool's maker answers with a different cut: within each score bucket, the actual re-offense rate is about equal. Both true. They measure different things.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.5
+        ],
+        "pantry": "pantry/A5V2.png",
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.5,
+            "scale": 1.0
+          },
+          "objects": [
+            {
+              "id": "risk-score",
+              "x": 0.5,
+              "y": 0.3,
+              "scale": 0.7,
+              "opacity": 0.6
+            },
+            {
+              "id": "two-readings",
+              "x": 0.5,
+              "y": 0.55,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "pantry_brief": "same scene pulled back to show two analysts reading the same score sheet from opposite sides — continuity from A5V1 (same bench, zoomed out); Tier 1 illustrative",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Uneven error rates vs equal calibration — both correct"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5V2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5V2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5V2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A5V3",
+      "act": "the base rates diverge",
+      "lane": "VOX",
+      "narration_text": "And here's why they can't both be satisfied at once. The base rates differ across the groups. When the true rates differ, equal calibration and equal error rates are mathematically incompatible. This is not a data-quality bug you can scrub out. It's a theorem. Which means the choice between the two is not technical — it's a values claim.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 14,
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.55
+        ],
+        "pantry": "pantry/A5V3.png",
+        "vox_run": "R1",
+        "pantry_brief": "wide final frame of the courtroom with two divergent statistical curves faint behind the bench, the score sheet small at center — end of the vox run; Tier 1 illustrative; terracotta ring where the two curves cross",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Different base rates → a theorem, not a bug"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5V3.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5V3.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5V3.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A5K",
+      "act": "ask",
+      "lane": "ASK",
+      "narration_text": "",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 3,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "The ask,",
+            "topic": "COMPUTATIONAL SKEPTICISM , BIAS",
+            "segment": "The fairness impossibility",
+            "command": "render a Manim scene: v/(1−v) = p/(1−p),(t/f); hold PPV equal across two groups with unequal base rates p, and show equal error rates become impossible unless the base rates match",
+            "runningText": "rendering Manim…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/A5K.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5K.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5K.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A5M",
+      "act": "the impossibility (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "This is the algebra behind the theorem. For a calibrated score, the odds of a positive tie the base rate to the ratio of true-positive to false-positive rate. Hold that predictive value equal across two groups whose base rates differ, and the error-rate ratio must differ too. Equal calibration and equal error rates cannot both hold — unless the base rates match, or the model is perfect. So the metric choice is a values claim wearing a formula.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A5M_Impossibility",
+          "spec": "write-on identity v/(1−v) = [p/(1−p)]·(t/f); two group panels with p_a ≠ p_b; pin v equal → the t/f ratios are forced apart → equalized error rates (t_a=t_b, f_a=f_b) turn red as contradictory; caption 'pick any two of three'; terracotta on the forced violation",
+          "out": "manim/A5M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Calibration + equal error rates → only if base rates",
+              "match"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A5M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A5R2",
+      "act": "the case you do NOT over-claim",
+      "lane": "REMOTION",
+      "narration_text": "And a discipline note, because the fluency trap runs hardest on the cases that flatter your thesis. The Apple Card credit-limit story is often filed as proven bias. It's more accurately a contested allegation — regulators investigated and reported they did not find unlawful disparity by sex, faulting transparency instead. Cite it as how a bias claim gets adjudicated. Not as a disparity proven. Getting that right is the skepticism.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "Adjudicated, Not Proven",
+            "note": "a bias claim investigated and not upheld",
+            "sparkLine": "The fluency trap runs hardest on the cases that flatter your thesis."
+          },
+          "rendered": {
+            "out": "media/A5R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A5R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A5R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A6M",
+      "act": "ACT VI — Pearl's Ladder (equation tangent)",
+      "lane": "MANIM",
+      "narration_text": "Act six. The tool that makes leverage visible — Pearl's ladder. Rung one, association: the probability of Y given that you observe X. Correlation. Where most machine learning, and most fairness metrics, quietly stop. Rung two, intervention: the probability of Y if you set X — do of X. Not I saw it, but I made it happen — which severs the tangles that ride along with mere observation.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 17,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "equation_tangent": true,
+        "manim": {
+          "scene": "A6M_Ladder",
+          "spec": "three-rung ladder; rung 1 association P(Y|X); rung 2 intervention P(Y|do(X)) lit in terracotta with incoming confounder arrows visibly cut; rung 3 counterfactual greyed and labeled 'opened Ch.4 · closes Ch.12'; the ML toolkit shown sitting only on rung 1",
+          "out": "manim/A6M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "P(Y|X) vs P(Y|do(X)) — seeing is not doing"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A6R",
+      "act": "the rooster and the sun",
+      "lane": "MANIM",
+      "narration_text": "The rooster and the sun. Observe them in the wild and the sunrise follows the crow — high association. But intervene — hold the rooster silent — and the sun rises anyway. Observation said they travel together. Intervention said the rooster was never the cause. So equal Rung-one metrics don't certify fairness. Whether a variable causes the disparity is a Rung-two question, and Rung one cannot answer it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 15,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A6R_Rooster",
+          "spec": "rooster node and sunrise node; observational panel shows them co-occurring (P high); intervention panel do(rooster silent) — the arrow into 'rooster' is cut, sun still rises; caption 'associated, not causal'; terracotta on the severed arrow",
+          "out": "manim/A6R.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "do(rooster silent) — the sun rises anyway"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A6R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A6R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A6R.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A7C",
+      "act": "ACT VII — Leverage, and Who Owns It",
+      "lane": "CARD",
+      "narration_text": "Act seven, and the honest one. Every fix is an intervention — but interventions have wildly different leverage.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 6,
+      "shot": {
+        "type": "CARD",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Leverage, and Who Owns It"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7C.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7C.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7C.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A7R",
+      "act": "draw the whole chain",
+      "lane": "REMOTION",
+      "narration_text": "So draw the whole chain. Protected attribute at the top. Below it, proxies — features that correlate with it. Below those, the features the model uses, then the model's output, then the deployment context — the reviewer, the threshold, the appeal — and finally the outcome that lands on a real person. Now count the paths from top to bottom. Some run through the model. Some bypass it entirely.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 16,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "SourceFlow",
+          "props": {
+            "title": "The Causal Graph of a Biased Deployment",
+            "stages": [
+              "protected attribute",
+              "proxies (correlated features)",
+              "model features",
+              "model output",
+              "deployment context — reviewer, threshold, appeal",
+              "the outcome on a real person"
+            ],
+            "sparkLine": "Count the paths, not the parameters."
+          },
+          "rendered": {
+            "out": "media/A7R.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-28T01:07:40",
+        "needs": "PIPELINE → fill_slates/remotion_scenes for A7R"
+      }
+    },
+    {
+      "beat_id": "A7M",
+      "act": "the three teams resolve",
+      "lane": "MANIM",
+      "narration_text": "Now the three teams resolve. Team one changed the model — blocked one path, left the proxies and the deployment context wide open. Small effect, real path, low leverage. Team two reshaped the data — blocked underrepresentation, missed the rest. Team three drew the full graph, saw the reviewer's pattern carrying most of the flow, and blocked that. Same doing. An order of magnitude more leverage. This is Descartes' doubt, turned on a pipeline.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "MANIM",
+        "source": "own",
+        "manim": {
+          "scene": "A7M_Leverage",
+          "spec": "the deployment DAG with multiple protected→outcome paths of varying thickness; Team A cut severs the model path (thin); Team B cut severs the underrepresentation path (thin); Team C cut severs the deployment-context path (thickest) and most of the flow drops; terracotta on the high-leverage cut",
+          "out": "manim/A7M.mp4"
+        },
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Same doing — an order of magnitude apart"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7M.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7M.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7M.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "A7R2",
+      "act": "when the node is outside your house",
+      "lane": "REMOTION",
+      "narration_text": "And sometimes the highest-leverage node is outside your house entirely. An agent's behavior on contested questions can silently reflect its model provider's training-time choices — bias born upstream of everything the deploying engineer controls. No local fix reaches it. Which is the real lesson: assigning the owner of a bias isn't blame — it's naming whoever sits at the leverage point. The graph un-diffuses responsibility. It points at a node, and a node has an owner — even when the honest answer is not us.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 18,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Accountability is naming the party at the leverage point.",
+              "Sometimes it's you — you chose the sample",
+              "Sometimes it's the labeling team — they set the annotation manual"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/A7R2.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-A7R2.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/A7R2.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "verdict",
+      "lane": "CLOSING",
+      "lead_silence_s": 0.5,
+      "narration_text": "Let's recap with Claude. The verdict on bias. Bias is a property of an estimator, not a vibe — the expected offset from the truth, which more data only sharpens. It enters through ten distinct doors, and those doors sort into three locations: the dataset, the labels, and the structure the model is deployed into. The deepest ones aren't data-quality bugs — they're mismatches between what the data is and what you think it is, and historical bias is faithful data recording a world you did not want to keep. Pearl's ladder tells you correlation is not cause; leverage analysis tells you the highest-leverage fix is rarely closest to your hands. And naming the owner of a bias isn't blame — it's pointing at the node that controls it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 42,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Fix the Room, Not the Model.",
+            "artifactHeading": "Core rules",
+            "artifactLines": [
+              "Bias is a property of an estimator — E[θ̂] − θ; more data only sharpens it.",
+              "Ten mechanisms, three locations: dataset, labels, structure.",
+              "Historical bias is faithful data — its accuracy is the harm.",
+              "When base rates differ, calibration and equal error rates can't both hold — a theorem.",
+              "Rung 1 correlation is not Rung 2 cause.",
+              "The highest-leverage fix is rarely closest to your hands — and a node has an owner."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "your turn handoff",
+      "lane": "CLOSING",
+      "narration_text": "Your turn. Here's the prompt — paste it into Claude. It reads: I have a system I'm building or auditing. First, before any fix, make me draw the full causal graph — protected attribute, proxies, model features, output, deployment context, outcome — and lock a prediction: which of the ten bias mechanisms is active, and which single intervention has the most leverage on the disparity. Only then tell me where I was wrong. End quote. That's the whole chapter, compressed. The point isn't the fix — fixes are easy to propose. The point is the graph you draw before you reach for the tool closest to your hands, and the node it forces you to name. Run it on a system whose outcomes actually land on people.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 46,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — FIX THE ROOM, NOT THE MODEL.",
+            "segment": "Fix the Room, Not the Model.",
+            "command": "I have a system I'm building or auditing. First, before any fix, make me draw the full causal graph — protected attribute, proxies, model features, output, deployment context, outcome — and lock a prediction: which of the ten bias mechanisms is active, and which single intervention has the most leverage on the disparity. Only then tell me where I was wrong.",
+            "runningText": "draw the graph — lock the prediction — then find the highest-leverage node…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "outro",
+      "lane": "CLOSING",
+      "narration_text": "Fix the Room, Not the Model. Bias, from Computational Skepticism for AI. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "estimated_duration_s": 7,
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Fix the Room, Not the Model.",
+            "handle": "@NikBearBrown",
+            "subline": "Liam, in for Bear.",
+            "slug": "claude-liam-deep-06-bias"
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "actual_duration_s": null,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-07-28T01:07:40"
+      }
+    }
+  ]
+}

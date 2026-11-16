@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    "title": "Verified-Data Output Linter: Catch the Fabricated Number",
+    "slug": "claude-liam-cli-verified-data-output-linter",
+    "topic": "COMPUTATIONAL SKEPTICISM — OUTPUT ATTESTATION",
+    "register": "Teardown",
+    "voice": "NikBearBrown",
+    "voice_id": "${ELEVENLABS_VOICE_NIKBEARBROWN}",
+    "palette": "claude",
+    "style_preset": "nikbearbrown",
+    "style": "cli",
+    "note": "CLI video: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(screen-recording) · B05 CHANGE · B06 SUMMARY · B07 NEXT STEPS · B08 extra-slate · B09 outro",
+    "total_estimated_duration_seconds": 118,
+    "audience": "Claude",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "channel": "NikBearBrown",
+    "assignment_tieins": [
+      "CAP250 — supports the verified-data attestation: flag any number that doesn't trace to a record",
+      "A1 — Ch 11 verb-audit lens made automatic: flag over-warranted verbs before a human reads the report",
+      "PR25 — fast check for the progress report's record-vs-inference boundary"
+    ]
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI, then take it apart.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOpen",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "lines": [
+              "Nik Bear Brown",
+              "Verified-Data Output Linter, taken apart."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 5
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM — why care",
+      "role_note": "the stakes BEFORE the build begins — no terminal yet",
+      "narration_text": "An AI system writes a progress report. It says the model achieves eighty-three percent coverage — a number that sounds authoritative and is not cited anywhere. It uses the word 'demonstrates' three times. Every sentence with an unsourced number is a claim that could be fabricated. Every over-warranted verb is evidence that outruns its data. The linter catches both before a human reads the report — and the --strict flag makes it a gate that blocks the commit.",
+      "visual_intent": "title card: 'the unsourced 83% — a claim that looks like a fact'; PROBLEM beat, no terminal yet",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 20,
+      "build": {
+        "status": "SLATE",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B01.mp4)",
+        "suggested": "suggested prompt: An AI system writes a progress report. It says the model achieves 83% coverage — a number that sounds authoritative and is not cited anywhere."
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) — the command typed",
+      "narration_text": "In the terminal: ask Claude to write a Python script that reads a markdown file and flags two things. First: any sentence with a digit or percent sign and no adjacent citation marker — print as UNSOURCED NUMBER. Second: any sentence using proves, demonstrates, shows, or conclusively without a linked figure or table — print as OVER-WARRANTED VERB and suggest the licensed downgrade. Print line numbers and a summary count.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Write a Python script that reads a markdown\nfile and flags:\n(1) sentences with a digit or % and no citation\n    marker ([n], (source), or 'per <file>') →\n    print as UNSOURCED NUMBER\n(2) sentences with proves/demonstrates/shows/\n    conclusively and no linked figure/table →\n    print as OVER-WARRANTED VERB + suggest downgrade\nPrint line numbers + summary count.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — OUTPUT ATTESTATION",
+            "segment": "VERIFIED-DATA OUTPUT LINTER",
+            "runningText": "generating output linter…"
+          }
+        }
+      },
+      "estimated_duration_s": 16
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) — read the output before running",
+      "narration_text": "Read the two regexes before running. UNSOURCED NUMBER matches any digit or percent sign and checks for the absence of a citation marker nearby. OVER-WARRANTED VERB matches the four verbs from the chapter's taxonomy — proves, demonstrates, shows, conclusively — and checks for the absence of a figure or table reference. The taxonomy is the point: hypothesize, suggest, observe, find, show, demonstrate, conclude, prove — each one further out on the evidentiary limb.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "output_linter.py",
+            "topic": "COMPUTATIONAL SKEPTICISM — OUTPUT ATTESTATION",
+            "segment": "VERIFIED-DATA OUTPUT LINTER",
+            "code": "# output_linter.py — Claude Code output\nimport re, sys\n\nUNSOURCED_NUM = re.compile(r\"\\d+\\.?\\d*\\s*%?\")\nCITATION      = re.compile(\n    r\"\\[\\d+\\]|\\(source\\)|per \\w+\\.(?:csv|json|md)\"\n)\nOVERWARRANT   = re.compile(\n    r\"\\b(proves?|demonstrates?|shows?|conclusively)\\b\",\n    re.IGNORECASE\n)\nFIGURE_LINK   = re.compile(\n    r\"(?:Fig\\.|Table|figure|chart)\\s*\\d+\", re.IGNORECASE\n)\n\nfor i, line in enumerate(lines, 1):\n    if UNSOURCED_NUM.search(line) and not CITATION.search(line):\n        print(f\"L{i} UNSOURCED NUMBER: {line.strip()}\")\n    if OVERWARRANT.search(line) and not FIGURE_LINK.search(line):\n        print(f\"L{i} OVER-WARRANTED VERB: {line.strip()}\")"
+          }
+        }
+      },
+      "estimated_duration_s": 15
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT — run",
+      "role_note": "screen-recording — linter flags real lines in a draft report",
+      "narration_text": "Run it on a real report draft. Seven flagged lines. Three say 'UNSOURCED NUMBER' — sentences with percentages and no citation. Two say 'OVER-WARRANTED VERB' — 'demonstrates' and 'shows' without a linked figure. One is a false positive: a year in a section header. The linter is not perfect, but the five real flags are five sentences that would have shipped as fabricated claims without it.",
+      "visual_intent": "screen-recording: linter running on report.md, 7 flagged lines printing with line numbers and categories, summary count at bottom",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownCodeBlock",
+          "props": {
+            "filename": "terminal: python output_linter.py report.md",
+            "topic": "COMPUTATIONAL SKEPTICISM — OUTPUT ATTESTATION",
+            "segment": "VERIFIED-DATA OUTPUT LINTER",
+            "code": "$ python output_linter.py report.md\n\nL12 UNSOURCED NUMBER: The model achieves 83% coverage.\nL28 UNSOURCED NUMBER: Error rate dropped to 4.2%.\nL31 OVER-WARRANTED VERB: This demonstrates robustness...\nL44 UNSOURCED NUMBER: Only 17% of records were flagged.\nL67 OVER-WARRANTED VERB: The results show that Claude...\nL89 UNSOURCED NUMBER: Accuracy improved by 11 points.\n\n(L55: '2024' in header — possible false positive)\n\nSummary: 5 UNSOURCED NUMBER, 2 OVER-WARRANTED VERB, 7 total"
+          }
+        }
+      },
+      "estimated_duration_s": 15
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE — check and revise",
+      "role_note": "terminal (Onda) — add --strict pre-commit gate",
+      "narration_text": "Add a --strict flag that exits with code one if any unsourced number is found, then wire it as a pre-commit hook so a report with a fabricated number cannot be committed. Ask Claude to write both the flag and the hook snippet. The linter stops being a suggestion the author might ignore and becomes a step that blocks the commit.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownTerminalAsk",
+          "props": {
+            "command": "claude \"Update output_linter.py:\nadd --strict flag: exit code 1 if any\nUNSOURCED NUMBER found. Add a pre-commit hook\nsnippet that runs output_linter.py --strict on\nany staged .md file — blocks commit if it fails\nwith: 'Report contains unsourced numbers.'\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — OUTPUT ATTESTATION",
+            "segment": "VERIFIED-DATA OUTPUT LINTER",
+            "runningText": "adding --strict pre-commit gate…"
+          }
+        }
+      },
+      "estimated_duration_s": 13
+    },
+    {
+      "beat_id": "B06",
+      "act": "SUMMARY",
+      "role_note": "the lesson — one beat",
+      "narration_text": "The verified-data contract is enforceable, not just aspirational. Unsourced numbers and over-warranted verbs are the two shapes fabrication takes — and both match a regex. The --strict flag makes the linter a gate: a report that can't be committed until its numbers trace is a report that has to be honest. The verb taxonomy is the chapter's contribution: hypothesize, suggest, observe, find, show, demonstrate, conclude, prove. Each one further out on the evidentiary limb than the linter will let you go without a figure behind it.",
+      "visual_intent": "recap card: 'UNSOURCED NUMBER + OVER-WARRANTED VERB = the two shapes fabrication takes'; verb taxonomy scale",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 15,
+      "build": {
+        "status": "SLATE",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B06.mp4)",
+        "suggested": "suggested prompt: Unsourced numbers and over-warranted verbs are the two shapes fabrication takes. The --strict flag makes the linter a gate."
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Your move: run this linter on the last progress report you wrote. Count the UNSOURCED NUMBER flags. For each one, either add a citation marker pointing to the real record, or delete the number. Both moves are honest. Replacing the number with a citation is better; deleting a fabricated claim is still better than leaving it.",
+      "visual_intent": "next-steps card: 1) run linter on your last report, 2) count UNSOURCED NUMBER flags, 3) cite or delete — both are honest",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 11,
+      "build": {
+        "status": "SLATE",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: Run this linter on the last progress report you wrote. For each UNSOURCED NUMBER, cite it or delete it. Both moves are honest."
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "EXTRA",
+      "role_note": "slate — optional b-roll",
+      "narration_text": "",
+      "visual_intent": "slate placeholder",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": null,
+        "motion": "fade"
+      },
+      "estimated_duration_s": 0,
+      "build": {
+        "status": "SLATE",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "NikBearBrownOutro",
+          "props": {
+            "brand": "Nik Bear Brown",
+            "tagline": "Brutalist + Educational AI",
+            "handle": "@NikBearBrown",
+            "url": "nikbearbrown.com"
+          }
+        }
+      },
+      "estimated_duration_s": 8
+    }
+  ]
+}

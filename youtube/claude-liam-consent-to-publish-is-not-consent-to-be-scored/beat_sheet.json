@@ -1,0 +1,1569 @@
+{
+  "metadata": {
+    "slug": "claude-liam-consent-to-publish-is-not-consent-to-be-scored",
+    "title": "Consent to Publish Is Not Consent to Be Scored",
+    "topic": "GDPR AND READER-TRIGGERED AI AUTHORSHIP SCORING",
+    "purpose": "Two independently written legal memos read the same GDPR doctrine against the same feature — Substack's reader-triggered Pangram AI scan — and reach different answers. The film's subject is that disagreement, not the conclusion. Memo A argues from Substack's actual implementation; Memo B argues from architecture in the abstract and never engages the facts. The film sides with neither verdict and instead isolates the three questions no court has answered: whether Pangram is a processor or a joint controller, whether SCHUFA's 'draws strongly' standard survives the jump from one bank to millions of readers, and whether observed redistribution of scores defeats the 'requester-only' mitigation. It closes on the one claim that is close to a clean win regardless — the Article 26 joint-controller gap — and on the strongest argument neither memo made: the EU's own AI Act asks LESS of a human-reviewed writer than Pangram does. Companion piece to 'A P-Value Is Not a Verdict', which handles the statistics; this one handles the law.",
+    "aspect_ratio": "16:9",
+    "style_preset": "claude",
+    "register": "Teardown",
+    "audience": "Claude",
+    "brand": "claude-liam",
+    "persona": "Liam (in for Bear)",
+    "palette": "claude",
+    "ground": "#FAF9F5",
+    "folderLabel": "@NikBearBrown",
+    "in_for_bear": true,
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "clock": "narration",
+    "series": "deep-explainer",
+    "source": "Combined GDPR analysis memo (Memo A + Memo B), supplied. Every case citation, date, and platform fact independently verified against primary sources — see FACTCHECK.md. Two claims in the source document were corrected before scripting: the per-post opt-out date, and the scope limit on AI Act Art. 50(4).",
+    "companion": "claude-liam-a-p-value-is-not-a-verdict",
+    "legal_disclaimer": "Not legal advice. Stated on screen at B00 and in the description.",
+    "total_estimated_duration_seconds": 457,
+    "lane_mix": {
+      "body_beats": 32,
+      "VOX": "7 (21.9%)",
+      "MANIM": "10 (31.3%)",
+      "REMOTION": "10 (31.3%)",
+      "CARD": "5 (15.6%)"
+    },
+    "vox_runs": {
+      "R1": [
+        "B03",
+        "B04"
+      ],
+      "R2": [
+        "B22",
+        "B23"
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "cold open",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 24,
+      "narration_text": "Jambo — this is Liam, in for Bear. Two lawyers read the same regulation about the same feature. One says it's probably defensible. The other says it's presumptively unlawful. Neither is being sloppy. The gap between them is the whole subject of this film — and no, none of this is legal advice.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B00.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "ClaudeComposerAsk: greeting 'Jambo, Liam.' in EB Garamond above the composer"
+          },
+          {
+            "at": 0.22,
+            "event": "command types in"
+          },
+          {
+            "at": 0.55,
+            "event": "send arms, running indicator — 'reading both memos…'"
+          },
+          {
+            "at": 0.72,
+            "event": "three output lines land; the third lands on 'no court has decided'"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Jambo, Liam.",
+            "topic": "GDPR AND AI AUTHORSHIP SCORING",
+            "segment": "Consent to Publish Is Not Consent to Be Scored",
+            "command": "Is a reader-triggered AI-authorship score on a published post lawful under the GDPR?",
+            "runningText": "reading both memos…",
+            "output": [
+              "Memo A: colorable Art. 6(1)(f) case — a real fight.",
+              "Memo B: presumptively unlawful — redesign required.",
+              "Same doctrine. Same feature. No court has decided."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "COLD OPEN LAW — ask lands answered; the disagreement is the hook.",
+      "actual_duration_s": 16.04
+    },
+    {
+      "beat_id": "B01",
+      "act": "ACT I — TWO MEMOS, ONE DOCTRINE",
+      "lane": "CARD",
+      "estimated_duration_s": 7,
+      "narration_text": "Act one. Two memos, one doctrine — and why the disagreement is more useful than either answer.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card sets in EB Garamond with terracotta hairline rule"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Two Memos, One Doctrine"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "Act card — the viewer always knows where they are.",
+      "actual_duration_s": 5.8
+    },
+    {
+      "beat_id": "B02",
+      "act": "ACT I",
+      "lane": "REMOTION",
+      "estimated_duration_s": 13,
+      "narration_text": "Here's the feature. On a Substack post, a reader opens a menu and asks: was this written by AI? A third-party classifier called Pangram answers with a percentage. The writer never pressed anything.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "four-step stream draws left to right"
+          },
+          {
+            "at": 0.55,
+            "event": "step 3 goes active on 'Pangram answers'"
+          },
+          {
+            "at": 0.85,
+            "event": "caption sets — the author node is greyed, no action"
+          }
+        ],
+        "remotion": {
+          "pattern": "StepStream",
+          "props": {
+            "steps": [
+              {
+                "label": "Author publishes",
+                "sub": "one act of consent",
+                "state": "done"
+              },
+              {
+                "label": "Reader requests a scan",
+                "sub": "author not involved",
+                "state": "done"
+              },
+              {
+                "label": "Pangram classifies",
+                "sub": "third-party model",
+                "state": "active"
+              },
+              {
+                "label": "Reader sees a percentage",
+                "sub": "author may never know",
+                "state": "pending"
+              }
+            ],
+            "caption": "The author consented once, at step one."
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "SHOW — the architecture is the claim; the steps are on screen.",
+      "actual_duration_s": 11.16
+    },
+    {
+      "beat_id": "B03",
+      "act": "ACT I",
+      "lane": "VOX",
+      "estimated_duration_s": 11,
+      "narration_text": "This is not hypothetical. The feature went live on the twenty-first of July, twenty twenty-six, and it scans posts and notes published from that moment forward. Nothing older.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.5,
+          0.38
+        ],
+        "vox_run": "R1",
+        "handoff": {
+          "camera": {
+            "x": 0.5,
+            "y": 0.38,
+            "scale": 1.6
+          },
+          "objects": [
+            {
+              "id": "help-page",
+              "x": 0.5,
+              "y": 0.4,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "show": [
+          {
+            "at": 0.2,
+            "event": "ease-out push toward the date line"
+          },
+          {
+            "at": 0.7,
+            "event": "terracotta underline draws under 'on or after July 21, 2026'"
+          }
+        ],
+        "pantry": "pantry/B03.png",
+        "visual_intent": "Substack's own help page, the sentence stating the scan applies to posts and notes published on or after July 21, 2026."
+      },
+      "motion_claim": "HOLD — the date is a load-bearing fact; the primary source is on screen.",
+      "actual_duration_s": 9.79
+    },
+    {
+      "beat_id": "B04",
+      "act": "ACT I",
+      "lane": "VOX",
+      "estimated_duration_s": 12,
+      "narration_text": "And that single date does a lot of work. It kills the strongest version of the retroactivity objection — nobody's back catalogue is being scored. One memo built its case on that objection anyway.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "drawon",
+        "vox_run": "R1",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "pull out to the whole page"
+          },
+          {
+            "at": 0.62,
+            "event": "terracotta ring draws around the prospective-only clause"
+          }
+        ],
+        "pantry": "pantry/B04.png",
+        "visual_intent": "Wider crop of the same help page showing the surrounding controls — per-post disable, report-an-error, 'How I make this'."
+      },
+      "motion_claim": "HOLD — vox run R1 closes on the mitigations the second memo never addresses.",
+      "actual_duration_s": 11.46
+    },
+    {
+      "beat_id": "B05",
+      "act": "ACT I",
+      "lane": "REMOTION",
+      "estimated_duration_s": 14,
+      "narration_text": "So here are the two memos. Memo A scores the feature that exists — prospective scanning, requester-only display, a per-post off switch, a contract amended the day before launch. Memo B scores the architecture in the abstract, and never mentions any of it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "two columns draw on"
+          },
+          {
+            "at": 0.5,
+            "event": "left column fills solid ink"
+          },
+          {
+            "at": 0.8,
+            "event": "right column stays hollow terracotta"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Same doctrine, two readings",
+            "left": {
+              "label": "Memo A — argues from implementation",
+              "note": "Prospective-only. Requester display. Per-post off. Pre-launch contract."
+            },
+            "right": {
+              "label": "Memo B — argues from architecture",
+              "note": "Scores design in abstract. Never engages the implementation facts."
+            },
+            "sparkLine": "Ignoring the facts is not a finding."
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "SHOW — the divergence is the film's thesis, stated side by side and held.",
+      "actual_duration_s": 14.4
+    },
+    {
+      "beat_id": "B06",
+      "act": "ACT I",
+      "lane": "MANIM",
+      "estimated_duration_s": 12,
+      "narration_text": "Both memos agree on one thing, and they're both right about it. There is no public-data exemption in the GDPR. Publishing is not a waiver. That's the floor — and it's where the agreement stops.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "a floor line draws across the frame labelled 'no public-data exemption'"
+          },
+          {
+            "at": 0.6,
+            "event": "two paths diverge upward from the same point"
+          },
+          {
+            "at": 0.88,
+            "event": "the divergence angle holds"
+          }
+        ],
+        "graphic": {
+          "manim": "B06_SharedFloor"
+        },
+        "visual_intent": "One shared baseline, two paths leaving it at different angles — agreement then divergence."
+      },
+      "motion_claim": "SHOW — the shared floor is drawn before the split.",
+      "actual_duration_s": 10.69
+    },
+    {
+      "beat_id": "B07",
+      "act": "ACT II — WHAT PUBLICATION DOESN'T WAIVE",
+      "lane": "CARD",
+      "estimated_duration_s": 7,
+      "narration_text": "Act two. What publication actually waives — which turns out to be much less than the platforms assume.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card sets"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "What Publication Doesn't Waive"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "Act card.",
+      "actual_duration_s": 5.97
+    },
+    {
+      "beat_id": "B08",
+      "act": "ACT II",
+      "lane": "VOX",
+      "estimated_duration_s": 11,
+      "narration_text": "Start with the Court of Justice in Luxembourg, and a case about an exam script. Nowak, twenty seventeen. A candidate wanted to see his own answers and the examiner's comments on them.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B08.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.45,
+          0.5
+        ],
+        "show": [
+          {
+            "at": 0.2,
+            "event": "slow documentary push, constant velocity"
+          },
+          {
+            "at": 0.75,
+            "event": "serif label with hairline underline: 'Nowak · C-434/16'"
+          }
+        ],
+        "pantry": "pantry/B08.png",
+        "visual_intent": "The Court of Justice of the European Union building, Luxembourg. Archive or CC-licensed exterior."
+      },
+      "motion_claim": "HOLD — a named authority gets a real image, not a text card.",
+      "actual_duration_s": 10.41
+    },
+    {
+      "beat_id": "B09",
+      "act": "ACT II",
+      "lane": "MANIM",
+      "estimated_duration_s": 13,
+      "narration_text": "The Court's test was three-pronged. Information relates to a person by content, by purpose, or by effect. Any one of the three is enough. You don't need all three, and that matters here.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B09.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "three chips draw on: CONTENT · PURPOSE · EFFECT"
+          },
+          {
+            "at": 0.62,
+            "event": "an OR joins them, not an AND"
+          },
+          {
+            "at": 0.85,
+            "event": "all three hold, none faded below 40%"
+          }
+        ],
+        "graphic": {
+          "manim": "B09_NowakThreePronged"
+        },
+        "visual_intent": "Three labelled prongs joined by OR — the disjunctive test."
+      },
+      "motion_claim": "SHOW — the test is named and drawn; the OR is the load-bearing element.",
+      "actual_duration_s": 10.11
+    },
+    {
+      "beat_id": "B10",
+      "act": "ACT II",
+      "lane": "REMOTION",
+      "estimated_duration_s": 13,
+      "narration_text": "Apply it. The text is the author's by content. The score's whole purpose is to say something about how that named person works. Its effect lands on them. Three for three — this is personal data, comfortably.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B10.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "each prong receives a tick as it is spoken"
+          },
+          {
+            "at": 0.8,
+            "event": "the three ticks hold side by side ≥2s"
+          }
+        ],
+        "remotion": {
+          "pattern": "StepStream",
+          "props": {
+            "steps": [
+              {
+                "label": "Content",
+                "sub": "the words are the author's",
+                "state": "done"
+              },
+              {
+                "label": "Purpose",
+                "sub": "to characterise how they wrote",
+                "state": "done"
+              },
+              {
+                "label": "Effect",
+                "sub": "consequences land on them",
+                "state": "done"
+              }
+            ],
+            "caption": "One prong suffices. This clears all three."
+          },
+          "rendered": {
+            "out": "media/B10.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "SHOW — worked example applying the framework beat that preceded it.",
+      "actual_duration_s": 11.63
+    },
+    {
+      "beat_id": "B11",
+      "act": "ACT II",
+      "lane": "MANIM",
+      "estimated_duration_s": 12,
+      "narration_text": "And it's profiling. Article four, paragraph four — automated processing used to evaluate personal aspects. Reliability is named in the text. A score for authenticity is an evaluation of the writer, not a property of the paragraph.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B11.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "annotate",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "the Article 4(4) text sets; 'evaluate personal aspects' rings in terracotta"
+          },
+          {
+            "at": 0.7,
+            "event": "'reliability' underlines"
+          }
+        ],
+        "graphic": {
+          "manim": "B11_Article44"
+        },
+        "visual_intent": "The statutory definition with the two operative phrases ringed."
+      },
+      "motion_claim": "SHOW — the statute is quoted on screen, not paraphrased off it.",
+      "actual_duration_s": 13.35
+    },
+    {
+      "beat_id": "B12",
+      "act": "ACT II",
+      "lane": "REMOTION",
+      "estimated_duration_s": 13,
+      "narration_text": "But here's a distinction neither memo resolves, and it's not decorative. A system that reports linguistic patterns in a document is doing something subtly different from one that reports that an author is deceptive. Same model. Different legal object.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B12.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "dial draws, poles label"
+          },
+          {
+            "at": 0.6,
+            "event": "the needle settles mid-scale and stays there — deliberately unresolved"
+          }
+        ],
+        "remotion": {
+          "pattern": "SpectrumDial",
+          "props": {
+            "poleA": {
+              "label": "Classifies an artifact",
+              "outcome": "'AI-like patterns in this text'"
+            },
+            "poleB": {
+              "label": "Profiles a person",
+              "outcome": "'this author is deceptive'"
+            },
+            "position": 0.5,
+            "task": "Where does the UI framing put it?",
+            "caption": "No precedent decides this. The needle stays in the middle."
+          },
+          "rendered": {
+            "out": "media/B12.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "FALSIFIABILITY — names the open question rather than resolving it for effect.",
+      "actual_duration_s": 14.04
+    },
+    {
+      "beat_id": "B13",
+      "act": "ACT III — THE NECESSITY GAP",
+      "lane": "CARD",
+      "estimated_duration_s": 7,
+      "narration_text": "Act three. Legitimate interest, and the necessity question that decides it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B13.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card sets"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "The Necessity Gap"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B13.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "Act card.",
+      "actual_duration_s": 4.57
+    },
+    {
+      "beat_id": "B14",
+      "act": "ACT III",
+      "lane": "MANIM",
+      "estimated_duration_s": 13,
+      "narration_text": "Legitimate interest is a real basis, not a consolation prize. In twenty twenty-four the Court held in the Dutch tennis federation case that a purely commercial interest can qualify. Substack clears that bar easily.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B14.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "three gates draw in sequence: INTEREST · NECESSITY · BALANCING"
+          },
+          {
+            "at": 0.7,
+            "event": "gate one opens with a tick — 'KNLTB, C-621/22'"
+          }
+        ],
+        "graphic": {
+          "manim": "B14_ThreeGates"
+        },
+        "visual_intent": "The Article 6(1)(f) three-step test as three gates; only the first opens in this beat."
+      },
+      "motion_claim": "SHOW — framework drawn before it is applied.",
+      "actual_duration_s": 12.61
+    },
+    {
+      "beat_id": "B15",
+      "act": "ACT III",
+      "lane": "MANIM",
+      "estimated_duration_s": 11,
+      "narration_text": "Gate one is not the fight. Nobody serious argues that reader trust is an illegitimate interest. The fight is gates two and three — necessity, and balancing. That's where both memos actually live.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B15.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare",
+        "show": [
+          {
+            "at": 0.3,
+            "event": "gate one recedes to 40% opacity, never lower"
+          },
+          {
+            "at": 0.65,
+            "event": "gates two and three enlarge and hold"
+          }
+        ],
+        "graphic": {
+          "manim": "B15_GatesTwoThree"
+        },
+        "visual_intent": "Same three gates, emphasis moved to the second and third."
+      },
+      "motion_claim": "SHOW — continuity with B14; un-highlighted elements held at 40%.",
+      "actual_duration_s": 11.39
+    },
+    {
+      "beat_id": "B16",
+      "act": "ACT III",
+      "lane": "REMOTION",
+      "estimated_duration_s": 14,
+      "narration_text": "Necessity asks a blunt question: is there a less intrusive way to get the same thing? And Substack has a problem here, because it already shipped one. It's called 'How I make this' — a statement where a writer declares their own process.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B16.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "two routes draw to the same destination 'reader knows how it was made'"
+          },
+          {
+            "at": 0.55,
+            "event": "the self-disclosure route lights first"
+          },
+          {
+            "at": 0.82,
+            "event": "the classifier route draws heavier and slower"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "divergence",
+            "title": "Two routes, one stated interest",
+            "left": {
+              "label": "'How I make this'",
+              "note": "Writer declares their own process. Already built. Already shipped. No profiling."
+            },
+            "right": {
+              "label": "Pangram score",
+              "note": "Third-party classifier. Automated evaluation of a named person. Running in parallel."
+            },
+            "sparkLine": "If route one serves the interest, route two has to justify itself."
+          },
+          "rendered": {
+            "out": "media/B16.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "SHOW — the necessity argument is a comparison and is shown as one.",
+      "actual_duration_s": 12.42
+    },
+    {
+      "beat_id": "B17",
+      "act": "ACT III",
+      "lane": "REMOTION",
+      "estimated_duration_s": 12,
+      "narration_text": "Substack has an answer, and it's a fair one: self-disclosure can't catch someone who lies. That's real. But it's an argument that has to be made out loud, because it is exactly the hinge necessity turns on.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B17.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the fork draws: honest declarer vs deceptive nondiscloser"
+          },
+          {
+            "at": 0.7,
+            "event": "the left branch stops the machine; the right branch continues"
+          }
+        ],
+        "remotion": {
+          "pattern": "DecisionFork",
+          "props": {
+            "entry": "a published post",
+            "branchLeft": "writer declares honestly",
+            "branchRight": "writer declares falsely",
+            "machineStop": "SELF-DISCLOSURE · SUFFICES",
+            "humanContinues": "only here does the classifier add anything",
+            "sparkLine": "The whole necessity case lives in the right-hand branch."
+          },
+          "rendered": {
+            "out": "media/B17.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "SHOW — steelmans the platform before the film's own strongest attack.",
+      "actual_duration_s": 11.26
+    },
+    {
+      "beat_id": "B18",
+      "act": "ACT III",
+      "lane": "MANIM",
+      "estimated_duration_s": 14,
+      "narration_text": "Now the argument neither memo made. The EU's own AI Act, Article fifty, paragraph four, requires disclosure of AI-generated text — and then exempts it. Where a human has reviewed the content and a person holds editorial responsibility, no disclosure is required.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B18.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "annotate",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "the statutory sentence sets in serif"
+          },
+          {
+            "at": 0.55,
+            "event": "terracotta ring draws around 'human review or editorial control'"
+          },
+          {
+            "at": 0.85,
+            "event": "'editorial responsibility' underlines"
+          }
+        ],
+        "graphic": {
+          "manim": "B18_AIActFiftyFour"
+        },
+        "visual_intent": "Article 50(4) second subparagraph quoted verbatim with the exemption clause ringed."
+      },
+      "motion_claim": "SHOW — the exemption text is on screen verbatim; this is the film's original claim.",
+      "actual_duration_s": 16.09
+    },
+    {
+      "beat_id": "B19",
+      "act": "ACT III",
+      "lane": "REMOTION",
+      "estimated_duration_s": 13,
+      "narration_text": "Read that against the scanner. A writer who edits AI-assisted prose and puts their name to it is already outside the AI Act's own disclosure duty. Europe's transparency law asks less of that writer than Pangram does.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B19.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "two bars draw: AI ACT DUTY (short) and PANGRAM SCORE (long)"
+          },
+          {
+            "at": 0.7,
+            "event": "the gap between them fills terracotta and holds ≥2s"
+          }
+        ],
+        "remotion": {
+          "pattern": "ScaleCompare",
+          "props": {
+            "mode": "bars",
+            "items": [
+              {
+                "label": "Art. 50(4)",
+                "sub": "review → exempt",
+                "value": 1
+              },
+              {
+                "label": "Pangram",
+                "sub": "no review gate",
+                "value": 4,
+                "hi": true
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B19.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "SHOW — the comparison is the argument; both bars held side by side.",
+      "actual_duration_s": 12.57
+    },
+    {
+      "beat_id": "B20",
+      "act": "ACT III",
+      "lane": "MANIM",
+      "estimated_duration_s": 12,
+      "narration_text": "One honest limit on that. Article fifty's text duty only covers writing published to inform the public on matters of public interest. A recipe newsletter isn't in scope. The argument is sharp where it applies, and it doesn't apply everywhere.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B20.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare",
+        "show": [
+          {
+            "at": 0.25,
+            "event": "a bounded region draws labelled 'matters of public interest'"
+          },
+          {
+            "at": 0.65,
+            "event": "posts scatter; some land inside, some outside"
+          },
+          {
+            "at": 0.88,
+            "event": "the boundary holds"
+          }
+        ],
+        "graphic": {
+          "manim": "B20_ScopeLimit"
+        },
+        "visual_intent": "A scope boundary with items inside and outside — the argument's reach, drawn honestly."
+      },
+      "motion_claim": "FALSIFIABILITY — the film limits its own strongest point on screen.",
+      "actual_duration_s": 13.78
+    },
+    {
+      "beat_id": "B21",
+      "act": "ACT IV — SCHUFA AND THE WEAKEST LINK",
+      "lane": "CARD",
+      "estimated_duration_s": 7,
+      "narration_text": "Act four. The automated-decision rule, and the place the analogy strains.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B21.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card sets"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "SCHUFA and the Weakest Link"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B21.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "Act card.",
+      "actual_duration_s": 4.76
+    },
+    {
+      "beat_id": "B22",
+      "act": "ACT IV",
+      "lane": "VOX",
+      "estimated_duration_s": 12,
+      "narration_text": "Germany, twenty twenty-three. A credit agency argued it never decided anything — it only supplied a number, and the bank made the call. The Court didn't accept it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B22.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.4,
+          0.55
+        ],
+        "vox_run": "R2",
+        "handoff": {
+          "camera": {
+            "x": 0.4,
+            "y": 0.55,
+            "scale": 1.7
+          },
+          "objects": [
+            {
+              "id": "score-sheet",
+              "x": 0.42,
+              "y": 0.55,
+              "scale": 1.0,
+              "opacity": 1
+            }
+          ]
+        },
+        "show": [
+          {
+            "at": 0.2,
+            "event": "push toward the score figure"
+          },
+          {
+            "at": 0.78,
+            "event": "serif label: 'SCHUFA · C-634/21'"
+          }
+        ],
+        "pantry": "pantry/B22.png",
+        "visual_intent": "A credit-scoring report or German credit-file document. Archive or licensed stock; no real individual's data."
+      },
+      "motion_claim": "HOLD — the authority gets an image, and the vox run opens here.",
+      "actual_duration_s": 9.13
+    },
+    {
+      "beat_id": "B23",
+      "act": "ACT IV",
+      "lane": "VOX",
+      "estimated_duration_s": 12,
+      "narration_text": "The holding was functional, not formal. Where the recipient draws strongly on the score, producing it is itself the automated decision. You cannot launder a decision through the person who acts on it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B23.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "drawon",
+        "vox_run": "R2",
+        "show": [
+          {
+            "at": 0.3,
+            "event": "pull out to reveal the whole document"
+          },
+          {
+            "at": 0.68,
+            "event": "terracotta arrow draws from score to outcome, one continuous line"
+          }
+        ],
+        "pantry": "pantry/B23.png",
+        "visual_intent": "Wider crop of the same document showing score and outcome together."
+      },
+      "motion_claim": "HOLD — vox run R2 closes; the arrow is the holding.",
+      "actual_duration_s": 11.18
+    },
+    {
+      "beat_id": "B24",
+      "act": "ACT IV",
+      "lane": "MANIM",
+      "estimated_duration_s": 14,
+      "narration_text": "But look at the shape of that case. One agency, one bank, one formal process, and a bad score reliably produced a denial. Now transfer it. Millions of readers, no process, no rule. Some ignore the number entirely.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B24.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare",
+        "show": [
+          {
+            "at": 0.18,
+            "event": "left: a single thick deterministic line, score to denial"
+          },
+          {
+            "at": 0.55,
+            "event": "right: the same source fanning into hundreds of thin threads of varying weight"
+          },
+          {
+            "at": 0.85,
+            "event": "both held side by side ≥2s"
+          }
+        ],
+        "graphic": {
+          "manim": "B24_CausalArchitecture"
+        },
+        "visual_intent": "One-to-one near-deterministic chain beside a one-to-many diffuse fan — the transfer problem."
+      },
+      "motion_claim": "SHOW — this is the film's central doubt and it is drawn, not asserted.",
+      "actual_duration_s": 12.71
+    },
+    {
+      "beat_id": "B25",
+      "act": "ACT IV",
+      "lane": "REMOTION",
+      "estimated_duration_s": 12,
+      "narration_text": "Memo B calls this branch satisfied. It offers no evidence about how readers actually behave. That's not a small gap — 'draws strongly' is a claim about causation, and causation is measurable.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B25.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "NOT DETERMINABLE card draws on"
+          },
+          {
+            "at": 0.6,
+            "event": "the claim and its missing evidence hold"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "NOT DETERMINABLE",
+            "note": "No published data on reader behaviour. 'Draws strongly' is a causal claim.",
+            "sparkLine": "Asserting it is not showing it."
+          },
+          "rendered": {
+            "out": "media/B25.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "NO-SOURCE-NO-VERDICT — the missing evidence is labelled as missing.",
+      "actual_duration_s": 11.41
+    },
+    {
+      "beat_id": "B26",
+      "act": "ACT IV",
+      "lane": "VOX",
+      "estimated_duration_s": 13,
+      "narration_text": "There is one place the platform's own mitigation weakens. 'Only the reader who asked can see it' is true of the interface. It is not true of the internet. Scores get screenshotted, and in this controversy they already were.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B26.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.55,
+          0.45
+        ],
+        "show": [
+          {
+            "at": 0.2,
+            "event": "push in on the republished score"
+          },
+          {
+            "at": 0.72,
+            "event": "terracotta ring around the percentage, which is now in public"
+          }
+        ],
+        "pantry": "pantry/B26.png",
+        "visual_intent": "A screenshot of a Pangram result republished publicly during the controversy — a post or thread embedding its own score as argument."
+      },
+      "motion_claim": "SHOW — design-time control vs observed behaviour, with the observation on screen.",
+      "actual_duration_s": 12.05
+    },
+    {
+      "beat_id": "B27",
+      "act": "ACT IV",
+      "lane": "MANIM",
+      "estimated_duration_s": 12,
+      "narration_text": "Both memos do agree on the direction of travel. Persistent labels on a profile, suppressed distribution, or an employer reading the score — any of those and the analogy tightens hard. Today, none of them is shipping.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B27.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "scan",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "a gradient bar draws: on-demand → persistent → distribution → third-party"
+          },
+          {
+            "at": 0.6,
+            "event": "a marker sits at the far left labelled TODAY"
+          },
+          {
+            "at": 0.85,
+            "event": "the three unlit stages hold at 40%"
+          }
+        ],
+        "graphic": {
+          "manim": "B27_EscalationLadder"
+        },
+        "visual_intent": "A four-stage escalation ladder with the current position marked at stage one."
+      },
+      "motion_claim": "SHOW — the falsifiable prediction: name what would change the answer.",
+      "actual_duration_s": 11.95
+    },
+    {
+      "beat_id": "B28",
+      "act": "ACT V — WHO HOLDS THE PEN",
+      "lane": "CARD",
+      "estimated_duration_s": 7,
+      "narration_text": "Act five. Who is actually the controller here — and the one claim that doesn't need any of the hard questions settled.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B28.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.1,
+            "event": "act card sets"
+          }
+        ],
+        "remotion": {
+          "pattern": "FormACard",
+          "props": {
+            "lines": [
+              "Who Holds the Pen"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "media/B28.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "Act card.",
+      "actual_duration_s": 6.29
+    },
+    {
+      "beat_id": "B29",
+      "act": "ACT V",
+      "lane": "VOX",
+      "estimated_duration_s": 12,
+      "narration_text": "Twenty nineteen. A clothing retailer embedded a Facebook Like button. It never saw the data the button collected. The Court made it a joint controller anyway, for the collecting.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B29.mp3",
+      "shot": {
+        "type": "STILL",
+        "source": "archive",
+        "motion": "kenburns",
+        "focus": [
+          0.6,
+          0.42
+        ],
+        "show": [
+          {
+            "at": 0.2,
+            "event": "push toward the embedded button"
+          },
+          {
+            "at": 0.75,
+            "event": "serif label: 'Fashion ID · C-40/17'"
+          }
+        ],
+        "pantry": "pantry/B29.png",
+        "visual_intent": "A period web page with an embedded third-party social button, or archive imagery of the Fashion ID case."
+      },
+      "motion_claim": "HOLD — the closest structural precedent gets a real image.",
+      "actual_duration_s": 9.9
+    },
+    {
+      "beat_id": "B30",
+      "act": "ACT V",
+      "lane": "REMOTION",
+      "estimated_duration_s": 13,
+      "narration_text": "That's this architecture exactly. Substack built the button. Substack decided the scan happens, and when, and to whom it shows. That makes it a controller for the collecting — no matter what its contract calls Pangram.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B30.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "flow draws: author → post → Substack button → Pangram → reader"
+          },
+          {
+            "at": 0.6,
+            "event": "the Substack node highlights on 'built the button'"
+          },
+          {
+            "at": 0.85,
+            "event": "a joint-controller bracket draws across Substack and Pangram"
+          }
+        ],
+        "remotion": {
+          "pattern": "FlowDiagram",
+          "props": {
+            "nodes": [
+              {
+                "id": "author",
+                "label": "Author",
+                "sub": "publishes",
+                "x": 0.08,
+                "y": 0.5,
+                "tier": "client"
+              },
+              {
+                "id": "post",
+                "label": "Post",
+                "sub": "on or after 21 Jul 2026",
+                "x": 0.28,
+                "y": 0.5,
+                "tier": "data"
+              },
+              {
+                "id": "substack",
+                "label": "Substack",
+                "sub": "builds & embeds the scan",
+                "x": 0.5,
+                "y": 0.5,
+                "tier": "edge",
+                "hi": true
+              },
+              {
+                "id": "pangram",
+                "label": "Pangram",
+                "sub": "classifies",
+                "x": 0.72,
+                "y": 0.5,
+                "tier": "compute",
+                "hi": true
+              },
+              {
+                "id": "reader",
+                "label": "Reader",
+                "sub": "sees a percentage",
+                "x": 0.92,
+                "y": 0.5,
+                "tier": "client"
+              }
+            ],
+            "edges": [
+              {
+                "from": "author",
+                "to": "post",
+                "order": 1,
+                "kind": "flow"
+              },
+              {
+                "from": "post",
+                "to": "substack",
+                "order": 2,
+                "kind": "data"
+              },
+              {
+                "from": "substack",
+                "to": "pangram",
+                "order": 3,
+                "kind": "request",
+                "label": "transmits text"
+              },
+              {
+                "from": "pangram",
+                "to": "substack",
+                "order": 4,
+                "kind": "reply",
+                "label": "score"
+              },
+              {
+                "from": "substack",
+                "to": "reader",
+                "order": 5,
+                "kind": "flow"
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B30.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "SHOW — the architecture that triggers Fashion ID is on screen with the bracket.",
+      "actual_duration_s": 11.86
+    },
+    {
+      "beat_id": "B31",
+      "act": "ACT V",
+      "lane": "MANIM",
+      "estimated_duration_s": 13,
+      "narration_text": "And Pangram's own status is less settled than either memo admits. If it decides what counts as AI-generated, or tunes its own thresholds, the label 'processor' in a contract does not survive contact with the functional test.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B31.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "compare",
+        "show": [
+          {
+            "at": 0.2,
+            "event": "two boxes: what the contract says vs what the function is"
+          },
+          {
+            "at": 0.6,
+            "event": "the contract label greys; the functional test stays ink"
+          },
+          {
+            "at": 0.85,
+            "event": "both held ≥2s"
+          }
+        ],
+        "graphic": {
+          "manim": "B31_LabelVsFunction"
+        },
+        "visual_intent": "Contract label beside functional test — the CJEU looks at the second."
+      },
+      "motion_claim": "SHOW — the open question is drawn as a comparison, not asserted as a verdict.",
+      "actual_duration_s": 13.23
+    },
+    {
+      "beat_id": "B32",
+      "act": "ACT V",
+      "lane": "REMOTION",
+      "estimated_duration_s": 13,
+      "narration_text": "Which gives you the one clean finding in this whole analysis. Joint controllers must publish the essence of their arrangement. If Substack and Pangram are joint controllers — and Fashion ID says they likely are — that document should exist. Go and look for it.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-B32.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "motion": "drawon",
+        "show": [
+          {
+            "at": 0.15,
+            "event": "threshold card draws"
+          },
+          {
+            "at": 0.6,
+            "event": "the concept line sets in the centre"
+          },
+          {
+            "at": 0.88,
+            "event": "holds"
+          }
+        ],
+        "remotion": {
+          "pattern": "DeckPattern",
+          "props": {
+            "pattern": "threshold",
+            "title": "The claim that needs nothing else settled",
+            "note": "Art. 26: joint controllers must publish their arrangement. Checkable today.",
+            "sparkLine": "Absence of that document is its own violation."
+          },
+          "rendered": {
+            "out": "media/B32.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "SHOW — the actionable finding, separated from the contested ones.",
+      "actual_duration_s": 13.89
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "VERDICT",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 21,
+      "narration_text": "So — publication is not a waiver, and both memos are right about that. Beyond it, the honest answer is that this is unresolved. Memo B's confidence isn't earned by the facts. Memo A's comfort isn't earned by the redistribution evidence. And the Article twenty-six gap is real today.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "ClaudeVerdictArtifact opens on cream"
+          },
+          {
+            "at": 0.22,
+            "event": "verdict lines land one by one"
+          },
+          {
+            "at": 0.88,
+            "event": "artifact holds"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Consent to Publish Is Not Consent to Be Scored",
+            "artifactHeading": "What the analysis actually supports",
+            "artifactLines": [
+              "No public-data exemption exists in the GDPR — publishing waives nothing automatically.",
+              "The score is personal data and profiling. That part is comfortable.",
+              "Necessity is the platform's weakest ground — it already ships a less intrusive mechanism.",
+              "The AI Act exempts human-reviewed, editorially-owned text. The private standard is stricter than the public one.",
+              "SCHUFA's 'draws strongly' has never been transferred to diffuse readers. Asserting it is not showing it.",
+              "'Requester-only' is a design-time control. Redistribution is observed, not hypothetical.",
+              "Article 26: if they are joint controllers, the public arrangement should exist. That one is checkable today."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "VERDICT — no line asserts more than the sources support.",
+      "actual_duration_s": 15.94
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "YOUR TURN",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 30,
+      "narration_text": "Your turn. Paste this into Claude: find the joint-controller arrangement between my platform and any third-party classifier it embeds, and tell me the controller, the purpose, the Article six basis, and the route to object. Not whether the platform has a privacy policy — everyone has one of those. The four things almost nobody publishes are who decides, why, on what basis, and how you say no. If all four are missing, you haven't found a disclosure. You've found a gap. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "audio_file": "mp3/beat-BHTF.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "show": [
+          {
+            "at": 0,
+            "event": "ClaudeComposerAsk: greeting 'Your turn.'"
+          },
+          {
+            "at": 0.14,
+            "event": "the prompt types itself in"
+          },
+          {
+            "at": 0.45,
+            "event": "runningText: 'paste this into Claude…'"
+          },
+          {
+            "at": 0.66,
+            "event": "composer holds while the narration reads the prompt and names the four things"
+          }
+        ],
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "YOUR TURN — FIND THE ARRANGEMENT",
+            "segment": "Consent to Publish Is Not Consent to Be Scored",
+            "command": "Find the joint-controller arrangement between this platform and any third-party classifier it embeds. Name the controller, the purpose, the Article 6 basis, and how I object.",
+            "runningText": "paste this into Claude…",
+            "output": [
+              "Controller: ?",
+              "Purpose: ?",
+              "Art. 6 basis: ?",
+              "Route to object: ?"
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "HANDOFF LAW — scaffolded viewer task, prompt read in full.",
+      "actual_duration_s": 25.02
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "OUTRO",
+      "lane": "BOOKEND",
+      "estimated_duration_s": 8,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "tail_silence_s": 1.0,
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Consent to Publish Is Not Consent to Be Scored",
+            "slug": "claude-liam-consent-to-publish-is-not-consent-to-be-scored",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "motion_claim": "OUTRO LAW — title restate, locked @NikBearBrown card, no subline.",
+      "actual_duration_s": 8.0
+    }
+  ]
+}

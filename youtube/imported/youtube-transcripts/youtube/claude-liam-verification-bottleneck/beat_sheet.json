@@ -1,0 +1,354 @@
+{
+  "metadata": {
+    "title": "The Verification Bottleneck: What Actually Changed When AI Took Over Coding",
+    "slug": "claude-liam-verification-bottleneck",
+    "topic": "CLAUDE · AI",
+    "register": "Teardown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "palette": "claude",
+    "audience": "Claude",
+    "channel": "NikBearBrown",
+    "chassis": "ai-explainer",
+    "build": {
+      "at": "2026-08-04T13:56:06",
+      "cut": "master",
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": []
+    },
+    "verdict_stripped": "BVDT removed: all 4 lines are placeholders; placeholder heading; contentless narration. A placeholder verdict is worse than none."
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "role": "COLD_OPEN",
+      "narration": "Writing code used to be the slow part. AI fixed that. Nobody told you what breaks next.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B00.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "Build me a CRUD API with authentication and rate limiting",
+            "topic": "CLAUDE · AI",
+            "segment": "The Verification Bottleneck",
+            "greeting": "The Verification Bottleneck",
+            "runningText": "What actually changed when AI took over coding",
+            "output": [
+              "✓ Generated 847 lines across 12 files",
+              "✓ Auth middleware, rate limiter, route handlers",
+              "✓ Tests scaffolded. Build: 0 errors.",
+              "→ Now someone has to check all of this."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "Writing code used to be the slow part. AI fixed that. Nobody told you what breaks next.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:56:06"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "role": "BLUF",
+      "narration": "Here is what changed. Before AI: writing code was the constraint — humans spent most of their time producing lines. After AI: verification is the constraint — you get code in seconds but reviewing it for correctness, security, and fit takes the same time it always did. The bottleneck didn't disappear. It moved.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B01.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Bottleneck Shifted",
+            "items": [
+              {
+                "label": "Before AI: writing code was the constrai",
+                "sub": "Before AI: writing code was",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "After AI: verification is the constraint",
+                "sub": "After AI: verification is.",
+                "icon": "list-checks",
+                "cueFrame": 50
+              },
+              {
+                "label": "Code volume exploded; review time did…",
+                "sub": "After AI: verification is.",
+                "icon": "shield-alert",
+                "cueFrame": 80
+              },
+              {
+                "label": "The org must reorganize around the new…",
+                "sub": "After AI: verification is.",
+                "icon": "zap",
+                "cueFrame": 110
+              },
+              {
+                "label": "Point 5",
+                "sub": "Here is what changed",
+                "icon": "frame",
+                "cueFrame": 140
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "Here is what changed. Before AI: writing code was the constraint — humans spent most of their time producing lines. After AI: verification is the constraint — you get code in seconds but reviewing it for correctness, security, and fit takes the same time it always did. The bottleneck didn't disappear. It moved.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:56:06"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "role": "FRAMEWORK",
+      "narration": "Think of any production process as a pipeline with a single slowest stage. Goldratt called this the constraint. In software before 2023, the constraint was code production: engineers typed, syntax errored, debugged. That stage ran at human typing speed. The review stage — reading code for logic, edge cases, security — was fast by comparison because there wasn't much code to read. AI inverted this. Code production went to near-zero marginal cost. Review stayed expensive. You now have a factory floor where the input conveyor runs at 100× speed but the quality gate has the same one inspector.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B02.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "manim": {
+          "scene_class": "B02_BottleneckPipeline",
+          "file": "scenes.py",
+          "description": "Two-phase horizontal pipeline: WRITE → REVIEW. Before AI: WRITE box is wide/slow (red), REVIEW box is narrow/fast (green). Animation flips: WRITE collapses to thin arrow (AI token stream), REVIEW box expands to wide red bottleneck. Label: 'Constraint moved right.' Throughput arrows pile up behind the review stage."
+        }
+      },
+      "narration_text": "Think of any production process as a pipeline with a single slowest stage. Goldratt called this the constraint. In software before 2023, the constraint was code production: engineers typed, syntax errored, debugged. That stage ran at human typing speed. The review stage — reading code for logic, edge cases, security — was fast by comparison because there wasn't much code to read. AI inverted this. Code production went to near-zero marginal cost. Review stayed expensive. You now have a factory floor where the input conveyor runs at 100× speed but the quality gate has the same one inspector.",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B02.mp4",
+        "filled_by": "manim:B02_BottleneckPipeline",
+        "at": "2026-08-04T13:56:06"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "role": "EXAMPLE",
+      "narration": "Concrete consequence: code now wins whiteboard debates. Pre-AI you could argue for two sprints about architecture before writing a line. Post-AI, the faster move is to generate three competing implementations and run them. The one that works becomes the argument. This sounds good — and it mostly is — but it means your team's judgment muscle for speccing systems upfront atrophies. You get faster answers, but your ability to reason without generating degrades.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B03.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "manim": {
+          "scene_class": "B03_CodeBeatsWhiteboard",
+          "file": "scenes.py",
+          "description": "Two columns: WHITEBOARD DEBATE (stick figures, speech bubbles, 2-sprint timer) vs. GENERATE AND TEST (three code blocks materialize in parallel, winner glows green, losers fade). Arrow from winner to 'Winner IS the argument.' Elapsed time: whiteboard=14 days, generate-test=4 hours."
+        }
+      },
+      "narration_text": "Concrete consequence: code now wins whiteboard debates. Pre-AI you could argue for two sprints about architecture before writing a line. Post-AI, the faster move is to generate three competing implementations and run them. The one that works becomes the argument. This sounds good — and it mostly is — but it means your team's judgment muscle for speccing systems upfront atrophies. You get faster answers, but your ability to reason without generating degrades.",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B03.mp4",
+        "filled_by": "manim:B03_CodeBeatsWhiteboard",
+        "at": "2026-08-04T13:56:06"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "role": "EDGE_CASE",
+      "narration": "The CLAUDE.md file is the organizational tell. In AI-accelerated teams, the source of truth for how the org works lives in a markdown file that the model reads on every session. This is not a cute configuration trick — it means the org's working norms have become machine-readable instructions. When the file is wrong, every AI output inherits the error silently. There is no one to correct it at runtime. CLAUDE.md is load-bearing and almost nobody treats it that way.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B04.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "code": "# CLAUDE.md\n## Deploy process\n- Run tests: npm test\n- If green: push to staging\n- Staging auto-promotes to prod after 30 min\n\n## Code style\n- No comments — code should be self-documenting\n- Functions under 20 lines",
+            "language": "markdown",
+            "filename": "CLAUDE.md",
+            "caption": "This file is your org's standing orders. If it says something wrong, every agent session inherits that error. Nobody reviews it on deploy."
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "The CLAUDE.md file is the organizational tell. In AI-accelerated teams, the source of truth for how the org works lives in a markdown file that the model reads on every session. This is not a cute configuration trick — it means the org's working norms have become machine-readable instructions. When the file is wrong, every AI output inherits the error silently. There is no one to correct it at runtime. CLAUDE.md is load-bearing and almost nobody treats it that way.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:56:06"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "role": "STRUCTURAL_SHIFT",
+      "narration": "The management layer flattens. In a verification-constrained world, the person who can read, run, and judge code is the value. That used to be a junior-to-mid skill; now it's the senior skill. Managers who can't read code become translators in a world where the model already speaks both languages. The teams that are adapting well have senior engineers staying as individual contributors — choosing not to manage — because their leverage is highest in the review seat, not the roadmap meeting.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B05.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "manim": {
+          "scene_class": "B05_OrgFlatten",
+          "file": "scenes.py",
+          "description": "Org chart before: wide pyramid, many junior devs at bottom, mid-layer, managers at top. Org chart after: flat diamond — AI occupies the 'junior' code-gen tier, senior ICs form a wide middle layer (labeled 'VERIFIERS + REVIEWERS'), thin management layer at top (labeled 'Roadmap only'). Labels highlight where leverage now lives."
+        }
+      },
+      "narration_text": "The management layer flattens. In a verification-constrained world, the person who can read, run, and judge code is the value. That used to be a junior-to-mid skill; now it's the senior skill. Managers who can't read code become translators in a world where the model already speaks both languages. The teams that are adapting well have senior engineers staying as individual contributors — choosing not to manage — because their leverage is highest in the review seat, not the roadmap meeting.",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B05.mp4",
+        "filled_by": "manim:B05_OrgFlatten",
+        "at": "2026-08-04T13:56:06"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "role": "PROCESS_BREAK",
+      "narration": "The 'quietly stops working' failure. AI-accelerated teams have processes that depend on low code volume — PR review conventions, security audits, on-call rotation assumptions. These were designed when code landed once a week. Now code lands forty times a day. The process still runs, technically. But it's reviewing two percent of what it needs to review and nobody has reset the expectation. The failure is silent. Code ships. The audit log looks clean. The vulnerability lands in production without a ticket.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B06.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "manim",
+        "manim": {
+          "scene_class": "B06_SilentProcessBreak",
+          "file": "scenes.py",
+          "description": "Timeline bar: x-axis is weeks. Code PR volume line curves sharply upward (blue). Review capacity line stays flat (red dashed). Gap between them labeled 'Unreviewed code'. A small 'LGTM' stamp still fires at old cadence but covers only the first 2% of the bar. Final frame: vulnerability icon appears in the unreviewed gap. Label: 'Process ran. Audit passed. Prod broken.'"
+        }
+      },
+      "narration_text": "The 'quietly stops working' failure. AI-accelerated teams have processes that depend on low code volume — PR review conventions, security audits, on-call rotation assumptions. These were designed when code landed once a week. Now code lands forty times a day. The process still runs, technically. But it's reviewing two percent of what it needs to review and nobody has reset the expectation. The failure is silent. Code ships. The audit log looks clean. The vulnerability lands in production without a ticket.",
+      "build": {
+        "status": "MANIM",
+        "src": "manim/B06.mp4",
+        "filled_by": "manim:B06_SilentProcessBreak",
+        "at": "2026-08-04T13:56:06"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "role": "VERDICT",
+      "narration": "Before 2023, the constraint was code production. After 2023, it's verification — reading, running, and judging code that arrives in seconds. The management layer that spent careers reviewing code is now load-bearing in a new way. The 'quietly stops working' failure is the most dangerous: security audits and PR review conventions designed for low code volume, still running but failing silently.",
+      "estimated_duration_s": 30,
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-BVDT.mp3",
+      "shot": {
+        "type": "REMOTION",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "The Verification Bottleneck",
+            "artifactHeading": "Verification is the new constraint; code production is solved",
+            "artifactLines": [
+              "Pre-AI: writing code was the bottleneck. Post-AI: reviewing it is.",
+              "Code wins whiteboard debates — faster to build 3 versions than argue one.",
+              "CLAUDE.md: how an AI-accelerated team encodes how it works.",
+              "'Quietly stops working': processes designed for low code volume fail at AI scale."
+            ]
+          },
+          "rendered": {
+            "out": "media/BVDT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "narration_text": "Before 2023, the constraint was code production. After 2023, it's verification — reading, running, and judging code that arrives in seconds. The management layer that spent careers reviewing code is now load-bearing in a new way. The 'quietly stops working' failure is the most dangerous: security audits and PR review conventions designed for low code volume, still running but failing silently.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BVDT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:56:06"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "role": "HANDOFF",
+      "narration": "Here is your turn. Open Claude Code and look at a pull request your team approved last week. Ask it: 'What assumptions does this code make that weren't verified?' Then count how many of those assumptions would have been caught if a senior engineer had spent an hour reviewing instead of twenty minutes. That gap is your verification bottleneck. That's the number to manage now.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B07.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "What assumptions does this code make that weren't verified in review?",
+            "topic": "YOUR TURN · CLAUDE · AI",
+            "segment": "Your turn.",
+            "greeting": "Your turn.",
+            "runningText": "Find your verification gap",
+            "output": [
+              "Assumption 1: input is always UTF-8 — not checked",
+              "Assumption 2: DB connection never times out — no retry logic",
+              "Assumption 3: rate limit resets on wall clock, not request time",
+              "→ 3 unverified assumptions in an 'approved' PR."
+            ],
+            "folderLabel": "@NikBearBrown"
+          },
+          "rendered": {
+            "out": "media/BHTF.mp4",
+            "at": ""
+          }
+        }
+      },
+      "id": "BHTF",
+      "narration_text": "Here is your turn. Open Claude Code and look at a pull request your team approved last week. Ask it: 'What assumptions does this code make that weren't verified?' Then count how many of those assumptions would have been caught if a senior engineer had spent an hour reviewing instead of twenty minutes. That gap is your verification bottleneck. That's the number to manage now.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BHTF.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:56:06"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "role": "OUTRO",
+      "narration": "The Verification Bottleneck. What actually changed when AI took over coding.",
+      "actual_duration_s": 0,
+      "audio_file": "mp3/beat-B08.mp3",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Verification Bottleneck: What Actually Changed When AI Took Over Coding",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "media/BOUT.mp4",
+            "at": ""
+          }
+        }
+      },
+      "id": "BOUT",
+      "narration_text": "The Verification Bottleneck. What actually changed when AI took over coding.",
+      "build": {
+        "status": "VIDEO",
+        "src": "media/BOUT.mp4",
+        "filled_by": "media",
+        "at": "2026-08-04T13:56:06"
+      }
+    }
+  ]
+}

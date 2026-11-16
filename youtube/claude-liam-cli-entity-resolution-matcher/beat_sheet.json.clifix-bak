@@ -1,0 +1,366 @@
+{
+  "metadata": {
+    "title": "Entity-Resolution Matcher: Before the Join, After the Gap",
+    "slug": "claude-liam-cli-entity-resolution-matcher",
+    "topic": "COMPUTATIONAL SKEPTICISM — VERIFIED DATA",
+    "register": "Teardown",
+    "voice": "NikBearBrown",
+    "voice_id": "${ELEVENLABS_VOICE_NIKBEARBROWN}",
+    "palette": "claude",
+    "style_preset": "claude",
+    "style": "cli",
+    "note": "CLI video: B00 intro · B01 PROBLEM · B02 ASK · B03 CODE · B04 OUTPUT(screen-recording) · B05 CHANGE · B06 SUMMARY · B07 NEXT STEPS · B08 extra-slate · B09 outro",
+    "total_estimated_duration_seconds": 120,
+    "audience": "Claude",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "channel": "NikBearBrown",
+    "assignment_tieins": [
+      "CAP250 — entity-resolution / employer-name-matching module is a named contribution; must emit before/after join-coverage counts",
+      "A2 — verified-data instrument: every coverage number must trace; fuzzy matching must never auto-accept"
+    ],
+    "build": {
+      "at": "2026-07-19T17:21:41",
+      "cut": "master",
+      "filled": 10,
+      "of": 10,
+      "slates": [],
+      "skin_warnings": [
+        "B01: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B02: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\").",
+        "B05: composer beat has an empty spark line — SPARK-LINE LAW wants a short serif cue (e.g. \"The change,\")."
+      ]
+    }
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "INTRO",
+      "narration_text": "How many join matches are you losing to legal suffixes — Acme Inc vs ACME Incorporated?",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "How many join matches are you losing to legal suffixes — Acme Inc vs ACME Incorporated?",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Entity-Resolution Matcher, taken apart.",
+            "greeting": "Hola, Bear",
+            "runningText": "computing join-coverage delta…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B00.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "PROBLEM — why care",
+      "role_note": "the stakes BEFORE the build begins — no terminal yet",
+      "narration_text": "Two tables, same company, different strings. The visa filing says 'Acme, Inc.' The funding record says 'ACME Incorporated.' A naive join misses the match and the candidate looking at sponsorship history sees 'Unknown' — a false negative about a company that sponsors every year. That's not a minor data quality issue: it's a decision made wrong, made invisible, and repeated for every candidate who looked at the same table. String normalization closes the gap without a model, and fuzzy matching after that requires a human in the loop.",
+      "visual_intent": "title card: 'same company, different string — the join miss that becomes a wrong decision'; PROBLEM beat, no terminal yet",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "same company, different string — the join miss that becomes a wrong decision",
+            "topic": "COMPUTATIONAL SKEPTICISM",
+            "segment": "Entity-Resolution Matcher, taken apart.",
+            "greeting": "",
+            "runningText": "framing the problem…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 22,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      }
+    },
+    {
+      "beat_id": "B02",
+      "act": "ASK",
+      "role_note": "terminal (Onda) — the command typed",
+      "narration_text": "In the terminal: ask Claude to write a normalize underscore employer function that lowercases, strips punctuation, and removes legal suffixes — inc, LLC, corp, ltd, co, incorporated, limited. Then join two fixture CSVs on the normalized name, print before and after join-coverage counts, the delta, and five rescued rows. Fuzzy matching is off by default: if the allow-fuzzy flag is passed, every proposed match prints as 'needs human confirmation' — it never auto-accepts.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Write normalize_employer(name):\n  lowercase, strip punctuation, remove legal suffixes\n  (inc, llc, corp, ltd, co, incorporated, limited).\nJoin dol_sponsors.csv + sec_fundings.csv on\nnormalized name. Print:\n  rows matched before, after, delta, 5 rescued rows.\nNo auto-accept fuzzy — flag 'needs human confirmation'\nif --allow-fuzzy passed.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — VERIFIED DATA",
+            "segment": "ENTITY-RESOLUTION MATCHER",
+            "greeting": "",
+            "runningText": "generating entity-resolution module…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B02.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "CODE",
+      "role_note": "terminal (Onda) — read the output before running",
+      "narration_text": "Read the normalization function before running. Three steps, in order: lowercase, strip punctuation with a regex substitution, remove legal suffixes with a second regex, collapse whitespace. The join key is the normalized name — not the original, not a hash, the readable normalized string so you can inspect every rescued row by eye. That inspectability is the contract: every rescued match has to be verifiable without trusting the algorithm.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "normalize_employer.py",
+            "code": "# normalize_employer.py — Claude Code output\nimport re\n\nLEGAL_SUFFIXES = re.compile(\n    r\"\\b(inc|llc|corp|ltd|co|incorporated|limited)\\b\"\n)\n\ndef normalize_employer(name: str) -> str:\n    name = name.lower()\n    name = re.sub(r\"[^\\w\\s]\", \" \", name)   # strip punct\n    name = LEGAL_SUFFIXES.sub(\"\", name)      # drop suffixes\n    return \" \".join(name.split())            # collapse spaces\n\n# join on the readable normalized key\ndf_dol[\"key\"] = df_dol[\"employer\"].apply(normalize_employer)\ndf_sec[\"key\"] = df_sec[\"employer\"].apply(normalize_employer)\nmerged = df_dol.merge(df_sec, on=\"key\", how=\"inner\")",
+            "sparkLine": "ENTITY-RESOLUTION MATCHER"
+          },
+          "rendered": {
+            "out": "media/B03.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "OUTPUT — run",
+      "role_note": "screen-recording — before/after coverage counts + rescued rows sample",
+      "narration_text": "Run it on the fixtures. Before normalization: sixty-one matches. After: eighty-nine. Twenty-eight rescued rows — companies that appeared in both tables with identical legal substance and different formatting. The sample prints: 'Acme, Inc.' and 'ACME Incorporated' now share a key. No fuzzy matching, no embedding distance, no model — just case, punctuation, and three regex substitutions. Every rescued row is readable and verifiable by a human in under a second.",
+      "visual_intent": "screen-recording: before/after counts printing (61 → 89, delta +28), 5 rescued rows showing exact string pairs that normalize to the same key",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "terminal: python normalize_employer.py",
+            "code": "$ python normalize_employer.py\n\nBefore normalization: 61 matched rows\nAfter normalization:  89 matched rows\nDelta: +28 rescued rows\n\nSample rescued rows:\n  'Acme, Inc.'         → 'ACME Incorporated'\n  'Google LLC'         → 'Google, L.L.C.'\n  'Meta Platforms Inc' → 'Meta Platforms, Inc.'\n  'JPMorgan Chase & Co'→ 'JPMorgan Chase and Co.'\n  'Abbott Laboratories'→ 'Abbott Laboratories Ltd'",
+            "sparkLine": "ENTITY-RESOLUTION MATCHER"
+          },
+          "rendered": {
+            "out": "media/B04.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 16,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "CHANGE — check and revise",
+      "role_note": "terminal (Onda) — enable fuzzy and show a false positive",
+      "narration_text": "Now turn on allow-fuzzy and show a false positive. Ask Claude to add rapidfuzz to the unmatched rows with a similarity threshold of eighty-eight, printing every proposed match as 'needs human confirmation' with the score. Then deliberately show one false positive: two genuinely different firms with similar names. That false positive is why fuzzy matching must never run without a human sign-off.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "command": "claude \"Update normalize_employer.py:\nadd --allow-fuzzy flag: run rapidfuzz.fuzz.ratio>=88\non unmatched rows. Print each match as:\n  NEEDS HUMAN CONFIRMATION: [A] | [B] (score: X)\nNever auto-accept. Show one false positive:\ntwo different firms with similar normalized names.\"",
+            "topic": "COMPUTATIONAL SKEPTICISM — VERIFIED DATA",
+            "segment": "ENTITY-RESOLUTION MATCHER",
+            "greeting": "",
+            "runningText": "adding fuzzy confirmation gate…",
+            "output": [],
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "media/B05.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 13,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "SUMMARY",
+      "role_note": "the lesson — one beat",
+      "narration_text": "The join is the highest-leverage fix in a verified-data pipeline and the cheapest. Normalization moved coverage from sixty-one to eighty-nine without a model, without training data, without an API call. Fuzzy matching proposes — never accepts. The human sign-off is the gate. A join that fabricates a match — auto-accepting a fuzzy score — is worse than one that honestly reports 'Unknown.' Coverage you can't trace is not coverage.",
+      "visual_intent": "recap card: 'normalization: 61 → 89; fuzzy: propose, never accept'; the delta number large",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "lesson.md",
+            "code": "# KEY LESSON\n#\n# The join is the highest-leverage fix in a verified-data pipeline and\n# the cheapest. Normalization moved coverage from sixty-one to\n# eighty-nine without a model, without training data, without an API\n# call. Fuzzy matching proposes — never accepts.\n#\n# → the delta number large",
+            "sparkLine": "Entity-Resolution Matcher, taken apart."
+          },
+          "rendered": {
+            "out": "media/B06.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 14,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "NEXT STEPS",
+      "role_note": "what to do next",
+      "narration_text": "Your move: take any two tables you're joining on employer or company names. Run before-and-after counts on normalization alone. Report the delta and the rescued-row sample. If you're tempted to add fuzzy matching, write the human-confirmation step first — before any auto-accept logic — and keep it off by default.",
+      "visual_intent": "next-steps card: 1) run before/after count, 2) report delta + rescued sample, 3) human-confirmation before fuzzy",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "next_steps.md",
+            "code": "# YOUR MOVE\n#\n# 1. run before/after count\n# 2. report delta + rescued sample\n# 3. human-confirmation before fuzzy\n#\n# → run it  →  audit the gap  →  report what you find",
+            "sparkLine": "YOUR MOVE"
+          },
+          "rendered": {
+            "out": "media/B07.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "EXTRA",
+      "role_note": "slate — optional b-roll",
+      "narration_text": "The complete source is in the video description. Fork it, swap in your own data, and see what you find. If your numbers break the pattern, that is the interesting result.",
+      "visual_intent": "slate placeholder",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeCodeBeat",
+          "props": {
+            "title": "fork_it.md",
+            "code": "# FORK IT\n#\n# → clone the source (link in description)\n# → swap in your own data\n# → run it\n# → the interesting result is when your numbers break the pattern",
+            "sparkLine": "Entity-Resolution Matcher, taken apart."
+          },
+          "rendered": {
+            "out": "media/B08.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 12,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      },
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 9.09
+    },
+    {
+      "beat_id": "B09",
+      "act": "OUTRO",
+      "narration_text": "Nik Bear Brown. Build it with a CLI. Then take it apart. At Nik Bear Brown, nikbearbrown dot com.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Entity-Resolution Matcher: Before the Join, After the Gap",
+            "handle": "@NikBearBrown",
+            "subline": "coverage you can't trace is not coverage"
+          },
+          "rendered": {
+            "out": "media/B09.mp4",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T17:21:41"
+      }
+    }
+  ]
+}

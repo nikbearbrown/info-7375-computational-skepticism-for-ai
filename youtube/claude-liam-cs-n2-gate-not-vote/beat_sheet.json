@@ -1,0 +1,553 @@
+{
+  "metadata": {
+    "slug": "claude-liam-cs-n2-gate-not-vote",
+    "title": "The Gate That Was Really Just a Vote",
+    "topic": "COMPUTATIONAL SKEPTICISM",
+    "purpose": "Show how a gate zeroes the composite when its condition fails while a vote merely subtracts a few points, so a decisive disqualifier quietly survives as a pretty-good score — and only a test that asserts exactly-zero tells a gate from a vote. Source: the-reallocation-engine/chapters/16-the-build-and-the-honest-run.md + Ch9 delegation",
+    "aspect_ratio": "16:9",
+    "style_preset": "vox-editorial",
+    "color_semantics": "TEAL = gate behavior / the zero; CRIMSON = vote behavior / the surviving score; GOLD = the multiplier / key insight; SLATE = composite score bar",
+    "note": "EXCLUSIONS: no engine architecture tour, no Bayesian scorer math, no code walkthrough — one bar, two wirings",
+    "total_estimated_duration_seconds": 185,
+    "audience": "Claude",
+    "register": "Teardown",
+    "palette": "claude",
+    "outro_source": "AUTHOR.MD :: NikBearBrown",
+    "engine": "kokoro",
+    "voice_kokoro": "am_onyx",
+    "series": "Computational Skepticism for AI",
+    "chapter_number": 30,
+    "build": {
+      "at": "2026-07-19T02:50:28",
+      "cut": "review",
+      "filled": 5,
+      "of": 15,
+      "slates": [
+        "B01",
+        "B02",
+        "B04",
+        "B05",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "skin_warnings": [
+        "B01: palette=claude but the cold open is 'un-annotated' — COLD OPEN LAW wants ClaudeComposerAsk",
+        "B15: palette=claude but the outro is 'OutroCTA' — OUTRO LAW wants ClaudeTitleOutro"
+      ]
+    },
+    "voice": "kokoro:am_onyx"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "B00",
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-B00.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "topic": "COMPUTATIONAL SKEPTICISM FOR AI",
+            "segment": "The Gate That Was Really Just a Vote",
+            "greeting": "Hej, Liam.",
+            "command": "A dead job posting scored 72 out of 100.",
+            "runningText": "analyzing…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "High"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    },
+    {
+      "beat_id": "B01",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 10,
+      "narration_text": "A dead job posting scored 72 out of 100. It should have scored zero. A gate is not a vote.",
+      "shot": {
+        "type": "REMOTION",
+        "source": "own",
+        "remotion": {
+          "pattern": "FormBCard",
+          "props": {
+            "title": "The Gate That Was Really Just a Vote",
+            "items": [
+              {
+                "label": "Key point one",
+                "sub": "",
+                "icon": "target",
+                "cueFrame": 20
+              },
+              {
+                "label": "Key point two",
+                "sub": "",
+                "icon": "list-checks",
+                "cueFrame": 55
+              },
+              {
+                "label": "Key point three",
+                "sub": "",
+                "icon": "zap",
+                "cueFrame": 90
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B01.mp4",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "title",
+        "copy": "The Gate That Was\nReally Just a Vote"
+      },
+      "scene_class": "B01_Title",
+      "audio_file": "mp3/beat-B01.mp3",
+      "actual_duration_s": 6.57,
+      "build": {
+        "status": "SLATE"
+      },
+      "lane": "BOOKEND",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "voice_kokoro": "am_onyx"
+    },
+    {
+      "beat_id": "B02",
+      "act": "COLD OPEN",
+      "estimated_duration_s": 11.0,
+      "narration_text": "The job posting expired six weeks ago. The role was filled. The system evaluated the posting anyway — skills match, location match, salary alignment, posting age. Skills and location score well. Salary scores well. Posting age scores poorly — call it a twenty-point deduction. Final composite: 72 out of 100. The system recommended pursuing the application. Here is the problem: a posting that is closed is not a weak posting. It is a zero. If your scoring system treated 'posting is dead' as a vote that subtracts twenty points, you do not have a filter. You have a suggestion box.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B02_DeadPostingScoreExample",
+      "audio_file": "mp3/beat-B02.mp3",
+      "actual_duration_s": 31.57,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:50:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B02.mp4)",
+        "suggested": "suggested prompt: The job posting expired six weeks ago. The role was filled. The system evaluated the posting anyway — skills match, location match, salary alignment, posting ag"
+      }
+    },
+    {
+      "beat_id": "B03",
+      "act": "THE QUESTION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "When a disqualifying condition reduces a composite score by a few points instead of zeroing it, what kind of control is that — and how do you tell the difference?",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "question",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "When disqualifying conditions only subtract points,",
+              "what never fires?"
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "question",
+        "copy": "When a disqualifier subtracts a few points\ninstead of zeroing the composite,\nwhat kind of control is that?"
+      },
+      "audio_file": "mp3/beat-B03.mp3",
+      "actual_duration_s": 9.05,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:50:28"
+      }
+    },
+    {
+      "beat_id": "B04",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A composite score is built from multiple signals. Each signal contributes to the total. The design question is: what role does each signal play? Some signals are votes — a higher value raises the composite, a lower value lowers it, but the composite can survive a bad vote and remain positive. Other signals are gates — if the gate condition fails, the composite becomes zero, regardless of how every other vote scored. The mistake is building something you call a gate, wiring it as a vote, and never testing whether it actually zeros the composite when it should. The gate becomes a leaky filter. Disqualified cases flow through.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B04_GateVsVoteDesignGap",
+      "audio_file": "mp3/beat-B04.mp3",
+      "actual_duration_s": 32.96,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:50:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B04.mp4)",
+        "suggested": "suggested prompt: A composite score is built from multiple signals. Each signal contributes to the total. The design question is: what role does each signal play? Some signals ar"
+      }
+    },
+    {
+      "beat_id": "B05",
+      "act": "THE PROBLEM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The failure mode is invisible in normal operation. If most of your inputs satisfy all the gate conditions, the gate fires rarely. You review outputs that look reasonable. No case flags because no disqualified case has made it through yet, or the disqualified cases that did make it through looked plausible enough that no one caught them. The gate test requires deliberately sending in an input that should be disqualified and asserting that the composite is exactly zero — not just low, not under a threshold, not in the bottom decile. Zero. If the system returns 72, you have a vote. You do not have a gate.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B05_InvisibleFailureMode",
+      "audio_file": "mp3/beat-B05.mp3",
+      "actual_duration_s": 32.53,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:50:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B05.mp4)",
+        "suggested": "suggested prompt: The failure mode is invisible in normal operation. If most of your inputs satisfy all the gate conditions, the gate fires rarely. You review outputs that look r"
+      }
+    },
+    {
+      "beat_id": "B06",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 4.0,
+      "narration_text": "The mechanism is the multiplier: a gate is wired as a multiplicative zero — fail the condition and the composite is zero; a vote is wired as an additive subtraction — fail the condition and the composite drops by a fixed amount. The wiring is the difference.",
+      "shot": {
+        "type": "STILL",
+        "source": "ai",
+        "motion": "kenburns",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "Gate = multiplicative zero. Vote = additive",
+              "subtraction. Know the difference."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "image_description": "A composite score bar — full width, filled in slate — with a 'liveness' input shown in two versions stacked vertically. Top version: liveness is wired as a multiplier (×0 when false), and the bar collapses completely to zero, the bar turning teal to show the gate behavior. Bottom version: liveness is wired as a subtraction (−20 when false), and the bar drops modestly, remaining filled in crimson at 72%, the disqualifying condition survived. A gold bracket between the two wiring diagrams is labeled 'THE WIRING IS THE DIFFERENCE'",
+      "audio_file": "mp3/beat-B06.mp3",
+      "actual_duration_s": 14.93,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:50:28"
+      }
+    },
+    {
+      "beat_id": "B07",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The transform visualization. One composite score bar. Two wirings for the same liveness input. Wiring one: vote. The liveness condition fails — posting is closed. The scoring system subtracts 20 points. The bar drops from 92 to 72. The bar is crimson, still substantial, still in the top quartile for the day's batch. The system recommends the application. Wiring two: gate. The liveness condition fails — posting is closed. The gate fires as a multiplier: composite times zero equals zero. The bar collapses to empty, teal, exactly zero. The system discards the posting before it reaches the recommendation stage. Same input. Same 'liveness' label in the code. Two completely different outcomes depending on whether it was wired as a multiplication or a subtraction.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B07_BarCollapseTransform",
+      "audio_file": "mp3/beat-B07.mp3",
+      "actual_duration_s": 41.69,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:50:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B07.mp4)",
+        "suggested": "suggested prompt: The transform visualization. One composite score bar. Two wirings for the same liveness input. Wiring one: vote. The liveness condition fails — posting is close"
+      }
+    },
+    {
+      "beat_id": "B08",
+      "act": "THE MECHANISM",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The test that tells you which you have is a single assertion: send in an input where the gate condition is false, check the composite output, assert it equals exactly zero. Not less than ten. Not below a discard threshold you set at fifteen. Exactly zero. If the output is anything other than zero, the gate is a vote. This test is the minimum viable gate verification. It cannot be replaced by reviewing the output distribution, checking mean scores, or auditing a sample of recommended outputs. The only test for 'did the gate fire' is 'is the composite zero when the gate condition is false.'",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B08_ExactlyZeroAssertion",
+      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 31.3,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:50:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B08.mp4)",
+        "suggested": "suggested prompt: The test that tells you which you have is a single assertion: send in an input where the gate condition is false, check the composite output, assert it equals e"
+      }
+    },
+    {
+      "beat_id": "B09",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 9.0,
+      "narration_text": "The CAP250 test harness implication: every gate you document in your mode design must have a corresponding test that asserts the composite output equals exactly zero when the gate condition is false. This is not optional and it cannot be verified by reading the code. The code may look like a gate. The behavior may be a vote. The behavior is what the test checks. Document the gate condition, the input that triggers it, and the expected output: zero. If your test harness does not contain this test for every gate you designed, you have not verified you have a gate.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B09_TestHarnessGateRequirement",
+      "audio_file": "mp3/beat-B09.mp3",
+      "actual_duration_s": 30.74,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:50:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B09.mp4)",
+        "suggested": "suggested prompt: The CAP250 test harness implication: every gate you document in your mode design must have a corresponding test that asserts the composite output equals exactly"
+      }
+    },
+    {
+      "beat_id": "B10",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 7.0,
+      "narration_text": "The Ch9 delegation lens: in an agentic pipeline, a gate is a delegation boundary. It is the point where the composite score is low enough that the system does not act — it escalates to a human, or it stops entirely. If the gate is wired as a vote, the delegation boundary is fuzzy. Cases that should stop at the gate and wait for a human decision flow through instead. The agentic system acts on cases it should not be acting on. The gate was the safety control. A vote is not a safety control.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B10_DelegationBoundaryGate",
+      "audio_file": "mp3/beat-B10.mp3",
+      "actual_duration_s": 26.52,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:50:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B10.mp4)",
+        "suggested": "suggested prompt: The Ch9 delegation lens: in an agentic pipeline, a gate is a delegation boundary. It is the point where the composite score is low enough that the system does n"
+      }
+    },
+    {
+      "beat_id": "B11",
+      "act": "THE IMPLICATION",
+      "estimated_duration_s": 8.0,
+      "narration_text": "The broader design principle: before you name a signal a gate, ask what the composite does when the gate fires. If the answer is 'it gets a low score,' the signal is a vote. If the answer is 'it becomes zero,' the signal is a gate. Name them correctly. Test them correctly. Do not call a vote a gate because the vocabulary sounds more decisive. The system does not know what you called it. It knows how you wired it.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B11_NamingAndWiringConsistency",
+      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 20.2,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:50:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B11.mp4)",
+        "suggested": "suggested prompt: The broader design principle: before you name a signal a gate, ask what the composite does when the gate fires. If the answer is 'it gets a low score,' the sign"
+      }
+    },
+    {
+      "beat_id": "B12",
+      "act": "THE EXAMPLE",
+      "estimated_duration_s": 13.0,
+      "narration_text": "A student's mode design has three stated gates: posting is live, visa requirement is compatible, application deadline has not passed. During CAP250 testing, the grader sends in a posting where the visa requirement fails — the role requires sponsorship and the student's profile says citizen-only preferred. The composite returns 61 out of 100. The gate did not fire. The grader sends in a posting where the deadline passed yesterday. The composite returns 54. Not zero. Not zero again. The student reads the test output and explains: 'The system still scored it lower for those conditions.' The grader writes: lower is not zero. A gate that returns 54 is a vote that subtracts 46. The student rewires both conditions as multipliers, re-runs the test harness. Both inputs now return zero. The CAP250 gate-behavior test passes. The submitted system has gates. The previous version had suggestions.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "own",
+        "motion": "transform"
+      },
+      "scene_class": "B12_StudentGateRewireExample",
+      "audio_file": "mp3/beat-B12.mp3",
+      "actual_duration_s": 50.35,
+      "build": {
+        "status": "SLATE",
+        "src": null,
+        "filled_by": null,
+        "at": "2026-07-19T02:50:28",
+        "needs": "YOU → 5–10s gen-AI clip → pantry (as B12.mp4)",
+        "suggested": "suggested prompt: A student's mode design has three stated gates: posting is live, visa requirement is compatible, application deadline has not passed. During CAP250 testing, the"
+      }
+    },
+    {
+      "beat_id": "B13",
+      "act": "RECAP",
+      "estimated_duration_s": 9.0,
+      "narration_text": "A gate zeroes the composite when its condition fails — wired as a multiplicative zero, not an additive subtraction. A vote merely lowers the composite, and a decisive disqualifier quietly survives as a pretty-good score. The only test that distinguishes them is an assertion that the composite equals exactly zero when the gate condition is false. Not low. Not below threshold. Zero. In the CAP250 harness, every gate you designed must have that test. If the test returns anything else, you have a vote.",
+      "shot": {
+        "type": "CARD",
+        "source": "own",
+        "motion": "endcard",
+        "remotion": {
+          "pattern": "FormACard",
+          "provenance": "proven-core/SlateCard",
+          "version": "1",
+          "props": {
+            "lines": [
+              "A gate returns zero. A vote returns low. Test for",
+              "exactly zero."
+            ],
+            "dark": false
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "card": {
+        "kind": "endcard",
+        "copy": "Gate = zero.\nVote = lower.\nAssert exactly zero.",
+        "sub": "Name signals correctly. Wire them correctly. Test the wiring.",
+        "topic": "COMPUTATIONAL SKEPTICISM"
+      },
+      "audio_file": "mp3/beat-B13.mp3",
+      "actual_duration_s": 27.65,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B13.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:50:28"
+      }
+    },
+    {
+      "beat_id": "BVDT",
+      "act": "BVDT",
+      "type": "GRAPHIC",
+      "name": "OutroSeries",
+      "narration_text": "Part of the Computational Skepticism for AI series.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-series",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "provenance": "proven-core/OutroSeries",
+          "version": "1",
+          "props": {
+            "artifactTitle": "The Gate That Was Really Just a Vote",
+            "artifactHeading": "Key findings — The Gate That Was Really Just a Vote",
+            "artifactLines": [
+              "Like and subscribe for more.",
+              "Part of the Computational Skepticism for AI series.",
+              "The Ch9 delegation lens: in an agentic pipeline, a gate is a delegation boundary."
+            ]
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 6,
+      "audio_file": "mp3/beat-B14.mp3",
+      "actual_duration_s": 3.86,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B14.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:50:28"
+      }
+    },
+    {
+      "beat_id": "BHTF",
+      "act": "BHTF",
+      "type": "GRAPHIC",
+      "name": "OutroCTA",
+      "narration_text": "Like and subscribe for more.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "fade",
+        "scene_type": "outro-cta",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "provenance": "proven-core/OutroCTA",
+          "version": "1",
+          "props": {
+            "topic": "YOUR TURN — THE GATE THAT WAS REALLY JUST A VOTE",
+            "segment": "The Gate That Was Really Just a Vote",
+            "greeting": "Привет, Liam.",
+            "command": "Ask Claude: The Gate That Was Really Just a Vote",
+            "runningText": "running…",
+            "folderLabel": "@NikBearBrown",
+            "modelLabel": "Fable 5",
+            "effortLabel": "Low"
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      },
+      "estimated_duration_s": 5,
+      "audio_file": "mp3/beat-B15.mp3",
+      "actual_duration_s": 2.37,
+      "build": {
+        "status": "SLATE",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-07-19T02:50:28"
+      }
+    },
+    {
+      "beat_id": "BOUT",
+      "act": "BOUT",
+      "estimated_duration_s": 8.0,
+      "actual_duration_s": null,
+      "narration_text": "",
+      "audio_file": "mp3/beat-BOUT.mp3",
+      "build": {
+        "status": "SLATE"
+      },
+      "shot": {
+        "type": "REMOTION",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "The Gate That Was Really Just a Vote",
+            "slug": "claude-liam-cs-n2-gate-not-vote",
+            "handle": "@NikBearBrown",
+            "subline": ""
+          },
+          "rendered": {
+            "out": "",
+            "at": ""
+          }
+        }
+      }
+    }
+  ]
+}

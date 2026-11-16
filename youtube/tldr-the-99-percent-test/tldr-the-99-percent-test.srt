@@ -1,0 +1,307 @@
+1
+00:00:00,000 --> 00:00:04,422
+Ahoj. This is Liam, in for Bear, with chapter two of INFO 7375, Computational
+
+2
+00:00:04,442 --> 00:00:08,863
+Skepticism for AI, at Northeastern. This film is about a test that is ninety-nine
+
+3
+00:00:08,883 --> 00:00:12,988
+percent accurate, and a positive result that means about one percent. Count ten
+
+4
+00:00:13,008 --> 00:00:17,112
+thousand people, and the positives come mostly from the healthy: about a hundred
+
+5
+00:00:17,132 --> 00:00:21,554
+false, one true. The trap: reading the test's accuracy as the answer, and forgetting
+
+6
+00:00:21,574 --> 00:00:23,140
+how rare the disease was.
+
+7
+00:00:23,210 --> 00:00:26,826
+Why should you care? Every alert you will ever triage, fraud, an intrusion, a
+
+8
+00:00:26,846 --> 00:00:30,721
+screening flag, is this test. When the thing you hunt is rare, even an excellent
+
+9
+00:00:30,741 --> 00:00:34,357
+detector fires mostly on the innocent. Miss that, and your team learns the alarms
+
+10
+00:00:34,377 --> 00:00:38,772
+mean nothing, then ignores the real one. See the base rate, and you know what a flag
+
+11
+00:00:38,792 --> 00:00:40,590
+is worth before you act on it.
+
+12
+00:00:40,660 --> 00:00:45,636
+The real question: how likely is a positive to mean disease? Not how likely a sick
+
+13
+00:00:45,656 --> 00:00:50,319
+person is to test positive. That is the ninety-nine percent on the box. Flip the
+
+14
+00:00:50,339 --> 00:00:51,880
+question, and the answer changes.
+
+15
+00:00:51,950 --> 00:00:56,471
+Three terms. Base rate: how common the condition is before any test. Here, one in
+
+16
+00:00:56,491 --> 00:01:00,407
+ten thousand. False positive: a positive result on someone who is actually healthy.
+
+17
+00:01:00,427 --> 00:01:05,856
+And the vertical bar, read 'given': P of A given B is the chance of A, counting only
+
+18
+00:01:05,876 --> 00:01:07,370
+the cases where B happened.
+
+19
+00:01:07,440 --> 00:01:12,060
+One patient. A disease that about one person in ten thousand has. A test the company
+
+20
+00:01:12,080 --> 00:01:15,830
+says is ninety-nine percent accurate. The result comes back positive. So how likely
+
+21
+00:01:15,850 --> 00:01:20,760
+is it that this patient is sick? The rail at the bottom is where the answer goes.
+
+22
+00:01:20,780 --> 00:01:22,790
+For now it holds a question mark.
+
+23
+00:01:22,860 --> 00:01:26,929
+First, what the ninety-nine percent promises. Take a hundred people who really are
+
+24
+00:01:26,949 --> 00:01:31,018
+sick, one square each. Run the test. Ninety-nine light up positive. One slips
+
+25
+00:01:31,038 --> 00:01:35,736
+through. That is the test's hit rate on the sick: ninety-nine out of a hundred,
+
+26
+00:01:35,756 --> 00:01:36,680
+exactly as printed.
+
+27
+00:01:36,750 --> 00:01:40,802
+Now a hundred healthy people. Ninety-nine percent accurate also means the test
+
+28
+00:01:40,822 --> 00:01:45,553
+clears ninety-nine of them. One lights up anyway: a false positive. One in a
+
+29
+00:01:45,573 --> 00:01:49,965
+hundred. Small. Remember that one. Real tests print two separate rates here; this
+
+30
+00:01:49,985 --> 00:01:52,340
+example uses one number for both jobs.
+
+31
+00:01:52,410 --> 00:01:56,816
+The obvious answer: the test is ninety-nine percent accurate, it said positive, so
+
+32
+00:01:56,836 --> 00:02:01,243
+about ninety-nine percent. Most engineers say above ninety. In a classic 1978 study,
+
+33
+00:02:01,263 --> 00:02:05,329
+most of sixty Harvard physicians and students answered about ninety-five, on a
+
+34
+00:02:05,349 --> 00:02:08,734
+one-in-a-thousand version. But look at what the ninety-nine measured: positive,
+
+35
+00:02:08,754 --> 00:02:12,820
+given sick. We were asked the other way round: sick, given positive.
+
+36
+00:02:12,890 --> 00:02:16,903
+So stop looking at one patient. Picture everyone who takes the test: ten thousand
+
+37
+00:02:16,923 --> 00:02:21,223
+people, one square each. On average, one of them is sick. There, one square. The
+
+38
+00:02:21,243 --> 00:02:24,968
+other nine thousand nine hundred ninety-nine are healthy. Now both facts we just
+
+39
+00:02:24,988 --> 00:02:27,560
+watched can act on the whole crowd at once.
+
+40
+00:02:27,630 --> 00:02:31,496
+Before anything lights up: commit. The test is about to run on all ten thousand. The
+
+41
+00:02:31,516 --> 00:02:35,624
+sick one will light. One in a hundred of the healthy will light too. Of all the
+
+42
+00:02:35,644 --> 00:02:39,510
+squares that light, what share will be the sick one? Pick a number. Lock it in.
+
+43
+00:02:39,580 --> 00:02:43,897
+Run it. The sick square lights. Now one percent of the healthy: about a hundred
+
+44
+00:02:43,917 --> 00:02:47,945
+squares, scattered everywhere. Pull every lit square into the pen. One sick. About a
+
+45
+00:02:47,965 --> 00:02:52,571
+hundred healthy. The positive you are holding is one of a hundred and one. About one
+
+46
+00:02:52,591 --> 00:02:52,860
+percent.
+
+47
+00:02:52,930 --> 00:02:57,241
+What we just did deserves its name. The chance of disease given a positive is the
+
+48
+00:02:57,261 --> 00:03:01,572
+sick square's share of the pile. On top: how common the disease is, times how often
+
+49
+00:03:01,592 --> 00:03:05,091
+the sick test positive. Underneath: the whole pile. That same piece, plus the
+
+50
+00:03:05,111 --> 00:03:09,152
+healthy share times the false alarm rate. That is Bayes' theorem. And look where the
+
+51
+00:03:09,172 --> 00:03:12,400
+base rate sits: on top, with the same weight as the test.
+
+52
+00:03:12,470 --> 00:03:16,625
+Read the line. Left: the chance of disease, given a positive. On top: the base rate,
+
+53
+00:03:16,645 --> 00:03:20,278
+one in ten thousand, times the hit rate, point nine nine. Underneath: that same
+
+54
+00:03:20,298 --> 00:03:24,192
+piece, plus the healthy share times the false alarm rate, point zero one. Every way
+
+55
+00:03:24,212 --> 00:03:28,367
+to get a positive, added up. Plug in the numbers: about point zero zero nine eight.
+
+56
+00:03:28,387 --> 00:03:32,803
+The count said one in a hundred and one, because it let the test catch the sick
+
+57
+00:03:32,823 --> 00:03:34,890
+person for certain. Both are about one percent.
+
+58
+00:03:34,960 --> 00:03:39,294
+Back to our patient. Before the test: one in ten thousand. After a positive: about
+
+59
+00:03:39,314 --> 00:03:43,937
+one in a hundred. The test did real work, almost a hundredfold. And the answer is
+
+60
+00:03:43,957 --> 00:03:48,291
+still about one percent. Both are true. The same shape shows up at hospital scale:
+
+61
+00:03:48,311 --> 00:03:52,064
+one widely used sepsis model, checked externally, alerted on eighteen percent of all
+
+62
+00:03:52,084 --> 00:03:56,418
+patients, and still missed two thirds of the sepsis. Not found here: how common a
+
+63
+00:03:56,438 --> 00:03:59,320
+disease must be before a positive is a coin flip.
+
+64
+00:03:59,390 --> 00:04:02,917
+Let's recap with Claude. A ninety-nine percent accurate test, a one-in-ten-thousand
+
+65
+00:04:02,937 --> 00:04:06,787
+disease, a positive result: about a one percent chance of disease. Ninety-nine
+
+66
+00:04:06,807 --> 00:04:10,980
+percent is positive given sick; the question was sick given positive. Count ten
+
+67
+00:04:11,000 --> 00:04:15,172
+thousand people: one true positive, about a hundred false. Bayes writes the count
+
+68
+00:04:15,192 --> 00:04:20,010
+down, and the base rate sits on top, with the same weight as the test.
+
+69
+00:04:20,080 --> 00:04:25,024
+Your turn. Paste this into Claude: Take a test that catches 99% of sick people and
+
+70
+00:04:25,044 --> 00:04:29,057
+clears 99% of healthy ones. Before computing anything, predict the base rate at
+
+71
+00:04:29,077 --> 00:04:33,711
+which a positive result becomes a coin flip: a 50% chance of disease. Then compute
+
+72
+00:04:33,731 --> 00:04:39,605
+the chance of disease given a positive at base rates of 1 in 100, 1 in 1,000, 1 in
+
+73
+00:04:39,625 --> 00:04:44,259
+10,000 and 1 in 100,000 — first by counting a population, then with Bayes' theorem.
+
+74
+00:04:44,279 --> 00:04:49,223
+Finally, name one detector in my own field and the base rate it works against. Two
+
+75
+00:04:49,243 --> 00:04:54,186
+things to look for. Did it lock a prediction before it computed? If it jumped to
+
+76
+00:04:54,206 --> 00:04:58,840
+numbers, send it back. And did the counting and Bayes agree at every base rate?
+
+77
+00:04:58,910 --> 00:05:04,107
+The Test That Is Ninety-Nine Percent Accurate. At Nik Bear Brown.
