@@ -1,6 +1,6 @@
 # Computational Skepticism exam notes, 2026-11-19
 
-**Executive summary.** Professor Bear made several calls today. First, a scope call: students must know what model explainability and model observability mean. They do not need specific techniques such as SHAP and LIME. Explainability, and leaving out SHAP and LIME, were already in the exam materials. Observability was on no exam list, although the book defines it in its two opening agent chapters, so today it was added to the term lists, the practice prompt and both prep guides. One question is open for Bear: his description of explainability ("to be able to know how it works") is closer to what the book calls interpretability. Second, two new films, on model explainability and model observability, go before the Shapley-heavy Key Terms: Model Explainability film, and a third film covers the impossibility theorem. Third, the impossibility theorem and rungs 1 and 2 of Pearl's ladder are on the exam. Fourth, an exam-writing rule: at least one case is a bias case in which students name which of Chapter 6's ten ways in it is; the ten ways in now have their own section on the student cheat sheet.
+**Executive summary.** Professor Bear made several calls today. First, a scope call: students must know what model explainability and model observability mean. They do not need specific techniques such as SHAP and LIME. Explainability, and leaving out SHAP and LIME, were already in the exam materials. Observability was on no exam list, although the book defines it in its two opening agent chapters, so today it was added to the term lists, the practice prompt and both prep guides. One question is open for Bear: his description of explainability ("to be able to know how it works") is closer to what the book calls interpretability. Second, two new films, on model explainability and model observability, go before the Shapley-heavy Key Terms: Model Explainability film, and a third film covers the impossibility theorem. Third, the impossibility theorem and rungs 1 and 2 of Pearl's ladder are on the exam. Fourth, an exam-writing rule: at least one case is a bias case in which students name which of Chapter 6's ten ways in it is; the ten ways in now have their own section on the student cheat sheet. Fifth, one multiple-answer question shows a fitted model, such as a regression line, and asks whether and where there is bias.
 
 ## Bear's words
 
@@ -57,6 +57,16 @@ Bear: *"Impossibility theorem, first two rungs of Pearl's ladder are part of the
 
 - **Already on the lists:** the impossibility theorem and base-rate difference (compact list, Ch 6 and 7); Pearl's ladder, association, intervention, counterfactual and Rung 1. The case checklist's Chapter 6 asks "Rung 1 or rung 2: did anyone set X, or only watch it?". Chapter 6 itself teaches only rungs 1 and 2 ("Pearl's Ladder — Rungs 1 and 2").
 - **Changed today:** the practice prompt's starter notes now have an impossibility-theorem note and a Pearl's-ladder note (rungs 1 and 2). Before, it had neither.
+
+## Exam-writing rule: one multiple-answer question shows a fitted model
+
+Bear: *"One of the multiple answers questions should show a fit of a model, like a linear regression fit, and ask, is there bias? Where is there bias?"*
+
+- At least one of the ten multiple-answer questions shows a fitted model, such as a straight regression line drawn through data points, and its statements ask whether there is bias and where.
+- What "bias" means here: systematic error, a prediction that misses in one direction on average. This is Chapter 6's definition (bias is the gap between what an estimator returns on average and the true value) applied to a fitted line. Where the fit is unbiased, the points scatter on both sides of the line. Where it is biased, the residuals (actual minus fitted) have a pattern: a straight line through curved data sits above the points in one stretch and below them in another, or one group of points sits consistently above the line.
+- Good statements to judge: a high R² does not rule out bias in a region; random scatter around the line is not bias; more data of the same kind does not remove bias from the wrong model form; bias in one range of x or one group can hide inside a good overall fit.
+- **Source note:** Chapter 6 defines bias for an estimator but never shows a fitted line. Reading bias from a residual pattern is in the stats cheat sheet (`decks/STATS-PROBABILITY-CHEAT-SHEET.md`, section 13, marked as added standard material) and in its section 16 on bias and variance. Bear to confirm this reading is the one he means.
+- **Changed today:** the practice prompt now requires this question in every full practice exam and has a starter note on reading bias from a fit. On paper the question shows a plot; the practice coach, which may not draw, can give a small table of x, actual y and fitted y instead.
 
 ## Exam-writing rule: one case is a bias case
 

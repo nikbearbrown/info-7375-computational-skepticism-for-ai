@@ -1276,6 +1276,18 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`, `fall-2026-exam/EXAM-GENERATOR-PROMPT.md`. Next: confirm rung 3; make the film. Pushed, with the log row below.
 
+### 2026-11-19 — Exam rule: one multiple-answer question shows a fitted model and asks where the bias is
+
+- **Date and what I was working on:** 2026-11-19. Rules for writing the Computational Skepticism exam.
+- **I tried / expected:** I said *"One of the multiple answers questions should show a fit of a model, like a linear regression fit, and ask, is there bias? Where is there bias?"*
+- **What happened:**
+  - Recorded as an exam-writing rule, and the practice prompt now requires such a question in every full practice exam, with a starter note on reading bias from the residuals of a fit.
+  - Chapter 6 defines bias for an estimator but never shows a fitted line; reading bias from a residual pattern comes from the stats cheat sheet. To confirm that is the reading I mean.
+- **What I did:** Dictated the rule.
+- **What Claude or another person contributed:** Claude Code wrote the rule into the notes and the practice prompt and wrote this entry.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`, `fall-2026-exam/EXAM-GENERATOR-PROMPT.md`. Pushed, with the log row below.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1347,3 +1359,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-19 | Exam practice prompt: one-word answers are attempts, not unknown commands |
 | 2026-11-19 | docs(exam): 2026-11-19 exam notes: explainability and observability are required, SHAP and LIME are not; observability added to the term lists, practice prompt and prep guides |
 | 2026-11-19 | docs(exam): a bias case naming the ten ways in; the impossibility theorem and Pearl's rungs 1 and 2 are on the exam; film requests logged |
+| 2026-11-19 | docs(exam): one multiple-answer question shows a fitted model and asks whether and where there is bias |
