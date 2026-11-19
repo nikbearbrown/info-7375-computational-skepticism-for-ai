@@ -1310,6 +1310,16 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`. Pushed, with the log row below.
 
+### 2026-11-19 — Exam rule: a multiple-answer question on rung 1 versus rung 2
+
+- **Date and what I was working on:** 2026-11-19. Rules for writing the Computational Skepticism exam.
+- **I tried / expected:** I said *"So there will be a multiple answers question where you give some examples and you ask whether they're rung 1 or rung 2."*
+- **What happened:** Recorded under the Pearl's ladder scope call in the exam notes. The practice prompt now builds one such question into every full practice exam: short examples, each statement saying whether one is rung 1 (watched) or rung 2 (set).
+- **What I did:** Dictated the rule.
+- **What Claude or another person contributed:** Claude Code wrote the rule into the notes and the practice prompt and wrote this entry.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`, `fall-2026-exam/EXAM-GENERATOR-PROMPT.md`. Pushed, with the log row below.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1384,3 +1394,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-19 | docs(exam): one multiple-answer question shows a fitted model and asks whether and where there is bias |
 | 2026-11-19 | docs(exam): in every case, every adjustment (such as inverse probability weighting) must be recorded; checklist item 4 |
 | 2026-11-19 | docs(exam): Cohen's kappa is not on the exam; it stays in the glossary for study after the class |
+| 2026-11-19 | docs(exam): one multiple-answer question gives examples and asks whether each is rung 1 or rung 2 |
