@@ -8,7 +8,7 @@ Built 2026-11-09 from the 13 chapter inventories (1,193 entries, merged to 1,054
 
 ## Contents
 
-- Part A: Bear's priority terms (115)
+- Part A: Bear's priority terms (116)
 - Part B: other strong candidates (60)
 - Part C: terms Bear named that are not in the book
 - Part D: not on the exam: Chapter 5 methods to learn (35), and what is out of Chapters 10, 11, 12 and 13 (265)
@@ -973,7 +973,7 @@ Example: The zip code attribution of 0.035 is observational: it does not say whe
 
 Not to be confused with: Rung 2 (intervention)
 
-## Explainability, transparency, interpretability (4)
+## Explainability, transparency, interpretability, observability (5)
 
 **transparency**
 *exam focus (Bear) · in the chapter text: Ch 3 ×1, Ch 5 ×8, Ch 6 ×1, Ch 8 ×1, Ch 10 ×1, Ch 12 ×2, Ch 13 ×1 · kind: concept*
@@ -1022,6 +1022,18 @@ In plain words: A counterfactual explanation says how the prediction would chang
 Example: If your income were $5,000 higher, the loan would be approved.
 
 Not to be confused with: SHAP attribution (a Rung 1 statement)
+
+**observability**  *(also: model observability)*
+*exam focus (Bear, 2026-11-19) · in the chapter text: Ch 0a ×7, Ch 0b ×5 · kind: concept*
+
+> Observability is the ability to investigate behavior using the signals a system exposes. More logging is not automatically better observability.
+> — *the book, Agents: Understanding Before Delegating (chapter file 00a) line 190*
+
+In plain words: Observability means measuring and recording what a running model or agent does (its inputs, outputs, tool calls, errors and, later, the real outcomes) so that you can investigate its behavior. Bear: "Model observability, that we're measuring things."
+
+Example: A trace links a task to its model calls, retrieved inputs, tool requests and errors, so you can see that the agent edited the wrong document (Agentic Loops, chapter file 00b, line 127). For a deployed model, Ch 2's drift detection is the same idea: watch the inputs, the outputs and above all the real outcomes, because a dashboard of confident outputs stays green through a shift.
+
+Not to be confused with: evaluation (evaluation applies a criterion to behavior or results; a complete trace can document a failure without making it a success), and explainability (a reason attached to one output)
 
 ## Agents and consequence (13)
 

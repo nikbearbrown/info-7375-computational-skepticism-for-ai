@@ -1,6 +1,6 @@
 # Exam terms: the compact list, with the limited scope
 
-What is on this list: Chapters 1 to 9, the "what uncertainty is and calibration" half of Chapter 11, and the one accountability point of Chapter 12. Not on it: Chapter 10 (visualization), the communicating half of Chapter 11, the rest of Chapter 12, Chapter 13 (marked not on the exam; to be confirmed in class), and the Chapter 5 methods LIME and SHAP (learn them, not on the exam). Table columns: term, the chapters that teach it, one plain sentence, and a flag. Full definitions, book sentences and examples are in "Exam terms - shortlist.md".
+What is on this list: Chapters 1 to 9, the "what uncertainty is and calibration" half of Chapter 11, the one accountability point of Chapter 12, and observability from the two opening agent chapters (Bear, 2026-11-19). Not on it: Chapter 10 (visualization), the communicating half of Chapter 11, the rest of Chapter 12, Chapter 13 (marked not on the exam; to be confirmed in class), and the Chapter 5 methods LIME and SHAP (learn them, not on the exam). Table columns: term, the chapters that teach it, one plain sentence, and a flag. Full definitions, book sentences and examples are in "Exam terms - shortlist.md".
 
 Flags: **book** = defined in one sentence in the book; *spread* = the book explains it across passages; *not in book* = common usage Bear named.
 
@@ -8,6 +8,7 @@ Flags: **book** = defined in one sentence in the book; *spread* = the book expla
 
 | Chapter | Terms in Parts A and B | of which Bear's priority terms |
 |---|---|---|
+| 0a and 0b, the opening agent chapters | 1 | 1 |
 | 1, The Skeptic's Toolkit | 15 | 9 |
 | 2, The Confidence Illusion | 18 | 13 |
 | 3, Data Validation | 12 | 7 |
@@ -22,7 +23,7 @@ Flags: **book** = defined in one sentence in the book; *spread* = the book expla
 | 12, Accountability (one point) | 4 | 1 |
 | 13, The Limits of AI (not on the exam) | 4 | 1 |
 
-## Bear's priority terms, by theme (115)
+## Bear's priority terms, by theme (116)
 
 ### The five supervisory capacities (8)
 
@@ -157,7 +158,7 @@ Flags: **book** = defined in one sentence in the book; *spread* = the book expla
 | **association** | 6 | Seeing: noticing what goes together in the data, the probability of Y given that we observe X, written P(Y / X). | book |
 | **Rung 1 (association)** | 5 | Rung 1 is the level of association: what goes with what, or what the model used. | *spread* |
 
-### Explainability, transparency, interpretability (4)
+### Explainability, transparency, interpretability, observability (5)
 
 | Term | Ch | In plain words | Flag |
 |---|---|---|---|
@@ -165,6 +166,7 @@ Flags: **book** = defined in one sentence in the book; *spread* = the book expla
 | **explainability** | 5 | Explainability means each output comes with a stated reason for it. | book |
 | **interpretability** | 5 | Interpretability means a person can build a working mental model of the system, good enough to predict what it will do on new cases. | book |
 | **counterfactual explanation** | 5 | A counterfactual explanation says how the prediction would change if a feature had a different value, rather than how much the feature contributed. | book |
+| **observability** | 0a, 0b | Observability means measuring and recording what a running model or agent does (inputs, outputs, tool calls, errors, real outcomes) so you can investigate its behavior; it is not evaluation. | book |
 
 ### Agents and consequence (13)
 

@@ -131,6 +131,7 @@ Example pairs. Every term comes from the book's chapters or the probability-stat
 | Held-out data / training data | Was it set aside and never used to train, or was it part of the training? |
 | Selection bias / sampling bias | Did a rule or query decide who got into the data? Or was one group simply harder to reach (sampling bias is the accessibility special case of selection bias)? |
 | Explainability / interpretability | Does the output come with a reason (explainability, a property of the output)? Or can a person build a working understanding from it (interpretability, a property of the human's understanding)? |
+| Observability / evaluation | Do the recorded signals (inputs, outputs, tool calls, errors, outcomes) let you investigate what the system did (observability)? Or does a criterion judge whether what it did was right (evaluation)? A complete trace of a failure is still a failure. |
 | Type I / Type II error | Rejecting a true null hypothesis, or failing to reject a false one? |
 | MAR / MNAR | Does missingness depend on something observed, or on the missing value itself? |
 | Demographic parity / equalized odds | Equal positive rates across groups, or equal error rates given the true outcome? |

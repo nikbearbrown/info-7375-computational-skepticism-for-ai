@@ -1234,6 +1234,20 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `glossary/notes/2026-11-16-exam-notes.md`, `glossary/CASE-CHECKLIST.md`, and `REVISION-NOTES.md` in `youtube/claude-liam-lecture-key-terms-the-skeptics-toolkit/` and `youtube/claude-liam-lecture-key-terms-robustness/`. Next: the Pangram details; whether "the rest of them" covers the whole robustness deck; the practice prompt updated once the scope is final; the four film fixes. Pushed, with the log row below.
 
+### 2026-11-19 — Exam notes: explainability and observability are required, SHAP and LIME are not
+
+- **Date and what I was working on:** 2026-11-19. Setting what the Computational Skepticism exam covers on explaining and monitoring models.
+- **I tried / expected:** I said *"students need to know what model explainability means. That is to be able to know how it works. Model observability, that we're measuring things. They don't necessarily have to know particular techniques like SHAP and LIME, but they have to know what model explainability is and model observability is."* I expected this was already in the exam materials. Then I asked for two films: *"Current video is all about Shapley value, which is great. We should still keep it, but we need one before that, specifically at a higher level around model explainability. What is it? Model observability, measuring things. What is that? How do we measure things? How do we interpret things? How do we explain things? That may be two films. Let's do a film on model explainability and one on model observability."*
+- **What happened:**
+  - Explainability was already on the exam, and SHAP and LIME were already marked "learn them, not on the exam".
+  - Observability was on no exam list, although the book defines it in its two opening agent chapters ("the ability to investigate behavior using the signals a system exposes") and contrasts it with evaluation. It was added to the compact list, the shortlist, the practice prompt and both prep guides.
+  - My wording for explainability, "to be able to know how it works", is closer to what the book calls interpretability (a person's working understanding); the book's explainability is a reason attached to an output. The materials keep the book's split until I decide.
+  - Earlier the same day, Claude IEU found that a one-word answer such as "ACE" to a practice multiple-answer question got the help list instead of a grade; the practice prompt was fixed and pushed.
+- **What I did:** Dictated the scope call. I have not read the changes.
+- **What Claude or another person contributed:** Claude Code checked what the exam materials already said, found the book's definition of observability, made the additions, wrote the notes and wrote this entry.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`. Next: decide whether "explainability" on the exam keeps the book's split from interpretability; make the two films, which go before Key Terms: Model Explainability in the playlist (not started). Pushed, with the log rows below.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1302,3 +1316,5 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-05 | docs(fall-2026): GitHub pushes rows for the 14 commits of 2026-11-05: consulting channel live, the federal 508 readers and lead lists |
 | 2026-11-16 | Exam practice prompt: add one-word short commands (help, question, exam, drill, topics, hint, another) |
 | 2026-11-16 | docs(exam): 2026-11-16 exam notes, the case-study checklist (chapters 1 to 13), and film revision notes for Key Terms: The Skeptic's Toolkit and Robustness |
+| 2026-11-19 | Exam practice prompt: one-word answers are attempts, not unknown commands |
+| 2026-11-19 | docs(exam): 2026-11-19 exam notes: explainability and observability are required, SHAP and LIME are not; observability added to the term lists, practice prompt and prep guides |

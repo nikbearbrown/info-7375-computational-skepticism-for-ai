@@ -140,6 +140,7 @@ For each pair, make a card with a definition, deciding question, original exampl
 | Overfitting / information leaking from the test rows | Did choices fit the evaluation sample too closely, or did information from the test rows reach training (the book: preprocessing before the split "leaks information")? |
 | Selection bias / sampling bias | Did a rule or query decide who got in, or was one group simply harder to reach? |
 | Explainability / interpretability | Does the output come with a reason, or can a person build a working understanding from it? |
+| Observability / evaluation | Can you investigate what the running system did from the signals it records, or does a criterion judge whether it succeeded? You need both. |
 | Demographic parity / equalized odds | Equal selection rates, or equal true- and false-positive rates conditional on outcomes? |
 | Type I / Type II error | Rejecting a true null hypothesis, or failing to reject a false one? |
 | Provenance / schema | Where did the data come from and on what terms, or how are the columns defined and what was done to them in the pipeline? (Chapter 3: the schema-and-provenance assumption.) |
