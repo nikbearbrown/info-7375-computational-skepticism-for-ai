@@ -1248,6 +1248,34 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`. Next: decide whether "explainability" on the exam keeps the book's split from interpretability; make the two films, which go before Key Terms: Model Explainability in the playlist (not started). Pushed, with the log rows below.
 
+### 2026-11-19 — Exam rule: one case is a bias case, and students name the kind of bias
+
+- **Date and what I was working on:** 2026-11-19. Rules for writing the Computational Skepticism exam.
+- **I tried / expected:** I said *"For one of the case questions, bias needs to be part of it, and having students identify the kind of bias that this is so they can appropriately identify the issue should be part of the problem."* Then: *"In the cheat sheet, make a recommendation for the 10 ways in to be part of that cheat sheet. And that should be part of the question that I just presented to you in terms of the case study."*
+- **What happened:**
+  - The "10 ways in" are the Bias deck's "Ten ways in": Chapter 6's ten entry points for bias. A "Ten ways in" section, recommended for students' sheets, was added to the student cheat sheet in interview-bank and pushed.
+  - Recorded as an exam-writing rule: at least one of the five cases turns on a bias, and its question 2 asks which of the ten ways in it is and how the facts show it.
+  - The practice prompt now requires that bias case in every full practice exam, and its starter notes now list the kinds of bias Chapter 6 teaches, with how to tell them apart. Before, they covered only selection, label, structural and estimator bias.
+  - The two practice exams were not changed; practice exam 02 never uses the word "bias".
+  - The rules I gave on 2026-11-16 (accuracy-claim case, phase gates, probability and likelihood, EDA, robustness scope) are still not in the practice prompt.
+- **What I did:** Dictated the rule. I have not read the changes.
+- **What Claude or another person contributed:** Claude Code checked the kinds of bias on the exam term list, wrote the rule into the notes and the practice prompt, and wrote this entry.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`, `fall-2026-exam/EXAM-GENERATOR-PROMPT.md`. Next: whether to add the 2026-11-16 rules to the practice prompt too. Pushed, with the log row below.
+
+### 2026-11-19 — Exam scope: the impossibility theorem and Pearl's rungs 1 and 2; a film on the impossibility theorem
+
+- **Date and what I was working on:** 2026-11-19. Setting what the Computational Skepticism exam covers.
+- **I tried / expected:** I said *"Impossibility theorem, first two rungs of Pearl's ladder are part of the exam."* Then: *"Let's make another film just on the impossibility theorem, particularly around the idea of that the world is imperfect and sometimes we need to make payoffs, trade-offs, but you as the human being have to judge which is the trade-off you want. So that's an irreducibly human task. You have to decide what you are trading off for what."*
+- **What happened:**
+  - Both were already on the exam term lists. The practice prompt had neither; it now has a note on each.
+  - I named rungs 1 and 2 only. Rung 3 (counterfactual) is still on the compact list, to confirm.
+  - The impossibility-theorem film is logged in the 2026-11-19 exam notes; not started.
+- **What I did:** Dictated the scope call and the film request.
+- **What Claude or another person contributed:** Claude Code checked the term lists and the chapters, added the two notes to the practice prompt, and wrote this entry.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`, `fall-2026-exam/EXAM-GENERATOR-PROMPT.md`. Next: confirm rung 3; make the film. Pushed, with the log row below.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1318,3 +1346,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-16 | docs(exam): 2026-11-16 exam notes, the case-study checklist (chapters 1 to 13), and film revision notes for Key Terms: The Skeptic's Toolkit and Robustness |
 | 2026-11-19 | Exam practice prompt: one-word answers are attempts, not unknown commands |
 | 2026-11-19 | docs(exam): 2026-11-19 exam notes: explainability and observability are required, SHAP and LIME are not; observability added to the term lists, practice prompt and prep guides |
+| 2026-11-19 | docs(exam): a bias case naming the ten ways in; the impossibility theorem and Pearl's rungs 1 and 2 are on the exam; film requests logged |

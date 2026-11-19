@@ -1,6 +1,6 @@
 # Computational Skepticism exam notes, 2026-11-19
 
-**Executive summary.** Professor Bear made one scope call. Students must know what model explainability and model observability mean. They do not need specific techniques such as SHAP and LIME. Explainability, and leaving out SHAP and LIME, were already in the exam materials. Observability was on no exam list, although the book defines it in its two opening agent chapters, so today it was added to the term lists, the practice prompt and both prep guides. One question is open for Bear: his description of explainability ("to be able to know how it works") is closer to what the book calls interpretability.
+**Executive summary.** Professor Bear made several calls today. First, a scope call: students must know what model explainability and model observability mean. They do not need specific techniques such as SHAP and LIME. Explainability, and leaving out SHAP and LIME, were already in the exam materials. Observability was on no exam list, although the book defines it in its two opening agent chapters, so today it was added to the term lists, the practice prompt and both prep guides. One question is open for Bear: his description of explainability ("to be able to know how it works") is closer to what the book calls interpretability. Second, two new films, on model explainability and model observability, go before the Shapley-heavy Key Terms: Model Explainability film, and a third film covers the impossibility theorem. Third, the impossibility theorem and rungs 1 and 2 of Pearl's ladder are on the exam. Fourth, an exam-writing rule: at least one case is a bias case in which students name which of Chapter 6's ten ways in it is; the ten ways in now have their own section on the student cheat sheet.
 
 ## Bear's words
 
@@ -42,12 +42,44 @@ Bear, right after the scope call: *"Current video is all about Shapley value, wh
 
 - The current film is **Key Terms: Model Explainability** (https://youtu.be/qEouGybOFsE), in the exam-prep playlist. Most of its 18 minutes is SHAP and Shapley mechanics, which are not on the exam. It stays.
 - Two new films go before it in the playlist: **model explainability** (what it is; how we interpret and explain a model) and **model observability** (what it is; what we measure and how). Neither is built yet.
+- A third film, on **the impossibility theorem**. Bear: *"Let's make another film just on the impossibility theorem, particularly around the idea of that the world is imperfect and sometimes we need to make payoffs, trade-offs, but you as the human being have to judge which is the trade-off you want. So that's an irreducibly human task. You have to decide what you are trading off for what."* Not built yet.
+
+## Scope call: the impossibility theorem and Pearl's ladder
+
+Bear: *"Impossibility theorem, first two rungs of Pearl's ladder are part of the exam."* (Dictated as "Possibility theorem, first two rings of Perl's ladder"; corrected.)
+
+| Topic | On this exam? |
+|---|---|
+| The impossibility theorem: when base rates differ across groups, calibration parity, equal false-positive rates and equal false-negative rates cannot all hold (Ch 7, also Ch 6) | **Yes** |
+| Pearl's ladder, rung 1: association, seeing what goes with what | **Yes** |
+| Pearl's ladder, rung 2: intervention, doing, what happens if we set X | **Yes** |
+| Pearl's ladder, rung 3: counterfactual, imagining | Not named; to confirm |
+
+- **Already on the lists:** the impossibility theorem and base-rate difference (compact list, Ch 6 and 7); Pearl's ladder, association, intervention, counterfactual and Rung 1. The case checklist's Chapter 6 asks "Rung 1 or rung 2: did anyone set X, or only watch it?". Chapter 6 itself teaches only rungs 1 and 2 ("Pearl's Ladder — Rungs 1 and 2").
+- **Changed today:** the practice prompt's starter notes now have an impossibility-theorem note and a Pearl's-ladder note (rungs 1 and 2). Before, it had neither.
+
+## Exam-writing rule: one case is a bias case
+
+Bear: *"For one of the case questions, bias needs to be part of it, and having students identify the kind of bias that this is so they can appropriately identify the issue should be part of the problem."*
+
+Then: *"In the cheat sheet, make a recommendation for the 10 ways in to be part of that cheat sheet. And that should be part of the question that I just presented to you in terms of the case study."*
+
+- At least one of the five cases turns on a bias, and the case asks students to name **which kind of bias** it is, using the **ten ways in**: Chapter 6's ten entry points, the "Ten ways in" slides of the Bias deck. Naming the kind is how they identify the issue correctly; "it is biased" is not enough. This matches the case checklist's Chapter 6 line: say it exactly, not "it is biased".
+- In the case format this is guided question 2 (the taught concept that names the defect, 2 points): in the bias case it asks which kind of bias, and how the case facts show it.
+- The kinds Chapter 6 teaches (from the exam term list): selection bias and its special case sampling bias; dataset bias; label bias; biased measurement; observer bias; data-coding, data-entry and self-report bias; implicit and confirmation bias; publication bias; historical bias; structural bias; and bias in the statistical sense (an estimator's average miss). Survivorship bias is Bear's addition; the book does not use it.
+- The case's facts should point to one kind, so the kind can be told apart. The checklist's deciding question is "Does it live in the sample, the labels or the structure?": who got in depended on what happened to them (selection); the labels record a biased past decision (label); the data faithfully records an unequal world (historical or structural).
+- **Changed today:** the practice prompt now requires a bias case in every full practice exam, with question 2 asking which of the ten ways in it is, and its starter notes list the ten. The student cheat sheet (`interview-bank/info-7375-computational-skepticism-for-ai/ma-exams/CHEAT-SHEET.md`) has a new "Ten ways in" section, recommended for students' sheets, with each way in, where it enters and its tell. Bear's cheat-sheet notes (`decks/CHEAT-SHEET-NOTES.md`, local) have the matching entry C18.
+- **Not changed:** practice exams 01 and 02 still use the older seven-case format; the word "bias" appears in exam 01 but not in exam 02.
 
 ## Also today
 
 Claude IEU found a mistake in the practice prompt's short commands: a one-word answer to a multiple-answer question, such as "ACE", was treated as an unknown word and got the help list instead of a grade. Fixed and pushed earlier the same day.
 
 ## Still open
+
+- **Pearl's ladder, rung 3 (counterfactual).** Bear named rungs 1 and 2. The compact list still has counterfactual as a priority term. Does rung 3 stay on the exam?
+
+- **The 2026-11-16 rules are still not in the practice prompt:** the accuracy-claim case, phase gates, the probability-and-likelihood rule, EDA, and the robustness scope. Today's observability and bias rules are in it.
 
 - **What "explainability" means on the exam.** Bear said explainability is *"to be able to know how it works."* The book splits this: explainability is a reason attached to an output, and interpretability is a person's working understanding of how the system behaves. "Knowing how it works" is closer to the book's interpretability. The exam materials keep the book's split for now (the practice prompt tests explainability versus interpretability). Bear to say whether to keep the split or to treat explainability in the broader sense.
 - **Model observability and agent observability.** The book defines observability in its agent chapters; Ch 2's drift detection is the version for a single deployed model. These notes treat them as one idea: measuring and recording what a running system does so you can investigate it.
