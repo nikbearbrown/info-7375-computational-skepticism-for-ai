@@ -96,6 +96,7 @@ Then say it exactly: not “it is biased”, but “bias −10.7 points against 
 - [ ] Do the base rates differ, and by how much?
 - [ ] Who bears the cost of each kind of error here?
 - [ ] What does d, or the causal graph, say about who counts as comparable?
+  *Causal graphs are not on the exam; in the glossary to look up and study (Bear, 2026-11-19).*
 - [ ] Is a dropped column really gone, or do proxies remain?
 - [ ] Who should have decided, and is the choice on record with what would change it?
 

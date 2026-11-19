@@ -9,9 +9,9 @@ Built 2026-11-09 from the 13 chapter inventories (1,193 entries, merged to 1,054
 ## Contents
 
 - Part A: Bear's priority terms (116)
-- Part B: other strong candidates (60)
+- Part B: other strong candidates (59)
 - Part C: terms Bear named that are not in the book
-- Part D: not on the exam: Chapter 5 methods to learn (35), Cohen's kappa from Chapter 6 (1), and what is out of Chapters 10, 11, 12 and 13 (265)
+- Part D: not on the exam: Chapter 5 methods to learn (35), Cohen's kappa and causal graphs from Chapter 6 (2), and what is out of Chapters 10, 11, 12 and 13 (265)
 
 # Part A: Bear's priority terms
 
@@ -1713,16 +1713,6 @@ Example: In the calibration-satisfying table PPV is 0.75 in both groups.
 
 Not to be confused with: true-positive rate (conditions on being truly positive instead)
 
-**causal graph**  *(also: Pearl-style DAG)*
-*in the chapter text: Ch 2 ×1, Ch 6 ×20, Ch 7 ×2, Ch 8 ×2 · kind: method*
-
-> Draw the causal graph of how the bias appears in the deployed outcome. Variables: protected attribute, proxies, features used by the model, model output, downstream decision process, final outcome. Arrows: which variables cause which.
-> — *the book, Ch 6 line 305*
-
-In plain words: A diagram of the variables from the protected attribute down to the final outcome, with arrows showing which variable causes which. Drawing the whole graph, including the deployment context, is what lets you see every path the bias can take.
-
-Example: Protected attribute, then proxies, features, model output, deployment context (reviewer, threshold, appeal), final outcome.
-
 **external validation**
 *in the chapter text: Ch 2 ×2, Ch 9 ×1, Ch 11 ×3, Ch 12 ×1, Ch 13 ×1 · kind: method*
 
@@ -2453,7 +2443,7 @@ In plain words: A loan model with income, debt-to-income ratio and zip code pred
 
 Example: Zip code's 0.035 does not say whether zip code is a proxy for race or geography, or whether the effect would persist if an applicant moved.
 
-## Chapter 6: important to learn, not on the exam (1)
+## Chapter 6: important to learn, not on the exam (2)
 
 Bear (2026-11-19): *"Cohen's kappa will not be on the test, but it should be in the glossary. It's an important thing for studying after the class."*
 
@@ -2466,6 +2456,18 @@ Bear (2026-11-19): *"Cohen's kappa will not be on the test, but it should be in 
 In plain words: A score for how much two people who label the same thing agree, once the agreement expected by chance is removed (kappa = (P_o − P_e) / (1 − P_e)). Where it drops tells you which human-in-the-loop bias you have: a collapse when annotators are unblinded points to observer bias, and low agreement on specific items points to data-coding bias.
 
 Example: If disagreement clusters on specific annotators it is more likely an observer problem; if it clusters on specific items it is more likely a coding problem.
+
+Bear (2026-11-19), on causal graphs: *"Causal graphs will not be on the exam, but they will be in the glossary. Things to look up, things to study."*
+
+**causal graph**  *(also: Pearl-style DAG)*
+*in the chapter text: Ch 2 ×1, Ch 6 ×20, Ch 7 ×2, Ch 8 ×2 · kind: method*
+
+> Draw the causal graph of how the bias appears in the deployed outcome. Variables: protected attribute, proxies, features used by the model, model output, downstream decision process, final outcome. Arrows: which variables cause which.
+> — *the book, Ch 6 line 305*
+
+In plain words: A diagram of the variables from the protected attribute down to the final outcome, with arrows showing which variable causes which. Drawing the whole graph, including the deployment context, is what lets you see every path the bias can take.
+
+Example: Protected attribute, then proxies, features, model output, deployment context (reviewer, threshold, appeal), final outcome.
 
 ## Chapters 10, 11, 12 and 13: not on the exam beyond the core (265)
 

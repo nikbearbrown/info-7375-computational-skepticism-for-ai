@@ -14,7 +14,7 @@ Flags: **book** = defined in one sentence in the book; *spread* = the book expla
 | 3, Data Validation | 12 | 7 |
 | 4, Robustness | 7 | 5 |
 | 5, Model Explainability | 14 | 6 |
-| 6, Bias | 38 | 29 |
+| 6, Bias | 37 | 29 |
 | 7, Fairness Metrics | 22 | 17 |
 | 8, Validating Agentic AI | 15 | 14 |
 | 9, Delegation and Trust | 13 | 5 |
@@ -211,7 +211,7 @@ Flags: **book** = defined in one sentence in the book; *spread* = the book expla
 |---|---|---|---|
 | **human in the accountability chain** | 12 | The chapter's prior question: not only who is responsible but why a human must be in the accountability chain at all, instead of closing the loop wit… | *spread* |
 
-## Other strong candidates (60)
+## Other strong candidates (59)
 
 | Term | Ch | In plain words | Flag |
 |---|---|---|---|
@@ -249,7 +249,6 @@ Flags: **book** = defined in one sentence in the book; *spread* = the book expla
 | faithful | 5 | An explanation is faithful when it correctly reports what the model actually did internally. | *spread* |
 | robust features | 4 | Patterns in the data that go with the label and hold steady when the input is slightly altered; they are the shape and structure that people use to r… | book |
 | positive predictive value | 2, 7 | Of the people the model flags as positive, the share who really are positive. | book |
-| causal graph | 6 | A diagram of the variables from the protected attribute down to the final outcome, with arrows showing which variable causes which. | book |
 | external validation | 11 | Testing a model at a specific outside deployment site, with its own patient population, where it had never been validated before. | *spread* |
 | non-robust features | 4 | Patterns that go with the label in the training data but are fine-grained, easily disrupted, and meaningless to a person. | *spread* |
 | posterior | 2 | What you believe after you have seen the evidence: your prior updated by the evidence. | *spread* |
@@ -301,5 +300,6 @@ Flags: **book** = defined in one sentence in the book; *spread* = the book expla
 
 - Chapter 5: LIME, SHAP and the other attribution methods (35 terms in the inventory): learn them, not on the exam.
 - Chapter 6: Cohen's kappa (agreement between two labelers, corrected for chance): not on the exam, but it stays in the glossary because it matters for study after the class (Bear, 2026-11-19).
+- Chapter 6: causal graphs (Pearl-style DAGs): not on the exam, but in the glossary as things to look up and study (Bear, 2026-11-19). Leverage analysis, whose first step draws a causal graph, is still listed above until Bear says otherwise.
 - Chapter 10 (visualization), the communicating half of Chapter 11, the rest of Chapter 12 and Chapter 13: 265 terms.
 

@@ -1320,6 +1320,16 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`, `fall-2026-exam/EXAM-GENERATOR-PROMPT.md`. Pushed, with the log row below.
 
+### 2026-11-19 — Causal graphs: in the glossary, not on the exam
+
+- **Date and what I was working on:** 2026-11-19. Setting what the Computational Skepticism exam covers.
+- **I tried / expected:** I said *"Causal graphs will not be on the exam, but they will be in the glossary. Things to look up, things to study."*
+- **What happened:** Causal graphs were already in the glossary. They were on the compact exam list as a strong candidate and are now listed as not on the exam there and in the shortlist, and marked that way in the practice prompt, the case checklist and the student cheat sheet. Leverage analysis, whose first step draws a causal graph, and three causal-graph questions in the multiple-answer bank were left for me to decide.
+- **What I did:** Dictated the call.
+- **What Claude or another person contributed:** Claude Code found every place causal graphs appear, made the changes, and wrote this entry.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`. Next: leverage analysis and the bank questions. Pushed, with the log row below.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1395,3 +1405,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-19 | docs(exam): in every case, every adjustment (such as inverse probability weighting) must be recorded; checklist item 4 |
 | 2026-11-19 | docs(exam): Cohen's kappa is not on the exam; it stays in the glossary for study after the class |
 | 2026-11-19 | docs(exam): one multiple-answer question gives examples and asks whether each is rung 1 or rung 2 |
+| 2026-11-19 | docs(exam): causal graphs are not on the exam; they stay in the glossary to look up and study |
