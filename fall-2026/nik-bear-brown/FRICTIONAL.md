@@ -1288,6 +1288,18 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`, `fall-2026-exam/EXAM-GENERATOR-PROMPT.md`. Pushed, with the log row below.
 
+### 2026-11-19 — Every case: record every adjustment, such as inverse probability weighting
+
+- **Date and what I was working on:** 2026-11-19. What to look for in the Computational Skepticism case studies.
+- **I tried / expected:** I said *"Note in all the cases. If you make adjustments like inverse probability weighting, you need to record every adjustment you made. That way you can trace it to all of the steps and assumptions that were made when you look at your final result."*
+- **What happened:**
+  - Added as the fourth cross-chapter item of the case checklist: "For every adjustment: is it recorded?"
+  - The practice prompt now treats an unrecorded adjustment as a real defect in any case, and expects a rewritten instruction to require a record of every adjustment.
+- **What I did:** Dictated the rule.
+- **What Claude or another person contributed:** Claude Code wrote the checklist item, the prompt rule and note, the exam-notes section and this entry.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `glossary/CASE-CHECKLIST.md`, `glossary/notes/2026-11-19-exam-notes.md`, `fall-2026-exam/EXAM-GENERATOR-PROMPT.md`. Pushed, with the log row below.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1360,3 +1372,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-19 | docs(exam): 2026-11-19 exam notes: explainability and observability are required, SHAP and LIME are not; observability added to the term lists, practice prompt and prep guides |
 | 2026-11-19 | docs(exam): a bias case naming the ten ways in; the impossibility theorem and Pearl's rungs 1 and 2 are on the exam; film requests logged |
 | 2026-11-19 | docs(exam): one multiple-answer question shows a fitted model and asks whether and where there is bias |
+| 2026-11-19 | docs(exam): in every case, every adjustment (such as inverse probability weighting) must be recorded; checklist item 4 |

@@ -11,6 +11,7 @@
 1. **What exactly are we measuring? What do we care about? What do we want?** Is the number being measured the thing we actually want, or a stand-in for it? Once a measure becomes the target, people game it (Goodhart's law): when résumés are screened by keyword, applicants add the keywords whether or not they mean anything.
 2. **What are the checks, and who does them?** Are the checks there at all? Are they the right checks? Could each check have come out wrong (a check that can't fail checks nothing)? Is the right party, AI or human, doing each one? The AI saying it checked is not an independent check.
 3. **For any accuracy claim: how did you calculate that?** How big was the dataset? Were the settings adjusted again and again until the number came out right? Are all the runs shown, or only the best one? Is there a confidence interval? Was power calculated?
+4. **For every adjustment: is it recorded?** Inverse probability weighting, reweighting, imputing missing values, dropping rows or outliers, changing a threshold: was each one written down, with the assumption it rests on, so the final result can be traced back through every step? Inverse probability weighting, for example, assumes that what decided who got into the sample was recorded, and the weights depend on how the chance of getting in was estimated. An adjustment nobody recorded cannot be checked.
 
 ---
 
