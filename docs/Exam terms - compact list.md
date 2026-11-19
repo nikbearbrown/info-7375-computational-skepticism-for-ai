@@ -300,5 +300,6 @@ Flags: **book** = defined in one sentence in the book; *spread* = the book expla
 ## Not on the exam (for reference)
 
 - Chapter 5: LIME, SHAP and the other attribution methods (35 terms in the inventory): learn them, not on the exam.
+- Chapter 6: Cohen's kappa (agreement between two labelers, corrected for chance): not on the exam, but it stays in the glossary because it matters for study after the class (Bear, 2026-11-19).
 - Chapter 10 (visualization), the communicating half of Chapter 11, the rest of Chapter 12 and Chapter 13: 265 terms.
 

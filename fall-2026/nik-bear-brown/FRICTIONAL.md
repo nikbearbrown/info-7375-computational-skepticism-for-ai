@@ -1300,6 +1300,16 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `glossary/CASE-CHECKLIST.md`, `glossary/notes/2026-11-19-exam-notes.md`, `fall-2026-exam/EXAM-GENERATOR-PROMPT.md`. Pushed, with the log row below.
 
+### 2026-11-19 — Cohen's kappa: in the glossary, not on the exam
+
+- **Date and what I was working on:** 2026-11-19. Setting what the Computational Skepticism exam covers.
+- **I tried / expected:** I said *"Cohen's kappa will not be on the test, but it should be in the glossary. It's an important thing for studying after the class."*
+- **What happened:** It was already in the glossary, which is generated from the decks, and it was never on the compact exam list. It is now listed as not on the exam in the term lists and the practice prompt, and marked that way in the older case-study checklist and the student cheat sheet, where it had appeared as something to use on a case.
+- **What I did:** Dictated the call.
+- **What Claude or another person contributed:** Claude Code found every place kappa appears, made the changes, and wrote this entry.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`. Pushed, with the log row below.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1373,3 +1383,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-19 | docs(exam): a bias case naming the ten ways in; the impossibility theorem and Pearl's rungs 1 and 2 are on the exam; film requests logged |
 | 2026-11-19 | docs(exam): one multiple-answer question shows a fitted model and asks whether and where there is bias |
 | 2026-11-19 | docs(exam): in every case, every adjustment (such as inverse probability weighting) must be recorded; checklist item 4 |
+| 2026-11-19 | docs(exam): Cohen's kappa is not on the exam; it stays in the glossary for study after the class |

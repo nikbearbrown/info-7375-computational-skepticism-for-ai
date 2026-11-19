@@ -11,7 +11,7 @@ Built 2026-11-09 from the 13 chapter inventories (1,193 entries, merged to 1,054
 - Part A: Bear's priority terms (116)
 - Part B: other strong candidates (60)
 - Part C: terms Bear named that are not in the book
-- Part D: not on the exam: Chapter 5 methods to learn (35), and what is out of Chapters 10, 11, 12 and 13 (265)
+- Part D: not on the exam: Chapter 5 methods to learn (35), Cohen's kappa from Chapter 6 (1), and what is out of Chapters 10, 11, 12 and 13 (265)
 
 # Part A: Bear's priority terms
 
@@ -2452,6 +2452,20 @@ Example: 10 features means 1,024 subsets; 30 features means over a billion.
 In plain words: A loan model with income, debt-to-income ratio and zip code predicts 0.72 against an average of 0.55, and the Shapley values 0.073, 0.062 and 0.035 add up to the 0.17 gap. The chapter uses it to show that exact, complete arithmetic is still precision about the model, not the world.
 
 Example: Zip code's 0.035 does not say whether zip code is a proxy for race or geography, or whether the effect would persist if an applicant moved.
+
+## Chapter 6: important to learn, not on the exam (1)
+
+Bear (2026-11-19): *"Cohen's kappa will not be on the test, but it should be in the glossary. It's an important thing for studying after the class."*
+
+**Cohen's kappa**  *(also: inter-rater reliability measure; agreement corrected for chance)*
+*in the chapter text: Ch 6 line 78 · kind: metric*
+
+> The diagnostic, wherever two humans code the same thing, is Cohen's kappa — agreement corrected for chance,
+> — *the book, Ch 6 line 78*
+
+In plain words: A score for how much two people who label the same thing agree, once the agreement expected by chance is removed (kappa = (P_o − P_e) / (1 − P_e)). Where it drops tells you which human-in-the-loop bias you have: a collapse when annotators are unblinded points to observer bias, and low agreement on specific items points to data-coding bias.
+
+Example: If disagreement clusters on specific annotators it is more likely an observer problem; if it clusters on specific items it is more likely a coding problem.
 
 ## Chapters 10, 11, 12 and 13: not on the exam beyond the core (265)
 

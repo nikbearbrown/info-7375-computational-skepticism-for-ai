@@ -52,7 +52,7 @@ Many of the course's terms carry a person's name, and the name is easy to rememb
   - **Rung 2, intervention (doing):** a small experiment that changes one thing on purpose to test the direction of an association. *Example:* send a cover letter with a randomly chosen half of your applications, and compare the interview rates.
   - **Rung 3, counterfactual (imagining what would have happened to this one case)** is not on the exam. For more on counterfactuals, take the 7390 course.
   - *On a case:* does the claim say one thing causes another? If the evidence only shows the two go together (rung 1), ask for an intervention (rung 2).
-- **Cohen's kappa** (Cohen, a statistician). How much two people labelling the same items agree, beyond what chance alone would give. *On a case:* if the labels come from people, do they agree?
+- **Cohen's kappa** (Cohen, a statistician; not on the exam; in the glossary for study after the class). How much two people labelling the same items agree, beyond what chance alone would give. *On a case:* if the labels come from people, do they agree?
 - **Lipschitz condition** (Lipschitz, a mathematician). Two people who are nearly alike should be treated nearly alike; the gap in treatment may not exceed the gap between them. *On a case:* do two near-identical applicants get very different outcomes?
 
 **Accountability (Chapter 12)**
@@ -499,7 +499,7 @@ that is, how far the estimate sits from the truth *on average, over every datase
 - **The five that enter through people** (confirmation, observer, data-coding, publication, self-report) are not fixed by touching the model. The fixes are process: decide the hypothesis before seeing outcomes, blind the labelers, pay someone to find the case that disconfirms. You spend time and process to buy back an unbiased record.
 - **Fairness:** when groups have different base rates, a model cannot be calibrated, equal in false positives and equal in false negatives all at once (the impossibility theorem). Choosing a fairness metric is choosing which error you accept (a **values claim**).
 
-**Diagnostics to ask for.** Cohen's kappa when two people label the same items (low when unblinded points to observer bias; low on particular items points to data-coding bias); a funnel plot for publication bias; an outside record (payroll, transcripts) to check self-reports; consistency checks against source documents for data entry; who was dropped and why, for selection.
+**Diagnostics to ask for.** Cohen's kappa (not on the exam; in the glossary for study after the class) when two people label the same items (low when unblinded points to observer bias; low on particular items points to data-coding bias); a funnel plot for publication bias; an outside record (payroll, transcripts) to check self-reports; consistency checks against source documents for data entry; who was dropped and why, for selection.
 
 **Fix (an instruction you could give).** "For this estimate, list where bias could have entered, using the ten types, and say which flavor each is (dataset, label or structural). For each, propose the fix that reaches the place it entered, and say what that fix costs."
 

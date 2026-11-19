@@ -1,6 +1,6 @@
 # Computational Skepticism exam notes, 2026-11-19
 
-**Executive summary.** Professor Bear made several calls today. First, a scope call: students must know what model explainability and model observability mean. They do not need specific techniques such as SHAP and LIME. Explainability, and leaving out SHAP and LIME, were already in the exam materials. Observability was on no exam list, although the book defines it in its two opening agent chapters, so today it was added to the term lists, the practice prompt and both prep guides. One question is open for Bear: his description of explainability ("to be able to know how it works") is closer to what the book calls interpretability. Second, two new films, on model explainability and model observability, go before the Shapley-heavy Key Terms: Model Explainability film, and a third film covers the impossibility theorem. Third, the impossibility theorem and rungs 1 and 2 of Pearl's ladder are on the exam. Fourth, an exam-writing rule: at least one case is a bias case in which students name which of Chapter 6's ten ways in it is; the ten ways in now have their own section on the student cheat sheet. Fifth, one multiple-answer question shows a fitted model, such as a regression line, and asks whether and where there is bias. Sixth, a rule for every case: any adjustment, such as inverse probability weighting, must be recorded with its assumption so the result can be traced back.
+**Executive summary.** Professor Bear made several calls today. First, a scope call: students must know what model explainability and model observability mean. They do not need specific techniques such as SHAP and LIME. Explainability, and leaving out SHAP and LIME, were already in the exam materials. Observability was on no exam list, although the book defines it in its two opening agent chapters, so today it was added to the term lists, the practice prompt and both prep guides. One question is open for Bear: his description of explainability ("to be able to know how it works") is closer to what the book calls interpretability. Second, two new films, on model explainability and model observability, go before the Shapley-heavy Key Terms: Model Explainability film, and a third film covers the impossibility theorem. Third, the impossibility theorem and rungs 1 and 2 of Pearl's ladder are on the exam. Fourth, an exam-writing rule: at least one case is a bias case in which students name which of Chapter 6's ten ways in it is; the ten ways in now have their own section on the student cheat sheet. Fifth, one multiple-answer question shows a fitted model, such as a regression line, and asks whether and where there is bias. Sixth, a rule for every case: any adjustment, such as inverse probability weighting, must be recorded with its assumption so the result can be traced back. Seventh, Cohen's kappa is not on the exam but stays in the glossary for study after the class.
 
 ## Bear's words
 
@@ -57,6 +57,14 @@ Bear: *"Impossibility theorem, first two rungs of Pearl's ladder are part of the
 
 - **Already on the lists:** the impossibility theorem and base-rate difference (compact list, Ch 6 and 7); Pearl's ladder, association, intervention, counterfactual and Rung 1. The case checklist's Chapter 6 asks "Rung 1 or rung 2: did anyone set X, or only watch it?". Chapter 6 itself teaches only rungs 1 and 2 ("Pearl's Ladder — Rungs 1 and 2").
 - **Changed today:** the practice prompt's starter notes now have an impossibility-theorem note and a Pearl's-ladder note (rungs 1 and 2). Before, it had neither.
+
+## Cohen's kappa: glossary, not exam
+
+Bear: *"Cohen's kappa will not be on the test, but it should be in the glossary. It's an important thing for studying after the class."*
+
+- Cohen's kappa is already in the glossary: `glossary/GLOSSARY.md` lists it twice, under the Bias deck and in the A to Z list. The glossary is generated from the decks and the Bias deck has it, so it stays.
+- It was never on the compact exam list. It is now listed under "Not on the exam" there and in Part D of the shortlist ("important to learn, not on the exam").
+- Marked "not on the exam; in the glossary for study after the class" where students would otherwise expect it on the exam: the practice prompt (do not test it), the older case-study checklist in `exams/case-exam/`, and the student cheat sheet in interview-bank (the Ten ways in table and the Chapter 3 line).
 
 ## Case rule: record every adjustment
 
