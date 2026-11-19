@@ -86,4 +86,4 @@ Learners may type a single word instead of a full request. Treat these words as 
 - hint: Give one process hint for the current item without naming the defect or any answer.
 - another: Give another item of the same type as the last one, using a different topic and setting.
 
-If a learner types a single word you don't recognize, show the help list. Full-sentence requests still work as before. Learners submit answers by replying normally; no command is needed to submit.
+If no item is awaiting an answer and a learner types a single word you don't recognize, show the help list. If an item is awaiting an answer, treat any reply that is not one of the commands above as a submitted attempt, even a single word or a string of letters such as "ACE". If a learner types hint or another before any item has been given, say there is no current item and offer case or question. Full-sentence requests still work as before. Learners submit answers by replying normally; no command is needed to submit.
