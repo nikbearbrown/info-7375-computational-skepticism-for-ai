@@ -31,6 +31,12 @@
           "postings_2026_09_26": 28,
           "matched_2026_09_26": 0,
           "why_watched": "Adjacent audience, no education push yet. Zero matches today. NOTE: the slug is their old company name, RealtimeBoard."
+        },
+        {
+          "company": "Epic Games",
+          "slug": "epicgames",
+          "tier": null,
+          "why_watched": "Unreal Engine Education (the engine and teaching material free for schools). Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles. Its early-career game roles still go to #games-3d-simulations from the studio list; this entry is for the education feed."
         }
       ]
     },
@@ -72,6 +78,20 @@
           "why_watched": "Canva for Education has huge classroom penetration. Every education role on the board is APAC, several on 12-month contracts — the engagement shape wanted, wrong geography so far. The most expensive board to fetch (248 detail calls, about 3.5 minutes)."
         }
       ]
+    },
+    {
+      "provider": "google",
+      "api": "GET https://www.google.com/about/careers/applications/jobs/results/?q={term} (the postings are in the page's 'ds:1' script block)",
+      "calls_per_board": "1 a term, 3 s apart: the first results page (20) only, because robots.txt disallows the paged results",
+      "boards": [
+        {
+          "company": "Google",
+          "slug": "google",
+          "read": "search",
+          "tier": null,
+          "why_watched": "Google for Education and Classroom are the incumbent K-12 infrastructure; Gemini for Education is the AI-era extension. The largest school footprint of anyone on this list. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles."
+        }
+      ]
     }
   ],
   "unreachable": [
@@ -93,25 +113,14 @@
     },
     {
       "company": "GitHub",
-      "ats": "unknown — not found on the three APIs Lectern can read",
+      "ats": "a Jibe careers site with iCIMS behind it (found 2026-11-20; it has a JSON list)",
       "tier": 1,
-      "why_watched": "GitHub Education and the Student Developer Pack are decades deep; Copilot in classrooms is the obvious AI-era extension.",
-      "blocker": "Tried 'github', 'GitHub', 'githubinc', 'github-inc' on all three on 2026-09-26: no board. See ATS.md.",
-      "status": "TODO: DATA SOURCE"
-    },
-    {
-      "company": "Google",
-      "ats": "own careers site — no public JSON feed found; the site IS human-readable and searchable",
-      "tier": 1,
-      "why_watched": "Google for Education and Classroom are the incumbent K-12 infrastructure; Gemini for Education is the AI-era extension. The largest school footprint of anyone on this list.",
-      "blocker": "Tried careers.google.com/api/v3/search, .../api/jobs/jobs-v1/search and the www.google.com/about/careers/applications equivalents on 2026-09-26: all 404. Stopped rather than guess further endpoints. Lectern cannot automate this board.",
-      "status": "TODO: DATA SOURCE — automate or keep checking by hand",
+      "why_watched": "GitHub Education and the Student Developer Pack are decades deep; Copilot in classrooms is the obvious AI-era extension. Kept on the list 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "blocker": "Terms checked 2026-11-20: GitHub's Acceptable Use Policies allow scraping only for research whose publications are open access, or for archiving; whether a job watch fits is unclear, and Professor Bear chose to check it by hand",
+      "status": "CHECK BY HAND",
       "manual_check": {
-        "how": "https://www.google.com/about/careers/applications/jobs/results?q=%22education%22&location=United%20States",
-        "checked": "2026-09-26, read in a browser",
-        "found": "20 education roles on the first page alone — Google for Education product managers and engineers, Head of Industry Education, Product Marketing Manager Google Classroom, TWO Brand Marketing Manager (AI Education) posts, Brand Marketing Manager (Educator Social), Senior Strategy Manager Education, plus higher-ed sales and forward-deployed engineering.",
-        "notebooklm": "A search for \"NotebookLM\" returns 6 postings, including Senior UX Researcher, LEARNING FRONTIERS, LearnX — a Google learning organisation not otherwise visible from outside.",
-        "reading": "BUILDS and SELLS are both unmistakable, and there is a dedicated AI-Education marketing function. On the demand measure Google belongs at the top of the table; it is absent only because it cannot be read."
+        "how": "https://www.github.careers/careers-home/jobs?keywords=advocate",
+        "checked": null
       }
     },
     {
@@ -121,6 +130,72 @@
       "why_watched": "Shopify Academy exists; entrepreneurship education is marketing-adjacent rather than core.",
       "blocker": "Tried 'shopify', 'Shopify', 'shopifyinc' on all three on 2026-09-26: no board. See ATS.md.",
       "status": "TODO: DATA SOURCE"
+    },
+    {
+      "company": "Microsoft",
+      "ats": "Eightfold (apply.careers.microsoft.com)",
+      "why_watched": "Microsoft Elevate, its education and skilling program; on Professor Bear's most-wanted list since 2026-10-18. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "blocker": "Terms checked 2026-11-20: Microsoft's Terms of Use forbid scraping or extracting data from its AI services, and Microsoft describes this careers site as AI-powered (read as covering it; the terms do not name the careers site)",
+      "status": "CHECK BY HAND",
+      "manual_check": {
+        "how": "https://apply.careers.microsoft.com/careers?domain=microsoft.com&query=developer%20advocate",
+        "checked": null
+      }
+    },
+    {
+      "company": "Amazon (AWS)",
+      "ats": "amazon.jobs' own search",
+      "why_watched": "AWS Academy, AWS Educate and the AWS student builder groups. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "blocker": "Terms checked 2026-11-20: amazon.jobs links amazon.com's Conditions of Use, whose licence excludes data mining, robots and similar data-gathering tools",
+      "status": "CHECK BY HAND",
+      "manual_check": {
+        "how": "https://www.amazon.jobs/en/search?base_query=developer+advocate",
+        "checked": null
+      }
+    },
+    {
+      "company": "Unity",
+      "ats": "Workday (unitytech.wd1/Unity, linked from unity.com/careers/positions)",
+      "why_watched": "Unity Education: a free Educator plan for higher education, the Education Grant License and the Unity Teach community. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "blocker": "Terms checked 2026-11-20: Unity's Terms of Service forbid crawlers, bots and scrapers on its Offerings; whether its job site is one is unclear, and Professor Bear chose to check it by hand",
+      "status": "CHECK BY HAND",
+      "manual_check": {
+        "how": "https://unitytech.wd1.myworkdayjobs.com/Unity?q=advocate",
+        "checked": null
+      }
+    },
+    {
+      "company": "NVIDIA",
+      "ats": "Workday (nvidia.wd5/NVIDIAExternalCareerSite)",
+      "why_watched": "The Deep Learning Institute (courses and certification) and the Academic Grant Program. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "blocker": "Terms checked 2026-11-20: NVIDIA's Terms of Service (section 3.2) forbid robots, spiders, scrapers, crawlers and data-mining tools on its sites",
+      "status": "CHECK BY HAND",
+      "manual_check": {
+        "how": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?q=developer%20relations",
+        "checked": null
+      }
+    },
+    {
+      "company": "Red Hat",
+      "ats": "Workday (redhat.wd5/jobs)",
+      "why_watched": "Red Hat Academy (curriculum and training for schools and universities). Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "blocker": "Terms checked 2026-11-20: Red Hat's Terms of Use (section 4) forbid deploying a robot, spider or site search/retrieval application",
+      "status": "CHECK BY HAND",
+      "manual_check": {
+        "how": "https://redhat.wd5.myworkdayjobs.com/jobs?q=advocate",
+        "checked": null
+      }
+    },
+    {
+      "company": "Autodesk",
+      "ats": "Eightfold (autodesk.eightfold.ai; not autodesk.wd1/Ext, a Workday board with 5 postings for another employer)",
+      "why_watched": "Autodesk Education (free student and educator licenses). Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "blocker": "Terms checked 2026-11-20: Autodesk's website terms and Acceptable Use Policy forbid robots, spiders, scraping and data mining without written consent",
+      "status": "CHECK BY HAND",
+      "manual_check": {
+        "how": "https://autodesk.eightfold.ai/careers?query=education",
+        "checked": null
+      }
     }
   ],
   "totals_2026_09_26": {
@@ -213,5 +288,25 @@
       "reason": "education is marketing for its own product (HubSpot Academy teaches people to use HubSpot), not educational AI for institutions or universities; not relevant to the search in his words. Its Greenhouse board had also returned 404 since 2026-10-18, so nothing was being read.",
       "postings_2026_09_26": 133
     }
+  },
+  "search": {
+    "_comment": "For a board whose `read` is \"search\" (collect.py, added 2026-11-20; today only Google): the board is too big to read whole and its robots.txt allows only the first results page of a search, so it is asked once per term and the first page of each is kept. The terms only decide what is fetched; keywords.json still decides what is kept, on the title and the ad text. Chosen 2026-11-20 from the role words in keywords.json for developer-advocate style roles; broad words every big employer uses in other senses ('learning', 'training', 'community', 'enablement') are left out because they fill the page with other jobs.",
+    "terms": [
+      "developer advocate",
+      "advocate",
+      "developer relations",
+      "devrel",
+      "evangelist",
+      "developer education",
+      "education",
+      "educator",
+      "curriculum",
+      "instructor",
+      "academic",
+      "academy",
+      "instructional designer",
+      "technical trainer",
+      "community manager"
+    ]
   }
 }

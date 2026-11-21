@@ -17,6 +17,7 @@
 **What is NOT done or NOT tested.**
 - The Discord node has never sent a message from n8n: it needs a webhook credential. The message text and the refusal rule are tested; the sending is not.
 - SmartRecruiters (Canva) is not read live: it needs a call per posting for the ad text. It is reported as unavailable, never judged on empty text.
+- Google (on the watch list since 2026-11-20, read by `collect.py` through its own search pages) is not read by the n8n form either; it is reported as unavailable with the reason. Before that date the live path sent every board that was not SmartRecruiters to Ashby's API; it now reads only Greenhouse and Ashby boards.
 - Not ported from the Python: the games judge and poster for the second Discord channel (`engine_rule`; the rules file is copied whole, the n8n filter ignores that block), the churn measures (`churn.py`), the business-school faculty feed (`faculty_feed.py`), the big-four collectors and their trust rules (`collectors/monitor.py`), the CSV and Markdown reports, committing and pushing, and the lab posting (`post_labs`).
 - The state file is n8n's own (a different hash), not interchangeable with the Python's `published-state.json`.
 - Fixtures are synthetic. The real-data parity tests need a local Lectern checkout with saved board payloads, which are not in this folder (they are full copies of companies' ads).

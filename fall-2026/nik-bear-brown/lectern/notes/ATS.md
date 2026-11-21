@@ -49,8 +49,8 @@ For each of these I requested the slugs listed from all four APIs — Greenhouse
 |---|---|---|---|
 | **Adobe** | 1 | **Unknown** | `adobe`, `Adobe` |
 | **Salesforce** | 1 | **Unknown** | `salesforce`, `Salesforce`, `salesforceinc`, `slack` |
-| **GitHub** | 1 | **Unknown** | `github`, `GitHub`, `githubinc`, `github-inc` |
-| **Google** | 1 | **Unknown** | `google`, `Google`, `googledeepmind`, `deepmind` |
+| **GitHub** | 1 | **Jibe (iCIMS behind it)**, found 2026-11-20 (see below) | `github`, `GitHub`, `githubinc`, `github-inc` |
+| **Google** | 1 | **Its own careers site**, read by search since 2026-11-20 (see below) | `google`, `Google`, `googledeepmind`, `deepmind` |
 | **Shopify** | 2 | **Unknown** | `shopify`, `Shopify`, `shopifyinc` |
 | **Hugging Face** | — | **Unknown** | `huggingface`, `Hugging Face`, `hugging-face` |
 | **Framer** | — | **Unknown** | `framer` |
@@ -90,3 +90,19 @@ curl -s "https://api.smartrecruiters.com/v1/companies/SLUG/postings?limit=1" | h
 ```
 
 An empty `jobs` array or `totalFound: 0` means the slug is wrong or the board is empty — not that the company is not hiring.
+
+## 2026-11-20 — the developer-advocate companies: system, and whether a script may read it
+
+Found by looking at each careers page and where its listing loads from, then reading robots.txt and the employer's terms (TARGETS.md section C has the reasons). robots.txt allowed the path on every one; the terms decided.
+
+| Company | System (board id) | Read by `collect.py`? |
+|---|---|---|
+| Epic Games | Greenhouse `epicgames` | yes |
+| Google | its own careers site; postings in the results page's script block | yes, one results page a search term |
+| GitHub | Jibe careers site (`www.github.careers/api/jobs`), iCIMS behind it | no: terms unclear, checked by hand |
+| Unity | Workday `unitytech.wd1/Unity` | no: terms unclear, checked by hand |
+| NVIDIA | Workday `nvidia.wd5/NVIDIAExternalCareerSite` (its list stops at 2,000, Workday's display cap) | no: terms forbid it |
+| Red Hat | Workday `redhat.wd5/jobs` | no: terms forbid it |
+| Microsoft | Eightfold (`apply.careers.microsoft.com`, domain `microsoft.com`) | no: terms forbid it (read as covering this AI-powered site) |
+| Autodesk | Eightfold (`autodesk.eightfold.ai`, domain `autodesk.com`); not `autodesk.wd1/Ext`, a Workday board with 5 postings for another employer | no: terms forbid it |
+| Amazon | amazon.jobs' own search (`/en/search.json`) | no: terms forbid it |

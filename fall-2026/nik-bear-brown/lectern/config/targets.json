@@ -265,6 +265,31 @@
       }
     },
     {
+      "id": "epic-games",
+      "name": "Epic Games",
+      "type": "tool-co-edu-program",
+      "section": "boards",
+      "status": "active",
+      "why": "Unreal Engine Education (the engine and teaching material free for schools). Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles. Its early-career game roles still go to #games-3d-simulations from the studio list; this entry is for the education feed.",
+      "access": "api",
+      "provider": "greenhouse",
+      "slug": "epicgames",
+      "data": [
+        {
+          "label": "board page",
+          "url": "https://job-boards.greenhouse.io/epicgames"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://boards-api.greenhouse.io/v1/boards/epicgames/jobs?content=true",
+          "call": true
+        }
+      ],
+      "reader": "collect/collect.py",
+      "status_note": "Reads (API 200, 138 postings on 2026-11-20); the same public Greenhouse API as Anthropic's and Figma's",
+      "todo": ""
+    },
+    {
       "id": "stripe",
       "name": "Stripe",
       "type": "dev-advocacy-employer",
@@ -566,69 +591,83 @@
       "id": "google",
       "name": "Google",
       "type": "big-tech-edu-footprint",
-      "section": "bigfour",
-      "status": "partial",
-      "why": "Google for Education and Classroom are the incumbent K-12 infrastructure; Gemini for Education is the AI-era extension. The largest school footprint of anyone on this list.",
-      "access": "browse",
+      "section": "boards",
+      "status": "active",
+      "why": "Google for Education and Classroom are the incumbent K-12 infrastructure; Gemini for Education is the AI-era extension. The largest school footprint of anyone on this list. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "access": "api",
+      "provider": "google",
+      "slug": "google",
+      "read": "search",
       "data": [
         {
-          "label": "careers results pages, read from a script block in the page",
-          "url": "https://www.google.com/about/careers/applications/jobs/results/?page=1"
+          "label": "board page",
+          "url": "https://www.google.com/about/careers/applications/jobs/results"
+        },
+        {
+          "label": "API the script calls",
+          "url": "https://www.google.com/about/careers/applications/jobs/results/?q={term}",
+          "call": true
         }
       ],
-      "reader": "collect/collectors/google.py",
-      "status_note": "Collected in two runs on 2026-10-19 (3,690 and 3,638 postings); 3,825 distinct postings in the local database. Not filtered, not in the delta. The page is server-rendered HTML with no official feed: a page change will break it",
-      "todo": "Pass it through the filter and the delta",
-      "unreachable": {
-        "ats": "own careers site — no public JSON feed found; the site IS human-readable and searchable",
-        "blocker": "Tried careers.google.com/api/v3/search, .../api/jobs/jobs-v1/search and the www.google.com/about/careers/applications equivalents on 2026-09-26: all 404. Stopped rather than guess further endpoints. Lectern cannot automate this board.",
-        "status": "TODO: DATA SOURCE — automate or keep checking by hand",
-        "manual_check": {
-          "how": "https://www.google.com/about/careers/applications/jobs/results?q=%22education%22&location=United%20States",
-          "checked": "2026-09-26, read in a browser",
-          "found": "20 education roles on the first page alone — Google for Education product managers and engineers, Head of Industry Education, Product Marketing Manager Google Classroom, TWO Brand Marketing Manager (AI Education) posts, Brand Marketing Manager (Educator Social), Senior Strategy Manager Education, plus higher-ed sales and forward-deployed engineering.",
-          "notebooklm": "A search for \"NotebookLM\" returns 6 postings, including Senior UX Researcher, LEARNING FRONTIERS, LearnX — a Google learning organisation not otherwise visible from outside.",
-          "reading": "BUILDS and SELLS are both unmistakable, and there is a dedicated AI-Education marketing function. On the demand measure Google belongs at the top of the table; it is absent only because it cannot be read."
-        },
-        "rank": 3
-      },
-      "tier": 1
+      "reader": "collect/collect.py",
+      "status_note": "On the watch list since 2026-11-20, read through its own search: the first results page (20) for each term in sources.json `search.terms`, never a second page, because robots.txt disallows the paged results for every robot; Google's terms forbid automated access only where robots.txt disallows it. The postings sit in a script block of the page (no feed): a page change breaks the reader, and it raises. A search is not the whole board, so churn leaves Google out. The older full-list collector (collectors/google.py, 2026-10-19 runs, local database) pages through the results, which robots.txt disallows",
+      "todo": "Watch whether 20 results a term is enough: the run's status gives each term's total"
     },
     {
       "id": "microsoft",
       "name": "Microsoft",
       "type": "big-tech-edu-footprint",
-      "section": "bigfour",
-      "status": "no-reader",
-      "why": "On the most-wanted list",
+      "section": "unreachable",
+      "status": "unreadable",
+      "why": "Microsoft Elevate, its education and skilling program; on Professor Bear's most-wanted list since 2026-10-18. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
       "access": "browse",
       "data": [
         {
-          "label": "careers API (page size fixed at 10)",
-          "url": "https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com&start=0"
+          "label": "careers page",
+          "url": "https://apply.careers.microsoft.com/careers?domain=microsoft.com"
         }
       ],
-      "reader": "collect/collectors/microsoft.py",
-      "status_note": "Never read. The first runs hit HTTP 429 (the site throttles hard). A single request answers 200 today",
-      "todo": "A slower, resumable run"
+      "reader": null,
+      "status_note": "Job system: Eightfold (apply.careers.microsoft.com). Not read by a script: Microsoft's Terms of Use forbid scraping or extracting data from its AI services, and Microsoft describes this careers site as AI-powered (read as covering it; the terms do not name the careers site). collectors/microsoft.py (2026-10-08, never run) reads the same API and should not be run for the same reason",
+      "todo": "Check by hand: open the search link and look for advocate, developer relations, evangelist and education roles",
+      "unreachable": {
+        "ats": "Eightfold (apply.careers.microsoft.com)",
+        "blocker": "Terms checked 2026-11-20: Microsoft's Terms of Use forbid scraping or extracting data from its AI services, and Microsoft describes this careers site as AI-powered (read as covering it; the terms do not name the careers site)",
+        "status": "CHECK BY HAND",
+        "manual_check": {
+          "how": "https://apply.careers.microsoft.com/careers?domain=microsoft.com&query=developer%20advocate",
+          "checked": null
+        },
+        "rank": 5
+      }
     },
     {
       "id": "amazon",
-      "name": "Amazon",
+      "name": "Amazon (AWS)",
       "type": "big-tech-edu-footprint",
-      "section": "bigfour",
-      "status": "no-reader",
-      "why": "No reason recorded in the repository; part of the big four",
+      "section": "unreachable",
+      "status": "unreadable",
+      "why": "AWS Academy, AWS Educate and the AWS student builder groups. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
       "access": "browse",
       "data": [
         {
-          "label": "jobs search JSON (answers 200)",
-          "url": "https://www.amazon.jobs/en/search.json?base_query=&country=USA&result_limit=1&offset=0"
+          "label": "careers page",
+          "url": "https://www.amazon.jobs/en/"
         }
       ],
-      "reader": "collect/collectors/amazon.py",
-      "status_note": "Never run here",
-      "todo": "Run it, and write down why Amazon is a target"
+      "reader": null,
+      "status_note": "Job system: amazon.jobs' own search. Not read by a script: amazon.jobs links amazon.com's Conditions of Use, whose licence excludes data mining, robots and similar data-gathering tools. collectors/amazon.py (2026-10-08, never run here) reads the same search and should not be run for the same reason",
+      "todo": "Check by hand: open the search link and look for advocate, developer relations, evangelist and education roles",
+      "unreachable": {
+        "ats": "amazon.jobs' own search",
+        "blocker": "Terms checked 2026-11-20: amazon.jobs links amazon.com's Conditions of Use, whose licence excludes data mining, robots and similar data-gathering tools",
+        "status": "CHECK BY HAND",
+        "manual_check": {
+          "how": "https://www.amazon.jobs/en/search?base_query=developer+advocate",
+          "checked": null
+        },
+        "rank": 6
+      }
     },
     {
       "id": "meta",
@@ -703,8 +742,8 @@
       "name": "GitHub",
       "type": "big-tech-edu-footprint",
       "section": "unreachable",
-      "status": "no-reader",
-      "why": "GitHub Education and the Student Developer Pack are decades deep; Copilot in classrooms is the obvious AI-era extension.",
+      "status": "unreadable",
+      "why": "GitHub Education and the Student Developer Pack are decades deep; Copilot in classrooms is the obvious AI-era extension. Kept on the list 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
       "access": "browse",
       "tier": 1,
       "data": [
@@ -714,12 +753,16 @@
         }
       ],
       "reader": null,
-      "status_note": "Careers page answers 200 (2026-10-20); its job system is not identified. GitHub Education, Student Developer Pack",
-      "todo": "Find its job system and write a reader",
+      "status_note": "Job system: a Jibe careers site with iCIMS behind it (found 2026-11-20; it has a JSON list). Not read by a script: GitHub's Acceptable Use Policies allow scraping only for research whose publications are open access, or for archiving; whether a job watch fits is unclear, and Professor Bear chose to check it by hand",
+      "todo": "Check by hand: open the search link and look for advocate, developer relations, evangelist and education roles",
       "unreachable": {
-        "ats": "unknown — not found on the three APIs Lectern can read",
-        "blocker": "Tried 'github', 'GitHub', 'githubinc', 'github-inc' on all three on 2026-09-26: no board. See ATS.md.",
-        "status": "TODO: DATA SOURCE",
+        "ats": "a Jibe careers site with iCIMS behind it (found 2026-11-20; it has a JSON list)",
+        "blocker": "Terms checked 2026-11-20: GitHub's Acceptable Use Policies allow scraping only for research whose publications are open access, or for archiving; whether a job watch fits is unclear, and Professor Bear chose to check it by hand",
+        "status": "CHECK BY HAND",
+        "manual_check": {
+          "how": "https://www.github.careers/careers-home/jobs?keywords=advocate",
+          "checked": null
+        },
         "rank": 2
       }
     },
@@ -832,6 +875,118 @@
       "reader": null,
       "status_note": "Not checked; the company's status is not established here",
       "todo": "Check whether it still hires"
+    },
+    {
+      "id": "unity",
+      "name": "Unity",
+      "type": "tool-co-edu-program",
+      "section": "unreachable",
+      "status": "unreadable",
+      "why": "Unity Education: a free Educator plan for higher education, the Education Grant License and the Unity Teach community. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "access": "browse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://unity.com/careers/positions"
+        }
+      ],
+      "reader": null,
+      "status_note": "Job system: Workday (unitytech.wd1/Unity, linked from unity.com/careers/positions). Not read by a script: Unity's Terms of Service forbid crawlers, bots and scrapers on its Offerings; whether its job site is one is unclear, and Professor Bear chose to check it by hand",
+      "todo": "Check by hand: open the search link and look for advocate, developer relations, evangelist and education roles",
+      "unreachable": {
+        "ats": "Workday (unitytech.wd1/Unity, linked from unity.com/careers/positions)",
+        "blocker": "Terms checked 2026-11-20: Unity's Terms of Service forbid crawlers, bots and scrapers on its Offerings; whether its job site is one is unclear, and Professor Bear chose to check it by hand",
+        "status": "CHECK BY HAND",
+        "manual_check": {
+          "how": "https://unitytech.wd1.myworkdayjobs.com/Unity?q=advocate",
+          "checked": null
+        },
+        "rank": 7
+      }
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA",
+      "type": "big-tech-edu-footprint",
+      "section": "unreachable",
+      "status": "unreadable",
+      "why": "The Deep Learning Institute (courses and certification) and the Academic Grant Program. Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "access": "browse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite"
+        }
+      ],
+      "reader": null,
+      "status_note": "Job system: Workday (nvidia.wd5/NVIDIAExternalCareerSite). Not read by a script: NVIDIA's Terms of Service (section 3.2) forbid robots, spiders, scrapers, crawlers and data-mining tools on its sites",
+      "todo": "Check by hand: open the search link and look for advocate, developer relations, evangelist and education roles",
+      "unreachable": {
+        "ats": "Workday (nvidia.wd5/NVIDIAExternalCareerSite)",
+        "blocker": "Terms checked 2026-11-20: NVIDIA's Terms of Service (section 3.2) forbid robots, spiders, scrapers, crawlers and data-mining tools on its sites",
+        "status": "CHECK BY HAND",
+        "manual_check": {
+          "how": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?q=developer%20relations",
+          "checked": null
+        },
+        "rank": 8
+      }
+    },
+    {
+      "id": "red-hat",
+      "name": "Red Hat",
+      "type": "tool-co-edu-program",
+      "section": "unreachable",
+      "status": "unreadable",
+      "why": "Red Hat Academy (curriculum and training for schools and universities). Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "access": "browse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://redhat.wd5.myworkdayjobs.com/jobs"
+        }
+      ],
+      "reader": null,
+      "status_note": "Job system: Workday (redhat.wd5/jobs). Not read by a script: Red Hat's Terms of Use (section 4) forbid deploying a robot, spider or site search/retrieval application",
+      "todo": "Check by hand: open the search link and look for advocate, developer relations, evangelist and education roles",
+      "unreachable": {
+        "ats": "Workday (redhat.wd5/jobs)",
+        "blocker": "Terms checked 2026-11-20: Red Hat's Terms of Use (section 4) forbid deploying a robot, spider or site search/retrieval application",
+        "status": "CHECK BY HAND",
+        "manual_check": {
+          "how": "https://redhat.wd5.myworkdayjobs.com/jobs?q=advocate",
+          "checked": null
+        },
+        "rank": 9
+      }
+    },
+    {
+      "id": "autodesk",
+      "name": "Autodesk",
+      "type": "tool-co-edu-program",
+      "section": "unreachable",
+      "status": "unreadable",
+      "why": "Autodesk Education (free student and educator licenses). Added on 2026-11-20 at Professor Bear's word, for developer-advocate style roles.",
+      "access": "browse",
+      "data": [
+        {
+          "label": "careers page",
+          "url": "https://autodesk.eightfold.ai/careers"
+        }
+      ],
+      "reader": null,
+      "status_note": "Job system: Eightfold (autodesk.eightfold.ai; not autodesk.wd1/Ext, a Workday board with 5 postings for another employer). Not read by a script: Autodesk's website terms and Acceptable Use Policy forbid robots, spiders, scraping and data mining without written consent",
+      "todo": "Check by hand: open the search link and look for advocate, developer relations, evangelist and education roles",
+      "unreachable": {
+        "ats": "Eightfold (autodesk.eightfold.ai; not autodesk.wd1/Ext, a Workday board with 5 postings for another employer)",
+        "blocker": "Terms checked 2026-11-20: Autodesk's website terms and Acceptable Use Policy forbid robots, spiders, scraping and data mining without written consent",
+        "status": "CHECK BY HAND",
+        "manual_check": {
+          "how": "https://autodesk.eightfold.ai/careers?query=education",
+          "checked": null
+        },
+        "rank": 10
+      }
     },
     {
       "id": "harvard-business-school",
@@ -3224,8 +3379,8 @@
         }
       ],
       "reader": "",
-      "status_note": "Not read by the ai-jobs feed today",
-      "todo": "Identify the careers system by a person looking at the page's network calls.",
+      "status_note": "Not read by the ai-jobs feed today. Board found 2026-11-20: Workday unitytech.wd1/Unity, linked from unity.com/careers/positions. Unity's terms forbid crawlers and scrapers on its Offerings and it is unclear whether the job site is one, so no script reads it",
+      "todo": "None while the terms question stands; the education feed lists Unity as checked by hand.",
       "games": {
         "verdict": "to-do",
         "feed_names": [

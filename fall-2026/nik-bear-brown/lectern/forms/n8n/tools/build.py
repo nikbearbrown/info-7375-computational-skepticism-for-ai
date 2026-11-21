@@ -141,7 +141,7 @@ const only = input.only && input.only.length ? new Set(input.only) : null;
 return BOARDS.filter(b => !only || only.has(b.company)).map(b => ({json: {mode, provider: b.provider, company: b.company, slug: b.slug}, pairedItem: {item: 0}}));""", [660, 80])
     IF(w, "Live?", "={{ $json.mode === 'live' }}", [880, 80])
     w.noop("Recorded payloads", [1100, 0])
-    IF(w, "Live provider supported?", "={{ $json.provider !== 'smartrecruiters' }}", [1100, 200])
+    IF(w, "Live provider supported?", "={{ ['greenhouse', 'ashby'].includes($json.provider) }}", [1100, 200])
     w.add("Fetch board", "n8n-nodes-base.httpRequest", {"method": "GET",
           "url": "={{ $json.provider === 'greenhouse' ? 'https://boards-api.greenhouse.io/v1/boards/' + $json.slug + '/jobs?content=true' : 'https://api.ashbyhq.com/posting-api/job-board/' + encodeURIComponent($json.slug) + '?includeCompensation=true' }}",
           "sendHeaders": True, "headerParameters": {"parameters": [{"name": "User-Agent", "value": "lectern (course project)"}]},
@@ -152,7 +152,9 @@ const r = $json;
 if (r.error || !r.jobs) return {json: {provider: b.provider, company: b.company, slug: b.slug, payload: null, error: String(r.error && r.error.message || r.error || 'no jobs in the response')}};
 return {json: {provider: b.provider, company: b.company, slug: b.slug, payload: r}};""", [1540, 140], each=True)
     w.code("Not built live", """const b = $json;
-return {json: {provider: b.provider, company: b.company, slug: b.slug, payload: null, error: 'SmartRecruiters needs its per-posting detail calls, not built in n8n yet'}};""", [1320, 300], each=True)
+const why = {smartrecruiters: 'SmartRecruiters needs its per-posting detail calls, not built in n8n yet',
+             google: "Google is read through its own search pages (collect.py's fetch_google, 2026-11-20), not built in n8n yet"};
+return {json: {provider: b.provider, company: b.company, slug: b.slug, payload: null, error: why[b.provider] || ('provider ' + b.provider + ' is not built in n8n yet')}};""", [1320, 300], each=True)
     w.add("Collect all", "n8n-nodes-base.merge", {"numberInputs": 3}, [1760, 140], 3.2)
     w.code("Normalise", lib("normalise") + """
 const inDate = $('Run in').first().json.date;

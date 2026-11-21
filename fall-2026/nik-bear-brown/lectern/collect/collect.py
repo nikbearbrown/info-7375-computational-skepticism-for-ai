@@ -26,7 +26,7 @@ for _p in (_os.path.dirname(_os.path.abspath(__file__)), _os.path.dirname(_os.pa
         break
 import lectern_paths as lp   # where things are: see lectern_paths.py
 import argparse, csv, datetime as dt, html, json, os, re, sys, time, unicodedata, urllib.error, urllib.request
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 ALLOWED = {"boards-api.greenhouse.io", "api.ashbyhq.com", "api.smartrecruiters.com"}
 # Workday boards, one host each, only the ones whose robots.txt and terms were read and allow it (see TARGETS.md section K and I, HISTORY.md 2026-11-01).
@@ -273,6 +273,62 @@ def fetch_usajobs(slug="search", pause=1.2, login=None):
     return {"total": len(jobs), "jobs": jobs, "pages": pages, "complete": complete, "queries": counts}
 
 
+# ---------------------------------------------------------------- Google, read through its own search (added 2026-11-20)
+# Professor Bear added Google to the watch list for developer-advocate style roles. Its careers site has no feed: the postings sit in the results
+# page's 'ds:1' script block (collectors/google.py reads the same block). Its robots.txt disallows the paged results (`?page=`) for every robot, and
+# Google's terms forbid automated access only where robots.txt disallows it, so the reader asks the first page (20) of a search, once per term in
+# sources.json `search.terms`, and never a second page. A search is not the whole board, so its status says read "search" and churn leaves it out.
+# Checked the same day and NOT read (terms forbid robots or scraping, or are unclear): Microsoft, Amazon, NVIDIA, Red Hat, Autodesk, GitHub, Unity.
+GOOGLE_HOST = "www.google.com"
+ALLOWED.add(GOOGLE_HOST)
+GOOGLE_PAUSE = 3.0         # seconds between two searches
+
+
+def get_page(url, timeout=45):
+    """A GET for an HTML page (Google's results). Same host list, no redirects."""
+    req = urllib.request.Request(_checked(url), headers={"User-Agent": USER_AGENT, "Accept": "text/html"})
+    with urllib.request.build_opener(_NoRedirect).open(req, timeout=timeout) as r:
+        return r.read().decode("utf-8")
+
+
+def fetch_google(terms, pause=GOOGLE_PAUSE):
+    """The first results page for each term -> {"jobs": [positional rows], "searched": [{term, total, read}], "read": "search", "complete": False}.
+    A term whose total is above what came back says so in `searched`."""
+    if not terms:
+        raise InputError("a search board needs search.terms in sources.json")
+    from collectors.google import _extract_ds1, check_google_job
+    jobs, seen, searched = [], set(), []
+    for i, t in enumerate(terms):
+        if i:
+            time.sleep(pause)
+        data = _extract_ds1(get_page(f"https://{GOOGLE_HOST}/about/careers/applications/jobs/results/?" + urlencode({"q": t})))
+        rows = data[0] or []
+        for row in rows:
+            check_google_job(row)                    # raises if the layout moved: a reader that raises is easier to deal with than one that returns nothing
+            if row[0] not in seen:
+                seen.add(row[0])
+                jobs.append(row)
+        searched.append({"term": t, "total": int(data[2]) if len(data) > 2 and data[2] else len(rows), "read": len(rows)})
+    return {"jobs": jobs, "searched": searched, "read": "search", "complete": False}
+
+
+def unix_date(ts):
+    try:
+        ts = int(ts)
+    except (TypeError, ValueError):
+        return None
+    return dt.datetime.fromtimestamp(ts, dt.timezone.utc).strftime("%Y-%m-%d") if ts > 1_000_000_000 else None
+
+
+def google_view(j):
+    """One positional Google row -> the fields every other board gives (positions as collectors/google.py reads them)."""
+    desc = " ".join(x[1] for x in (j[3], j[4] if len(j) > 4 else None) if isinstance(x, list) and len(x) > 1 and x[1])
+    posted = next((unix_date(j[i][0]) for i in (12, 13, 14) if len(j) > i and isinstance(j[i], list) and j[i] and unix_date(j[i][0])), None)
+    return dict(source_id=str(j[0]), title=(j[1] or "").strip(), text=plain(desc),
+                location_text=" · ".join(str(x[0]) for x in (j[9] or []) if isinstance(x, list) and x),
+                date_raw=posted, url=f"https://{GOOGLE_HOST}/about/careers/applications/jobs/results/{j[0]}", department="")
+
+
 def fetch_board(provider, slug, want_detail=True):
     """Return the provider's raw payload for one board. Raises on failure."""
     if provider == "greenhouse":
@@ -318,7 +374,9 @@ def normalise(provider, company, payload):
     """One raw payload -> internal views. `original` is the source's record, untouched (P1)."""
     out = []
     for j in payload.get("jobs") or []:
-        if provider == "greenhouse":
+        if provider == "google":
+            v = google_view(j)
+        elif provider == "greenhouse":
             v = dict(source_id=str(j.get("id")), title=(j.get("title") or "").strip(),
                      text=plain(j.get("content")), location_text=(j.get("location") or {}).get("name", ""),
                      date_raw=j.get("first_published") or j.get("updated_at"), url=j.get("absolute_url"),
@@ -548,7 +606,7 @@ def main(argv=None):
     ap.add_argument("--sources", default=lp.config("sources.json"))
     ap.add_argument("--keywords", default=lp.config("keywords.json"))
     ap.add_argument("--out", default=HERE)
-    ap.add_argument("--only", help="one provider: greenhouse | ashby | smartrecruiters")
+    ap.add_argument("--only", help="one provider: greenhouse | ashby | smartrecruiters | google")
     ap.add_argument("--from-raw", metavar="DIR", help="no network; re-filter saved responses")
     ap.add_argument("--no-detail", action="store_true", help="skip SmartRecruiters per-posting detail calls")
     a = ap.parse_args(argv)
@@ -581,6 +639,9 @@ def main(argv=None):
                                    "reason": "no saved response for today"})
                     continue
                 payload = json.load(open(path, encoding="utf-8"))
+            elif provider == "google":
+                payload = fetch_google((cfg.get("search") or {}).get("terms") or [])
+                write_json(path, payload)                              # P2: raw first
             else:
                 payload = fetch_board(provider, slug, want_detail=not a.no_detail)
                 write_json(path, payload)                              # P2: raw first
@@ -591,8 +652,11 @@ def main(argv=None):
             continue
         v = normalise(provider, company, payload)
         views.extend(v)
-        status.append({"company": company, "provider": provider, "status": "ok", "postings": len(v)})
-        print(f"  {company:12} {len(v):4} postings")
+        st = {"company": company, "provider": provider, "status": "ok", "postings": len(v)}
+        if payload.get("read") == "search":                           # not the whole board: churn leaves it out
+            st.update(read="search", complete=False, searched=payload.get("searched") or [])
+        status.append(st)
+        print(f"  {company:12} {len(v):4} postings" + ("  (search, first page a term)" if st.get("read") else ""))
 
     if not any(s["status"] == "ok" for s in status):
         print("every source failed — nothing written", file=sys.stderr)

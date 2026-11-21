@@ -41,7 +41,10 @@ def derive_sources(doc, current):
     by_provider = {}
     for t in doc["targets"]:
         if t["section"] == "boards" and t["status"] == "active":
-            e = {"company": t["name"], "slug": t["slug"], "tier": t.get("tier")}
+            e = {"company": t["name"], "slug": t["slug"]}
+            if t.get("read"):                  # "list" or "search" (collect.py's bigger boards, 2026-11-20); the older boards are always read whole
+                e["read"] = t["read"]
+            e["tier"] = t.get("tier")
             e.update(t.get("counts", {}))
             e["why_watched"] = t["why"]
             by_provider.setdefault(t["provider"], []).append(e)

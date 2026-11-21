@@ -35,9 +35,21 @@ class Targets(unittest.TestCase):
         boards = [t for t in T if t["section"] == "boards" and t["status"] == "active"]
         self.assertTrue(boards)
         for t in boards:
-            self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters"))
+            self.assertIn(t["provider"], ("greenhouse", "ashby", "smartrecruiters", "google"))
             self.assertTrue(t["slug"])
             self.assertEqual([d["label"] for d in t["data"]], ["board page", "API the script calls"])
+
+    def test_a_company_listed_for_checking_by_hand_says_why_and_gives_a_link_a_person_can_open(self):
+        # 2026-11-20: Microsoft, Amazon, NVIDIA, Red Hat and Autodesk (terms forbid automated reading) and GitHub and Unity (terms unclear) are on the
+        # list but read by no script; the reason and a search link sit in sources.json's `unreachable`, so the list says what was not read and why
+        sources = json.load(open(lp.config("sources.json"), encoding="utf-8"))
+        hand = {u["company"]: u for u in sources["unreachable"]}
+        for name in ("Microsoft", "Amazon (AWS)", "NVIDIA", "Red Hat", "Autodesk", "GitHub", "Unity"):
+            self.assertIn(name, hand)
+            self.assertTrue(hand[name]["blocker"].startswith("Terms checked 2026-11-20"), name)
+            self.assertTrue(hand[name]["manual_check"]["how"].startswith("https://"), name)
+        watched = {b["company"] for s in sources["sources"] for b in s["boards"]}
+        self.assertFalse(watched & set(hand), watched & set(hand))
 
     def test_the_schools_carry_what_the_faculty_feed_needs(self):
         schools = [t for t in T if t["section"] == "schools"]
@@ -70,11 +82,15 @@ class Targets(unittest.TestCase):
         watched = {b["company"] for s in sources["sources"] for b in s["boards"]}
         removed = set(k for k in sources["removed"] if k != "_comment")
         unreachable = {u["company"] for u in sources["unreachable"]}
+        # one company is on both lists on purpose: Professor Bear added Epic Games to the watch list on 2026-11-20 for developer-advocate roles;
+        # its early-career game roles still go to #games-3d-simulations from the studio list, and the education feed's entry is a separate target
+        both_on_purpose = {"games": {"Epic Games"}}
         for section in ("games", "consulting", "federal508", "fellowships"):
             names = {t["name"] for t in T if t["section"] == section}
             self.assertTrue(names, section)
             for other in (watched, removed, unreachable):
-                self.assertFalse(names & other, (section, names & other))
+                leak = (names & other) - (both_on_purpose.get(section, set()) if other is watched else set())
+                self.assertFalse(leak, (section, leak))
         # the speakers list is different on purpose: Figma, Canva, Miro and Notion are on the #professor-bear watch list AND ship an MCP, and several
         # companies removed from it for not being educational AI (GitLab, Vercel, Supabase, Twilio ...) or with no data source (Salesforce, GitHub ...) ship one
         # too, so names are not compared. Being on the speakers list changes nothing about the watch list: the generator reads only `boards`.

@@ -48,7 +48,9 @@ def load(path):
     d = json.load(open(path, encoding="utf-8"))
     m = re.search(r"(\d{4}-\d{2}-\d{2})", os.path.basename(path))
     day = m.group(1)
-    ok = {s["company"] for s in d.get("sources", []) if s.get("status") == "ok"}
+    # a board read through the site's own search (collect.py, read "search", 2026-11-20) is not the board: what comes back depends on the site's
+    # ranking, so a posting that drops out of a search has not closed. Those boards are left out of every count here.
+    ok = {s["company"] for s in d.get("sources", []) if s.get("status") == "ok" and s.get("read") != "search"}
     recs = {}
     for r in d["records"]:
         if r["company"] in ok:

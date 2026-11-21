@@ -1330,6 +1330,20 @@ Where to check each claim in this log. Commits are listed in the push table belo
 - **What I understand now / still do not understand:** Not yet stated by me.
 - **Evidence and next step:** `glossary/notes/2026-11-19-exam-notes.md`. Next: leverage analysis and the bank questions. Pushed, with the log row below.
 
+### 2026-11-20 — Lectern: the developer-advocate companies (two read daily, seven checked by hand)
+
+- **Date and what I was working on:** 2026-11-20. I asked whether the developer-advocate job search was still running and which companies it watches (it was: the server ran it that morning and posted; six companies), then gave fifteen companies with education programs and said *"Let's add all of these companies for developer advocate style roles."*
+- **I tried / expected:** All fifteen on the daily watch list.
+- **What happened:**
+  - Six were already there. Epic Games is on Greenhouse's public API and was added. Google has no feed and its robots.txt disallows the paged results, so it is read through its own search, one results page per term; 23 postings kept on the first read.
+  - For the other seven, robots.txt allowed a script but the terms did not: Amazon, Microsoft, NVIDIA, Red Hat and Autodesk forbid robots, scraping or automated access (Microsoft by reading its ban on scraping its AI services), and GitHub's and Unity's are unclear. They are listed with the reason and a search link to check by hand.
+  - Claude wrote readers for those seven and tried them before the terms check came back, so those sites got requests their terms forbid (about 110 to Autodesk, 45 to Red Hat, fewer to the rest). Nothing was kept, and the readers were removed.
+  - Nine of Google's 23 kept postings are data-center community roles, kept by the word "community".
+- **What I did:** Gave the list. Chose to check GitHub and Unity by hand rather than read them by script. I have not read the code.
+- **What Claude or another person contributed:** Claude Code found each company's job system, had a subagent read each employer's terms, wrote the Google reader and its tests, regenerated the generated files and the n8n form, ran a full collect without posting, and wrote this entry and `lectern/HISTORY.md`.
+- **What I understand now / still do not understand:** Not yet stated by me.
+- **Evidence and next step:** `lectern/HISTORY.md` (2026-11-20), `lectern/TARGETS.md` sections A and C, `lectern/notes/ATS.md`. Next: check the seven by hand; decide whether "community" should keep data-center roles; sync the other two classes.
+
 ## GitHub pushes
 
 One line per push to GitHub: the date and the commit note. The commit ID for each push is in `git log`; a commit can't contain its own ID.
@@ -1406,3 +1420,4 @@ One line per push to GitHub: the date and the commit note. The commit ID for eac
 | 2026-11-19 | docs(exam): Cohen's kappa is not on the exam; it stays in the glossary for study after the class |
 | 2026-11-19 | docs(exam): one multiple-answer question gives examples and asks whether each is rung 1 or rung 2 |
 | 2026-11-19 | docs(exam): causal graphs are not on the exam; they stay in the glossary to look up and study |
+| 2026-11-20 | feat(fall-2026): Epic Games and Google join the Lectern watch list; seven more are listed to check by hand (terms forbid a script or are unclear) |
